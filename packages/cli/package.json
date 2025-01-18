@@ -1,0 +1,51 @@
+{
+	"name": "9ui-cli",
+	"version": "0.0.1",
+	"description": "Add components to your apps.",
+	"publishConfig": {
+		"access": "public"
+	},
+	"license": "MIT",
+	"author": {
+		"name": "borabalogluu",
+		"url": "https://x.com/borabalogluu"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/borabaloglu/9ui.git",
+		"directory": "packages/cli"
+	},
+	"files": [
+		"dist"
+	],
+	"keywords": [
+		"components",
+		"ui",
+		"tailwind",
+		"base-ui",
+		"9ui"
+	],
+	"type": "module",
+	"exports": "./dist/index.js",
+	"bin": "./dist/index.js",
+	"scripts": {
+		"dev": "bunchee --watch",
+		"build": "bunchee"
+	},
+	"dependencies": {
+		"@antfu/ni": "^23.2.0",
+		"chalk": "^5.4.1",
+		"colorette": "^2.0.20",
+		"commander": "^10.0.0",
+		"ora": "^8.1.1",
+		"prompts": "^2.4.2",
+		"zod": "^3.24.1"
+	},
+	"devDependencies": {
+		"@types/node": "^20",
+		"@types/prompts": "^2.4.9",
+		"bunchee": "^6.3.1",
+		"fast-glob": "^3.3.3",
+		"typescript": "^4.9.3"
+	}
+}

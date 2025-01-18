@@ -1,6 +1,7 @@
 {
 	"eslint.workingDirectories": [
 		{ "pattern": "9ui/" },
-		{ "pattern": "apps/www/" }
+		{ "pattern": "apps/www/" },
+		{ "pattern": "packages/cli/" }
 	]
 }
