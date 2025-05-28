@@ -1,3 +1,5 @@
+@reference "./globals.css";
+
 html.dark code[data-theme*=" "],
 html.dark .shiki,
 html.dark .shiki span,
