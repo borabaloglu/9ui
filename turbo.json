@@ -1,0 +1,39 @@
+{
+	"$schema": "https://turbo.build/schema.json",
+	"ui": "tui",
+	"tasks": {
+		"build": {
+			"dependsOn": ["^build"],
+			"outputs": [".next/**", "!.next/cache/**"]
+		},
+		"build:registry": {
+			"outputs": ["src/__registry__/**"]
+		},
+		"generate:demos": {
+			"outputs": ["src/__registry__/demos.tsx"]
+		},
+		"generate:contents": {
+			"outputs": ["src/__registry__/contents.tsx"]
+		},
+		"prebuild": {
+			"dependsOn": ["generate:contents", "generate:demos", "build:registry"]
+		},
+		"dev": {
+			"cache": false,
+			"persistent": true
+		},
+		"start": {
+			"cache": false,
+			"persistent": true
+		},
+		"lint": {
+			"dependsOn": ["^build"]
+		},
+		"fix": {
+			"dependsOn": ["^build"]
+		},
+		"format": {
+			"outputs": ["src/**/*.{js,ts,jsx,tsx,mdx}"]
+		}
+	}
+}
