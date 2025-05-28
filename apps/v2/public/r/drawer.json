@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "drawer",
+  "type": "registry:ui",
+  "dependencies": [
+    "vaul-base"
+  ],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "src/components/ui/drawer.tsx",
+      "content": "\"use client\"\n\nimport * as React from \"react\"\nimport { Drawer as BaseDrawer } from \"vaul-base\"\n\nimport { cn } from \"@/lib/utils\"\n\nconst DrawerTrigger = BaseDrawer.Trigger\n\nconst DrawerPortal = BaseDrawer.Portal\n\nconst DrawerClose = BaseDrawer.Close\n\nconst Drawer = ({\n\tshouldScaleBackground = true,\n\t...props\n}: React.ComponentProps<typeof BaseDrawer.Root>) => (\n\t<BaseDrawer.Root shouldScaleBackground={shouldScaleBackground} {...props} />\n)\nDrawer.displayName = \"Drawer\"\n\nconst DrawerBackdrop = React.forwardRef<\n\tReact.ElementRef<typeof BaseDrawer.Overlay>,\n\tReact.ComponentPropsWithoutRef<typeof BaseDrawer.Overlay>\n>(({ className, ...props }, ref) => (\n\t<BaseDrawer.Overlay\n\t\tref={ref}\n\t\tclassName={cn(\"fixed inset-0 z-50 bg-black/70\", className)}\n\t\t{...props}\n\t/>\n))\nDrawerBackdrop.displayName = \"DrawerBackdrop\"\n\nconst DrawerContent = React.forwardRef<\n\tReact.ElementRef<typeof BaseDrawer.Content>,\n\tReact.ComponentPropsWithoutRef<typeof BaseDrawer.Content>\n>(({ className, children, ...props }, ref) => (\n\t<DrawerPortal>\n\t\t<DrawerBackdrop />\n\t\t<BaseDrawer.Content\n\t\t\tref={ref}\n\t\t\tclassName={cn(\n\t\t\t\t\"fixed inset-x-0 bottom-0 z-50 flex h-auto flex-col rounded-t-lg border bg-popover text-popover-foreground outline-none\",\n\t\t\t\tclassName\n\t\t\t)}\n\t\t\t{...props}\n\t\t>\n\t\t\t<div className=\"mx-auto mt-4 h-2 w-20 rounded-full bg-muted\" />\n\t\t\t{children}\n\t\t</BaseDrawer.Content>\n\t</DrawerPortal>\n))\nDrawerContent.displayName = \"DrawerContent\"\n\nconst DrawerHeader = ({\n\tclassName,\n\t...props\n}: React.HTMLAttributes<HTMLDivElement>) => (\n\t<div className={cn(\"grid gap-1.5 p-4\", className)} {...props} />\n)\nDrawerHeader.displayName = \"DrawerHeader\"\n\nconst DrawerFooter = ({\n\tclassName,\n\t...props\n}: React.HTMLAttributes<HTMLDivElement>) => (\n\t<div\n\t\tclassName={cn(\"mt-auto flex flex-col gap-2 p-4\", className)}\n\t\t{...props}\n\t/>\n)\nDrawerFooter.displayName = \"DrawerFooter\"\n\nconst DrawerTitle = React.forwardRef<\n\tReact.ElementRef<typeof BaseDrawer.Title>,\n\tReact.ComponentPropsWithoutRef<typeof BaseDrawer.Title>\n>(({ className, ...props }, ref) => (\n\t<BaseDrawer.Title\n\t\tref={ref}\n\t\tclassName={cn(\n\t\t\t\"text-lg font-semibold leading-none tracking-tight\",\n\t\t\tclassName\n\t\t)}\n\t\t{...props}\n\t/>\n))\nDrawerTitle.displayName = \"DrawerTitle\"\n\nconst DrawerDescription = React.forwardRef<\n\tReact.ElementRef<typeof BaseDrawer.Description>,\n\tReact.ComponentPropsWithoutRef<typeof BaseDrawer.Description>\n>(({ className, ...props }, ref) => (\n\t<BaseDrawer.Description\n\t\tref={ref}\n\t\tclassName={cn(\"text-sm text-muted-foreground\", className)}\n\t\t{...props}\n\t/>\n))\nDrawerDescription.displayName = \"DrawerDescription\"\n\nexport {\n\tDrawer,\n\tDrawerPortal,\n\tDrawerBackdrop,\n\tDrawerTrigger,\n\tDrawerClose,\n\tDrawerContent,\n\tDrawerHeader,\n\tDrawerFooter,\n\tDrawerTitle,\n\tDrawerDescription,\n}\n",
+      "type": "registry:ui",
+      "target": ""
+    }
+  ]
+}

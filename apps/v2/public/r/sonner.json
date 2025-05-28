@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "sonner",
+  "type": "registry:ui",
+  "dependencies": [
+    "sonner"
+  ],
+  "registryDependencies": [
+    "https://9ui.dev/r/button.json"
+  ],
+  "files": [
+    {
+      "path": "src/components/ui/sonner.tsx",
+      "content": "\"use client\"\n\nimport * as React from \"react\"\nimport { Toaster as Sonner, toast } from \"sonner\"\n\nimport { buttonVariants } from \"@/components/ui/button\"\n\nimport { cn } from \"@/lib/utils\"\n\ntype ToasterProps = React.ComponentProps<typeof Sonner>\n\nconst Toaster = ({ ...props }: ToasterProps) => (\n\t<Sonner\n\t\tclassName=\"text-xs text-popover-foreground\"\n\t\ttheme=\"system\"\n\t\ttoastOptions={{\n\t\t\tunstyled: true,\n\t\t\tclassNames: {\n\t\t\t\ttoast:\n\t\t\t\t\t\"group max-w-96 w-full bg-popover rounded-md p-4 border flex gap-2 right-0 shadow-md dark:shadow-none\",\n\t\t\t\ttitle: \"font-medium\",\n\t\t\t\tsuccess:\n\t\t\t\t\t\"data-[rich-colors]:!bg-success data-[rich-colors]:!text-success-foreground data-[rich-colors]:!border-success-foreground\",\n\t\t\t\terror:\n\t\t\t\t\t\"data-[rich-colors]:!bg-danger data-[rich-colors]:!text-danger-foreground data-[rich-colors]:!border-danger-foreground\",\n\t\t\t\twarning:\n\t\t\t\t\t\"data-[rich-colors]:!bg-warning data-[rich-colors]:!text-warning-foreground data-[rich-colors]:!border-warning-foreground\",\n\t\t\t\tinfo: \"data-[rich-colors]:!bg-info data-[rich-colors]:!text-info-foreground data-[rich-colors]:!border-info-foreground\",\n\t\t\t\tdescription:\n\t\t\t\t\t\"text-muted-foreground group-data-[rich-colors]:text-foreground\",\n\t\t\t\tactionButton: cn(\n\t\t\t\t\tbuttonVariants({ variant: \"ghost\", size: \"sm\" }),\n\t\t\t\t\t\"my-auto\"\n\t\t\t\t),\n\t\t\t\tcancelButton: cn(\n\t\t\t\t\tbuttonVariants({ variant: \"destructive\", size: \"sm\" }),\n\t\t\t\t\t\"my-auto\"\n\t\t\t\t),\n\t\t\t\tcloseButton: \"!bg-popover text-popover-foreground transition-colors\",\n\t\t\t\ticon: \"my-auto\",\n\t\t\t},\n\t\t}}\n\t\t{...props}\n\t/>\n)\n\nexport { Toaster, toast }\n",
+      "type": "registry:ui",
+      "target": ""
+    }
+  ]
+}

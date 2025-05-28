@@ -1,0 +1,44 @@
+<Title content="Meter" />
+<Description content="Used to represent a value within a fixed scale." />
+
+<ComponentLinks
+	links={[
+		{
+			label: "Docs",
+			href: "https://base-ui.com/react/components/meter",
+		},
+	]}
+/>
+
+<ComponentPreview name="meter-demo" />
+
+## Installation
+
+<ComponentInstallation>
+<div>
+```bash title="Terminal"
+npx shadcn@latest add https://9ui.dev/r/meter.json
+```
+</div>
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="meter" />
+
+</Steps>
+</ComponentInstallation>
+
+## Usage
+
+```tsx title="Imports"
+import { Meter, MeterLabel, MeterValue } from "@/components/ui/meter"
+```
+
+```tsx title="Anatomy"
+<Meter>
+	<MeterLabel />
+	<MeterValue />
+</Meter>
+```

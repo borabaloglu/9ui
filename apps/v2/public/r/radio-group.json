@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "radio-group",
+  "type": "registry:ui",
+  "dependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "src/components/ui/radio-group.tsx",
+      "content": "import * as React from \"react\"\nimport { Radio } from \"@base-ui-components/react/radio\"\nimport { RadioGroup as BaseRadioGroup } from \"@base-ui-components/react/radio-group\"\n\nimport { cn } from \"@/lib/utils\"\n\nconst RadioGroup = React.forwardRef<\n\tHTMLDivElement,\n\tReact.ComponentPropsWithoutRef<typeof BaseRadioGroup>\n>(({ className, ...props }, ref) => (\n\t<BaseRadioGroup\n\t\tref={ref}\n\t\tclassName={cn(\"flex flex-col gap-2\", className)}\n\t\t{...props}\n\t/>\n))\nRadioGroup.displayName = \"RadioGroup\"\n\nconst RadioGroupItem = React.forwardRef<\n\tHTMLButtonElement,\n\tReact.ComponentPropsWithoutRef<typeof Radio.Root>\n>(({ className, ...props }, ref) => (\n\t<Radio.Root\n\t\tref={ref}\n\t\tclassName={cn(\n\t\t\t\"peer flex size-4 items-center justify-center rounded-full border focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50 data-[checked]:border-primary\",\n\t\t\tclassName\n\t\t)}\n\t\t{...props}\n\t>\n\t\t<Radio.Indicator className=\"flex before:size-2.5 before:rounded-full before:bg-primary data-[unchecked]:hidden\" />\n\t</Radio.Root>\n))\nRadioGroupItem.displayName = \"RadioGroupItem\"\n\nexport { RadioGroup, RadioGroupItem }\n",
+      "type": "registry:ui",
+      "target": ""
+    }
+  ]
+}

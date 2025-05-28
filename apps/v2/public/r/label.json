@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "label",
+  "type": "registry:ui",
+  "dependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "src/components/ui/label.tsx",
+      "content": "import * as React from \"react\"\n\nimport { cn } from \"@/lib/utils\"\n\nconst Label = React.forwardRef<\n\tHTMLLabelElement,\n\tReact.LabelHTMLAttributes<HTMLLabelElement>\n>(({ className, ...props }, ref) => (\n\t<label\n\t\tref={ref}\n\t\tclassName={cn(\n\t\t\t\"text-sm font-medium peer-disabled:cursor-not-allowed peer-disabled:opacity-50\",\n\t\t\tclassName\n\t\t)}\n\t\t{...props}\n\t/>\n))\nLabel.displayName = \"Label\"\n\nexport { Label }\n",
+      "type": "registry:ui",
+      "target": ""
+    }
+  ]
+}

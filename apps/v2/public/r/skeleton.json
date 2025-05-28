@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "skeleton",
+  "type": "registry:ui",
+  "dependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "src/components/ui/skeleton.tsx",
+      "content": "import * as React from \"react\"\n\nimport { cn } from \"@/lib/utils\"\n\nconst Skeleton = ({\n\tclassName,\n\t...props\n}: React.HTMLAttributes<HTMLDivElement>) => (\n\t<div\n\t\tclassName={cn(\"animate-pulse rounded-md bg-muted\", className)}\n\t\t{...props}\n\t/>\n)\nSkeleton.displayName = \"Skeleton\"\n\nexport { Skeleton }\n",
+      "type": "registry:ui",
+      "target": ""
+    }
+  ]
+}

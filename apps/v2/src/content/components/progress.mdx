@@ -1,0 +1,48 @@
+<Title content="Progress" />
+<Description content="Displays a progress bar with an optional label." />
+<ComponentLinks
+	links={[
+		{
+			label: "Docs",
+			href: "https://base-ui.com/react/components/progress",
+		},
+	]}
+/>
+
+<ComponentPreview name="progress-demo" showReload={true} />
+
+## Installation
+
+<ComponentInstallation>
+<div>
+```bash title="Terminal"
+npx shadcn@latest add https://9ui.dev/r/progress.json
+```
+</div>
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="progress" />
+
+</Steps>
+</ComponentInstallation>
+
+## Usage
+
+```tsx title="Imports"
+import { Progress, ProgressValue } from "@/components/ui/progress"
+```
+
+```tsx title="Anatomy"
+<Progress>
+	<ProgressValue />
+</Progress>
+```
+
+## Examples
+
+### With Value
+
+<ComponentPreview name="progress-with-value" showReload={true} />

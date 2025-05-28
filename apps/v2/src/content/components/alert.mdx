@@ -1,0 +1,75 @@
+<Title content="Alert" />
+<Description content="Used to highlight important messages." />
+
+<ComponentPreview name="alert-demo" />
+
+## Installation
+
+<ComponentInstallation>
+<div>
+```bash title="Terminal"
+npx shadcn@latest add https://9ui.dev/r/alert.json
+```
+</div>
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="alert" />
+
+</Steps>
+</ComponentInstallation>
+
+## Usage
+
+```tsx title="Imports"
+import {
+	Alert,
+	AlertContent,
+	AlertDescription,
+	AlertIcon,
+	AlertTitle,
+} from "@/components/ui/alert"
+```
+
+```tsx title="Anatomy"
+<Alert>
+	<AlertIcon />
+	<AlertContent>
+		<AlertTitle />
+		<AlertDescription />
+	</AlertContent>
+	<AlertAction />
+</Alert>
+```
+
+## Examples
+
+### Success
+
+<ComponentPreview name="alert-success" />
+
+---
+
+### Info
+
+<ComponentPreview name="alert-info" />
+
+---
+
+### Warning
+
+<ComponentPreview name="alert-warning" />
+
+---
+
+### Danger
+
+<ComponentPreview name="alert-danger" />
+
+---
+
+### With action
+
+<ComponentPreview name="alert-with-action" />

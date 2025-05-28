@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "checkbox",
+  "type": "registry:ui",
+  "dependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "src/components/ui/checkbox.tsx",
+      "content": "\"use client\"\n\nimport * as React from \"react\"\nimport { Checkbox as BaseCheckbox } from \"@base-ui-components/react/checkbox\"\nimport { CheckIcon, MinusIcon } from \"lucide-react\"\n\nimport { cn } from \"@/lib/utils\"\n\nconst Checkbox = React.forwardRef<\n\tHTMLButtonElement,\n\tReact.ComponentPropsWithoutRef<typeof BaseCheckbox.Root>\n>(({ className, ...props }, ref) => (\n\t<BaseCheckbox.Root\n\t\tref={ref}\n\t\tclassName={cn(\n\t\t\t\"peer flex size-4 shrink-0 items-center justify-center rounded-sm border bg-input outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50 aria-[invalid=true]:border-destructive aria-[invalid=true]:text-destructive aria-[invalid=true]:focus:ring-destructive data-[checked]:border-primary data-[checked]:bg-primary data-[checked]:text-primary-foreground data-[indeterminate]:text-foreground\",\n\t\t\tclassName\n\t\t)}\n\t\t{...props}\n\t>\n\t\t<BaseCheckbox.Indicator className=\"block data-[unchecked]:hidden\">\n\t\t\t{props.indeterminate ? (\n\t\t\t\t<MinusIcon className=\"size-3\" />\n\t\t\t) : (\n\t\t\t\t<CheckIcon className=\"size-3\" />\n\t\t\t)}\n\t\t</BaseCheckbox.Indicator>\n\t</BaseCheckbox.Root>\n))\nCheckbox.displayName = \"Checkbox\"\n\nexport { Checkbox }\n",
+      "type": "registry:ui",
+      "target": ""
+    }
+  ]
+}

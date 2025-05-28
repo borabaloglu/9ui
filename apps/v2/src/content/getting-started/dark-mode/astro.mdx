@@ -1,0 +1,110 @@
+<Title content="Astro" />
+<Description content="Setting up dark mode in your Astro project." />
+
+<Steps>
+
+<Step>Create script to handle theme.</Step>
+
+```astro {5-28} title="src/pages/index.astro"
+---
+import '../styles/global.css';
+---
+
+<script is:inline>
+  function getTheme() {
+    if (typeof localStorage !== "undefined" && localStorage.getItem("theme")) {
+      return localStorage.getItem("theme")
+    }
+
+		return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light"
+  }
+
+	const theme = getTheme()
+	document.documentElement.classList.remove("light", "dark")
+	document.documentElement.classList.add(theme)
+
+	if (typeof localStorage !== "undefined") {
+		const observer = new MutationObserver(() => {
+			const isDark = document.documentElement.classList.contains("dark")
+			localStorage.setItem("theme", isDark ? "dark" : "light")
+		})
+		observer.observe(document.documentElement, {
+			attributes: true,
+			attributeFilter: ["class"]
+		})
+	}
+</script>
+
+<html lang="en">
+	<body>
+		{/* content */}
+	</body>
+</html>
+```
+
+<Step>Create theme utilies.</Step>
+
+Create a utility to handle theme management.
+
+```ts title="src/utils/theme.ts"
+export type Theme = "light" | "dark" | "system"
+
+export function getTheme(): Theme {
+	if (typeof localStorage !== "undefined" && localStorage.getItem("theme")) {
+		return localStorage.getItem("theme") as Theme
+	}
+	return "system"
+}
+
+export function setTheme(theme: Theme) {
+	const isDark =
+		theme === "dark" ||
+		(theme === "system" &&
+			window.matchMedia("(prefers-color-scheme: dark)").matches)
+	document.documentElement.classList[isDark ? "add" : "remove"]("dark")
+}
+```
+
+<Step>Add theme toggle component.</Step>
+
+```tsx title="src/components/theme-toggle.tsx"
+import * as React from "react"
+import { MoonIcon, SunIcon } from "lucide-react"
+
+import { getTheme, setTheme, type Theme } from "../utils/theme"
+import { Button } from "./ui/button"
+
+export function ThemeToggle() {
+	const [theme, setCurrentTheme] = React.useState<Theme>(() => getTheme())
+
+	const toggleTheme = () => {
+		const newTheme = theme === "dark" ? "light" : "dark"
+		setTheme(newTheme)
+		setCurrentTheme(newTheme)
+	}
+
+	return (
+		<Button onClick={toggleTheme} variant="ghost" size="icon">
+			<MoonIcon className="dark:hidden" />
+			<SunIcon className="hidden dark:block" />
+			<span className="sr-only">Toggle theme</span>
+		</Button>
+	)
+}
+```
+
+<Step>Use the theme toggle in your app</Step>
+
+You can now use the theme toggle component anywhere in your app.
+
+```astro title="src/components/Header.astro"
+---
+import { ThemeToggle } from "./theme-toggle"
+---
+
+<header>
+  <ThemeToggle client:load />
+</header>
+```
+
+</Steps>

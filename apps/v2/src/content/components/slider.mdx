@@ -1,0 +1,60 @@
+<Title content="Slider" />
+<Description content="A control for selecting a value within a range." />
+<ComponentLinks
+	links={[
+		{
+			label: "Docs",
+			href: "https://base-ui.com/react/components/slider",
+		},
+	]}
+/>
+
+<ComponentPreview name="slider-demo" />
+
+## Installation
+
+<ComponentInstallation>
+<div>
+```bash title="Terminal"
+npx shadcn@latest add https://9ui.dev/r/slider.json
+```
+</div>
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="slider" />
+
+</Steps>
+</ComponentInstallation>
+
+## Usage
+
+```tsx title="Imports"
+import { Slider, SliderValue } from "@/components/ui/slider"
+```
+
+```tsx title="Anatomy"
+<Slider>
+	<SliderValue />
+</Slider>
+```
+
+## Examples
+
+### Disabled
+
+<ComponentPreview name="slider-disabled" />
+
+---
+
+### Range
+
+<ComponentPreview name="slider-range" />
+
+---
+
+### With Value
+
+<ComponentPreview name="slider-with-value" />

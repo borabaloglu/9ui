@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "progress",
+  "type": "registry:ui",
+  "dependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "src/components/ui/progress.tsx",
+      "content": "import * as React from \"react\"\nimport { Progress as BaseProgress } from \"@base-ui-components/react/progress\"\n\nimport { cn } from \"@/lib/utils\"\n\nconst Progress = React.forwardRef<\n\tHTMLDivElement,\n\tReact.ComponentProps<typeof BaseProgress.Root>\n>(({ className, children, ...props }, ref) => (\n\t<BaseProgress.Root ref={ref} className=\"relative\" {...props}>\n\t\t<BaseProgress.Track\n\t\t\tclassName={cn(\n\t\t\t\t\"block h-1 w-full overflow-hidden rounded-full bg-muted\",\n\t\t\t\tclassName\n\t\t\t)}\n\t\t>\n\t\t\t<BaseProgress.Indicator className=\"block bg-primary transition-all duration-300\" />\n\t\t</BaseProgress.Track>\n\t\t{children}\n\t</BaseProgress.Root>\n))\nProgress.displayName = \"Progress\"\n\nconst ProgressValue = React.forwardRef<\n\tHTMLSpanElement,\n\tReact.ComponentPropsWithoutRef<typeof BaseProgress.Value>\n>(({ className, ...props }, ref) => (\n\t<BaseProgress.Value\n\t\tref={ref}\n\t\tclassName={cn(\n\t\t\t\"mt-2 flex justify-end text-xs font-medium text-foreground\",\n\t\t\tclassName\n\t\t)}\n\t\t{...props}\n\t/>\n))\nProgressValue.displayName = \"ProgressValue\"\n\nexport { Progress, ProgressValue }\n",
+      "type": "registry:ui",
+      "target": ""
+    }
+  ]
+}

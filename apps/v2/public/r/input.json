@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "input",
+  "type": "registry:ui",
+  "dependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "src/components/ui/input.tsx",
+      "content": "import * as React from \"react\"\nimport { Input as BaseInput } from \"@base-ui-components/react/input\"\n\nimport { cn } from \"@/lib/utils\"\n\ninterface InputProps extends React.ComponentProps<typeof BaseInput> {\n\tchildren?: React.ReactNode\n\tinputWrapperClassName?: string\n}\n\nconst Input = React.forwardRef<HTMLInputElement, InputProps>(\n\t({ children, className, inputWrapperClassName, ...props }, ref) => {\n\t\tconst hasLeadingIcon = React.Children.toArray(children).some(\n\t\t\t(child) =>\n\t\t\t\tReact.isValidElement(child) &&\n\t\t\t\tchild.type === InputIcon &&\n\t\t\t\tchild.props.side === \"leading\"\n\t\t)\n\t\tconst hasTrailingIcon = React.Children.toArray(children).some(\n\t\t\t(child) =>\n\t\t\t\tReact.isValidElement(child) &&\n\t\t\t\tchild.type === InputIcon &&\n\t\t\t\tchild.props.side === \"trailing\"\n\t\t)\n\n\t\treturn (\n\t\t\t<div className={cn(\"relative\", inputWrapperClassName)}>\n\t\t\t\t{children}\n\t\t\t\t<BaseInput\n\t\t\t\t\tref={ref}\n\t\t\t\t\tclassName={cn(\n\t\t\t\t\t\t\"h-9 w-full rounded-md border bg-input p-4 text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50 aria-[invalid=true]:border-destructive aria-[invalid=true]:text-destructive aria-[invalid=true]:placeholder:text-destructive aria-[invalid=true]:focus:ring-destructive/50 md:text-sm\",\n\t\t\t\t\t\thasLeadingIcon && \"pl-10\",\n\t\t\t\t\t\thasTrailingIcon && \"pr-10\",\n\t\t\t\t\t\tclassName\n\t\t\t\t\t)}\n\t\t\t\t\t{...props}\n\t\t\t\t/>\n\t\t\t</div>\n\t\t)\n\t}\n)\nInput.displayName = \"Input\"\n\ninterface InputIconProps extends React.ComponentPropsWithoutRef<\"div\"> {\n\tside: \"leading\" | \"trailing\"\n\tchildren?: React.ReactNode\n}\n\nconst InputIcon = React.forwardRef<HTMLDivElement, InputIconProps>(\n\t({ children, className, side, ...props }, ref) => (\n\t\t<div\n\t\t\tref={ref}\n\t\t\tclassName={cn(\n\t\t\t\t\"absolute top-1/2 -translate-y-1/2 text-muted-foreground [&_svg]:size-4\",\n\t\t\t\tside === \"leading\" && \"left-3\",\n\t\t\t\tside === \"trailing\" && \"right-3\",\n\t\t\t\tclassName\n\t\t\t)}\n\t\t\t{...props}\n\t\t>\n\t\t\t{children}\n\t\t</div>\n\t)\n)\nInputIcon.displayName = \"InputIcon\"\n\nexport { Input, InputIcon }\n",
+      "type": "registry:ui",
+      "target": ""
+    }
+  ]
+}

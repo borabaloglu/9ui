@@ -5,6 +5,8 @@
 	"scripts": {
 		"build": "turbo build",
 		"dev": "turbo dev",
+		"dev:www": "turbo dev --filter=@9ui/www",
+		"dev:v2": "turbo dev --filter=@9ui/v2",
 		"lint": "turbo lint",
 		"format": "turbo format",
 		"clean": "turbo clean && rm -rf node_modules",

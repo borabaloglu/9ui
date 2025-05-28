@@ -1,0 +1,137 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+	:root {
+		--background: oklch(0.985 0 0);
+		--foreground: oklch(0.141 0.005 285.823);
+		--card: oklch(0.976 0.0005 143.188);
+		--card-foreground: oklch(0.141 0.005 285.823);
+		--popover: oklch(0.976 0.0005 143.188);
+		--popover-foreground: oklch(0.141 0.005 285.823);
+		--primary: oklch(0.141 0.005 285.823);
+		--primary-foreground: oklch(0.985 0 0);
+		--secondary: oklch(0.92 0.004 286.32);
+		--secondary-foreground: oklch(0.37 0.013 285.805);
+		--muted: oklch(0.944 0.0025 286.348);
+		--muted-foreground: oklch(0.442 0.017 285.786);
+		--accent: oklch(0.944 0.0025 286.348);
+		--accent-foreground: oklch(0.141 0.005 285.823);
+		--destructive: oklch(0.541 0.229 27.422);
+		--destructive-foreground: oklch(0.985 0 0);
+		--danger: oklch(0.954 0.023 17.549);
+		--danger-foreground: oklch(0.444 0.177 26.899);
+		--danger-border: oklch(0.444 0.177 26.899);
+		--warning: oklch(0.98 0.049 102.703);
+		--warning-foreground: oklch(0.554 0.135 66.442);
+		--warning-border: oklch(0.554 0.135 66.442);
+		--info: oklch(0.951 0.023 255.095);
+		--info-foreground: oklch(0.488 0.243 264.376);
+		--info-border: oklch(0.488 0.243 264.376);
+		--success: oklch(0.962 0.044 156.743);
+		--success-foreground: oklch(0.448 0.119 151.328);
+		--success-border: oklch(0.448 0.119 151.328);
+		--border: oklch(0.871 0.006 286.286);
+		--input: oklch(0.967 0.001 286.375);
+		--ring: oklch(0.92 0.004 286.32);
+		--radius: 0.5rem;
+		--chart-1: oklch(0.585 0.23 261.348);
+		--chart-2: oklch(0.675 0.207 149.396);
+		--chart-3: oklch(0.527 0.277 302.123);
+		--chart-4: oklch(0.676 0.218 44.36);
+		--chart-5: oklch(0.541 0.229 27.422);
+	}
+	.dark {
+		--background: oklch(0.141 0.005 285.823);
+		--foreground: oklch(0.985 0 0);
+		--card: oklch(0.176 0.0055 285.854);
+		--card-foreground: oklch(0.985 0 0);
+		--popover: oklch(0.176 0.0055 285.854);
+		--popover-foreground: oklch(0.985 0 0);
+		--primary: oklch(0.985 0 0);
+		--primary-foreground: oklch(0.141 0.005 285.823);
+		--secondary: oklch(0.21 0.006 285.885);
+		--secondary-foreground: oklch(0.629 0.0155 286.003);
+		--muted: oklch(0.242 0.006 285.959);
+		--muted-foreground: oklch(0.552 0.016 285.938);
+		--accent: oklch(0.242 0.006 285.959);
+		--accent-foreground: oklch(0.985 0 0);
+		--destructive: oklch(0.396 0.141 25.723);
+		--destructive-foreground: oklch(0.985 0 0);
+		--danger: oklch(0.22 0.08 26.1);
+		--danger-foreground: oklch(0.671 0.214 23.774);
+		--danger-border: oklch(0.671 0.214 23.774);
+		--warning: oklch(0.24 0.056 52);
+		--warning-foreground: oklch(0.738 0.173 80.941);
+		--warning-border: oklch(0.738 0.173 80.941);
+		--info: oklch(0.24 0.08 268.5);
+		--info-foreground: oklch(0.665 0.1895 257.22);
+		--info-border: oklch(0.665 0.1895 257.22);
+		--success: oklch(0.23 0.055 153);
+		--success-foreground: oklch(0.627 0.194 149.214);
+		--success-border: oklch(0.627 0.194 149.214);
+		--border: oklch(0.322 0.0095 285.919);
+		--input: oklch(0.21 0.006 285.885);
+		--ring: oklch(0.406 0.015 285.796);
+		--chart-1: oklch(0.585 0.23 261.348);
+		--chart-2: oklch(0.577 0.174 149.642);
+		--chart-3: oklch(0.593 0.277 303.111);
+		--chart-4: oklch(0.676 0.218 44.36);
+		--chart-5: oklch(0.577 0.245 27.325);
+	}
+}
+
+@layer base {
+	* {
+		@apply border-border;
+	}
+
+	html {
+		@apply md:scroll-smooth;
+	}
+
+	html[data-base-ui-scroll-locked] {
+		@apply scroll-auto;
+	}
+
+	body {
+		@apply bg-background text-foreground;
+	}
+
+	.Root {
+		@apply bg-background isolate min-h-screen;
+	}
+}
+
+@layer utilities {
+	.container {
+		@apply px-4 md:px-6 mx-auto max-w-screen-2xl lg:px-10 w-full;
+	}
+
+	.step {
+		counter-increment: step;
+	}
+
+	.step:before {
+		@apply absolute size-10 bg-muted rounded-full font-mono font-medium text-center text-sm inline-flex items-center justify-center -indent-px border-4 border-background ml-[-52px] mt-[-8px] tracking-tighter;
+		content: counter(step);
+	}
+}
+
+@layer base {
+	* {
+		scrollbar-width: thin;
+		scrollbar-color: var(--muted) transparent;
+	}
+	::-webkit-scrollbar {
+		width: 4px;
+	}
+	::-webkit-scrollbar-track {
+		background: transparent;
+	}
+	::-webkit-scrollbar-thumb {
+		background: var(--muted);
+		border-radius: 4px;
+	}
+}

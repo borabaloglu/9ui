@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "toolbar",
+  "type": "registry:ui",
+  "dependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "src/components/ui/toolbar.tsx",
+      "content": "\"use client\"\n\nimport * as React from \"react\"\nimport { Toolbar as BaseToolbar } from \"@base-ui-components/react/toolbar\"\n\nimport { ButtonProps, buttonVariants } from \"@/components/ui/button\"\n\nimport { cn } from \"@/lib/utils\"\n\nconst Toolbar = React.forwardRef<\n\tHTMLDivElement,\n\tReact.ComponentPropsWithoutRef<typeof BaseToolbar.Root>\n>(({ className, ...props }, ref) => {\n\treturn (\n\t\t<BaseToolbar.Root\n\t\t\tclassName={cn(\n\t\t\t\t\"flex items-center gap-1 rounded-md border bg-popover p-1\",\n\t\t\t\tclassName\n\t\t\t)}\n\t\t\t{...props}\n\t\t\tref={ref}\n\t\t/>\n\t)\n})\nToolbar.displayName = \"Toolbar\"\n\nconst ToolbarButton = React.forwardRef<\n\tHTMLButtonElement,\n\tReact.ComponentPropsWithoutRef<typeof BaseToolbar.Button> & ButtonProps\n>(({ className, variant, size, ...props }, ref) => {\n\treturn (\n\t\t<BaseToolbar.Button\n\t\t\tclassName={cn(\n\t\t\t\tbuttonVariants({ variant: variant ?? \"ghost\", size: size ?? \"md\" }),\n\t\t\t\t\"shrink-0\",\n\t\t\t\tclassName\n\t\t\t)}\n\t\t\t{...props}\n\t\t\tref={ref}\n\t\t/>\n\t)\n})\nToolbarButton.displayName = \"ToolbarButton\"\n\nconst ToolbarSeparator = React.forwardRef<\n\tHTMLDivElement,\n\tReact.ComponentPropsWithoutRef<typeof BaseToolbar.Separator>\n>((props, ref) => {\n\treturn (\n\t\t<BaseToolbar.Separator\n\t\t\tclassName={cn(\"h-6 w-px shrink-0 bg-muted\")}\n\t\t\t{...props}\n\t\t\tref={ref}\n\t\t/>\n\t)\n})\nToolbarSeparator.displayName = \"ToolbarSeparator\"\n\nconst ToolbarInput = React.forwardRef<\n\tHTMLInputElement,\n\tReact.ComponentPropsWithoutRef<typeof BaseToolbar.Input>\n>((props, ref) => {\n\treturn <BaseToolbar.Input {...props} ref={ref} />\n})\nToolbarInput.displayName = \"ToolbarInput\"\n\nconst ToolbarGroup = React.forwardRef<\n\tHTMLDivElement,\n\tReact.ComponentPropsWithoutRef<typeof BaseToolbar.Group>\n>(({ className, ...props }, ref) => {\n\treturn (\n\t\t<BaseToolbar.Group\n\t\t\tclassName={cn(\"flex items-center gap-1\", className)}\n\t\t\t{...props}\n\t\t\tref={ref}\n\t\t/>\n\t)\n})\nToolbarGroup.displayName = \"ToolbarGroup\"\n\nconst ToolbarLink = React.forwardRef<\n\tHTMLAnchorElement,\n\tReact.ComponentPropsWithoutRef<typeof BaseToolbar.Link>\n>(({ className, ...props }, ref) => {\n\treturn (\n\t\t<BaseToolbar.Link\n\t\t\tref={ref}\n\t\t\tclassName={cn(\n\t\t\t\t\"inline-flex h-9 items-center gap-2 rounded-md px-4 text-sm text-muted-foreground no-underline transition-colors hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring [&>svg]:shrink-0\",\n\t\t\t\tclassName\n\t\t\t)}\n\t\t\t{...props}\n\t\t/>\n\t)\n})\nToolbarLink.displayName = \"ToolbarLink\"\n\nexport {\n\tToolbar,\n\tToolbarButton,\n\tToolbarSeparator,\n\tToolbarInput,\n\tToolbarGroup,\n\tToolbarLink,\n}\n",
+      "type": "registry:ui",
+      "target": ""
+    }
+  ]
+}

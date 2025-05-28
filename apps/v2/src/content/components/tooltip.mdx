@@ -1,0 +1,53 @@
+<Title content="Tooltip" />
+<Description content="Used to provide context or hints for elements." />
+<ComponentLinks
+	links={[
+		{
+			label: "Docs",
+			href: "https://base-ui.com/react/components/tooltip",
+		},
+	]}
+/>
+
+<ComponentPreview name="tooltip-demo" />
+
+## Installation
+
+<ComponentInstallation>
+<div>
+```bash title="Terminal"
+npx shadcn@latest add https://9ui.dev/r/tooltip.json
+```
+</div>
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="tooltip" />
+
+</Steps>
+</ComponentInstallation>
+
+## Usage
+
+```tsx title="Imports"
+import {
+	Tooltip,
+	TooltipContent,
+	TooltipTrigger,
+} from "@/components/ui/tooltip"
+```
+
+```tsx title="Anatomy"
+<Tooltip>
+	<TooltipTrigger />
+	<TooltipContent />
+</Tooltip>
+```
+
+## Examples
+
+### Custom Position
+
+<ComponentPreview name="tooltip-custom-position" />

@@ -24,6 +24,235 @@ importers:
         specifier: 2.5.3
         version: 2.5.3
 
+  apps/v2:
+    dependencies:
+      '@base-ui-components/react':
+        specifier: 1.0.0-alpha.8
+        version: 1.0.0-alpha.8(@types/react@18.3.18)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@hookform/resolvers':
+        specifier: ^3.9.1
+        version: 3.10.0(react-hook-form@7.54.2(react@18.3.1))
+      '@mdx-js/loader':
+        specifier: ^3.1.0
+        version: 3.1.0(acorn@8.14.0)
+      '@mdx-js/react':
+        specifier: ^3.1.0
+        version: 3.1.0(@types/react@18.3.18)(react@18.3.1)
+      '@next/mdx':
+        specifier: ^15.1.3
+        version: 15.1.6(@mdx-js/loader@3.1.0(acorn@8.14.0))(@mdx-js/react@3.1.0(@types/react@18.3.18)(react@18.3.1))
+      '@seline-analytics/web':
+        specifier: ^0.0.20
+        version: 0.0.20
+      '@stefanprobst/rehype-extract-toc':
+        specifier: ^2.2.1
+        version: 2.2.1
+      '@types/mdx':
+        specifier: ^2.0.13
+        version: 2.0.13
+      '@vercel/analytics':
+        specifier: ^1.4.1
+        version: 1.4.1(next@15.1.3(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react@18.3.1)
+      change-case:
+        specifier: ^5.4.4
+        version: 5.4.4
+      class-variance-authority:
+        specifier: ^0.7.1
+        version: 0.7.1
+      clsx:
+        specifier: ^2.1.1
+        version: 2.1.1
+      cmdk-base:
+        specifier: ^0.0.4
+        version: 0.0.4(@base-ui-components/react@1.0.0-alpha.8(@types/react@18.3.18)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      dayjs:
+        specifier: ^1.11.13
+        version: 1.11.13
+      embla-carousel-react:
+        specifier: ^8.5.2
+        version: 8.5.2(react@18.3.1)
+      fast-glob:
+        specifier: ^3.3.3
+        version: 3.3.3
+      framer-motion:
+        specifier: ^12.4.10
+        version: 12.4.10(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      frimousse:
+        specifier: ^0.1.0
+        version: 0.1.0(react@18.3.1)
+      glob:
+        specifier: ^11.0.1
+        version: 11.0.1
+      gray-matter:
+        specifier: ^4.0.3
+        version: 4.0.3
+      input-otp:
+        specifier: ^1.4.1
+        version: 1.4.2(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      lodash:
+        specifier: ^4.17.21
+        version: 4.17.21
+      lucide-react:
+        specifier: ^0.469.0
+        version: 0.469.0(react@18.3.1)
+      mdast-util-to-string:
+        specifier: ^4.0.0
+        version: 4.0.0
+      next:
+        specifier: 15.1.3
+        version: 15.1.3(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      next-themes:
+        specifier: ^0.4.4
+        version: 0.4.4(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      re-resizable:
+        specifier: ^6.10.3
+        version: 6.10.3(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      react:
+        specifier: ^18.2.0
+        version: 18.3.1
+      react-day-picker:
+        specifier: ^9.5.0
+        version: 9.5.1(react@18.3.1)
+      react-dom:
+        specifier: ^18.2.0
+        version: 18.3.1(react@18.3.1)
+      react-hook-form:
+        specifier: ^7.54.2
+        version: 7.54.2(react@18.3.1)
+      recharts:
+        specifier: ^2.15.1
+        version: 2.15.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      rehype-autolink-headings:
+        specifier: ^7.1.0
+        version: 7.1.0
+      rehype-pretty-code:
+        specifier: ^0.14.0
+        version: 0.14.0(shiki@1.29.2)
+      rehype-slug:
+        specifier: ^6.0.0
+        version: 6.0.0
+      remark:
+        specifier: ^15.0.1
+        version: 15.0.1
+      remark-mdx:
+        specifier: ^3.1.0
+        version: 3.1.0
+      remark-stringify:
+        specifier: ^11.0.0
+        version: 11.0.0
+      shiki:
+        specifier: ^1.25.1
+        version: 1.29.2
+      sonner:
+        specifier: ^1.7.2
+        version: 1.7.4(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      strip-comments:
+        specifier: ^2.0.1
+        version: 2.0.1
+      tailwind-merge:
+        specifier: ^2.6.0
+        version: 2.6.0
+      tailwindcss:
+        specifier: ^3.4.1
+        version: 3.4.17
+      tailwindcss-animate:
+        specifier: ^1.0.7
+        version: 1.0.7(tailwindcss@3.4.17)
+      unified:
+        specifier: ^11.0.5
+        version: 11.0.5
+      unist-builder:
+        specifier: ^4.0.0
+        version: 4.0.0
+      unist-util-visit:
+        specifier: ^5.0.0
+        version: 5.0.0
+      unist-util-visit-parents:
+        specifier: ^6.0.1
+        version: 6.0.1
+      usehooks-ts:
+        specifier: ^3.1.1
+        version: 3.1.1(react@18.3.1)
+      vaul-base:
+        specifier: ^0.0.5
+        version: 0.0.5(@base-ui-components/react@1.0.0-alpha.8(@types/react@18.3.18)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      vfile:
+        specifier: ^6.0.3
+        version: 6.0.3
+      zod:
+        specifier: ^3.24.1
+        version: 3.24.1
+    devDependencies:
+      '@eslint/eslintrc':
+        specifier: ^3
+        version: 3.2.0
+      '@eslint/js':
+        specifier: ^9.17.0
+        version: 9.19.0
+      '@ianvs/prettier-plugin-sort-imports':
+        specifier: ^4.4.0
+        version: 4.4.1(prettier@3.4.2)
+      '@iconify/json':
+        specifier: ^2.2.290
+        version: 2.2.303
+      '@next/eslint-plugin-next':
+        specifier: ^15.1.3
+        version: 15.1.6
+      '@types/glob':
+        specifier: ^8.1.0
+        version: 8.1.0
+      '@types/lodash':
+        specifier: ^4.17.16
+        version: 4.17.16
+      '@types/mdast':
+        specifier: ^4.0.4
+        version: 4.0.4
+      '@types/node':
+        specifier: ^20
+        version: 20.17.17
+      '@types/react':
+        specifier: ^18.3.1
+        version: 18.3.18
+      '@types/react-dom':
+        specifier: ^18.3.1
+        version: 18.3.5(@types/react@18.3.18)
+      '@types/strip-comments':
+        specifier: ^2.0.4
+        version: 2.0.4
+      embla-carousel:
+        specifier: ^8.5.2
+        version: 8.5.2
+      eslint:
+        specifier: ^9.17.0
+        version: 9.19.0(jiti@2.4.2)
+      eslint-config-next:
+        specifier: 15.1.3
+        version: 15.1.3(eslint@9.19.0(jiti@2.4.2))(typescript@5.5.4)
+      eslint-config-prettier:
+        specifier: ^9.1.0
+        version: 9.1.0(eslint@9.19.0(jiti@2.4.2))
+      eslint-plugin-react:
+        specifier: ^7.37.3
+        version: 7.37.4(eslint@9.19.0(jiti@2.4.2))
+      eslint-plugin-tailwindcss:
+        specifier: ^3.17.5
+        version: 3.18.0(tailwindcss@3.4.17)
+      postcss:
+        specifier: ^8
+        version: 8.5.1
+      prettier:
+        specifier: ^3.2.5
+        version: 3.4.2
+      remark-gfm:
+        specifier: ^4.0.0
+        version: 4.0.0
+      typescript:
+        specifier: 5.5.4
+        version: 5.5.4
+      typescript-eslint:
+        specifier: ^8.19.0
+        version: 8.23.0(eslint@9.19.0(jiti@2.4.2))(typescript@5.5.4)
+
   apps/www:
     dependencies:
       '@base-ui-components/react':

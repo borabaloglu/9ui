@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "slider",
+  "type": "registry:ui",
+  "dependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "src/components/ui/slider.tsx",
+      "content": "import * as React from \"react\"\nimport { Slider as BaseSlider } from \"@base-ui-components/react/slider\"\n\nimport { cn } from \"@/lib/utils\"\n\nconst Slider = ({\n\tclassName,\n\tchildren,\n\t...props\n}: React.ComponentPropsWithoutRef<typeof BaseSlider.Root>) => {\n\tconst isRange =\n\t\t(Array.isArray(props.defaultValue) && props.defaultValue.length > 1) ||\n\t\t(Array.isArray(props.value) && props.value.length > 1)\n\n\treturn (\n\t\t<BaseSlider.Root\n\t\t\tclassName={cn(\n\t\t\t\t\"relative touch-none select-none\",\n\t\t\t\tprops.disabled && \"pointer-events-none opacity-50\",\n\t\t\t\tclassName\n\t\t\t)}\n\t\t\t{...props}\n\t\t>\n\t\t\t<BaseSlider.Control className=\"flex w-56 items-center\">\n\t\t\t\t<BaseSlider.Track className=\"h-1 w-full rounded-full bg-muted\">\n\t\t\t\t\t<BaseSlider.Indicator className=\"relative rounded-full bg-primary\" />\n\t\t\t\t\t<BaseSlider.Thumb\n\t\t\t\t\t\tclassName=\"size-4 rounded-full bg-primary shadow-sm dark:shadow-none\"\n\t\t\t\t\t\tinputId=\"1\"\n\t\t\t\t\t/>\n\t\t\t\t\t{isRange && (\n\t\t\t\t\t\t<BaseSlider.Thumb\n\t\t\t\t\t\t\tclassName=\"size-4 rounded-full bg-primary shadow-sm dark:shadow-none\"\n\t\t\t\t\t\t\tinputId=\"2\"\n\t\t\t\t\t\t/>\n\t\t\t\t\t)}\n\t\t\t\t</BaseSlider.Track>\n\t\t\t</BaseSlider.Control>\n\t\t\t{children}\n\t\t</BaseSlider.Root>\n\t)\n}\nSlider.displayName = \"Slider\"\n\nconst SliderValue = React.forwardRef<\n\tHTMLOutputElement,\n\tReact.ComponentPropsWithoutRef<typeof BaseSlider.Value>\n>(({ className, ...props }, ref) => (\n\t<BaseSlider.Value\n\t\tref={ref}\n\t\tclassName={cn(\n\t\t\t\"mt-3 flex justify-end text-xs font-medium text-foreground\",\n\t\t\tclassName\n\t\t)}\n\t\t{...props}\n\t/>\n))\nSliderValue.displayName = \"SliderValue\"\n\nexport { Slider, SliderValue }\n",
+      "type": "registry:ui",
+      "target": ""
+    }
+  ]
+}

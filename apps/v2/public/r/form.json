@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "form",
+  "type": "registry:ui",
+  "dependencies": [
+    "react-hook-form",
+    "zod",
+    "@hookform/resolvers"
+  ],
+  "registryDependencies": [
+    "https://9ui.dev/r/field.json"
+  ],
+  "files": [
+    {
+      "path": "src/components/ui/form.tsx",
+      "content": "\"use client\"\n\nimport * as React from \"react\"\nimport { FieldValues, FormProvider, UseFormReturn } from \"react-hook-form\"\n\ninterface FormProps<T extends FieldValues = FieldValues>\n\textends React.FormHTMLAttributes<HTMLFormElement> {\n\tform: UseFormReturn<T>\n}\n\nconst Form = <T extends FieldValues>({\n\tchildren,\n\tform,\n\t...props\n}: FormProps<T>) => (\n\t<FormProvider {...form}>\n\t\t<form {...props}>{children}</form>\n\t</FormProvider>\n)\n\nexport { Form }\n",
+      "type": "registry:ui",
+      "target": ""
+    }
+  ]
+}

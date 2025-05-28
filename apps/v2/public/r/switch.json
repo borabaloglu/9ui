@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "switch",
+  "type": "registry:ui",
+  "dependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "src/components/ui/switch.tsx",
+      "content": "import * as React from \"react\"\nimport { Switch as BaseSwitch } from \"@base-ui-components/react/switch\"\n\nimport { cn } from \"@/lib/utils\"\n\nconst Switch = React.forwardRef<\n\tHTMLButtonElement,\n\tReact.ComponentPropsWithoutRef<typeof BaseSwitch.Root>\n>(({ className, ...props }, ref) => (\n\t<BaseSwitch.Root\n\t\tref={ref}\n\t\tclassName={cn(\n\t\t\t\"peer inline-flex h-6 w-10 items-center rounded-full bg-muted p-0.5 transition-colors duration-200 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50 data-[checked]:bg-primary\",\n\t\t\tclassName\n\t\t)}\n\t\t{...props}\n\t>\n\t\t<BaseSwitch.Thumb className=\"left-0 top-0 aspect-square h-5 rounded-full bg-background transition-[colors,transform] duration-300 ease-in-out data-[checked]:translate-x-4 data-[checked]:bg-primary-foreground\" />\n\t</BaseSwitch.Root>\n))\nSwitch.displayName = \"Switch\"\n\nexport { Switch }\n",
+      "type": "registry:ui",
+      "target": ""
+    }
+  ]
+}

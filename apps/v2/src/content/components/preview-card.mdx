@@ -1,0 +1,47 @@
+<Title content="Preview Card" />
+<Description content="Used to display a preview of content when hovered." />
+<ComponentLinks
+	links={[
+		{
+			label: "Docs",
+			href: "https://base-ui.com/react/components/preview-card",
+		},
+	]}
+/>
+
+<ComponentPreview name="preview-card-demo" />
+
+## Installation
+
+<ComponentInstallation>
+<div>
+```bash title="Terminal"
+npx shadcn@latest add https://9ui.dev/r/preview-card.json
+```
+</div>
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="preview-card" />
+
+</Steps>
+</ComponentInstallation>
+
+## Usage
+
+```tsx title="Imports"
+import {
+	PreviewCard,
+	PreviewCardContent,
+	PreviewCardTrigger,
+} from "@/components/ui/preview-card"
+```
+
+```tsx title="Anatomy"
+<PreviewCard>
+	<PreviewCardTrigger />
+	<PreviewCardContent />
+</PreviewCard>
+```

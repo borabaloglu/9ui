@@ -1,0 +1,62 @@
+<Title content="Toolbar" />
+<Description content="Displays a toolbar for user interaction." />
+<ComponentLinks
+	links={[
+		{
+			label: "Docs",
+			href: "https://base-ui.com/react/components/toolbar",
+		},
+	]}
+/>
+
+<ComponentPreview name="toolbar-demo" />
+
+## Installation
+
+<ComponentInstallation>
+<div>
+```bash title="Terminal"
+npx shadcn@latest add https://9ui.dev/r/toolbar.json
+```
+</div>
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="toolbar" />
+
+</Steps>
+</ComponentInstallation>
+
+## Usage
+
+```tsx title="Imports"
+import {
+	Toolbar,
+	ToolbarButton,
+	ToolbarGroup,
+	ToolbarInput,
+	ToolbarLink,
+	ToolbarSeparator,
+} from "@/components/ui/toolbar"
+```
+
+```tsx title="Anatomy"
+<Toolbar>
+  <ToolbarButton />
+  <ToolbarLink />
+  <ToolbarSeparator />
+  <ToolbarGroup>
+    <ToolbarButton />
+    <ToolbarButton />
+  <ToolbarGroup />
+  <ToolbarInput />
+</Toolbar>
+```
+
+## Examples
+
+### File Explorer
+
+<ComponentPreview name="toolbar-file-explorer" />

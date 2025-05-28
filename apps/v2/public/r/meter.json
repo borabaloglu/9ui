@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "meter",
+  "type": "registry:ui",
+  "dependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "src/components/ui/meter.tsx",
+      "content": "import * as React from \"react\"\nimport { Meter as BaseMeter } from \"@base-ui-components/react/meter\"\n\nimport { cn } from \"@/lib/utils\"\n\nconst Meter = React.forwardRef<\n\tHTMLDivElement,\n\tReact.ComponentPropsWithoutRef<typeof BaseMeter.Root>\n>(({ className, children, ...props }, ref) => (\n\t<BaseMeter.Root\n\t\tref={ref}\n\t\tclassName={cn(\"w-full space-y-1.5\", className)}\n\t\t{...props}\n\t>\n\t\t{children}\n\t\t<BaseMeter.Track\n\t\t\tref={ref}\n\t\t\tclassName={cn(\n\t\t\t\t\"h-2 w-full overflow-hidden rounded-[2px] border bg-muted\",\n\t\t\t\tclassName\n\t\t\t)}\n\t\t\t{...props}\n\t\t>\n\t\t\t<BaseMeter.Indicator className=\"bg-primary\" />\n\t\t</BaseMeter.Track>\n\t</BaseMeter.Root>\n))\nMeter.displayName = \"Meter\"\n\nconst MeterLabel = React.forwardRef<\n\tHTMLDivElement,\n\tReact.ComponentPropsWithoutRef<typeof BaseMeter.Label>\n>(({ className, ...props }, ref) => (\n\t<BaseMeter.Label\n\t\tref={ref}\n\t\tclassName={cn(\"text-sm font-medium\", className)}\n\t\t{...props}\n\t/>\n))\nMeterLabel.displayName = \"MeterLabel\"\n\nconst MeterValue = React.forwardRef<\n\tHTMLDivElement,\n\tReact.ComponentPropsWithoutRef<typeof BaseMeter.Value>\n>(({ className, ...props }, ref) => (\n\t<BaseMeter.Value ref={ref} className={cn(\"text-sm\", className)} {...props} />\n))\nMeterValue.displayName = \"MeterValue\"\n\nexport { Meter, MeterLabel, MeterValue }\n",
+      "type": "registry:ui",
+      "target": ""
+    }
+  ]
+}

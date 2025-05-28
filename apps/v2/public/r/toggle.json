@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "toggle",
+  "type": "registry:ui",
+  "dependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "src/components/ui/toggle.tsx",
+      "content": "\"use client\"\n\nimport * as React from \"react\"\nimport { Toggle as BaseToggle } from \"@base-ui-components/react\"\nimport { cva, type VariantProps } from \"class-variance-authority\"\n\nimport { cn } from \"@/lib/utils\"\n\nconst toggleVariants = cva(\n\t\"inline-flex items-center justify-center rounded-md text-sm font-medium text-foreground transition-colors duration-200 hover:bg-muted hover:text-muted-foreground focus-visible:ring-1 focus-visible:ring-ring focus-visible:outline-none disabled:pointer-events-none disabled:opacity-50 data-[pressed]:bg-muted data-[pressed]:text-foreground [&>svg]:size-4\",\n\t{\n\t\tvariants: {\n\t\t\tvariant: {\n\t\t\t\tdefault: \"\",\n\t\t\t\toutline: \"border\",\n\t\t\t},\n\t\t\tsize: {\n\t\t\t\tsm: \"h-8 px-2\",\n\t\t\t\tmd: \"h-9 px-2.5\",\n\t\t\t\tlg: \"h-10 px-3\",\n\t\t\t},\n\t\t},\n\t\tdefaultVariants: {\n\t\t\tvariant: \"default\",\n\t\t\tsize: \"md\",\n\t\t},\n\t}\n)\n\ninterface ToggleProps\n\textends React.CustomComponentPropsWithRef<typeof BaseToggle>,\n\t\tVariantProps<typeof toggleVariants> {}\n\nconst Toggle = React.forwardRef<HTMLButtonElement, ToggleProps>(\n\t({ className, size, variant, ...props }, ref) => (\n\t\t<BaseToggle\n\t\t\tref={ref}\n\t\t\tclassName={cn(toggleVariants({ size, variant, className }))}\n\t\t\t{...props}\n\t\t/>\n\t)\n)\nToggle.displayName = \"Toggle\"\n\nexport { Toggle }\n",
+      "type": "registry:ui",
+      "target": ""
+    }
+  ]
+}

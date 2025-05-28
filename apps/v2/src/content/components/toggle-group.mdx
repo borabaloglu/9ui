@@ -1,0 +1,49 @@
+<Title content="Toggle Group" />
+<Description content="A group of toggles for selecting single or multiple options." />
+<ComponentLinks
+	links={[
+		{
+			label: "Docs",
+			href: "https://base-ui.com/react/components/toggle-group",
+		},
+	]}
+/>
+
+<ComponentPreview name="toggle-group-demo" />
+
+## Installation
+
+<ComponentInstallation>
+<div>
+```bash title="Terminal"
+npx shadcn@latest add https://9ui.dev/r/toggle-group.json
+```
+</div>
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="toggle-group" />
+
+</Steps>
+</ComponentInstallation>
+
+## Usage
+
+```tsx title="Imports"
+import { Toggle } from "@/components/ui/toggle"
+import { ToggleGroup } from "@/components/ui/toggle-group"
+```
+
+```tsx title="Anatomy"
+<ToggleGroup>
+	<Toggle />
+</ToggleGroup>
+```
+
+## Examples
+
+### Multiple
+
+<ComponentPreview name="toggle-group-multiple" />

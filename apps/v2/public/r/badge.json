@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "badge",
+  "type": "registry:ui",
+  "dependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "src/components/ui/badge.tsx",
+      "content": "import * as React from \"react\"\nimport { cva, type VariantProps } from \"class-variance-authority\"\n\nimport { cn } from \"@/lib/utils\"\n\nconst badgeVariants = cva(\n\t\"inline-flex items-center rounded-full px-3 py-0.5 text-xs font-semibold gap-2 border\",\n\t{\n\t\tvariants: {\n\t\t\tvariant: {\n\t\t\t\tdefault: \"bg-primary border-primary text-primary-foreground\",\n\t\t\t\toutline: \"bg-transparent text-foreground\",\n\t\t\t\tsecondary: \"bg-secondary border-secondary text-secondary-foreground\",\n\t\t\t\tsuccess: \"bg-success border-success-border text-success-foreground\",\n\t\t\t\twarning: \"bg-warning border-warning-border text-warning-foreground\",\n\t\t\t\tinfo: \"bg-info border-info-border text-info-foreground\",\n\t\t\t\tdanger: \"bg-danger border-danger-border text-danger-foreground\",\n\t\t\t},\n\t\t},\n\t\tdefaultVariants: {\n\t\t\tvariant: \"default\",\n\t\t},\n\t}\n)\n\nexport interface BadgeProps\n\textends React.HTMLAttributes<HTMLDivElement>,\n\t\tVariantProps<typeof badgeVariants> {}\n\nconst Badge = ({ className, variant, ...props }: BadgeProps) => (\n\t<div className={cn(badgeVariants({ variant }), className)} {...props} />\n)\n\nconst badgeIndicatorVariants = cva(\"rounded-full size-2\", {\n\tvariants: {\n\t\tvariant: {\n\t\t\tsuccess: \"bg-success-foreground\",\n\t\t\twarning: \"bg-warning-foreground\",\n\t\t\tinfo: \"bg-info-foreground\",\n\t\t\tdanger: \"bg-danger-foreground\",\n\t\t},\n\t},\n})\n\nexport interface BadgeIndicatorProps\n\textends React.HTMLAttributes<HTMLSpanElement>,\n\t\tVariantProps<typeof badgeIndicatorVariants> {}\n\nconst BadgeIndicator = ({\n\tclassName,\n\tvariant,\n\t...props\n}: BadgeIndicatorProps) => (\n\t<span\n\t\tclassName={cn(badgeIndicatorVariants({ variant }), className)}\n\t\t{...props}\n\t/>\n)\n\nexport { Badge, badgeVariants, BadgeIndicator, badgeIndicatorVariants }\n",
+      "type": "registry:ui",
+      "target": ""
+    }
+  ]
+}

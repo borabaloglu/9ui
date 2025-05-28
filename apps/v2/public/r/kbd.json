@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "kbd",
+  "type": "registry:ui",
+  "dependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "src/components/ui/kbd.tsx",
+      "content": "import * as React from \"react\"\n\nimport { cn } from \"@/lib/utils\"\n\nconst Kbd = React.forwardRef<\n\tHTMLDivElement,\n\tReact.HTMLAttributes<HTMLDivElement>\n>(({ className, ...props }, ref) => {\n\treturn (\n\t\t<div\n\t\t\tref={ref}\n\t\t\tclassName={cn(\n\t\t\t\t\"flex h-5 w-min min-w-5 items-center justify-center rounded-sm bg-secondary text-center text-xs font-medium tracking-tight text-secondary-foreground shadow-sm\",\n\t\t\t\tclassName\n\t\t\t)}\n\t\t\t{...props}\n\t\t/>\n\t)\n})\nKbd.displayName = \"Kbd\"\n\nexport { Kbd }\n",
+      "type": "registry:ui",
+      "target": ""
+    }
+  ]
+}

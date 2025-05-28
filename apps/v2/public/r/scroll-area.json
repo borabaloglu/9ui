@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "scroll-area",
+  "type": "registry:ui",
+  "dependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "src/components/ui/scroll-area.tsx",
+      "content": "import * as React from \"react\"\nimport { ScrollArea as BaseScrollArea } from \"@base-ui-components/react/scroll-area\"\n\nimport { cn } from \"@/lib/utils\"\n\ninterface ScrollAreaProps\n\textends React.ComponentPropsWithoutRef<typeof BaseScrollArea.Root> {\n\torientation?: \"horizontal\" | \"vertical\"\n}\n\nconst ScrollArea = React.forwardRef<HTMLDivElement, ScrollAreaProps>(\n\t({ children, className, orientation = \"vertical\", ...props }, ref) => (\n\t\t<BaseScrollArea.Root\n\t\t\tref={ref}\n\t\t\tclassName={cn(\"relative h-96 overflow-hidden\", className)}\n\t\t\t{...props}\n\t\t>\n\t\t\t<BaseScrollArea.Viewport className=\"size-full overscroll-contain\">\n\t\t\t\t{children}\n\t\t\t</BaseScrollArea.Viewport>\n\t\t\t<BaseScrollArea.Scrollbar\n\t\t\t\torientation={orientation}\n\t\t\t\tclassName={cn(\n\t\t\t\t\t\"m-1 rounded-full opacity-0 transition-opacity delay-300 data-[hovering]:opacity-100 data-[scrolling]:opacity-100 data-[hovering]:delay-0 data-[scrolling]:delay-0 data-[hovering]:duration-100 data-[scrolling]:duration-100\",\n\t\t\t\t\torientation === \"horizontal\" && \"h-1.5\",\n\t\t\t\t\torientation === \"vertical\" && \"w-1.5\"\n\t\t\t\t)}\n\t\t\t>\n\t\t\t\t<BaseScrollArea.Thumb className=\"size-full rounded-full bg-muted\" />\n\t\t\t</BaseScrollArea.Scrollbar>\n\t\t</BaseScrollArea.Root>\n\t)\n)\nScrollArea.displayName = \"ScrollArea\"\n\nexport { ScrollArea }\n",
+      "type": "registry:ui",
+      "target": ""
+    }
+  ]
+}

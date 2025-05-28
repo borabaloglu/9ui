@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "alert",
+  "type": "registry:ui",
+  "dependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "src/components/ui/alert.tsx",
+      "content": "import * as React from \"react\"\nimport { cva, VariantProps } from \"class-variance-authority\"\n\nimport { cn } from \"@/lib/utils\"\n\nconst alertVariants = cva(\n\t\"flex w-full items-start space-x-4 rounded-md border p-4\",\n\t{\n\t\tvariants: {\n\t\t\tvariant: {\n\t\t\t\tdefault:\n\t\t\t\t\t\"bg-card text-foreground [&_[data-description=true]]:text-muted-foreground\",\n\t\t\t\twarning: \"bg-warning border-warning-border text-warning-foreground\",\n\t\t\t\tdanger: \"bg-danger border-danger-border text-danger-foreground\",\n\t\t\t\tinfo: \"bg-info border-info-border text-info-foreground\",\n\t\t\t\tsuccess: \"bg-success border-success-border text-success-foreground\",\n\t\t\t},\n\t\t},\n\t\tdefaultVariants: {\n\t\t\tvariant: \"default\",\n\t\t},\n\t}\n)\n\nexport interface AlertProps\n\textends VariantProps<typeof alertVariants>,\n\t\tReact.HTMLAttributes<HTMLDivElement> {}\n\nconst Alert = React.forwardRef<HTMLDivElement, AlertProps>(\n\t({ className, variant, ...props }, ref) => (\n\t\t<div\n\t\t\tref={ref}\n\t\t\tclassName={cn(alertVariants({ variant }), className)}\n\t\t\t{...props}\n\t\t/>\n\t)\n)\nAlert.displayName = \"Alert\"\n\nconst AlertContent = React.forwardRef<\n\tHTMLDivElement,\n\tReact.HTMLAttributes<HTMLDivElement>\n>(({ className, ...props }, ref) => (\n\t<div\n\t\tref={ref}\n\t\tclassName={cn(\"flex flex-1 flex-col gap-y-2\", className)}\n\t\t{...props}\n\t/>\n))\nAlertContent.displayName = \"AlertContent\"\n\nconst AlertIcon = React.forwardRef<\n\tHTMLDivElement,\n\tReact.HTMLAttributes<HTMLDivElement>\n>(({ className, ...props }, ref) => (\n\t<div ref={ref} className={cn(\"[&>svg]:size-4\", className)} {...props} />\n))\nAlertIcon.displayName = \"AlertIcon\"\n\nconst AlertTitle = React.forwardRef<\n\tHTMLHeadingElement,\n\tReact.HTMLAttributes<HTMLHeadingElement>\n>(({ className, ...props }, ref) => (\n\t<h4\n\t\tref={ref}\n\t\tclassName={cn(\"text-sm font-medium leading-none tracking-tight\", className)}\n\t\t{...props}\n\t/>\n))\nAlertTitle.displayName = \"AlertTitle\"\n\nconst AlertDescription = React.forwardRef<\n\tHTMLDivElement,\n\tReact.HTMLAttributes<HTMLDivElement>\n>(({ className, ...props }, ref) => (\n\t<div\n\t\tref={ref}\n\t\tclassName={cn(\"text-sm\", className)}\n\t\tdata-description={true}\n\t\t{...props}\n\t/>\n))\nAlertDescription.displayName = \"AlertDescription\"\n\nconst AlertAction = React.forwardRef<\n\tHTMLDivElement,\n\tReact.HTMLAttributes<HTMLDivElement>\n>(({ className, ...props }, ref) => (\n\t<div ref={ref} className={cn(\"ml-auto self-center\", className)} {...props} />\n))\nAlertAction.displayName = \"AlertAction\"\n\nexport {\n\tAlert,\n\tAlertContent,\n\tAlertIcon,\n\tAlertTitle,\n\tAlertDescription,\n\tAlertAction,\n}\n",
+      "type": "registry:ui",
+      "target": ""
+    }
+  ]
+}

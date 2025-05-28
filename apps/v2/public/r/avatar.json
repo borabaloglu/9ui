@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "avatar",
+  "type": "registry:ui",
+  "dependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "src/components/ui/avatar.tsx",
+      "content": "import * as React from \"react\"\nimport { Avatar as AvatarBase } from \"@base-ui-components/react/avatar\"\nimport { cva, VariantProps } from \"class-variance-authority\"\n\nimport { cn } from \"@/lib/utils\"\n\nconst avatarVariants = cva(\n\t\"relative flex shrink-0 overflow-hidden rounded-full\",\n\t{\n\t\tvariants: {\n\t\t\tsize: {\n\t\t\t\tsm: \"size-8 text-sm\",\n\t\t\t\tmd: \"size-10 text-base\",\n\t\t\t\tlg: \"size-12 text-lg\",\n\t\t\t},\n\t\t},\n\t\tdefaultVariants: {\n\t\t\tsize: \"md\",\n\t\t},\n\t}\n)\n\nexport interface AvatarProps\n\textends React.ComponentPropsWithoutRef<typeof AvatarBase.Root>,\n\t\tVariantProps<typeof avatarVariants> {}\n\nconst Avatar = React.forwardRef<HTMLSpanElement, AvatarProps>(\n\t({ className, size, ...props }, ref) => {\n\t\treturn (\n\t\t\t<AvatarBase.Root\n\t\t\t\tref={ref}\n\t\t\t\tclassName={cn(avatarVariants({ size }), className)}\n\t\t\t\t{...props}\n\t\t\t/>\n\t\t)\n\t}\n)\nAvatar.displayName = \"Avatar\"\n\nconst AvatarImage = React.forwardRef<\n\tHTMLImageElement,\n\tReact.ComponentPropsWithoutRef<typeof AvatarBase.Image>\n>(({ className, alt = \"\", ...props }, ref) => {\n\treturn (\n\t\t<AvatarBase.Image\n\t\t\tref={ref}\n\t\t\tclassName={cn(\"size-full object-cover\", className)}\n\t\t\talt={alt}\n\t\t\t{...props}\n\t\t/>\n\t)\n})\nAvatarImage.displayName = \"AvatarImage\"\n\nconst AvatarFallback = React.forwardRef<\n\tHTMLSpanElement,\n\tReact.ComponentPropsWithoutRef<typeof AvatarBase.Fallback>\n>(({ className, ...props }, ref) => {\n\treturn (\n\t\t<AvatarBase.Fallback\n\t\t\tref={ref}\n\t\t\tclassName={cn(\n\t\t\t\t\"flex size-full items-center justify-center rounded-full bg-muted text-muted-foreground\",\n\t\t\t\tclassName\n\t\t\t)}\n\t\t\t{...props}\n\t\t/>\n\t)\n})\nAvatarFallback.displayName = \"AvatarFallback\"\n\nexport { Avatar, AvatarImage, AvatarFallback }\n",
+      "type": "registry:ui",
+      "target": ""
+    }
+  ]
+}
