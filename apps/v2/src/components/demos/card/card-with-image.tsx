@@ -11,7 +11,7 @@ import {
 
 export default function CardWithImage() {
 	return (
-		<Card className="max-w-80">
+		<Card className="w-full max-w-80">
 			<CardHeader>
 				<div className="relative aspect-video rounded-lg">
 					<Image

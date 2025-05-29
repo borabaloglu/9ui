@@ -15,7 +15,7 @@ import { toast } from "@/components/ui/sonner"
 
 export default function CardDemo() {
 	return (
-		<Card className="max-w-96">
+		<Card className="w-full max-w-96">
 			<CardHeader>
 				<CardTitle>Invite Team Members</CardTitle>
 				<CardDescription>
@@ -30,7 +30,7 @@ export default function CardDemo() {
 					</Button>
 				</div>
 				<div className="flex flex-col gap-2">
-					<p className="text-sm text-muted-foreground">
+					<p className="text-muted-foreground text-sm">
 						You can invite up to 10 team members. You have 8 invites left.
 					</p>
 				</div>
