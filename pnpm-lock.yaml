@@ -237,6 +237,9 @@ importers:
       eslint-plugin-react:
         specifier: ^7.37.3
         version: 7.37.4(eslint@9.19.0(jiti@2.4.2))
+      eslint-plugin-react-hooks:
+        specifier: ^5.1.0
+        version: 5.1.0(eslint@9.19.0(jiti@2.4.2))
       eslint-plugin-tailwindcss:
         specifier: ^3.17.5
         version: 3.18.0(tailwindcss@4.1.7)
