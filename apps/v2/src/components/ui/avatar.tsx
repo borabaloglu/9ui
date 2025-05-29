@@ -1,3 +1,5 @@
+"use client"
+
 import * as React from "react"
 import { Avatar as AvatarBase } from "@base-ui-components/react/avatar"
 import { cva, VariantProps } from "class-variance-authority"
@@ -10,7 +12,7 @@ const avatarVariants = cva(
 		variants: {
 			size: {
 				sm: "size-8 text-sm",
-				md: "size-10 text-base",
+				md: "size-10",
 				lg: "size-12 text-lg",
 			},
 		},
@@ -20,53 +22,48 @@ const avatarVariants = cva(
 	}
 )
 
-export interface AvatarProps
-	extends React.ComponentPropsWithoutRef<typeof AvatarBase.Root>,
-		VariantProps<typeof avatarVariants> {}
-
-const Avatar = React.forwardRef<HTMLSpanElement, AvatarProps>(
-	({ className, size, ...props }, ref) => {
-		return (
-			<AvatarBase.Root
-				ref={ref}
-				className={cn(avatarVariants({ size }), className)}
-				{...props}
-			/>
-		)
-	}
-)
-Avatar.displayName = "Avatar"
-
-const AvatarImage = React.forwardRef<
-	HTMLImageElement,
-	React.ComponentPropsWithoutRef<typeof AvatarBase.Image>
->(({ className, alt = "", ...props }, ref) => {
+function Avatar({
+	className,
+	size,
+	...props
+}: React.ComponentProps<typeof AvatarBase.Root> &
+	VariantProps<typeof avatarVariants>) {
 	return (
-		<AvatarBase.Image
-			ref={ref}
-			className={cn("size-full object-cover", className)}
-			alt={alt}
+		<AvatarBase.Root
+			data-slot="avatar"
+			className={cn(avatarVariants({ size }), className)}
 			{...props}
 		/>
 	)
-})
-AvatarImage.displayName = "AvatarImage"
+}
 
-const AvatarFallback = React.forwardRef<
-	HTMLSpanElement,
-	React.ComponentPropsWithoutRef<typeof AvatarBase.Fallback>
->(({ className, ...props }, ref) => {
+function AvatarImage({
+	className,
+	...props
+}: React.ComponentProps<typeof AvatarBase.Image>) {
+	return (
+		<AvatarBase.Image
+			data-slot="avatar-image"
+			className={cn("size-full object-cover", className)}
+			{...props}
+		/>
+	)
+}
+
+function AvatarFallback({
+	className,
+	...props
+}: React.ComponentProps<typeof AvatarBase.Fallback>) {
 	return (
 		<AvatarBase.Fallback
-			ref={ref}
+			data-slot="avatar-fallback"
 			className={cn(
-				"flex size-full items-center justify-center rounded-full bg-muted text-muted-foreground",
+				"bg-muted flex size-full items-center justify-center rounded-full select-none",
 				className
 			)}
 			{...props}
 		/>
 	)
-})
-AvatarFallback.displayName = "AvatarFallback"
+}
 
 export { Avatar, AvatarImage, AvatarFallback }
