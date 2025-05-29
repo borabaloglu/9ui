@@ -2,14 +2,15 @@ import { readFile } from "fs/promises"
 import { join } from "path"
 import * as React from "react"
 import { Metadata } from "next"
-import Link from "next/link"
 import { notFound } from "next/navigation"
 
 import { TableOfContents } from "@/components/toc"
 import {
 	Breadcrumb,
 	BreadcrumbItem,
+	BreadcrumbLink,
 	BreadcrumbList,
+	BreadcrumbPage,
 	BreadcrumbSeparator,
 } from "@/components/ui/breadcrumbs"
 
@@ -109,9 +110,17 @@ const DocPage = async ({ params }: DocPageProps) => {
 					<BreadcrumbList>
 						{doc.breadcrumbs.map((breadcrumb, index) => (
 							<React.Fragment key={breadcrumb.path}>
-								<BreadcrumbItem active={index === doc.breadcrumbs.length - 1}>
-									<Link href={breadcrumb.path}>{breadcrumb.label}</Link>
-								</BreadcrumbItem>
+								{index === doc.breadcrumbs.length - 1 ? (
+									<BreadcrumbItem>
+										<BreadcrumbPage>{breadcrumb.label}</BreadcrumbPage>
+									</BreadcrumbItem>
+								) : (
+									<BreadcrumbItem>
+										<BreadcrumbLink href={breadcrumb.path}>
+											{breadcrumb.label}
+										</BreadcrumbLink>
+									</BreadcrumbItem>
+								)}
 								{index !== doc.breadcrumbs.length - 1 && (
 									<BreadcrumbSeparator />
 								)}

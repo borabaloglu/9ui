@@ -1,30 +1,48 @@
-import Link from "next/link"
-import { EllipsisIcon } from "lucide-react"
-
 import {
 	Breadcrumb,
+	BreadcrumbEllipsis,
 	BreadcrumbItem,
+	BreadcrumbLink,
 	BreadcrumbList,
+	BreadcrumbPage,
 	BreadcrumbSeparator,
 } from "@/components/ui/breadcrumbs"
+import {
+	Dropdown,
+	DropdownContent,
+	DropdownItem,
+	DropdownTrigger,
+} from "@/components/ui/dropdown"
 
 export default function BreadcrumbsDemo() {
 	return (
 		<Breadcrumb>
 			<BreadcrumbList>
 				<BreadcrumbItem>
-					<Link href="/">Home</Link>
+					<BreadcrumbLink href="/">Home</BreadcrumbLink>
 				</BreadcrumbItem>
 				<BreadcrumbSeparator />
 				<BreadcrumbItem>
-					<EllipsisIcon />
+					<Dropdown>
+						<DropdownTrigger className="flex items-center gap-1">
+							<BreadcrumbEllipsis className="h-4 w-4" />
+							<span className="sr-only">Toggle menu</span>
+						</DropdownTrigger>
+						<DropdownContent align="start">
+							<DropdownItem>Documentation</DropdownItem>
+							<DropdownItem>Themes</DropdownItem>
+							<DropdownItem>GitHub</DropdownItem>
+						</DropdownContent>
+					</Dropdown>
 				</BreadcrumbItem>
 				<BreadcrumbSeparator />
 				<BreadcrumbItem>
-					<Link href="/docs/components">Components</Link>
+					<BreadcrumbLink href="/docs/components">Components</BreadcrumbLink>
 				</BreadcrumbItem>
 				<BreadcrumbSeparator />
-				<BreadcrumbItem active>Breadcrumbs</BreadcrumbItem>
+				<BreadcrumbItem>
+					<BreadcrumbPage>Breadcrumb</BreadcrumbPage>
+				</BreadcrumbItem>
 			</BreadcrumbList>
 		</Breadcrumb>
 	)
