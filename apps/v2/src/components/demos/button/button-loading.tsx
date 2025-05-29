@@ -6,7 +6,7 @@ export default function ButtonLoading() {
 	return (
 		<Button className="gap-2" disabled>
 			<div className="animate-spin">
-				<Loader2Icon size={16} />
+				<Loader2Icon />
 			</div>
 			Loading
 		</Button>
