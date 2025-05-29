@@ -18,8 +18,8 @@ import {
 	CardTitle,
 } from "@/components/ui/card"
 import {
-	Chart,
 	ChartConfig,
+	ChartContainer,
 	ChartTooltip,
 	ChartTooltipContent,
 } from "@/components/ui/chart"
@@ -54,14 +54,14 @@ export default function ChartScatterDemo() {
 
 	return (
 		<Card className="flex w-full flex-col">
-			<CardHeader className="items-center">
+			<CardHeader className="text-center">
 				<CardTitle>Housing Market Analysis</CardTitle>
 				<CardDescription>
 					Population vs House Prices in Major Cities
 				</CardDescription>
 			</CardHeader>
 			<CardContent>
-				<Chart config={chartConfig} className="max-h-[300px]">
+				<ChartContainer config={chartConfig} className="max-h-[300px] w-full">
 					<ScatterChart>
 						<CartesianGrid strokeDasharray="3 3" />
 						<XAxis
@@ -97,18 +97,18 @@ export default function ChartScatterDemo() {
 							fill={chartConfig.scatter.color}
 						/>
 					</ScatterChart>
-				</Chart>
+				</ChartContainer>
 			</CardContent>
 			<CardFooter className="flex-col gap-2 text-sm leading-none">
 				<div className="flex w-full justify-between font-medium">
 					<span>Most Expensive City:</span>
 					<span>{mostExpensiveCity}</span>
 				</div>
-				<div className="flex w-full justify-between text-muted-foreground">
+				<div className="text-muted-foreground flex w-full justify-between">
 					<span>Average House Price:</span>
 					<span>${averagePrice.toLocaleString()}</span>
 				</div>
-				<div className="flex w-full justify-between text-muted-foreground">
+				<div className="text-muted-foreground flex w-full justify-between">
 					<span>Highest House Price:</span>
 					<span>${highestPrice.toLocaleString()}</span>
 				</div>

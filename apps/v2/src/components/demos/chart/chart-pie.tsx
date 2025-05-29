@@ -11,8 +11,8 @@ import {
 	CardTitle,
 } from "@/components/ui/card"
 import {
-	Chart,
 	ChartConfig,
+	ChartContainer,
 	ChartTooltip,
 	ChartTooltipContent,
 } from "@/components/ui/chart"
@@ -57,12 +57,12 @@ export default function ChartPieDemo() {
 
 	return (
 		<Card className="flex w-full flex-col">
-			<CardHeader className="items-center pb-0">
+			<CardHeader className="pb-0 text-center">
 				<CardTitle>Budget Distribution</CardTitle>
 				<CardDescription>Department budget allocation for 2024</CardDescription>
 			</CardHeader>
 			<CardContent className="flex-1">
-				<Chart config={chartConfig} className="max-h-[300px]">
+				<ChartContainer config={chartConfig} className="max-h-[300px] w-full">
 					<PieChart>
 						<ChartTooltip
 							cursor={false}
@@ -81,18 +81,18 @@ export default function ChartPieDemo() {
 							))}
 						</Pie>
 					</PieChart>
-				</Chart>
+				</ChartContainer>
 			</CardContent>
 			<CardFooter className="flex-col gap-2 text-sm leading-none">
 				<div className="flex w-full justify-between font-medium">
 					<span>Total Budget:</span>
 					<span>${totalBudget.toLocaleString()}</span>
 				</div>
-				<div className="flex w-full justify-between text-muted-foreground">
+				<div className="text-muted-foreground flex w-full justify-between">
 					<span>Largest Department:</span>
 					<span>{highestCategory}</span>
 				</div>
-				<div className="flex w-full justify-between text-muted-foreground">
+				<div className="text-muted-foreground flex w-full justify-between">
 					<span>Highest Budget:</span>
 					<span>${highestBudget.toLocaleString()}</span>
 				</div>

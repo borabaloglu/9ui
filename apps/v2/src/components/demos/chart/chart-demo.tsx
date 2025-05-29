@@ -11,8 +11,8 @@ import {
 	CardTitle,
 } from "@/components/ui/card"
 import {
-	Chart,
 	ChartConfig,
+	ChartContainer,
 	ChartTooltip,
 	ChartTooltipContent,
 } from "@/components/ui/chart"
@@ -50,12 +50,12 @@ export default function ChartDemo() {
 
 	return (
 		<Card className="flex w-full flex-col">
-			<CardHeader className="items-center">
+			<CardHeader className="text-center">
 				<CardTitle>Monthly Revenue</CardTitle>
 				<CardDescription>Performance overview for 2024</CardDescription>
 			</CardHeader>
 			<CardContent className="flex-1">
-				<Chart config={chartConfig} className="max-h-[300px]">
+				<ChartContainer config={chartConfig} className="max-h-[300px] w-full">
 					<BarChart accessibilityLayer data={chartData}>
 						<CartesianGrid vertical={false} />
 						<XAxis
@@ -74,14 +74,14 @@ export default function ChartDemo() {
 							radius={[4, 4, 0, 0]}
 						/>
 					</BarChart>
-				</Chart>
+				</ChartContainer>
 			</CardContent>
 			<CardFooter className="flex-col gap-2 text-sm leading-none">
 				<div className="flex w-full justify-between font-medium">
 					<span>Total Revenue:</span>
 					<span>${totalRevenue.toLocaleString()}</span>
 				</div>
-				<div className="flex w-full justify-between text-muted-foreground">
+				<div className="text-muted-foreground flex w-full justify-between">
 					<span>Monthly Average:</span>
 					<span>
 						$
@@ -90,7 +90,7 @@ export default function ChartDemo() {
 						})}
 					</span>
 				</div>
-				<div className="flex w-full justify-between text-muted-foreground">
+				<div className="text-muted-foreground flex w-full justify-between">
 					<span>Highest Month:</span>
 					<span>${highestRevenue.toLocaleString()}</span>
 				</div>

@@ -11,8 +11,8 @@ import {
 	CardTitle,
 } from "@/components/ui/card"
 import {
-	Chart,
 	ChartConfig,
+	ChartContainer,
 	ChartTooltip,
 	ChartTooltipContent,
 } from "@/components/ui/chart"
@@ -60,12 +60,12 @@ export default function ChartRadialBarDemo() {
 
 	return (
 		<Card className="flex w-full flex-col">
-			<CardHeader className="items-center">
+			<CardHeader className="text-center">
 				<CardTitle>Browser Usage</CardTitle>
 				<CardDescription>Visitor distribution by browser</CardDescription>
 			</CardHeader>
 			<CardContent className="flex-1">
-				<Chart
+				<ChartContainer
 					config={chartConfig}
 					className="mx-auto aspect-square max-h-[250px]"
 				>
@@ -76,18 +76,18 @@ export default function ChartRadialBarDemo() {
 						/>
 						<RadialBar dataKey="visitors" background />
 					</RadialBarChart>
-				</Chart>
+				</ChartContainer>
 			</CardContent>
 			<CardFooter className="flex-col gap-2 text-sm leading-none">
 				<div className="flex w-full justify-between font-medium">
 					<span>Total Visitors:</span>
 					<span>{totalVisitors.toLocaleString()}</span>
 				</div>
-				<div className="flex w-full justify-between text-muted-foreground">
+				<div className="text-muted-foreground flex w-full justify-between">
 					<span>Most Used Browser:</span>
 					<span className="capitalize">{topBrowser}</span>
 				</div>
-				<div className="flex w-full justify-between text-muted-foreground">
+				<div className="text-muted-foreground flex w-full justify-between">
 					<span>Peak Visitors:</span>
 					<span>{highestVisitors.toLocaleString()}</span>
 				</div>

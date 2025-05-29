@@ -12,8 +12,8 @@ import {
 	CardTitle,
 } from "@/components/ui/card"
 import {
-	Chart,
 	ChartConfig,
+	ChartContainer,
 	ChartTooltip,
 	ChartTooltipContent,
 } from "@/components/ui/chart"
@@ -46,12 +46,12 @@ export default function ChartBarDemo() {
 
 	return (
 		<Card className="flex w-full flex-col">
-			<CardHeader className="items-center">
+			<CardHeader className="text-center">
 				<CardTitle>Revenue vs Expenses</CardTitle>
 				<CardDescription>First half of 2024</CardDescription>
 			</CardHeader>
 			<CardContent className="flex-1">
-				<Chart config={chartConfig} className="max-h-[300px]">
+				<ChartContainer config={chartConfig} className="max-h-[300px] w-full">
 					<BarChart
 						data={chartData}
 						margin={{
@@ -85,21 +85,21 @@ export default function ChartBarDemo() {
 							maxBarSize={32}
 						/>
 					</BarChart>
-				</Chart>
+				</ChartContainer>
 			</CardContent>
 			<CardFooter className="flex-col gap-2 text-sm leading-none">
 				<div className="flex w-full justify-between font-medium">
 					<span>Net Profit:</span>
 					<span>${netProfit.toLocaleString()}</span>
 				</div>
-				<div className="flex w-full justify-between text-muted-foreground">
+				<div className="text-muted-foreground flex w-full justify-between">
 					<span>Profit Margin:</span>
 					<span className="flex items-center gap-1">
 						<TrendingUpIcon className="size-4" />
 						{profitMargin.toFixed(1)}%
 					</span>
 				</div>
-				<div className="flex w-full justify-between text-muted-foreground">
+				<div className="text-muted-foreground flex w-full justify-between">
 					<span>Total Expenses:</span>
 					<span>${totalExpenses.toLocaleString()}</span>
 				</div>

@@ -10,8 +10,8 @@ import {
 	CardTitle,
 } from "@/components/ui/card"
 import {
-	Chart,
 	ChartConfig,
+	ChartContainer,
 	ChartTooltip,
 	ChartTooltipContent,
 } from "@/components/ui/chart"
@@ -50,7 +50,7 @@ export function VisitorsChartCard() {
 				<CardDescription>Desktop vs Mobile traffic for 2024</CardDescription>
 			</CardHeader>
 			<CardContent className="flex-1">
-				<Chart config={chartConfig} className="max-h-[250px] w-full">
+				<ChartContainer config={chartConfig} className="max-h-[250px] w-full">
 					<AreaChart
 						accessibilityLayer
 						data={chartData}
@@ -106,7 +106,7 @@ export function VisitorsChartCard() {
 							stackId="1"
 						/>
 					</AreaChart>
-				</Chart>
+				</ChartContainer>
 			</CardContent>
 		</Card>
 	)

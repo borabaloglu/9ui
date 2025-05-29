@@ -11,8 +11,8 @@ import {
 	CardTitle,
 } from "@/components/ui/card"
 import {
-	Chart,
 	ChartConfig,
+	ChartContainer,
 	ChartTooltip,
 	ChartTooltipContent,
 } from "@/components/ui/chart"
@@ -50,12 +50,12 @@ export default function ChartLineDemo() {
 
 	return (
 		<Card className="flex w-full flex-col">
-			<CardHeader className="items-center">
+			<CardHeader className="text-center">
 				<CardTitle>User Growth</CardTitle>
 				<CardDescription>User metrics for first half of 2024</CardDescription>
 			</CardHeader>
 			<CardContent className="flex-1">
-				<Chart config={chartConfig} className="max-h-[300px]">
+				<ChartContainer config={chartConfig} className="max-h-[300px] w-full">
 					<LineChart
 						data={chartData}
 						margin={{
@@ -95,18 +95,18 @@ export default function ChartLineDemo() {
 							dot={false}
 						/>
 					</LineChart>
-				</Chart>
+				</ChartContainer>
 			</CardContent>
 			<CardFooter className="flex-col gap-2 text-sm leading-none">
 				<div className="flex w-full justify-between font-medium">
 					<span>Total Users:</span>
 					<span>{totalUsers.toLocaleString()}</span>
 				</div>
-				<div className="flex w-full justify-between text-muted-foreground">
+				<div className="text-muted-foreground flex w-full justify-between">
 					<span>Active Users Rate:</span>
 					<span>{activeUsersRate.toFixed(1)}%</span>
 				</div>
-				<div className="flex w-full justify-between text-muted-foreground">
+				<div className="text-muted-foreground flex w-full justify-between">
 					<span>6-Month Growth:</span>
 					<span>{userGrowth.toFixed(1)}%</span>
 				</div>
