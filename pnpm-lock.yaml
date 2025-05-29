@@ -222,9 +222,6 @@ importers:
       '@types/strip-comments':
         specifier: ^2.0.4
         version: 2.0.4
-      embla-carousel:
-        specifier: ^8.5.2
-        version: 8.5.2
       eslint:
         specifier: ^9.17.0
         version: 9.19.0(jiti@2.4.2)

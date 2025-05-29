@@ -3,7 +3,6 @@ import {
 	Carousel,
 	CarouselContent,
 	CarouselItem,
-	CarouselNavigation,
 	CarouselNext,
 	CarouselPrevious,
 } from "@/components/ui/carousel"
@@ -19,19 +18,17 @@ export default function CarouselDemo() {
 						<CarouselItem key={slide}>
 							<AspectRatio
 								ratio={16 / 9}
-								className="rounded-lg border bg-background"
+								className="bg-background rounded-lg border"
 							>
-								<div className="flex size-full items-center justify-center text-xl font-semibold text-foreground">
+								<div className="text-foreground flex size-full items-center justify-center text-xl font-semibold">
 									{slide}
 								</div>
 							</AspectRatio>
 						</CarouselItem>
 					))}
 				</CarouselContent>
-				<CarouselNavigation>
-					<CarouselPrevious />
-					<CarouselNext />
-				</CarouselNavigation>
+				<CarouselPrevious />
+				<CarouselNext />
 			</Carousel>
 		</div>
 	)

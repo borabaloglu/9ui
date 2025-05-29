@@ -9,6 +9,8 @@ import {
 	CarouselItem,
 } from "@/components/ui/carousel"
 
+import { cn } from "@/lib/utils"
+
 const slides = [
 	"https://images.pexels.com/photos/1616403/pexels-photo-1616403.jpeg?auto=compress&cs=tinysrgb&w=450&h=800&dpr=2",
 	"https://images.pexels.com/photos/1293120/pexels-photo-1293120.jpeg?auto=compress&cs=tinysrgb&w=450&h=800&dpr=2",
@@ -19,16 +21,21 @@ const slides = [
 
 export default function CarouselThumbnail() {
 	const [api, setApi] = useState<CarouselApi>()
+	const [selectedIndex, setSelectedIndex] = useState(0)
+
+	api?.on("select", () => {
+		setSelectedIndex(api?.selectedScrollSnap() ?? 0)
+	})
 
 	return (
-		<div className="w-60 sm:w-80 lg:w-96">
+		<div className="w-60">
 			<Carousel setApi={setApi}>
 				<CarouselContent>
 					{slides.map((slide) => (
 						<CarouselItem key={slide}>
 							<AspectRatio
 								ratio={16 / 9}
-								className="rounded-lg border bg-background"
+								className="bg-background rounded-lg border"
 							>
 								<Image
 									src={slide}
@@ -40,7 +47,7 @@ export default function CarouselThumbnail() {
 						</CarouselItem>
 					))}
 				</CarouselContent>
-				<div className="mt-2 flex items-center justify-center gap-2">
+				<div className="mt-2 flex w-full items-center justify-between">
 					{slides.map((slide, index) => (
 						<button
 							key={slide}
@@ -51,7 +58,10 @@ export default function CarouselThumbnail() {
 								src={slide}
 								alt="Carousel slide"
 								fill
-								className="rounded-md object-cover opacity-80 transition-opacity duration-200 hover:opacity-100"
+								className={cn(
+									"rounded-md object-cover opacity-60 transition-opacity duration-200 hover:opacity-100",
+									selectedIndex === index && "opacity-100"
+								)}
 							/>
 						</button>
 					))}
