@@ -4,57 +4,61 @@ import { ChevronDownIcon } from "lucide-react"
 
 import { cn } from "@/lib/utils"
 
-const Accordion = BaseAccordion.Root
+function Accordion({
+	...props
+}: React.ComponentProps<typeof BaseAccordion.Root>) {
+	return <BaseAccordion.Root data-slot="accordion" {...props} />
+}
 
-const AccordionItem = React.forwardRef<
-	HTMLDivElement,
-	BaseAccordion.Item.Props
->(({ className, ...props }, ref) => (
-	<BaseAccordion.Item
-		ref={ref}
-		className={cn("border-b", className)}
-		{...props}
-	/>
-))
-AccordionItem.displayName = "AccordionItem"
-
-const AccordionTrigger = React.forwardRef<
-	HTMLButtonElement,
-	BaseAccordion.Trigger.Props
->(({ children, className, ...props }, ref) => (
-	<BaseAccordion.Header>
-		<BaseAccordion.Trigger
-			ref={ref}
-			className={cn(
-				"flex w-full items-center justify-between py-2.5 font-semibold hover:underline [&>svg]:transition-transform [&>svg]:duration-200 [&[data-panel-open]>svg]:rotate-180",
-				className
-			)}
+function AccordionItem({
+	className,
+	...props
+}: React.ComponentProps<typeof BaseAccordion.Item>) {
+	return (
+		<BaseAccordion.Item
+			data-slot="accordion-item"
+			className={cn("border-b last:border-b-0", className)}
 			{...props}
-		>
-			{children}
-			<ChevronDownIcon className="size-4" />
-		</BaseAccordion.Trigger>
-	</BaseAccordion.Header>
-))
-AccordionTrigger.displayName = "AccordionTrigger"
+		/>
+	)
+}
 
-const AccordionContent = ({
+function AccordionTrigger({
 	children,
 	className,
 	...props
-}: React.HTMLAttributes<HTMLDivElement>) => (
-	<BaseAccordion.Panel
-		className={cn(
-			"h-[var(--accordion-panel-height)] overflow-hidden text-sm text-foreground transition-[height] data-[ending-style]:h-0 data-[starting-style]:h-0",
-			className
-		)}
-		{...props}
-	>
-		<div className="pb-2.5" data-accordion-content-wrapper="">
-			{children}
-		</div>
-	</BaseAccordion.Panel>
-)
-AccordionContent.displayName = "AccordionContent"
+}: React.ComponentProps<typeof BaseAccordion.Trigger>) {
+	return (
+		<BaseAccordion.Header className="flex">
+			<BaseAccordion.Trigger
+				data-slot="accordion-trigger"
+				className={cn(
+					"focus-visible:ring-ring/50 flex flex-1 items-center justify-between gap-4 rounded-md py-3 text-left text-sm font-medium underline-offset-2 outline-none hover:underline focus-visible:ring-2 disabled:pointer-events-none disabled:opacity-50 [&[data-panel-open]>svg]:rotate-180",
+					className
+				)}
+				{...props}
+			>
+				{children}
+				<ChevronDownIcon className="text-muted-foreground size-4 shrink-0 transition-transform duration-200" />
+			</BaseAccordion.Trigger>
+		</BaseAccordion.Header>
+	)
+}
+
+function AccordionContent({
+	children,
+	className,
+	...props
+}: React.ComponentProps<typeof BaseAccordion.Panel>) {
+	return (
+		<BaseAccordion.Panel
+			data-slot="accordion-content"
+			className="h-[var(--accordion-panel-height)] overflow-hidden text-sm transition-[height] duration-200 ease-out data-ending-style:h-0 data-starting-style:h-0"
+			{...props}
+		>
+			<div className={cn("pb-2.5", className)}>{children}</div>
+		</BaseAccordion.Panel>
+	)
+}
 
 export { Accordion, AccordionItem, AccordionTrigger, AccordionContent }
