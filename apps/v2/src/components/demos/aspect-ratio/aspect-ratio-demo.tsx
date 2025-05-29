@@ -4,7 +4,7 @@ export default function AspectRatioDemo() {
 	return (
 		<AspectRatio
 			ratio={16 / 9}
-			className="rounded-lg border bg-card text-card-foreground"
+			className="bg-card text-card-foreground rounded-lg border"
 		>
 			<div className="flex size-full items-center justify-center font-medium">
 				Content

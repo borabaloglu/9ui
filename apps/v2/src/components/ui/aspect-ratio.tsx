@@ -6,10 +6,16 @@ export interface AspectRatioProps extends React.HTMLAttributes<HTMLDivElement> {
 	ratio?: number
 }
 
-const AspectRatio = React.forwardRef<HTMLDivElement, AspectRatioProps>(
-	({ children, className, ratio = 1, style, ...props }, ref) => (
+function AspectRatio({
+	children,
+	className,
+	ratio = 1,
+	style,
+	...props
+}: AspectRatioProps) {
+	return (
 		<div
-			ref={ref}
+			data-slot="aspect-ratio"
 			style={{
 				...style,
 				paddingBottom: `${(1 / ratio) * 100}%`,
@@ -20,7 +26,6 @@ const AspectRatio = React.forwardRef<HTMLDivElement, AspectRatioProps>(
 			<div className="absolute inset-0 size-full">{children}</div>
 		</div>
 	)
-)
-AspectRatio.displayName = "AspectRatio"
+}
 
 export { AspectRatio }
