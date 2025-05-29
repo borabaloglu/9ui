@@ -24,23 +24,13 @@ npx shadcn@latest add https://9ui.dev/r/alert.json
 ## Usage
 
 ```tsx title="Imports"
-import {
-	Alert,
-	AlertContent,
-	AlertDescription,
-	AlertIcon,
-	AlertTitle,
-} from "@/components/ui/alert"
+import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
 ```
 
 ```tsx title="Anatomy"
 <Alert>
-	<AlertIcon />
-	<AlertContent>
-		<AlertTitle />
-		<AlertDescription />
-	</AlertContent>
-	<AlertAction />
+	<AlertTitle />
+	<AlertDescription />
 </Alert>
 ```
 

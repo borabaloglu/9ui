@@ -26,8 +26,11 @@ npx shadcn@latest add https://9ui.dev/r/breadcrumbs.json
 ```tsx title="Imports"
 import {
 	Breadcrumb,
+	BreadcrumbEllipsis,
 	BreadcrumbItem,
+	BreadcrumbLink,
 	BreadcrumbList,
+	BreadcrumbPage,
 	BreadcrumbSeparator,
 } from "@/components/ui/breadcrumbs"
 ```
@@ -35,8 +38,17 @@ import {
 ```tsx title="Anatomy"
 <Breadcrumb>
 	<BreadcrumbList>
-		<BreadcrumbItem />
+		<BreadcrumbItem>
+			<BreadcrumbLink />
+		</BreadcrumbItem>
 		<BreadcrumbSeparator />
+		<BreadcrumbItem>
+			<BreadcrumbEllipsis />
+		</BreadcrumbItem>
+		<BreadcrumbSeparator />
+		<BreadcrumbItem>
+			<BreadcrumbPage />
+		</BreadcrumbItem>
 	</BreadcrumbList>
 </Breadcrumb>
 ```
