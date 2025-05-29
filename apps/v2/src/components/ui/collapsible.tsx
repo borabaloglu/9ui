@@ -3,23 +3,28 @@ import { Collapsible as BaseCollapsible } from "@base-ui-components/react/collap
 
 import { cn } from "@/lib/utils"
 
-const Collapsible = BaseCollapsible.Root
+function Collapsible({ ...props }: BaseCollapsible.Root.Props) {
+	return <BaseCollapsible.Root data-slot="collapsible" {...props} />
+}
 
-const CollapsibleTrigger = BaseCollapsible.Trigger
+function CollapsibleTrigger({ ...props }: BaseCollapsible.Trigger.Props) {
+	return <BaseCollapsible.Trigger data-slot="collapsible-trigger" {...props} />
+}
 
-const CollapsibleContent = React.forwardRef<
-	HTMLDivElement,
-	BaseCollapsible.Panel.Props
->(({ className, ...props }, ref) => (
-	<BaseCollapsible.Panel
-		ref={ref}
-		className={cn(
-			"h-[var(--collapsible-panel-height)] overflow-hidden text-sm transition-all duration-200 data-[ending-style]:h-0 data-[starting-style]:h-0",
-			className
-		)}
-		{...props}
-	/>
-))
-CollapsibleContent.displayName = "CollapsibleContent"
+function CollapsibleContent({
+	className,
+	...props
+}: BaseCollapsible.Panel.Props) {
+	return (
+		<BaseCollapsible.Panel
+			data-slot="collapsible-content"
+			className={cn(
+				"h-[var(--collapsible-panel-height)] overflow-hidden text-sm transition-all duration-200 data-ending-style:h-0 data-starting-style:h-0",
+				className
+			)}
+			{...props}
+		/>
+	)
+}
 
 export { Collapsible, CollapsibleTrigger, CollapsibleContent }
