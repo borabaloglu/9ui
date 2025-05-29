@@ -1,32 +1,22 @@
 import { AlertTriangleIcon } from "lucide-react"
 
-import {
-	Alert,
-	AlertAction,
-	AlertContent,
-	AlertDescription,
-	AlertIcon,
-	AlertTitle,
-} from "@/components/ui/alert"
+import { Alert, AlertTitle } from "@/components/ui/alert"
 import { Button } from "@/components/ui/button"
 
 export default function AlertWithAction() {
 	return (
 		<Alert>
-			<AlertIcon>
-				<AlertTriangleIcon />
-			</AlertIcon>
-			<AlertContent>
-				<AlertTitle>No Internet Connection</AlertTitle>
-				<AlertDescription>
-					Please check your internet connection and try again.
-				</AlertDescription>
-			</AlertContent>
-			<AlertAction>
-				<Button size="sm" variant="outline">
-					Try Again
-				</Button>
-			</AlertAction>
+			<AlertTriangleIcon />
+			<AlertTitle className="line-clamp-1 max-w-[calc(100%-4rem)] overflow-ellipsis">
+				No Internet Connection
+			</AlertTitle>
+			<Button
+				className="absolute top-1/2 right-4 h-6 -translate-y-1/2 shadow-none"
+				size="sm"
+				variant="outline"
+			>
+				Try Again
+			</Button>
 		</Alert>
 	)
 }
