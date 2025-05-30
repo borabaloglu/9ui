@@ -15,19 +15,25 @@ function AlertDialogTrigger({
 	return <BaseAlertDialog.Trigger data-slot="alert-dialog-trigger" {...props} />
 }
 
+function AlertDialogPortal({
+	...props
+}: React.ComponentProps<typeof BaseAlertDialog.Portal>) {
+	return <BaseAlertDialog.Portal data-slot="alert-dialog-portal" {...props} />
+}
+
 function AlertDialogClose({
 	...props
 }: React.ComponentProps<typeof BaseAlertDialog.Close>) {
 	return <BaseAlertDialog.Close data-slot="alert-dialog-close" {...props} />
 }
 
-function AlertDialogBackdrop({
+function AlertDialogOverlay({
 	className,
 	...props
 }: React.ComponentProps<typeof BaseAlertDialog.Backdrop>) {
 	return (
 		<BaseAlertDialog.Backdrop
-			data-slot="alert-dialog-backdrop"
+			data-slot="alert-dialog-overlay"
 			className={cn(
 				"fixed inset-0 z-50 bg-black/50 transition-all duration-200 ease-out data-ending-style:opacity-0 data-starting-style:opacity-0",
 				className
@@ -43,19 +49,19 @@ function AlertDialogContent({
 	...props
 }: React.ComponentProps<typeof BaseAlertDialog.Popup>) {
 	return (
-		<BaseAlertDialog.Portal data-slot="alert-dialog-portal">
-			<AlertDialogBackdrop />
+		<AlertDialogPortal>
+			<AlertDialogOverlay />
 			<BaseAlertDialog.Popup
-				data-slot="alert-dialog-popup"
+				data-slot="alert-dialog-content"
 				className={cn(
-					"bg-popover fixed top-1/2 left-1/2 z-50 grid w-full max-w-[calc(100%-2rem)] -translate-x-1/2 -translate-y-1/2 scale-[calc(1-0.1*var(--nested-dialogs))] gap-4 rounded-lg border p-4 shadow-lg duration-200 data-ending-style:scale-95 data-ending-style:opacity-0 data-starting-style:scale-95 data-starting-style:opacity-0 sm:max-w-lg",
+					"bg-popover text-popover-foreground fixed top-[50%] left-[50%] z-50 grid w-full max-w-[calc(100%-2rem)] translate-x-[-50%] translate-y-[-50%] scale-[calc(1-0.1*var(--nested-dialogs))] gap-4 rounded-lg border p-6 shadow-lg duration-200 outline-none data-[ending-style]:scale-95 data-[ending-style]:opacity-0 data-[starting-style]:scale-95 data-[starting-style]:opacity-0 sm:max-w-lg",
 					className
 				)}
 				{...props}
 			>
 				{children}
 			</BaseAlertDialog.Popup>
-		</BaseAlertDialog.Portal>
+		</AlertDialogPortal>
 	)
 }
 
@@ -116,6 +122,8 @@ function AlertDialogDescription({
 
 export {
 	AlertDialog,
+	AlertDialogPortal,
+	AlertDialogOverlay,
 	AlertDialogContent,
 	AlertDialogTrigger,
 	AlertDialogClose,
