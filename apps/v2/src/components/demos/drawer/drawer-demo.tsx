@@ -53,7 +53,7 @@ export default function DrawerDemo() {
 										"size-8 cursor-pointer transition-all",
 										rating && star <= rating
 											? "fill-yellow-300 text-yellow-300"
-											: "fill-none text-muted-foreground"
+											: "text-muted-foreground fill-none"
 									)}
 									onClick={() => handleChangeRating(star)}
 								/>
