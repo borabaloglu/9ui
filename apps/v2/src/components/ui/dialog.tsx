@@ -6,112 +6,123 @@ import { XIcon } from "lucide-react"
 
 import { cn } from "@/lib/utils"
 
-const Dialog = BaseDialog.Root
+function Dialog({ ...props }: React.ComponentProps<typeof BaseDialog.Root>) {
+	return <BaseDialog.Root data-slot="dialog" {...props} />
+}
 
-const DialogPortal = BaseDialog.Portal
+function DialogPortal({
+	...props
+}: React.ComponentProps<typeof BaseDialog.Portal>) {
+	return <BaseDialog.Portal data-slot="dialog-portal" {...props} />
+}
 
-const DialogClose = BaseDialog.Close
+function DialogTrigger({
+	...props
+}: React.ComponentProps<typeof BaseDialog.Trigger>) {
+	return <BaseDialog.Trigger data-slot="dialog-trigger" {...props} />
+}
 
-const DialogTrigger = BaseDialog.Trigger
+function DialogClose({
+	...props
+}: React.ComponentProps<typeof BaseDialog.Close>) {
+	return <BaseDialog.Close data-slot="dialog-close" {...props} />
+}
 
-const DialogBackdrop = React.forwardRef<
-	React.ElementRef<typeof BaseDialog.Backdrop>,
-	React.ComponentPropsWithoutRef<typeof BaseDialog.Backdrop>
->(({ className, ...props }, ref) => (
-	<BaseDialog.Backdrop
-		ref={ref}
-		className={cn(
-			"fixed inset-0 h-dvh bg-black/70 transition-all duration-200 [&[data-ending-style]]:opacity-0 [&[data-starting-style]]:opacity-0",
-			className
-		)}
-		{...props}
-	/>
-))
-
-DialogBackdrop.displayName = BaseDialog.Backdrop.displayName
-
-const DialogContent = React.forwardRef<
-	React.ElementRef<typeof BaseDialog.Popup>,
-	React.ComponentPropsWithoutRef<typeof BaseDialog.Popup>
->(({ className, children, ...props }, ref) => (
-	<DialogPortal>
-		<DialogBackdrop />
-		<BaseDialog.Popup
-			ref={ref}
+function DialogOverlay({
+	className,
+	...props
+}: React.ComponentProps<typeof BaseDialog.Backdrop>) {
+	return (
+		<BaseDialog.Backdrop
+			data-slot="dialog-overlay"
 			className={cn(
-				"fixed left-1/2 top-1/2 z-50 grid w-full max-w-[90%] -translate-x-1/2 -translate-y-1/2 scale-[calc(1-0.1*var(--nested-dialogs))] gap-4 rounded-md border bg-popover p-4 text-popover-foreground shadow-md outline-none duration-200 data-[ending-style]:scale-95 data-[starting-style]:scale-95 data-[ending-style]:opacity-0 data-[starting-style]:opacity-0 sm:max-w-96",
+				"fixed inset-0 z-50 bg-black/50 transition-all duration-200 [&[data-ending-style]]:opacity-0 [&[data-starting-style]]:opacity-0",
 				className
 			)}
 			{...props}
-		>
-			{children}
-			<DialogClose
-				data-dialog-close
-				className="absolute right-4 top-4 rounded-sm text-muted-foreground opacity-50 transition-opacity hover:opacity-100 focus:outline-none"
+		/>
+	)
+}
+
+function DialogContent({
+	className,
+	children,
+	...props
+}: React.ComponentProps<typeof BaseDialog.Popup>) {
+	return (
+		<DialogPortal data-slot="dialog-portal">
+			<DialogOverlay />
+			<BaseDialog.Popup
+				data-slot="dialog-content"
+				className={cn(
+					"bg-popover text-popover-foreground fixed top-[50%] left-[50%] z-50 grid w-full max-w-[calc(100%-2rem)] translate-x-[-50%] translate-y-[-50%] scale-[calc(1-0.1*var(--nested-dialogs))] gap-4 rounded-lg border p-6 shadow-lg duration-200 outline-none data-[ending-style]:scale-95 data-[ending-style]:opacity-0 data-[starting-style]:scale-95 data-[starting-style]:opacity-0 sm:max-w-lg",
+					className
+				)}
+				{...props}
 			>
-				<XIcon className="size-4 text-current" />
-				<span className="sr-only">Close</span>
-			</DialogClose>
-		</BaseDialog.Popup>
-	</DialogPortal>
-))
+				{children}
+				<BaseDialog.Close className="ring-offset-popover focus:ring-ring text-muted-foreground absolute top-4 right-4 rounded-xs opacity-50 transition-opacity hover:opacity-100 focus:ring-2 focus:ring-offset-2 focus:outline-hidden disabled:pointer-events-none [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4">
+					<XIcon />
+					<span className="sr-only">Close</span>
+				</BaseDialog.Close>
+			</BaseDialog.Popup>
+		</DialogPortal>
+	)
+}
 
-DialogContent.displayName = "DialogContent"
+function DialogHeader({ className, ...props }: React.ComponentProps<"div">) {
+	return (
+		<div
+			data-slot="dialog-header"
+			className={cn("flex flex-col gap-2 text-center sm:text-left", className)}
+			{...props}
+		/>
+	)
+}
 
-const DialogHeader = ({
+function DialogFooter({ className, ...props }: React.ComponentProps<"div">) {
+	return (
+		<div
+			data-slot="dialog-footer"
+			className={cn(
+				"flex flex-col-reverse gap-2 sm:flex-row sm:justify-end",
+				className
+			)}
+			{...props}
+		/>
+	)
+}
+
+function DialogTitle({
 	className,
 	...props
-}: React.HTMLAttributes<HTMLDivElement>) => (
-	<div className={cn("flex flex-col gap-2", className)} {...props} />
-)
+}: React.ComponentProps<typeof BaseDialog.Title>) {
+	return (
+		<BaseDialog.Title
+			data-slot="dialog-title"
+			className={cn("text-lg leading-none font-semibold", className)}
+			{...props}
+		/>
+	)
+}
 
-DialogHeader.displayName = "DialogHeader"
-
-const DialogFooter = ({
+function DialogDescription({
 	className,
 	...props
-}: React.HTMLAttributes<HTMLDivElement>) => (
-	<div
-		className={cn(
-			"flex flex-col-reverse gap-2 sm:flex-row sm:justify-end",
-			className
-		)}
-		{...props}
-	/>
-)
-
-DialogFooter.displayName = "DialogFooter"
-
-const DialogTitle = React.forwardRef<
-	React.ElementRef<typeof BaseDialog.Title>,
-	React.ComponentPropsWithoutRef<typeof BaseDialog.Title>
->(({ className, ...props }, ref) => (
-	<BaseDialog.Title
-		ref={ref}
-		className={cn("text-lg font-semibold text-foreground", className)}
-		{...props}
-	/>
-))
-
-DialogTitle.displayName = BaseDialog.Title.displayName
-
-const DialogDescription = React.forwardRef<
-	React.ElementRef<typeof BaseDialog.Description>,
-	React.ComponentPropsWithoutRef<typeof BaseDialog.Description>
->(({ className, ...props }, ref) => (
-	<BaseDialog.Description
-		ref={ref}
-		className={cn("text-sm text-muted-foreground", className)}
-		{...props}
-	/>
-))
-
-DialogDescription.displayName = BaseDialog.Description.displayName
+}: React.ComponentProps<typeof BaseDialog.Description>) {
+	return (
+		<BaseDialog.Description
+			data-slot="dialog-description"
+			className={cn("text-muted-foreground text-sm", className)}
+			{...props}
+		/>
+	)
+}
 
 export {
 	Dialog,
 	DialogPortal,
-	DialogBackdrop,
+	DialogOverlay,
 	DialogClose,
 	DialogTrigger,
 	DialogContent,
