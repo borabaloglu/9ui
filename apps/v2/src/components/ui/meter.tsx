@@ -3,48 +3,59 @@ import { Meter as BaseMeter } from "@base-ui-components/react/meter"
 
 import { cn } from "@/lib/utils"
 
-const Meter = React.forwardRef<
-	HTMLDivElement,
-	React.ComponentPropsWithoutRef<typeof BaseMeter.Root>
->(({ className, children, ...props }, ref) => (
-	<BaseMeter.Root
-		ref={ref}
-		className={cn("w-full space-y-1.5", className)}
-		{...props}
-	>
-		{children}
-		<BaseMeter.Track
-			ref={ref}
-			className={cn(
-				"h-2 w-full overflow-hidden rounded-[2px] border bg-muted",
-				className
-			)}
+function Meter({
+	className,
+	children,
+	...props
+}: React.ComponentProps<typeof BaseMeter.Root>) {
+	return (
+		<BaseMeter.Root
+			data-slot="meter"
+			className={cn("w-full space-y-1.5", className)}
 			{...props}
 		>
-			<BaseMeter.Indicator className="bg-primary" />
-		</BaseMeter.Track>
-	</BaseMeter.Root>
-))
-Meter.displayName = "Meter"
+			{children}
+			<BaseMeter.Track
+				data-slot="meter-track"
+				className={cn(
+					"bg-muted h-2 w-full overflow-hidden rounded-xs border",
+					className
+				)}
+				{...props}
+			>
+				<BaseMeter.Indicator
+					data-slot="meter-indicator"
+					className="bg-primary"
+				/>
+			</BaseMeter.Track>
+		</BaseMeter.Root>
+	)
+}
 
-const MeterLabel = React.forwardRef<
-	HTMLDivElement,
-	React.ComponentPropsWithoutRef<typeof BaseMeter.Label>
->(({ className, ...props }, ref) => (
-	<BaseMeter.Label
-		ref={ref}
-		className={cn("text-sm font-medium", className)}
-		{...props}
-	/>
-))
-MeterLabel.displayName = "MeterLabel"
+function MeterLabel({
+	className,
+	...props
+}: React.ComponentProps<typeof BaseMeter.Label>) {
+	return (
+		<BaseMeter.Label
+			data-slot="meter-label"
+			className={cn("text-sm font-medium", className)}
+			{...props}
+		/>
+	)
+}
 
-const MeterValue = React.forwardRef<
-	HTMLDivElement,
-	React.ComponentPropsWithoutRef<typeof BaseMeter.Value>
->(({ className, ...props }, ref) => (
-	<BaseMeter.Value ref={ref} className={cn("text-sm", className)} {...props} />
-))
-MeterValue.displayName = "MeterValue"
+function MeterValue({
+	className,
+	...props
+}: React.ComponentProps<typeof BaseMeter.Value>) {
+	return (
+		<BaseMeter.Value
+			data-slot="meter-value"
+			className={cn("text-sm", className)}
+			{...props}
+		/>
+	)
+}
 
 export { Meter, MeterLabel, MeterValue }
