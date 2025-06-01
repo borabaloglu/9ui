@@ -73,13 +73,6 @@ function PopoverDescription({
 	)
 }
 
-interface PopoverContentProps
-	extends React.ComponentPropsWithoutRef<typeof BasePopover.Popup> {
-	align?: BasePopover.Positioner.Props["align"]
-	sideOffset?: BasePopover.Positioner.Props["sideOffset"]
-	arrow?: boolean
-}
-
 function PopoverContent({
 	children,
 	className,
@@ -87,7 +80,11 @@ function PopoverContent({
 	sideOffset = 8,
 	arrow = true,
 	...props
-}: PopoverContentProps) {
+}: React.ComponentProps<typeof BasePopover.Popup> & {
+	align?: BasePopover.Positioner.Props["align"]
+	sideOffset?: BasePopover.Positioner.Props["sideOffset"]
+	arrow?: boolean
+}) {
 	return (
 		<PopoverPortal>
 			<PopoverPositioner sideOffset={sideOffset} align={align}>

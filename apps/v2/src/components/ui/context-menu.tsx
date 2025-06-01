@@ -52,18 +52,15 @@ function ContextMenuRadioGroup({
 	)
 }
 
-interface ContextMenuContentProps
-	extends React.ComponentPropsWithoutRef<typeof BaseContextMenu.Popup> {
-	align?: BaseContextMenu.Positioner.Props["align"]
-	sideOffset?: BaseContextMenu.Positioner.Props["sideOffset"]
-}
-
 function ContextMenuContent({
 	className,
 	sideOffset = 4,
 	align = "start",
 	...props
-}: ContextMenuContentProps) {
+}: React.ComponentProps<typeof BaseContextMenu.Popup> & {
+	align?: BaseContextMenu.Positioner.Props["align"]
+	sideOffset?: BaseContextMenu.Positioner.Props["sideOffset"]
+}) {
 	return (
 		<ContextMenuPortal>
 			<ContextMenuPositioner align={align} sideOffset={sideOffset}>

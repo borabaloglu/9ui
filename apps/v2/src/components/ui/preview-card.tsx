@@ -5,43 +5,66 @@ import { PreviewCard as BasePreviewCard } from "@base-ui-components/react"
 
 import { cn } from "@/lib/utils"
 
-const PreviewCard = BasePreviewCard.Root
+function PreviewCard({
+	...props
+}: React.ComponentProps<typeof BasePreviewCard.Root>) {
+	return <BasePreviewCard.Root data-slot="preview-card" {...props} />
+}
 
-const PreviewCardTrigger = BasePreviewCard.Trigger
+function PreviewCardTrigger({
+	...props
+}: React.ComponentProps<typeof BasePreviewCard.Trigger>) {
+	return <BasePreviewCard.Trigger data-slot="preview-card-trigger" {...props} />
+}
 
-interface PreviewCardContentProps
-	extends React.ComponentPropsWithoutRef<typeof BasePreviewCard.Popup> {
+function PreviewCardPortal({
+	...props
+}: React.ComponentProps<typeof BasePreviewCard.Portal>) {
+	return <BasePreviewCard.Portal data-slot="preview-card-portal" {...props} />
+}
+
+function PreviewCardPositioner({
+	...props
+}: React.ComponentProps<typeof BasePreviewCard.Positioner>) {
+	return (
+		<BasePreviewCard.Positioner
+			data-slot="preview-card-positioner"
+			{...props}
+		/>
+	)
+}
+
+function PreviewCardArrow({
+	...props
+}: React.ComponentProps<typeof BasePreviewCard.Arrow>) {
+	return <BasePreviewCard.Arrow data-slot="preview-card-arrow" {...props} />
+}
+
+function PreviewCardContent({
+	className,
+	children,
+	align = "center",
+	sideOffset = 8,
+	arrow = true,
+	...props
+}: React.ComponentProps<typeof BasePreviewCard.Popup> & {
 	align?: BasePreviewCard.Positioner.Props["align"]
 	sideOffset?: BasePreviewCard.Positioner.Props["sideOffset"]
 	arrow?: boolean
-}
-
-const PreviewCardContent = React.forwardRef<
-	HTMLDivElement,
-	PreviewCardContentProps
->(
-	(
-		{
-			children,
-			className,
-			align = "center",
-			sideOffset = 8,
-			arrow = true,
-			...props
-		},
-		ref
-	) => (
-		<BasePreviewCard.Portal ref={ref}>
-			<BasePreviewCard.Positioner sideOffset={sideOffset} align={align}>
+}) {
+	return (
+		<PreviewCardPortal>
+			<PreviewCardPositioner sideOffset={sideOffset} align={align}>
 				<BasePreviewCard.Popup
+					data-slot="preview-card-content"
 					className={cn(
-						"origin-[var(--transform-origin)] rounded-lg bg-popover p-4 text-popover-foreground shadow-sm outline outline-1 -outline-offset-1 outline-border transition-[transform,scale,opacity] data-[ending-style]:scale-95 data-[starting-style]:scale-95 data-[ending-style]:opacity-0 data-[starting-style]:opacity-0 dark:shadow-none",
+						"bg-popover text-popover-foreground outline-border z-50 w-64 origin-[var(--transform-origin)] rounded-md p-4 shadow-md outline -outline-offset-1 transition-[transform,scale,opacity] data-[ending-style]:scale-95 data-[ending-style]:opacity-0 data-[starting-style]:scale-95 data-[starting-style]:opacity-0",
 						className
 					)}
 					{...props}
 				>
 					{arrow && (
-						<BasePreviewCard.Arrow className="data-[side=bottom]:top-[-8px] data-[side=left]:right-[-13px] data-[side=right]:left-[-13px] data-[side=top]:bottom-[-8px] data-[side=left]:rotate-90 data-[side=right]:-rotate-90 data-[side=top]:rotate-180">
+						<PreviewCardArrow className="data-[side=bottom]:top-[-8px] data-[side=left]:right-[-13px] data-[side=left]:rotate-90 data-[side=right]:left-[-13px] data-[side=right]:-rotate-90 data-[side=top]:bottom-[-8px] data-[side=top]:rotate-180">
 							<svg width="20" height="10" viewBox="0 0 20 10" fill="none">
 								<path
 									d="M9.66437 2.60207L4.80758 6.97318C4.07308 7.63423 3.11989 8 2.13172 8H0V9H20V8H18.5349C17.5468 8 16.5936 7.63423 15.8591 6.97318L11.0023 2.60207C10.622 2.2598 10.0447 2.25979 9.66437 2.60207Z"
@@ -52,14 +75,13 @@ const PreviewCardContent = React.forwardRef<
 									className="fill-border"
 								/>
 							</svg>
-						</BasePreviewCard.Arrow>
+						</PreviewCardArrow>
 					)}
 					{children}
 				</BasePreviewCard.Popup>
-			</BasePreviewCard.Positioner>
-		</BasePreviewCard.Portal>
+			</PreviewCardPositioner>
+		</PreviewCardPortal>
 	)
-)
-PreviewCardContent.displayName = "PreviewCardContent"
+}
 
 export { PreviewCard, PreviewCardTrigger, PreviewCardContent }

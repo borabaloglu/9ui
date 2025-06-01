@@ -28,18 +28,15 @@ function DropdownMenuPositioner({
 	return <Menu.Positioner data-slot="dropdown-menu-positioner" {...props} />
 }
 
-interface DropdownMenuContentProps
-	extends React.ComponentPropsWithoutRef<typeof Menu.Popup> {
-	align?: Menu.Positioner.Props["align"]
-	sideOffset?: Menu.Positioner.Props["sideOffset"]
-}
-
 function DropdownMenuContent({
 	className,
 	sideOffset = 4,
 	align = "center",
 	...props
-}: DropdownMenuContentProps) {
+}: React.ComponentProps<typeof Menu.Popup> & {
+	align?: Menu.Positioner.Props["align"]
+	sideOffset?: Menu.Positioner.Props["sideOffset"]
+}) {
 	return (
 		<DropdownMenuPortal>
 			<DropdownMenuPositioner
