@@ -17,13 +17,7 @@ import {
 	AccordionItem,
 	AccordionTrigger,
 } from "@/components/ui/accordion"
-import {
-	Alert,
-	AlertContent,
-	AlertDescription,
-	AlertIcon,
-	AlertTitle,
-} from "@/components/ui/alert"
+import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
 import { Separator } from "@/components/ui/separator"
 import { Tab, TabContent, Tabs, TabsList } from "@/components/ui/tabs"
 
@@ -86,7 +80,7 @@ const components: MDXComponents = {
 			<code
 				className={cn(
 					isInline &&
-						"relative rounded-sm bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm font-normal text-accent-foreground",
+						"bg-muted text-accent-foreground relative rounded-sm px-[0.3rem] py-[0.2rem] font-mono text-sm font-normal",
 					className
 				)}
 				{...props}
@@ -99,7 +93,7 @@ const components: MDXComponents = {
 	}: React.BlockquoteHTMLAttributes<HTMLQuoteElement>) => (
 		<blockquote
 			className={cn(
-				"mt-6 border-l-2 pl-6 italic text-muted-foreground",
+				"text-muted-foreground mt-6 border-l-2 pl-6 italic",
 				className
 			)}
 			{...props}
@@ -117,13 +111,13 @@ const components: MDXComponents = {
 		className,
 		...props
 	}: React.HTMLAttributes<HTMLTableSectionElement>) => (
-		<thead className={cn("border-b bg-muted/40", className)} {...props} />
+		<thead className={cn("bg-muted/40 border-b", className)} {...props} />
 	),
 	tbody: ({
 		className,
 		...props
 	}: React.HTMLAttributes<HTMLTableSectionElement>) => (
-		<tbody className={cn("divide-y divide-muted", className)} {...props} />
+		<tbody className={cn("divide-muted divide-y", className)} {...props} />
 	),
 	tr: ({ className, ...props }: React.HTMLAttributes<HTMLTableRowElement>) => (
 		<tr className={cn("", className)} {...props} />
@@ -142,7 +136,7 @@ const components: MDXComponents = {
 		...props
 	}: React.TdHTMLAttributes<HTMLTableDataCellElement>) => (
 		<td
-			className={cn("p-4 text-sm text-muted-foreground", className)}
+			className={cn("text-muted-foreground p-4 text-sm", className)}
 			{...props}
 		/>
 	),
@@ -209,7 +203,7 @@ const components: MDXComponents = {
 	}: React.AnchorHTMLAttributes<HTMLAnchorElement>) => (
 		<a
 			className={cn(
-				"font-medium text-foreground underline underline-offset-4",
+				"text-foreground font-medium underline underline-offset-4",
 				className
 			)}
 			{...props}
@@ -256,7 +250,7 @@ const components: MDXComponents = {
 
 		return (
 			<React.Fragment>
-				<p className={cn("mt-2 text-muted-foreground", className)} {...props}>
+				<p className={cn("text-muted-foreground mt-2", className)} {...props}>
 					{content}
 				</p>
 				<meta name="description" content={content} />
@@ -278,7 +272,7 @@ const components: MDXComponents = {
 	LinkCard: ({ className, ...props }: React.ComponentProps<typeof Link>) => (
 		<Link
 			className={cn(
-				"flex w-full flex-col items-center justify-center gap-3 rounded-lg border bg-card p-10 font-medium text-card-foreground shadow transition-colors hover:bg-card/80 md:p-10",
+				"bg-card text-card-foreground hover:bg-card/80 flex w-full flex-col items-center justify-center gap-3 rounded-lg border p-10 font-medium shadow transition-colors md:p-10",
 				className
 			)}
 			{...props}
@@ -290,10 +284,8 @@ const components: MDXComponents = {
 	AccordionContent,
 	MessageSquareWarningIcon,
 	Alert,
-	AlertContent,
 	AlertTitle,
 	AlertDescription,
-	AlertIcon,
 	ComponentPreview,
 	ComponentLinks,
 	ComponentSource,
