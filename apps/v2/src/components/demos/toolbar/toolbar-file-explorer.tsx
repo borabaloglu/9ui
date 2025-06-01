@@ -15,7 +15,7 @@ import {
 	DropdownMenuSeparator,
 	DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
-import { Input, InputIcon } from "@/components/ui/input"
+import { Input } from "@/components/ui/input"
 import { Toggle } from "@/components/ui/toggle"
 import { ToggleGroup } from "@/components/ui/toggle-group"
 import {
@@ -70,13 +70,7 @@ export default function ToolbarFileExplorerDemo() {
 			<ToolbarSeparator />
 
 			<ToolbarInput
-				render={
-					<Input placeholder="Search">
-						<InputIcon side="leading">
-							<SearchIcon className="size-4" />
-						</InputIcon>
-					</Input>
-				}
+				render={<Input placeholder="Search" leadingIcon={<SearchIcon />} />}
 			/>
 		</Toolbar>
 	)

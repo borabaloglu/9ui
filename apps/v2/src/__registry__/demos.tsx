@@ -672,7 +672,7 @@ export const demoRegistry: DemoRegistry = {
 	},
 	"input-demo": {
 		source:
-			'import { Input } from "@/components/ui/input"\n\nexport default function InputDemo() {\n\treturn <Input placeholder="Name" className="w-80" />\n}\n',
+			'import { Input } from "@/components/ui/input"\n\nexport default function InputDemo() {\n\treturn <Input placeholder="Name" inputContainerClassName="w-80" />\n}\n',
 		component: React.lazy(() => import("@/components/demos/input/input-demo")),
 		title: "input-demo",
 		category: "input",
@@ -680,7 +680,7 @@ export const demoRegistry: DemoRegistry = {
 	},
 	"input-disabled": {
 		source:
-			'import { Input } from "@/components/ui/input"\n\nexport default function InputDisabled() {\n\treturn <Input className="w-80" placeholder="Name" disabled />\n}\n',
+			'import { Input } from "@/components/ui/input"\n\nexport default function InputDisabled() {\n\treturn <Input inputContainerClassName="w-80" placeholder="Name" disabled />\n}\n',
 		component: React.lazy(
 			() => import("@/components/demos/input/input-disabled")
 		),
@@ -690,7 +690,7 @@ export const demoRegistry: DemoRegistry = {
 	},
 	"input-error": {
 		source:
-			'import { Input } from "@/components/ui/input"\n\nexport default function InputError() {\n\treturn <Input className="w-80" placeholder="Name" aria-invalid />\n}\n',
+			'import { Input } from "@/components/ui/input"\n\nexport default function InputError() {\n\treturn (\n\t\t<Input inputContainerClassName="w-80" placeholder="Name" aria-invalid />\n\t)\n}\n',
 		component: React.lazy(() => import("@/components/demos/input/input-error")),
 		title: "input-error",
 		category: "input",
@@ -698,7 +698,7 @@ export const demoRegistry: DemoRegistry = {
 	},
 	"input-with-icons": {
 		source:
-			'import { useState } from "react"\nimport { EyeIcon, EyeOffIcon, LockIcon } from "lucide-react"\n\nimport { Input, InputIcon } from "@/components/ui/input"\n\nexport default function InputWithIcons() {\n\tconst [isPasswordVisible, setIsPasswordVisible] = useState(false)\n\n\tconst togglePasswordVisibility = () => {\n\t\tsetIsPasswordVisible(!isPasswordVisible)\n\t}\n\n\tconst passwordType = isPasswordVisible ? "text" : "password"\n\tconst eyeIcon = isPasswordVisible ? <EyeIcon /> : <EyeOffIcon />\n\n\treturn (\n\t\t<Input placeholder="Password" className="w-80" type={passwordType}>\n\t\t\t<InputIcon side="leading">\n\t\t\t\t<LockIcon />\n\t\t\t</InputIcon>\n\t\t\t<InputIcon\n\t\t\t\tside="trailing"\n\t\t\t\tclassName="cursor-pointer transition-colors duration-200 hover:[&>svg]:text-foreground"\n\t\t\t\tonClick={togglePasswordVisibility}\n\t\t\t>\n\t\t\t\t{eyeIcon}\n\t\t\t</InputIcon>\n\t\t</Input>\n\t)\n}\n',
+			'import { useState } from "react"\nimport { EyeIcon, EyeOffIcon, LockIcon } from "lucide-react"\n\nimport { Input } from "@/components/ui/input"\n\nexport default function InputWithIcons() {\n\tconst [isPasswordVisible, setIsPasswordVisible] = useState(false)\n\n\tconst togglePasswordVisibility = () => {\n\t\tsetIsPasswordVisible(!isPasswordVisible)\n\t}\n\n\tconst passwordType = isPasswordVisible ? "text" : "password"\n\n\treturn (\n\t\t<Input\n\t\t\tplaceholder="Password"\n\t\t\tinputContainerClassName="w-80"\n\t\t\ttype={passwordType}\n\t\t\tleadingIcon={<LockIcon />}\n\t\t\ttrailingIcon={\n\t\t\t\tisPasswordVisible ? (\n\t\t\t\t\t<EyeIcon\n\t\t\t\t\t\tclassName="hover:text-foreground pointer-events-auto cursor-pointer transition-colors duration-200"\n\t\t\t\t\t\tonClick={togglePasswordVisibility}\n\t\t\t\t\t/>\n\t\t\t\t) : (\n\t\t\t\t\t<EyeOffIcon\n\t\t\t\t\t\tclassName="hover:text-foreground pointer-events-auto cursor-pointer transition-colors duration-200"\n\t\t\t\t\t\tonClick={togglePasswordVisibility}\n\t\t\t\t\t/>\n\t\t\t\t)\n\t\t\t}\n\t\t/>\n\t)\n}\n',
 		component: React.lazy(
 			() => import("@/components/demos/input/input-with-icons")
 		),
@@ -1136,7 +1136,7 @@ export const demoRegistry: DemoRegistry = {
 	},
 	"toolbar-file-explorer": {
 		source:
-			'"use client"\n\nimport {\n\tLayoutGridIcon,\n\tLayoutListIcon,\n\tMoreHorizontalIcon,\n\tSearchIcon,\n\tShareIcon,\n} from "lucide-react"\n\nimport {\n\tDropdownMenu,\n\tDropdownMenuContent,\n\tDropdownMenuItem,\n\tDropdownMenuSeparator,\n\tDropdownMenuTrigger,\n} from "@/components/ui/dropdown-menu"\nimport { Input, InputIcon } from "@/components/ui/input"\nimport { Toggle } from "@/components/ui/toggle"\nimport { ToggleGroup } from "@/components/ui/toggle-group"\nimport {\n\tToolbar,\n\tToolbarButton,\n\tToolbarGroup,\n\tToolbarInput,\n\tToolbarSeparator,\n} from "@/components/ui/toolbar"\n\nexport default function ToolbarFileExplorerDemo() {\n\treturn (\n\t\t<Toolbar>\n\t\t\t<ToggleGroup className="border-none bg-transparent p-0">\n\t\t\t\t<ToolbarButton\n\t\t\t\t\tsize="icon"\n\t\t\t\t\trender={\n\t\t\t\t\t\t<Toggle aria-label="Grid view" value="grid-view">\n\t\t\t\t\t\t\t<LayoutGridIcon className="size-4" />\n\t\t\t\t\t\t</Toggle>\n\t\t\t\t\t}\n\t\t\t\t/>\n\t\t\t\t<ToolbarButton\n\t\t\t\t\tsize="icon"\n\t\t\t\t\trender={\n\t\t\t\t\t\t<Toggle aria-label="List view" value="list-view">\n\t\t\t\t\t\t\t<LayoutListIcon className="size-4" />\n\t\t\t\t\t\t</Toggle>\n\t\t\t\t\t}\n\t\t\t\t/>\n\t\t\t</ToggleGroup>\n\n\t\t\t<ToolbarSeparator />\n\n\t\t\t<ToolbarGroup>\n\t\t\t\t<ToolbarButton size="icon">\n\t\t\t\t\t<ShareIcon className="size-4" />\n\t\t\t\t</ToolbarButton>\n\t\t\t\t<DropdownMenu>\n\t\t\t\t\t<ToolbarButton size="icon" render={<DropdownMenuTrigger />}>\n\t\t\t\t\t\t<MoreHorizontalIcon className="size-4" />\n\t\t\t\t\t</ToolbarButton>\n\t\t\t\t\t<DropdownMenuContent>\n\t\t\t\t\t\t<DropdownMenuItem>New File</DropdownMenuItem>\n\t\t\t\t\t\t<DropdownMenuItem>New Folder</DropdownMenuItem>\n\t\t\t\t\t\t<DropdownMenuSeparator />\n\t\t\t\t\t\t<DropdownMenuItem>Open in New Tab</DropdownMenuItem>\n\t\t\t\t\t\t<DropdownMenuItem>Get Info</DropdownMenuItem>\n\t\t\t\t\t</DropdownMenuContent>\n\t\t\t\t</DropdownMenu>\n\t\t\t</ToolbarGroup>\n\t\t\t<ToolbarSeparator />\n\n\t\t\t<ToolbarInput\n\t\t\t\trender={\n\t\t\t\t\t<Input placeholder="Search">\n\t\t\t\t\t\t<InputIcon side="leading">\n\t\t\t\t\t\t\t<SearchIcon className="size-4" />\n\t\t\t\t\t\t</InputIcon>\n\t\t\t\t\t</Input>\n\t\t\t\t}\n\t\t\t/>\n\t\t</Toolbar>\n\t)\n}\n',
+			'"use client"\n\nimport {\n\tLayoutGridIcon,\n\tLayoutListIcon,\n\tMoreHorizontalIcon,\n\tSearchIcon,\n\tShareIcon,\n} from "lucide-react"\n\nimport {\n\tDropdownMenu,\n\tDropdownMenuContent,\n\tDropdownMenuItem,\n\tDropdownMenuSeparator,\n\tDropdownMenuTrigger,\n} from "@/components/ui/dropdown-menu"\nimport { Input } from "@/components/ui/input"\nimport { Toggle } from "@/components/ui/toggle"\nimport { ToggleGroup } from "@/components/ui/toggle-group"\nimport {\n\tToolbar,\n\tToolbarButton,\n\tToolbarGroup,\n\tToolbarInput,\n\tToolbarSeparator,\n} from "@/components/ui/toolbar"\n\nexport default function ToolbarFileExplorerDemo() {\n\treturn (\n\t\t<Toolbar>\n\t\t\t<ToggleGroup className="border-none bg-transparent p-0">\n\t\t\t\t<ToolbarButton\n\t\t\t\t\tsize="icon"\n\t\t\t\t\trender={\n\t\t\t\t\t\t<Toggle aria-label="Grid view" value="grid-view">\n\t\t\t\t\t\t\t<LayoutGridIcon className="size-4" />\n\t\t\t\t\t\t</Toggle>\n\t\t\t\t\t}\n\t\t\t\t/>\n\t\t\t\t<ToolbarButton\n\t\t\t\t\tsize="icon"\n\t\t\t\t\trender={\n\t\t\t\t\t\t<Toggle aria-label="List view" value="list-view">\n\t\t\t\t\t\t\t<LayoutListIcon className="size-4" />\n\t\t\t\t\t\t</Toggle>\n\t\t\t\t\t}\n\t\t\t\t/>\n\t\t\t</ToggleGroup>\n\n\t\t\t<ToolbarSeparator />\n\n\t\t\t<ToolbarGroup>\n\t\t\t\t<ToolbarButton size="icon">\n\t\t\t\t\t<ShareIcon className="size-4" />\n\t\t\t\t</ToolbarButton>\n\t\t\t\t<DropdownMenu>\n\t\t\t\t\t<ToolbarButton size="icon" render={<DropdownMenuTrigger />}>\n\t\t\t\t\t\t<MoreHorizontalIcon className="size-4" />\n\t\t\t\t\t</ToolbarButton>\n\t\t\t\t\t<DropdownMenuContent>\n\t\t\t\t\t\t<DropdownMenuItem>New File</DropdownMenuItem>\n\t\t\t\t\t\t<DropdownMenuItem>New Folder</DropdownMenuItem>\n\t\t\t\t\t\t<DropdownMenuSeparator />\n\t\t\t\t\t\t<DropdownMenuItem>Open in New Tab</DropdownMenuItem>\n\t\t\t\t\t\t<DropdownMenuItem>Get Info</DropdownMenuItem>\n\t\t\t\t\t</DropdownMenuContent>\n\t\t\t\t</DropdownMenu>\n\t\t\t</ToolbarGroup>\n\t\t\t<ToolbarSeparator />\n\n\t\t\t<ToolbarInput\n\t\t\t\trender={<Input placeholder="Search" leadingIcon={<SearchIcon />} />}\n\t\t\t/>\n\t\t</Toolbar>\n\t)\n}\n',
 		component: React.lazy(
 			() => import("@/components/demos/toolbar/toolbar-file-explorer")
 		),

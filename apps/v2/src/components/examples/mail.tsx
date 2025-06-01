@@ -37,7 +37,7 @@ import {
 	DropdownMenuSubTrigger,
 	DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
-import { Input, InputIcon } from "@/components/ui/input"
+import { Input } from "@/components/ui/input"
 import { ScrollArea } from "@/components/ui/scroll-area"
 import { Separator } from "@/components/ui/separator"
 import { Textarea } from "@/components/ui/textarea"
@@ -369,11 +369,11 @@ export const MailInterface = () => {
 							(12)
 						</span>
 					</div>
-					<Input placeholder="Search" inputWrapperClassName="w-1/2">
-						<InputIcon side="leading">
-							<Search />
-						</InputIcon>
-					</Input>
+					<Input
+						placeholder="Search"
+						inputContainerClassName="w-1/2"
+						leadingIcon={<Search />}
+					/>
 				</div>
 
 				<div className="h-full space-y-2 overflow-y-auto p-2">

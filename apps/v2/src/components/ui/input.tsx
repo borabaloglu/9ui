@@ -4,65 +4,56 @@ import { Input as BaseInput } from "@base-ui-components/react/input"
 import { cn } from "@/lib/utils"
 
 interface InputProps extends React.ComponentProps<typeof BaseInput> {
-	children?: React.ReactNode
-	inputWrapperClassName?: string
+	inputContainerClassName?: string
+	leadingIcon?: React.ReactNode
+	trailingIcon?: React.ReactNode
 }
 
-const Input = React.forwardRef<HTMLInputElement, InputProps>(
-	({ children, className, inputWrapperClassName, ...props }, ref) => {
-		const hasLeadingIcon = React.Children.toArray(children).some(
-			(child) =>
-				React.isValidElement(child) &&
-				child.type === InputIcon &&
-				child.props.side === "leading"
-		)
-		const hasTrailingIcon = React.Children.toArray(children).some(
-			(child) =>
-				React.isValidElement(child) &&
-				child.type === InputIcon &&
-				child.props.side === "trailing"
-		)
-
-		return (
-			<div className={cn("relative", inputWrapperClassName)}>
-				{children}
-				<BaseInput
-					ref={ref}
-					className={cn(
-						"h-9 w-full rounded-md border bg-input p-4 text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50 aria-[invalid=true]:border-destructive aria-[invalid=true]:text-destructive aria-[invalid=true]:placeholder:text-destructive aria-[invalid=true]:focus:ring-destructive/50 md:text-sm",
-						hasLeadingIcon && "pl-10",
-						hasTrailingIcon && "pr-10",
-						className
-					)}
-					{...props}
-				/>
-			</div>
-		)
-	}
-)
-Input.displayName = "Input"
-
-interface InputIconProps extends React.ComponentPropsWithoutRef<"div"> {
-	side: "leading" | "trailing"
-	children?: React.ReactNode
-}
-
-const InputIcon = React.forwardRef<HTMLDivElement, InputIconProps>(
-	({ children, className, side, ...props }, ref) => (
+function Input({
+	inputContainerClassName,
+	className,
+	type,
+	leadingIcon,
+	trailingIcon,
+	...props
+}: InputProps) {
+	return (
 		<div
-			ref={ref}
-			className={cn(
-				"absolute top-1/2 -translate-y-1/2 text-muted-foreground [&_svg]:size-4",
-				side === "leading" && "left-3",
-				side === "trailing" && "right-3",
-				className
-			)}
-			{...props}
+			className={cn("relative w-full", inputContainerClassName)}
+			data-slot="input-container"
 		>
-			{children}
+			{leadingIcon && (
+				<span
+					data-slot="input-leading-icon"
+					className="text-muted-foreground absolute top-1/2 left-3 shrink-0 -translate-y-1/2 [&_svg]:shrink-0 [&_svg:not([class*='pointer-events-'])]:pointer-events-none [&_svg:not([class*='size-'])]:size-4"
+				>
+					{leadingIcon}
+				</span>
+			)}
+			<input
+				type={type}
+				data-slot="input"
+				className={cn(
+					"placeholder:text-muted-foreground selection:bg-primary selection:text-primary-foreground bg-input flex h-9 w-full min-w-0 rounded-md border px-3 py-1 text-base shadow-xs transition-[color,box-shadow] outline-none disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50 md:text-sm",
+					"file:text-foreground file:inline-flex file:h-7 file:border-0 file:bg-transparent file:text-sm file:font-medium",
+					"focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-2",
+					"aria-invalid:ring-destructive/50 aria-invalid:border-destructive",
+					leadingIcon && "pl-10",
+					trailingIcon && "pr-10",
+					className
+				)}
+				{...props}
+			/>
+			{trailingIcon && (
+				<span
+					data-slot="input-trailing-icon"
+					className="text-muted-foreground absolute top-1/2 right-3 shrink-0 -translate-y-1/2 [&_svg]:shrink-0 [&_svg:not([class*='pointer-events-'])]:pointer-events-none [&_svg:not([class*='size-'])]:size-4"
+				>
+					{trailingIcon}
+				</span>
+			)}
 		</div>
 	)
-)
-InputIcon.displayName = "InputIcon"
+}
 
-export { Input, InputIcon }
+export { Input }

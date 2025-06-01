@@ -2,8 +2,6 @@ import * as React from "react"
 import { EmojiPicker as BaseEmojiPicker } from "frimousse"
 import { Search } from "lucide-react"
 
-import { InputIcon } from "@/components/ui/input"
-
 import { cn } from "@/lib/utils"
 
 const EmojiPicker = React.forwardRef<
@@ -14,7 +12,7 @@ const EmojiPicker = React.forwardRef<
 		<BaseEmojiPicker.Root
 			ref={ref}
 			className={cn(
-				"isolate flex h-80 w-fit flex-col rounded-md border bg-popover shadow-md",
+				"bg-popover isolate flex h-80 w-fit flex-col rounded-md border shadow-md",
 				className
 			)}
 			{...props}
@@ -29,13 +27,11 @@ const EmojiPickerSearch = React.forwardRef<
 >(({ className, ...props }, ref) => {
 	return (
 		<div className="relative z-10 m-2">
-			<InputIcon side="leading">
-				<Search className="size-4" />
-			</InputIcon>
+			<Search className="size-4" />
 			<BaseEmojiPicker.Search
 				ref={ref}
 				className={cn(
-					"h-9 w-full appearance-none rounded-md border bg-input pl-10 pr-3 text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50 aria-[invalid=true]:border-destructive aria-[invalid=true]:text-destructive aria-[invalid=true]:placeholder:text-destructive aria-[invalid=true]:focus:ring-destructive/50 md:text-sm",
+					"bg-input text-foreground placeholder:text-muted-foreground focus-visible:ring-ring aria-[invalid=true]:border-destructive aria-[invalid=true]:text-destructive aria-[invalid=true]:placeholder:text-destructive aria-[invalid=true]:focus:ring-destructive/50 h-9 w-full appearance-none rounded-md border pr-3 pl-10 focus-visible:ring-2 focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-50 md:text-sm",
 					className
 				)}
 				{...props}
@@ -67,7 +63,7 @@ const EmojiPickerLoading = React.forwardRef<
 		<BaseEmojiPicker.Loading
 			ref={ref}
 			className={cn(
-				"absolute inset-0 flex items-center justify-center text-sm text-muted-foreground",
+				"text-muted-foreground absolute inset-0 flex items-center justify-center text-sm",
 				className
 			)}
 			{...props}
@@ -84,7 +80,7 @@ const EmojiPickerEmpty = React.forwardRef<
 		<BaseEmojiPicker.Empty
 			ref={ref}
 			className={cn(
-				"absolute inset-0 flex items-center justify-center text-sm text-muted-foreground",
+				"text-muted-foreground absolute inset-0 flex items-center justify-center text-sm",
 				className
 			)}
 			{...props}
@@ -100,11 +96,11 @@ const EmojiPickerList = React.forwardRef<
 	return (
 		<BaseEmojiPicker.List
 			ref={ref}
-			className={cn("select-none pb-2", className)}
+			className={cn("pb-2 select-none", className)}
 			components={{
 				CategoryHeader: ({ category, ...props }) => (
 					<div
-						className="bg-popover px-3 py-2 text-xs font-medium text-muted-foreground"
+						className="bg-popover text-muted-foreground px-3 py-2 text-xs font-medium"
 						{...props}
 					>
 						{category.label}
@@ -117,7 +113,7 @@ const EmojiPickerList = React.forwardRef<
 				),
 				Emoji: ({ emoji, ...props }) => (
 					<button
-						className="flex size-8 items-center justify-center rounded-md text-lg data-[active]:bg-accent"
+						className="data-[active]:bg-accent flex size-8 items-center justify-center rounded-md text-lg"
 						{...props}
 					>
 						{emoji.emoji}
@@ -137,7 +133,7 @@ const EmojiPickerSkinToneSelector = ({
 	return (
 		<BaseEmojiPicker.SkinToneSelector
 			className={cn(
-				"m-2 size-8 rounded-lg bg-popover text-lg font-medium text-muted-foreground hover:bg-accent",
+				"bg-popover text-muted-foreground hover:bg-accent m-2 size-8 rounded-lg text-lg font-medium",
 				className
 			)}
 			{...props}
