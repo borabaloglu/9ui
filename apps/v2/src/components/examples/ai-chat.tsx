@@ -21,11 +21,11 @@ import { Avatar, AvatarFallback } from "@/components/ui/avatar"
 import { Button } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
 import {
-	Dropdown,
-	DropdownContent,
-	DropdownItem,
-	DropdownTrigger,
-} from "@/components/ui/dropdown"
+	DropdownMenu,
+	DropdownMenuContent,
+	DropdownMenuItem,
+	DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu"
 import { ScrollArea } from "@/components/ui/scroll-area"
 import { Textarea } from "@/components/ui/textarea"
 
@@ -112,7 +112,7 @@ export const AIChatInterface = () => {
 			{/* Sidebar - hidden on mobile by default */}
 			<div
 				className={cn(
-					"absolute inset-y-0 left-0 z-20 w-[240px] border-r bg-card transition-transform md:static md:translate-x-0",
+					"bg-card absolute inset-y-0 left-0 z-20 w-[240px] border-r transition-transform md:static md:translate-x-0",
 					isSidebarOpen ? "translate-x-0" : "-translate-x-full"
 				)}
 			>
@@ -134,32 +134,32 @@ export const AIChatInterface = () => {
 							<Button
 								key={chat.id}
 								variant="ghost"
-								className="justify-between gap-2 first:bg-muted"
+								className="first:bg-muted justify-between gap-2"
 							>
 								{chat.title}
-								<Dropdown>
-									<DropdownTrigger
+								<DropdownMenu>
+									<DropdownMenuTrigger
 										render={(props) => (
 											<div className="flex size-6 items-center justify-center outline-none">
 												<MoreHorizontalIcon {...props} className="size-4" />
 											</div>
 										)}
-									></DropdownTrigger>
-									<DropdownContent>
-										<DropdownItem>
+									></DropdownMenuTrigger>
+									<DropdownMenuContent>
+										<DropdownMenuItem>
 											<PencilIcon className="size-4" />
 											Rename
-										</DropdownItem>
-										<DropdownItem>
+										</DropdownMenuItem>
+										<DropdownMenuItem>
 											<ShareIcon className="size-4" />
 											Share
-										</DropdownItem>
-										<DropdownItem className="text-danger-foreground hover:!bg-danger hover:!text-danger-foreground">
+										</DropdownMenuItem>
+										<DropdownMenuItem className="text-danger-foreground hover:!bg-danger hover:!text-danger-foreground">
 											<TrashIcon className="size-4" />
 											Delete
-										</DropdownItem>
-									</DropdownContent>
-								</Dropdown>
+										</DropdownMenuItem>
+									</DropdownMenuContent>
+								</DropdownMenu>
 							</Button>
 						))}
 					</nav>
@@ -174,7 +174,7 @@ export const AIChatInterface = () => {
 				<Button
 					variant="ghost"
 					size="icon"
-					className="absolute -right-11 top-2 z-50 bg-background md:hidden"
+					className="bg-background absolute top-2 -right-11 z-50 md:hidden"
 					onClick={() => setIsSidebarOpen(!isSidebarOpen)}
 				>
 					{isSidebarOpen ? <PanelRightOpenIcon /> : <PanelRightCloseIcon />}
@@ -182,7 +182,7 @@ export const AIChatInterface = () => {
 			</div>
 
 			{/* Main chat area */}
-			<div className="relative grid grid-rows-[1fr,auto] overflow-hidden bg-background">
+			<div className="bg-background relative grid grid-rows-[1fr,auto] overflow-hidden">
 				<ScrollArea className="h-full">
 					<div className="mt-8 flex flex-col gap-6 p-6 md:mt-0">
 						{messages.map((message) => (
@@ -208,17 +208,17 @@ export const AIChatInterface = () => {
 										message.role === "user" ? "items-end" : ""
 									)}
 								>
-									<div className="rounded-lg bg-muted px-4 py-2">
-										<p className="break-words text-sm">{message.content}</p>
+									<div className="bg-muted rounded-lg px-4 py-2">
+										<p className="text-sm break-words">{message.content}</p>
 									</div>
-									<span className="mt-1 text-xs text-muted-foreground">
+									<span className="text-muted-foreground mt-1 text-xs">
 										{message.timestamp}
 									</span>
 								</div>
 							</div>
 						))}
 						{isLoading && (
-							<div className="flex items-center gap-2 text-muted-foreground">
+							<div className="text-muted-foreground flex items-center gap-2">
 								<MessageSquareMoreIcon className="size-4 animate-pulse" />
 								<span className="text-sm">AI is typing...</span>
 							</div>
@@ -229,7 +229,7 @@ export const AIChatInterface = () => {
 				<div className="relative border-t p-4">
 					<form
 						onSubmit={handleSubmit}
-						className="flex flex-col gap-2 overflow-hidden rounded-md border bg-card p-2"
+						className="bg-card flex flex-col gap-2 overflow-hidden rounded-md border p-2"
 					>
 						<Textarea
 							placeholder="Type your message..."

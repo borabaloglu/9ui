@@ -151,8 +151,8 @@ export const navConfig: NavConfig = {
 					href: "/docs/components/drawer",
 				},
 				{
-					title: "Dropdown",
-					href: "/docs/components/dropdown",
+					title: "Dropdown Menu",
+					href: "/docs/components/dropdown-menu",
 				},
 				{
 					title: "Emoji Picker",

@@ -238,13 +238,13 @@
 			]
 		},
 		{
-			"name": "dropdown",
+			"name": "dropdown-menu",
 			"type": "registry:ui",
 			"dependencies": [],
 			"registryDependencies": [],
 			"files": [
 				{
-					"path": "src/components/ui/dropdown.tsx",
+					"path": "src/components/ui/dropdown-menu.tsx",
 					"type": "registry:ui",
 					"target": ""
 				}

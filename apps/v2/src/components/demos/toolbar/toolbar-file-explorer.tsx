@@ -9,12 +9,12 @@ import {
 } from "lucide-react"
 
 import {
-	Dropdown,
-	DropdownContent,
-	DropdownItem,
-	DropdownSeparator,
-	DropdownTrigger,
-} from "@/components/ui/dropdown"
+	DropdownMenu,
+	DropdownMenuContent,
+	DropdownMenuItem,
+	DropdownMenuSeparator,
+	DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu"
 import { Input, InputIcon } from "@/components/ui/input"
 import { Toggle } from "@/components/ui/toggle"
 import { ToggleGroup } from "@/components/ui/toggle-group"
@@ -54,18 +54,18 @@ export default function ToolbarFileExplorerDemo() {
 				<ToolbarButton size="icon">
 					<ShareIcon className="size-4" />
 				</ToolbarButton>
-				<Dropdown>
-					<ToolbarButton size="icon" render={<DropdownTrigger />}>
+				<DropdownMenu>
+					<ToolbarButton size="icon" render={<DropdownMenuTrigger />}>
 						<MoreHorizontalIcon className="size-4" />
 					</ToolbarButton>
-					<DropdownContent>
-						<DropdownItem>New File</DropdownItem>
-						<DropdownItem>New Folder</DropdownItem>
-						<DropdownSeparator />
-						<DropdownItem>Open in New Tab</DropdownItem>
-						<DropdownItem>Get Info</DropdownItem>
-					</DropdownContent>
-				</Dropdown>
+					<DropdownMenuContent>
+						<DropdownMenuItem>New File</DropdownMenuItem>
+						<DropdownMenuItem>New Folder</DropdownMenuItem>
+						<DropdownMenuSeparator />
+						<DropdownMenuItem>Open in New Tab</DropdownMenuItem>
+						<DropdownMenuItem>Get Info</DropdownMenuItem>
+					</DropdownMenuContent>
+				</DropdownMenu>
 			</ToolbarGroup>
 			<ToolbarSeparator />
 

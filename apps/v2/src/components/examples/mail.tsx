@@ -26,17 +26,17 @@ import { Avatar, AvatarFallback } from "@/components/ui/avatar"
 import { Button } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
 import {
-	Dropdown,
-	DropdownCheckboxItem,
-	DropdownContent,
-	DropdownGroup,
-	DropdownGroupLabel,
-	DropdownItem,
-	DropdownItemShortcut,
-	DropdownSeparator,
-	DropdownSubTrigger,
-	DropdownTrigger,
-} from "@/components/ui/dropdown"
+	DropdownMenu,
+	DropdownMenuCheckboxItem,
+	DropdownMenuContent,
+	DropdownMenuGroup,
+	DropdownMenuItem,
+	DropdownMenuLabel,
+	DropdownMenuSeparator,
+	DropdownMenuShortcut,
+	DropdownMenuSubTrigger,
+	DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu"
 import { Input, InputIcon } from "@/components/ui/input"
 import { ScrollArea } from "@/components/ui/scroll-area"
 import { Separator } from "@/components/ui/separator"
@@ -267,7 +267,7 @@ const MailItem = ({
 	<button
 		onClick={onClick}
 		className={cn(
-			"w-full rounded-md border px-4 py-3 text-left transition-colors hover:border-primary",
+			"hover:border-primary w-full rounded-md border px-4 py-3 text-left transition-colors",
 			isSelected && "bg-secondary"
 		)}
 	>
@@ -280,10 +280,10 @@ const MailItem = ({
 					)}
 					{email.hasAttachment && <Paperclip className="size-2.5" />}
 				</div>
-				<span className="text-xs text-muted-foreground">{email.time}</span>
+				<span className="text-muted-foreground text-xs">{email.time}</span>
 			</div>
 			<p className="text-xs font-medium">{email.subject}</p>
-			<p className="line-clamp-2 text-xs text-muted-foreground">
+			<p className="text-muted-foreground line-clamp-2 text-xs">
 				{email.preview}
 			</p>
 		</div>
@@ -301,7 +301,7 @@ export const MailInterface = () => {
 		<Card className="relative grid h-[600px] overflow-hidden md:h-[800px] md:grid-cols-[400px_1fr] lg:grid-cols-[240px_400px_1fr]">
 			<div
 				className={cn(
-					"absolute inset-y-0 left-0 z-20 w-[240px] bg-background p-4 transition-transform lg:static lg:translate-x-0 lg:border-r",
+					"bg-background absolute inset-y-0 left-0 z-20 w-[240px] p-4 transition-transform lg:static lg:translate-x-0 lg:border-r",
 					isSidebarOpen ? "translate-x-0 border-r" : "-translate-x-full"
 				)}
 			>
@@ -311,12 +311,12 @@ export const MailInterface = () => {
 						Compose
 					</Button>
 					<nav className="flex flex-col gap-1 [&>button]:font-normal">
-						<Button variant="ghost" className="justify-between gap-2 bg-muted">
+						<Button variant="ghost" className="bg-muted justify-between gap-2">
 							<div className="flex items-center gap-2">
 								<Inbox className="size-4" />
 								Inbox
 							</div>
-							<span className="text-xs font-normal text-muted-foreground">
+							<span className="text-muted-foreground text-xs font-normal">
 								125
 							</span>
 						</Button>
@@ -341,7 +341,7 @@ export const MailInterface = () => {
 								<MessageSquareXIcon className="size-4" />
 								Spam
 							</div>
-							<span className="text-xs font-normal text-muted-foreground">
+							<span className="text-muted-foreground text-xs font-normal">
 								12
 							</span>
 						</Button>
@@ -354,18 +354,18 @@ export const MailInterface = () => {
 				<Button
 					variant="ghost"
 					size="icon"
-					className="absolute -right-11 top-2.5 z-50 lg:hidden"
+					className="absolute top-2.5 -right-11 z-50 lg:hidden"
 					onClick={() => setIsSidebarOpen(!isSidebarOpen)}
 				>
 					{isSidebarOpen ? <PanelRightOpenIcon /> : <PanelRightCloseIcon />}
 				</Button>
 			</div>
 
-			<div className="flex h-full flex-col overflow-auto bg-background md:border-r">
+			<div className="bg-background flex h-full flex-col overflow-auto md:border-r">
 				<div className="flex h-14 shrink-0 items-center justify-between border-b px-3">
 					<div className="ml-10 flex gap-1 lg:ml-0">
 						<h2 className="font-semibold">Inbox</h2>
-						<span className="text-xs font-normal text-muted-foreground">
+						<span className="text-muted-foreground text-xs font-normal">
 							(12)
 						</span>
 					</div>
@@ -393,7 +393,7 @@ export const MailInterface = () => {
 
 			<div
 				className={cn(
-					"absolute size-full flex-col bg-background md:static md:flex",
+					"bg-background absolute size-full flex-col md:static md:flex",
 					isContentOpen ? "z-20 flex" : "hidden"
 				)}
 			>
@@ -426,58 +426,62 @@ export const MailInterface = () => {
 								<Forward className="size-4" />
 							</Button>
 							<Separator orientation="vertical" className="mx-1 h-4" />
-							<Dropdown>
-								<DropdownTrigger
+							<DropdownMenu>
+								<DropdownMenuTrigger
 									render={(props) => (
 										<Button {...props} size="icon" variant="ghost">
 											<MoreHorizontal className="size-4" />
 										</Button>
 									)}
 								/>
-								<DropdownContent>
-									<DropdownGroup>
-										<DropdownGroupLabel>Actions</DropdownGroupLabel>
-										<DropdownItem>Mark as Read</DropdownItem>
-										<DropdownItem>Mark as Unread</DropdownItem>
-										<DropdownItem>
+								<DropdownMenuContent>
+									<DropdownMenuGroup>
+										<DropdownMenuLabel>Actions</DropdownMenuLabel>
+										<DropdownMenuItem>Mark as Read</DropdownMenuItem>
+										<DropdownMenuItem>Mark as Unread</DropdownMenuItem>
+										<DropdownMenuItem>
 											<StarIcon className="size-4" />
 											Star
-										</DropdownItem>
-										<DropdownItem>
+										</DropdownMenuItem>
+										<DropdownMenuItem>
 											<Clock className="size-4" />
 											Snooze
-										</DropdownItem>
-									</DropdownGroup>
-									<DropdownSeparator />
-									<DropdownGroup>
-										<DropdownGroupLabel>Move to</DropdownGroupLabel>
-										<DropdownItem>Archive</DropdownItem>
-										<DropdownItem>Spam</DropdownItem>
-										<DropdownItem>
+										</DropdownMenuItem>
+									</DropdownMenuGroup>
+									<DropdownMenuSeparator />
+									<DropdownMenuGroup>
+										<DropdownMenuLabel>Move to</DropdownMenuLabel>
+										<DropdownMenuItem>Archive</DropdownMenuItem>
+										<DropdownMenuItem>Spam</DropdownMenuItem>
+										<DropdownMenuItem>
 											Trash
-											<DropdownItemShortcut>⌘⌫</DropdownItemShortcut>
-										</DropdownItem>
-									</DropdownGroup>
-									<DropdownSeparator />
-									<DropdownGroup>
-										<DropdownGroupLabel>Categories</DropdownGroupLabel>
-										<DropdownItem>Social</DropdownItem>
-										<DropdownItem>Updates</DropdownItem>
-										<DropdownItem>Forums</DropdownItem>
-										<DropdownItem>Promotions</DropdownItem>
-									</DropdownGroup>
-									<DropdownSeparator />
-									<Dropdown>
-										<DropdownSubTrigger>Labels</DropdownSubTrigger>
-										<DropdownContent>
-											<DropdownCheckboxItem>Important</DropdownCheckboxItem>
-											<DropdownCheckboxItem>Work</DropdownCheckboxItem>
-											<DropdownCheckboxItem>Personal</DropdownCheckboxItem>
-											<DropdownCheckboxItem>To-do</DropdownCheckboxItem>
-										</DropdownContent>
-									</Dropdown>
-								</DropdownContent>
-							</Dropdown>
+											<DropdownMenuShortcut>⌘⌫</DropdownMenuShortcut>
+										</DropdownMenuItem>
+									</DropdownMenuGroup>
+									<DropdownMenuSeparator />
+									<DropdownMenuGroup>
+										<DropdownMenuLabel>Categories</DropdownMenuLabel>
+										<DropdownMenuItem>Social</DropdownMenuItem>
+										<DropdownMenuItem>Updates</DropdownMenuItem>
+										<DropdownMenuItem>Forums</DropdownMenuItem>
+										<DropdownMenuItem>Promotions</DropdownMenuItem>
+									</DropdownMenuGroup>
+									<DropdownMenuSeparator />
+									<DropdownMenu>
+										<DropdownMenuSubTrigger>Labels</DropdownMenuSubTrigger>
+										<DropdownMenuContent>
+											<DropdownMenuCheckboxItem>
+												Important
+											</DropdownMenuCheckboxItem>
+											<DropdownMenuCheckboxItem>Work</DropdownMenuCheckboxItem>
+											<DropdownMenuCheckboxItem>
+												Personal
+											</DropdownMenuCheckboxItem>
+											<DropdownMenuCheckboxItem>To-do</DropdownMenuCheckboxItem>
+										</DropdownMenuContent>
+									</DropdownMenu>
+								</DropdownMenuContent>
+							</DropdownMenu>
 						</div>
 					</div>
 				</header>
@@ -488,22 +492,22 @@ export const MailInterface = () => {
 					</Avatar>
 					<div className="flex flex-1 flex-col space-y-0.5">
 						<h3 className="text-sm font-medium">{selectedEmail.subject}</h3>
-						<p className="text-xs text-muted-foreground">
+						<p className="text-muted-foreground text-xs">
 							From: {selectedEmail.from} &lt;{selectedEmail.email}&gt;
 						</p>
-						<p className="text-xs text-muted-foreground">
+						<p className="text-muted-foreground text-xs">
 							{selectedEmail.time}
 						</p>
 					</div>
 				</div>
 
 				<ScrollArea className="overscoll-auto grow">
-					<div className="whitespace-pre-wrap p-4 text-sm leading-relaxed">
+					<div className="p-4 text-sm leading-relaxed whitespace-pre-wrap">
 						{selectedEmail.preview}
 					</div>
 				</ScrollArea>
 
-				<footer className="flex flex-col border-t bg-background p-4">
+				<footer className="bg-background flex flex-col border-t p-4">
 					<Textarea
 						placeholder="Type your message..."
 						className="min-h-20 resize-none"

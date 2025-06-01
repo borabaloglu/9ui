@@ -8,11 +8,11 @@ import {
 	BreadcrumbSeparator,
 } from "@/components/ui/breadcrumbs"
 import {
-	Dropdown,
-	DropdownContent,
-	DropdownItem,
-	DropdownTrigger,
-} from "@/components/ui/dropdown"
+	DropdownMenu,
+	DropdownMenuContent,
+	DropdownMenuItem,
+	DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu"
 
 export default function BreadcrumbsDemo() {
 	return (
@@ -23,17 +23,17 @@ export default function BreadcrumbsDemo() {
 				</BreadcrumbItem>
 				<BreadcrumbSeparator />
 				<BreadcrumbItem>
-					<Dropdown>
-						<DropdownTrigger className="flex items-center gap-1">
+					<DropdownMenu>
+						<DropdownMenuTrigger className="flex items-center gap-1">
 							<BreadcrumbEllipsis className="h-4 w-4" />
 							<span className="sr-only">Toggle menu</span>
-						</DropdownTrigger>
-						<DropdownContent align="start">
-							<DropdownItem>Documentation</DropdownItem>
-							<DropdownItem>Themes</DropdownItem>
-							<DropdownItem>GitHub</DropdownItem>
-						</DropdownContent>
-					</Dropdown>
+						</DropdownMenuTrigger>
+						<DropdownMenuContent align="start">
+							<DropdownMenuItem>Documentation</DropdownMenuItem>
+							<DropdownMenuItem>Themes</DropdownMenuItem>
+							<DropdownMenuItem>GitHub</DropdownMenuItem>
+						</DropdownMenuContent>
+					</DropdownMenu>
 				</BreadcrumbItem>
 				<BreadcrumbSeparator />
 				<BreadcrumbItem>

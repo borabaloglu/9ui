@@ -276,17 +276,17 @@ export const contentRegistry: ContentRegistry = {
 			{ label: "Drawer", path: "/docs/components/drawer" },
 		],
 	},
-	"components/dropdown": {
+	"components/dropdown-menu": {
 		type: "file",
-		path: "components/dropdown.mdx",
+		path: "components/dropdown-menu.mdx",
 		meta: {
-			title: "Dropdown",
+			title: "Dropdown Menu",
 			description: "Used to display a list of options to the user.",
 		},
-		urlPath: "components/dropdown",
+		urlPath: "components/dropdown-menu",
 		breadcrumbs: [
 			{ label: "Components", path: "/docs/components" },
-			{ label: "Dropdown", path: "/docs/components/dropdown" },
+			{ label: "Dropdown Menu", path: "/docs/components/dropdown-menu" },
 		],
 	},
 	"components/emoji-picker": {
