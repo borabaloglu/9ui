@@ -18,7 +18,7 @@ function Meter({
 			<BaseMeter.Track
 				data-slot="meter-track"
 				className={cn(
-					"bg-muted h-2 w-full overflow-hidden rounded-xs border",
+					"bg-primary/20 h-2 w-full overflow-hidden rounded-xs",
 					className
 				)}
 				{...props}
