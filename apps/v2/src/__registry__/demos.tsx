@@ -660,16 +660,6 @@ export const demoRegistry: DemoRegistry = {
 		category: "form",
 		path: "src/components/demos/form/form-demo.tsx",
 	},
-	"input-otp-custom": {
-		source:
-			'import {\n\tInputOTP,\n\tInputOTPGroup,\n\tInputOTPSlot,\n} from "@/components/ui/input-otp"\n\nexport default function InputOTPDemo() {\n\treturn (\n\t\t<InputOTP maxLength={4}>\n\t\t\t<InputOTPGroup className="gap-0">\n\t\t\t\t<InputOTPSlot className="rounded-r-none" index={0} />\n\t\t\t\t<InputOTPSlot className="rounded-none border-x-0" index={1} />\n\t\t\t\t<InputOTPSlot className="rounded-none border-r-0" index={2} />\n\t\t\t\t<InputOTPSlot className="rounded-l-none" index={3} />\n\t\t\t</InputOTPGroup>\n\t\t</InputOTP>\n\t)\n}\n',
-		component: React.lazy(
-			() => import("@/components/demos/input-otp/input-otp-custom")
-		),
-		title: "input-otp-custom",
-		category: "input-otp",
-		path: "src/components/demos/input-otp/input-otp-custom.tsx",
-	},
 	"input-otp-demo": {
 		source:
 			'import {\n\tInputOTP,\n\tInputOTPGroup,\n\tInputOTPSeparator,\n\tInputOTPSlot,\n} from "@/components/ui/input-otp"\n\nexport default function InputOTPDemo() {\n\treturn (\n\t\t<InputOTP maxLength={6}>\n\t\t\t<InputOTPGroup>\n\t\t\t\t<InputOTPSlot index={0} />\n\t\t\t\t<InputOTPSlot index={1} />\n\t\t\t\t<InputOTPSlot index={2} />\n\t\t\t</InputOTPGroup>\n\t\t\t<InputOTPSeparator />\n\t\t\t<InputOTPGroup>\n\t\t\t\t<InputOTPSlot index={3} />\n\t\t\t\t<InputOTPSlot index={4} />\n\t\t\t\t<InputOTPSlot index={5} />\n\t\t\t</InputOTPGroup>\n\t\t</InputOTP>\n\t)\n}\n',
