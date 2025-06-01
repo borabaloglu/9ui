@@ -221,6 +221,7 @@ function DropdownMenuSubTrigger({
 export {
 	DropdownMenu,
 	DropdownMenuPortal,
+	DropdownMenuPositioner,
 	DropdownMenuTrigger,
 	DropdownMenuContent,
 	DropdownMenuGroup,

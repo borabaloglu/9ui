@@ -30,6 +30,17 @@ function ContextMenuPortal({
 	return <BaseContextMenu.Portal data-slot="context-menu-portal" {...props} />
 }
 
+function ContextMenuPositioner({
+	...props
+}: React.ComponentProps<typeof BaseContextMenu.Positioner>) {
+	return (
+		<BaseContextMenu.Positioner
+			data-slot="context-menu-positioner"
+			{...props}
+		/>
+	)
+}
+
 function ContextMenuRadioGroup({
 	...props
 }: React.ComponentProps<typeof BaseContextMenu.RadioGroup>) {
@@ -55,7 +66,7 @@ function ContextMenuContent({
 }: ContextMenuContentProps) {
 	return (
 		<ContextMenuPortal>
-			<BaseContextMenu.Positioner align={align} sideOffset={sideOffset}>
+			<ContextMenuPositioner align={align} sideOffset={sideOffset}>
 				<BaseContextMenu.Popup
 					data-slot="context-menu-content"
 					className={cn(
@@ -64,7 +75,7 @@ function ContextMenuContent({
 					)}
 					{...props}
 				/>
-			</BaseContextMenu.Positioner>
+			</ContextMenuPositioner>
 		</ContextMenuPortal>
 	)
 }
@@ -203,5 +214,6 @@ export {
 	ContextMenuCheckboxItem,
 	ContextMenuRadioGroup,
 	ContextMenuPortal,
+	ContextMenuPositioner,
 	ContextMenuRadioItem,
 }
