@@ -2,7 +2,7 @@
 
 import * as React from "react"
 import { Menu } from "@base-ui-components/react/menu"
-import { CheckIcon, ChevronRightIcon } from "lucide-react"
+import { CheckIcon, ChevronRightIcon, CircleIcon } from "lucide-react"
 
 import { cn } from "@/lib/utils"
 
@@ -50,7 +50,7 @@ function DropdownMenuContent({
 				<Menu.Popup
 					data-slot="dropdown-menu-content"
 					className={cn(
-						"bg-popover text-popover-foreground z-50 min-w-[8rem] origin-[var(--transform-origin)] overflow-x-hidden overflow-y-auto rounded-md border p-1 shadow-md transition-[transform,scale,opacity] outline-none data-[ending-style]:scale-95 data-[ending-style]:opacity-0 data-[starting-style]:scale-95 data-[starting-style]:opacity-0 dark:shadow-none",
+						"bg-popover text-popover-foreground z-50 min-w-[8rem] origin-[var(--transform-origin)] overflow-x-hidden overflow-y-auto rounded-md border p-1 shadow-md transition-[transform,scale,opacity] outline-none data-[ending-style]:scale-95 data-[ending-style]:opacity-0 data-[starting-style]:scale-95 data-[starting-style]:opacity-0",
 						className
 					)}
 					{...props}
@@ -186,7 +186,7 @@ function DropdownMenuRadioItem({
 		>
 			<span className="pointer-events-none absolute left-2 flex size-3.5 items-center justify-center">
 				<Menu.RadioItemIndicator>
-					<CheckIcon className="size-4" />
+					<CircleIcon className="size-2 fill-current" />
 				</Menu.RadioItemIndicator>
 			</span>
 			{children}

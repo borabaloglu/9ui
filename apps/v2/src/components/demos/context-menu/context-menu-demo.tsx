@@ -5,15 +5,21 @@ import {
 	ContextMenuCheckboxItem,
 	ContextMenuContent,
 	ContextMenuGroup,
-	ContextMenuGroupLabel,
 	ContextMenuItem,
-	ContextMenuItemShortcut,
+	ContextMenuLabel,
 	ContextMenuRadioGroup,
 	ContextMenuRadioItem,
 	ContextMenuSeparator,
-	ContextMenuSubTrigger,
+	ContextMenuShortcut,
 	ContextMenuTrigger,
 } from "@/components/ui/context-menu"
+import {
+	DropdownMenu,
+	DropdownMenuContent,
+	DropdownMenuItem,
+	DropdownMenuSeparator,
+	DropdownMenuSubTrigger,
+} from "@/components/ui/dropdown-menu"
 
 export default function ContextMenuDemo() {
 	return (
@@ -26,36 +32,36 @@ export default function ContextMenuDemo() {
 					<ContextMenuGroup>
 						<ContextMenuItem>
 							Back
-							<ContextMenuItemShortcut>⌘[</ContextMenuItemShortcut>
+							<ContextMenuShortcut>⌘[</ContextMenuShortcut>
 						</ContextMenuItem>
 						<ContextMenuItem disabled>
 							Forward
-							<ContextMenuItemShortcut>⌘]</ContextMenuItemShortcut>
+							<ContextMenuShortcut>⌘]</ContextMenuShortcut>
 						</ContextMenuItem>
 						<ContextMenuItem>
 							Reload
-							<ContextMenuItemShortcut>⌘R</ContextMenuItemShortcut>
+							<ContextMenuShortcut>⌘R</ContextMenuShortcut>
 						</ContextMenuItem>
-						<ContextMenu>
-							<ContextMenuSubTrigger>More</ContextMenuSubTrigger>
-							<ContextMenuContent>
-								<ContextMenuItem>Save As</ContextMenuItem>
-								<ContextMenuItem>Print</ContextMenuItem>
-								<ContextMenuItem>Cast</ContextMenuItem>
-								<ContextMenuSeparator />
-								<ContextMenuItem>Inspect</ContextMenuItem>
-							</ContextMenuContent>
-						</ContextMenu>
+						<DropdownMenu>
+							<DropdownMenuSubTrigger>More</DropdownMenuSubTrigger>
+							<DropdownMenuContent>
+								<DropdownMenuItem>Save As</DropdownMenuItem>
+								<DropdownMenuItem>Print</DropdownMenuItem>
+								<DropdownMenuItem>Cast</DropdownMenuItem>
+								<DropdownMenuSeparator />
+								<DropdownMenuItem>Inspect</DropdownMenuItem>
+							</DropdownMenuContent>
+						</DropdownMenu>
 					</ContextMenuGroup>
 					<ContextMenuSeparator />
 					<ContextMenuGroup>
-						<ContextMenuGroupLabel>Settings</ContextMenuGroupLabel>
+						<ContextMenuLabel>Settings</ContextMenuLabel>
 						<ContextMenuCheckboxItem>Always on Top</ContextMenuCheckboxItem>
 						<ContextMenuCheckboxItem>Show full URL</ContextMenuCheckboxItem>
 					</ContextMenuGroup>
 					<ContextMenuSeparator />
 					<ContextMenuGroup>
-						<ContextMenuGroupLabel>Zoom</ContextMenuGroupLabel>
+						<ContextMenuLabel>Zoom</ContextMenuLabel>
 						<ContextMenuRadioGroup defaultValue="100">
 							<ContextMenuRadioItem value="50">50%</ContextMenuRadioItem>
 							<ContextMenuRadioItem value="100">100%</ContextMenuRadioItem>
