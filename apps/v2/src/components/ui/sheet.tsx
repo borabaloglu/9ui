@@ -58,7 +58,7 @@ function SheetContent({
 			<BaseSheet.Popup
 				data-slot="sheet-content"
 				className={cn(
-					"bg-popover text-popover-foreground data-open:animate-in data-closed:animate-out fixed z-50 flex max-h-[calc(100vh-2rem)] flex-col gap-4 rounded-lg shadow-lg outline-hidden transition ease-in-out data-closed:duration-300 data-open:duration-500",
+					"bg-popover text-popover-foreground fixed z-50 flex max-h-[calc(100vh-2rem)] flex-col gap-4 rounded-lg shadow-lg outline-hidden transition ease-in-out data-closed:duration-300 data-open:duration-500",
 					side === "right" &&
 						"inset-y-0 top-4 right-0 h-full w-3/4 origin-right -translate-x-4 border sm:max-w-sm [&[data-ending-style]]:translate-x-full [&[data-starting-style]]:translate-x-full",
 					side === "left" &&
