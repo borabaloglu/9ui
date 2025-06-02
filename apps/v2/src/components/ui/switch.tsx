@@ -3,21 +3,27 @@ import { Switch as BaseSwitch } from "@base-ui-components/react/switch"
 
 import { cn } from "@/lib/utils"
 
-const Switch = React.forwardRef<
-	HTMLButtonElement,
-	React.ComponentPropsWithoutRef<typeof BaseSwitch.Root>
->(({ className, ...props }, ref) => (
-	<BaseSwitch.Root
-		ref={ref}
-		className={cn(
-			"peer inline-flex h-6 w-10 items-center rounded-full bg-muted p-0.5 transition-colors duration-200 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50 data-[checked]:bg-primary",
-			className
-		)}
-		{...props}
-	>
-		<BaseSwitch.Thumb className="left-0 top-0 aspect-square h-5 rounded-full bg-background transition-[colors,transform] duration-300 ease-in-out data-[checked]:translate-x-4 data-[checked]:bg-primary-foreground" />
-	</BaseSwitch.Root>
-))
-Switch.displayName = "Switch"
+function Switch({
+	className,
+	...props
+}: React.ComponentProps<typeof BaseSwitch.Root>) {
+	return (
+		<BaseSwitch.Root
+			data-slot="switch"
+			className={cn(
+				"peer data-checked:bg-primary focus-visible:border-ring focus-visible:ring-ring/50 data-unchecked:bg-input inline-flex h-5 w-8 shrink-0 items-center rounded-full border shadow-xs transition-all outline-none focus-visible:ring-2 disabled:cursor-not-allowed disabled:opacity-50",
+				className
+			)}
+			{...props}
+		>
+			<BaseSwitch.Thumb
+				data-slot="switch-thumb"
+				className={cn(
+					"bg-foreground data-checked:bg-background pointer-events-none block size-4 rounded-full ring-0 transition-transform duration-300 ease-in-out data-checked:translate-x-[calc(100%-3px)] data-unchecked:translate-x-px"
+				)}
+			/>
+		</BaseSwitch.Root>
+	)
+}
 
 export { Switch }
