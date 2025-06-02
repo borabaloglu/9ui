@@ -40,7 +40,7 @@ function DropdownMenuContent({
 	return (
 		<DropdownMenuPortal>
 			<DropdownMenuPositioner
-				className="max-h-(--available-height)"
+				className="max-h-[var(--available-height)]"
 				sideOffset={sideOffset}
 				align={align}
 			>

@@ -25,8 +25,8 @@ import {
 	Select,
 	SelectContent,
 	SelectGroup,
-	SelectGroupLabel,
 	SelectItem,
+	SelectLabel,
 	SelectTrigger,
 	SelectValue,
 } from "@/components/ui/select"
@@ -59,7 +59,7 @@ export const CalendarInterface = () => {
 
 	const timeSlots = useMemo(() => generateTimeSlots(), [])
 	return (
-		<Card className="relative flex h-[600px] flex-col overflow-y-auto bg-background md:h-[800px] md:overflow-hidden">
+		<Card className="bg-background relative flex h-[600px] flex-col overflow-y-auto md:h-[800px] md:overflow-hidden">
 			<div className="grid h-full md:grid-cols-3 lg:grid-cols-[300px_1fr_1fr] xl:grid-cols-[300px_1fr_400px]">
 				<div className="flex flex-col gap-4 border-r p-4">
 					<Avatar>
@@ -67,7 +67,7 @@ export const CalendarInterface = () => {
 					</Avatar>
 					<div className="flex flex-col gap-4">
 						<div className="flex flex-col gap-1">
-							<h3 className="text-sm text-muted-foreground">Emma Davis</h3>
+							<h3 className="text-muted-foreground text-sm">Emma Davis</h3>
 							<h2 className="text-lg font-semibold">30 Min Meeting</h2>
 						</div>
 						<div className="flex items-center gap-2">
@@ -89,7 +89,7 @@ export const CalendarInterface = () => {
 								<SelectItem value="UTC">UTC (GMT+00:00)</SelectItem>
 
 								<SelectGroup>
-									<SelectGroupLabel>Americas</SelectGroupLabel>
+									<SelectLabel>Americas</SelectLabel>
 									<SelectItem value="America/Anchorage">
 										Anchorage (UTC-08:00)
 									</SelectItem>
@@ -117,7 +117,7 @@ export const CalendarInterface = () => {
 								</SelectGroup>
 
 								<SelectGroup>
-									<SelectGroupLabel>Europe & Africa</SelectGroupLabel>
+									<SelectLabel>Europe & Africa</SelectLabel>
 									<SelectItem value="Europe/London">
 										London (UTC+01:00)
 									</SelectItem>
@@ -136,7 +136,7 @@ export const CalendarInterface = () => {
 								</SelectGroup>
 
 								<SelectGroup>
-									<SelectGroupLabel>Asia & Middle East</SelectGroupLabel>
+									<SelectLabel>Asia & Middle East</SelectLabel>
 									<SelectItem value="Asia/Dubai">Dubai (UTC+04:00)</SelectItem>
 									<SelectItem value="Asia/Karachi">
 										Karachi (UTC+05:00)
@@ -155,7 +155,7 @@ export const CalendarInterface = () => {
 								</SelectGroup>
 
 								<SelectGroup>
-									<SelectGroupLabel>Australia</SelectGroupLabel>
+									<SelectLabel>Australia</SelectLabel>
 									<SelectItem value="Australia/Perth">
 										Perth (UTC+08:00)
 									</SelectItem>
@@ -206,16 +206,16 @@ export const CalendarInterface = () => {
 				</div>
 				<div className="md:overflow-y-auto">
 					<div className="relative flex-1">
-						<div className="sticky top-0 z-10 flex items-center justify-between bg-background p-4">
+						<div className="bg-background sticky top-0 z-10 flex items-center justify-between p-4">
 							<h2 className="font-medium">
 								{selectedDate ? formatDate(selectedDate) : "Select a date"}
 							</h2>
-							<div className="flex items-center rounded-md border bg-card p-1">
+							<div className="bg-card flex items-center rounded-md border p-1">
 								<Button
 									variant="ghost"
 									size="sm"
 									className={cn(
-										"h-6 rounded-sm text-muted-foreground hover:bg-transparent",
+										"text-muted-foreground h-6 rounded-sm hover:bg-transparent",
 										is24Hour ? "bg-transparent" : "bg-muted hover:bg-muted"
 									)}
 									onClick={() => setIs24Hour(false)}
@@ -226,7 +226,7 @@ export const CalendarInterface = () => {
 									variant="ghost"
 									size="sm"
 									className={cn(
-										"h-6 rounded-sm text-muted-foreground hover:bg-transparent",
+										"text-muted-foreground h-6 rounded-sm hover:bg-transparent",
 										is24Hour ? "bg-muted hover:bg-muted" : "bg-transparent"
 									)}
 									onClick={() => setIs24Hour(true)}

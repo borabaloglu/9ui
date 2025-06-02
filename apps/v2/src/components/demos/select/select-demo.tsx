@@ -10,7 +10,7 @@ export default function SelectDemo() {
 	return (
 		<div className="w-80">
 			<Select>
-				<SelectTrigger>
+				<SelectTrigger className="w-full">
 					<SelectValue placeholder="Select a fruit" />
 				</SelectTrigger>
 				<SelectContent>
