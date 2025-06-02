@@ -28,11 +28,12 @@ export default function SheetDemo() {
 						Please share your feedback with us to help improve our service.
 					</SheetDescription>
 				</SheetHeader>
-				<div className="my-4 space-y-2">
+				<div className="space-y-2 px-4">
 					<Label htmlFor="feedback">Your Feedback</Label>
 					<Textarea id="feedback" placeholder="Type your feedback here." />
 				</div>
 				<SheetFooter>
+					<Button size="sm">Submit</Button>
 					<SheetClose
 						render={(props) => (
 							<Button {...props} size="sm" variant="ghost">
@@ -40,7 +41,6 @@ export default function SheetDemo() {
 							</Button>
 						)}
 					/>
-					<Button size="sm">Submit</Button>
 				</SheetFooter>
 			</SheetContent>
 		</Sheet>

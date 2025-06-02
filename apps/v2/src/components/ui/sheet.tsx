@@ -1,133 +1,135 @@
 "use client"
 
 import * as React from "react"
-import { Dialog } from "@base-ui-components/react/dialog"
-import { cva, VariantProps } from "class-variance-authority"
+import { Dialog as BaseSheet } from "@base-ui-components/react/dialog"
 import { XIcon } from "lucide-react"
 
 import { cn } from "@/lib/utils"
 
-const Sheet = Dialog.Root
+function Sheet({ ...props }: React.ComponentProps<typeof BaseSheet.Root>) {
+	return <BaseSheet.Root data-slot="sheet" {...props} />
+}
 
-const SheetTrigger = Dialog.Trigger
-SheetTrigger.displayName = "SheetTrigger"
+function SheetTrigger({
+	...props
+}: React.ComponentProps<typeof BaseSheet.Trigger>) {
+	return <BaseSheet.Trigger data-slot="sheet-trigger" {...props} />
+}
 
-const SheetClose = Dialog.Close
-SheetClose.displayName = "SheetClose"
+function SheetClose({
+	...props
+}: React.ComponentProps<typeof BaseSheet.Close>) {
+	return <BaseSheet.Close data-slot="sheet-close" {...props} />
+}
 
-const SheetBackdrop = React.forwardRef<
-	React.ElementRef<"div">,
-	React.ComponentPropsWithoutRef<typeof Dialog.Backdrop>
->(({ className, ...props }, ref) => (
-	<Dialog.Backdrop
-		ref={ref}
-		className={cn(
-			"fixed inset-0 h-dvh bg-black/70 transition-all duration-300 [&[data-ending-style]]:opacity-0 [&[data-starting-style]]:opacity-0",
-			className
-		)}
-		{...props}
-	/>
-))
-SheetBackdrop.displayName = "SheetBackdrop"
+function SheetPortal({
+	...props
+}: React.ComponentProps<typeof BaseSheet.Portal>) {
+	return <BaseSheet.Portal data-slot="sheet-portal" {...props} />
+}
 
-const sheetContentVariants = cva(
-	"fixed max-h-[calc(100vh-2rem)] bg-popover p-6 text-popover-foreground shadow-md outline-none transition-all duration-500 ease-in-out",
-	{
-		variants: {
-			side: {
-				bottom:
-					"inset-x-0 bottom-0 mx-auto h-fit w-[calc(100vw-2rem)] origin-bottom -translate-y-4 rounded-lg border [&[data-ending-style]]:translate-y-full [&[data-starting-style]]:translate-y-full",
-				right:
-					"inset-y-0 right-0 top-4 h-full w-[calc(100vw-2rem)] origin-right -translate-x-4 rounded-lg border sm:w-full sm:max-w-xs [&[data-ending-style]]:translate-x-full [&[data-starting-style]]:translate-x-full",
-				left: "inset-y-0 left-0 top-4 h-full w-[calc(100vw-2rem)] origin-left translate-x-4 rounded-lg border sm:max-w-xs [&[data-ending-style]]:-translate-x-full [&[data-starting-style]]:-translate-x-full",
-				top: "inset-x-0 top-0 mx-auto h-fit w-[calc(100vw-2rem)] origin-top translate-y-4 rounded-lg border [&[data-ending-style]]:-translate-y-full [&[data-starting-style]]:-translate-y-full",
-			},
-		},
-		defaultVariants: {
-			side: "right",
-		},
-	}
-)
-
-export interface SheetContentProps
-	extends VariantProps<typeof sheetContentVariants>,
-		React.ComponentPropsWithoutRef<typeof Dialog.Popup> {}
-
-const SheetContent = React.forwardRef<
-	React.ElementRef<"div">,
-	SheetContentProps
->(({ className, side, children, ...props }, ref) => (
-	<Dialog.Portal>
-		<SheetBackdrop />
-		<Dialog.Popup
-			ref={ref}
-			className={cn(sheetContentVariants({ side, className }))}
+function SheetOverlay({
+	className,
+	...props
+}: React.ComponentProps<typeof BaseSheet.Backdrop>) {
+	return (
+		<BaseSheet.Backdrop
+			data-slot="sheet-overlay"
+			className={cn(
+				"fixed inset-0 z-50 bg-black/50 transition-all duration-200 [&[data-ending-style]]:opacity-0 [&[data-starting-style]]:opacity-0",
+				className
+			)}
 			{...props}
-		>
-			<SheetClose className="absolute right-4 top-4 rounded-sm opacity-50 transition-opacity hover:opacity-100 focus:outline-none disabled:pointer-events-none">
-				<XIcon className="size-4" />
-				<span className="sr-only">Close</span>
-			</SheetClose>
-			{children}
-		</Dialog.Popup>
-	</Dialog.Portal>
-))
-SheetContent.displayName = "SheetContent"
+		/>
+	)
+}
 
-const SheetHeader = React.forwardRef<
-	HTMLDivElement,
-	React.HTMLAttributes<HTMLDivElement>
->(({ className, ...props }, ref) => (
-	<div
-		ref={ref}
-		className={cn("flex flex-col space-y-2", className)}
-		{...props}
-	/>
-))
-SheetHeader.displayName = "SheetHeader"
+function SheetContent({
+	className,
+	children,
+	side = "right",
+	...props
+}: React.ComponentProps<typeof BaseSheet.Popup> & {
+	side?: "top" | "right" | "bottom" | "left"
+}) {
+	return (
+		<SheetPortal>
+			<SheetOverlay />
+			<BaseSheet.Popup
+				data-slot="sheet-content"
+				className={cn(
+					"bg-popover text-popover-foreground data-open:animate-in data-closed:animate-out fixed z-50 flex max-h-[calc(100vh-2rem)] flex-col gap-4 rounded-lg shadow-lg outline-hidden transition ease-in-out data-closed:duration-300 data-open:duration-500",
+					side === "right" &&
+						"inset-y-0 top-4 right-0 h-full w-3/4 origin-right -translate-x-4 border sm:max-w-sm [&[data-ending-style]]:translate-x-full [&[data-starting-style]]:translate-x-full",
+					side === "left" &&
+						"inset-y-0 top-4 left-0 h-full w-3/4 origin-left translate-x-4 border sm:max-w-sm [&[data-ending-style]]:-translate-x-full [&[data-starting-style]]:-translate-x-full",
+					side === "top" &&
+						"inset-x-0 top-0 mx-auto h-auto w-[calc(100vw-2rem)] origin-top translate-y-4 border [&[data-ending-style]]:-translate-y-full [&[data-starting-style]]:-translate-y-full",
+					side === "bottom" &&
+						"inset-x-0 bottom-0 mx-auto h-auto w-[calc(100vw-2rem)] origin-bottom -translate-y-4 border [&[data-ending-style]]:translate-y-full [&[data-starting-style]]:translate-y-full",
+					className
+				)}
+				{...props}
+			>
+				{children}
+				<SheetClose className="ring-offset-popover focus:ring-ring text-muted-foreground absolute top-4 right-4 rounded-xs opacity-50 transition-opacity hover:opacity-100 focus:ring-2 focus:ring-offset-2 focus:outline-hidden disabled:pointer-events-none [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4">
+					<XIcon className="size-4" />
+					<span className="sr-only">Close</span>
+				</SheetClose>
+			</BaseSheet.Popup>
+		</SheetPortal>
+	)
+}
 
-const SheetTitle = React.forwardRef<
-	HTMLHeadingElement,
-	React.HTMLAttributes<HTMLHeadingElement>
->(({ className, ...props }, ref) => (
-	<h4
-		ref={ref}
-		className={cn("text-lg font-medium text-foreground", className)}
-		{...props}
-	/>
-))
-SheetTitle.displayName = "SheetTitle"
+function SheetHeader({ className, ...props }: React.ComponentProps<"div">) {
+	return (
+		<div
+			data-slot="sheet-header"
+			className={cn("flex flex-col gap-1.5 p-4", className)}
+			{...props}
+		/>
+	)
+}
 
-const SheetDescription = React.forwardRef<
-	HTMLParagraphElement,
-	React.HTMLAttributes<HTMLParagraphElement>
->(({ className, ...props }, ref) => (
-	<p
-		ref={ref}
-		className={cn("text-sm text-muted-foreground", className)}
-		{...props}
-	/>
-))
-SheetDescription.displayName = "SheetDescription"
+function SheetTitle({
+	className,
+	...props
+}: React.ComponentProps<typeof BaseSheet.Title>) {
+	return (
+		<BaseSheet.Title
+			data-slot="sheet-title"
+			className={cn("text-foreground font-semibold", className)}
+			{...props}
+		/>
+	)
+}
 
-const SheetFooter = React.forwardRef<
-	HTMLDivElement,
-	React.HTMLAttributes<HTMLDivElement>
->(({ className, ...props }, ref) => (
-	<div
-		ref={ref}
-		className={cn(
-			"flex flex-col-reverse gap-2 sm:flex-row sm:justify-end",
-			className
-		)}
-		{...props}
-	/>
-))
-SheetFooter.displayName = "SheetFooter"
+function SheetDescription({
+	className,
+	...props
+}: React.ComponentProps<typeof BaseSheet.Description>) {
+	return (
+		<BaseSheet.Description
+			data-slot="sheet-description"
+			className={cn("text-muted-foreground text-sm", className)}
+			{...props}
+		/>
+	)
+}
+
+function SheetFooter({ className, ...props }: React.ComponentProps<"div">) {
+	return (
+		<div
+			data-slot="sheet-footer"
+			className={cn("mt-auto flex flex-col gap-2 p-4", className)}
+			{...props}
+		/>
+	)
+}
 
 export {
 	Sheet,
-	SheetBackdrop,
+	SheetOverlay,
 	SheetContent,
 	SheetTrigger,
 	SheetClose,
