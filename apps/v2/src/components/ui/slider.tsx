@@ -3,58 +3,78 @@ import { Slider as BaseSlider } from "@base-ui-components/react/slider"
 
 import { cn } from "@/lib/utils"
 
-const Slider = ({
+function Slider({
 	className,
 	children,
+	defaultValue,
+	value,
+	min = 0,
+	max = 100,
 	...props
-}: React.ComponentPropsWithoutRef<typeof BaseSlider.Root>) => {
-	const isRange =
-		(Array.isArray(props.defaultValue) && props.defaultValue.length > 1) ||
-		(Array.isArray(props.value) && props.value.length > 1)
+}: React.ComponentProps<typeof BaseSlider.Root>) {
+	const _values = React.useMemo(
+		() =>
+			Array.isArray(value)
+				? value
+				: Array.isArray(defaultValue)
+					? defaultValue
+					: [min, max],
+		[value, defaultValue, min, max]
+	)
 
 	return (
 		<BaseSlider.Root
+			data-slot="slider"
+			defaultValue={defaultValue}
+			value={value}
+			min={min}
+			max={max}
 			className={cn(
-				"relative touch-none select-none",
-				props.disabled && "pointer-events-none opacity-50",
+				"relative w-full touch-none select-none data-[disabled]:pointer-events-none data-[disabled]:opacity-50 data-[orientation=vertical]:h-full data-[orientation=vertical]:min-h-44 data-[orientation=vertical]:w-auto data-[orientation=vertical]:flex-col",
 				className
 			)}
 			{...props}
 		>
-			<BaseSlider.Control className="flex w-56 items-center">
-				<BaseSlider.Track className="h-1 w-full rounded-full bg-muted">
-					<BaseSlider.Indicator className="relative rounded-full bg-primary" />
-					<BaseSlider.Thumb
-						className="size-4 rounded-full bg-primary shadow-sm dark:shadow-none"
-						inputId="1"
+			<BaseSlider.Control
+				data-slot="slider-control"
+				className="flex w-full items-center"
+			>
+				<BaseSlider.Track
+					data-slot="slider-track"
+					className="bg-muted relative grow rounded-full data-[orientation=horizontal]:h-1.5 data-[orientation=horizontal]:w-full data-[orientation=vertical]:h-full data-[orientation=vertical]:w-1.5"
+				>
+					<BaseSlider.Indicator
+						data-slot="slider-indicator"
+						className="bg-primary absolute rounded-full data-[orientation=horizontal]:h-full data-[orientation=vertical]:w-full"
 					/>
-					{isRange && (
+					{Array.from({ length: _values.length }, (_, index) => (
 						<BaseSlider.Thumb
-							className="size-4 rounded-full bg-primary shadow-sm dark:shadow-none"
-							inputId="2"
+							data-slot="slider-thumb"
+							key={index}
+							className="border-primary bg-background ring-ring/50 block size-4 shrink-0 rounded-full border shadow-sm transition-[color,box-shadow] hover:ring-4 focus-visible:ring-4 focus-visible:outline-hidden"
 						/>
-					)}
+					))}
 				</BaseSlider.Track>
 			</BaseSlider.Control>
 			{children}
 		</BaseSlider.Root>
 	)
 }
-Slider.displayName = "Slider"
 
-const SliderValue = React.forwardRef<
-	HTMLOutputElement,
-	React.ComponentPropsWithoutRef<typeof BaseSlider.Value>
->(({ className, ...props }, ref) => (
-	<BaseSlider.Value
-		ref={ref}
-		className={cn(
-			"mt-3 flex justify-end text-xs font-medium text-foreground",
-			className
-		)}
-		{...props}
-	/>
-))
-SliderValue.displayName = "SliderValue"
+function SliderValue({
+	className,
+	...props
+}: React.ComponentProps<typeof BaseSlider.Value>) {
+	return (
+		<BaseSlider.Value
+			data-slot="slider-value"
+			className={cn(
+				"text-foreground mt-2 flex justify-end text-sm font-medium",
+				className
+			)}
+			{...props}
+		/>
+	)
+}
 
 export { Slider, SliderValue }
