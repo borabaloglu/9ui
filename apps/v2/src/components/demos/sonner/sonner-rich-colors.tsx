@@ -1,5 +1,6 @@
+import { toast } from "sonner"
+
 import { Button } from "@/components/ui/button"
-import { toast } from "@/components/ui/sonner"
 
 export default function SonnerRichColorsDemo() {
 	return (
