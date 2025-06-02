@@ -57,12 +57,12 @@ function Button({
 		className: cn(buttonVariants({ variant, size, className })),
 	} as const
 
-	const { renderElement } = useRender({
+	const element = useRender({
 		render,
 		props: mergeProps<"button">(defaultProps, props),
 	})
 
-	return renderElement()
+	return element
 }
 
 export { Button, buttonVariants }
