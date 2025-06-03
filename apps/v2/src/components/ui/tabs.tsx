@@ -23,32 +23,37 @@ const useTabs = () => {
 	return context
 }
 
-interface TabsProps
-	extends React.ComponentPropsWithoutRef<typeof BaseTabs.Root> {
+function Tabs({
+	variant = "capsule",
+	className,
+	...props
+}: React.ComponentProps<typeof BaseTabs.Root> & {
 	variant?: TabsVariant
-}
-
-const Tabs = React.forwardRef<HTMLDivElement, TabsProps>(
-	({ variant = "capsule", ...props }, ref) => (
+}) {
+	return (
 		<TabsContext.Provider value={{ variant }}>
-			<BaseTabs.Root ref={ref} {...props} />
+			<BaseTabs.Root
+				data-slot="tabs"
+				className={cn("flex flex-col gap-2", className)}
+				{...props}
+			/>
 		</TabsContext.Provider>
 	)
-)
-Tabs.displayName = "Tabs"
+}
 
-const TabsList = React.forwardRef<
-	HTMLDivElement,
-	React.ComponentPropsWithoutRef<typeof BaseTabs.List>
->(({ className, children, ...props }, ref) => {
+function TabsList({
+	className,
+	children,
+	...props
+}: React.ComponentProps<typeof BaseTabs.List>) {
 	const { variant } = useTabs()
 
 	return (
 		<BaseTabs.List
-			ref={ref}
+			data-slot="tabs-list"
 			className={cn(
-				"relative flex gap-1 text-sm font-medium",
-				variant === "capsule" ? "rounded-md border px-1" : "border-b",
+				"text-muted-foreground relative inline-flex h-9 w-fit items-center justify-center gap-x-1 p-1",
+				variant === "capsule" ? "bg-muted rounded-lg" : "",
 				className
 			)}
 			{...props}
@@ -57,55 +62,56 @@ const TabsList = React.forwardRef<
 			<TabIndicator />
 		</BaseTabs.List>
 	)
-})
-TabsList.displayName = "TabsList"
+}
 
-const Tab = React.forwardRef<
-	HTMLButtonElement,
-	React.ComponentPropsWithoutRef<typeof BaseTabs.Tab>
->(({ className, ...props }, ref) => (
-	<BaseTabs.Tab
-		ref={ref}
-		className={cn(
-			"z-[1] min-h-10 w-full text-foreground data-[disabled]:pointer-events-none data-[disabled]:opacity-50",
-			className
-		)}
-		{...props}
-	/>
-))
-Tab.displayName = "Tab"
-
-const TabIndicator = React.forwardRef<
-	HTMLDivElement,
-	React.ComponentPropsWithoutRef<typeof BaseTabs.Indicator>
->(({ className, ...props }, ref) => {
-	const { variant } = useTabs()
+function TabsTrigger({
+	className,
+	...props
+}: React.ComponentProps<typeof BaseTabs.Tab>) {
 	return (
-		<BaseTabs.Indicator
-			ref={ref}
+		<BaseTabs.Tab
+			data-slot="tabs-trigger"
 			className={cn(
-				"absolute left-0 w-[var(--active-tab-width)] -translate-y-1/2 translate-x-[var(--active-tab-left)] transition-all duration-200 ease-in-out",
-				variant === "underline"
-					? "top-full z-10 h-px bg-primary"
-					: "top-1/2 h-[calc(var(--active-tab-height)-0.5rem)] rounded-md bg-muted",
+				"text-muted-foreground data-selected:text-foreground focus-visible:ring-ring/50 [&_svg:not([class*='size-'])] z-[1] flex-1 items-center justify-center gap-1.5 rounded-md px-2 py-1 text-sm text-nowrap whitespace-nowrap focus-visible:ring-2 data-[disabled]:pointer-events-none data-[disabled]:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0",
 				className
 			)}
 			{...props}
 		/>
 	)
-})
-TabIndicator.displayName = "TabIndicator"
+}
 
-const TabContent = React.forwardRef<
-	HTMLDivElement,
-	React.ComponentPropsWithoutRef<typeof BaseTabs.Panel>
->(({ className, ...props }, ref) => (
-	<BaseTabs.Panel
-		ref={ref}
-		className={cn("mt-2 flex-1 rounded-md border p-4", className)}
-		{...props}
-	/>
-))
-TabContent.displayName = "TabContent"
+function TabIndicator({
+	className,
+	...props
+}: React.ComponentProps<typeof BaseTabs.Indicator>) {
+	const { variant } = useTabs()
 
-export { Tabs, TabsList, Tab, TabContent }
+	return (
+		<BaseTabs.Indicator
+			data-slot="tab-indicator"
+			className={cn(
+				"absolute left-0 w-[var(--active-tab-width)] translate-x-[var(--active-tab-left)] -translate-y-1/2 transition-all duration-200 ease-in-out",
+				variant === "underline"
+					? "bg-primary top-full z-10 h-px"
+					: "bg-input top-1/2 h-[var(--active-tab-height)] rounded-md border shadow-sm",
+				className
+			)}
+			{...props}
+		/>
+	)
+}
+
+function TabsContent({
+	className,
+	...props
+}: React.ComponentProps<typeof BaseTabs.Panel>) {
+	return (
+		<BaseTabs.Panel
+			data-slot="tabs-content"
+			className={cn("flex-1 outline-none", className)}
+			{...props}
+		/>
+	)
+}
+
+export { Tabs, TabsList, TabsTrigger, TabsContent }

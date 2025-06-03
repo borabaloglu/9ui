@@ -3,7 +3,7 @@
 import { AIChatInterface } from "@/components/examples/ai-chat"
 import { CalendarInterface } from "@/components/examples/calendar"
 import { MailInterface } from "@/components/examples/mail"
-import { Tab, TabContent, Tabs, TabsList } from "@/components/ui/tabs"
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 
 const Examples = () => {
 	return (
@@ -12,25 +12,25 @@ const Examples = () => {
 
 			<Tabs className="mt-4 w-full" defaultValue="ai-chat">
 				<TabsList className="border-none px-0">
-					<Tab className="max-w-40" value="ai-chat">
+					<TabsTrigger className="max-w-40" value="ai-chat">
 						AI Chat
-					</Tab>
-					<Tab className="max-w-40" value="mail">
+					</TabsTrigger>
+					<TabsTrigger className="max-w-40" value="mail">
 						Mail
-					</Tab>
-					<Tab className="max-w-40" value="calendar">
+					</TabsTrigger>
+					<TabsTrigger className="max-w-40" value="calendar">
 						Calendar
-					</Tab>
+					</TabsTrigger>
 				</TabsList>
-				<TabContent value="ai-chat" className="border-none p-0">
+				<TabsContent value="ai-chat" className="border-none p-0">
 					<AIChatInterface />
-				</TabContent>
-				<TabContent value="mail" className="border-none p-0">
+				</TabsContent>
+				<TabsContent value="mail" className="border-none p-0">
 					<MailInterface />
-				</TabContent>
-				<TabContent value="calendar" className="border-none p-0">
+				</TabsContent>
+				<TabsContent value="calendar" className="border-none p-0">
 					<CalendarInterface />
-				</TabContent>
+				</TabsContent>
 			</Tabs>
 		</div>
 	)

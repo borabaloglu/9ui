@@ -19,7 +19,7 @@ import {
 } from "@/components/ui/accordion"
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
 import { Separator } from "@/components/ui/separator"
-import { Tab, TabContent, Tabs, TabsList } from "@/components/ui/tabs"
+import { Tabs, TabsContent, TabsList } from "@/components/ui/tabs"
 
 import { cn } from "@/lib/utils"
 
@@ -290,8 +290,7 @@ const components: MDXComponents = {
 	ComponentLinks,
 	ComponentSource,
 	Tabs,
-	TabContent,
-	Tab,
+	TabsContent,
 	TabsList,
 	ComponentInstallation,
 	ComponentAnatomy,

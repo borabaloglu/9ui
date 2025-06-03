@@ -1,6 +1,6 @@
 import * as React from "react"
 
-import { Tab, TabContent, Tabs, TabsList } from "@/components/ui/tabs"
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 
 interface ComponentInstallationProps {
 	children: React.ReactNode
@@ -14,19 +14,15 @@ export const ComponentInstallation = ({
 	return (
 		<Tabs className="mt-4 w-full" variant="underline" defaultValue="cli">
 			<TabsList>
-				<Tab className="w-fit px-4" value="cli">
+				<TabsTrigger className="px-4" value="cli">
 					CLI
-				</Tab>
-				<Tab className="w-fit px-4" value="manual">
+				</TabsTrigger>
+				<TabsTrigger className="px-4" value="manual">
 					Manual
-				</Tab>
+				</TabsTrigger>
 			</TabsList>
-			<TabContent className="border-none p-0" value="cli">
-				{cli}
-			</TabContent>
-			<TabContent className="border-none p-0" value="manual">
-				{manual}
-			</TabContent>
+			<TabsContent value="cli">{cli}</TabsContent>
+			<TabsContent value="manual">{manual}</TabsContent>
 		</Tabs>
 	)
 }

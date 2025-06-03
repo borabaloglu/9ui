@@ -3,7 +3,7 @@
 import React from "react"
 
 import { CodeBar } from "@/components/code-bar"
-import { Tab, TabContent, Tabs, TabsList } from "@/components/ui/tabs"
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 
 import { highlighter } from "@/lib/rehype/syntax-highlighting"
 
@@ -56,40 +56,38 @@ export const CommandBlock = ({
 
 	return (
 		<Tabs
-			className="mt-4 w-full overflow-hidden rounded-md border"
+			className="mt-4 w-full gap-0 overflow-hidden rounded-md border"
 			variant="underline"
 			value={activeTab}
 			onValueChange={setActiveTab}
 		>
 			<CodeBar
-				className="border-t-0"
+				className="h-9 border-t-0"
 				label={
-					<TabsList className="flex h-8 items-center justify-between border-none px-2 text-xs">
-						<div className="z-10">
-							<Tab className="w-fit px-4" value="npm">
-								npm
-							</Tab>
-							<Tab className="w-fit px-4" value="yarn">
-								yarn
-							</Tab>
-							<Tab className="w-fit px-4" value="pnpm">
-								pnpm
-							</Tab>
-							<Tab className="w-fit px-4" value="bun">
-								bun
-							</Tab>
-						</div>
+					<TabsList>
+						<TabsTrigger className="px-4" value="npm">
+							npm
+						</TabsTrigger>
+						<TabsTrigger className="px-4" value="yarn">
+							yarn
+						</TabsTrigger>
+						<TabsTrigger className="px-4" value="pnpm">
+							pnpm
+						</TabsTrigger>
+						<TabsTrigger className="px-4" value="bun">
+							bun
+						</TabsTrigger>
 					</TabsList>
 				}
 				content={command}
 			/>
 
-			<TabContent className="mt-0 border-none" value={activeTab}>
+			<TabsContent className="mt-0 border-none p-4" value={activeTab}>
 				<div
 					className="command-block"
 					dangerouslySetInnerHTML={{ __html: prettyCode }}
 				/>
-			</TabContent>
+			</TabsContent>
 		</Tabs>
 	)
 }
