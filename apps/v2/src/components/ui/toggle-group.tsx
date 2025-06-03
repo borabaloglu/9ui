@@ -3,16 +3,20 @@ import { ToggleGroup as BaseToggleGroup } from "@base-ui-components/react/toggle
 
 import { cn } from "@/lib/utils"
 
-const ToggleGroup = React.forwardRef<
-	HTMLDivElement,
-	React.ComponentPropsWithoutRef<typeof BaseToggleGroup>
->(({ className, ...props }, ref) => (
-	<BaseToggleGroup
-		ref={ref}
-		className={cn("flex gap-1 rounded-md border bg-card p-1", className)}
-		{...props}
-	/>
-))
-ToggleGroup.displayName = "ToggleGroup"
+function ToggleGroup({
+	className,
+	...props
+}: React.ComponentProps<typeof BaseToggleGroup>) {
+	return (
+		<BaseToggleGroup
+			data-slot="toggle-group"
+			className={cn(
+				"flex w-fit items-center shadow-xs [&_*[data-slot=toggle]]:border-y [&_*[data-slot=toggle]]:border-r [&_*[data-slot=toggle]]:first:rounded-r-none [&_*[data-slot=toggle]]:first:border [&_*[data-slot=toggle]]:last:rounded-l-none [&_*[data-slot=toggle]]:last:border-r [&_*[data-slot=toggle]]:[&:not(:first-child):not(:last-child)]:rounded-none",
+				className
+			)}
+			{...props}
+		/>
+	)
+}
 
 export { ToggleGroup }
