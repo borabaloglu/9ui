@@ -8,7 +8,7 @@ export default function ToggleSizes() {
 			<Toggle aria-label="Pin" size="sm">
 				<PinIcon />
 			</Toggle>
-			<Toggle aria-label="Pin" size="md">
+			<Toggle aria-label="Pin" size="default">
 				<PinIcon />
 			</Toggle>
 			<Toggle aria-label="Pin" size="lg">
