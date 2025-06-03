@@ -34,7 +34,7 @@ export default function ToolbarFileExplorerDemo() {
 					size="icon"
 					render={
 						<Toggle aria-label="Grid view" value="grid-view">
-							<LayoutGridIcon className="size-4" />
+							<LayoutGridIcon />
 						</Toggle>
 					}
 				/>
@@ -42,7 +42,7 @@ export default function ToolbarFileExplorerDemo() {
 					size="icon"
 					render={
 						<Toggle aria-label="List view" value="list-view">
-							<LayoutListIcon className="size-4" />
+							<LayoutListIcon />
 						</Toggle>
 					}
 				/>
@@ -51,12 +51,16 @@ export default function ToolbarFileExplorerDemo() {
 			<ToolbarSeparator />
 
 			<ToolbarGroup>
-				<ToolbarButton size="icon">
-					<ShareIcon className="size-4" />
+				<ToolbarButton size="icon" variant="outline">
+					<ShareIcon />
 				</ToolbarButton>
 				<DropdownMenu>
-					<ToolbarButton size="icon" render={<DropdownMenuTrigger />}>
-						<MoreHorizontalIcon className="size-4" />
+					<ToolbarButton
+						size="icon"
+						variant="outline"
+						render={<DropdownMenuTrigger />}
+					>
+						<MoreHorizontalIcon />
 					</ToolbarButton>
 					<DropdownMenuContent>
 						<DropdownMenuItem>New File</DropdownMenuItem>

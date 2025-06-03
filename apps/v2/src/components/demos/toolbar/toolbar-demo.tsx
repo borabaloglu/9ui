@@ -41,7 +41,7 @@ export default function ToolbarDemo() {
 							aria-label="Show AI thinking"
 							value="ai-thinking"
 						>
-							<LightbulbIcon className="size-4" />
+							<LightbulbIcon />
 						</Toggle>
 					}
 				/>
@@ -53,7 +53,7 @@ export default function ToolbarDemo() {
 							aria-label="Use web search"
 							value="web-search"
 						>
-							<GlobeIcon className="size-4" />
+							<GlobeIcon />
 						</Toggle>
 					}
 				/>
@@ -62,17 +62,9 @@ export default function ToolbarDemo() {
 			<ToolbarSeparator />
 
 			<Select defaultValue="grok-3">
-				<ToolbarButton
-					className="w-40 justify-between border-none md:w-52"
-					render={
-						<SelectTrigger>
-							<SelectValue
-								className="max-w-24 truncate md:max-w-40"
-								placeholder="Select a model"
-							/>
-						</SelectTrigger>
-					}
-				/>
+				<SelectTrigger className="w-40 md:w-52">
+					<SelectValue className="truncate" placeholder="Select a model" />
+				</SelectTrigger>
 				<SelectContent className="w-52">
 					<SelectItem value="claude-3.7-sonnet">claude-3.7-sonnet</SelectItem>
 					<SelectItem value="claude-3.5-sonnet">claude-3.5-sonnet</SelectItem>
@@ -87,24 +79,23 @@ export default function ToolbarDemo() {
 			<Popover>
 				<ToolbarButton
 					size="icon"
+					variant="outline"
 					render={<PopoverTrigger />}
 					aria-label="Edit prompt"
 				>
-					<SparklesIcon className="size-4 shrink-0" />
+					<SparklesIcon />
 				</ToolbarButton>
-				<PopoverContent className="w-80">
+				<PopoverContent className="w-80 space-y-2">
 					<PopoverHeader>
 						<PopoverTitle>Edit Prompt Template</PopoverTitle>
 						<PopoverDescription>
 							Customize the system prompt used for AI generation
 						</PopoverDescription>
 					</PopoverHeader>
-					<div className="my-2">
-						<Textarea
-							className="min-h-32 resize-none"
-							defaultValue="You are a helpful AI assistant. Your task is to help the user with their writing needs. Be concise, accurate, and helpful."
-						/>
-					</div>
+					<Textarea
+						className="resize-none"
+						defaultValue="You are a helpful AI assistant. Your task is to help the user with their writing needs. Be concise, accurate, and helpful."
+					/>
 					<PopoverFooter>
 						<PopoverClose
 							render={<Button variant="outline">Save Prompt</Button>}

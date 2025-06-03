@@ -7,27 +7,27 @@ import { ButtonProps, buttonVariants } from "@/components/ui/button"
 
 import { cn } from "@/lib/utils"
 
-const Toolbar = React.forwardRef<
-	HTMLDivElement,
-	React.ComponentPropsWithoutRef<typeof BaseToolbar.Root>
->(({ className, ...props }, ref) => {
+function Toolbar({
+	className,
+	...props
+}: React.ComponentProps<typeof BaseToolbar.Root>) {
 	return (
 		<BaseToolbar.Root
 			className={cn(
-				"flex items-center gap-1 rounded-md border bg-popover p-1",
+				"bg-popover outline-border flex items-center gap-1 rounded-md p-1 outline",
 				className
 			)}
 			{...props}
-			ref={ref}
 		/>
 	)
-})
-Toolbar.displayName = "Toolbar"
+}
 
-const ToolbarButton = React.forwardRef<
-	HTMLButtonElement,
-	React.ComponentPropsWithoutRef<typeof BaseToolbar.Button> & ButtonProps
->(({ className, variant, size, ...props }, ref) => {
+function ToolbarButton({
+	className,
+	variant,
+	size,
+	...props
+}: React.ComponentProps<typeof BaseToolbar.Button> & ButtonProps) {
 	return (
 		<BaseToolbar.Button
 			className={cn(
@@ -36,64 +36,54 @@ const ToolbarButton = React.forwardRef<
 				className
 			)}
 			{...props}
-			ref={ref}
 		/>
 	)
-})
-ToolbarButton.displayName = "ToolbarButton"
+}
 
-const ToolbarSeparator = React.forwardRef<
-	HTMLDivElement,
-	React.ComponentPropsWithoutRef<typeof BaseToolbar.Separator>
->((props, ref) => {
+function ToolbarSeparator({
+	className,
+	...props
+}: React.ComponentProps<typeof BaseToolbar.Separator>) {
 	return (
 		<BaseToolbar.Separator
-			className={cn("h-6 w-px shrink-0 bg-muted")}
+			className={cn("bg-border h-6 w-px shrink-0", className)}
 			{...props}
-			ref={ref}
 		/>
 	)
-})
-ToolbarSeparator.displayName = "ToolbarSeparator"
+}
 
-const ToolbarInput = React.forwardRef<
-	HTMLInputElement,
-	React.ComponentPropsWithoutRef<typeof BaseToolbar.Input>
->((props, ref) => {
-	return <BaseToolbar.Input {...props} ref={ref} />
-})
-ToolbarInput.displayName = "ToolbarInput"
+function ToolbarInput({
+	...props
+}: React.ComponentProps<typeof BaseToolbar.Input>) {
+	return <BaseToolbar.Input {...props} />
+}
 
-const ToolbarGroup = React.forwardRef<
-	HTMLDivElement,
-	React.ComponentPropsWithoutRef<typeof BaseToolbar.Group>
->(({ className, ...props }, ref) => {
+function ToolbarGroup({
+	className,
+	...props
+}: React.ComponentProps<typeof BaseToolbar.Group>) {
 	return (
 		<BaseToolbar.Group
 			className={cn("flex items-center gap-1", className)}
 			{...props}
-			ref={ref}
 		/>
 	)
-})
-ToolbarGroup.displayName = "ToolbarGroup"
+}
 
-const ToolbarLink = React.forwardRef<
-	HTMLAnchorElement,
-	React.ComponentPropsWithoutRef<typeof BaseToolbar.Link>
->(({ className, ...props }, ref) => {
+function ToolbarLink({
+	className,
+	...props
+}: React.ComponentProps<typeof BaseToolbar.Link>) {
 	return (
 		<BaseToolbar.Link
-			ref={ref}
 			className={cn(
-				"inline-flex h-9 items-center gap-2 rounded-md px-4 text-sm text-muted-foreground no-underline transition-colors hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring [&>svg]:shrink-0",
+				"text-muted-foreground hover:text-foreground focus-visible:ring-ring/50 inline-flex h-9 shrink-0 items-center gap-2 rounded-md px-4 text-sm no-underline transition-colors focus-visible:ring-2 focus-visible:outline-none [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
 				className
 			)}
 			{...props}
 		/>
 	)
-})
-ToolbarLink.displayName = "ToolbarLink"
+}
 
 export {
 	Toolbar,
