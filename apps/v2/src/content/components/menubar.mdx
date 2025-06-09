@@ -4,7 +4,7 @@
 	links={[
 		{
 			label: "Docs",
-			href: "https://base-ui.com/react/components/menu",
+			href: "https://base-ui.com/react/components/menubar",
 		},
 	]}
 />
@@ -36,13 +36,17 @@ import {
 	Menubar,
 	MenubarCheckboxItem,
 	MenubarContent,
+	MenubarGroup,
 	MenubarItem,
-	MenubarItemShortcut,
+	MenubarLabel,
 	MenubarMenu,
+	MenubarPortal,
 	MenubarRadioGroup,
 	MenubarRadioItem,
 	MenubarSeparator,
-	MenubarSubMenu,
+	MenubarShortcut,
+	MenubarSub,
+	MenubarSubContent,
 	MenubarSubTrigger,
 	MenubarTrigger,
 } from "@/components/ui/menubar"
@@ -54,18 +58,17 @@ import {
 		<MenubarTrigger />
 		<MenubarContent>
 			<MenubarItem>
-				<MenubarItemShortcut />
+				<MenubarShortcut />
 			</MenubarItem>
 			<MenubarSeparator />
 			<MenubarCheckboxItem />
-			<MenubarSubMenu>
+			<MenubarSub>
 				<MenubarSubTrigger />
-				<MenubarContent>
-					<MenubarRadioGroup>
-						<MenubarRadioItem />
-					</MenubarRadioGroup>
-				</MenubarContent>
-			</MenubarSubMenu>
+				<MenubarSubContent>{/* ... */}</MenubarSubContent>
+			</MenubarSub>
+			<MenubarRadioGroup>
+				<MenubarRadioItem />
+			</MenubarRadioGroup>
 		</MenubarContent>
 	</MenubarMenu>
 </Menubar>

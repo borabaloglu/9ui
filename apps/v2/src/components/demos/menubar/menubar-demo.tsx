@@ -2,12 +2,13 @@ import {
 	Menubar,
 	MenubarContent,
 	MenubarItem,
-	MenubarItemShortcut,
 	MenubarMenu,
 	MenubarRadioGroup,
 	MenubarRadioItem,
 	MenubarSeparator,
-	MenubarSubMenu,
+	MenubarShortcut,
+	MenubarSub,
+	MenubarSubContent,
 	MenubarSubTrigger,
 	MenubarTrigger,
 } from "@/components/ui/menubar"
@@ -20,35 +21,35 @@ export default function MenubarDemo() {
 				<MenubarContent>
 					<MenubarItem>
 						New File
-						<MenubarItemShortcut>⌘N</MenubarItemShortcut>
+						<MenubarShortcut>⌘N</MenubarShortcut>
 					</MenubarItem>
 					<MenubarItem>
 						New Window
-						<MenubarItemShortcut>⇧⌘N</MenubarItemShortcut>
+						<MenubarShortcut>⇧⌘N</MenubarShortcut>
 					</MenubarItem>
 					<MenubarSeparator />
 					<MenubarItem>
 						Open
-						<MenubarItemShortcut>⌘O</MenubarItemShortcut>
+						<MenubarShortcut>⌘O</MenubarShortcut>
 					</MenubarItem>
 					<MenubarItem>
 						Open Folder
-						<MenubarItemShortcut>⇧⌘O</MenubarItemShortcut>
+						<MenubarShortcut>⇧⌘O</MenubarShortcut>
 					</MenubarItem>
 					<MenubarItem>Open Recent</MenubarItem>
 					<MenubarSeparator />
 					<MenubarItem>
 						Save
-						<MenubarItemShortcut>⌘S</MenubarItemShortcut>
+						<MenubarShortcut>⌘S</MenubarShortcut>
 					</MenubarItem>
 					<MenubarItem>
 						Save As
-						<MenubarItemShortcut>⇧⌘S</MenubarItemShortcut>
+						<MenubarShortcut>⇧⌘S</MenubarShortcut>
 					</MenubarItem>
 					<MenubarSeparator />
 					<MenubarItem>
 						Close Window
-						<MenubarItemShortcut>⌘W</MenubarItemShortcut>
+						<MenubarShortcut>⌘W</MenubarShortcut>
 					</MenubarItem>
 				</MenubarContent>
 			</MenubarMenu>
@@ -57,71 +58,75 @@ export default function MenubarDemo() {
 				<MenubarContent>
 					<MenubarItem>
 						Undo
-						<MenubarItemShortcut>⌘Z</MenubarItemShortcut>
+						<MenubarShortcut>⌘Z</MenubarShortcut>
 					</MenubarItem>
 					<MenubarItem>
 						Redo
-						<MenubarItemShortcut>⌘Y</MenubarItemShortcut>
+						<MenubarShortcut>⌘Y</MenubarShortcut>
 					</MenubarItem>
 					<MenubarSeparator />
 					<MenubarItem>
 						Cut
-						<MenubarItemShortcut>⌘X</MenubarItemShortcut>
+						<MenubarShortcut>⌘X</MenubarShortcut>
 					</MenubarItem>
 					<MenubarItem>
 						Copy
-						<MenubarItemShortcut>⌘C</MenubarItemShortcut>
+						<MenubarShortcut>⌘C</MenubarShortcut>
 					</MenubarItem>
 					<MenubarItem>
 						Paste
-						<MenubarItemShortcut>⌘V</MenubarItemShortcut>
+						<MenubarShortcut>⌘V</MenubarShortcut>
 					</MenubarItem>
 					<MenubarSeparator />
 					<MenubarItem>
 						Find
-						<MenubarItemShortcut>⌘F</MenubarItemShortcut>
+						<MenubarShortcut>⌘F</MenubarShortcut>
 					</MenubarItem>
 					<MenubarItem>
 						Replace
-						<MenubarItemShortcut>⌥⌘F</MenubarItemShortcut>
+						<MenubarShortcut>⌥⌘F</MenubarShortcut>
 					</MenubarItem>
 				</MenubarContent>
 			</MenubarMenu>
 			<MenubarMenu>
 				<MenubarTrigger>View</MenubarTrigger>
 				<MenubarContent>
-					<MenubarSubMenu>
+					<MenubarSub>
 						<MenubarSubTrigger>Appearance</MenubarSubTrigger>
-						<MenubarContent>
-							<MenubarRadioGroup>
+						<MenubarSubContent>
+							<MenubarRadioGroup
+								onValueChange={(value) => {
+									console.log(value)
+								}}
+							>
 								<MenubarRadioItem value="system">System</MenubarRadioItem>
 								<MenubarRadioItem value="light">Light</MenubarRadioItem>
 								<MenubarRadioItem value="dark">Dark</MenubarRadioItem>
 							</MenubarRadioGroup>
-						</MenubarContent>
-					</MenubarSubMenu>
+						</MenubarSubContent>
+					</MenubarSub>
 					<MenubarSeparator />
 					<MenubarItem>
 						Show/Hide Sidebar
-						<MenubarItemShortcut>⌃⌥⌘*</MenubarItemShortcut>
+						<MenubarShortcut>⌃⌥⌘*</MenubarShortcut>
 					</MenubarItem>
 					<MenubarItem>
 						Command Palette
-						<MenubarItemShortcut>⇧⌘P</MenubarItemShortcut>
+						<MenubarShortcut>⇧⌘P</MenubarShortcut>
 					</MenubarItem>
 					<MenubarItem>Expand Tabs</MenubarItem>
 					<MenubarSeparator />
 					<MenubarItem>
 						Zoom In
-						<MenubarItemShortcut>⌘+</MenubarItemShortcut>
+						<MenubarShortcut>⌘+</MenubarShortcut>
 					</MenubarItem>
 					<MenubarItem>
 						Zoom Out
-						<MenubarItemShortcut>⌘-</MenubarItemShortcut>
+						<MenubarShortcut>⌘-</MenubarShortcut>
 					</MenubarItem>
 					<MenubarItem>
 						Reset Zoom
-						<MenubarItemShortcut>⌘0</MenubarItemShortcut>
+						<MenubarShortcut>⌘0</MenubarShortcut>
 					</MenubarItem>
 				</MenubarContent>
 			</MenubarMenu>
