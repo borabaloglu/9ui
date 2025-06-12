@@ -43,6 +43,9 @@ import {
 	ContextMenuRadioItem,
 	ContextMenuSeparator,
 	ContextMenuShortcut,
+	ContextMenuSub,
+	ContextMenuSubContent,
+	ContextMenuSubTrigger,
 	ContextMenuTrigger,
 } from "@/components/ui/context-menu"
 ```
@@ -63,6 +66,12 @@ import {
 		<ContextMenuRadioGroup>
 			<ContextMenuRadioItem />
 		</ContextMenuRadioGroup>
+		<ContextMenuSub>
+			<ContextMenuSubTrigger />
+			<ContextMenuSubContent>
+				<ContextMenuItem />
+			</ContextMenuSubContent>
+		</ContextMenuSub>
 	</ContextMenuContent>
 </ContextMenu>
 ```

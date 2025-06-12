@@ -11,15 +11,11 @@ import {
 	ContextMenuRadioItem,
 	ContextMenuSeparator,
 	ContextMenuShortcut,
+	ContextMenuSub,
+	ContextMenuSubContent,
+	ContextMenuSubTrigger,
 	ContextMenuTrigger,
 } from "@/components/ui/context-menu"
-import {
-	DropdownMenuItem,
-	DropdownMenuSeparator,
-	DropdownMenuSub,
-	DropdownMenuSubContent,
-	DropdownMenuSubTrigger,
-} from "@/components/ui/dropdown-menu"
 
 export default function ContextMenuDemo() {
 	return (
@@ -42,16 +38,16 @@ export default function ContextMenuDemo() {
 							Reload
 							<ContextMenuShortcut>⌘R</ContextMenuShortcut>
 						</ContextMenuItem>
-						<DropdownMenuSub>
-							<DropdownMenuSubTrigger>More</DropdownMenuSubTrigger>
-							<DropdownMenuSubContent>
-								<DropdownMenuItem>Save As</DropdownMenuItem>
-								<DropdownMenuItem>Print</DropdownMenuItem>
-								<DropdownMenuItem>Cast</DropdownMenuItem>
-								<DropdownMenuSeparator />
-								<DropdownMenuItem>Inspect</DropdownMenuItem>
-							</DropdownMenuSubContent>
-						</DropdownMenuSub>
+						<ContextMenuSub>
+							<ContextMenuSubTrigger>More</ContextMenuSubTrigger>
+							<ContextMenuSubContent>
+								<ContextMenuItem>Save As</ContextMenuItem>
+								<ContextMenuItem>Print</ContextMenuItem>
+								<ContextMenuItem>Cast</ContextMenuItem>
+								<ContextMenuSeparator />
+								<ContextMenuItem>Inspect</ContextMenuItem>
+							</ContextMenuSubContent>
+						</ContextMenuSub>
 					</ContextMenuGroup>
 					<ContextMenuSeparator />
 					<ContextMenuGroup>

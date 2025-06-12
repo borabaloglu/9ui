@@ -21,7 +21,14 @@ function Menubar({
 }
 
 function MenubarMenu({ ...props }: React.ComponentProps<typeof BaseMenu.Root>) {
-	return <BaseMenu.Root delay={0} data-slot="menubar-menu" {...props} />
+	return (
+		<BaseMenu.Root
+			delay={0}
+			closeDelay={0}
+			data-slot="menubar-menu"
+			{...props}
+		/>
+	)
 }
 
 function MenubarGroup({
@@ -213,7 +220,14 @@ function MenubarShortcut({
 }
 
 function MenubarSub({ ...props }: React.ComponentProps<typeof BaseMenu.Root>) {
-	return <BaseMenu.Root delay={0} data-slot="menubar-sub" {...props} />
+	return (
+		<BaseMenu.Root
+			delay={0}
+			closeDelay={0}
+			data-slot="menubar-sub"
+			{...props}
+		/>
+	)
 }
 
 function MenubarSubTrigger({
