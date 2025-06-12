@@ -34,6 +34,8 @@ import {
 	DropdownMenuLabel,
 	DropdownMenuSeparator,
 	DropdownMenuShortcut,
+	DropdownMenuSub,
+	DropdownMenuSubContent,
 	DropdownMenuSubTrigger,
 	DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
@@ -467,9 +469,9 @@ export const MailInterface = () => {
 										<DropdownMenuItem>Promotions</DropdownMenuItem>
 									</DropdownMenuGroup>
 									<DropdownMenuSeparator />
-									<DropdownMenu>
+									<DropdownMenuSub>
 										<DropdownMenuSubTrigger>Labels</DropdownMenuSubTrigger>
-										<DropdownMenuContent>
+										<DropdownMenuSubContent>
 											<DropdownMenuCheckboxItem>
 												Important
 											</DropdownMenuCheckboxItem>
@@ -478,8 +480,8 @@ export const MailInterface = () => {
 												Personal
 											</DropdownMenuCheckboxItem>
 											<DropdownMenuCheckboxItem>To-do</DropdownMenuCheckboxItem>
-										</DropdownMenuContent>
-									</DropdownMenu>
+										</DropdownMenuSubContent>
+									</DropdownMenuSub>
 								</DropdownMenuContent>
 							</DropdownMenu>
 						</div>

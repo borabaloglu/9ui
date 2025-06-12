@@ -20,6 +20,8 @@ import {
 	DropdownMenuRadioItem,
 	DropdownMenuSeparator,
 	DropdownMenuShortcut,
+	DropdownMenuSub,
+	DropdownMenuSubContent,
 	DropdownMenuSubTrigger,
 	DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
@@ -81,14 +83,14 @@ export default function DropdownDemo() {
 					</DropdownMenuRadioGroup>
 				</DropdownMenuGroup>
 				<DropdownMenuSeparator />
-				<DropdownMenu>
+				<DropdownMenuSub>
 					<DropdownMenuSubTrigger>Add to Playlist</DropdownMenuSubTrigger>
-					<DropdownMenuContent>
+					<DropdownMenuSubContent>
 						<DropdownMenuItem>Jazz</DropdownMenuItem>
 						<DropdownMenuItem>Rock</DropdownMenuItem>
 						<DropdownMenuItem>Pop</DropdownMenuItem>
-					</DropdownMenuContent>
-				</DropdownMenu>
+					</DropdownMenuSubContent>
+				</DropdownMenuSub>
 			</DropdownMenuContent>
 		</DropdownMenu>
 	)

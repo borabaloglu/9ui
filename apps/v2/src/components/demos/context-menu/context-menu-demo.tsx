@@ -14,10 +14,10 @@ import {
 	ContextMenuTrigger,
 } from "@/components/ui/context-menu"
 import {
-	DropdownMenu,
-	DropdownMenuContent,
 	DropdownMenuItem,
 	DropdownMenuSeparator,
+	DropdownMenuSub,
+	DropdownMenuSubContent,
 	DropdownMenuSubTrigger,
 } from "@/components/ui/dropdown-menu"
 
@@ -42,16 +42,16 @@ export default function ContextMenuDemo() {
 							Reload
 							<ContextMenuShortcut>⌘R</ContextMenuShortcut>
 						</ContextMenuItem>
-						<DropdownMenu>
+						<DropdownMenuSub>
 							<DropdownMenuSubTrigger>More</DropdownMenuSubTrigger>
-							<DropdownMenuContent>
+							<DropdownMenuSubContent>
 								<DropdownMenuItem>Save As</DropdownMenuItem>
 								<DropdownMenuItem>Print</DropdownMenuItem>
 								<DropdownMenuItem>Cast</DropdownMenuItem>
 								<DropdownMenuSeparator />
 								<DropdownMenuItem>Inspect</DropdownMenuItem>
-							</DropdownMenuContent>
-						</DropdownMenu>
+							</DropdownMenuSubContent>
+						</DropdownMenuSub>
 					</ContextMenuGroup>
 					<ContextMenuSeparator />
 					<ContextMenuGroup>

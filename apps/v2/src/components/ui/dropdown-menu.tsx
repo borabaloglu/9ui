@@ -47,7 +47,7 @@ function DropdownMenuContent({
 				<Menu.Popup
 					data-slot="dropdown-menu-content"
 					className={cn(
-						"bg-popover text-popover-foreground z-50 min-w-[8rem] origin-[var(--transform-origin)] overflow-x-hidden overflow-y-auto rounded-md border p-1 shadow-md transition-[transform,scale,opacity] outline-none data-[ending-style]:scale-95 data-[ending-style]:opacity-0 data-[starting-style]:scale-95 data-[starting-style]:opacity-0",
+						"bg-popover data-open:animate-in data-open:fade-in-0 data-open:zoom-in-95 data-closed:animate-out data-closed:fade-out-0 data-closed:zoom-out-95 text-popover-foreground data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 z-50 min-w-[12rem] origin-[var(--transform-origin)] overflow-hidden rounded-md border p-1 shadow-md",
 						className
 					)}
 					{...props}
@@ -127,7 +127,7 @@ function DropdownMenuLabel({
 			data-slot="dropdown-menu-label"
 			data-inset={inset}
 			className={cn(
-				"text-muted-foreground px-2 py-1.5 text-xs font-medium data-[inset]:pl-8",
+				"px-2 py-1.5 text-xs font-medium data-[inset]:pl-8",
 				className
 			)}
 			{...props}
@@ -191,6 +191,10 @@ function DropdownMenuRadioItem({
 	)
 }
 
+function DropdownMenuSub({ ...props }: React.ComponentProps<typeof Menu.Root>) {
+	return <Menu.Root data-slot="dropdown-menu-sub" {...props} />
+}
+
 function DropdownMenuSubTrigger({
 	className,
 	inset,
@@ -215,19 +219,49 @@ function DropdownMenuSubTrigger({
 	)
 }
 
+function DropdownMenuSubContent({
+	className,
+	sideOffset = 0,
+	align = "start",
+	...props
+}: React.ComponentProps<typeof Menu.Popup> & {
+	align?: Menu.Positioner.Props["align"]
+	sideOffset?: Menu.Positioner.Props["sideOffset"]
+}) {
+	return (
+		<DropdownMenuPortal>
+			<DropdownMenuPositioner
+				className="max-h-[var(--available-height)]"
+				sideOffset={sideOffset}
+				align={align}
+			>
+				<Menu.Popup
+					data-slot="dropdown-menu-content"
+					className={cn(
+						"bg-popover text-popover-foreground data-open:animate-in data-open:fade-in-0 data-open:zoom-in-95 data-closed:animate-out data-closed:fade-out-0 data-closed:zoom-out-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 z-50 min-w-[12rem] origin-[var(--transform-origin)] overflow-hidden rounded-md border p-1 shadow-md",
+						className
+					)}
+					{...props}
+				/>
+			</DropdownMenuPositioner>
+		</DropdownMenuPortal>
+	)
+}
+
 export {
 	DropdownMenu,
 	DropdownMenuPortal,
-	DropdownMenuPositioner,
 	DropdownMenuTrigger,
 	DropdownMenuContent,
 	DropdownMenuGroup,
-	DropdownMenuItem,
-	DropdownMenuShortcut,
 	DropdownMenuLabel,
-	DropdownMenuSeparator,
+	DropdownMenuItem,
 	DropdownMenuCheckboxItem,
-	DropdownMenuRadioItem,
 	DropdownMenuRadioGroup,
+	DropdownMenuRadioItem,
+	DropdownMenuSeparator,
+	DropdownMenuShortcut,
+	DropdownMenuSub,
 	DropdownMenuSubTrigger,
+	DropdownMenuSubContent,
 }
