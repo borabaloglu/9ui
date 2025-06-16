@@ -6,14 +6,14 @@ import { z } from "zod"
 
 import { Button } from "@/components/ui/button"
 import {
-	Field,
-	FieldContent,
-	FieldControl,
-	FieldDescription,
-	FieldError,
-	FieldLabel,
-} from "@/components/ui/field"
-import { Form } from "@/components/ui/form"
+	Form,
+	FormControl,
+	FormDescription,
+	FormField,
+	FormItem,
+	FormLabel,
+	FormMessage,
+} from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
 
 const schema = z.object({
@@ -39,46 +39,51 @@ export default function FormDemo() {
 	}
 
 	return (
-		<Form
-			className="flex w-96 flex-col gap-4"
-			form={form}
-			onSubmit={form.handleSubmit(onSubmit)}
-		>
-			<Field
-				name="displayName"
-				control={form.control}
-				render={({ field }) => (
-					<FieldContent>
-						<FieldLabel>Display Name</FieldLabel>
-						<FieldControl>
-							<Input className="w-full" placeholder="borabalogluu" {...field} />
-						</FieldControl>
-						<FieldDescription>
-							This is the name that will be displayed to other users.
-						</FieldDescription>
-						<FieldError />
-					</FieldContent>
-				)}
-			/>
-			<Field
-				name="email"
-				control={form.control}
-				render={({ field }) => (
-					<FieldContent>
-						<FieldLabel>Email</FieldLabel>
-						<FieldControl>
-							<Input
-								className="w-full"
-								placeholder="your@email.com"
-								{...field}
-							/>
-						</FieldControl>
-						<FieldDescription>Enter your email address</FieldDescription>
-						<FieldError />
-					</FieldContent>
-				)}
-			/>
-			<Button type="submit">Submit</Button>
+		<Form {...form}>
+			<form
+				onSubmit={form.handleSubmit(onSubmit)}
+				className="flex w-96 flex-col gap-4"
+			>
+				<FormField
+					name="displayName"
+					control={form.control}
+					render={({ field }) => (
+						<FormItem>
+							<FormLabel>Display Name</FormLabel>
+							<FormControl>
+								<Input
+									className="w-full"
+									placeholder="borabalogluu"
+									{...field}
+								/>
+							</FormControl>
+							<FormDescription>
+								This is the name that will be displayed to other users.
+							</FormDescription>
+							<FormMessage />
+						</FormItem>
+					)}
+				/>
+				<FormField
+					name="email"
+					control={form.control}
+					render={({ field }) => (
+						<FormItem>
+							<FormLabel>Email</FormLabel>
+							<FormControl>
+								<Input
+									className="w-full"
+									placeholder="your@email.com"
+									{...field}
+								/>
+							</FormControl>
+							<FormDescription>Enter your email address</FormDescription>
+							<FormMessage />
+						</FormItem>
+					)}
+				/>
+				<Button type="submit">Submit</Button>
+			</form>
 		</Form>
 	)
 }

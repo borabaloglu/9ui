@@ -54,29 +54,31 @@ npm install react-hook-form zod @hookform/resolvers
 
 ```tsx title="Imports"
 import {
-	Field,
-	FieldContent,
-	FieldControl,
-	FieldDescription,
-	FieldError,
-	FieldLabel,
-} from "@/components/ui/field"
-import { Form } from "@/components/ui/form"
+	Form,
+	FormControl,
+	FormDescription,
+	FormField,
+	FormItem,
+	FormLabel,
+	FormMessage,
+} from "@/components/ui/form"
 ```
 
 ```tsx title="Anatomy"
-<Form>
-	<Field
-		name="..."
-		control="{...}"
-		render={() => (
-			<FieldContent>
-				<FieldLabel />
-				<FieldControl>{/* Input, Select, etc. */}</FieldControl>
-				<FieldDescription />
-				<FieldError />
-			</FieldContent>
-		)}
-	/>
+<Form {...form}>
+	<form onSubmit={form.handleSubmit(onSubmit)}>
+		<FormField
+			name="..."
+			control="{...}"
+			render={() => (
+				<FormItem>
+					<FormLabel>Label</FormLabel>
+					<FormControl>{/* Input, Select, etc. */}</FormControl>
+					<FormDescription>Description</FormDescription>
+					<FormMessage />
+				</FormItem>
+			)}
+		/>
+	</form>
 </Form>
 ```

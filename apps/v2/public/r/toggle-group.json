@@ -7,7 +7,7 @@
   "files": [
     {
       "path": "src/components/ui/toggle-group.tsx",
-      "content": "import * as React from \"react\"\nimport { ToggleGroup as BaseToggleGroup } from \"@base-ui-components/react/toggle-group\"\n\nimport { cn } from \"@/lib/utils\"\n\nconst ToggleGroup = React.forwardRef<\n\tHTMLDivElement,\n\tReact.ComponentPropsWithoutRef<typeof BaseToggleGroup>\n>(({ className, ...props }, ref) => (\n\t<BaseToggleGroup\n\t\tref={ref}\n\t\tclassName={cn(\"flex gap-1 rounded-md border bg-card p-1\", className)}\n\t\t{...props}\n\t/>\n))\nToggleGroup.displayName = \"ToggleGroup\"\n\nexport { ToggleGroup }\n",
+      "content": "import * as React from \"react\"\nimport { ToggleGroup as BaseToggleGroup } from \"@base-ui-components/react/toggle-group\"\n\nimport { cn } from \"@/lib/utils\"\n\nfunction ToggleGroup({\n\tclassName,\n\t...props\n}: React.ComponentProps<typeof BaseToggleGroup>) {\n\treturn (\n\t\t<BaseToggleGroup\n\t\t\tdata-slot=\"toggle-group\"\n\t\t\tclassName={cn(\n\t\t\t\t\"flex w-fit items-center shadow-xs [&_*[data-slot=toggle]]:border-y [&_*[data-slot=toggle]]:border-r [&_*[data-slot=toggle]]:first:rounded-r-none [&_*[data-slot=toggle]]:first:border [&_*[data-slot=toggle]]:last:rounded-l-none [&_*[data-slot=toggle]]:last:border-r [&_*[data-slot=toggle]]:[&:not(:first-child):not(:last-child)]:rounded-none\",\n\t\t\t\tclassName\n\t\t\t)}\n\t\t\t{...props}\n\t\t/>\n\t)\n}\n\nexport { ToggleGroup }\n",
       "type": "registry:ui",
       "target": ""
     }

@@ -264,23 +264,10 @@
 			]
 		},
 		{
-			"name": "field",
-			"type": "registry:ui",
-			"dependencies": [],
-			"registryDependencies": ["https://9ui.dev/r/label.json"],
-			"files": [
-				{
-					"path": "src/components/ui/field.tsx",
-					"type": "registry:ui",
-					"target": ""
-				}
-			]
-		},
-		{
 			"name": "form",
 			"type": "registry:ui",
 			"dependencies": ["react-hook-form", "zod", "@hookform/resolvers"],
-			"registryDependencies": ["https://9ui.dev/r/field.json"],
+			"registryDependencies": ["https://9ui.dev/r/label.json"],
 			"files": [
 				{
 					"path": "src/components/ui/form.tsx",

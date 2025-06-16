@@ -7,7 +7,7 @@
   "files": [
     {
       "path": "src/components/ui/label.tsx",
-      "content": "import * as React from \"react\"\n\nimport { cn } from \"@/lib/utils\"\n\nconst Label = React.forwardRef<\n\tHTMLLabelElement,\n\tReact.LabelHTMLAttributes<HTMLLabelElement>\n>(({ className, ...props }, ref) => (\n\t<label\n\t\tref={ref}\n\t\tclassName={cn(\n\t\t\t\"text-sm font-medium peer-disabled:cursor-not-allowed peer-disabled:opacity-50\",\n\t\t\tclassName\n\t\t)}\n\t\t{...props}\n\t/>\n))\nLabel.displayName = \"Label\"\n\nexport { Label }\n",
+      "content": "import * as React from \"react\"\n\nimport { cn } from \"@/lib/utils\"\n\nfunction Label({ className, ...props }: React.ComponentProps<\"label\">) {\n\treturn (\n\t\t<label\n\t\t\tdata-slot=\"label\"\n\t\t\tclassName={cn(\n\t\t\t\t\"flex items-center gap-2 text-sm leading-none font-medium select-none group-data-[disabled=true]:pointer-events-none group-data-[disabled=true]:opacity-50 peer-disabled:cursor-not-allowed peer-disabled:opacity-50\",\n\t\t\t\tclassName\n\t\t\t)}\n\t\t\t{...props}\n\t\t/>\n\t)\n}\n\nexport { Label }\n",
       "type": "registry:ui",
       "target": ""
     }

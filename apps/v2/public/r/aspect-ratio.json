@@ -7,7 +7,7 @@
   "files": [
     {
       "path": "src/components/ui/aspect-ratio.tsx",
-      "content": "import * as React from \"react\"\n\nimport { cn } from \"@/lib/utils\"\n\nexport interface AspectRatioProps extends React.HTMLAttributes<HTMLDivElement> {\n\tratio?: number\n}\n\nconst AspectRatio = React.forwardRef<HTMLDivElement, AspectRatioProps>(\n\t({ children, className, ratio = 1, style, ...props }, ref) => (\n\t\t<div\n\t\t\tref={ref}\n\t\t\tstyle={{\n\t\t\t\t...style,\n\t\t\t\tpaddingBottom: `${(1 / ratio) * 100}%`,\n\t\t\t}}\n\t\t\tclassName={cn(\"relative w-full\", className)}\n\t\t\t{...props}\n\t\t>\n\t\t\t<div className=\"absolute inset-0 size-full\">{children}</div>\n\t\t</div>\n\t)\n)\nAspectRatio.displayName = \"AspectRatio\"\n\nexport { AspectRatio }\n",
+      "content": "import * as React from \"react\"\n\nimport { cn } from \"@/lib/utils\"\n\nexport interface AspectRatioProps extends React.HTMLAttributes<HTMLDivElement> {\n\tratio?: number\n}\n\nfunction AspectRatio({\n\tchildren,\n\tclassName,\n\tratio = 1,\n\tstyle,\n\t...props\n}: AspectRatioProps) {\n\treturn (\n\t\t<div\n\t\t\tdata-slot=\"aspect-ratio\"\n\t\t\tstyle={{\n\t\t\t\t...style,\n\t\t\t\tpaddingBottom: `${(1 / ratio) * 100}%`,\n\t\t\t}}\n\t\t\tclassName={cn(\"relative w-full\", className)}\n\t\t\t{...props}\n\t\t>\n\t\t\t<div className=\"absolute inset-0 size-full\">{children}</div>\n\t\t</div>\n\t)\n}\n\nexport { AspectRatio }\n",
       "type": "registry:ui",
       "target": ""
     }
