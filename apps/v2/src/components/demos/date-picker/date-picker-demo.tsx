@@ -35,7 +35,7 @@ export default function DatePickerDemo() {
 					</Button>
 				)}
 			/>
-			<PopoverContent className=" p-0" sideOffset={4} arrow={false}>
+			<PopoverContent className="w-[250px] p-0" sideOffset={4} arrow={false}>
 				<Calendar
 					className="border-0"
 					mode="single"

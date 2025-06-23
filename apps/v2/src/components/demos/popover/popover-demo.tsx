@@ -34,7 +34,7 @@ export default function PopoverDemo() {
 				</PopoverHeader>
 				<div className="mt-2 flex w-full gap-2">
 					<Input
-						inputWrapperClassName="w-full"
+						inputContainerClassName="w-full"
 						value={window.location.href}
 						autoFocus={false}
 						readOnly

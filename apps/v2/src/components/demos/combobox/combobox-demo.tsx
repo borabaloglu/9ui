@@ -59,7 +59,7 @@ export default function ComboboxDemo() {
 						variant="outline"
 						role="combobox"
 						aria-expanded={open}
-						className="w-[200px] justify-between"
+						className="w-[250px] justify-between"
 					>
 						{value && (
 							<div className="flex items-center gap-2">
@@ -76,7 +76,7 @@ export default function ComboboxDemo() {
 					</Button>
 				)}
 			/>
-			<PopoverContent className="w-[200px] p-0" sideOffset={4} arrow={false}>
+			<PopoverContent className="w-[250px] p-0" sideOffset={4} arrow={false}>
 				<Command>
 					<CommandInput
 						placeholder="Search status..."

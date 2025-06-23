@@ -24,7 +24,7 @@ export default function CardDemo() {
 			</CardHeader>
 			<CardContent className="space-y-4">
 				<div className="flex gap-2">
-					<Input inputWrapperClassName="w-full" placeholder="Email" />
+					<Input inputContainerClassName="w-full" placeholder="Email" />
 					<Button className="shrink-0" size="icon">
 						<SendIcon />
 					</Button>
