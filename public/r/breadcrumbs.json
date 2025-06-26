@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "breadcrumbs",
+  "type": "registry:ui",
+  "dependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "src/components/ui/breadcrumbs.tsx",
+      "content": "import * as React from \"react\"\nimport { ChevronRightIcon } from \"lucide-react\"\n\nimport { cn } from \"@/lib/utils\"\n\nconst Breadcrumb = React.forwardRef<\n\tHTMLElement,\n\tReact.ComponentPropsWithoutRef<\"nav\">\n>(({ ...props }, ref) => <nav ref={ref} aria-label=\"breadcrumb\" {...props} />)\n\nBreadcrumb.displayName = \"Breadcrumb\"\n\nconst BreadcrumbList = React.forwardRef<\n\tHTMLOListElement,\n\tReact.OlHTMLAttributes<HTMLOListElement>\n>(({ className, ...props }, ref) => (\n\t<ol\n\t\tref={ref}\n\t\tclassName={cn(\n\t\t\t\"flex flex-wrap items-center gap-2 break-words text-sm\",\n\t\t\tclassName\n\t\t)}\n\t\t{...props}\n\t/>\n))\nBreadcrumbList.displayName = \"BreadcrumbList\"\n\nexport interface BreadcrumbItemProps\n\textends React.LiHTMLAttributes<HTMLLIElement> {\n\tactive?: boolean\n}\n\nconst BreadcrumbItem = React.forwardRef<HTMLLIElement, BreadcrumbItemProps>(\n\t({ className, active, ...props }, ref) => (\n\t\t<li\n\t\t\tref={ref}\n\t\t\taria-current={active ? \"page\" : undefined}\n\t\t\tclassName={cn(\n\t\t\t\t\"inline-flex items-center gap-2 text-muted-foreground [&>a]:transition-colors [&>a]:hover:text-foreground [&>svg]:size-4\",\n\t\t\t\tactive && \"text-foreground\",\n\t\t\t\tclassName\n\t\t\t)}\n\t\t\t{...props}\n\t\t/>\n\t)\n)\nBreadcrumbItem.displayName = \"BreadcrumbItem\"\n\nconst BreadcrumbSeparator = React.forwardRef<\n\tHTMLSpanElement,\n\tReact.HTMLAttributes<HTMLSpanElement>\n>(({ className, children, ...props }, ref) => (\n\t<span\n\t\tref={ref}\n\t\taria-hidden=\"true\"\n\t\trole=\"presentation\"\n\t\tclassName={cn(\"text-muted-foreground [&>svg]:size-3\", className)}\n\t\t{...props}\n\t>\n\t\t{children || <ChevronRightIcon />}\n\t</span>\n))\nBreadcrumbSeparator.displayName = \"BreadcrumbSeparator\"\n\nexport { Breadcrumb, BreadcrumbList, BreadcrumbItem, BreadcrumbSeparator }\n",
+      "type": "registry:ui",
+      "target": ""
+    }
+  ]
+}

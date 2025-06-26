@@ -81,6 +81,19 @@
 				}
 			]
 		},
+				{
+			"name": "breadcrumbs",
+			"type": "registry:ui",
+			"dependencies": [],
+			"registryDependencies": [],
+			"files": [
+				{
+					"path": "src/components/ui/breadcrumbs.tsx",
+					"type": "registry:ui",
+					"target": ""
+				}
+			]
+		},
 		{
 			"name": "button",
 			"type": "registry:ui",
