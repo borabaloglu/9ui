@@ -9,7 +9,6 @@ import { Avatar, AvatarFallback } from "@/components/ui/avatar"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Calendar } from "@/components/ui/calendar"
-import { Card } from "@/components/ui/card"
 import {
 	Dialog,
 	DialogClose,
@@ -59,7 +58,7 @@ export const CalendarInterface = () => {
 
 	const timeSlots = useMemo(() => generateTimeSlots(), [])
 	return (
-		<Card className="bg-background relative flex h-[600px] flex-col overflow-y-auto md:h-[800px] md:overflow-hidden">
+		<div className="bg-background relative flex h-[600px] flex-col overflow-y-auto rounded-lg border md:overflow-hidden">
 			<div className="grid h-full md:grid-cols-3 lg:grid-cols-[300px_1fr_1fr] xl:grid-cols-[300px_1fr_400px]">
 				<div className="flex flex-col gap-4 border-r p-4">
 					<Avatar>
@@ -206,7 +205,7 @@ export const CalendarInterface = () => {
 				</div>
 				<div className="md:overflow-y-auto">
 					<div className="relative flex-1">
-						<div className="bg-background sticky top-0 z-10 flex items-center justify-between p-4">
+						<div className="bg-background sticky top-0 z-10 flex items-center justify-between p-3">
 							<h2 className="font-medium">
 								{selectedDate ? formatDate(selectedDate) : "Select a date"}
 							</h2>
@@ -309,6 +308,6 @@ export const CalendarInterface = () => {
 					</div>
 				</div>
 			</div>
-		</Card>
+		</div>
 	)
 }

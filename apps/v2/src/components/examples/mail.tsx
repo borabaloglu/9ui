@@ -24,7 +24,6 @@ import {
 
 import { Avatar, AvatarFallback } from "@/components/ui/avatar"
 import { Button } from "@/components/ui/button"
-import { Card } from "@/components/ui/card"
 import {
 	DropdownMenu,
 	DropdownMenuCheckboxItem,
@@ -40,7 +39,6 @@ import {
 	DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 import { Input } from "@/components/ui/input"
-import { ScrollArea } from "@/components/ui/scroll-area"
 import { Separator } from "@/components/ui/separator"
 import { Textarea } from "@/components/ui/textarea"
 
@@ -300,10 +298,10 @@ export const MailInterface = () => {
 	const selectedEmail = emails.find((email) => email.id === selectedEmailId)!
 
 	return (
-		<Card className="relative grid h-[600px] overflow-hidden md:h-[800px] md:grid-cols-[400px_1fr] lg:grid-cols-[240px_400px_1fr]">
+		<div className="relative grid h-[600px] overflow-hidden rounded-lg border md:grid-cols-[400px_1fr] lg:grid-cols-[240px_400px_1fr]">
 			<div
 				className={cn(
-					"bg-background absolute inset-y-0 left-0 z-20 w-[240px] p-4 transition-transform lg:static lg:translate-x-0 lg:border-r",
+					"bg-background absolute inset-y-0 left-0 z-50 w-[240px] p-4 transition-transform lg:static lg:translate-x-0 lg:border-r",
 					isSidebarOpen ? "translate-x-0 border-r" : "-translate-x-full"
 				)}
 			>
@@ -395,8 +393,8 @@ export const MailInterface = () => {
 
 			<div
 				className={cn(
-					"bg-background absolute size-full flex-col md:static md:flex",
-					isContentOpen ? "z-20 flex" : "hidden"
+					"bg-background absolute size-full flex-col overflow-hidden md:static md:flex",
+					isContentOpen ? "z-50 flex" : "hidden"
 				)}
 			>
 				<header className="h-14">
@@ -503,30 +501,28 @@ export const MailInterface = () => {
 					</div>
 				</div>
 
-				<ScrollArea className="overscoll-auto grow">
+				<div className="overflow-y-auto">
 					<div className="p-4 text-sm leading-relaxed whitespace-pre-wrap">
 						{selectedEmail.preview}
 					</div>
-				</ScrollArea>
+				</div>
 
 				<footer className="bg-background flex flex-col border-t p-4">
 					<Textarea
 						placeholder="Type your message..."
 						className="min-h-20 resize-none"
 					/>
-					<Button className="mt-2 w-fit self-end" variant="ghost">
-						Send
-					</Button>
+					<Button className="mt-2 w-fit self-end">Send</Button>
 				</footer>
 			</div>
 
 			{/* Overlay for mobile sidebar */}
 			{isSidebarOpen && (
 				<div
-					className="absolute inset-0 z-10 bg-black/90 lg:hidden"
+					className="absolute inset-0 z-20 bg-black/90 lg:hidden"
 					onClick={() => setIsSidebarOpen(false)}
 				/>
 			)}
-		</Card>
+		</div>
 	)
 }

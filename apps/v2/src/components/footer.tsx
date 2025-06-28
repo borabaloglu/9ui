@@ -1,26 +1,16 @@
 export const Footer = () => (
-	<footer className="border-t">
-		<div className="container mx-auto p-4">
-			<div className="text-balance text-center text-sm text-muted-foreground md:text-left">
-				Built by{" "}
+	<footer className="dark:border-border/40 border-t border-dashed">
+		<div className="dark:border-border/40 container mx-auto border-x border-dashed py-4">
+			<div className="text-muted-foreground text-center text-sm">
+				made with ❤️ by{" "}
 				<a
 					href="https://twitter.com/borabalogluu"
 					target="_blank"
 					rel="noreferrer"
-					className="font-medium text-foreground underline underline-offset-4"
+					className="text-foreground font-medium underline underline-offset-4"
 				>
 					borabalogluu
 				</a>
-				{" • "}
-				<a
-					href="https://github.com/borabaloglu/9ui"
-					target="_blank"
-					rel="noreferrer"
-					className="font-medium text-foreground underline underline-offset-4"
-				>
-					source code
-				</a>
-				.
 			</div>
 		</div>
 	</footer>

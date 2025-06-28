@@ -19,14 +19,12 @@ import {
 
 import { Avatar, AvatarFallback } from "@/components/ui/avatar"
 import { Button } from "@/components/ui/button"
-import { Card } from "@/components/ui/card"
 import {
 	DropdownMenu,
 	DropdownMenuContent,
 	DropdownMenuItem,
 	DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
-import { ScrollArea } from "@/components/ui/scroll-area"
 import { Textarea } from "@/components/ui/textarea"
 
 import { cn } from "@/lib/utils"
@@ -108,17 +106,16 @@ export const AIChatInterface = () => {
 	}
 
 	return (
-		<Card className="relative grid h-[600px] grid-cols-1 overflow-hidden md:h-[800px] md:grid-cols-[240px_1fr]">
-			{/* Sidebar - hidden on mobile by default */}
+		<div className="relative grid h-[600px] grid-cols-1 gap-0 overflow-hidden rounded-lg border p-0 md:grid-cols-[240px_1fr]">
 			<div
 				className={cn(
-					"bg-card absolute inset-y-0 left-0 z-20 w-[240px] border-r transition-transform md:static md:translate-x-0",
+					"bg-background absolute inset-y-0 left-0 z-20 w-[240px] border-r transition-transform md:static md:translate-x-0",
 					isSidebarOpen ? "translate-x-0" : "-translate-x-full"
 				)}
 			>
 				<div className="flex h-full flex-col gap-2">
-					<div className="flex items-center justify-between px-3 pt-3">
-						<h2 className="text-lg font-semibold">Chats</h2>
+					<div className="flex items-center justify-between px-4 pt-4">
+						<h2 className="text-md font-semibold">Chats</h2>
 						<div className="flex gap-1">
 							<Button variant="ghost" size="icon">
 								<SearchIcon />
@@ -129,7 +126,7 @@ export const AIChatInterface = () => {
 						</div>
 					</div>
 
-					<nav className="flex flex-1 flex-col gap-2 overflow-y-auto px-3">
+					<nav className="flex flex-1 flex-col gap-2 px-4">
 						{sampleChats.map((chat) => (
 							<Button
 								key={chat.id}
@@ -140,7 +137,10 @@ export const AIChatInterface = () => {
 								<DropdownMenu>
 									<DropdownMenuTrigger
 										render={(props) => (
-											<div className="flex size-6 items-center justify-center outline-none">
+											<div
+												className="flex size-6 items-center justify-center outline-none"
+												{...props}
+											>
 												<MoreHorizontalIcon {...props} className="size-4" />
 											</div>
 										)}
@@ -154,7 +154,7 @@ export const AIChatInterface = () => {
 											<ShareIcon className="size-4" />
 											Share
 										</DropdownMenuItem>
-										<DropdownMenuItem className="text-danger-foreground hover:!bg-danger hover:!text-danger-foreground">
+										<DropdownMenuItem variant="destructive">
 											<TrashIcon className="size-4" />
 											Delete
 										</DropdownMenuItem>
@@ -164,8 +164,8 @@ export const AIChatInterface = () => {
 						))}
 					</nav>
 
-					<div className="mt-auto px-3 pb-3">
-						<Button variant="ghost" className="w-full justify-start gap-2">
+					<div className="px-4 pb-4">
+						<Button variant="ghost" className="w-full justify-start">
 							<UserIcon className="size-4" />
 							Account
 						</Button>
@@ -181,9 +181,8 @@ export const AIChatInterface = () => {
 				</Button>
 			</div>
 
-			{/* Main chat area */}
-			<div className="bg-background relative grid grid-rows-[1fr,auto] overflow-hidden">
-				<ScrollArea className="h-full">
+			<div className="bg-background relative grid grid-rows-[1fr_auto] overflow-hidden">
+				<div className="overflow-y-auto">
 					<div className="mt-8 flex flex-col gap-6 p-6 md:mt-0">
 						{messages.map((message) => (
 							<div
@@ -224,7 +223,7 @@ export const AIChatInterface = () => {
 							</div>
 						)}
 					</div>
-				</ScrollArea>
+				</div>
 
 				<div className="relative border-t p-4">
 					<form
@@ -263,6 +262,6 @@ export const AIChatInterface = () => {
 					onClick={() => setIsSidebarOpen(false)}
 				/>
 			)}
-		</Card>
+		</div>
 	)
 }

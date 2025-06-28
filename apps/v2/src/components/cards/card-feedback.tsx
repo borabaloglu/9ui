@@ -35,7 +35,7 @@ export function FeedbackCard() {
 					Please rate your experience at the restaurant
 				</CardDescription>
 			</CardHeader>
-			<CardContent className="space-y-4">
+			<CardContent className="flex h-full flex-col space-y-4">
 				<div className="flex gap-2">
 					{[1, 2, 3, 4, 5].map((star) => (
 						<StarIcon
@@ -44,14 +44,14 @@ export function FeedbackCard() {
 								"size-8 cursor-pointer transition-all",
 								rating && star <= rating
 									? "fill-amber-300 text-amber-300"
-									: "fill-none text-muted-foreground"
+									: "text-muted-foreground fill-none"
 							)}
 							onClick={() => handleChangeRating(star)}
 						/>
 					))}
 				</div>
 				<Textarea
-					className="resize-vertical"
+					className="resize-vertical flex-1 resize-none"
 					placeholder="Write your feedback..."
 				/>
 			</CardContent>

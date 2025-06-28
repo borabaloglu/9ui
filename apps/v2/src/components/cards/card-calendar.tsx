@@ -9,8 +9,8 @@ export function CalendarCard() {
 	const [selectedDate, setSelectedDate] = useState<Date | undefined>(undefined)
 
 	return (
-		<Card>
-			<CardContent className="flex h-full flex-col items-center justify-center p-1">
+		<Card className="p-0">
+			<CardContent className="flex flex-col items-center justify-center p-1">
 				<Calendar
 					className="mx-auto border-none"
 					showOutsideDays

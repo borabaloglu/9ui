@@ -54,13 +54,14 @@ export function PrivacySettingsCard() {
 						key={setting.id}
 						className="flex items-center justify-between space-x-4"
 					>
-						<div className="flex-1 space-y-1">
-							<Label htmlFor={setting.id} className="text-sm font-medium">
+						<div className="flex-1 space-y-1 text-sm">
+							<Label
+								htmlFor={setting.id}
+								className="flex flex-col items-start font-medium"
+							>
 								{setting.title}
+								<p className="text-muted-foreground">{setting.description}</p>
 							</Label>
-							<p className="text-sm text-muted-foreground">
-								{setting.description}
-							</p>
 						</div>
 						<Switch id={setting.id} />
 					</div>

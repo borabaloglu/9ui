@@ -31,27 +31,27 @@ export function AuthCard() {
 				<Button className="w-full">Get Started</Button>
 
 				<div className="flex items-center gap-x-2">
-					<span className="h-px w-full bg-border" />
-					<span className="text-sm text-muted-foreground">OR</span>
-					<span className="h-px w-full bg-border" />
+					<span className="bg-border h-px w-full" />
+					<span className="text-muted-foreground text-xs">OR</span>
+					<span className="bg-border h-px w-full" />
 				</div>
 
 				<Button variant="outline" className="w-full">
-					<Icons.google className="mr-2 size-4" />
+					<Icons.google />
 					Continue with Google
 				</Button>
 				<Button variant="outline" className="w-full">
-					<Icons.gitHub className="mr-2 size-4" />
+					<Icons.gitHub />
 					Continue with GitHub
 				</Button>
 			</CardContent>
-			<CardFooter className="inline-block text-center text-sm text-muted-foreground">
+			<CardFooter className="text-muted-foreground inline-block text-center text-sm">
 				By continuing, you agree to our{" "}
-				<span className="cursor-pointer text-foreground hover:underline">
+				<span className="text-foreground cursor-pointer hover:underline">
 					Terms of Service
 				</span>{" "}
 				and{" "}
-				<span className="cursor-pointer text-foreground hover:underline">
+				<span className="text-foreground cursor-pointer hover:underline">
 					Privacy Policy
 				</span>
 				.

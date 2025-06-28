@@ -27,21 +27,26 @@ export function OTPCard() {
 				</CardDescription>
 			</CardHeader>
 			<CardContent>
-				<InputOTP maxLength={8} className="gap-2">
-					<InputOTPGroup className="mx-auto">
-						<InputOTPSlot className="h-12 w-10 text-lg" index={0} />
-						<InputOTPSlot className="h-12 w-10 text-lg" index={1} />
-						<InputOTPSlot className="h-12 w-10 text-lg" index={2} />
-						<InputOTPSeparator />
-						<InputOTPSlot className="h-12 w-10 text-lg" index={3} />
-						<InputOTPSlot className="h-12 w-10 text-lg" index={4} />
-						<InputOTPSlot className="h-12 w-10 text-lg" index={5} />
+				<InputOTP
+					containerClassName="w-fit mx-auto [&_*[data-slot=input-otp-slot]]:h-12 [&_*[data-slot=input-otp-slot]]:w-10 [&_*[data-slot=input-otp-slot]]:text-lg"
+					maxLength={6}
+				>
+					<InputOTPGroup>
+						<InputOTPSlot index={0} />
+						<InputOTPSlot index={1} />
+						<InputOTPSlot index={2} />
+					</InputOTPGroup>
+					<InputOTPSeparator />
+					<InputOTPGroup>
+						<InputOTPSlot index={3} />
+						<InputOTPSlot index={4} />
+						<InputOTPSlot index={5} />
 					</InputOTPGroup>
 				</InputOTP>
 			</CardContent>
-			<CardFooter className="flex flex-col gap-2">
+			<CardFooter className="flex-col gap-2">
 				<Button className="w-full">Verify Email</Button>
-				<Button variant="link" className="text-sm">
+				<Button variant="link" className="w-full">
 					Resend Code
 				</Button>
 			</CardFooter>

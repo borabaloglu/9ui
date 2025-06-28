@@ -10,7 +10,7 @@ import { VisitorsChartCard } from "@/components/cards/card-visitors-chart"
 
 export const CardsGrid = () => {
 	return (
-		<div className="mt-4 flex flex-col gap-4">
+		<div className="flex flex-col gap-4">
 			<div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
 				<VisitorsChartCard />
 				<ManageMembersCard />

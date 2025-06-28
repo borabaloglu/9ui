@@ -62,7 +62,7 @@ function RoleCombobox({ member }: RoleComboboxProps) {
 	const [open, setOpen] = React.useState(false)
 
 	return (
-		<Popover open={open} onOpenChange={setOpen}>
+		<Popover open={open} onOpenChange={setOpen} modal>
 			<PopoverTrigger
 				render={(props) => (
 					<Button
@@ -77,8 +77,13 @@ function RoleCombobox({ member }: RoleComboboxProps) {
 					</Button>
 				)}
 			/>
-			<PopoverContent className="p-0" align="end" sideOffset={4} arrow={false}>
-				<Command className="w-[400px] border-none">
+			<PopoverContent
+				className="w-[400px] p-0"
+				align="end"
+				sideOffset={4}
+				arrow={false}
+			>
+				<Command className="w-full border-none">
 					<CommandInput placeholder="Search role..." />
 					<CommandList>
 						<CommandEmpty>No role found.</CommandEmpty>
@@ -90,7 +95,7 @@ function RoleCombobox({ member }: RoleComboboxProps) {
 									value={role.value}
 								>
 									{role.label}
-									<p className="text-sm font-normal text-muted-foreground">
+									<p className="text-muted-foreground text-sm font-normal">
 										{role.description}
 									</p>
 								</CommandItem>
@@ -159,9 +164,9 @@ export function ManageMembersCard() {
 										.join("")}
 								</AvatarFallback>
 							</Avatar>
-							<div>
+							<div className="text-sm">
 								<p className="font-medium">{member.name}</p>
-								<p className="max-w-[100px] truncate text-sm text-muted-foreground sm:max-w-full">
+								<p className="text-muted-foreground max-w-[100px] truncate sm:max-w-full">
 									{member.email}
 								</p>
 							</div>
