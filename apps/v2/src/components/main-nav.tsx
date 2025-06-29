@@ -4,7 +4,6 @@ import Link from "next/link"
 import { usePathname } from "next/navigation"
 
 import { Icons } from "@/components/icons"
-import { Separator } from "@/components/ui/separator"
 
 import { cn } from "@/lib/utils"
 
@@ -17,14 +16,13 @@ export function MainNav() {
 				<Icons.logo className="size-3" />
 				<span className="ml-0.5 font-mono text-lg font-black">ui</span>
 			</Link>
-			<Separator orientation="vertical" className="mx-4 my-auto h-6" />
-			<nav className="flex items-center gap-6 text-sm">
+			<nav className="flex items-center gap-6 pl-6 text-sm">
 				<Link
 					href="/docs"
 					className={cn(
-						"transition-colors hover:text-foreground",
+						"hover:text-foreground transition-colors",
 						pathname.startsWith("/docs/getting-started")
-							? "font-medium text-foreground"
+							? "text-foreground font-medium"
 							: "text-muted-foreground"
 					)}
 				>
@@ -33,9 +31,9 @@ export function MainNav() {
 				<Link
 					href="/docs/components"
 					className={cn(
-						"transition-colors hover:text-foreground",
+						"hover:text-foreground transition-colors",
 						pathname?.startsWith("/docs/components")
-							? "font-medium text-foreground"
+							? "text-foreground font-medium"
 							: "text-muted-foreground"
 					)}
 				>
@@ -44,9 +42,9 @@ export function MainNav() {
 				<Link
 					href="/themes"
 					className={cn(
-						"transition-colors hover:text-foreground",
+						"hover:text-foreground transition-colors",
 						pathname?.startsWith("/themes")
-							? "font-medium text-foreground"
+							? "text-foreground font-medium"
 							: "text-muted-foreground"
 					)}
 				>

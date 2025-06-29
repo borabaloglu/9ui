@@ -39,7 +39,7 @@ const ColorItem = ({ color, name }: { color: string; name: string }) => {
 	return (
 		<div className="flex items-center gap-2">
 			<span
-				className="size-3.5 rounded border border-foreground/20"
+				className="border-foreground/20 size-3.5 rounded border"
 				style={{
 					backgroundColor: color,
 				}}
@@ -62,12 +62,27 @@ export const CustomizeToolbar = ({
 	const ref = useRef(null)
 	const [open, setOpen] = useState(false)
 	const [copyDialogOpen, setCopyDialogOpen] = useState(false)
+	const [isSelectOpen, setIsSelectOpen] = useState(false)
 
-	useOnClickOutside(ref, () => setOpen(false))
+	useOnClickOutside(ref as never, () => {
+		if (!isSelectOpen) {
+			setOpen(false)
+		}
+	})
 
 	const themeVariant = useMemo(() => {
 		return currentTheme === "light" ? "light" : "dark"
 	}, [currentTheme])
+
+	const handleSelectOpenChange = (open: boolean) => {
+		if (open) {
+			setIsSelectOpen(true)
+		} else {
+			setTimeout(() => {
+				setIsSelectOpen(false)
+			}, 100)
+		}
+	}
 
 	const handleValueChange = (
 		key: keyof ThemeSettings,
@@ -95,14 +110,14 @@ export const CustomizeToolbar = ({
 
 	return (
 		<>
-			<div className="fixed bottom-6 left-1/2 z-10 flex w-full -translate-x-1/2 items-end justify-center">
+			<div className="fixed bottom-4 left-1/2 z-10 flex w-full -translate-x-1/2 items-end justify-center">
 				<motion.button
 					layoutId="wrapper"
 					onClick={() => {
 						setOpen(true)
 					}}
 					key="button"
-					className="h-9 rounded-md border bg-background px-4 text-sm font-medium shadow-sm"
+					className="bg-background h-9 rounded-md border px-4 text-sm font-medium shadow-sm"
 					transition={{
 						type: "spring",
 						stiffness: 300,
@@ -120,7 +135,7 @@ export const CustomizeToolbar = ({
 						<motion.div
 							ref={ref}
 							layoutId="wrapper"
-							className="absolute h-auto w-[90%] rounded-md border bg-background p-4 shadow-sm outline-none sm:w-full sm:max-w-lg"
+							className="bg-background absolute h-auto w-[90%] rounded-md border p-4 shadow-sm outline-none sm:w-full sm:max-w-lg"
 							transition={{
 								type: "spring",
 								stiffness: 300,
@@ -137,7 +152,7 @@ export const CustomizeToolbar = ({
 									>
 										Customize
 									</motion.span>
-									<p className="text-sm text-muted-foreground">
+									<p className="text-muted-foreground text-sm">
 										Make it the way you like it.
 									</p>
 								</div>
@@ -158,13 +173,14 @@ export const CustomizeToolbar = ({
 								<div className="flex flex-col gap-2">
 									<Label>Shade</Label>
 									<Select
-										onValueChange={(value: Shade) =>
-											handleValueChange("shade", value)
+										onOpenChange={handleSelectOpenChange}
+										onValueChange={(value) =>
+											handleValueChange("shade", value as Shade)
 										}
 										value={theme.shade}
 									>
-										<SelectTrigger>
-											<SelectValue>
+										<SelectTrigger className="w-full">
+											<SelectValue placeholder="Shade">
 												{() =>
 													theme.shade ? (
 														<ColorItem
@@ -198,13 +214,16 @@ export const CustomizeToolbar = ({
 								<div className="flex flex-col gap-2">
 									<Label>Appearance</Label>
 									<Select
+										onOpenChange={handleSelectOpenChange}
 										value={theme.flat}
-										onValueChange={(value: boolean) =>
-											handleValueChange("flat", value)
+										onValueChange={(value) =>
+											handleValueChange("flat", value as boolean)
 										}
 									>
-										<SelectTrigger>
-											<SelectValue placeholder="Appearance" />
+										<SelectTrigger className="w-full">
+											<SelectValue placeholder="Appearance">
+												{() => (theme.flat ? "Flat" : "Faded")}
+											</SelectValue>
 										</SelectTrigger>
 										<SelectContent>
 											{[
@@ -224,13 +243,14 @@ export const CustomizeToolbar = ({
 								<div className="flex flex-col gap-2">
 									<Label>Primary Color</Label>
 									<Select
-										onValueChange={(value: PrimaryColor) =>
-											handleValueChange("primaryColor", value)
+										onOpenChange={handleSelectOpenChange}
+										onValueChange={(value) =>
+											handleValueChange("primaryColor", value as PrimaryColor)
 										}
 										value={theme.primaryColor}
 									>
-										<SelectTrigger>
-											<SelectValue>
+										<SelectTrigger className="w-full">
+											<SelectValue placeholder="Primary Color">
 												{() =>
 													theme.primaryColor ? (
 														<ColorItem
@@ -274,18 +294,19 @@ export const CustomizeToolbar = ({
 								<div className="flex flex-col gap-2">
 									<Label>Radius</Label>
 									<Select
-										onValueChange={(value: number) =>
-											handleValueChange("radius", value)
+										onOpenChange={handleSelectOpenChange}
+										onValueChange={(value) =>
+											handleValueChange("radius", value as number)
 										}
 										value={theme.radius}
 									>
-										<SelectTrigger>
-											<SelectValue>
+										<SelectTrigger className="w-full">
+											<SelectValue placeholder="Radius">
 												{() =>
 													typeof theme.radius === "number" ? (
 														<div className="flex items-center gap-2">
 															<span
-																className="size-3.5 border border-foreground/20 bg-background"
+																className="border-foreground/20 bg-background size-3.5 border"
 																style={{
 																	borderRadius: `${theme.radius / 2}rem`,
 																}}
@@ -303,7 +324,7 @@ export const CustomizeToolbar = ({
 												<SelectItem key={option.value} value={option.value}>
 													<div className="flex items-center gap-2">
 														<span
-															className="size-3.5 border border-foreground/20 bg-background"
+															className="border-foreground/20 bg-background size-3.5 border"
 															style={{
 																borderRadius: `${option.value / 2}rem`,
 															}}

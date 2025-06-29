@@ -4,6 +4,7 @@ import * as React from "react"
 import { Metadata } from "next"
 import { notFound } from "next/navigation"
 
+import { CtaCard } from "@/components/cta-card"
 import { TableOfContents } from "@/components/toc"
 import {
 	Breadcrumb,
@@ -104,8 +105,8 @@ const DocPage = async ({ params }: DocPageProps) => {
 	const toc = await getTableOfContents(doc.source)
 
 	return (
-		<main className="relative xl:grid xl:grid-cols-[1fr_240px] xl:gap-10">
-			<div className="w-full xl:mx-auto xl:max-w-2xl">
+		<main className="relative grid xl:grid-cols-[1fr_240px] xl:gap-8">
+			<div className="min-h-screen min-w-0 py-4">
 				<Breadcrumb className="mb-2">
 					<BreadcrumbList>
 						{doc.breadcrumbs.map((breadcrumb, index) => (
@@ -131,7 +132,13 @@ const DocPage = async ({ params }: DocPageProps) => {
 
 				<doc.Doc />
 			</div>
-			{toc.length > 0 && <TableOfContents items={toc} />}
+
+			<div className="dark:border-border/40 h-full border-dashed xl:border-l">
+				<div className="sticky top-14 -mt-8 hidden h-fit max-h-[calc(100vh-3.5rem)] space-y-4 overflow-auto px-4 py-4 xl:block">
+					{toc.length > 0 && <TableOfContents items={toc} />}
+					<CtaCard />
+				</div>
+			</div>
 		</main>
 	)
 }

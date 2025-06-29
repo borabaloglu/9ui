@@ -28,17 +28,17 @@ export const DocsSidebarNavItems = ({
 					href={item.href}
 					onClick={onNavItemClick}
 					className={cn(
-						"-ml-2 flex w-full items-center justify-between gap-2 rounded-md border px-2 py-1.5 transition-colors hover:text-foreground",
+						"hover:text-foreground -ml-2 flex w-full items-center justify-between gap-2 rounded-md border px-2 py-1.5 transition-colors",
 						pathname === item.href
-							? "bg-secondary/50 pl-2 text-foreground"
-							: "border-transparent text-muted-foreground"
+							? "bg-secondary/50 text-foreground pl-2"
+							: "text-muted-foreground border-transparent"
 					)}
 					target={item.external ? "_blank" : ""}
 					rel={item.external ? "noreferrer" : ""}
 				>
 					{item.title}
 					{item.label && (
-						<span className="rounded bg-info px-1.5 py-0.5 text-xs font-medium text-info-foreground">
+						<span className="bg-info text-info-foreground rounded px-1.5 py-0.5 text-xs font-medium">
 							{item.label}
 						</span>
 					)}
@@ -47,12 +47,12 @@ export const DocsSidebarNavItems = ({
 				<span
 					key={index}
 					className={cn(
-						"-ml-2 flex w-full cursor-not-allowed items-center justify-between gap-2 border border-transparent px-2 py-1.5 text-muted-foreground opacity-60"
+						"text-muted-foreground -ml-2 flex w-full cursor-not-allowed items-center justify-between gap-2 border border-transparent px-2 py-1.5 opacity-60"
 					)}
 				>
 					{item.title}
 					{item.label && (
-						<span className="rounded bg-info px-1.5 py-0.5 text-xs font-medium text-info-foreground">
+						<span className="bg-info text-info-foreground rounded px-1.5 py-0.5 text-xs font-medium">
 							{item.label}
 						</span>
 					)}
@@ -72,8 +72,8 @@ export const DocsSidebarNav = ({ onNavItemClick }: DocsSidebarNavProps) => {
 	return (
 		<>
 			{navConfig.sidebarNav.map((group, index) => (
-				<div key={index} className="pb-4">
-					<h4 className="mb-1 text-sm font-semibold text-foreground">
+				<div key={index} className="pb-4 [&:last-child]:pb-0">
+					<h4 className="text-foreground mb-1 text-sm font-semibold">
 						{group.title}
 					</h4>
 					{group.items.length && (

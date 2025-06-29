@@ -18,14 +18,16 @@ const ThemesPage = () => {
 	})
 
 	return (
-		<main className="container mx-auto py-10">
+		<main className="dark:border-border/40 container mx-auto border-dashed py-4 xl:border-x">
 			<div className="flex flex-col gap-4">
 				<div className="flex flex-col gap-2">
 					<h1 className="text-2xl font-bold">Themes</h1>
-					<p className="text-sm text-muted-foreground">
+					<p className="text-muted-foreground text-sm">
 						Customize your theme and see the changes live.
 					</p>
-					<CustomizeToolbar theme={theme} setTheme={setTheme} />
+					<div className="from-background fixed bottom-0 left-0 z-10 flex h-24 w-full bg-gradient-to-t to-transparent">
+						<CustomizeToolbar theme={theme} setTheme={setTheme} />
+					</div>
 				</div>
 				<CardsGrid />
 				<Suspense fallback={<div>Loading...</div>}>

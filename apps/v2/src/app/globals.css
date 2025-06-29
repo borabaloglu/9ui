@@ -173,7 +173,7 @@
 }
 
 @utility container {
-	@apply mx-auto w-full max-w-[1400px] px-4 xl:px-6 2xl:border-x 2xl:px-4;
+	@apply mx-auto w-full max-w-7xl px-4 xl:px-6;
 }
 
 @utility step {

@@ -1,28 +1,26 @@
 import Link from "next/link"
 import { ArrowUpRightIcon, BookOpenIcon } from "lucide-react"
 
-import { FlickeringGrid } from "@/components/background"
 import Examples from "@/components/examples"
+import { FlickeringGrid } from "@/components/flickering-background"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 
 const Home = () => (
-	<div className="border-border/30 relative container mx-auto space-y-16 border-x border-dashed">
-		<div className="relative">
+	<div className="dark:border-border/40 relative container mx-auto space-y-6 border-dashed py-4 xl:border-x">
+		<div className="relative overflow-hidden rounded-b-2xl">
 			<FlickeringGrid
-				className="absolute inset-0 z-0 size-full overflow-hidden rounded-b-[2rem]"
+				className="absolute inset-0 z-0 size-full"
 				squareSize={4}
 				gridGap={4}
-				color="#6B7280"
-				maxOpacity={0.5}
-				flickerChance={0.1}
+				color="oklch(0.55 0.015 285)"
+				maxOpacity={0.3}
+				flickerChance={0.05}
 			/>
 			<div className="absolute inset-0 bg-[radial-gradient(ellipse_120%_60%_at_bottom_center,oklch(from_var(--background)_l_c_h_/_0.3),var(--background))]" />
 
-			<div className="relative z-20 mx-auto flex max-w-2xl flex-col items-center justify-center gap-4 py-40">
-				<Badge variant="secondary">
-					✨ Now supports Tailwind 4 and React 19
-				</Badge>
+			<div className="relative z-20 mx-auto flex max-w-2xl flex-col items-center justify-center gap-4 py-20 xl:py-40">
+				<Badge variant="secondary">Now supports Tailwind 4 and React 19</Badge>
 				<h1 className="text-center text-3xl leading-tight font-semibold tracking-tight md:text-5xl">
 					<span className="font-mono">Copy-Paste</span> Components That Adapt to
 					Your Design
@@ -68,6 +66,7 @@ const Home = () => (
 				</div>
 			</div>
 		</div>
+
 		<Examples />
 	</div>
 )

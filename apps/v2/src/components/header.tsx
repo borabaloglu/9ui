@@ -12,7 +12,7 @@ import { Button } from "@/components/ui/button"
 export const Header = () => {
 	return (
 		<header className="bg-background supports-[backdrop-filter]:bg-background/80 dark:border-border/40 sticky top-0 z-50 mx-auto w-full border-b border-dashed backdrop-blur">
-			<div className="dark:border-border/40 container flex h-14 items-center border-x border-dashed">
+			<div className="dark:border-border/40 container flex h-14 items-center border-dashed xl:border-x">
 				<MainNav />
 				<MobileNav />
 				<div className="flex-1" />

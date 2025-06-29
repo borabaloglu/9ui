@@ -1,6 +1,6 @@
 export const Footer = () => (
 	<footer className="dark:border-border/40 border-t border-dashed">
-		<div className="dark:border-border/40 container mx-auto border-x border-dashed py-4">
+		<div className="dark:border-border/40 container mx-auto border-dashed py-4 xl:border-x">
 			<div className="text-muted-foreground text-center text-sm">
 				made with ❤️ by{" "}
 				<a
