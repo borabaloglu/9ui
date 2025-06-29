@@ -25,7 +25,7 @@ const ThemesPage = () => {
 					<p className="text-muted-foreground text-sm">
 						Customize your theme and see the changes live.
 					</p>
-					<div className="from-background fixed bottom-0 left-0 z-10 flex h-24 w-full bg-gradient-to-t to-transparent">
+					<div className="dark:from-background fixed bottom-0 left-0 z-10 flex h-24 w-full bg-gradient-to-t from-black/50 to-transparent">
 						<CustomizeToolbar theme={theme} setTheme={setTheme} />
 					</div>
 				</div>

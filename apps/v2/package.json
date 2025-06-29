@@ -5,7 +5,7 @@
 	"scripts": {
 		"dev": "next dev -p 3001",
 		"build": "pnpm prebuild && next build",
-		"build:registry": "npx shadcn@2.3.0 build",
+		"build:registry": "npx shadcn build",
 		"start": "next start",
 		"lint": "next lint",
 		"generate:demos": "npx tsx --tsconfig ./tsconfig.scripts.json ./scripts/generate-demo-registry.ts && prettier --log-level silent --write \"src/__registry__/demos.tsx\" --cache",
