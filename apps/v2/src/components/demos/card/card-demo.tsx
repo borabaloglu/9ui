@@ -1,5 +1,6 @@
 import Image from "next/image"
 import { LinkIcon, SendIcon } from "lucide-react"
+import { toast } from "sonner"
 
 import { Button } from "@/components/ui/button"
 import {
@@ -11,7 +12,6 @@ import {
 	CardTitle,
 } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
-import { toast } from "@/components/ui/sonner"
 
 export default function CardDemo() {
 	return (

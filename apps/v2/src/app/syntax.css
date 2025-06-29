@@ -1,19 +1,19 @@
 @reference "./globals.css";
 
-html.dark code[data-theme*=" "],
+html.dark code[data-theme],
 html.dark .shiki,
 html.dark .shiki span,
-html.dark code[data-theme*=" "] span {
+html.dark code[data-theme] span {
 	color: var(--shiki-dark) !important;
 }
 
-html.light code[data-theme*=" "],
-html.light code[data-theme*=" "] span {
+html.light code[data-theme],
+html.light code[data-theme] span {
 	color: var(--shiki-light) !important;
 }
 
 .command-block pre {
-	@apply !p-0 bg-background;
+	@apply bg-background !p-0;
 }
 
 .command-block code {
@@ -21,17 +21,17 @@ html.light code[data-theme*=" "] span {
 }
 
 [data-rehype-pretty-code-figure] pre {
-	@apply max-h-[600px] overflow-auto py-4 !bg-background;
+	@apply !bg-background max-h-[600px] overflow-auto py-4;
 }
 
 [data-rehype-pretty-code-figure] code {
-	@apply text-xs bg-background font-medium;
+	@apply bg-background text-xs font-medium;
 	tab-size: 2;
 	-moz-tab-size: 2;
 }
 
 [data-rehype-pretty-code-figure] [data-line] {
-	@apply px-4 min-h-[1rem] py-0.5 w-full inline-block;
+	@apply inline-block min-h-[1rem] w-full px-4 py-0.5;
 }
 
 [data-rehype-pretty-code-figure] code > [data-highlighted-line] {
