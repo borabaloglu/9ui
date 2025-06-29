@@ -36,7 +36,7 @@ export default function EmojiPickerPopoverDemo() {
 					onEmojiSelect={({ emoji, label }) => {
 						setEmoji(emoji)
 						setOpen(false)
-						toast.custom(() => (
+						toast(() => (
 							<p className="flex items-center gap-2 text-sm">
 								<span className="text-lg">{emoji}</span>
 								{label}

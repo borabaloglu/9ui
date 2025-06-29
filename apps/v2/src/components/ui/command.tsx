@@ -45,8 +45,8 @@ function CommandDialog({
 				<DialogTitle>{title}</DialogTitle>
 				<DialogDescription>{description}</DialogDescription>
 			</DialogHeader>
-			<DialogContent className="overflow-hidden border-none p-0 [&_[data-dialog-close]]:hidden">
-				<Command>{children}</Command>
+			<DialogContent className="overflow-hidden p-0 [&_[data-dialog-close]]:hidden">
+				<Command className="border-none">{children}</Command>
 			</DialogContent>
 		</Dialog>
 	)

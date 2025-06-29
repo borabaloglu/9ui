@@ -39,7 +39,7 @@ export default function DropdownDemo() {
 			<DropdownMenuContent>
 				<DropdownMenuGroup>
 					<DropdownMenuLabel>Playback</DropdownMenuLabel>
-					<DropdownMenuItem variant="destructive">
+					<DropdownMenuItem>
 						<PlayIcon />
 						Play
 						<DropdownMenuShortcut>⌘P</DropdownMenuShortcut>

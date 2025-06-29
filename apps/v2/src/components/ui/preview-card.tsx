@@ -8,7 +8,14 @@ import { cn } from "@/lib/utils"
 function PreviewCard({
 	...props
 }: React.ComponentProps<typeof BasePreviewCard.Root>) {
-	return <BasePreviewCard.Root data-slot="preview-card" {...props} />
+	return (
+		<BasePreviewCard.Root
+			delay={0}
+			closeDelay={0}
+			data-slot="preview-card"
+			{...props}
+		/>
+	)
 }
 
 function PreviewCardTrigger({

@@ -64,17 +64,11 @@ To add new colors to your theme:
 	--custom-color: oklch(0.627 0.265 303.9);
 	--custom-color-foreground: oklch(0.977 0.014 308.299);
 }
-```
 
-<Step>Add the color to your `tailwind.config.js`</Step>
-
-```js title="tailwind.config.js"
-colors: {
-  // Existing colors
-  'custom-color': {
-    DEFAULT: "oklch(from var(--custom-color) l c h / <alpha-value>)",
-    foreground: "oklch(from var(--custom-color-foreground) l c h / <alpha-value>)",
-  }
+@theme inline {
+	/* Existing colors */
+	--color-custom-color: var(--custom-color);
+	--color-custom-color-foreground: var(--custom-color-foreground);
 }
 ```
 

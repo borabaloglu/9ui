@@ -16,7 +16,7 @@ export default function EmojiPickerDemo() {
 	return (
 		<EmojiPicker
 			onEmojiSelect={({ emoji, label }) => {
-				toast.custom(() => (
+				toast(() => (
 					<p className="flex items-center gap-2 text-sm">
 						<span className="text-lg">{emoji}</span>
 						{label}

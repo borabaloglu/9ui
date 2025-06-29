@@ -54,6 +54,7 @@ export default function FormDemo() {
 								<Input
 									className="w-full"
 									placeholder="borabalogluu"
+									aria-invalid={!!form.formState.errors.displayName}
 									{...field}
 								/>
 							</FormControl>
@@ -74,6 +75,7 @@ export default function FormDemo() {
 								<Input
 									className="w-full"
 									placeholder="your@email.com"
+									aria-invalid={!!form.formState.errors.email}
 									{...field}
 								/>
 							</FormControl>
