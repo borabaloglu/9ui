@@ -1,0 +1,75 @@
+<Title content="Menubar" />
+<Description content="Displays a top-level bar with expandable menus for easy access." />
+<ComponentLinks
+	links={[
+		{
+			label: "Docs",
+			href: "https://base-ui.com/react/components/menubar",
+		},
+	]}
+/>
+
+<ComponentPreview name="menubar-demo" />
+
+## Installation
+
+<ComponentInstallation>
+<div>
+```bash title="Terminal"
+npx shadcn@latest add https://9ui.dev/r/menubar.json
+```
+</div>
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="menubar" />
+
+</Steps>
+</ComponentInstallation>
+
+## Usage
+
+```tsx title="Imports"
+import {
+	Menubar,
+	MenubarCheckboxItem,
+	MenubarContent,
+	MenubarGroup,
+	MenubarItem,
+	MenubarLabel,
+	MenubarMenu,
+	MenubarPortal,
+	MenubarRadioGroup,
+	MenubarRadioItem,
+	MenubarSeparator,
+	MenubarShortcut,
+	MenubarSub,
+	MenubarSubContent,
+	MenubarSubTrigger,
+	MenubarTrigger,
+} from "@/components/ui/menubar"
+```
+
+```tsx title="Anatomy"
+<Menubar>
+	<MenubarMenu>
+		<MenubarTrigger />
+		<MenubarContent>
+			<MenubarItem>
+				<MenubarShortcut />
+			</MenubarItem>
+			<MenubarSeparator />
+			<MenubarCheckboxItem />
+			<MenubarSub>
+				<MenubarSubTrigger />
+				<MenubarSubContent>{/* ... */}</MenubarSubContent>
+			</MenubarSub>
+			<MenubarRadioGroup>
+				<MenubarRadioItem />
+			</MenubarRadioGroup>
+		</MenubarContent>
+	</MenubarMenu>
+</Menubar>
+```

@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "sonner",
+  "type": "registry:ui",
+  "dependencies": [
+    "sonner"
+  ],
+  "registryDependencies": [
+    "https://9ui.dev/r/button.json"
+  ],
+  "files": [
+    {
+      "path": "src/components/ui/sonner.tsx",
+      "content": "\"use client\"\n\nimport { useTheme } from \"next-themes\"\nimport { Toaster as Sonner, ToasterProps } from \"sonner\"\n\nconst Toaster = ({ ...props }: ToasterProps) => {\n\tconst { theme = \"system\" } = useTheme()\n\treturn (\n\t\t<Sonner\n\t\t\ttheme={theme as ToasterProps[\"theme\"]}\n\t\t\tclassName=\"toaster group\"\n\t\t\tstyle={\n\t\t\t\t{\n\t\t\t\t\t\"--normal-bg\": \"var(--popover)\",\n\t\t\t\t\t\"--normal-text\": \"var(--popover-foreground)\",\n\t\t\t\t\t\"--normal-border\": \"var(--border)\",\n\t\t\t\t} as React.CSSProperties\n\t\t\t}\n\t\t\t{...props}\n\t\t/>\n\t)\n}\n\nexport { Toaster }\n",
+      "type": "registry:ui",
+      "target": ""
+    }
+  ]
+}

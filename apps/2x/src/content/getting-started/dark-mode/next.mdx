@@ -1,0 +1,68 @@
+<Title content="Next.js" />
+<Description content="Setting up dark mode in your Next.js project." />
+
+<ComponentLinks
+	links={[
+		{
+			label: "Docs",
+			href: "https://github.com/pacocoursey/next-themes",
+		},
+	]}
+/>
+
+<Steps>
+
+<Step>Install `next-themes`.</Step>
+
+```bash title="Terminal"
+npm install next-themes
+```
+
+<Step>Create `ThemeProvider`.</Step>
+
+```tsx title="providers/theme-provider.tsx"
+"use client"
+
+import { ThemeProvider as NextThemesProvider } from "next-themes"
+
+export function ThemeProvider({
+	children,
+	...props
+}: React.ComponentProps<typeof NextThemesProvider>) {
+	return <NextThemesProvider {...props}>{children}</NextThemesProvider>
+}
+```
+
+<Step>Wrap your root layout with the provider.</Step>
+
+```tsx {1,12-19} title="app/layout.tsx"
+import { ThemeProvider } from "@/providers/theme-provider"
+
+export default function RootLayout({
+	children,
+}: {
+	children: React.ReactNode
+}) {
+	return (
+		<html lang="en" suppressHydrationWarning>
+			<head />
+			<body>
+				<ThemeProvider
+					attribute="class"
+					defaultTheme="system"
+					enableSystem
+					disableTransitionOnChange
+				>
+					{children}
+				</ThemeProvider>
+			</body>
+		</html>
+	)
+}
+```
+
+<Step>Add theme toggle component.</Step>
+
+<ComponentPreview className="mt-4" name="theme-toggle" />
+
+</Steps>

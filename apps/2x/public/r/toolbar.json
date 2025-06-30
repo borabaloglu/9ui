@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "toolbar",
+  "type": "registry:ui",
+  "dependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "src/components/ui/toolbar.tsx",
+      "content": "\"use client\"\n\nimport * as React from \"react\"\nimport { Toolbar as BaseToolbar } from \"@base-ui-components/react/toolbar\"\n\nimport { ButtonProps, buttonVariants } from \"@/components/ui/button\"\n\nimport { cn } from \"@/lib/utils\"\n\nfunction Toolbar({\n\tclassName,\n\t...props\n}: React.ComponentProps<typeof BaseToolbar.Root>) {\n\treturn (\n\t\t<BaseToolbar.Root\n\t\t\tclassName={cn(\n\t\t\t\t\"bg-popover outline-border flex items-center gap-1 rounded-md p-1 outline\",\n\t\t\t\tclassName\n\t\t\t)}\n\t\t\t{...props}\n\t\t/>\n\t)\n}\n\nfunction ToolbarButton({\n\tclassName,\n\tvariant,\n\tsize,\n\t...props\n}: React.ComponentProps<typeof BaseToolbar.Button> & ButtonProps) {\n\treturn (\n\t\t<BaseToolbar.Button\n\t\t\tclassName={cn(\n\t\t\t\tbuttonVariants({ variant: variant ?? \"ghost\", size: size ?? \"md\" }),\n\t\t\t\t\"shrink-0\",\n\t\t\t\tclassName\n\t\t\t)}\n\t\t\t{...props}\n\t\t/>\n\t)\n}\n\nfunction ToolbarSeparator({\n\tclassName,\n\t...props\n}: React.ComponentProps<typeof BaseToolbar.Separator>) {\n\treturn (\n\t\t<BaseToolbar.Separator\n\t\t\tclassName={cn(\"bg-border h-6 w-px shrink-0\", className)}\n\t\t\t{...props}\n\t\t/>\n\t)\n}\n\nfunction ToolbarInput({\n\t...props\n}: React.ComponentProps<typeof BaseToolbar.Input>) {\n\treturn <BaseToolbar.Input {...props} />\n}\n\nfunction ToolbarGroup({\n\tclassName,\n\t...props\n}: React.ComponentProps<typeof BaseToolbar.Group>) {\n\treturn (\n\t\t<BaseToolbar.Group\n\t\t\tclassName={cn(\"flex items-center gap-1\", className)}\n\t\t\t{...props}\n\t\t/>\n\t)\n}\n\nfunction ToolbarLink({\n\tclassName,\n\t...props\n}: React.ComponentProps<typeof BaseToolbar.Link>) {\n\treturn (\n\t\t<BaseToolbar.Link\n\t\t\tclassName={cn(\n\t\t\t\t\"text-muted-foreground hover:text-foreground focus-visible:ring-ring/50 inline-flex h-9 shrink-0 items-center gap-2 rounded-md px-4 text-sm no-underline transition-colors focus-visible:ring-2 focus-visible:outline-none [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4\",\n\t\t\t\tclassName\n\t\t\t)}\n\t\t\t{...props}\n\t\t/>\n\t)\n}\n\nexport {\n\tToolbar,\n\tToolbarButton,\n\tToolbarSeparator,\n\tToolbarInput,\n\tToolbarGroup,\n\tToolbarLink,\n}\n",
+      "type": "registry:ui",
+      "target": ""
+    }
+  ]
+}

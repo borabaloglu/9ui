@@ -1,0 +1,51 @@
+<Title content="Table" />
+<Description content="Used to organize and present information in a tabular format." />
+
+<ComponentPreview name="table-demo" />
+
+## Installation
+
+<ComponentInstallation>
+<div>
+```bash title="Terminal"
+npx shadcn@latest add https://9ui.dev/r/table.json
+```
+</div>
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="table" />
+
+</Steps>
+</ComponentInstallation>
+
+## Usage
+
+```tsx title="Imports"
+import {
+	Table,
+	TableBody,
+	TableCell,
+	TableHead,
+	TableHeader,
+	TableRow,
+} from "@/components/ui/table"
+```
+
+```tsx title="Anatomy"
+<Table>
+	<TableCaption />
+	<TableHeader>
+		<TableRow>
+			<TableHead />
+		</TableRow>
+	</TableHeader>
+	<TableBody>
+		<TableRow>
+			<TableCell />
+		</TableRow>
+	</TableBody>
+</Table>
+```

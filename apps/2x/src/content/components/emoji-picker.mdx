@@ -1,0 +1,66 @@
+<Title content="Emoji Picker" />
+<Description content="A component that allows users to pick an emoji." />
+<ComponentLinks
+	links={[
+		{
+			label: "Docs",
+			href: "https://frimousse.liveblocks.io/",
+		},
+	]}
+/>
+
+<ComponentPreview name="emoji-picker-demo" />
+
+## About
+
+The Emoji Picker is built on top of [`frimousse`](https://frimousse.liveblocks.io/), which is created by [liveblocks](https://liveblocks.io).
+
+## Installation
+
+<ComponentInstallation>
+<div>
+```bash title="Terminal"
+npx shadcn@latest add https://9ui.dev/r/emoji-picker.json
+```
+</div>
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="emoji-picker" />
+
+</Steps>
+</ComponentInstallation>
+
+## Usage
+
+```tsx title="Imports"
+import {
+	EmojiPicker,
+	EmojiPickerContent,
+	EmojiPickerEmpty,
+	EmojiPickerList,
+	EmojiPickerLoading,
+	EmojiPickerSearch,
+	EmojiPickerSkinToneSelector,
+} from "@/components/ui/emoji-picker"
+```
+
+```tsx title="Anatomy"
+<EmojiPicker>
+	<EmojiPickerSearch />
+	<EmojiPickerSkinToneSelector />
+	<EmojiPickerContent>
+		<EmojiPickerLoading />
+		<EmojiPickerEmpty />
+		<EmojiPickerList />
+	</EmojiPickerContent>
+</EmojiPicker>
+```
+
+## Examples
+
+### Popover
+
+<ComponentPreview name="emoji-picker-popover" />

@@ -1,0 +1,84 @@
+<Title content="Form" />
+<Description content="A structured component for collecting and validating data." />
+<ComponentLinks
+	links={[
+		{
+			label: "Docs",
+			href: "https://react-hook-form.com/",
+		},
+	]}
+/>
+
+<ComponentPreview name="form-demo" />
+
+## About
+
+9ui utilizes [`react-hook-form`](https://react-hook-form.com/) to build efficient, flexible, and scalable forms. React Hook Form is a lightweight library that optimizes performance by minimizing re-renders and simplifying form state management.
+
+Why React Hook Form?
+
+- Performance: Uses uncontrolled components, reducing unnecessary re-renders.
+- Easy Integration: Works seamlessly with controlled and uncontrolled inputs.
+- Validation: Supports built-in validation and integrates with libraries like [`Zod`](https://github.com/colinhacks/zod).
+- Minimal Boilerplate: Reduces the amount of code needed to handle form state and validation.
+
+## Installation
+
+<ComponentInstallation>
+<div>
+```bash title="Terminal"
+npx shadcn@latest add https://9ui.dev/r/form.json
+```
+</div>
+
+<Steps>
+
+<Step>Install the dependencies.</Step>
+
+```bash title="Terminal"
+npm install react-hook-form zod @hookform/resolvers
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="form" />
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="label" />
+
+</Steps>
+</ComponentInstallation>
+
+## Usage
+
+```tsx title="Imports"
+import {
+	Form,
+	FormControl,
+	FormDescription,
+	FormField,
+	FormItem,
+	FormLabel,
+	FormMessage,
+} from "@/components/ui/form"
+```
+
+```tsx title="Anatomy"
+<Form {...form}>
+	<form onSubmit={form.handleSubmit(onSubmit)}>
+		<FormField
+			name="..."
+			control="{...}"
+			render={() => (
+				<FormItem>
+					<FormLabel>Label</FormLabel>
+					<FormControl>{/* Input, Select, etc. */}</FormControl>
+					<FormDescription>Description</FormDescription>
+					<FormMessage />
+				</FormItem>
+			)}
+		/>
+	</form>
+</Form>
+```

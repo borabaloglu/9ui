@@ -1,0 +1,57 @@
+<Title content="Tabs" />
+<Description content="Used to organize content into tabbed navigation." />
+<ComponentLinks
+	links={[
+		{
+			label: "Docs",
+			href: "https://base-ui.com/react/components/tabs",
+		},
+	]}
+/>
+
+<ComponentPreview name="tabs-demo" />
+
+## Installation
+
+<ComponentInstallation>
+<div>
+```bash title="Terminal"
+npx shadcn@latest add https://9ui.dev/r/tabs.json
+```
+</div>
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="tabs" />
+
+</Steps>
+</ComponentInstallation>
+
+## Usage
+
+```tsx title="Imports"
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+```
+
+```tsx title="Anatomy"
+<Tabs>
+	<TabsList>
+		<TabsTrigger />
+	</TabsList>
+	<TabsContent />
+</Tabs>
+```
+
+## Examples
+
+### Underlined
+
+<ComponentPreview name="tabs-underline" />
+
+---
+
+### Disabled
+
+<ComponentPreview name="tabs-disabled" />

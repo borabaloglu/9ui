@@ -1,0 +1,51 @@
+<Title content="Accordion" />
+<Description content="A collapsible section to show or hide content." />
+
+<ComponentLinks
+	links={[
+		{
+			label: "Docs",
+			href: "https://base-ui.com/react/components/accordion",
+		},
+	]}
+/>
+
+<ComponentPreview name="accordion-demo" />
+
+## Installation
+
+<ComponentInstallation>
+<div>
+```bash title="Terminal"
+npx shadcn@latest add https://9ui.dev/r/accordion.json
+```
+</div>
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="accordion" />
+
+</Steps>
+</ComponentInstallation>
+
+## Usage
+
+```tsx title="Imports"
+import {
+	Accordion,
+	AccordionContent,
+	AccordionItem,
+	AccordionTrigger,
+} from "@/components/ui/accordion"
+```
+
+```tsx title="Anatomy"
+<Accordion>
+	<AccordionItem>
+		<AccordionTrigger />
+		<AccordionContent />
+	</AccordionItem>
+</Accordion>
+```

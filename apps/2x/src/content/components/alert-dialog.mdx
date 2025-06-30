@@ -1,0 +1,59 @@
+<Title content="Alert Dialog" />
+<Description content="A modal dialog for critical messages or confirmation actions." />
+<ComponentLinks
+	links={[
+		{
+			label: "Docs",
+			href: "https://base-ui.com/react/components/alert-dialog",
+		},
+	]}
+/>
+
+<ComponentPreview name="alert-dialog-demo" />
+
+## Installation
+
+<ComponentInstallation>
+<div>
+```bash title="Terminal"
+npx shadcn@latest add https://9ui.dev/r/alert-dialog.json
+```
+</div>
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="alert-dialog" />
+
+</Steps>
+</ComponentInstallation>
+
+## Usage
+
+```tsx title="Imports"
+import {
+	AlertDialog,
+	AlertDialogContent,
+	AlertDialogDescription,
+	AlertDialogFooter,
+	AlertDialogHeader,
+	AlertDialogTitle,
+	AlertDialogTrigger,
+} from "@/components/ui/alert-dialog"
+```
+
+```tsx title="Anatomy"
+<AlertDialog>
+	<AlertDialogTrigger />
+	<AlertDialogContent>
+		<AlertDialogHeader>
+			<AlertDialogTitle />
+			<AlertDialogDescription />
+		</AlertDialogHeader>
+		<AlertDialogFooter>
+			<AlertDialogClose />
+		</AlertDialogFooter>
+	</AlertDialogContent>
+</AlertDialog>
+```

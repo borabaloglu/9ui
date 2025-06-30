@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "progress",
+  "type": "registry:ui",
+  "dependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "src/components/ui/progress.tsx",
+      "content": "import * as React from \"react\"\nimport { Progress as BaseProgress } from \"@base-ui-components/react/progress\"\n\nimport { cn } from \"@/lib/utils\"\n\nfunction Progress({\n\tclassName,\n\tchildren,\n\t...props\n}: React.ComponentProps<typeof BaseProgress.Root>) {\n\treturn (\n\t\t<BaseProgress.Root data-slot=\"progress\" className=\"relative\" {...props}>\n\t\t\t<BaseProgress.Track\n\t\t\t\tdata-slot=\"progress-track\"\n\t\t\t\tclassName={cn(\n\t\t\t\t\t\"bg-primary/20 block h-2 w-full overflow-hidden rounded-full\",\n\t\t\t\t\tclassName\n\t\t\t\t)}\n\t\t\t>\n\t\t\t\t<BaseProgress.Indicator\n\t\t\t\t\tdata-slot=\"progress-indicator\"\n\t\t\t\t\tclassName=\"bg-primary block h-full w-full transition-all\"\n\t\t\t\t/>\n\t\t\t</BaseProgress.Track>\n\t\t\t{children}\n\t\t</BaseProgress.Root>\n\t)\n}\n\nfunction ProgressValue({\n\tclassName,\n\t...props\n}: React.ComponentProps<typeof BaseProgress.Value>) {\n\treturn (\n\t\t<BaseProgress.Value\n\t\t\tdata-slot=\"progress-value\"\n\t\t\tclassName={cn(\n\t\t\t\t\"text-foreground mt-2 flex justify-end text-sm font-medium\",\n\t\t\t\tclassName\n\t\t\t)}\n\t\t\t{...props}\n\t\t/>\n\t)\n}\n\nexport { Progress, ProgressValue }\n",
+      "type": "registry:ui",
+      "target": ""
+    }
+  ]
+}

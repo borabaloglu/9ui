@@ -1,0 +1,56 @@
+<Title content="Installation" />
+<Description content="Installing dependencies and setting up the project." />
+
+<Steps>
+
+<Step>Setup shadcn.</Step>
+
+Follow the [shadcn installation guide](https://ui.shadcn.com/docs/installation) to setup your project.
+
+<Step>Install Base UI.</Step>
+
+```bash title="Terminal"
+npm install @base-ui-components/react
+```
+
+<Step>Add `Root` class to your app layout.</Step>
+
+```tsx {2} title="layout.tsx"
+<body>
+	<div className="Root">{children}</div>
+</body>
+```
+
+<Step>Update `globals.css` file.</Step>
+
+```css {7-11} title="globals.css"
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+{/* Existing code */}
+
+@layer base {
+	.Root {
+		@apply bg-background isolate;
+	}
+}
+```
+
+<Step>Add 9ui theme to your project.</Step>
+
+```bash title="Terminal"
+npx shadcn@latest add "https://9ui.dev/r/theme.json"
+```
+
+<Step>That's it! You can now install the components.</Step>
+
+</Steps>
+
+# Icons
+
+9ui uses [`lucide-react`](https://lucide.dev/) for icons.
+
+For a more extensive collection of icons, consider using [`Monicon`](https://monicon-docs.vercel.app/), which offers over 200,000 icons from various popular libraries.
+
+If you are looking for animated icons, the [`pqoqubbw/icons`](https://icons.pqoqubbw.dev/) library is a great choice.

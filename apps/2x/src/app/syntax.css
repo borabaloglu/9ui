@@ -1,0 +1,39 @@
+@reference "./globals.css";
+
+html.dark code[data-theme],
+html.dark .shiki,
+html.dark .shiki span,
+html.dark code[data-theme] span {
+	color: var(--shiki-dark) !important;
+}
+
+html.light code[data-theme],
+html.light code[data-theme] span {
+	color: var(--shiki-light) !important;
+}
+
+.command-block pre {
+	@apply bg-background !p-0;
+}
+
+.command-block code {
+	@apply !py-0.5 !text-xs !font-medium;
+}
+
+[data-rehype-pretty-code-figure] pre {
+	@apply !bg-background max-h-[600px] overflow-auto py-4;
+}
+
+[data-rehype-pretty-code-figure] code {
+	@apply bg-background text-xs font-medium;
+	tab-size: 2;
+	-moz-tab-size: 2;
+}
+
+[data-rehype-pretty-code-figure] [data-line] {
+	@apply inline-block min-h-[1rem] w-full px-4 py-0.5;
+}
+
+[data-rehype-pretty-code-figure] code > [data-highlighted-line] {
+	@apply bg-muted w-full;
+}

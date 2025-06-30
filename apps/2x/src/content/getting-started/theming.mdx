@@ -1,0 +1,85 @@
+<Title content="Theming" />
+<Description content="Using CSS variables to customize the theme." />
+
+## Color Tokens
+
+The theme system is built with semantic color tokens that represent specific use cases rather than literal colors. Here are the main color tokens and their use cases:
+
+### Base Colors
+
+- `background` / `foreground`: Primary background and text colors
+- `card` / `card-foreground`: Used for card components and their content
+- `popover` / `popover-foreground`: For popover, dropdown, dialog, etc.
+
+### Interactive Elements
+
+- `primary` / `primary-foreground`: Main brand color, used for primary actions
+- `secondary` / `secondary-foreground`: Less prominent actions and elements
+- `muted` / `muted-foreground`: Subdued elements like secondary text
+- `accent` / `accent-foreground`: Highlighted or featured elements
+- `destructive` / `destructive-foreground`: Dangerous or destructive actions
+
+### Status Colors
+
+- `danger` / `danger-foreground` / `danger-border`: Error states and critical alerts
+- `warning` / `warning-foreground` / `warning-border`: Warning messages and alerts
+- `info` / `info-foreground` / `info-border`: Informational messages
+- `success` / `success-foreground` / `success-border`: Success states and confirmations
+
+### Utility Colors
+
+- `border`: Default border color
+- `input`: Form input borders
+- `ring`: Focus ring color for interactive elements
+
+### Chart Colors
+
+- `chart-1` through `chart-5`: Predefined colors for data visualizations
+
+## Why OKLCH?
+
+1. **Wider Color Gamut**: OKLCH can represent a broader range of colors
+2. **Better Color Interpolation**: Smoother transitions and animations
+3. **Perceptual Uniformity**: More natural-looking color variations
+
+## Customizing Colors
+
+### Adding New Colors
+
+To add new colors to your theme:
+
+<Steps>
+
+<Step>Add the CSS variables in `globals.css`</Step>
+
+```css title="globals.css"
+:root {
+	/* Existing colors */
+	--custom-color: oklch(0.627 0.265 303.9);
+	--custom-color-foreground: oklch(0.977 0.014 308.299);
+}
+
+.dark {
+	/* Existing dark mode colors */
+	--custom-color: oklch(0.627 0.265 303.9);
+	--custom-color-foreground: oklch(0.977 0.014 308.299);
+}
+
+@theme inline {
+	/* Existing colors */
+	--color-custom-color: var(--custom-color);
+	--color-custom-color-foreground: var(--custom-color-foreground);
+}
+```
+
+</Steps>
+
+### Using Custom Colors
+
+After adding new colors, you can use them with Tailwind's utility classes:
+
+```jsx title="Usage"
+<div className="bg-custom-color text-custom-color-foreground">
+	Custom colored content
+</div>
+```

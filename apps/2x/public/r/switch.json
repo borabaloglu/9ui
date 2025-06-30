@@ -1,0 +1,15 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "switch",
+  "type": "registry:ui",
+  "dependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "src/components/ui/switch.tsx",
+      "content": "import * as React from \"react\"\nimport { Switch as BaseSwitch } from \"@base-ui-components/react/switch\"\n\nimport { cn } from \"@/lib/utils\"\n\nfunction Switch({\n\tclassName,\n\t...props\n}: React.ComponentProps<typeof BaseSwitch.Root>) {\n\treturn (\n\t\t<BaseSwitch.Root\n\t\t\tdata-slot=\"switch\"\n\t\t\tclassName={cn(\n\t\t\t\t\"peer data-checked:bg-primary focus-visible:border-ring focus-visible:ring-ring/50 data-unchecked:bg-input inline-flex h-5 w-8 shrink-0 items-center rounded-full border shadow-xs transition-all outline-none focus-visible:ring-2 disabled:cursor-not-allowed disabled:opacity-50\",\n\t\t\t\tclassName\n\t\t\t)}\n\t\t\t{...props}\n\t\t>\n\t\t\t<BaseSwitch.Thumb\n\t\t\t\tdata-slot=\"switch-thumb\"\n\t\t\t\tclassName={cn(\n\t\t\t\t\t\"bg-foreground data-checked:bg-background pointer-events-none block size-4 rounded-full ring-0 transition-transform duration-300 ease-in-out data-checked:translate-x-[calc(100%-3px)] data-unchecked:translate-x-px\"\n\t\t\t\t)}\n\t\t\t/>\n\t\t</BaseSwitch.Root>\n\t)\n}\n\nexport { Switch }\n",
+      "type": "registry:ui",
+      "target": ""
+    }
+  ]
+}

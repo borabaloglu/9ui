@@ -1,0 +1,60 @@
+<Title content="Input OTP" />
+<Description content="A component for entering OTP codes." />
+<ComponentLinks
+	links={[
+		{
+			label: "Docs",
+			href: "https://input-otp.rodz.dev/",
+		},
+	]}
+/>
+
+<ComponentPreview name="input-otp-demo" />
+
+## About
+
+The Input OTP is built on top of [`input-otp`](https://input-otp.rodz.dev/), which is created by [@guilherme_rodz](https://x.com/guilherme_rodz).
+
+## Installation
+
+<ComponentInstallation>
+<div>
+```bash title="Terminal"
+npx shadcn@latest add https://9ui.dev/r/input-otp.json
+```
+</div>
+
+<Steps>
+
+<Step>Install the dependencies.</Step>
+
+```bash title="Terminal"
+npm install input-otp
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="input-otp" />
+
+</Steps>
+</ComponentInstallation>
+
+## Usage
+
+```tsx title="Imports"
+import {
+	InputOTP,
+	InputOTPGroup,
+	InputOTPSeparator,
+	InputOTPSlot,
+} from "@/components/ui/input-otp"
+```
+
+```tsx title="Anatomy"
+<InputOTP>
+	<InputOTPGroup>
+		<InputOTPSlot />
+	</InputOTPGroup>
+	<InputOTPSeparator />
+</InputOTP>
+```

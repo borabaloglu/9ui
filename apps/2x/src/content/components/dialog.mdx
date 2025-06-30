@@ -1,0 +1,66 @@
+<Title content="Dialog" />
+<Description content="A modal window for displaying content." />
+<ComponentLinks
+	links={[
+		{
+			label: "Docs",
+			href: "https://base-ui.com/react/components/dialog",
+		},
+	]}
+/>
+
+<ComponentPreview name="dialog-demo" />
+
+## Installation
+
+<ComponentInstallation>
+<div>
+```bash title="Terminal"
+npx shadcn@latest add https://9ui.dev/r/dialog.json
+```
+</div>
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="dialog" />
+
+</Steps>
+</ComponentInstallation>
+
+## Usage
+
+```tsx title="Imports"
+import {
+	Dialog,
+	DialogClose,
+	DialogContent,
+	DialogDescription,
+	DialogFooter,
+	DialogHeader,
+	DialogTitle,
+	DialogTrigger,
+} from "@/components/ui/dialog"
+```
+
+```tsx title="Anatomy"
+<Dialog>
+	<DialogTrigger />
+	<DialogContent>
+		<DialogHeader>
+			<DialogTitle />
+			<DialogDescription />
+		</DialogHeader>
+		<DialogFooter>
+			<DialogClose />
+		</DialogFooter>
+	</DialogContent>
+</Dialog>
+```
+
+## Examples
+
+### Nested Dialogs
+
+<ComponentPreview name="dialog-nested" />

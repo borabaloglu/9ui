@@ -1,0 +1,82 @@
+<Title content="Carousel" />
+<Description content="A slider to display multiple items in a scrollable view." />
+<ComponentLinks
+	links={[
+		{
+			label: "Docs",
+			href: "https://www.embla-carousel.com/",
+		},
+	]}
+/>
+
+<ComponentPreview name="carousel-demo" />
+
+## Installation
+
+<ComponentInstallation>
+<div>
+```bash title="Terminal"
+npx shadcn@latest add https://9ui.dev/r/carousel.json
+```
+</div>
+
+<Steps>
+
+<Step>Install dependencies</Step>
+
+```bash title="Terminal"
+npm install embla-carousel-react embla-carousel
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="carousel" />
+
+</Steps>
+</ComponentInstallation>
+
+## Usage
+
+```tsx title="Imports"
+import {
+	Carousel,
+	CarouselContent,
+	CarouselItem,
+	CarouselNext,
+	CarouselPrevious,
+} from "@/components/ui/carousel"
+```
+
+```tsx title="Anatomy"
+<Carousel>
+	<CarouselContent>
+		<CarouselItem />
+	</CarouselContent>
+	<CarouselPrevious />
+	<CarouselNext />
+</Carousel>
+```
+
+## Examples
+
+### Vertical
+
+<ComponentPreview name="carousel-vertical" />
+
+---
+
+### Multiple
+
+<ComponentPreview name="carousel-multiple" />
+
+---
+
+### Looped
+
+<ComponentPreview name="carousel-looped" />
+
+---
+
+### Thumbnail
+
+<ComponentPreview name="carousel-thumbnail" />

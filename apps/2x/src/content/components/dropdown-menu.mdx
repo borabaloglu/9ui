@@ -1,0 +1,76 @@
+<Title content="Dropdown Menu" />
+<Description content="Used to display a list of options to the user." />
+<ComponentLinks
+	links={[
+		{
+			label: "Docs",
+			href: "https://base-ui.com/react/components/menu",
+		},
+	]}
+/>
+
+<ComponentPreview name="dropdown-menu-demo" />
+
+## Installation
+
+<ComponentInstallation>
+<div>
+```bash title="Terminal"
+npx shadcn@latest add https://9ui.dev/r/dropdown-menu.json
+```
+</div>
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="dropdown-menu" />
+
+</Steps>
+</ComponentInstallation>
+
+## Usage
+
+```tsx title="Imports"
+import {
+	DropdownMenu,
+	DropdownMenuCheckboxItem,
+	DropdownMenuContent,
+	DropdownMenuGroup,
+	DropdownMenuGroupLabel,
+	DropdownMenuItem,
+	DropdownMenuItemShortcut,
+	DropdownMenuRadioGroup,
+	DropdownMenuRadioItem,
+	DropdownMenuSeparator,
+	DropdownMenuSub,
+	DropdownMenuSubContent,
+	DropdownMenuSubTrigger,
+	DropdownMenuTrigger,
+} from "@/components/ui/dropdown"
+```
+
+```tsx title="Anatomy"
+<DropdownMenu>
+	<DropdownMenuTrigger />
+	<DropdownMenuContent>
+		<DropdownMenuGroup>
+			<DropdownMenuGroupLabel />
+			<DropdownMenuItem>
+				<DropdownMenuItemShortcut />
+			</DropdownMenuItem>
+		</DropdownMenuGroup>
+		<DropdownMenuSeparator />
+		<DropdownMenuCheckboxItem />
+		<DropdownMenuRadioGroup>
+			<DropdownMenuRadioItem />
+		</DropdownMenuRadioGroup>
+		<DropdownMenuSub>
+			<DropdownMenuSubTrigger />
+			<DropdownMenuSubContent>
+				<DropdownMenuItem />
+			</DropdownMenuSubContent>
+		</DropdownMenuSub>
+	</DropdownMenuContent>
+</DropdownMenu>
+```
