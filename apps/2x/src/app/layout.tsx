@@ -90,7 +90,7 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => (
 				disableTransitionOnChange
 				enableColorScheme
 			>
-				<div className="Root flex flex-1 flex-col" data-vaul-drawer-wrapper="">
+				<div className="root flex flex-1 flex-col" data-vaul-drawer-wrapper="">
 					<Header />
 					<main className="flex-1">{children}</main>
 					<Footer />
