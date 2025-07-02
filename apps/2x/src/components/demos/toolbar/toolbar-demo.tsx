@@ -29,6 +29,30 @@ import {
 	ToolbarSeparator,
 } from "@/components/ui/toolbar"
 
+const models = [
+	{
+		label: "Select a model",
+		value: null,
+	},
+	{
+		label: "Grok 3",
+		value: "grok-3",
+	},
+	{
+		label: "Claude 3.7 Sonnet",
+		value: "claude-3.7-sonnet",
+	},
+
+	{
+		label: "GPT-4o",
+		value: "gpt-4o",
+	},
+	{
+		label: "04-mini",
+		value: "o4-mini",
+	},
+]
+
 export default function ToolbarDemo() {
 	return (
 		<Toolbar>
@@ -61,16 +85,16 @@ export default function ToolbarDemo() {
 
 			<ToolbarSeparator />
 
-			<Select defaultValue="grok-3">
+			<Select items={models}>
 				<SelectTrigger className="w-40 md:w-52">
-					<SelectValue className="truncate" placeholder="Select a model" />
+					<SelectValue className="truncate" />
 				</SelectTrigger>
 				<SelectContent className="w-52">
-					<SelectItem value="claude-3.7-sonnet">claude-3.7-sonnet</SelectItem>
-					<SelectItem value="claude-3.5-sonnet">claude-3.5-sonnet</SelectItem>
-					<SelectItem value="gpt-4o">gpt-4o</SelectItem>
-					<SelectItem value="o3-mini">o3-mini</SelectItem>
-					<SelectItem value="grok-3">grok-3</SelectItem>
+					{models.map((model) => (
+						<SelectItem key={model.value} value={model.value}>
+							{model.label}
+						</SelectItem>
+					))}
 				</SelectContent>
 			</Select>
 

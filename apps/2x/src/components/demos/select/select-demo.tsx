@@ -6,17 +6,38 @@ import {
 	SelectValue,
 } from "@/components/ui/select"
 
+const items = [
+	{
+		label: "Select a fruit",
+		value: null,
+	},
+	{
+		label: "Apple",
+		value: "apple",
+	},
+	{
+		label: "Banana",
+		value: "banana",
+	},
+	{
+		label: "Cherry",
+		value: "cherry",
+	},
+]
+
 export default function SelectDemo() {
 	return (
 		<div className="w-80">
-			<Select>
+			<Select items={items}>
 				<SelectTrigger className="w-full">
-					<SelectValue placeholder="Select a fruit" />
+					<SelectValue />
 				</SelectTrigger>
 				<SelectContent>
-					<SelectItem value="apple">Apple</SelectItem>
-					<SelectItem value="banana">Banana</SelectItem>
-					<SelectItem value="cherry">Cherry</SelectItem>
+					{items.map((item) => (
+						<SelectItem key={item.value} value={item.value}>
+							{item.label}
+						</SelectItem>
+					))}
 				</SelectContent>
 			</Select>
 		</div>

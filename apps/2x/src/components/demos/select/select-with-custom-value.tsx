@@ -38,7 +38,7 @@ export default function SelectWithCustomValue() {
 				onValueChange={(value) => setSelected(value as keyof typeof users)}
 			>
 				<SelectTrigger className="w-full">
-					<SelectValue placeholder="Assign to">
+					<SelectValue>
 						{() =>
 							selected ? (
 								<div className="flex items-center gap-2">

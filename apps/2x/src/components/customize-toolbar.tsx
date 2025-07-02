@@ -180,7 +180,7 @@ export const CustomizeToolbar = ({
 										value={theme.shade}
 									>
 										<SelectTrigger className="w-full">
-											<SelectValue placeholder="Shade">
+											<SelectValue>
 												{() =>
 													theme.shade ? (
 														<ColorItem
@@ -221,7 +221,7 @@ export const CustomizeToolbar = ({
 										}
 									>
 										<SelectTrigger className="w-full">
-											<SelectValue placeholder="Appearance">
+											<SelectValue>
 												{() => (theme.flat ? "Flat" : "Faded")}
 											</SelectValue>
 										</SelectTrigger>
@@ -250,7 +250,7 @@ export const CustomizeToolbar = ({
 										value={theme.primaryColor}
 									>
 										<SelectTrigger className="w-full">
-											<SelectValue placeholder="Primary Color">
+											<SelectValue>
 												{() =>
 													theme.primaryColor ? (
 														<ColorItem
@@ -301,7 +301,7 @@ export const CustomizeToolbar = ({
 										value={theme.radius}
 									>
 										<SelectTrigger className="w-full">
-											<SelectValue placeholder="Radius">
+											<SelectValue>
 												{() =>
 													typeof theme.radius === "number" ? (
 														<div className="flex items-center gap-2">

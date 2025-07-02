@@ -81,7 +81,7 @@ export const CalendarInterface = () => {
 							<SelectTrigger className="w-full justify-between">
 								<div className="flex items-center gap-2">
 									<GlobeIcon className="size-4" />
-									<SelectValue placeholder="Select timezone" />
+									<SelectValue />
 								</div>
 							</SelectTrigger>
 							<SelectContent className="max-h-[300px]">

@@ -3,7 +3,7 @@
 import * as React from "react"
 import { ChevronsUpDownIcon } from "lucide-react"
 
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
+import { Avatar, AvatarFallback } from "@/components/ui/avatar"
 import { Button } from "@/components/ui/button"
 import {
 	Card,
@@ -62,7 +62,7 @@ function RoleCombobox({ member }: RoleComboboxProps) {
 	const [open, setOpen] = React.useState(false)
 
 	return (
-		<Popover open={open} onOpenChange={setOpen} modal>
+		<Popover open={open} onOpenChange={setOpen}>
 			<PopoverTrigger
 				render={(props) => (
 					<Button
@@ -114,28 +114,24 @@ const members = [
 		name: "Micheal Smith",
 		email: "micheal@example.com",
 		role: "owner",
-		image: "/avatars/avatar-m1.png",
 	},
 	{
 		id: "2",
 		name: "Emma Adams",
 		email: "emma@example.com",
 		role: "developer",
-		image: "/avatars/avatar-w2.png",
 	},
 	{
 		id: "3",
 		name: "Sam Johnson",
 		email: "sam@example.com",
 		role: "billing",
-		image: "/avatars/avatar-m2.png",
 	},
 	{
 		id: "4",
 		name: "Brendan Eich",
 		email: "brendan@example.com",
 		role: "viewer",
-		image: "/avatars/avatar-m3.png",
 	},
 ]
 
@@ -156,7 +152,6 @@ export function ManageMembersCard() {
 					>
 						<div className="flex items-center gap-4">
 							<Avatar>
-								<AvatarImage src={member.image} />
 								<AvatarFallback>
 									{member.name
 										.split(" ")
