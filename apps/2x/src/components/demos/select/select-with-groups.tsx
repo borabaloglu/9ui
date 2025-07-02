@@ -8,12 +8,43 @@ import {
 	SelectValue,
 } from "@/components/ui/select"
 
+const items = [
+	{
+		label: "Select an option",
+		value: null,
+	},
+	{
+		label: "Apple",
+		value: "apple",
+	},
+	{
+		label: "Banana",
+		value: "banana",
+	},
+	{
+		label: "Cherry",
+		value: "cherry",
+	},
+	{
+		label: "Carrot",
+		value: "carrot",
+	},
+	{
+		label: "Potato",
+		value: "potato",
+	},
+	{
+		label: "Tomato",
+		value: "tomato",
+	},
+]
+
 export default function SelectWithGroups() {
 	return (
 		<div className="w-80">
-			<Select>
+			<Select items={items}>
 				<SelectTrigger className="w-full">
-					<SelectValue placeholder="Select an option" />
+					<SelectValue />
 				</SelectTrigger>
 				<SelectContent>
 					<SelectGroup>

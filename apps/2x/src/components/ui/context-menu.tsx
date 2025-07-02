@@ -1,7 +1,6 @@
 "use client"
 
 import * as React from "react"
-import { Menu as BaseMenu } from "@base-ui-components/react"
 import { ContextMenu as BaseContextMenu } from "@base-ui-components/react/context-menu"
 import { CheckIcon, ChevronRightIcon, CircleIcon } from "lucide-react"
 
@@ -122,9 +121,9 @@ function ContextMenuCheckboxItem({
 			{...props}
 		>
 			<span className="pointer-events-none absolute left-2 flex size-3.5 items-center justify-center">
-				<BaseContextMenu.ItemIndicator>
+				<BaseContextMenu.CheckboxItemIndicator>
 					<CheckIcon className="size-4" />
-				</BaseContextMenu.ItemIndicator>
+				</BaseContextMenu.CheckboxItemIndicator>
 			</span>
 			{children}
 		</BaseContextMenu.CheckboxItem>
@@ -206,9 +205,9 @@ function ContextMenuShortcut({
 
 function ContextMenuSub({
 	...props
-}: React.ComponentProps<typeof BaseMenu.Root>) {
+}: React.ComponentProps<typeof BaseContextMenu.SubmenuRoot>) {
 	return (
-		<BaseMenu.Root
+		<BaseContextMenu.SubmenuRoot
 			delay={0}
 			closeDelay={0}
 			data-slot="context-menu-sub"
@@ -222,11 +221,11 @@ function ContextMenuSubTrigger({
 	inset,
 	children,
 	...props
-}: React.ComponentProps<typeof BaseMenu.SubmenuTrigger> & {
+}: React.ComponentProps<typeof BaseContextMenu.SubmenuTrigger> & {
 	inset?: boolean
 }) {
 	return (
-		<BaseMenu.SubmenuTrigger
+		<BaseContextMenu.SubmenuTrigger
 			data-slot="context-menu-sub-trigger"
 			data-inset={inset}
 			className={cn(
@@ -237,7 +236,7 @@ function ContextMenuSubTrigger({
 		>
 			{children}
 			<ChevronRightIcon className="ml-auto size-4" />
-		</BaseMenu.SubmenuTrigger>
+		</BaseContextMenu.SubmenuTrigger>
 	)
 }
 
@@ -246,9 +245,9 @@ function ContextMenuSubContent({
 	sideOffset = 0,
 	align = "start",
 	...props
-}: React.ComponentProps<typeof BaseMenu.Popup> & {
-	align?: BaseMenu.Positioner.Props["align"]
-	sideOffset?: BaseMenu.Positioner.Props["sideOffset"]
+}: React.ComponentProps<typeof BaseContextMenu.Popup> & {
+	align?: BaseContextMenu.Positioner.Props["align"]
+	sideOffset?: BaseContextMenu.Positioner.Props["sideOffset"]
 }) {
 	return (
 		<ContextMenuPortal>
@@ -257,7 +256,7 @@ function ContextMenuSubContent({
 				sideOffset={sideOffset}
 				align={align}
 			>
-				<BaseMenu.Popup
+				<BaseContextMenu.Popup
 					data-slot="context-menu-sub-content"
 					className={cn(
 						"bg-popover text-popover-foreground data-open:animate-in data-open:fade-in-0 data-open:zoom-in-95 data-closed:animate-out data-closed:fade-out-0 data-closed:zoom-out-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 z-50 min-w-[12rem] origin-[var(--transform-origin)] overflow-hidden rounded-md border p-1 shadow-md",

@@ -199,7 +199,7 @@ function DropdownMenuSub({
 	...props
 }: React.ComponentProps<typeof BaseMenu.Root>) {
 	return (
-		<BaseMenu.Root
+		<BaseMenu.SubmenuRoot
 			closeDelay={0}
 			delay={0}
 			data-slot="dropdown-menu-sub"
