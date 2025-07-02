@@ -219,9 +219,11 @@ function MenubarShortcut({
 	)
 }
 
-function MenubarSub({ ...props }: React.ComponentProps<typeof BaseMenu.Root>) {
+function MenubarSub({
+	...props
+}: React.ComponentProps<typeof BaseMenu.SubmenuRoot>) {
 	return (
-		<BaseMenu.Root
+		<BaseMenu.SubmenuRoot
 			delay={0}
 			closeDelay={0}
 			data-slot="menubar-sub"

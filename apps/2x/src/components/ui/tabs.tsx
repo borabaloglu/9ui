@@ -90,10 +90,10 @@ function TabIndicator({
 		<BaseTabs.Indicator
 			data-slot="tab-indicator"
 			className={cn(
-				"absolute left-0 w-[var(--active-tab-width)] translate-x-[var(--active-tab-left)] -translate-y-1/2 transition-all duration-200 ease-in-out",
+				"absolute left-0 w-[var(--active-tab-width)] translate-x-[var(--active-tab-left)] -translate-y-1/2 transition-all duration-300 ease-in-out",
 				variant === "underline"
 					? "bg-primary top-full z-10 h-px"
-					: "bg-input top-1/2 h-[var(--active-tab-height)] rounded-md border shadow-sm",
+					: "bg-input top-1/2 -z-10 h-[var(--active-tab-height)] rounded-md border shadow-sm",
 				className
 			)}
 			{...props}
