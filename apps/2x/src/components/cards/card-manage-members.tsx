@@ -62,7 +62,7 @@ function RoleCombobox({ member }: RoleComboboxProps) {
 	const [open, setOpen] = React.useState(false)
 
 	return (
-		<Popover open={open} onOpenChange={setOpen} modal>
+		<Popover open={open} onOpenChange={setOpen}>
 			<PopoverTrigger
 				render={(props) => (
 					<Button

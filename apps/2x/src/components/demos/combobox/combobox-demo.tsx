@@ -51,7 +51,7 @@ export default function ComboboxDemo() {
 	const [value, setValue] = React.useState("todo")
 
 	return (
-		<Popover open={open} onOpenChange={setOpen} modal>
+		<Popover open={open} onOpenChange={setOpen}>
 			<PopoverTrigger
 				render={(props) => (
 					<Button
