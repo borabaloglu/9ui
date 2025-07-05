@@ -87,11 +87,7 @@ function PopoverContent({
 }) {
 	return (
 		<PopoverPortal>
-			<PopoverPositioner
-				sideOffset={sideOffset}
-				align={align}
-				positionMethod="fixed"
-			>
+			<PopoverPositioner sideOffset={sideOffset} align={align}>
 				<BasePopover.Popup
 					data-slot="popover-content"
 					className={cn(
