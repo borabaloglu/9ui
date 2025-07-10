@@ -368,6 +368,19 @@
 			]
 		},
 		{
+			"name": "number-field",
+			"type": "registry:ui",
+			"dependencies": [],
+			"registryDependencies": [],
+			"files": [
+				{
+					"path": "src/components/ui/number-field.tsx",
+					"type": "registry:ui",
+					"target": ""
+				}
+			]
+		},
+		{
 			"name": "popover",
 			"type": "registry:ui",
 			"dependencies": [],
