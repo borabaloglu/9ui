@@ -381,6 +381,20 @@ export const contentRegistry: ContentRegistry = {
 			{ label: "Meter", path: "/docs/components/meter" },
 		],
 	},
+	"components/number-field": {
+		type: "file",
+		path: "components/number-field.mdx",
+		meta: {
+			title: "Number Field",
+			description:
+				"A numeric input with increment, decrement, and scrub controls.",
+		},
+		urlPath: "components/number-field",
+		breadcrumbs: [
+			{ label: "Components", path: "/docs/components" },
+			{ label: "Number Field", path: "/docs/components/number-field" },
+		],
+	},
 	"components/popover": {
 		type: "file",
 		path: "components/popover.mdx",
