@@ -184,6 +184,11 @@ export const navConfig: NavConfig = {
 					label: "New",
 				},
 				{
+					title: "Navigation Menu",
+					href: "/docs/components/navigation-menu",
+					label: "New",
+				},
+				{
 					title: "Number Field",
 					href: "/docs/components/number-field",
 					disabled: true,

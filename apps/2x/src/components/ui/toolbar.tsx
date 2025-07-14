@@ -14,7 +14,7 @@ function Toolbar({
 	return (
 		<BaseToolbar.Root
 			className={cn(
-				"bg-popover outline-border flex items-center gap-1 rounded-md p-1 outline",
+				"bg-popover outline-border flex items-center gap-1 rounded-md p-1 shadow-xs outline",
 				className
 			)}
 			{...props}
