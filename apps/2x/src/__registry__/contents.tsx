@@ -381,6 +381,19 @@ export const contentRegistry: ContentRegistry = {
 			{ label: "Meter", path: "/docs/components/meter" },
 		],
 	},
+	"components/navigation-menu": {
+		type: "file",
+		path: "components/navigation-menu.mdx",
+		meta: {
+			title: "Navigation Menu",
+			description: "A menu for navigating between different sections or pages.",
+		},
+		urlPath: "components/navigation-menu",
+		breadcrumbs: [
+			{ label: "Components", path: "/docs/components" },
+			{ label: "Navigation Menu", path: "/docs/components/navigation-menu" },
+		],
+	},
 	"components/number-field": {
 		type: "file",
 		path: "components/number-field.mdx",

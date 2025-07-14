@@ -182,6 +182,11 @@ export const navConfig: NavConfig = {
 					href: "/docs/components/meter",
 				},
 				{
+					title: "Navigation Menu",
+					href: "/docs/components/navigation-menu",
+					label: "New",
+				},
+				{
 					title: "Number Field",
 					href: "/docs/components/number-field",
 					label: "New",
