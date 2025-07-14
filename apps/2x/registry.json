@@ -368,6 +368,19 @@
 			]
 		},
 		{
+			"name": "navigation-menu",
+			"type": "registry:ui",
+			"dependencies": [],
+			"registryDependencies": [],
+			"files": [
+				{
+					"path": "src/components/ui/navigation-menu.tsx",
+					"type": "registry:ui",
+					"target": ""
+				}
+			]
+		},
+		{
 			"name": "number-field",
 			"type": "registry:ui",
 			"dependencies": [],
