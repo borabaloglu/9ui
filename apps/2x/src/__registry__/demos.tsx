@@ -742,6 +742,16 @@ export const demoRegistry: DemoRegistry = {
 		category: "navigation-menu",
 		path: "src/components/demos/navigation-menu/navigation-menu-demo.tsx",
 	},
+	"number-field-demo": {
+		source:
+			'import { NumberField, NumberFieldScrubArea } from "@/components/ui/number-field"\n\nexport default function NumberFieldDemo() {\n\treturn (\n\t\t<NumberField className="mx-auto" defaultValue={5} min={0} max={100}>\n\t\t\t<NumberFieldScrubArea />\n\t\t</NumberField>\n\t)\n}\n',
+		component: React.lazy(
+			() => import("@/components/demos/number-field/number-field-demo")
+		),
+		title: "number-field-demo",
+		category: "number-field",
+		path: "src/components/demos/number-field/number-field-demo.tsx",
+	},
 	"popover-demo": {
 		source:
 			'import { CopyIcon, Share2Icon } from "lucide-react"\nimport { toast } from "sonner"\n\nimport { Button } from "@/components/ui/button"\nimport { Input } from "@/components/ui/input"\nimport {\n\tPopover,\n\tPopoverContent,\n\tPopoverDescription,\n\tPopoverHeader,\n\tPopoverTitle,\n\tPopoverTrigger,\n} from "@/components/ui/popover"\n\nexport default function PopoverDemo() {\n\tconst copyToClipboard = () => {\n\t\ttoast.success("Copied to clipboard")\n\t\tnavigator.clipboard.writeText(window.location.href)\n\t}\n\n\treturn (\n\t\t<Popover>\n\t\t\t<PopoverTrigger\n\t\t\t\trender={(props) => (\n\t\t\t\t\t<Button {...props} variant="outline" size="icon">\n\t\t\t\t\t\t<Share2Icon />\n\t\t\t\t\t</Button>\n\t\t\t\t)}\n\t\t\t/>\n\t\t\t<PopoverContent className="w-[calc(100vw-4rem)] sm:w-[500px]">\n\t\t\t\t<PopoverHeader>\n\t\t\t\t\t<PopoverTitle>Share</PopoverTitle>\n\t\t\t\t\t<PopoverDescription>Share this component.</PopoverDescription>\n\t\t\t\t</PopoverHeader>\n\t\t\t\t<div className="mt-2 flex w-full gap-2">\n\t\t\t\t\t<Input\n\t\t\t\t\t\tinputContainerClassName="w-full"\n\t\t\t\t\t\tvalue={window.location.href}\n\t\t\t\t\t\tautoFocus={false}\n\t\t\t\t\t\treadOnly\n\t\t\t\t\t/>\n\t\t\t\t\t<Button className="shrink-0" size="icon" onClick={copyToClipboard}>\n\t\t\t\t\t\t<CopyIcon />\n\t\t\t\t\t</Button>\n\t\t\t\t</div>\n\t\t\t</PopoverContent>\n\t\t</Popover>\n\t)\n}\n',

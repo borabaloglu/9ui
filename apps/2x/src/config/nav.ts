@@ -114,7 +114,6 @@ export const navConfig: NavConfig = {
 				{
 					title: "Checkbox Group",
 					href: "/docs/components/checkbox-group",
-					label: "New",
 				},
 				{
 					title: "Collapsible",
@@ -181,7 +180,6 @@ export const navConfig: NavConfig = {
 				{
 					title: "Meter",
 					href: "/docs/components/meter",
-					label: "New",
 				},
 				{
 					title: "Navigation Menu",
@@ -191,8 +189,7 @@ export const navConfig: NavConfig = {
 				{
 					title: "Number Field",
 					href: "/docs/components/number-field",
-					disabled: true,
-					label: "Soon",
+					label: "New",
 				},
 				{
 					title: "Popover",
