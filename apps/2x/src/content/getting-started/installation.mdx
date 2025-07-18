@@ -13,11 +13,11 @@ Follow the [shadcn installation guide](https://ui.shadcn.com/docs/installation) 
 npm install @base-ui-components/react
 ```
 
-<Step>Add `Root` class to your app layout.</Step>
+<Step>Add `root` class to your app layout.</Step>
 
 ```tsx {2} title="layout.tsx"
 <body>
-	<div className="Root">{children}</div>
+	<div className="root">{children}</div>
 </body>
 ```
 
@@ -31,8 +31,8 @@ npm install @base-ui-components/react
 {/* Existing code */}
 
 @layer base {
-	.Root {
-		@apply bg-background isolate;
+	.root {
+		@apply isolate;
 	}
 }
 ```
