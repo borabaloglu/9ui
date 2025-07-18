@@ -10,6 +10,7 @@ import { ThemeProvider } from "next-themes"
 import { Footer } from "@/components/footer"
 import { Header } from "@/components/header"
 import { Toaster } from "@/components/ui/sonner"
+import { ToastProvider } from "@/components/ui/toast"
 
 import { siteConfig } from "@/config/site"
 
@@ -90,11 +91,16 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => (
 				disableTransitionOnChange
 				enableColorScheme
 			>
-				<div className="root flex flex-1 flex-col" data-vaul-drawer-wrapper="">
-					<Header />
-					<main className="flex-1">{children}</main>
-					<Footer />
-				</div>
+				<ToastProvider>
+					<div
+						className="root flex flex-1 flex-col"
+						data-vaul-drawer-wrapper=""
+					>
+						<Header />
+						<main className="flex-1">{children}</main>
+						<Footer />
+					</div>
+				</ToastProvider>
 				<Toaster />
 			</ThemeProvider>
 		</body>

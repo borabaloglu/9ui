@@ -254,8 +254,7 @@ export const navConfig: NavConfig = {
 				{
 					title: "Toast",
 					href: "/docs/components/toast",
-					disabled: true,
-					label: "Soon",
+					label: "New",
 				},
 				{
 					title: "Toggle",

@@ -1084,6 +1084,44 @@ export const demoRegistry: DemoRegistry = {
 		category: "theme-toggle",
 		path: "src/components/demos/theme-toggle/theme-toggle.tsx",
 	},
+	"toast-action": {
+		source:
+			'"use client"\n\nimport { useToast } from "@/hooks/use-toast"\n\nimport { Button } from "@/components/ui/button"\n\nexport default function ToastActionDemo() {\n\tconst toast = useToast()\n\n\treturn (\n\t\t<Button\n\t\t\tonClick={() => {\n\t\t\t\tconst id = toast.add({\n\t\t\t\t\ttitle: "Your email has been sent",\n\t\t\t\t\tdescription: "We\'ll get back to you as soon as possible",\n\t\t\t\t\tactionProps: {\n\t\t\t\t\t\tchildren: "Unsend",\n\t\t\t\t\t\tonClick: () => {\n\t\t\t\t\t\t\ttoast.close(id)\n\t\t\t\t\t\t\ttoast.add({\n\t\t\t\t\t\t\t\ttitle: "Email unsent",\n\t\t\t\t\t\t\t\ttype: "success",\n\t\t\t\t\t\t\t})\n\t\t\t\t\t\t},\n\t\t\t\t\t},\n\t\t\t\t})\n\t\t\t}}\n\t\t>\n\t\t\tShow Toast\n\t\t</Button>\n\t)\n}\n',
+		component: React.lazy(
+			() => import("@/components/demos/toast/toast-action")
+		),
+		title: "toast-action",
+		category: "toast",
+		path: "src/components/demos/toast/toast-action.tsx",
+	},
+	"toast-demo": {
+		source:
+			'"use client"\n\nimport { useToast } from "@/hooks/use-toast"\n\nimport { Button } from "@/components/ui/button"\n\nexport default function ToastDemo() {\n\tconst toast = useToast()\n\n\treturn (\n\t\t<Button\n\t\t\tonClick={() =>\n\t\t\t\ttoast.add({\n\t\t\t\t\ttitle: "Your request has been sent",\n\t\t\t\t\tdescription: "We\'ll get back to you as soon as possible",\n\t\t\t\t})\n\t\t\t}\n\t\t>\n\t\t\tShow Toast\n\t\t</Button>\n\t)\n}\n',
+		component: React.lazy(() => import("@/components/demos/toast/toast-demo")),
+		title: "toast-demo",
+		category: "toast",
+		path: "src/components/demos/toast/toast-demo.tsx",
+	},
+	"toast-promise": {
+		source:
+			'"use client"\n\nimport { useToast } from "@/hooks/use-toast"\n\nimport { Button } from "@/components/ui/button"\n\nexport default function ToastPromiseDemo() {\n\tconst toast = useToast()\n\n\treturn (\n\t\t<Button\n\t\t\tonClick={() =>\n\t\t\t\ttoast.promise(\n\t\t\t\t\tnew Promise<string>((resolve) => {\n\t\t\t\t\t\tsetTimeout(() => {\n\t\t\t\t\t\t\tresolve("Request sent")\n\t\t\t\t\t\t}, 2000)\n\t\t\t\t\t}),\n\t\t\t\t\t{\n\t\t\t\t\t\tloading: "Sending request...",\n\t\t\t\t\t\tsuccess: (data: string) => `Success: ${data}`,\n\t\t\t\t\t\terror: (err: Error) => `Error: ${err.message}`,\n\t\t\t\t\t}\n\t\t\t\t)\n\t\t\t}\n\t\t>\n\t\t\tShow Toast\n\t\t</Button>\n\t)\n}\n',
+		component: React.lazy(
+			() => import("@/components/demos/toast/toast-promise")
+		),
+		title: "toast-promise",
+		category: "toast",
+		path: "src/components/demos/toast/toast-promise.tsx",
+	},
+	"toast-rich-colors": {
+		source:
+			'"use client"\n\nimport { useToast } from "@/hooks/use-toast"\n\nimport { Button } from "@/components/ui/button"\n\nexport default function ToastRichColorsDemo() {\n\tconst toast = useToast()\n\n\treturn (\n\t\t<div className="grid grid-cols-2 gap-2">\n\t\t\t<Button\n\t\t\t\tonClick={() =>\n\t\t\t\t\ttoast.add({\n\t\t\t\t\t\ttitle: "Success",\n\t\t\t\t\t\ttype: "success",\n\t\t\t\t\t})\n\t\t\t\t}\n\t\t\t>\n\t\t\t\tsuccess\n\t\t\t</Button>\n\t\t\t<Button\n\t\t\t\tonClick={() =>\n\t\t\t\t\ttoast.add({\n\t\t\t\t\t\ttitle: "Error",\n\t\t\t\t\t\ttype: "error",\n\t\t\t\t\t})\n\t\t\t\t}\n\t\t\t>\n\t\t\t\terror\n\t\t\t</Button>\n\t\t\t<Button\n\t\t\t\tonClick={() =>\n\t\t\t\t\ttoast.add({\n\t\t\t\t\t\ttitle: "Warning",\n\t\t\t\t\t\ttype: "warning",\n\t\t\t\t\t})\n\t\t\t\t}\n\t\t\t>\n\t\t\t\twarning\n\t\t\t</Button>\n\t\t\t<Button\n\t\t\t\tonClick={() =>\n\t\t\t\t\ttoast.add({\n\t\t\t\t\t\ttitle: "Info",\n\t\t\t\t\t\ttype: "info",\n\t\t\t\t\t})\n\t\t\t\t}\n\t\t\t>\n\t\t\t\tinfo\n\t\t\t</Button>\n\t\t</div>\n\t)\n}\n',
+		component: React.lazy(
+			() => import("@/components/demos/toast/toast-rich-colors")
+		),
+		title: "toast-rich-colors",
+		category: "toast",
+		path: "src/components/demos/toast/toast-rich-colors.tsx",
+	},
 	"toggle-group-demo": {
 		source:
 			'import { AlignCenterIcon, AlignLeftIcon, AlignRightIcon } from "lucide-react"\n\nimport { Toggle } from "@/components/ui/toggle"\nimport { ToggleGroup } from "@/components/ui/toggle-group"\n\nexport default function ToggleGroupDemo() {\n\treturn (\n\t\t<ToggleGroup>\n\t\t\t<Toggle value="left">\n\t\t\t\t<AlignLeftIcon />\n\t\t\t</Toggle>\n\t\t\t<Toggle value="center">\n\t\t\t\t<AlignCenterIcon />\n\t\t\t</Toggle>\n\t\t\t<Toggle value="right">\n\t\t\t\t<AlignRightIcon />\n\t\t\t</Toggle>\n\t\t</ToggleGroup>\n\t)\n}\n',
