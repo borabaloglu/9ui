@@ -14,6 +14,16 @@ import { buttonVariants } from "@/components/ui/button"
 
 import { cn } from "@/lib/utils"
 
+const TOAST_ICONS: {
+	[key: string]: React.ReactNode
+} = {
+	loading: <Loader className="animate-spin" />,
+	success: <CircleCheck />,
+	error: <CircleAlert />,
+	info: <Info />,
+	warning: <TriangleAlert />,
+}
+
 function ToastProvider({
 	children,
 	...props
@@ -65,22 +75,14 @@ function ToastList() {
 						}}
 					>
 						<div className="flex items-center gap-2">
-							<div
-								className="shrink-0 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4"
-								data-slot="toast-icon"
-							>
-								{toast.type === "loading" && (
-									<Loader className="size-3.5 animate-spin" />
-								)}
-								{toast.type === "success" && (
-									<CircleCheck className="size-3.5" />
-								)}
-								{toast.type === "error" && <CircleAlert className="size-3.5" />}
-								{toast.type === "info" && <Info className="size-3.5" />}
-								{toast.type === "warning" && (
-									<TriangleAlert className="size-3.5" />
-								)}
-							</div>
+							{toast.type && TOAST_ICONS[toast.type] && (
+								<div
+									className="shrink-0 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-3.5"
+									data-slot="toast-icon"
+								>
+									{TOAST_ICONS[toast.type]}
+								</div>
+							)}
 
 							<div className="flex flex-col">
 								<Toast.Title
