@@ -9,6 +9,7 @@ import { ThemeProvider } from "next-themes"
 
 import { Footer } from "@/components/footer"
 import { Header } from "@/components/header"
+import { NewVersionBanner } from "@/components/new-version-banner"
 import { Toaster } from "@/components/ui/sonner"
 
 import { siteConfig } from "@/config/site"
@@ -91,6 +92,7 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => (
 				enableColorScheme
 			>
 				<div className="Root flex flex-1 flex-col" data-vaul-drawer-wrapper="">
+					<NewVersionBanner />
 					<Header />
 					<main className="flex-1">{children}</main>
 					<Footer />

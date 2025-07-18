@@ -1,8 +1,8 @@
 export const siteConfig = {
 	name: "9ui",
-	url: "https://9ui.dev",
-	domain: "9ui.dev",
-	ogImage: "https://9ui.dev/og.jpg?v=3",
+	url: "https://1x.9ui.dev",
+	domain: "1x.9ui.dev",
+	ogImage: "https://1x.9ui.dev/og.jpg?v=3",
 	description:
 		"Beautiful, customizable components built with Base UI and Tailwind CSS.",
 	links: {
