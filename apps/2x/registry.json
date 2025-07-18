@@ -589,6 +589,23 @@
 			]
 		},
 		{
+			"name": "toast",
+			"type": "registry:ui",
+			"dependencies": [],
+			"registryDependencies": [],
+			"files": [
+				{
+					"path": "src/components/ui/toast.tsx",
+					"type": "registry:ui",
+					"target": ""
+				},
+				{
+					"path": "src/hooks/use-toast.tsx",
+					"type": "registry:hook"
+				}
+			]
+		},
+		{
 			"name": "toggle-group",
 			"type": "registry:ui",
 			"dependencies": [],

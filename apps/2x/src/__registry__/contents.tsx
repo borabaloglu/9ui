@@ -603,6 +603,19 @@ export const contentRegistry: ContentRegistry = {
 			{ label: "Textarea", path: "/docs/components/textarea" },
 		],
 	},
+	"components/toast": {
+		type: "file",
+		path: "components/toast.mdx",
+		meta: {
+			title: "Toast",
+			description: "Displays a message to the user in a toast.",
+		},
+		urlPath: "components/toast",
+		breadcrumbs: [
+			{ label: "Components", path: "/docs/components" },
+			{ label: "Toast", path: "/docs/components/toast" },
+		],
+	},
 	"components/toggle-group": {
 		type: "file",
 		path: "components/toggle-group.mdx",
