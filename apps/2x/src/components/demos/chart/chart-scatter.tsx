@@ -61,7 +61,7 @@ export default function ChartScatterDemo() {
 				</CardDescription>
 			</CardHeader>
 			<CardContent>
-				<ChartContainer config={chartConfig} className="max-h-[300px] w-full">
+				<ChartContainer config={chartConfig} className="h-[300px] w-full">
 					<ScatterChart>
 						<CartesianGrid strokeDasharray="3 3" />
 						<XAxis

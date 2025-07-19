@@ -53,7 +53,7 @@ export default function ChartRadarDemo() {
 				</CardDescription>
 			</CardHeader>
 			<CardContent className="flex-1">
-				<ChartContainer config={chartConfig} className="max-h-[300px] w-full">
+				<ChartContainer config={chartConfig} className="h-[300px] w-full">
 					<RadarChart data={chartData}>
 						<PolarGrid />
 						<PolarAngleAxis dataKey="category" />
