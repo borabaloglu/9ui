@@ -55,7 +55,7 @@ export default function ChartLineDemo() {
 				<CardDescription>User metrics for first half of 2024</CardDescription>
 			</CardHeader>
 			<CardContent className="flex-1">
-				<ChartContainer config={chartConfig} className="max-h-[300px] w-full">
+				<ChartContainer config={chartConfig} className="h-[300px] w-full">
 					<LineChart
 						data={chartData}
 						margin={{

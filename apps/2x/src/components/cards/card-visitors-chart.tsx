@@ -50,7 +50,7 @@ export function VisitorsChartCard() {
 				<CardDescription>Desktop vs Mobile traffic for 2024</CardDescription>
 			</CardHeader>
 			<CardContent className="flex-1">
-				<ChartContainer config={chartConfig} className="max-h-[250px] w-full">
+				<ChartContainer config={chartConfig} className="h-[250px] w-full">
 					<AreaChart
 						accessibilityLayer
 						data={chartData}

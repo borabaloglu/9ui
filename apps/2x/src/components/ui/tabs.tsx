@@ -52,7 +52,7 @@ function TabsList({
 		<BaseTabs.List
 			data-slot="tabs-list"
 			className={cn(
-				"text-muted-foreground relative inline-flex h-9 w-fit items-center justify-center gap-x-1 p-1",
+				"text-muted-foreground relative z-0 inline-flex h-9 w-fit items-center justify-center gap-x-1 p-1",
 				variant === "capsule" ? "bg-muted rounded-lg" : "",
 				className
 			)}
@@ -93,7 +93,7 @@ function TabIndicator({
 				"absolute left-0 w-[var(--active-tab-width)] translate-x-[var(--active-tab-left)] -translate-y-1/2 transition-all duration-300 ease-in-out",
 				variant === "underline"
 					? "bg-primary top-full z-10 h-px"
-					: "bg-input top-1/2 -z-10 h-[var(--active-tab-height)] rounded-md border shadow-sm",
+					: "bg-input top-1/2 -z-[1] h-[var(--active-tab-height)] rounded-md border shadow-sm",
 				className
 			)}
 			{...props}

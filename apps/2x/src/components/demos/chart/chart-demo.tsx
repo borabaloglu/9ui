@@ -55,7 +55,7 @@ export default function ChartDemo() {
 				<CardDescription>Performance overview for 2024</CardDescription>
 			</CardHeader>
 			<CardContent className="flex-1">
-				<ChartContainer config={chartConfig} className="max-h-[300px] w-full">
+				<ChartContainer config={chartConfig} className="h-[300px] w-full">
 					<BarChart accessibilityLayer data={chartData}>
 						<CartesianGrid vertical={false} />
 						<XAxis

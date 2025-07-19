@@ -62,7 +62,7 @@ export default function ChartPieDemo() {
 				<CardDescription>Department budget allocation for 2024</CardDescription>
 			</CardHeader>
 			<CardContent className="flex-1">
-				<ChartContainer config={chartConfig} className="max-h-[300px] w-full">
+				<ChartContainer config={chartConfig} className="h-[300px] w-full">
 					<PieChart>
 						<ChartTooltip
 							cursor={false}

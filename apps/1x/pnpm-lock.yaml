@@ -45,8 +45,8 @@ importers:
         specifier: ^2.1.1
         version: 2.1.1
       cmdk-base:
-        specifier: ^0.0.4
-        version: 0.0.4(@base-ui-components/react@1.0.0-alpha.8(@types/react@18.3.23)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+        specifier: ^0.0.6
+        version: 0.0.6(@base-ui-components/react@1.0.0-alpha.8(@types/react@18.3.23)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       dayjs:
         specifier: ^1.11.13
         version: 1.11.13
@@ -1244,10 +1244,10 @@ packages:
     resolution: {integrity: sha512-eYm0QWBtUrBWZWG0d386OGAw16Z995PiOVo2B7bjWSbHedGl5e0ZWaq65kOGgUSNesEIDkB9ISbTg/JK9dhCZA==}
     engines: {node: '>=6'}
 
-  cmdk-base@0.0.4:
-    resolution: {integrity: sha512-Xt6VqtCfmMfVggzMBBviKFy05p6Y00rTkSr4xu+Cl3P+QM9GvTG2wRsv1hCfWXN2yE8V+6MrOpN0b0W/xTrwjg==}
+  cmdk-base@0.0.6:
+    resolution: {integrity: sha512-3BZHSa0rHYWV5TJRruXYp2YXG5VllKOmtT8pcpBwnAxkW3G8GkkkoQyg0pRDbgUePCfFhENj2umlSfnN6Qemmw==}
     peerDependencies:
-      '@base-ui-components/react': 1.0.0-alpha.8
+      '@base-ui-components/react': 1.0.0-beta.1
       react: ^18 || ^19 || ^19.0.0-rc
       react-dom: ^18 || ^19 || ^19.0.0-rc
 
@@ -4229,7 +4229,7 @@ snapshots:
 
   clsx@2.1.1: {}
 
-  cmdk-base@0.0.4(@base-ui-components/react@1.0.0-alpha.8(@types/react@18.3.23)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1):
+  cmdk-base@0.0.6(@base-ui-components/react@1.0.0-alpha.8(@types/react@18.3.23)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1):
     dependencies:
       '@base-ui-components/react': 1.0.0-alpha.8(@types/react@18.3.23)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       react: 18.3.1
