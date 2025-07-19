@@ -57,7 +57,7 @@
 		"change-case": "^5.4.4",
 		"class-variance-authority": "^0.7.1",
 		"clsx": "^2.1.1",
-		"cmdk-base": "^0.0.5",
+		"cmdk-base": "^0.0.6",
 		"dayjs": "^1.11.13",
 		"embla-carousel-react": "^8.5.2",
 		"fast-glob": "^3.3.3",
