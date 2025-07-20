@@ -192,6 +192,11 @@ export const navConfig: NavConfig = {
 					label: "New",
 				},
 				{
+					title: "Pagination",
+					href: "/docs/components/pagination",
+					label: "New",
+				},
+				{
 					title: "Popover",
 					href: "/docs/components/popover",
 				},

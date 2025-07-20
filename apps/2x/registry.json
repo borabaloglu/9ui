@@ -394,6 +394,19 @@
 			]
 		},
 		{
+			"name": "pagination",
+			"type": "registry:ui",
+			"dependencies": [],
+			"registryDependencies": [],
+			"files": [
+				{
+					"path": "src/components/ui/pagination.tsx",
+					"type": "registry:ui",
+					"target": ""
+				}
+			]
+		},
+		{
 			"name": "popover",
 			"type": "registry:ui",
 			"dependencies": [],

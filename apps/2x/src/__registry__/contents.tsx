@@ -408,6 +408,19 @@ export const contentRegistry: ContentRegistry = {
 			{ label: "Number Field", path: "/docs/components/number-field" },
 		],
 	},
+	"components/pagination": {
+		type: "file",
+		path: "components/pagination.mdx",
+		meta: {
+			title: "Number Field",
+			description: "A control for navigating between pages of content.",
+		},
+		urlPath: "components/pagination",
+		breadcrumbs: [
+			{ label: "Components", path: "/docs/components" },
+			{ label: "Pagination", path: "/docs/components/pagination" },
+		],
+	},
 	"components/popover": {
 		type: "file",
 		path: "components/popover.mdx",
