@@ -752,6 +752,16 @@ export const demoRegistry: DemoRegistry = {
 		category: "number-field",
 		path: "src/components/demos/number-field/number-field-demo.tsx",
 	},
+	"pagination-demo": {
+		source:
+			'import {\n\tPagination,\n\tPaginationContent,\n\tPaginationEllipsis,\n\tPaginationItem,\n\tPaginationLink,\n\tPaginationNext,\n\tPaginationPrevious,\n} from "@/components/ui/pagination"\n\nexport default function PaginationDemo() {\n\treturn (\n\t\t<Pagination>\n\t\t\t<PaginationContent>\n\t\t\t\t<PaginationItem>\n\t\t\t\t\t<PaginationPrevious href="#" />\n\t\t\t\t</PaginationItem>\n\t\t\t\t<PaginationItem>\n\t\t\t\t\t<PaginationLink href="#">1</PaginationLink>\n\t\t\t\t</PaginationItem>\n\t\t\t\t<PaginationItem>\n\t\t\t\t\t<PaginationLink href="#" isActive>\n\t\t\t\t\t\t2\n\t\t\t\t\t</PaginationLink>\n\t\t\t\t</PaginationItem>\n\t\t\t\t<PaginationItem>\n\t\t\t\t\t<PaginationLink href="#">3</PaginationLink>\n\t\t\t\t</PaginationItem>\n\t\t\t\t<PaginationItem>\n\t\t\t\t\t<PaginationEllipsis />\n\t\t\t\t</PaginationItem>\n\t\t\t\t<PaginationItem>\n\t\t\t\t\t<PaginationNext href="#" />\n\t\t\t\t</PaginationItem>\n\t\t\t</PaginationContent>\n\t\t</Pagination>\n\t)\n}\n',
+		component: React.lazy(
+			() => import("@/components/demos/pagination/pagination-demo")
+		),
+		title: "pagination-demo",
+		category: "pagination",
+		path: "src/components/demos/pagination/pagination-demo.tsx",
+	},
 	"popover-demo": {
 		source:
 			'import { CopyIcon, Share2Icon } from "lucide-react"\nimport { toast } from "sonner"\n\nimport { Button } from "@/components/ui/button"\nimport { Input } from "@/components/ui/input"\nimport {\n\tPopover,\n\tPopoverContent,\n\tPopoverDescription,\n\tPopoverHeader,\n\tPopoverTitle,\n\tPopoverTrigger,\n} from "@/components/ui/popover"\n\nexport default function PopoverDemo() {\n\tconst copyToClipboard = () => {\n\t\ttoast.success("Copied to clipboard")\n\t\tnavigator.clipboard.writeText(window.location.href)\n\t}\n\n\treturn (\n\t\t<Popover>\n\t\t\t<PopoverTrigger\n\t\t\t\trender={(props) => (\n\t\t\t\t\t<Button {...props} variant="outline" size="icon">\n\t\t\t\t\t\t<Share2Icon />\n\t\t\t\t\t</Button>\n\t\t\t\t)}\n\t\t\t/>\n\t\t\t<PopoverContent className="w-[calc(100vw-4rem)] sm:w-[500px]">\n\t\t\t\t<PopoverHeader>\n\t\t\t\t\t<PopoverTitle>Share</PopoverTitle>\n\t\t\t\t\t<PopoverDescription>Share this component.</PopoverDescription>\n\t\t\t\t</PopoverHeader>\n\t\t\t\t<div className="mt-2 flex w-full gap-2">\n\t\t\t\t\t<Input\n\t\t\t\t\t\tinputContainerClassName="w-full"\n\t\t\t\t\t\tvalue={window.location.href}\n\t\t\t\t\t\tautoFocus={false}\n\t\t\t\t\t\treadOnly\n\t\t\t\t\t/>\n\t\t\t\t\t<Button className="shrink-0" size="icon" onClick={copyToClipboard}>\n\t\t\t\t\t\t<CopyIcon />\n\t\t\t\t\t</Button>\n\t\t\t\t</div>\n\t\t\t</PopoverContent>\n\t\t</Popover>\n\t)\n}\n',
