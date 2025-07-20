@@ -1,9 +1,63 @@
 {
 	"$schema": "https://ui.shadcn.com/schema/registry-item.json",
-	"name": "default-theme",
-	"type": "registry:theme",
+	"extends": "none",
+	"name": "style-default",
+	"type": "registry:style",
+	"title": "Base style",
 	"author": "9ui (https://9ui.dev)",
+	"description": "",
+	"dependencies": [
+		"tw-animate-css",
+		"@base-ui-components/react",
+		"tailwind-merge"
+	],
+	"registryDependencies": ["https://9ui.dev/r/utils.json"],
+	"files": [],
 	"cssVars": {
+		"theme": {
+			"font-sans": "\"Inter\", ui-sans-serif, system-ui, sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\", \"Noto Color Emoji\"",
+			"font-mono": "\"Geist Mono\", 'ui-monospace', 'SFMono-Regular', 'Menlo', 'Monaco', 'Consolas', '\"Liberation Mono\"', '\"Courier New\"', 'monospace'",
+			"radius-sm": "calc(var(--radius) - 4px)",
+			"radius-md": "calc(var(--radius) - 2px)",
+			"radius-lg": "var(--radius)",
+			"radius-xl": "calc(var(--radius) + 2px)",
+			"color-background": "var(--background)",
+			"color-foreground": "var(--foreground)",
+			"color-card": "var(--card)",
+			"color-card-foreground": "var(--card-foreground)",
+			"color-popover": "var(--popover)",
+			"color-popover-foreground": "var(--popover-foreground)",
+			"color-primary": "var(--primary)",
+			"color-primary-foreground": "var(--primary-foreground)",
+			"color-secondary": "var(--secondary)",
+			"color-secondary-foreground": "var(--secondary-foreground)",
+			"color-muted": "var(--muted)",
+			"color-muted-foreground": "var(--muted-foreground)",
+			"color-accent": "var(--accent)",
+			"color-accent-foreground": "var(--accent-foreground)",
+			"color-destructive": "var(--destructive)",
+			"color-destructive-foreground": "var(--destructive-foreground)",
+			"color-danger": "var(--danger)",
+			"color-danger-foreground": "var(--danger-foreground)",
+			"color-danger-border": "var(--danger-border)",
+			"color-warning": "var(--warning)",
+			"color-warning-foreground": "var(--warning-foreground)",
+			"color-warning-border": "var(--warning-border)",
+			"color-info": "var(--info)",
+			"color-info-foreground": "var(--info-foreground)",
+			"color-info-border": "var(--info-border)",
+			"color-success": "var(--success)",
+			"color-success-foreground": "var(--success-foreground)",
+			"color-success-border": "var(--success-border)",
+			"color-border": "var(--border)",
+			"color-input": "var(--input)",
+			"color-ring": "var(--ring)",
+			"color-chart-1": "var(--chart-1)",
+			"color-chart-2": "var(--chart-2)",
+			"color-chart-3": "var(--chart-3)",
+			"color-chart-4": "var(--chart-4)",
+			"color-chart-5": "var(--chart-5)"
+		},
 		"light": {
 			"radius": "0.5rem",
 			"background": "oklch(0.985 0 0)",
@@ -36,7 +90,7 @@
 			"success-border": "oklch(0.9413 0.0781 158.88)",
 			"border": "oklch(0.871 0.006 286.286)",
 			"input": "oklch(0.967 0.001 286.375)",
-			"ring": "oklch(0.92 0.004 286.32)",
+			"ring": "oklch(0.752 0 0)",
 			"chart-1": "oklch(0.585 0.23 261.348)",
 			"chart-2": "oklch(0.675 0.207 149.396)",
 			"chart-3": "oklch(0.527 0.277 302.123)",
@@ -74,12 +128,50 @@
 			"success-border": "oklch(0.3161 0.0826 152.3)",
 			"border": "oklch(0.322 0.0095 285.919)",
 			"input": "oklch(0.21 0.006 285.885)",
-			"ring": "oklch(0.406 0.015 285.796)",
+			"ring": "oklch(0.542 0 0)",
 			"chart-1": "oklch(0.585 0.23 261.348)",
 			"chart-2": "oklch(0.577 0.174 149.642)",
 			"chart-3": "oklch(0.593 0.277 303.111)",
 			"chart-4": "oklch(0.676 0.218 44.36)",
 			"chart-5": "oklch(0.577 0.245 27.325)"
+		}
+	},
+	"css": {
+		"@layer base": {
+			"*": {
+				"border-color": "var(--border)",
+				"outline-color": "var(--ring) 50%",
+				"scrollbar-width": "thin",
+				"scrollbar-color": "var(--border) transparent"
+			},
+			"html": {
+				"scroll-behavior": "smooth",
+				"-webkit-font-smoothing": "antialiased",
+				"-moz-osx-font-smoothing": "grayscale",
+				"-webkit-tap-highlight-color": "transparent"
+			},
+			"html[data-base-ui-scroll-locked]": {
+				"scroll-behavior": "auto"
+			},
+			"body": {
+				"background-color": "var(--background)",
+				"color": "var(--foreground)",
+				"overscroll-behavior": "none"
+			},
+			".root": {
+				"isolation": "isolate",
+				"min-height": "100vh"
+			},
+			"::-webkit-scrollbar": {
+				"width": "4px"
+			},
+			"::-webkit-scrollbar-track": {
+				"background": "transparent"
+			},
+			"::-webkit-scrollbar-thumb": {
+				"background": "var(--border)",
+				"border-radius": "4px"
+			}
 		}
 	}
 }

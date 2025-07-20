@@ -1,6 +1,6 @@
 import * as React from "react"
 import Link from "next/link"
-import { MessageSquareWarningIcon } from "lucide-react"
+import { AlertTriangleIcon } from "lucide-react"
 
 import { CodeBlock } from "@/components/code-block"
 import { CommandBlock } from "@/components/command-block"
@@ -282,7 +282,7 @@ const components: MDXComponents = {
 	AccordionTrigger,
 	AccordionItem,
 	AccordionContent,
-	MessageSquareWarningIcon,
+	AlertTriangleIcon,
 	Alert,
 	AlertTitle,
 	AlertDescription,

@@ -3,15 +3,22 @@
 
 <Steps>
 
-<Step>Setup shadcn.</Step>
+<Step>Initialize</Step>
 
-Follow the [shadcn installation guide](https://ui.shadcn.com/docs/installation) to setup your project.
+You can follow [shadcn installation guide](https://ui.shadcn.com/docs/installation) to setup your project.
 
-<Step>Install Base UI.</Step>
+    	<Alert variant="danger" className="mt-4">
+    		<AlertTitle>
+    			Do not use plain `npx shadcn@latest init` command.
+    				Use the command below instead.
+    		</AlertTitle>
+    	</Alert>
 
 ```bash title="Terminal"
-npm install @base-ui-components/react
+npx shadcn@latest init https://9ui.dev/r/init.json
 ```
+
+This command installs dependencies, 9ui theme and updates `globals.css` file.
 
 <Step>Add `root` class to your app layout.</Step>
 
@@ -19,28 +26,6 @@ npm install @base-ui-components/react
 <body>
 	<div className="root">{children}</div>
 </body>
-```
-
-<Step>Update `globals.css` file.</Step>
-
-```css {7-11} title="globals.css"
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-{/* Existing code */}
-
-@layer base {
-	.root {
-		@apply isolate;
-	}
-}
-```
-
-<Step>Add 9ui theme to your project.</Step>
-
-```bash title="Terminal"
-npx shadcn@latest add "https://9ui.dev/r/theme.json"
 ```
 
 <Step>That's it! You can now install the components.</Step>
