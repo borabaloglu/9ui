@@ -34,7 +34,7 @@ export default function CommandDemo() {
 					</CommandItem>
 					<CommandItem>
 						<PlusIcon />
-						<span>Create new projecte...</span>
+						<span>Create new project...</span>
 						<CommandShortcut>
 							<Kbd>C</Kbd>
 						</CommandShortcut>
