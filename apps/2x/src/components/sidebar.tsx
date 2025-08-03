@@ -35,6 +35,7 @@ export const DocsSidebarNavItems = ({
 					)}
 					target={item.external ? "_blank" : ""}
 					rel={item.external ? "noreferrer" : ""}
+					prefetch
 				>
 					{item.title}
 					{item.label && (
