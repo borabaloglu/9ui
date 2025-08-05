@@ -62,7 +62,7 @@ export default function PreviewCardDemo() {
 					<div className="flex items-center gap-2">
 						<span className="text-muted-foreground">Website</span>
 						<a
-							href="https://9ui.dev"
+							href="https://www.9ui.dev"
 							className="underline underline-offset-2"
 							target="_blank"
 						>
