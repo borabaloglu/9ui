@@ -4,11 +4,11 @@ import { Geist_Mono, Inter } from "next/font/google"
 import "./globals.css"
 import "./syntax.css"
 
-import Script from "next/script"
 import { ThemeProvider } from "next-themes"
 
 import { Footer } from "@/components/footer"
 import { Header } from "@/components/header"
+import { Openpanel } from "@/components/openpanel"
 import { Toaster } from "@/components/ui/sonner"
 import { ToastProvider } from "@/components/ui/toast"
 
@@ -71,19 +71,13 @@ export const metadata: Metadata = {
 
 const RootLayout = ({ children }: { children: React.ReactNode }) => (
 	<html lang="en" suppressHydrationWarning>
-		<head>
-			<Script
-				src="https://cdn.seline.so/seline.js"
-				data-token={process.env.SELINE_TOKEN}
-				strategy="afterInteractive"
-			/>
-		</head>
 		<body
 			className={cn(
 				`${inter.variable} ${geistMono.variable}`,
 				"font-sans antialiased"
 			)}
 		>
+			<Openpanel />
 			<ThemeProvider
 				attribute="class"
 				defaultTheme="system"

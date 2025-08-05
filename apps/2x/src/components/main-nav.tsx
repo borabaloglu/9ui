@@ -12,7 +12,7 @@ export function MainNav() {
 
 	return (
 		<div className="mr-4 hidden md:flex">
-			<Link href="/" className="flex items-center">
+			<Link href="/" className="flex items-center" prefetch>
 				<Icons.logo className="size-3" />
 				<span className="ml-0.5 font-mono text-lg font-black">ui</span>
 			</Link>
@@ -25,6 +25,7 @@ export function MainNav() {
 							? "text-foreground font-medium"
 							: "text-muted-foreground"
 					)}
+					prefetch
 				>
 					Docs
 				</Link>
@@ -36,6 +37,7 @@ export function MainNav() {
 							? "text-foreground font-medium"
 							: "text-muted-foreground"
 					)}
+					prefetch
 				>
 					Components
 				</Link>
@@ -47,6 +49,7 @@ export function MainNav() {
 							? "text-foreground font-medium"
 							: "text-muted-foreground"
 					)}
+					prefetch
 				>
 					Themes
 				</Link>
