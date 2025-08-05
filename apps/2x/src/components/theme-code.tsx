@@ -33,7 +33,12 @@ export const ThemeCode = ({ css }: ThemeCodeProps) => {
 
 	return (
 		<div className="w-full overflow-hidden rounded-md border">
-			<CodeBar label="globals.css" className="border-t-0" content={css} />
+			<CodeBar
+				label="globals.css"
+				className="border-t-0"
+				content={css}
+				type="other"
+			/>
 
 			<div
 				className="max-h-[600px] overflow-auto p-4 text-sm"

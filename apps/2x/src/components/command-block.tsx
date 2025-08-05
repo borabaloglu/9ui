@@ -63,6 +63,7 @@ export const CommandBlock = ({
 		>
 			<CodeBar
 				className="h-9 border-t-0"
+				type="command"
 				label={
 					<TabsList>
 						<TabsTrigger className="px-4" value="npm">

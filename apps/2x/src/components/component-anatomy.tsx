@@ -10,7 +10,12 @@ interface ComponentAnatomyProps {
 export const ComponentAnatomy = ({ content }: ComponentAnatomyProps) => {
 	return (
 		<div className="mt-4 overflow-hidden rounded-lg border">
-			<CodeBar label="Anatomy" className="border-t-0" content={content} />
+			<CodeBar
+				label="Anatomy"
+				className="border-t-0"
+				content={content}
+				type="other"
+			/>
 			<CodeBlock content={content} />
 		</div>
 	)

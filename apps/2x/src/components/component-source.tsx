@@ -25,6 +25,7 @@ export const ComponentSource = ({
 				label={`${name}.tsx`}
 				className="border-t-0"
 				content={__source__}
+				type="component"
 			/>
 
 			<div className="relative">
@@ -45,7 +46,7 @@ export const ComponentSource = ({
 				</div>
 				<div
 					className={cn(
-						"absolute flex items-center justify-center bg-gradient-to-b from-background/50 to-background/90 p-2",
+						"from-background/50 to-background/90 absolute flex items-center justify-center bg-gradient-to-b p-2",
 						expanded ? "inset-x-0 bottom-0 h-12" : "inset-0"
 					)}
 				>
