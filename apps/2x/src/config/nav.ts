@@ -213,6 +213,11 @@ export const navConfig: NavConfig = {
 					href: "/docs/components/radio-group",
 				},
 				{
+					title: "Resizable",
+					href: "/docs/components/resizable",
+					label: "New",
+				},
+				{
 					title: "Scroll Area",
 					href: "/docs/components/scroll-area",
 				},

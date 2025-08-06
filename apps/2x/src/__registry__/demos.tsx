@@ -822,6 +822,36 @@ export const demoRegistry: DemoRegistry = {
 		category: "radio-group",
 		path: "src/components/demos/radio-group/radio-group-disabled.tsx",
 	},
+	"resizable-demo": {
+		source:
+			'import {\n\tResizableHandle,\n\tResizablePanel,\n\tResizablePanelGroup,\n  } from "@/components/ui/resizable"\n  \n  export default function ResizableDemo() {\n\treturn (\n\t  <ResizablePanelGroup\n\t\tdirection="horizontal"\n\t\tclassName="max-w-md rounded-lg border md:min-w-[450px]"\n\t  >\n\t\t<ResizablePanel defaultSize={50}>\n\t\t  <div className="flex h-[200px] items-center justify-center p-6">\n\t\t\t<span className="font-semibold">One</span>\n\t\t  </div>\n\t\t</ResizablePanel>\n\t\t<ResizableHandle />\n\t\t<ResizablePanel defaultSize={50}>\n\t\t  <ResizablePanelGroup direction="vertical">\n\t\t\t<ResizablePanel defaultSize={25}>\n\t\t\t  <div className="flex h-full items-center justify-center p-6">\n\t\t\t\t<span className="font-semibold">Two</span>\n\t\t\t  </div>\n\t\t\t</ResizablePanel>\n\t\t\t<ResizableHandle />\n\t\t\t<ResizablePanel defaultSize={75}>\n\t\t\t  <div className="flex h-full items-center justify-center p-6">\n\t\t\t\t<span className="font-semibold">Three</span>\n\t\t\t  </div>\n\t\t\t</ResizablePanel>\n\t\t  </ResizablePanelGroup>\n\t\t</ResizablePanel>\n\t  </ResizablePanelGroup>\n\t)\n  }\n  \n',
+		component: React.lazy(
+			() => import("@/components/demos/resizable/resizable-demo")
+		),
+		title: "resizable-demo",
+		category: "resizable",
+		path: "src/components/demos/resizable/resizable-demo.tsx",
+	},
+	"resizable-vertical": {
+		source:
+			'import {\n\tResizableHandle,\n\tResizablePanel,\n\tResizablePanelGroup,\n  } from "@/components/ui/resizable"\n  \n  export default function ResizableDemo() {\n\treturn (\n\t  <ResizablePanelGroup\n\t\tdirection="vertical"\n\t\tclassName="min-h-[200px] max-w-md rounded-lg border md:min-w-[450px]"\n\t  >\n\t\t<ResizablePanel defaultSize={25}>\n\t\t  <div className="flex h-full items-center justify-center p-6">\n\t\t\t<span className="font-semibold">Header</span>\n\t\t  </div>\n\t\t</ResizablePanel>\n\t\t<ResizableHandle />\n\t\t<ResizablePanel defaultSize={75}>\n\t\t  <div className="flex h-full items-center justify-center p-6">\n\t\t\t<span className="font-semibold">Content</span>\n\t\t  </div>\n\t\t</ResizablePanel>\n\t  </ResizablePanelGroup>\n\t)\n  }\n  ',
+		component: React.lazy(
+			() => import("@/components/demos/resizable/resizable-vertical")
+		),
+		title: "resizable-vertical",
+		category: "resizable",
+		path: "src/components/demos/resizable/resizable-vertical.tsx",
+	},
+	"resizable-with-handle": {
+		source:
+			'import {\n\tResizableHandle,\n\tResizablePanel,\n\tResizablePanelGroup,\n  } from "@/components/ui/resizable"\n  \n  export default function ResizableHandleDemo() {\n\treturn (\n\t  <ResizablePanelGroup\n\t\tdirection="horizontal"\n\t\tclassName="min-h-[200px] max-w-md rounded-lg border md:min-w-[450px]"\n\t  >\n\t\t<ResizablePanel defaultSize={25}>\n\t\t  <div className="flex h-full items-center justify-center p-6">\n\t\t\t<span className="font-semibold">Sidebar</span>\n\t\t  </div>\n\t\t</ResizablePanel>\n\t\t<ResizableHandle withHandle />\n\t\t<ResizablePanel defaultSize={75}>\n\t\t  <div className="flex h-full items-center justify-center p-6">\n\t\t\t<span className="font-semibold">Content</span>\n\t\t  </div>\n\t\t</ResizablePanel>\n\t  </ResizablePanelGroup>\n\t)\n  }\n  ',
+		component: React.lazy(
+			() => import("@/components/demos/resizable/resizable-with-handle")
+		),
+		title: "resizable-with-handle",
+		category: "resizable",
+		path: "src/components/demos/resizable/resizable-with-handle.tsx",
+	},
 	"scroll-area-demo": {
 		source:
 			'import { ScrollArea } from "@/components/ui/scroll-area"\nimport { Separator } from "@/components/ui/separator"\n\nconst versions = Array.from({ length: 50 }, (_, i) => `v${i + 1}.0.0`)\n\nexport default function ScrollAreaDemo() {\n\treturn (\n\t\t<ScrollArea className="h-60 w-full max-w-60 rounded-md border">\n\t\t\t<div className="p-4">\n\t\t\t\t<h4 className="text-sm font-medium">Versions</h4>\n\t\t\t\t<Separator className="my-2" />\n\t\t\t\t<div className="mt-2 flex flex-col gap-2 text-sm">\n\t\t\t\t\t{versions.map((version) => (\n\t\t\t\t\t\t<div key={version}>{version}</div>\n\t\t\t\t\t))}\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t</ScrollArea>\n\t)\n}\n',
