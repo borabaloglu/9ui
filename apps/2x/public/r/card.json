@@ -1,15 +1,15 @@
 {
-  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
-  "name": "card",
-  "type": "registry:ui",
-  "dependencies": [],
-  "registryDependencies": [],
-  "files": [
-    {
-      "path": "src/components/ui/card.tsx",
-      "content": "import * as React from \"react\"\n\nimport { cn } from \"@/lib/utils\"\n\nfunction Card({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) {\n\treturn (\n\t\t<div\n\t\t\tdata-slot=\"card\"\n\t\t\tclassName={cn(\n\t\t\t\t\"bg-card text-card-foreground flex flex-col gap-6 rounded-xl border py-6 shadow-sm\",\n\t\t\t\tclassName\n\t\t\t)}\n\t\t\t{...props}\n\t\t/>\n\t)\n}\n\nfunction CardHeader({ className, ...props }: React.ComponentProps<\"div\">) {\n\treturn (\n\t\t<div\n\t\t\tdata-slot=\"card-header\"\n\t\t\tclassName={cn(\n\t\t\t\t\"@container/card-header grid auto-rows-min grid-rows-[auto_auto] items-start gap-1.5 px-6 has-data-[slot=card-action]:grid-cols-[1fr_auto] [.border-b]:pb-6\",\n\t\t\t\tclassName\n\t\t\t)}\n\t\t\t{...props}\n\t\t/>\n\t)\n}\n\nfunction CardTitle({ className, ...props }: React.ComponentProps<\"div\">) {\n\treturn (\n\t\t<div\n\t\t\tdata-slot=\"card-title\"\n\t\t\tclassName={cn(\"leading-none font-semibold\", className)}\n\t\t\t{...props}\n\t\t/>\n\t)\n}\n\nfunction CardDescription({ className, ...props }: React.ComponentProps<\"div\">) {\n\treturn (\n\t\t<div\n\t\t\tdata-slot=\"card-description\"\n\t\t\tclassName={cn(\"text-muted-foreground text-sm\", className)}\n\t\t\t{...props}\n\t\t/>\n\t)\n}\n\nfunction CardAction({ className, ...props }: React.ComponentProps<\"div\">) {\n\treturn (\n\t\t<div\n\t\t\tdata-slot=\"card-action\"\n\t\t\tclassName={cn(\n\t\t\t\t\"col-start-2 row-span-2 row-start-1 self-start justify-self-end\",\n\t\t\t\tclassName\n\t\t\t)}\n\t\t\t{...props}\n\t\t/>\n\t)\n}\n\nfunction CardContent({ className, ...props }: React.ComponentProps<\"div\">) {\n\treturn (\n\t\t<div\n\t\t\tdata-slot=\"card-content\"\n\t\t\tclassName={cn(\"px-6\", className)}\n\t\t\t{...props}\n\t\t/>\n\t)\n}\n\nfunction CardFooter({ className, ...props }: React.ComponentProps<\"div\">) {\n\treturn (\n\t\t<div\n\t\t\tdata-slot=\"card-footer\"\n\t\t\tclassName={cn(\"flex items-center px-6 [.border-t]:pt-6\", className)}\n\t\t\t{...props}\n\t\t/>\n\t)\n}\n\nexport {\n\tCard,\n\tCardHeader,\n\tCardAction,\n\tCardTitle,\n\tCardDescription,\n\tCardContent,\n\tCardFooter,\n}\n",
-      "type": "registry:ui",
-      "target": ""
-    }
-  ]
+	"$schema": "https://ui.shadcn.com/schema/registry-item.json",
+	"name": "card",
+	"type": "registry:ui",
+	"dependencies": [],
+	"registryDependencies": [],
+	"files": [
+		{
+			"path": "ui/card.tsx",
+			"content": "import * as React from \"react\"\n\nimport { cn } from \"@/lib/utils\"\n\nfunction Card({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) {\n\treturn (\n\t\t<div\n\t\t\tdata-slot=\"card\"\n\t\t\tclassName={cn(\n\t\t\t\t\"bg-card text-card-foreground flex flex-col gap-6 rounded-xl border py-6 shadow-sm\",\n\t\t\t\tclassName\n\t\t\t)}\n\t\t\t{...props}\n\t\t/>\n\t)\n}\n\nfunction CardHeader({ className, ...props }: React.ComponentProps<\"div\">) {\n\treturn (\n\t\t<div\n\t\t\tdata-slot=\"card-header\"\n\t\t\tclassName={cn(\n\t\t\t\t\"@container/card-header grid auto-rows-min grid-rows-[auto_auto] items-start gap-1.5 px-6 has-data-[slot=card-action]:grid-cols-[1fr_auto] [.border-b]:pb-6\",\n\t\t\t\tclassName\n\t\t\t)}\n\t\t\t{...props}\n\t\t/>\n\t)\n}\n\nfunction CardTitle({ className, ...props }: React.ComponentProps<\"div\">) {\n\treturn (\n\t\t<div\n\t\t\tdata-slot=\"card-title\"\n\t\t\tclassName={cn(\"leading-none font-semibold\", className)}\n\t\t\t{...props}\n\t\t/>\n\t)\n}\n\nfunction CardDescription({ className, ...props }: React.ComponentProps<\"div\">) {\n\treturn (\n\t\t<div\n\t\t\tdata-slot=\"card-description\"\n\t\t\tclassName={cn(\"text-muted-foreground text-sm\", className)}\n\t\t\t{...props}\n\t\t/>\n\t)\n}\n\nfunction CardAction({ className, ...props }: React.ComponentProps<\"div\">) {\n\treturn (\n\t\t<div\n\t\t\tdata-slot=\"card-action\"\n\t\t\tclassName={cn(\n\t\t\t\t\"col-start-2 row-span-2 row-start-1 self-start justify-self-end\",\n\t\t\t\tclassName\n\t\t\t)}\n\t\t\t{...props}\n\t\t/>\n\t)\n}\n\nfunction CardContent({ className, ...props }: React.ComponentProps<\"div\">) {\n\treturn (\n\t\t<div\n\t\t\tdata-slot=\"card-content\"\n\t\t\tclassName={cn(\"px-6\", className)}\n\t\t\t{...props}\n\t\t/>\n\t)\n}\n\nfunction CardFooter({ className, ...props }: React.ComponentProps<\"div\">) {\n\treturn (\n\t\t<div\n\t\t\tdata-slot=\"card-footer\"\n\t\t\tclassName={cn(\"flex items-center px-6 [.border-t]:pt-6\", className)}\n\t\t\t{...props}\n\t\t/>\n\t)\n}\n\nexport {\n\tCard,\n\tCardHeader,\n\tCardAction,\n\tCardTitle,\n\tCardDescription,\n\tCardContent,\n\tCardFooter,\n}\n",
+			"type": "registry:ui",
+			"target": ""
+		}
+	]
 }

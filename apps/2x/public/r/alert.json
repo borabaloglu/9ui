@@ -1,15 +1,15 @@
 {
-  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
-  "name": "alert",
-  "type": "registry:ui",
-  "dependencies": [],
-  "registryDependencies": [],
-  "files": [
-    {
-      "path": "src/components/ui/alert.tsx",
-      "content": "import * as React from \"react\"\nimport { cva, VariantProps } from \"class-variance-authority\"\n\nimport { cn } from \"@/lib/utils\"\n\nconst alertVariants = cva(\n\t\"relative w-full rounded-lg border px-4 py-3 text-sm grid has-[>svg]:grid-cols-[calc(var(--spacing)*4)_1fr] grid-cols-[0_1fr] has-[>svg]:gap-x-3 gap-y-0.5 items-start [&>svg]:size-4 [&>svg]:translate-y-0.5 [&>svg]:text-current\",\n\t{\n\t\tvariants: {\n\t\t\tvariant: {\n\t\t\t\tdefault:\n\t\t\t\t\t\"bg-card text-card-foreground [&_*[data-slot=alert-description]]:text-muted-foreground\",\n\t\t\t\twarning:\n\t\t\t\t\t\"bg-warning border-warning-border text-warning-foreground [&_*[data-slot=alert-description]]:text-warning-foreground/70\",\n\t\t\t\tdanger:\n\t\t\t\t\t\"bg-danger border-danger-border text-danger-foreground [&_*[data-slot=alert-description]]:text-danger-foreground/70\",\n\t\t\t\tinfo: \"bg-info border-info-border text-info-foreground [&_*[data-slot=alert-description]]:text-info-foreground/70\",\n\t\t\t\tsuccess:\n\t\t\t\t\t\"bg-success border-success-border text-success-foreground [&_*[data-slot=alert-description]]:text-success-foreground/70\",\n\t\t\t},\n\t\t},\n\t\tdefaultVariants: {\n\t\t\tvariant: \"default\",\n\t\t},\n\t}\n)\n\nfunction Alert({\n\tclassName,\n\tvariant,\n\t...props\n}: React.ComponentProps<\"div\"> & VariantProps<typeof alertVariants>) {\n\treturn (\n\t\t<div\n\t\t\tdata-slot=\"alert\"\n\t\t\trole=\"alert\"\n\t\t\tclassName={cn(alertVariants({ variant }), className)}\n\t\t\t{...props}\n\t\t/>\n\t)\n}\n\nfunction AlertTitle({ className, ...props }: React.ComponentProps<\"h4\">) {\n\treturn (\n\t\t<h4\n\t\t\tdata-slot=\"alert-title\"\n\t\t\tclassName={cn(\n\t\t\t\t\"col-start-2 min-h-4 font-medium tracking-tight\",\n\t\t\t\tclassName\n\t\t\t)}\n\t\t\t{...props}\n\t\t/>\n\t)\n}\n\nfunction AlertDescription({\n\tclassName,\n\t...props\n}: React.ComponentProps<\"div\">) {\n\treturn (\n\t\t<div\n\t\t\tdata-slot=\"alert-description\"\n\t\t\tclassName={cn(\n\t\t\t\t\"col-start-2 grid justify-items-start gap-1 text-sm [&_p]:leading-relaxed\",\n\t\t\t\tclassName\n\t\t\t)}\n\t\t\t{...props}\n\t\t/>\n\t)\n}\n\nexport { Alert, AlertTitle, AlertDescription }\n",
-      "type": "registry:ui",
-      "target": ""
-    }
-  ]
+	"$schema": "https://ui.shadcn.com/schema/registry-item.json",
+	"name": "alert",
+	"type": "registry:ui",
+	"dependencies": [],
+	"registryDependencies": [],
+	"files": [
+		{
+			"path": "ui/alert.tsx",
+			"content": "import * as React from \"react\"\nimport { cva, VariantProps } from \"class-variance-authority\"\n\nimport { cn } from \"@/lib/utils\"\n\nconst alertVariants = cva(\n\t\"relative w-full rounded-lg border px-4 py-3 text-sm grid has-[>svg]:grid-cols-[calc(var(--spacing)*4)_1fr] grid-cols-[0_1fr] has-[>svg]:gap-x-3 gap-y-0.5 items-start [&>svg]:size-4 [&>svg]:translate-y-0.5 [&>svg]:text-current\",\n\t{\n\t\tvariants: {\n\t\t\tvariant: {\n\t\t\t\tdefault:\n\t\t\t\t\t\"bg-card text-card-foreground [&_*[data-slot=alert-description]]:text-muted-foreground\",\n\t\t\t\twarning:\n\t\t\t\t\t\"bg-warning border-warning-border text-warning-foreground [&_*[data-slot=alert-description]]:text-warning-foreground/70\",\n\t\t\t\tdanger:\n\t\t\t\t\t\"bg-danger border-danger-border text-danger-foreground [&_*[data-slot=alert-description]]:text-danger-foreground/70\",\n\t\t\t\tinfo: \"bg-info border-info-border text-info-foreground [&_*[data-slot=alert-description]]:text-info-foreground/70\",\n\t\t\t\tsuccess:\n\t\t\t\t\t\"bg-success border-success-border text-success-foreground [&_*[data-slot=alert-description]]:text-success-foreground/70\",\n\t\t\t},\n\t\t},\n\t\tdefaultVariants: {\n\t\t\tvariant: \"default\",\n\t\t},\n\t}\n)\n\nfunction Alert({\n\tclassName,\n\tvariant,\n\t...props\n}: React.ComponentProps<\"div\"> & VariantProps<typeof alertVariants>) {\n\treturn (\n\t\t<div\n\t\t\tdata-slot=\"alert\"\n\t\t\trole=\"alert\"\n\t\t\tclassName={cn(alertVariants({ variant }), className)}\n\t\t\t{...props}\n\t\t/>\n\t)\n}\n\nfunction AlertTitle({ className, ...props }: React.ComponentProps<\"h4\">) {\n\treturn (\n\t\t<h4\n\t\t\tdata-slot=\"alert-title\"\n\t\t\tclassName={cn(\n\t\t\t\t\"col-start-2 min-h-4 font-medium tracking-tight\",\n\t\t\t\tclassName\n\t\t\t)}\n\t\t\t{...props}\n\t\t/>\n\t)\n}\n\nfunction AlertDescription({\n\tclassName,\n\t...props\n}: React.ComponentProps<\"div\">) {\n\treturn (\n\t\t<div\n\t\t\tdata-slot=\"alert-description\"\n\t\t\tclassName={cn(\n\t\t\t\t\"col-start-2 grid justify-items-start gap-1 text-sm [&_p]:leading-relaxed\",\n\t\t\t\tclassName\n\t\t\t)}\n\t\t\t{...props}\n\t\t/>\n\t)\n}\n\nexport { Alert, AlertTitle, AlertDescription }\n",
+			"type": "registry:ui",
+			"target": ""
+		}
+	]
 }
