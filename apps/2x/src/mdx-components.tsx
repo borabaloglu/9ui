@@ -6,11 +6,11 @@ import { CodeBlock } from "@/components/code-block"
 import { CommandBlock } from "@/components/command-block"
 import { ComponentAnatomy } from "@/components/component-anatomy"
 import { ComponentInstallation } from "@/components/component-installation"
-import { InstallationTabs } from "@/components/installation-tabs"
 import { ComponentLinks } from "@/components/component-links"
 import { ComponentPreview } from "@/components/component-preview"
 import { ComponentSource } from "@/components/component-source"
 import { Icons } from "@/components/icons"
+import { InstallationTabs } from "@/components/installation-tabs"
 import { ThemeToggle } from "@/components/theme-toggle"
 import {
 	Accordion,
@@ -177,7 +177,6 @@ const components: MDXComponents = {
 				/>
 			)
 		}
-
 
 		const shouldUnwrap = __unwrapCode__ === "true"
 
