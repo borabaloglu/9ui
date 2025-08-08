@@ -10,9 +10,10 @@
 		"lint": "next lint",
 		"generate:demos": "npx tsx --tsconfig ./tsconfig.scripts.json ./scripts/generate-demo-registry.ts && prettier --log-level silent --write \"src/__registry__/demos.tsx\" --cache",
 		"generate:contents": "npx tsx --tsconfig ./tsconfig.scripts.json ./scripts/generate-content-registry.ts && prettier --log-level silent --write \"src/__registry__/contents.tsx\" --cache",
+		"generate:globals-css": "npx tsx --tsconfig ./tsconfig.scripts.json ./scripts/generate-globals-css.ts",
 		"fix": "next lint --fix",
 		"format": "prettier --log-level silent --write \"src/**/*.{js,ts,jsx,tsx,mdx}\" --cache",
-		"prebuild": "pnpm generate:contents && pnpm generate:demos && pnpm build:registry"
+		"prebuild": "pnpm generate:contents && pnpm generate:demos && pnpm generate:globals-css && pnpm build:registry"
 	},
 	"engines": {
 		"node": ">=20"
