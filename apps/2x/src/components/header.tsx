@@ -7,6 +7,7 @@ import { ChevronDownIcon } from "lucide-react"
 import { Icons } from "@/components/icons"
 import { MainNav } from "@/components/main-nav"
 import { MobileNav } from "@/components/mobile-nav"
+import { SearchDialog } from "@/components/search-dialog"
 import { ThemeToggle } from "@/components/theme-toggle"
 import { Button } from "@/components/ui/button"
 import {
@@ -33,6 +34,10 @@ export const Header = () => {
 				<MobileNav />
 				<div className="flex-1" />
 				<div className="flex items-center gap-1">
+					<div className="hidden md:block">
+						<SearchDialog />
+					</div>
+
 					<Popover>
 						<PopoverTrigger
 							render={(props) => (
