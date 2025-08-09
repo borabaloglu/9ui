@@ -788,6 +788,16 @@ export const contentRegistry: ContentRegistry = {
 			{ label: "Introduction", path: "/docs/getting-started/introduction" },
 		],
 	},
+	"getting-started/llms": {
+		type: "file",
+		path: "getting-started/llms.mdx",
+		meta: { title: "LLMs", description: "AI-friendly documentation for 9ui" },
+		urlPath: "getting-started/llms",
+		breadcrumbs: [
+			{ label: "Getting Started", path: "/docs/getting-started" },
+			{ label: "Llms", path: "/docs/getting-started/llms" },
+		],
+	},
 	"getting-started/roadmap": {
 		type: "file",
 		path: "getting-started/roadmap.mdx",

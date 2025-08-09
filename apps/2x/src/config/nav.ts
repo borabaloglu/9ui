@@ -49,6 +49,11 @@ export const navConfig: NavConfig = {
 					href: "/docs/getting-started/changelog",
 				},
 				{
+					title: "LLMs",
+					href: "/docs/getting-started/llms",
+					label: "New",
+				},
+				{
 					title: "Figma",
 					href: "/docs/getting-started/figma",
 					disabled: true,
