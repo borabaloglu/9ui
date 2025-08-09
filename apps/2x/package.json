@@ -10,10 +10,11 @@
 		"lint": "next lint",
 		"generate:demos": "npx tsx --tsconfig ./tsconfig.scripts.json ./scripts/generate-demo-registry.ts && prettier --log-level silent --write \"src/__registry__/demos.tsx\" --cache",
 		"generate:contents": "npx tsx --tsconfig ./tsconfig.scripts.json ./scripts/generate-content-registry.ts && prettier --log-level silent --write \"src/__registry__/contents.tsx\" --cache",
+		"generate:llms": "npx tsx --tsconfig ./tsconfig.scripts.json ./scripts/generate-llms/index.ts",
 		"generate:globals-css": "npx tsx --tsconfig ./tsconfig.scripts.json ./scripts/generate-globals-css.ts",
 		"fix": "next lint --fix",
 		"format": "prettier --log-level silent --write \"src/**/*.{js,ts,jsx,tsx,mdx}\" --cache",
-		"prebuild": "pnpm generate:contents && pnpm generate:demos && pnpm generate:globals-css && pnpm build:registry"
+		"prebuild": "pnpm generate:contents && pnpm generate:demos && pnpm generate:globals-css && pnpm generate:llms && pnpm build:registry"
 	},
 	"engines": {
 		"node": ">=20"
@@ -41,8 +42,11 @@
 		"prettier": "^3.2.5",
 		"prettier-plugin-tailwindcss": "^0.6.11",
 		"remark-gfm": "^4.0.0",
+		"remark-mdx": "^3.1.0",
+		"remark-parse": "^11.0.0",
 		"typescript": "5.5.4",
-		"typescript-eslint": "^8.19.0"
+		"typescript-eslint": "^8.19.0",
+		"unist-util-visit": "^5.0.0"
 	},
 	"dependencies": {
 		"@base-ui-components/react": "1.0.0-beta.2",
@@ -82,7 +86,6 @@
 		"rehype-pretty-code": "^0.14.0",
 		"rehype-slug": "^6.0.0",
 		"remark": "^15.0.1",
-		"remark-mdx": "^3.1.0",
 		"remark-stringify": "^11.0.0",
 		"shiki": "^1.25.1",
 		"sonner": "^2.0.0",
@@ -92,7 +95,6 @@
 		"tw-animate-css": "^1.3.0",
 		"unified": "^11.0.5",
 		"unist-builder": "^4.0.0",
-		"unist-util-visit": "^5.0.0",
 		"unist-util-visit-parents": "^6.0.1",
 		"usehooks-ts": "^3.1.1",
 		"vaul-base": "^0.0.5",

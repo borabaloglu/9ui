@@ -119,9 +119,6 @@ importers:
       remark:
         specifier: ^15.0.1
         version: 15.0.1
-      remark-mdx:
-        specifier: ^3.1.0
-        version: 3.1.0
       remark-stringify:
         specifier: ^11.0.0
         version: 11.0.0
@@ -149,9 +146,6 @@ importers:
       unist-builder:
         specifier: ^4.0.0
         version: 4.0.0
-      unist-util-visit:
-        specifier: ^5.0.0
-        version: 5.0.0
       unist-util-visit-parents:
         specifier: ^6.0.1
         version: 6.0.1
@@ -234,12 +228,21 @@ importers:
       remark-gfm:
         specifier: ^4.0.0
         version: 4.0.1
+      remark-mdx:
+        specifier: ^3.1.0
+        version: 3.1.0
+      remark-parse:
+        specifier: ^11.0.0
+        version: 11.0.0
       typescript:
         specifier: 5.5.4
         version: 5.5.4
       typescript-eslint:
         specifier: ^8.19.0
         version: 8.35.0(eslint@9.30.0(jiti@2.4.2))(typescript@5.5.4)
+      unist-util-visit:
+        specifier: ^5.0.0
+        version: 5.0.0
 
 packages:
 

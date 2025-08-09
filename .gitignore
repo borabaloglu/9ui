@@ -53,3 +53,8 @@ Thumbs.db
 
 # Claude
 CLAUDE.md
+
+# Generated LLM files
+apps/*/public/llms.txt
+apps/*/public/llms-full.txt
+apps/*/public/docs/
