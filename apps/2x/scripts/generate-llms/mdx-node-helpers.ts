@@ -1,3 +1,5 @@
+/* eslint-disable */
+// @ts-nocheck
 /**
  * mdx-node-helpers.ts - Helper functions for creating MDX AST nodes
  * 

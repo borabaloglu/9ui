@@ -14,7 +14,7 @@
 		"generate:globals-css": "npx tsx --tsconfig ./tsconfig.scripts.json ./scripts/generate-globals-css.ts",
 		"fix": "next lint --fix",
 		"format": "prettier --log-level silent --write \"src/**/*.{js,ts,jsx,tsx,mdx}\" --cache",
-		"prebuild": "pnpm generate:contents && pnpm generate:demos && pnpm generate:globals-css && pnpm build:registry"
+		"prebuild": "pnpm generate:contents && pnpm generate:demos && pnpm generate:globals-css && pnpm generate:llms && pnpm build:registry"
 	},
 	"engines": {
 		"node": ">=20"

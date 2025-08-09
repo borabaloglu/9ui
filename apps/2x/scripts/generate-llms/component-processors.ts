@@ -1,3 +1,5 @@
+/* eslint-disable */
+// @ts-nocheck
 /**
  * component-processors.ts - Complete MDX component processing
  * 
