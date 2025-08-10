@@ -9,7 +9,8 @@
 	"dependencies": [
 		"tw-animate-css",
 		"@base-ui-components/react",
-		"tailwind-merge"
+		"tailwind-merge",
+		"lucide-react"
 	],
 	"registryDependencies": ["https://9ui.dev/r/utils.json"],
 	"files": [],

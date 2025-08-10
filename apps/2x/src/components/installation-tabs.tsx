@@ -7,19 +7,19 @@ interface InstallationTabsProps {
 }
 
 export const InstallationTabs = ({ children }: InstallationTabsProps) => {
-	const [automatic, manual] = React.Children.toArray(children)
+	const [quick, manual] = React.Children.toArray(children)
 
 	return (
-		<Tabs className="mt-4 w-full" variant="underline" defaultValue="automatic">
+		<Tabs className="mt-4 w-full" variant="underline" defaultValue="quick">
 			<TabsList>
-				<TabsTrigger className="px-4" value="automatic">
-					Automatic
+				<TabsTrigger className="px-4" value="quick">
+					Quick Setup
 				</TabsTrigger>
 				<TabsTrigger className="px-4" value="manual">
-					Manual
+					Manual Setup
 				</TabsTrigger>
 			</TabsList>
-			<TabsContent value="automatic">{automatic}</TabsContent>
+			<TabsContent value="quick">{quick}</TabsContent>
 			<TabsContent value="manual">{manual}</TabsContent>
 		</Tabs>
 	)

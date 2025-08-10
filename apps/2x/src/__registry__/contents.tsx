@@ -766,7 +766,8 @@ export const contentRegistry: ContentRegistry = {
 		path: "getting-started/installation.mdx",
 		meta: {
 			title: "Installation",
-			description: "Installing dependencies and setting up the project.",
+			description:
+				"Get started with 9ui by installing dependencies and setting up your project.",
 		},
 		urlPath: "getting-started/installation",
 		breadcrumbs: [
