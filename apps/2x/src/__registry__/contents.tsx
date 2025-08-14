@@ -412,7 +412,7 @@ export const contentRegistry: ContentRegistry = {
 		type: "file",
 		path: "components/pagination.mdx",
 		meta: {
-			title: "Number Field",
+			title: "Pagination",
 			description: "A control for navigating between pages of content.",
 		},
 		urlPath: "components/pagination",
