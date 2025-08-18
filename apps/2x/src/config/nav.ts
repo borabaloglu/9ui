@@ -202,6 +202,11 @@ export const navConfig: NavConfig = {
 					label: "New",
 				},
 				{
+					title: "Phone Input",
+					href: "/docs/components/phone-input",
+					label: "New",
+				},
+				{
 					title: "Popover",
 					href: "/docs/components/popover",
 				},
