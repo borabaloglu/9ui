@@ -762,6 +762,103 @@ export const demoRegistry: DemoRegistry = {
 		category: "pagination",
 		path: "src/components/demos/pagination/pagination-demo.tsx",
 	},
+	"phone-input-default-country": {
+		source:
+			'"use client"\n\nimport { useState } from "react"\n\nimport { PhoneInput } from "@/components/ui/phone-input"\n\nexport default function PhoneInputDefaultCountry() {\n\tconst [phoneNumber, setPhoneNumber] = useState<string>()\n\n\treturn (\n\t\t<div className="w-[300px]">\n\t\t\t<PhoneInput\n\t\t\t\tvalue={phoneNumber}\n\t\t\t\tonChange={setPhoneNumber}\n\t\t\t\tdefaultCountry="TR"\n\t\t\t\tplaceholder="Enter a phone number"\n\t\t\t/>\n\t\t</div>\n\t)\n}\n',
+		component: React.lazy(
+			() => import("@/components/demos/phone-input/phone-input-default-country")
+		),
+		title: "phone-input-default-country",
+		category: "phone-input",
+		path: "src/components/demos/phone-input/phone-input-default-country.tsx",
+	},
+	"phone-input-demo": {
+		source:
+			'"use client"\n\nimport { useState } from "react"\n\nimport { PhoneInput } from "@/components/ui/phone-input"\n\nexport default function PhoneInputDemo() {\n\tconst [phoneNumber, setPhoneNumber] = useState<string>()\n\n\treturn (\n\t\t<div className="w-[300px]">\n\t\t\t<PhoneInput\n\t\t\t\tvalue={phoneNumber}\n\t\t\t\tonChange={setPhoneNumber}\n\t\t\t\tplaceholder="Enter a phone number"\n\t\t\t/>\n\t\t</div>\n\t)\n}\n',
+		component: React.lazy(
+			() => import("@/components/demos/phone-input/phone-input-demo")
+		),
+		title: "phone-input-demo",
+		category: "phone-input",
+		path: "src/components/demos/phone-input/phone-input-demo.tsx",
+	},
+	"phone-input-form": {
+		source:
+			'"use client"\n\nimport { zodResolver } from "@hookform/resolvers/zod"\nimport { useForm } from "react-hook-form"\nimport { isValidPhoneNumber } from "react-phone-number-input"\nimport { z } from "zod"\n\nimport { Button } from "@/components/ui/button"\nimport {\n\tForm,\n\tFormControl,\n\tFormField,\n\tFormItem,\n\tFormLabel,\n\tFormMessage,\n} from "@/components/ui/form"\nimport { PhoneInput } from "@/components/ui/phone-input"\n\nconst schema = z.object({\n\tphoneNumber: z.string().refine(isValidPhoneNumber, "Invalid phone number"),\n})\n\ntype FormValues = z.infer<typeof schema>\n\nexport default function PhoneInputForm() {\n\tconst form = useForm<FormValues>({\n\t\tresolver: zodResolver(schema),\n\t\tdefaultValues: {\n\t\t\tphoneNumber: "",\n\t\t},\n\t})\n\n\tconst onSubmit = (data: FormValues) => {\n\t\tconsole.log(data)\n\t}\n\n\treturn (\n\t\t<Form {...form}>\n\t\t\t<form\n\t\t\t\tonSubmit={form.handleSubmit(onSubmit)}\n\t\t\t\tclassName="flex w-[300px] flex-col gap-4"\n\t\t\t>\n\t\t\t\t<FormField\n\t\t\t\t\tname="phoneNumber"\n\t\t\t\t\tcontrol={form.control}\n\t\t\t\t\trender={({ field, fieldState }) => (\n\t\t\t\t\t\t<FormItem>\n\t\t\t\t\t\t\t<FormLabel>Phone Number</FormLabel>\n\t\t\t\t\t\t\t<FormControl>\n\t\t\t\t\t\t\t\t<PhoneInput\n\t\t\t\t\t\t\t\t\t{...field}\n\t\t\t\t\t\t\t\t\tplaceholder="Enter a phone number"\n\t\t\t\t\t\t\t\t\taria-invalid={!!fieldState.error}\n\t\t\t\t\t\t\t\t/>\n\t\t\t\t\t\t\t</FormControl>\n\t\t\t\t\t\t\t<FormMessage />\n\t\t\t\t\t\t</FormItem>\n\t\t\t\t\t)}\n\t\t\t\t/>\n\t\t\t\t<Button type="submit">Submit</Button>\n\t\t\t</form>\n\t\t</Form>\n\t)\n}\n',
+		component: React.lazy(
+			() => import("@/components/demos/phone-input/phone-input-form")
+		),
+		title: "phone-input-form",
+		category: "phone-input",
+		path: "src/components/demos/phone-input/phone-input-form.tsx",
+	},
+	"phone-input-formatting-value": {
+		source:
+			'"use client"\n\nimport { useState } from "react"\nimport {\n\tCountry,\n\tformatPhoneNumber,\n\tformatPhoneNumberIntl,\n\tgetCountryCallingCode,\n} from "react-phone-number-input"\n\nimport { PhoneInput } from "@/components/ui/phone-input"\n\nexport default function PhoneInputFormattingValue() {\n\tconst [phoneNumber, setPhoneNumber] = useState<string>()\n\tconst [country, setCountry] = useState<Country>()\n\n\treturn (\n\t\t<div className="w-[300px] space-y-4">\n\t\t\t<PhoneInput\n\t\t\t\tvalue={phoneNumber}\n\t\t\t\tonChange={setPhoneNumber}\n\t\t\t\tonCountryChange={setCountry}\n\t\t\t\tplaceholder="Enter a phone number"\n\t\t\t/>\n\t\t\t<div className="space-y-2 text-sm">\n\t\t\t\t<div>\n\t\t\t\t\t<span className="font-semibold">National:</span>{" "}\n\t\t\t\t\t{phoneNumber && formatPhoneNumber(phoneNumber)}\n\t\t\t\t</div>\n\t\t\t\t<div>\n\t\t\t\t\t<span className="font-semibold">International:</span>{" "}\n\t\t\t\t\t{phoneNumber && formatPhoneNumberIntl(phoneNumber)}\n\t\t\t\t</div>\n\t\t\t\t<div>\n\t\t\t\t\t<span className="font-semibold">Country code:</span>{" "}\n\t\t\t\t\t{country && getCountryCallingCode(country)}\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t</div>\n\t)\n}\n',
+		component: React.lazy(
+			() =>
+				import("@/components/demos/phone-input/phone-input-formatting-value")
+		),
+		title: "phone-input-formatting-value",
+		category: "phone-input",
+		path: "src/components/demos/phone-input/phone-input-formatting-value.tsx",
+	},
+	"phone-input-initial-value-format": {
+		source:
+			'"use client"\n\nimport { useState } from "react"\n\nimport { PhoneInput } from "@/components/ui/phone-input"\n\nexport default function PhoneInputInitialValueFormat() {\n\tconst [phoneNumber, setPhoneNumber] = useState<string>()\n\n\treturn (\n\t\t<div className="w-[300px]">\n\t\t\t<PhoneInput\n\t\t\t\tvalue={phoneNumber}\n\t\t\t\tonChange={setPhoneNumber}\n\t\t\t\tinitialValueFormat="national"\n\t\t\t\tplaceholder="Enter a phone number"\n\t\t\t/>\n\t\t</div>\n\t)\n}\n',
+		component: React.lazy(
+			() =>
+				import(
+					"@/components/demos/phone-input/phone-input-initial-value-format"
+				)
+		),
+		title: "phone-input-initial-value-format",
+		category: "phone-input",
+		path: "src/components/demos/phone-input/phone-input-initial-value-format.tsx",
+	},
+	"phone-input-international": {
+		source:
+			'"use client"\n\nimport { useState } from "react"\n\nimport { PhoneInput } from "@/components/ui/phone-input"\n\nexport default function PhoneInputInternational() {\n\tconst [phoneNumber, setPhoneNumber] = useState<string>()\n\n\treturn (\n\t\t<div className="w-[300px]">\n\t\t\t<PhoneInput\n\t\t\t\tvalue={phoneNumber}\n\t\t\t\tonChange={setPhoneNumber}\n\t\t\t\tinternational\n\t\t\t\tdefaultCountry="TR"\n\t\t\t\tplaceholder="Enter a phone number"\n\t\t\t/>\n\t\t</div>\n\t)\n}\n',
+		component: React.lazy(
+			() => import("@/components/demos/phone-input/phone-input-international")
+		),
+		title: "phone-input-international",
+		category: "phone-input",
+		path: "src/components/demos/phone-input/phone-input-international.tsx",
+	},
+	"phone-input-internationalization": {
+		source:
+			'"use client"\n\nimport { useState } from "react"\nimport tr from "react-phone-number-input/locale/tr"\n\nimport { PhoneInput } from "@/components/ui/phone-input"\n\nexport default function PhoneInputInternationalization() {\n\tconst [phoneNumber, setPhoneNumber] = useState<string>()\n\n\treturn (\n\t\t<div className="w-[300px]">\n\t\t\t<PhoneInput\n\t\t\t\tvalue={phoneNumber}\n\t\t\t\tonChange={setPhoneNumber}\n\t\t\t\tlabels={tr}\n\t\t\t\tdefaultCountry="TR"\n\t\t\t\tplaceholder="Telefon numarası"\n\t\t\t/>\n\t\t</div>\n\t)\n}\n',
+		component: React.lazy(
+			() =>
+				import(
+					"@/components/demos/phone-input/phone-input-internationalization"
+				)
+		),
+		title: "phone-input-internationalization",
+		category: "phone-input",
+		path: "src/components/demos/phone-input/phone-input-internationalization.tsx",
+	},
+	"phone-input-national": {
+		source:
+			'"use client"\n\nimport { useState } from "react"\n\nimport { PhoneInput } from "@/components/ui/phone-input"\n\nexport default function PhoneInputNational() {\n\tconst [phoneNumber, setPhoneNumber] = useState<string>()\n\n\treturn (\n\t\t<div className="w-[300px]">\n\t\t\t<PhoneInput\n\t\t\t\tvalue={phoneNumber}\n\t\t\t\tonChange={setPhoneNumber}\n\t\t\t\tinternational={false}\n\t\t\t\tdefaultCountry="TR"\n\t\t\t\tplaceholder="Enter a phone number"\n\t\t\t/>\n\t\t</div>\n\t)\n}\n',
+		component: React.lazy(
+			() => import("@/components/demos/phone-input/phone-input-national")
+		),
+		title: "phone-input-national",
+		category: "phone-input",
+		path: "src/components/demos/phone-input/phone-input-national.tsx",
+	},
+	"phone-input-with-validation": {
+		source:
+			'"use client"\n\nimport { useState } from "react"\nimport { isValidPhoneNumber } from "react-phone-number-input"\n\nimport { PhoneInput } from "@/components/ui/phone-input"\n\nexport default function PhoneInputWithValidation() {\n\tconst [phoneNumber, setPhoneNumber] = useState<string>()\n\tconst [error, setError] = useState<string>()\n\n\tconst handleChange = (value: string | undefined) => {\n\t\tsetPhoneNumber(value)\n\t\tif (value && !isValidPhoneNumber(value)) {\n\t\t\tsetError("Please enter a valid phone number")\n\t\t} else {\n\t\t\tsetError(undefined)\n\t\t}\n\t}\n\n\treturn (\n\t\t<div className="w-[300px] space-y-2">\n\t\t\t<PhoneInput\n\t\t\t\tvalue={phoneNumber}\n\t\t\t\tonChange={handleChange}\n\t\t\t\tplaceholder="Enter a phone number"\n\t\t\t\taria-invalid={!!error}\n\t\t\t/>\n\t\t\t{error && <p className="text-destructive text-sm">{error}</p>}\n\t\t\t{phoneNumber && !error && (\n\t\t\t\t<p className="text-muted-foreground text-sm">\n\t\t\t\t\tValid phone number entered\n\t\t\t\t</p>\n\t\t\t)}\n\t\t</div>\n\t)\n}\n',
+		component: React.lazy(
+			() => import("@/components/demos/phone-input/phone-input-with-validation")
+		),
+		title: "phone-input-with-validation",
+		category: "phone-input",
+		path: "src/components/demos/phone-input/phone-input-with-validation.tsx",
+	},
 	"popover-demo": {
 		source:
 			'import { CopyIcon, Share2Icon } from "lucide-react"\nimport { toast } from "sonner"\n\nimport { Button } from "@/components/ui/button"\nimport { Input } from "@/components/ui/input"\nimport {\n\tPopover,\n\tPopoverContent,\n\tPopoverDescription,\n\tPopoverHeader,\n\tPopoverTitle,\n\tPopoverTrigger,\n} from "@/components/ui/popover"\n\nexport default function PopoverDemo() {\n\tconst copyToClipboard = () => {\n\t\ttoast.success("Copied to clipboard")\n\t\tnavigator.clipboard.writeText(window.location.href)\n\t}\n\n\treturn (\n\t\t<Popover>\n\t\t\t<PopoverTrigger\n\t\t\t\trender={(props) => (\n\t\t\t\t\t<Button {...props} variant="outline" size="icon">\n\t\t\t\t\t\t<Share2Icon />\n\t\t\t\t\t</Button>\n\t\t\t\t)}\n\t\t\t/>\n\t\t\t<PopoverContent className="w-[calc(100vw-4rem)] sm:w-[500px]">\n\t\t\t\t<PopoverHeader>\n\t\t\t\t\t<PopoverTitle>Share</PopoverTitle>\n\t\t\t\t\t<PopoverDescription>Share this component.</PopoverDescription>\n\t\t\t\t</PopoverHeader>\n\t\t\t\t<div className="mt-2 flex w-full gap-2">\n\t\t\t\t\t<Input\n\t\t\t\t\t\tinputContainerClassName="w-full"\n\t\t\t\t\t\tvalue={window.location.href}\n\t\t\t\t\t\tautoFocus={false}\n\t\t\t\t\t\treadOnly\n\t\t\t\t\t/>\n\t\t\t\t\t<Button className="shrink-0" size="icon" onClick={copyToClipboard}>\n\t\t\t\t\t\t<CopyIcon />\n\t\t\t\t\t</Button>\n\t\t\t\t</div>\n\t\t\t</PopoverContent>\n\t\t</Popover>\n\t)\n}\n',

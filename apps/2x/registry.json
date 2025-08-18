@@ -418,6 +418,25 @@
 			]
 		},
 		{
+			"name": "phone-input",
+			"type": "registry:ui",
+			"dependencies": ["react-phone-number-input"],
+			"registryDependencies": [
+				"button",
+				"command",
+				"input",
+				"popover",
+				"scroll-area"
+			],
+			"files": [
+				{
+					"path": "src/components/ui/phone-input.tsx",
+					"type": "registry:ui",
+					"target": ""
+				}
+			]
+		},
+		{
 			"name": "popover",
 			"type": "registry:ui",
 			"dependencies": [],

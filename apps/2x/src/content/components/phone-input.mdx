@@ -1,0 +1,112 @@
+<Title content="Phone Input" />
+<Description content="A phone number input with country selection, formatting, and validation." />
+
+<ComponentLinks
+	links={[
+		{
+			label: "Docs",
+			href: "https://catamphetamine.gitlab.io/react-phone-number-input/",
+		},
+	]}
+/>
+
+<ComponentPreview name="phone-input-demo" />
+
+## About
+
+This component was inspired by the [`Phone Input`](https://shadcn-phone-input.vercel.app/) component created by [@omeralpi\_](https://x.com/omeralpi_).
+
+## Installation
+
+<ComponentInstallation>
+<div>
+```bash title="Terminal"
+npx shadcn@latest add https://9ui.dev/r/phone-input.json
+```
+</div>
+
+<Steps>
+
+<Step>Install the dependencies.</Step>
+
+```bash title="Terminal"
+npm install react-phone-number-input
+```
+
+<Step>Install internal dependencies.</Step>
+
+<ComponentLinks
+	links={[
+		{
+			label: "Button",
+			href: "https://9ui.dev/docs/components/button",
+		},
+		{
+			label: "Command",
+			href: "https://9ui.dev/docs/components/command",
+		},
+		{
+			label: "Input",
+			href: "https://9ui.dev/docs/components/input",
+		},
+		{
+			label: "Popover",
+			href: "https://9ui.dev/docs/components/popover",
+		},
+		{
+			label: "Scroll Area",
+			href: "https://9ui.dev/docs/components/scroll-area",
+		},
+	]}
+/>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="phone-input" />
+
+</Steps>
+</ComponentInstallation>
+
+## Usage
+
+```tsx title="Imports"
+import { PhoneInput } from "@/components/ui/phone-input"
+```
+
+```tsx title="Anatomy"
+<PhoneInput />
+```
+
+## Examples
+
+### Default Country
+
+<ComponentPreview name="phone-input-default-country" />
+
+### Internationalization Format
+
+<ComponentPreview name="phone-input-internationalization" />
+
+### Force International Format
+
+<ComponentPreview name="phone-input-international" />
+
+### Force National Format
+
+<ComponentPreview name="phone-input-national" />
+
+### Initial Value Format
+
+<ComponentPreview name="phone-input-initial-value-format" />
+
+### Formatting Value
+
+<ComponentPreview name="phone-input-formatting-value" />
+
+### With Validation
+
+<ComponentPreview name="phone-input-with-validation" />
+
+### Form
+
+<ComponentPreview name="phone-input-form" />

@@ -421,6 +421,20 @@ export const contentRegistry: ContentRegistry = {
 			{ label: "Pagination", path: "/docs/components/pagination" },
 		],
 	},
+	"components/phone-input": {
+		type: "file",
+		path: "components/phone-input.mdx",
+		meta: {
+			title: "Phone Input",
+			description:
+				"A phone number input with country selection, formatting, and validation.",
+		},
+		urlPath: "components/phone-input",
+		breadcrumbs: [
+			{ label: "Components", path: "/docs/components" },
+			{ label: "Phone Input", path: "/docs/components/phone-input" },
+		],
+	},
 	"components/popover": {
 		type: "file",
 		path: "components/popover.mdx",
