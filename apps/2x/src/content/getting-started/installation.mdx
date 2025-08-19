@@ -7,9 +7,91 @@
 
 <Steps>
 
+<Step>Install Tailwind and Vite plugins</Step>
+
+Start by installing Tailwind CSS and the official Vite plugin. This will enable Tailwind support in your project.
+
+```bash title="Terminal"
+npm install tailwindcss @tailwindcss/vite
+````
+
+<Step>Configure index.css</Step>
+
+Replace the entire contents of your `index.css` file with the following minimal Tailwind setup:
+
+```css title="src/index.css"
+@import "tailwindcss";
+```
+
+<Step>Configure TypeScript paths</Step>
+
+Update your `tsconfig.json` to include base references and clean `@/*` imports:
+
+```json title="tsconfig.json"
+{
+  "files": [],
+  "references": [
+    {
+      "path": "./tsconfig.app.json"
+    },
+    {
+      "path": "./tsconfig.node.json"
+    }
+  ],
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"]
+    }
+  }
+}
+```
+
+Then, make sure your `tsconfig.app.json` includes path aliases if they are not already present:
+
+```json title="tsconfig.app.json"
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"]
+    }
+  }
+}
+```
+
+<Step>Install Node types</Step>
+
+For proper TypeScript support, install Node.js type definitions:
+
+```bash title="Terminal"
+npm install -D @types/node
+```
+
+<Step>Update Vite configuration</Step>
+
+Configure Vite with Tailwind, React, and alias resolution. Update your `vite.config.ts` to include the following:
+
+```ts title="vite.config.ts"
+import path from "path"
+import tailwindcss from "@tailwindcss/vite"
+import react from "@vitejs/plugin-react"
+import { defineConfig } from "vite"
+
+// https://vite.dev/config/
+export default defineConfig({
+  plugins: [react(), tailwindcss()],
+  resolve: {
+    alias: {
+      "@": path.resolve(__dirname, "./src"),
+    },
+  },
+})
+```
+
 <Step>Set up your project with 9ui configuration</Step>
 
-Start by initializing your project with 9ui's custom configuration. This approach builds upon the [shadcn installation guide](https://ui.shadcn.com/docs/installation) but uses 9ui-specific settings.
+Now initialize your project with 9ui's custom configuration. This approach builds upon the [shadcn installation guide](https://ui.shadcn.com/docs/installation) but uses 9ui-specific settings.
 
 <Alert variant="danger" className="mt-4">
 	<AlertTitle>
@@ -271,7 +353,6 @@ Wrap your application content with the `root` class to ensure proper styling iso
 
 Optionally create a `components.json` file to enable shadcn CLI component installation with the correct paths and settings.
 
-
 ```json title="components.json"
 {
   "$schema": "https://ui.shadcn.com/schema.json",
@@ -313,7 +394,7 @@ Your project is now fully configured! You can start installing and using 9ui com
 
 For additional icon options, consider these popular alternatives:
 
-- **[Monicon](https://monicon-docs.vercel.app/)** - Access over 200,000 icons from various popular libraries in a unified interface
-- **[pqoqubbw/icons](https://icons.pqoqubbw.dev/)** - A curated collection of animated icons for enhanced user interactions
+* **[Monicon](https://monicon-docs.vercel.app/)** - Access over 200,000 icons from various popular libraries in a unified interface
+* **[pqoqubbw/icons](https://icons.pqoqubbw.dev/)** - A curated collection of animated icons for enhanced user interactions
 
 These libraries can be used alongside or instead of lucide-react depending on your project's specific needs.
