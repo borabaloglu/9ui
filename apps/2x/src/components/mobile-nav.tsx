@@ -113,7 +113,7 @@ function MobileNavItem({
 	) : (
 		<span
 			className={cn(
-				"text-muted-foreground -ml-2 flex w-full cursor-not-allowed items-center justify-between gap-2 border border-transparent px-2 py-1.5 opacity-60"
+				"text-muted-foreground pointer-events-none -ml-2 flex w-full items-center justify-between gap-2 border border-transparent px-2 py-1.5 opacity-60"
 			)}
 		>
 			{item.title}

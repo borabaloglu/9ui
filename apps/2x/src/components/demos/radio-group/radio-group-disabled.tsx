@@ -3,25 +3,25 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
 
 export default function RadioGroupDisabled() {
 	return (
-		<RadioGroup disabled aria-labelledby="radio-group-notifications">
+		<RadioGroup aria-labelledby="radio-group-notifications" disabled>
 			<div
 				id="radio-group-notifications"
 				className="text-foreground font-medium"
 			>
 				Notifications
 			</div>
-			<Label className="flex items-center gap-2">
+			<div className="flex items-center gap-2">
 				<RadioGroupItem id="email" value="email" />
-				Email
-			</Label>
-			<Label className="flex items-center gap-2">
+				<Label htmlFor="email">Email</Label>
+			</div>
+			<div className="flex items-center gap-2">
 				<RadioGroupItem id="sms" value="sms" />
-				SMS
-			</Label>
-			<Label className="flex items-center gap-2">
+				<Label htmlFor="sms">SMS</Label>
+			</div>
+			<div className="flex items-center gap-2">
 				<RadioGroupItem id="email-and-sms" value="email-and-sms" />
-				Email & SMS
-			</Label>
+				<Label htmlFor="email-and-sms">Email & SMS</Label>
+			</div>
 		</RadioGroup>
 	)
 }

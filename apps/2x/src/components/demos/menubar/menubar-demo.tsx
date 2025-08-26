@@ -94,11 +94,7 @@ export default function MenubarDemo() {
 					<MenubarSub>
 						<MenubarSubTrigger>Appearance</MenubarSubTrigger>
 						<MenubarSubContent>
-							<MenubarRadioGroup
-								onValueChange={(value) => {
-									console.log(value)
-								}}
-							>
+							<MenubarRadioGroup>
 								<MenubarRadioItem value="system">System</MenubarRadioItem>
 								<MenubarRadioItem value="light">Light</MenubarRadioItem>
 								<MenubarRadioItem value="dark">Dark</MenubarRadioItem>

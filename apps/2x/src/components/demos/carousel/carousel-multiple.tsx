@@ -18,7 +18,7 @@ export default function CarouselMultiple() {
 						<CarouselItem key={slide} className="basis-1/2">
 							<AspectRatio
 								ratio={16 / 10}
-								className="bg-background rounded-lg border"
+								className="bg-card rounded-lg border"
 							>
 								<div className="text-foreground flex size-full items-center justify-center text-xl font-semibold">
 									{slide}
