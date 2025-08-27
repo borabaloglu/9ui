@@ -11,7 +11,7 @@ export default function AlertWithAction() {
 				No Internet Connection
 			</AlertTitle>
 			<Button
-				className="absolute top-1/2 right-4 h-6 -translate-y-1/2 shadow-none"
+				className="absolute top-1/2 right-4 h-6 -translate-y-1/2 text-xs shadow-none"
 				size="sm"
 				variant="outline"
 			>

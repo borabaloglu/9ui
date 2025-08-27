@@ -35,7 +35,7 @@ function NumberField({
 	}
 
 	const controllerClassName =
-		"hover:bg-input/50 bg-input flex size-9 items-center justify-center border transition-colors select-none disabled:opacity-50 disabled:pointer-events-none"
+		"hover:border-ring/70 bg-input flex size-9 items-center justify-center border transition-colors select-none disabled:opacity-50 disabled:pointer-events-none"
 
 	return (
 		<NumberFieldContext.Provider value={{ id: fieldId }}>
@@ -46,7 +46,7 @@ function NumberField({
 				{...props}
 			>
 				{children}
-				<BaseNumberField.Group className="text-foreground flex">
+				<BaseNumberField.Group className="text-foreground flex rounded-md shadow-xs transition-shadow">
 					<BaseNumberField.Decrement
 						className={cn(controllerClassName, "rounded-l-md")}
 						data-slot="number-field-decrement"
@@ -54,7 +54,7 @@ function NumberField({
 						<MinusIcon />
 					</BaseNumberField.Decrement>
 					<BaseNumberField.Input
-						className="focus:outline-ring/50 h-9 w-20 border-y text-center text-sm tabular-nums focus:z-1 focus:outline-3 focus:-outline-offset-1 disabled:pointer-events-none disabled:opacity-50"
+						className="hover:border-ring/70 h-9 w-20 border-y text-center text-sm tabular-nums transition-colors focus:z-1 focus:outline-[3px] focus:-outline-offset-1 disabled:pointer-events-none disabled:opacity-50"
 						data-slot="number-field-input"
 					/>
 					<BaseNumberField.Increment

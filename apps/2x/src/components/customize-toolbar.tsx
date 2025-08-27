@@ -96,9 +96,9 @@ export const CustomizeToolbar = ({
 
 	const handleReset = () => {
 		setTheme({
-			shade: "zinc",
+			shade: "neutral",
 			primaryColor: "neutral",
-			radius: 0.5,
+			radius: 0.625,
 			flat: false,
 		})
 	}

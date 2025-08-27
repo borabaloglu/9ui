@@ -11,9 +11,9 @@ import { generateTheme } from "@/lib/generate-theme"
 
 const ThemesPage = () => {
 	const [theme, setTheme] = useState<ThemeSettings>({
-		shade: "zinc",
+		shade: "neutral",
 		primaryColor: "neutral",
-		radius: 0.5,
+		radius: 0.625,
 		flat: false,
 	})
 

@@ -77,15 +77,15 @@ export function SearchDialog() {
 		<>
 			<Button
 				variant="outline"
-				className="bg-input/70 text-muted-foreground relative w-full justify-start overflow-hidden border-0 pr-12 text-sm font-normal shadow-none md:w-40 lg:w-64"
-				size="md"
+				className="bg-accent/50 hover:bg-accent dark:hover:bg-accent text-accent-foreground relative w-full justify-start overflow-hidden border-0 pr-12 text-xs font-normal shadow-xs md:w-40 lg:w-64"
+				size="sm"
 				onClick={() => setOpen(true)}
 			>
 				<span className="hidden max-w-[calc(100%-32px)] overflow-hidden lg:inline-flex">
 					Search documentation...
 				</span>
 				<span className="inline-flex lg:hidden">Search...</span>
-				<div className="pointer-events-none absolute right-3 flex gap-x-0.5">
+				<div className="pointer-events-none absolute right-3 flex gap-x-1">
 					<Kbd className="border-0 text-[10px]">⌘</Kbd>
 					<Kbd className="border-0 text-[10px]">K</Kbd>
 				</div>
