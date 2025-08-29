@@ -1,10 +1,10 @@
 <Title content="Resizable" />
-<Description content="Accessible resizable panel groups and layouts, it allows users to rescale interface sections with both mouse and keyboard support." />
+<Description content="A group of panels with accessible, resizable layouts." />
 <ComponentLinks
 	links={[
 		{
 			label: "Docs",
-			href: "https://base-ui.com/react/components/resizable",
+			href: "https://react-resizable-panels.vercel.app/",
 		},
 	]}
 />
@@ -16,13 +16,13 @@
 <ComponentInstallation>
 <div>
 ```bash title="Terminal"
-npx shadcn@latest add https://9ui.dev/r/resizable.json
+npx shadcn@latest add @9ui/resizable
 ```
 </div>
 
 <Steps>
 
-<Step>Copy and paste the following code into your project.</Step>  
+<Step>Copy and paste the following code into your project.</Step>
 
 <ComponentSource name="resizable" />
 
@@ -40,11 +40,11 @@ import {
 ```
 
 ```tsx title="Anatomy"
-	<ResizablePanelGroup>
-		<ResizablePanel/>
-		<ResizableHandle/>
-		<ResizablePanel/>
-	</ResizablePanelGroup>
+<ResizablePanelGroup>
+	<ResizablePanel />
+	<ResizableHandle />
+	<ResizablePanel />
+</ResizablePanelGroup>
 ```
 
 ## Examples
@@ -52,6 +52,8 @@ import {
 ### Vertical
 
 <ComponentPreview name="resizable-vertical" />
+
+---
 
 ### With handle
 

@@ -490,8 +490,7 @@ export const contentRegistry: ContentRegistry = {
 		path: "components/resizable.mdx",
 		meta: {
 			title: "Resizable",
-			description:
-				"Accessible resizable panel groups and layouts, it allows users to rescale interface sections with both mouse and keyboard support.",
+			description: "A group of panels with accessible, resizable layouts.",
 		},
 		urlPath: "components/resizable",
 		breadcrumbs: [

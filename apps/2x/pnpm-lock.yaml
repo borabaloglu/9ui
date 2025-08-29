@@ -89,9 +89,6 @@ importers:
       next-themes:
         specifier: ^0.4.4
         version: 0.4.6(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
-      re-resizable:
-        specifier: ^6.10.3
-        version: 6.11.2(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
       react:
         specifier: ^19.0.0
         version: 19.1.0
@@ -104,12 +101,12 @@ importers:
       react-hook-form:
         specifier: ^7.54.2
         version: 7.59.0(react@19.1.0)
-      react-resizable-panels:
-        specifier: ^3.0.4
-        version: 3.0.4(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
       react-phone-number-input:
         specifier: ^3.4.12
         version: 3.4.12(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
+      react-resizable-panels:
+        specifier: ^3.0.4
+        version: 3.0.4(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
       recharts:
         specifier: ^2.15.1
         version: 2.15.4(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
@@ -2686,12 +2683,6 @@ packages:
   queue-microtask@1.2.3:
     resolution: {integrity: sha512-NuaNSa6flKT5JaSYQzJok04JzTL1CA6aGhv5rfLW3PgqA+M2ChpZQnAC8h8i4ZFkBS8X5RqkDBHA7r4hej3K9A==}
 
-  re-resizable@6.11.2:
-    resolution: {integrity: sha512-2xI2P3OHs5qw7K0Ud1aLILK6MQxW50TcO+DetD9eIV58j84TqYeHoZcL9H4GXFXXIh7afhH8mv5iUCXII7OW7A==}
-    peerDependencies:
-      react: ^16.13.1 || ^17.0.0 || ^18.0.0 || ^19.0.0
-      react-dom: ^16.13.1 || ^17.0.0 || ^18.0.0 || ^19.0.0
-
   react-day-picker@9.7.0:
     resolution: {integrity: sha512-urlK4C9XJZVpQ81tmVgd2O7lZ0VQldZeHzNejbwLWZSkzHH498KnArT0EHNfKBOWwKc935iMLGZdxXPRISzUxQ==}
     engines: {node: '>=18'}
@@ -2715,17 +2706,17 @@ packages:
   react-is@18.3.1:
     resolution: {integrity: sha512-/LLMVyas0ljjAtoYiPqYiL8VWXzUUdThrmU5+n20DZv+a+ClRoevUzw5JxU+Ieh5/c87ytoTBV9G1FiKfNJdmg==}
 
-  react-resizable-panels@3.0.4:
-    resolution: {integrity: sha512-8Y4KNgV94XhUvI2LeByyPIjoUJb71M/0hyhtzkHaqpVHs+ZQs8b627HmzyhmVYi3C9YP6R+XD1KmG7hHjEZXFQ==}
-    peerDependencies:
-      react: ^16.14.0 || ^17.0.0 || ^18.0.0 || ^19.0.0 || ^19.0.0-rc
-      react-dom: ^16.14.0 || ^17.0.0 || ^18.0.0 || ^19.0.0 || ^19.0.0-rc
-
   react-phone-number-input@3.4.12:
     resolution: {integrity: sha512-Raob77KdtLGm49iC6nuOX9qy6Mg16idkgC7Y1mHmvG2WBYoauHpzxYNlfmFskQKeiztrJIwPhPzBhjFwjenNCA==}
     peerDependencies:
       react: '>=16.8'
       react-dom: '>=16.8'
+
+  react-resizable-panels@3.0.4:
+    resolution: {integrity: sha512-8Y4KNgV94XhUvI2LeByyPIjoUJb71M/0hyhtzkHaqpVHs+ZQs8b627HmzyhmVYi3C9YP6R+XD1KmG7hHjEZXFQ==}
+    peerDependencies:
+      react: ^16.14.0 || ^17.0.0 || ^18.0.0 || ^19.0.0 || ^19.0.0-rc
+      react-dom: ^16.14.0 || ^17.0.0 || ^18.0.0 || ^19.0.0 || ^19.0.0-rc
 
   react-smooth@4.0.4:
     resolution: {integrity: sha512-gnGKTpYwqL0Iii09gHobNolvX4Kiq4PKx6eWBCYYix+8cdw+cGo3do906l1NBPKkSWx1DghC1dlWG9L2uGd61Q==}
@@ -6084,11 +6075,6 @@ snapshots:
 
   queue-microtask@1.2.3: {}
 
-  re-resizable@6.11.2(react-dom@19.1.0(react@19.1.0))(react@19.1.0):
-    dependencies:
-      react: 19.1.0
-      react-dom: 19.1.0(react@19.1.0)
-
   react-day-picker@9.7.0(react@19.1.0):
     dependencies:
       '@date-fns/tz': 1.2.0
@@ -6109,11 +6095,6 @@ snapshots:
 
   react-is@18.3.1: {}
 
-  react-resizable-panels@3.0.4(react-dom@19.1.0(react@19.1.0))(react@19.1.0):
-    dependencies:
-      react: 19.1.0
-      react-dom: 19.1.0(react@19.1.0)
-      
   react-phone-number-input@3.4.12(react-dom@19.1.0(react@19.1.0))(react@19.1.0):
     dependencies:
       classnames: 2.5.1
@@ -6121,6 +6102,11 @@ snapshots:
       input-format: 0.3.14(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
       libphonenumber-js: 1.12.10
       prop-types: 15.8.1
+      react: 19.1.0
+      react-dom: 19.1.0(react@19.1.0)
+
+  react-resizable-panels@3.0.4(react-dom@19.1.0(react@19.1.0))(react@19.1.0):
+    dependencies:
       react: 19.1.0
       react-dom: 19.1.0(react@19.1.0)
 

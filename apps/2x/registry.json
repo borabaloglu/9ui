@@ -491,7 +491,7 @@
 		{
 			"name": "resizable",
 			"type": "registry:ui",
-			"dependencies": [],
+			"dependencies": ["react-resizable-panels"],
 			"registryDependencies": [],
 			"files": [
 				{
