@@ -3,7 +3,7 @@
 	"name": "sonner",
 	"type": "registry:ui",
 	"dependencies": ["sonner"],
-	"registryDependencies": ["https://9ui.dev/r/button.json"],
+	"registryDependencies": ["@9ui/button"],
 	"files": [
 		{
 			"path": "ui/sonner.tsx",

@@ -3,7 +3,7 @@
 	"name": "form",
 	"type": "registry:ui",
 	"dependencies": ["react-hook-form", "zod", "@hookform/resolvers"],
-	"registryDependencies": ["https://9ui.dev/r/label.json"],
+	"registryDependencies": ["@9ui/label"],
 	"files": [
 		{
 			"path": "ui/form.tsx",

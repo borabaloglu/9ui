@@ -148,7 +148,7 @@
 			"name": "carousel",
 			"type": "registry:ui",
 			"dependencies": ["embla-carousel", "embla-carousel-react"],
-			"registryDependencies": ["https://9ui.dev/r/button.json"],
+			"registryDependencies": ["@9ui/button"],
 			"files": [
 				{
 					"path": "src/components/ui/carousel.tsx",
@@ -213,7 +213,7 @@
 			"name": "command",
 			"type": "registry:ui",
 			"dependencies": ["cmdk-base"],
-			"registryDependencies": ["https://9ui.dev/r/dialog.json"],
+			"registryDependencies": ["@9ui/dialog"],
 			"files": [
 				{
 					"path": "src/components/ui/command.tsx",
@@ -291,7 +291,7 @@
 			"name": "form",
 			"type": "registry:ui",
 			"dependencies": ["react-hook-form", "zod", "@hookform/resolvers"],
-			"registryDependencies": ["https://9ui.dev/r/label.json"],
+			"registryDependencies": ["@9ui/label"],
 			"files": [
 				{
 					"path": "src/components/ui/form.tsx",
@@ -422,11 +422,11 @@
 			"type": "registry:ui",
 			"dependencies": ["react-phone-number-input"],
 			"registryDependencies": [
-				"button",
-				"command",
-				"input",
-				"popover",
-				"scroll-area"
+				"@9ui/button",
+				"@9ui/command",
+				"@9ui/input",
+				"@9ui/popover",
+				"@9ui/scroll-area"
 			],
 			"files": [
 				{
@@ -570,7 +570,7 @@
 			"name": "sonner",
 			"type": "registry:ui",
 			"dependencies": ["sonner"],
-			"registryDependencies": ["https://9ui.dev/r/button.json"],
+			"registryDependencies": ["@9ui/button"],
 			"files": [
 				{
 					"path": "src/components/ui/sonner.tsx",
