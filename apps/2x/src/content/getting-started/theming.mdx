@@ -36,15 +36,81 @@ The theme system is built with semantic color tokens that represent specific use
 
 - `chart-1` through `chart-5`: Predefined colors for data visualizations
 
+## Theme Color Mapping
+
+The theme system uses semantic color tokens that map to specific shade values from the [Tailwind CSS color palette](https://tailwindcss.com/docs/customizing-colors). Each shade (neutral, gray, slate, stone, zinc) follows the same mapping pattern:
+
+### Light Mode Mapping
+
+- `background`: shade-50 (lightest)
+- `foreground`: shade-950 (darkest)
+- `card`: shade-100
+- `card-foreground`: shade-950
+- `popover`: shade-100
+- `popover-foreground`: shade-950
+- `primary`: shade-950
+- `primary-foreground`: shade-50
+- `secondary`: shade-200
+- `secondary-foreground`: shade-900
+- `muted`: shade-200
+- `muted-foreground`: shade-600
+- `accent`: shade-200
+- `accent-foreground`: shade-950
+- `destructive`: red-700
+- `destructive-foreground`: shade-50
+- `border`: shade-300
+- `input`: shade-100
+- `ring`: shade-400
+- `chart-1`: blue-700
+- `chart-2`: green-700
+- `chart-3`: purple-700
+- `chart-4`: orange-700
+- `chart-5`: rose-700
+
+### Dark Mode Mapping
+
+- `background`: shade-950 (darkest)
+- `foreground`: shade-50 (lightest)
+- `card`: shade-900
+- `card-foreground`: shade-50
+- `popover`: shade-900
+- `popover-foreground`: shade-50
+- `primary`: shade-50
+- `primary-foreground`: shade-950
+- `secondary`: shade-800
+- `secondary-foreground`: shade-100
+- `muted`: shade-800
+- `muted-foreground`: shade-400
+- `accent`: shade-700
+- `accent-foreground`: shade-50
+- `destructive`: red-500
+- `destructive-foreground`: shade-50
+- `border`: shade-700
+- `input`: shade-800
+- `ring`: shade-500
+- `chart-1`: blue-500
+- `chart-2`: green-500
+- `chart-3`: purple-500
+- `chart-4`: orange-500
+- `chart-5`: rose-500
+
+Where `shade` represents the selected shade (e.g., if using neutral shade: neutral-50, neutral-100, etc.).
+
+The status color system is inspired by [Emil Kowalski's Sonner](https://sonner.emilkowal.ski/) toast library, providing consistent visual feedback across different states.
+
+These status colors remain consistent across all theme shades, ensuring users can always recognize the semantic meaning regardless of the selected color theme.
+
 ## Why OKLCH?
 
 1. **Wider Color Gamut**: OKLCH can represent a broader range of colors
 2. **Better Color Interpolation**: Smoother transitions and animations
 3. **Perceptual Uniformity**: More natural-looking color variations
 
+You can read more about OKLCH colors in [What are OKLCH colors?](https://jakub.kr/components/oklch-colors) by [Jakub Krehel](https://x.com/jakubkrehel).
+
 ## Customizing Colors
 
-### Adding New Colors
+### Adding and Using New Colors
 
 To add new colors to your theme:
 
@@ -55,14 +121,14 @@ To add new colors to your theme:
 ```css title="globals.css"
 :root {
 	/* Existing colors */
-	--custom-color: oklch(0.627 0.265 303.9);
-	--custom-color-foreground: oklch(0.977 0.014 308.299);
+	--custom-color: oklch(62.7% 0.265 303.9);
+	--custom-color-foreground: oklch(97.7% 0.014 308.299);
 }
 
 .dark {
 	/* Existing dark mode colors */
-	--custom-color: oklch(0.627 0.265 303.9);
-	--custom-color-foreground: oklch(0.977 0.014 308.299);
+	--custom-color: oklch(62.7% 0.265 303.9);
+	--custom-color-foreground: oklch(97.7% 0.014 308.299);
 }
 
 @theme inline {
@@ -72,14 +138,12 @@ To add new colors to your theme:
 }
 ```
 
-</Steps>
+<Step>Use the new colors in your components</Step>
 
-### Using Custom Colors
-
-After adding new colors, you can use them with Tailwind's utility classes:
-
-```jsx title="Usage"
+```jsx title="component.tsx"
 <div className="bg-custom-color text-custom-color-foreground">
 	Custom colored content
 </div>
 ```
+
+</Steps>

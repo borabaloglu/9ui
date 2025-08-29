@@ -1,19 +1,15 @@
 {
-  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
-  "name": "sonner",
-  "type": "registry:ui",
-  "dependencies": [
-    "sonner"
-  ],
-  "registryDependencies": [
-    "https://9ui.dev/r/button.json"
-  ],
-  "files": [
-    {
-      "path": "src/components/ui/sonner.tsx",
-      "content": "\"use client\"\n\nimport { useTheme } from \"next-themes\"\nimport { Toaster as Sonner, ToasterProps } from \"sonner\"\n\nconst Toaster = ({ ...props }: ToasterProps) => {\n\tconst { theme = \"system\" } = useTheme()\n\treturn (\n\t\t<Sonner\n\t\t\ttheme={theme as ToasterProps[\"theme\"]}\n\t\t\tclassName=\"toaster group\"\n\t\t\tstyle={\n\t\t\t\t{\n\t\t\t\t\t\"--normal-bg\": \"var(--popover)\",\n\t\t\t\t\t\"--normal-text\": \"var(--popover-foreground)\",\n\t\t\t\t\t\"--normal-border\": \"var(--border)\",\n\t\t\t\t} as React.CSSProperties\n\t\t\t}\n\t\t\t{...props}\n\t\t/>\n\t)\n}\n\nexport { Toaster }\n",
-      "type": "registry:ui",
-      "target": ""
-    }
-  ]
+	"$schema": "https://ui.shadcn.com/schema/registry-item.json",
+	"name": "sonner",
+	"type": "registry:ui",
+	"dependencies": ["sonner"],
+	"registryDependencies": ["@9ui/button"],
+	"files": [
+		{
+			"path": "ui/sonner.tsx",
+			"content": "\"use client\"\n\nimport { useTheme } from \"next-themes\"\nimport { Toaster as Sonner, ToasterProps } from \"sonner\"\n\nconst Toaster = ({ ...props }: ToasterProps) => {\n\tconst { theme = \"system\" } = useTheme()\n\treturn (\n\t\t<Sonner\n\t\t\ttheme={theme as ToasterProps[\"theme\"]}\n\t\t\tclassName=\"toaster group\"\n\t\t\tstyle={\n\t\t\t\t{\n\t\t\t\t\t\"--normal-bg\": \"var(--color-popover)\",\n\t\t\t\t\t\"--normal-text\": \"var(--color-popover-foreground)\",\n\t\t\t\t\t\"--normal-border\": \"var(--color-border)\",\n\t\t\t\t\t\"--error-bg\": \"var(--color-danger)\",\n\t\t\t\t\t\"--error-text\": \"var(--color-danger-foreground)\",\n\t\t\t\t\t\"--error-border\": \"var(--color-danger-border)\",\n\t\t\t\t\t\"--warning-bg\": \"var(--color-warning)\",\n\t\t\t\t\t\"--warning-text\": \"var(--color-warning-foreground)\",\n\t\t\t\t\t\"--warning-border\": \"var(--color-warning-border)\",\n\t\t\t\t\t\"--info-bg\": \"var(--color-info)\",\n\t\t\t\t\t\"--info-text\": \"var(--color-info-foreground)\",\n\t\t\t\t\t\"--info-border\": \"var(--color-info-border)\",\n\t\t\t\t\t\"--success-bg\": \"var(--color-success)\",\n\t\t\t\t\t\"--success-text\": \"var(--color-success-foreground)\",\n\t\t\t\t\t\"--success-border\": \"var(--color-success-border)\",\n\t\t\t\t} as React.CSSProperties\n\t\t\t}\n\t\t\t{...props}\n\t\t/>\n\t)\n}\n\nexport { Toaster }\n",
+			"type": "registry:ui",
+			"target": ""
+		}
+	]
 }

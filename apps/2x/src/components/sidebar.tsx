@@ -3,6 +3,8 @@
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 
+import { Badge } from "@/components/ui/badge"
+
 import { navConfig } from "@/config/nav"
 
 import { cn } from "@/lib/utils"
@@ -20,7 +22,7 @@ export const DocsSidebarNavItems = ({
 	pathname,
 	onNavItemClick,
 }: DocsSidebarNavItemsProps) => (
-	<div className="mt-1 space-y-0.5 text-sm">
+	<div className="mt-1.5 text-sm">
 		{items.map((item, index) =>
 			!item.disabled && item.href ? (
 				<Link
@@ -28,34 +30,27 @@ export const DocsSidebarNavItems = ({
 					href={item.href}
 					onClick={onNavItemClick}
 					className={cn(
-						"hover:text-foreground -ml-2 flex w-full items-center justify-between gap-2 rounded-md border px-2 py-1.5 transition-colors",
+						"hover:text-foreground -ml-2 flex h-9 w-full items-center justify-between gap-2 rounded-md border px-2 transition-colors",
 						pathname === item.href
-							? "bg-secondary/50 text-foreground pl-2"
+							? "bg-accent/50 text-accent-foreground pl-2"
 							: "text-muted-foreground border-transparent"
 					)}
 					target={item.external ? "_blank" : ""}
 					rel={item.external ? "noreferrer" : ""}
+					prefetch
 				>
 					{item.title}
-					{item.label && (
-						<span className="bg-info text-info-foreground rounded px-1.5 py-0.5 text-xs font-medium">
-							{item.label}
-						</span>
-					)}
+					{item.label && <Badge variant="info">{item.label}</Badge>}
 				</Link>
 			) : (
 				<span
 					key={index}
 					className={cn(
-						"text-muted-foreground -ml-2 flex w-full cursor-not-allowed items-center justify-between gap-2 border border-transparent px-2 py-1.5 opacity-60"
+						"text-muted-foreground pointer-events-none -ml-2 flex w-full items-center justify-between gap-2 border border-transparent px-2 py-1.5 opacity-50"
 					)}
 				>
 					{item.title}
-					{item.label && (
-						<span className="bg-info text-info-foreground rounded px-1.5 py-0.5 text-xs font-medium">
-							{item.label}
-						</span>
-					)}
+					{item.label && <Badge variant="info">{item.label}</Badge>}
 				</span>
 			)
 		)}

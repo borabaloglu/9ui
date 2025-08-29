@@ -16,10 +16,7 @@ export default function CarouselVertical() {
 				<CarouselContent className="aspect-video h-[-webkit-fill-available] w-full p-4">
 					{slides.map((slide) => (
 						<CarouselItem key={slide} className="basis-full">
-							<AspectRatio
-								ratio={16 / 9}
-								className="bg-background rounded-lg border"
-							>
+							<AspectRatio ratio={16 / 9} className="bg-card rounded-lg border">
 								<div className="text-foreground flex size-full items-center justify-center font-medium">
 									{slide}
 								</div>

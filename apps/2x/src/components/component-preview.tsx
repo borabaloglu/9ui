@@ -40,7 +40,7 @@ export const ComponentPreview = ({
 					<Button
 						variant="ghost"
 						size="icon-sm"
-						className="absolute right-2 top-2 size-6"
+						className="absolute top-2 right-2 size-6"
 						onClick={() => setKey((prev) => prev + 1)}
 					>
 						<RefreshCwIcon size={16} />
@@ -57,7 +57,7 @@ export const ComponentPreview = ({
 				</React.Suspense>
 			</div>
 
-			<CodeBar label={`${name}.tsx`} content={__source__} />
+			<CodeBar label={`${name}.tsx`} content={__source__} type="demo" />
 
 			<div className="[&_pre]:!max-h-[300px]">{children}</div>
 		</div>

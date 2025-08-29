@@ -33,11 +33,15 @@ function Command({
 function CommandDialog({
 	title = "Command Palette",
 	description = "Search for a command to run...",
+	className,
+	showCloseButton = false,
 	children,
 	...props
 }: React.ComponentProps<typeof Dialog> & {
 	title?: string
 	description?: string
+	className?: string
+	showCloseButton?: boolean
 }) {
 	return (
 		<Dialog {...props}>
@@ -45,8 +49,11 @@ function CommandDialog({
 				<DialogTitle>{title}</DialogTitle>
 				<DialogDescription>{description}</DialogDescription>
 			</DialogHeader>
-			<DialogContent className="overflow-hidden p-0 [&_[data-dialog-close]]:hidden">
-				<Command className="border-none">{children}</Command>
+			<DialogContent
+				className={cn("overflow-hidden p-0", className)}
+				showCloseButton={showCloseButton}
+			>
+				<Command>{children}</Command>
 			</DialogContent>
 		</Dialog>
 	)
@@ -65,7 +72,7 @@ function CommandInput({
 			<CommandBase.Input
 				data-slot="command-input"
 				className={cn(
-					"placeholder:text-muted-foreground flex h-10 w-full rounded-md bg-transparent py-3 text-sm outline-hidden disabled:cursor-not-allowed disabled:opacity-50",
+					"placeholder:text-muted-foreground flex h-10 w-full rounded-md bg-transparent py-3 text-sm outline-hidden disabled:pointer-events-none disabled:opacity-50",
 					className
 				)}
 				{...props}

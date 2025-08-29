@@ -1,7 +1,7 @@
-import Image from "next/image"
 import { LinkIcon, SendIcon } from "lucide-react"
 import { toast } from "sonner"
 
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Button } from "@/components/ui/button"
 import {
 	Card,
@@ -37,29 +37,23 @@ export default function CardDemo() {
 				<div className="flex flex-col gap-4">
 					<h4 className="text-sm font-medium">Invited Members</h4>
 					<div className="flex items-center gap-2">
-						<Image
-							src="/memoji-1.png"
-							alt="Avatar"
-							width={24}
-							height={24}
-							className="size-8 rounded-full"
-						/>
+						<Avatar size="sm">
+							<AvatarImage src="/avatars/memoji-1.png" alt="Avatar" />
+							<AvatarFallback>KS</AvatarFallback>
+						</Avatar>
 						<div className="flex flex-col text-xs">
 							<p className="font-medium">Karen Smith</p>
-							<p className="text-muted-foreground">karen@9.ui</p>
+							<p className="text-muted-foreground">karen@9ui.dev</p>
 						</div>
 					</div>
 					<div className="flex items-center gap-2">
-						<Image
-							src="/memoji-3.png"
-							alt="Avatar"
-							width={24}
-							height={24}
-							className="size-8 rounded-full"
-						/>
+						<Avatar size="sm">
+							<AvatarImage src="/avatars/memoji-3.png" alt="Avatar" />
+							<AvatarFallback>CW</AvatarFallback>
+						</Avatar>
 						<div className="flex flex-col text-xs">
 							<p className="font-medium">Chris Williams</p>
-							<p className="text-muted-foreground">chris@9.ui</p>
+							<p className="text-muted-foreground">chris@9ui.dev</p>
 						</div>
 					</div>
 				</div>

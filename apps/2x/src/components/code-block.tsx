@@ -17,6 +17,7 @@ export const CodeBlock = ({ content, topBar, ...props }: CodeBlockProps) => {
 					label={topBar.label}
 					className="border-t-0"
 					content={content}
+					type="other"
 				/>
 			)}
 			<pre {...props} />

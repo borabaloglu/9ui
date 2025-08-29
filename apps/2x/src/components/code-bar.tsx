@@ -4,6 +4,7 @@ import { cn } from "@/lib/utils"
 
 interface CodeBarProps {
 	label?: string | React.ReactNode
+	type?: "demo" | "component" | "command" | "other"
 	content: string
 	className?: string
 	labelClassName?: string
@@ -12,6 +13,7 @@ interface CodeBarProps {
 
 export function CodeBar({
 	label,
+	type,
 	content,
 	className,
 	labelClassName,
@@ -20,7 +22,7 @@ export function CodeBar({
 	return (
 		<div
 			className={cn(
-				"flex h-8 items-center justify-between border-y bg-secondary px-2",
+				"bg-secondary flex h-8 items-center justify-between border-y px-2",
 				className
 			)}
 		>
@@ -32,7 +34,12 @@ export function CodeBar({
 				label
 			)}
 
-			<CopyButton content={content} className={copyButtonClassName} />
+			<CopyButton
+				content={content}
+				className={copyButtonClassName}
+				eventType={type}
+				label={typeof label === "string" ? label : undefined}
+			/>
 		</div>
 	)
 }

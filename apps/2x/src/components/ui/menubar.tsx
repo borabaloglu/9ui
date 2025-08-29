@@ -258,16 +258,19 @@ function MenubarSubTrigger({
 
 function MenubarSubContent({
 	className,
-	sideOffset = 8,
+	sideOffset = 0,
+	align = "start",
 	...props
 }: React.ComponentProps<typeof BaseMenu.Popup> & {
 	sideOffset?: BaseMenu.Positioner.Props["sideOffset"]
+	align?: BaseMenu.Positioner.Props["align"]
 }) {
 	return (
 		<MenubarPortal>
 			<BaseMenu.Positioner
 				className="max-h-[var(--available-height)]"
 				sideOffset={sideOffset}
+				align={align}
 			>
 				<BaseMenu.Popup
 					data-slot="menubar-sub-content"

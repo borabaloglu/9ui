@@ -136,6 +136,7 @@ export const AIChatInterface = () => {
 								{chat.title}
 								<DropdownMenu>
 									<DropdownMenuTrigger
+										nativeButton={false}
 										render={(props) => (
 											<div
 												className="flex size-6 items-center justify-center outline-none"

@@ -412,13 +412,27 @@ export const contentRegistry: ContentRegistry = {
 		type: "file",
 		path: "components/pagination.mdx",
 		meta: {
-			title: "Number Field",
+			title: "Pagination",
 			description: "A control for navigating between pages of content.",
 		},
 		urlPath: "components/pagination",
 		breadcrumbs: [
 			{ label: "Components", path: "/docs/components" },
 			{ label: "Pagination", path: "/docs/components/pagination" },
+		],
+	},
+	"components/phone-input": {
+		type: "file",
+		path: "components/phone-input.mdx",
+		meta: {
+			title: "Phone Input",
+			description:
+				"A phone number input with country selection, formatting, and validation.",
+		},
+		urlPath: "components/phone-input",
+		breadcrumbs: [
+			{ label: "Components", path: "/docs/components" },
+			{ label: "Phone Input", path: "/docs/components/phone-input" },
 		],
 	},
 	"components/popover": {
@@ -780,7 +794,8 @@ export const contentRegistry: ContentRegistry = {
 		path: "getting-started/installation.mdx",
 		meta: {
 			title: "Installation",
-			description: "Installing dependencies and setting up the project.",
+			description:
+				"Get started with 9ui by installing dependencies and setting up your project.",
 		},
 		urlPath: "getting-started/installation",
 		breadcrumbs: [
@@ -800,6 +815,16 @@ export const contentRegistry: ContentRegistry = {
 		breadcrumbs: [
 			{ label: "Getting Started", path: "/docs/getting-started" },
 			{ label: "Introduction", path: "/docs/getting-started/introduction" },
+		],
+	},
+	"getting-started/llms": {
+		type: "file",
+		path: "getting-started/llms.mdx",
+		meta: { title: "LLMs", description: "AI-friendly documentation for 9ui" },
+		urlPath: "getting-started/llms",
+		breadcrumbs: [
+			{ label: "Getting Started", path: "/docs/getting-started" },
+			{ label: "Llms", path: "/docs/getting-started/llms" },
 		],
 	},
 	"getting-started/roadmap": {

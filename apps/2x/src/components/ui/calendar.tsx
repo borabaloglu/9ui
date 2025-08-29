@@ -31,7 +31,7 @@ function Calendar({
 					classNames?.day
 				),
 				day_button: cn(
-					"size-8 rounded-md focus:outline-hidden focus-visible:outline-2 focus-visible:outline-offset-1 focus-visible:outline-accent",
+					"size-8 rounded-md focus:outline-hidden focus-visible:outline-[3px] focus-visible:outline-offset-1",
 					classNames?.day_button
 				),
 				weekdays: cn("flex justify-center", classNames?.weekdays),

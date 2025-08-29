@@ -1,15 +1,15 @@
 {
-  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
-  "name": "scroll-area",
-  "type": "registry:ui",
-  "dependencies": [],
-  "registryDependencies": [],
-  "files": [
-    {
-      "path": "src/components/ui/scroll-area.tsx",
-      "content": "import * as React from \"react\"\nimport { ScrollArea as BaseScrollArea } from \"@base-ui-components/react/scroll-area\"\n\nimport { cn } from \"@/lib/utils\"\n\nfunction ScrollArea({\n\tclassName,\n\tchildren,\n\torientation,\n\t...props\n}: React.ComponentProps<typeof BaseScrollArea.Root> & {\n\torientation?: \"horizontal\" | \"vertical\"\n}) {\n\treturn (\n\t\t<BaseScrollArea.Root\n\t\t\tdata-slot=\"scroll-area\"\n\t\t\tclassName={cn(\"relative\", className)}\n\t\t\t{...props}\n\t\t>\n\t\t\t<BaseScrollArea.Viewport\n\t\t\t\tdata-slot=\"scroll-area-viewport\"\n\t\t\t\tclassName=\"focus-visible:ring-ring/50 size-full overscroll-contain rounded-[inherit] transition-[color,box-shadow] outline-none focus-visible:ring-[3px] focus-visible:outline\"\n\t\t\t>\n\t\t\t\t{children}\n\t\t\t</BaseScrollArea.Viewport>\n\t\t\t<ScrollBar orientation={orientation} />\n\t\t\t<BaseScrollArea.Corner />\n\t\t</BaseScrollArea.Root>\n\t)\n}\n\nfunction ScrollBar({\n\tclassName,\n\torientation = \"vertical\",\n\t...props\n}: React.ComponentProps<typeof BaseScrollArea.Scrollbar>) {\n\treturn (\n\t\t<BaseScrollArea.Scrollbar\n\t\t\tdata-slot=\"scroll-area-scrollbar\"\n\t\t\torientation={orientation}\n\t\t\tclassName={cn(\n\t\t\t\t\"m-1 flex touch-none p-px opacity-0 transition-[colors,opacity] delay-200 select-none data-hovering:opacity-100 data-hovering:delay-0 data-hovering:duration-100 data-scrolling:opacity-100 data-scrolling:delay-0 data-scrolling:duration-100\",\n\t\t\t\torientation === \"vertical\" && \"w-2.5 border-l border-l-transparent\",\n\t\t\t\torientation === \"horizontal\" &&\n\t\t\t\t\t\"h-2.5 flex-col border-t border-t-transparent\",\n\t\t\t\tclassName\n\t\t\t)}\n\t\t\t{...props}\n\t\t>\n\t\t\t<BaseScrollArea.Thumb\n\t\t\t\tdata-slot=\"scroll-area-thumb\"\n\t\t\t\tclassName=\"bg-border relative flex-1 rounded-full\"\n\t\t\t/>\n\t\t</BaseScrollArea.Scrollbar>\n\t)\n}\n\nexport { ScrollArea }\n",
-      "type": "registry:ui",
-      "target": ""
-    }
-  ]
+	"$schema": "https://ui.shadcn.com/schema/registry-item.json",
+	"name": "scroll-area",
+	"type": "registry:ui",
+	"dependencies": [],
+	"registryDependencies": [],
+	"files": [
+		{
+			"path": "ui/scroll-area.tsx",
+			"content": "import * as React from \"react\"\nimport { ScrollArea as BaseScrollArea } from \"@base-ui-components/react/scroll-area\"\n\nimport { cn } from \"@/lib/utils\"\n\nfunction ScrollArea({\n\tclassName,\n\tchildren,\n\torientation,\n\t...props\n}: React.ComponentProps<typeof BaseScrollArea.Root> & {\n\torientation?: \"horizontal\" | \"vertical\"\n}) {\n\treturn (\n\t\t<BaseScrollArea.Root\n\t\t\tdata-slot=\"scroll-area\"\n\t\t\tclassName={cn(\"relative\", className)}\n\t\t\t{...props}\n\t\t>\n\t\t\t<BaseScrollArea.Viewport\n\t\t\t\tdata-slot=\"scroll-area-viewport\"\n\t\t\t\tclassName=\"focus-visible:ring-ring/50 size-full overscroll-contain rounded-[inherit] transition-[color,box-shadow] outline-none focus-visible:ring-[3px] focus-visible:outline\"\n\t\t\t>\n\t\t\t\t{children}\n\t\t\t</BaseScrollArea.Viewport>\n\t\t\t<ScrollBar orientation={orientation} />\n\t\t\t<BaseScrollArea.Corner />\n\t\t</BaseScrollArea.Root>\n\t)\n}\n\nfunction ScrollBar({\n\tclassName,\n\torientation = \"vertical\",\n\t...props\n}: React.ComponentProps<typeof BaseScrollArea.Scrollbar>) {\n\treturn (\n\t\t<BaseScrollArea.Scrollbar\n\t\t\tdata-slot=\"scroll-area-scrollbar\"\n\t\t\torientation={orientation}\n\t\t\tclassName={cn(\n\t\t\t\t\"m-1 flex touch-none p-px opacity-0 transition-[border-color,opacity] delay-200 select-none data-hovering:opacity-100 data-hovering:delay-0 data-hovering:duration-100 data-scrolling:opacity-100 data-scrolling:delay-0 data-scrolling:duration-100\",\n\t\t\t\torientation === \"vertical\" && \"w-2.5 border-l border-l-transparent\",\n\t\t\t\torientation === \"horizontal\" &&\n\t\t\t\t\t\"h-2.5 flex-col border-t border-t-transparent\",\n\t\t\t\tclassName\n\t\t\t)}\n\t\t\t{...props}\n\t\t>\n\t\t\t<BaseScrollArea.Thumb\n\t\t\t\tdata-slot=\"scroll-area-thumb\"\n\t\t\t\tclassName=\"bg-border relative flex-1 rounded-full\"\n\t\t\t/>\n\t\t</BaseScrollArea.Scrollbar>\n\t)\n}\n\nexport { ScrollArea }\n",
+			"type": "registry:ui",
+			"target": ""
+		}
+	]
 }

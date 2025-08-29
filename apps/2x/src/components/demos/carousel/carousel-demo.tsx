@@ -16,10 +16,7 @@ export default function CarouselDemo() {
 				<CarouselContent>
 					{slides.map((slide) => (
 						<CarouselItem key={slide}>
-							<AspectRatio
-								ratio={16 / 9}
-								className="bg-background rounded-lg border"
-							>
+							<AspectRatio ratio={16 / 9} className="bg-card rounded-lg border">
 								<div className="text-foreground flex size-full items-center justify-center text-xl font-semibold">
 									{slide}
 								</div>

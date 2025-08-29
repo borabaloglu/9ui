@@ -1,15 +1,15 @@
 {
-  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
-  "name": "avatar",
-  "type": "registry:ui",
-  "dependencies": [],
-  "registryDependencies": [],
-  "files": [
-    {
-      "path": "src/components/ui/avatar.tsx",
-      "content": "\"use client\"\n\nimport * as React from \"react\"\nimport { Avatar as AvatarBase } from \"@base-ui-components/react/avatar\"\nimport { cva, VariantProps } from \"class-variance-authority\"\n\nimport { cn } from \"@/lib/utils\"\n\nconst avatarVariants = cva(\n\t\"relative flex shrink-0 overflow-hidden rounded-full\",\n\t{\n\t\tvariants: {\n\t\t\tsize: {\n\t\t\t\tsm: \"size-8 text-sm\",\n\t\t\t\tmd: \"size-10\",\n\t\t\t\tlg: \"size-12 text-lg\",\n\t\t\t},\n\t\t},\n\t\tdefaultVariants: {\n\t\t\tsize: \"md\",\n\t\t},\n\t}\n)\n\nfunction Avatar({\n\tclassName,\n\tsize,\n\t...props\n}: React.ComponentProps<typeof AvatarBase.Root> &\n\tVariantProps<typeof avatarVariants>) {\n\treturn (\n\t\t<AvatarBase.Root\n\t\t\tdata-slot=\"avatar\"\n\t\t\tclassName={cn(avatarVariants({ size }), className)}\n\t\t\t{...props}\n\t\t/>\n\t)\n}\n\nfunction AvatarImage({\n\tclassName,\n\t...props\n}: React.ComponentProps<typeof AvatarBase.Image>) {\n\treturn (\n\t\t<AvatarBase.Image\n\t\t\tdata-slot=\"avatar-image\"\n\t\t\tclassName={cn(\"size-full object-cover\", className)}\n\t\t\t{...props}\n\t\t/>\n\t)\n}\n\nfunction AvatarFallback({\n\tclassName,\n\t...props\n}: React.ComponentProps<typeof AvatarBase.Fallback>) {\n\treturn (\n\t\t<AvatarBase.Fallback\n\t\t\tdata-slot=\"avatar-fallback\"\n\t\t\tclassName={cn(\n\t\t\t\t\"bg-muted flex size-full items-center justify-center rounded-full select-none\",\n\t\t\t\tclassName\n\t\t\t)}\n\t\t\t{...props}\n\t\t/>\n\t)\n}\n\nexport { Avatar, AvatarImage, AvatarFallback }\n",
-      "type": "registry:ui",
-      "target": ""
-    }
-  ]
+	"$schema": "https://ui.shadcn.com/schema/registry-item.json",
+	"name": "avatar",
+	"type": "registry:ui",
+	"dependencies": [],
+	"registryDependencies": [],
+	"files": [
+		{
+			"path": "ui/avatar.tsx",
+			"content": "\"use client\"\n\nimport * as React from \"react\"\nimport { Avatar as AvatarBase } from \"@base-ui-components/react/avatar\"\nimport { cva, VariantProps } from \"class-variance-authority\"\n\nimport { cn } from \"@/lib/utils\"\n\nconst avatarVariants = cva(\n\t\"relative flex shrink-0 overflow-hidden rounded-full\",\n\t{\n\t\tvariants: {\n\t\t\tsize: {\n\t\t\t\tsm: \"size-8 text-sm\",\n\t\t\t\tmd: \"size-10\",\n\t\t\t\tlg: \"size-12 text-lg\",\n\t\t\t},\n\t\t},\n\t\tdefaultVariants: {\n\t\t\tsize: \"md\",\n\t\t},\n\t}\n)\n\nfunction Avatar({\n\tclassName,\n\tsize,\n\t...props\n}: React.ComponentProps<typeof AvatarBase.Root> &\n\tVariantProps<typeof avatarVariants>) {\n\treturn (\n\t\t<AvatarBase.Root\n\t\t\tdata-slot=\"avatar\"\n\t\t\tclassName={cn(avatarVariants({ size }), className)}\n\t\t\t{...props}\n\t\t/>\n\t)\n}\n\nfunction AvatarImage({\n\tclassName,\n\t...props\n}: React.ComponentProps<typeof AvatarBase.Image>) {\n\treturn (\n\t\t<AvatarBase.Image\n\t\t\tdata-slot=\"avatar-image\"\n\t\t\tclassName={cn(\"size-full object-cover\", className)}\n\t\t\t{...props}\n\t\t/>\n\t)\n}\n\nfunction AvatarFallback({\n\tclassName,\n\t...props\n}: React.ComponentProps<typeof AvatarBase.Fallback>) {\n\treturn (\n\t\t<AvatarBase.Fallback\n\t\t\tdata-slot=\"avatar-fallback\"\n\t\t\tclassName={cn(\n\t\t\t\t\"bg-muted flex size-full items-center justify-center rounded-full select-none\",\n\t\t\t\tclassName\n\t\t\t)}\n\t\t\t{...props}\n\t\t/>\n\t)\n}\n\nexport { Avatar, AvatarImage, AvatarFallback }\n",
+			"type": "registry:ui",
+			"target": ""
+		}
+	]
 }

@@ -49,6 +49,11 @@ export const navConfig: NavConfig = {
 					href: "/docs/getting-started/changelog",
 				},
 				{
+					title: "LLMs",
+					href: "/docs/getting-started/llms",
+					label: "New",
+				},
+				{
 					title: "Figma",
 					href: "/docs/getting-started/figma",
 					disabled: true,
@@ -194,6 +199,11 @@ export const navConfig: NavConfig = {
 				{
 					title: "Pagination",
 					href: "/docs/components/pagination",
+					label: "New",
+				},
+				{
+					title: "Phone Input",
+					href: "/docs/components/phone-input",
 					label: "New",
 				},
 				{
