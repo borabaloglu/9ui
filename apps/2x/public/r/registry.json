@@ -489,6 +489,19 @@
 			]
 		},
 		{
+			"name": "resizable",
+			"type": "registry:ui",
+			"dependencies": [],
+			"registryDependencies": [],
+			"files": [
+				{
+					"path": "src/components/ui/resizable.tsx",
+					"type": "registry:ui",
+					"target": ""
+				}
+			]
+		},
+		{
 			"name": "scroll-area",
 			"type": "registry:ui",
 			"dependencies": [],

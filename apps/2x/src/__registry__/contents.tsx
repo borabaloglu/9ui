@@ -485,6 +485,20 @@ export const contentRegistry: ContentRegistry = {
 			{ label: "Radio Group", path: "/docs/components/radio-group" },
 		],
 	},
+	"components/resizable": {
+		type: "file",
+		path: "components/resizable.mdx",
+		meta: {
+			title: "Resizable",
+			description:
+				"Accessible resizable panel groups and layouts, it allows users to rescale interface sections with both mouse and keyboard support.",
+		},
+		urlPath: "components/resizable",
+		breadcrumbs: [
+			{ label: "Components", path: "/docs/components" },
+			{ label: "Resizable", path: "/docs/components/resizable" },
+		],
+	},
 	"components/scroll-area": {
 		type: "file",
 		path: "components/scroll-area.mdx",
