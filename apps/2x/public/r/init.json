@@ -12,7 +12,7 @@
 		"tailwind-merge",
 		"lucide-react"
 	],
-	"registryDependencies": ["https://9ui.dev/r/utils.json"],
+	"registryDependencies": ["@9ui/utils"],
 	"files": [],
 	"cssVars": {
 		"theme": {

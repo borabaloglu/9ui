@@ -3,7 +3,7 @@
 	"name": "carousel",
 	"type": "registry:ui",
 	"dependencies": ["embla-carousel", "embla-carousel-react"],
-	"registryDependencies": ["https://9ui.dev/r/button.json"],
+	"registryDependencies": ["@9ui/button"],
 	"files": [
 		{
 			"path": "ui/carousel.tsx",

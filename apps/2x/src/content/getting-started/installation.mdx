@@ -7,22 +7,43 @@
 
 <Steps>
 
-<Step>Set up your project with 9ui configuration</Step>
+<Step>Create a new project</Step>
 
-Start by initializing your project with 9ui's custom configuration. This approach builds upon the [shadcn installation guide](https://ui.shadcn.com/docs/installation) but uses 9ui-specific settings.
+Follow the [shadcn installation guide](https://ui.shadcn.com/docs/installation) to create a new project. If you already have a project with shadcn setup, you can skip this step.
 
-<Alert variant="danger" className="mt-4">
+<Step>Add 9ui registry to your `components.json`</Step>
+
+```json title="components.json"
+{
+	// existing configuration
+	"registries": {
+		"@9ui": "https://9ui.dev/r/{name}.json"
+	}
+}
+```
+
+<Step>Initialize 9ui</Step>
+
+```bash title="Terminal"
+npx shadcn@latest add @9ui/init
+```
+
+This will update your `globals.css` file with the necessary styling and install the required dependencies.
+
+<Alert variant="warning" className="mt-4">
 	<AlertTitle>
-		Don't use the standard `npx shadcn@latest init` command. Instead, use our
-		custom configuration below to ensure proper 9ui theme setup.
+		Please note that shadcn includes default styles. It's recommended to review
+		your globals.css file to check for any conflicts.
 	</AlertTitle>
 </Alert>
 
-```bash title="Terminal"
-npx shadcn@latest init https://9ui.dev/r/init.json
-```
+<Step>Initialize MCP</Step>
 
-This command automatically installs the required dependencies, applies the 9ui theme configuration, and updates your `globals.css` file with the necessary styling.
+This step adds the necessary configuration to allow you to use the components directly in your code with AI assistance. The AI will have full context of the entire 9ui registry.
+
+```bash title="Terminal"
+npx shadcn@latest mcp init
+```
 
 <Step>Add the root wrapper to your layout</Step>
 
@@ -291,7 +312,10 @@ Optionally create a `components.json` file to enable shadcn CLI component instal
 		"lib": "@/lib",
 		"hooks": "@/hooks"
 	},
-	"iconLibrary": "lucide"
+	"iconLibrary": "lucide",
+	"registries": {
+		"@9ui": "https://9ui.dev/r/{name}.json"
+	}
 }
 ```
 

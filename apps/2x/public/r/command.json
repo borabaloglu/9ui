@@ -3,7 +3,7 @@
 	"name": "command",
 	"type": "registry:ui",
 	"dependencies": ["cmdk-base"],
-	"registryDependencies": ["https://9ui.dev/r/dialog.json"],
+	"registryDependencies": ["@9ui/dialog"],
 	"files": [
 		{
 			"path": "ui/command.tsx",

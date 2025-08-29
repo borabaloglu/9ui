@@ -4,11 +4,11 @@
 	"type": "registry:ui",
 	"dependencies": ["react-phone-number-input"],
 	"registryDependencies": [
-		"button",
-		"command",
-		"input",
-		"popover",
-		"scroll-area"
+		"@9ui/button",
+		"@9ui/command",
+		"@9ui/input",
+		"@9ui/popover",
+		"@9ui/scroll-area"
 	],
 	"files": [
 		{
