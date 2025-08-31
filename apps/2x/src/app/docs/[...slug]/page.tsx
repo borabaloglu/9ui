@@ -5,15 +5,8 @@ import { Metadata } from "next"
 import { notFound } from "next/navigation"
 
 import { CtaCard } from "@/components/cta-card"
+import { PageActions } from "@/components/page-actions"
 import { TableOfContents } from "@/components/toc"
-import {
-	Breadcrumb,
-	BreadcrumbItem,
-	BreadcrumbLink,
-	BreadcrumbList,
-	BreadcrumbPage,
-	BreadcrumbSeparator,
-} from "@/components/ui/breadcrumbs"
 
 import { siteConfig } from "@/config/site"
 
@@ -107,28 +100,9 @@ const DocPage = async ({ params }: DocPageProps) => {
 	return (
 		<main className="relative grid xl:grid-cols-[1fr_240px] xl:gap-8">
 			<div className="min-h-screen min-w-0 py-4">
-				<Breadcrumb className="mb-2">
-					<BreadcrumbList>
-						{doc.breadcrumbs.map((breadcrumb, index) => (
-							<React.Fragment key={breadcrumb.path}>
-								{index === doc.breadcrumbs.length - 1 ? (
-									<BreadcrumbItem>
-										<BreadcrumbPage>{breadcrumb.label}</BreadcrumbPage>
-									</BreadcrumbItem>
-								) : (
-									<BreadcrumbItem>
-										<BreadcrumbLink href={breadcrumb.path}>
-											{breadcrumb.label}
-										</BreadcrumbLink>
-									</BreadcrumbItem>
-								)}
-								{index !== doc.breadcrumbs.length - 1 && (
-									<BreadcrumbSeparator />
-								)}
-							</React.Fragment>
-						))}
-					</BreadcrumbList>
-				</Breadcrumb>
+				<div className="mb-4">
+					<PageActions />
+				</div>
 
 				<doc.Doc />
 			</div>

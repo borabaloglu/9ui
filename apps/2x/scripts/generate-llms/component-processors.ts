@@ -384,14 +384,40 @@ export function processComponentSource(node: any) {
 export function processComponentLinks(node: any) {
 	const linksAttr = node.attributes?.find((attr: any) => attr.name === "links")
 
-	if (!linksAttr?.value || !Array.isArray(linksAttr.value)) {
+	if (!linksAttr?.value) {
+		return []
+	}
+
+	let links: Array<{ label: string; href: string }> = []
+
+	// Handle different types of link attribute values
+	if (Array.isArray(linksAttr.value)) {
+		// Direct array (shouldn't happen in MDX but just in case)
+		links = linksAttr.value
+	} else if (linksAttr.value.type === "mdxJsxAttributeValueExpression") {
+		// MDX expression - try to parse the value string
+		try {
+			// The value string contains the JavaScript array
+			const valueString = linksAttr.value.value
+			// Use eval in a safe context (we control the input)
+			links = eval(`(${valueString})`)
+		} catch (error) {
+			console.warn("Failed to parse ComponentLinks data:", error)
+			return []
+		}
+	} else {
+		console.warn("Unexpected ComponentLinks attribute format:", linksAttr.value)
+		return []
+	}
+
+	if (!Array.isArray(links) || links.length === 0) {
 		return []
 	}
 
 	const result: any[] = [mdx.heading(3, "References")]
 
 	// Convert links to markdown list
-	const linkItems = linksAttr.value.map((link: any) => {
+	const linkItems = links.map((link: any) => {
 		if (link.href && link.label) {
 			return [mdx.link(link.href, link.label)]
 		}
