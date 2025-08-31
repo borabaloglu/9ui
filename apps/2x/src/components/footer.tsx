@@ -1,5 +1,5 @@
 export const Footer = () => (
-	<footer className="dark:border-border/40 border-t border-dashed">
+	<footer className="dark:border-border/40 border-t border-dashed max-sm:[body:has(.page-actions)_&]:pb-16">
 		<div className="dark:border-border/40 container mx-auto border-dashed py-4 xl:border-x">
 			<div className="text-muted-foreground text-center text-sm">
 				made with ❤️ by{" "}
