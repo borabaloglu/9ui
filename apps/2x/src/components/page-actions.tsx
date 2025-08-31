@@ -148,7 +148,7 @@ export function PageActions() {
 							<button
 								className={cn(
 									buttonVariants({ variant: "secondary", size: "icon-sm" }),
-									"h-8 rounded-l-none border-l data-[popup-open]:[&_svg]:rotate-180"
+									"h-8 rounded-l-none border-l data-[popup-open]:[&_svg]:rotate-180 max-md:[&_svg]:rotate-180 max-md:data-[popup-open]:[&_svg]:rotate-0"
 								)}
 								{...props}
 							>
