@@ -9,7 +9,11 @@
 
 <Step>Create a new project</Step>
 
-Follow the [shadcn installation guide](https://ui.shadcn.com/docs/installation) to create a new project. If you already have a project with shadcn setup, you can skip this step.
+```bash title="Terminal"
+npx shadcn@latest init https://9ui.dev/r/init.json
+```
+
+or you can follow the [shadcn installation guide](https://ui.shadcn.com/docs/installation) if your framework doesn't support `shadcn init`.
 
 <Step>Add 9ui registry to your `components.json`</Step>
 
@@ -21,21 +25,6 @@ Follow the [shadcn installation guide](https://ui.shadcn.com/docs/installation) 
 	}
 }
 ```
-
-<Step>Initialize 9ui</Step>
-
-```bash title="Terminal"
-npx shadcn@latest add @9ui/init
-```
-
-This will update your `globals.css` file with the necessary styling and install the required dependencies.
-
-<Alert variant="warning" className="mt-4">
-	<AlertTitle>
-		Please note that shadcn includes default styles. It's recommended to review
-		your globals.css file to check for any conflicts.
-	</AlertTitle>
-</Alert>
 
 <Step>Initialize MCP</Step>
 
@@ -229,7 +218,7 @@ Add the 9ui theme configuration and styling to your global CSS file. This includ
 @layer base {
 	* {
 		border-color: var(--border);
-		outline-color: var(--ring) 50%;
+		outline-color: oklch(from var(--ring) l c h / 0.5);
 		scrollbar-width: thin;
 		scrollbar-color: var(--border) transparent;
 	}

@@ -12,7 +12,7 @@
 		"tailwind-merge",
 		"lucide-react"
 	],
-	"registryDependencies": ["@9ui/utils"],
+	"registryDependencies": ["https://9ui.dev/r/utils.json"],
 	"files": [],
 	"cssVars": {
 		"theme": {
@@ -141,7 +141,7 @@
 		"@layer base": {
 			"*": {
 				"border-color": "var(--border)",
-				"outline-color": "var(--ring) 50%",
+				"outline-color": "oklch(from var(--ring) l c h / 0.5)",
 				"scrollbar-width": "thin",
 				"scrollbar-color": "var(--border) transparent"
 			},
