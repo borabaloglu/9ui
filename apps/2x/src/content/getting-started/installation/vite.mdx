@@ -1,0 +1,441 @@
+<Title content="Vite" />
+<Description content="Install 9ui in your Vite project." />
+
+<InstallationTabs>
+
+<div>
+
+<Steps>
+
+<Step>Create a new project</Step>
+
+Initialize a fresh Vite + React + TypeScript project.
+
+```bash title="Terminal"
+npm create vite@latest
+```
+
+<Step>Add Tailwind CSS</Step>
+
+Install Tailwind CSS and the Vite Tailwind plugin. 
+
+```bash title="Terminal"
+npm install tailwindcss @tailwindcss/vite
+```
+
+Next, import Tailwind into your main stylesheet by replacing the contents of `index.css`.
+
+```css title="src/index.css"
+@import "tailwindcss";
+```
+
+<Step>Set up import aliases</Step>
+
+Configure TypeScript path mapping to enable clean `@/*` imports throughout your project.
+
+```ts title="tsconfig.json" {11-16} showLineNumbers
+{
+  "files": [],
+  "references": [
+    {
+      "path": "./tsconfig.app.json"
+    },
+    {
+      "path": "./tsconfig.node.json"
+    }
+  ],
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"]
+    }
+  }
+}
+```
+
+If your template includes `tsconfig.app.json`, mirror the alias there as well:
+
+```ts title="tsconfig.app.json" {4-9} showLineNumbers
+{
+  "compilerOptions": {
+    // ...
+    "baseUrl": ".",
+    "paths": {
+      "@/*": [
+        "./src/*"
+      ],
+    },
+    // ...
+  },
+}
+```
+
+<Step>Configure Vite</Step>
+
+Install Node types and set up the Vite config with React, Tailwind, and the `@` alias.
+
+```bash title="Terminal"
+npm install -D @types/node
+```
+
+```ts title="vite.config.ts" showLineNumbers {1,2,8-13}
+import path from "path"
+import tailwindcss from "@tailwindcss/vite"
+import react from "@vitejs/plugin-react"
+import { defineConfig } from "vite"
+
+// https://vite.dev/config/
+export default defineConfig({
+  plugins: [react(), tailwindcss()],
+  resolve: {
+    alias: {
+      "@": path.resolve(__dirname, "./src"),
+    },
+  },
+})
+```
+
+<Step>Run the CLI</Step>
+
+Run the `shadcn` init command to setup your project.
+
+```bash title="Terminal"
+npx shadcn@latest init https://9ui.dev/r/init.json
+```
+
+<Step>Add 9ui registry to your `components.json`</Step>
+
+```json title="components.json"
+{
+	// existing configuration
+	"registries": {
+		"@9ui": "https://9ui.dev/r/{name}.json"
+	}
+}
+```
+
+<Step>Initialize MCP (optional)</Step>
+
+This step adds the necessary configuration to allow you to use the components directly in your code with AI assistance. The AI will have full context of the entire 9ui registry.
+
+```bash title="Terminal"
+npx shadcn@latest mcp init
+```
+
+<Step>Add the root wrapper</Step>
+
+Add the `root` class to your app wrapper to ensure proper styling isolation and theme application.
+
+```html {1} title="index.html"
+<body class="root">
+  <div id="root"></div>
+</body>
+```
+
+<Step>Start using 9ui components</Step>
+
+Your project is now ready! You can start installing and using 9ui components in your application.
+
+</Steps>
+
+</div>
+
+<div>
+
+<Steps>
+
+<Step>Install required dependencies</Step>
+
+Install the core dependencies needed for 9ui components to function properly.
+
+```bash title="Terminal"
+npm install tw-animate-css @base-ui-components/react tailwind-merge clsx lucide-react class-variance-authority
+```
+
+<Step>Set up utility functions</Step>
+
+Create a utilities file that provides essential helper functions for component styling and class management.
+
+```ts title="src/lib/utils.ts"
+import { clsx, type ClassValue } from "clsx"
+import { twMerge } from "tailwind-merge"
+
+export function cn(...inputs: ClassValue[]) {
+	return twMerge(clsx(inputs))
+}
+```
+
+<Step>Configure your global styles</Step>
+
+Add the 9ui theme configuration and styling to your global CSS file. This includes color variables, custom properties, and base styles.
+
+```css title="src/index.css"
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+	--font-sans:
+		"Inter", ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji",
+		"Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+	--font-mono:
+		"Geist Mono", "ui-monospace", "SFMono-Regular", "Menlo", "Monaco",
+		"Consolas", '"Liberation Mono"', '"Courier New"', "monospace";
+	--radius-sm: calc(var(--radius) - 4px);
+	--radius-md: calc(var(--radius) - 2px);
+	--radius-lg: var(--radius);
+	--radius-xl: calc(var(--radius) + 2px);
+	--color-background: var(--background);
+	--color-foreground: var(--foreground);
+	--color-card: var(--card);
+	--color-card-foreground: var(--card-foreground);
+	--color-popover: var(--popover);
+	--color-popover-foreground: var(--popover-foreground);
+	--color-primary: var(--primary);
+	--color-primary-foreground: var(--primary-foreground);
+	--color-secondary: var(--secondary);
+	--color-secondary-foreground: var(--secondary-foreground);
+	--color-muted: var(--muted);
+	--color-muted-foreground: var(--muted-foreground);
+	--color-accent: var(--accent);
+	--color-accent-foreground: var(--accent-foreground);
+	--color-destructive: var(--destructive);
+	--color-destructive-foreground: var(--destructive-foreground);
+	--color-danger: var(--danger);
+	--color-danger-foreground: var(--danger-foreground);
+	--color-danger-border: var(--danger-border);
+	--color-warning: var(--warning);
+	--color-warning-foreground: var(--warning-foreground);
+	--color-warning-border: var(--warning-border);
+	--color-info: var(--info);
+	--color-info-foreground: var(--info-foreground);
+	--color-info-border: var(--info-border);
+	--color-success: var(--success);
+	--color-success-foreground: var(--success-foreground);
+	--color-success-border: var(--success-border);
+	--color-border: var(--border);
+	--color-input: var(--input);
+	--color-ring: var(--ring);
+	--color-chart-1: var(--chart-1);
+	--color-chart-2: var(--chart-2);
+	--color-chart-3: var(--chart-3);
+	--color-chart-4: var(--chart-4);
+	--color-chart-5: var(--chart-5);
+}
+
+:root {
+	--background: oklch(98.5% 0 0);
+	--foreground: oklch(14.5% 0 0);
+	--card: oklch(97% 0 0);
+	--card-foreground: oklch(14.5% 0 0);
+	--popover: oklch(97% 0 0);
+	--popover-foreground: oklch(14.5% 0 0);
+	--primary: oklch(14.5% 0 0);
+	--primary-foreground: oklch(98.5% 0 0);
+	--secondary: oklch(92.2% 0 0);
+	--secondary-foreground: oklch(20.5% 0 0);
+	--muted: oklch(92.2% 0 0);
+	--muted-foreground: oklch(43.9% 0 0);
+	--accent: oklch(92.2% 0 0);
+	--accent-foreground: oklch(14.5% 0 0);
+	--destructive: oklch(50.5% 0.213 27.518);
+	--destructive-foreground: oklch(98.5% 0 0);
+	--border: oklch(87% 0 0);
+	--input: oklch(97% 0 0);
+	--ring: oklch(70.8% 0 0);
+	--danger: oklch(96.6% 0.016 16.278);
+	--danger-foreground: oklch(57.9% 0.237 29.233);
+	--danger-border: oklch(93.3% 0.033 16.63);
+	--warning: oklch(99% 0.016 96.37);
+	--warning-foreground: oklch(66.9% 0.16 56.73);
+	--warning-border: oklch(94.4% 0.078 96.97);
+	--info: oklch(97.4% 0.012 244.25);
+	--info-foreground: oklch(56.2% 0.182 255.12);
+	--info-border: oklch(92.7% 0.032 265.82);
+	--success: oklch(97.9% 0.023 158.94);
+	--success-foreground: oklch(55% 0.165 146.61);
+	--success-border: oklch(94.1% 0.078 158.88);
+	--chart-1: oklch(48.8% 0.243 264.376);
+	--chart-2: oklch(52.7% 0.154 150.069);
+	--chart-3: oklch(49.6% 0.265 301.924);
+	--chart-4: oklch(55.3% 0.195 38.402);
+	--chart-5: oklch(51.4% 0.222 16.935);
+	--radius: 0.625rem;
+}
+
+.dark {
+	--background: oklch(14.5% 0 0);
+	--foreground: oklch(98.5% 0 0);
+	--card: oklch(20.5% 0 0);
+	--card-foreground: oklch(98.5% 0 0);
+	--popover: oklch(20.5% 0 0);
+	--popover-foreground: oklch(98.5% 0 0);
+	--primary: oklch(98.5% 0 0);
+	--primary-foreground: oklch(14.5% 0 0);
+	--secondary: oklch(26.9% 0 0);
+	--secondary-foreground: oklch(97% 0 0);
+	--muted: oklch(26.9% 0 0);
+	--muted-foreground: oklch(70.8% 0 0);
+	--accent: oklch(37.1% 0 0);
+	--accent-foreground: oklch(98.5% 0 0);
+	--destructive: oklch(63.7% 0.237 25.331);
+	--destructive-foreground: oklch(98.5% 0 0);
+	--border: oklch(37.1% 0 0);
+	--input: oklch(26.9% 0 0);
+	--ring: oklch(55.6% 0 0);
+	--danger: oklch(19.9% 0.063 23.01);
+	--danger-foreground: oklch(79.8% 0.115 17.83);
+	--danger-border: oklch(26.9% 0.102 25.45);
+	--warning: oklch(22.7% 0.05 113.29);
+	--warning-foreground: oklch(86.4% 0.141 92.19);
+	--warning-border: oklch(29.1% 0.063 109.77);
+	--info: oklch(15.6% 0.045 250.71);
+	--info-foreground: oklch(67.5% 0.152 258.33);
+	--info-border: oklch(26.2% 0.052 266.51);
+	--success: oklch(20.9% 0.0487 158.25);
+	--success-foreground: oklch(86.2% 0.169 157.764);
+	--success-border: oklch(31.6% 0.082 152.3);
+	--chart-1: oklch(62.3% 0.214 259.815);
+	--chart-2: oklch(72.3% 0.219 149.579);
+	--chart-3: oklch(62.7% 0.265 303.9);
+	--chart-4: oklch(70.5% 0.213 47.604);
+	--chart-5: oklch(64.5% 0.246 16.439);
+}
+
+@layer base {
+	* {
+		border-color: var(--border);
+		outline-color: oklch(from var(--ring) l c h / 0.5);
+		scrollbar-width: thin;
+		scrollbar-color: var(--border) transparent;
+	}
+	html {
+		scroll-behavior: smooth;
+		-webkit-font-smoothing: antialiased;
+		-moz-osx-font-smoothing: grayscale;
+		-webkit-tap-highlight-color: transparent;
+	}
+	html[data-base-ui-scroll-locked] {
+		scroll-behavior: auto;
+	}
+	body {
+		background-color: var(--background);
+		color: var(--foreground);
+		overscroll-behavior: none;
+	}
+	.root {
+		isolation: isolate;
+		min-height: 100vh;
+	}
+	::-webkit-scrollbar {
+		width: 4px;
+	}
+	::-webkit-scrollbar-track {
+		background: transparent;
+	}
+	::-webkit-scrollbar-thumb {
+		background: var(--border);
+		border-radius: 4px;
+	}
+}
+```
+
+<Step>Set up import aliases</Step>
+
+Configure TypeScript and Vite to support `@/*` imports.
+
+```json title="tsconfig.json"
+{
+	"compilerOptions": {
+		"baseUrl": ".",
+		"paths": {
+			"@/*": ["./src/*"]
+		}
+	}
+}
+```
+
+If your project uses `tsconfig.app.json`, mirror the same `paths` there.
+
+Also add the alias in your Vite config:
+
+```ts title="vite.config.ts"
+import path from "path"
+import react from "@vitejs/plugin-react"
+import tailwindcss from "@tailwindcss/vite"
+import { defineConfig } from "vite"
+
+export default defineConfig({
+  plugins: [react(), tailwindcss()],
+  resolve: {
+    alias: {
+      "@": path.resolve(__dirname, "./src"),
+    },
+  },
+})
+```
+
+<Step>Add the root wrapper</Step>
+
+Wrap your application with the `root` class to ensure proper styling isolation and theme application.
+
+```html {1} title="index.html"
+<body class="root">
+  <div id="root"></div>
+</body>
+```
+
+<Step>Configure components.json (optional)</Step>
+
+Optionally create a `components.json` file to enable shadcn CLI component installation with the correct paths and settings.
+
+```json title="components.json"
+{
+	"$schema": "https://ui.shadcn.com/schema.json",
+	"rsc": false,
+	"tsx": true,
+	"tailwind": {
+		"config": "",
+		"css": "src/index.css",
+		"baseColor": "neutral",
+		"cssVariables": true,
+		"prefix": ""
+	},
+	"aliases": {
+		"components": "@/components",
+		"utils": "@/lib/utils",
+		"ui": "@/components/ui",
+		"lib": "@/lib",
+		"hooks": "@/hooks"
+	},
+	"iconLibrary": "lucide",
+	"registries": {
+		"@9ui": "https://9ui.dev/r/{name}.json"
+	}
+}
+```
+
+<Step>Start using 9ui components</Step>
+
+Your project is now fully configured! You can start installing and using 9ui components in your application.
+
+</Steps>
+
+</div>
+
+</InstallationTabs>
+
+## Icon Libraries
+
+9ui components use [`lucide-react`](https://lucide.dev/) as the default icon library, which provides a comprehensive set of beautiful, consistent icons.
+
+### Alternative Icon Libraries
+
+For additional icon options, consider these popular alternatives:
+
+- **[Monicon](https://monicon-docs.vercel.app/)** - Access over 200,000 icons from various popular libraries in a unified interface
+- **[pqoqubbw/icons](https://icons.pqoqubbw.dev/)** - A curated collection of animated icons for enhanced user interactions
+
+These libraries can be used alongside or instead of lucide-react depending on your project's specific needs.
+
