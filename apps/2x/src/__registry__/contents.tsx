@@ -789,8 +789,8 @@ export const contentRegistry: ContentRegistry = {
 		],
 	},
 	"getting-started/installation": {
-		type: "file",
-		path: "getting-started/installation.mdx",
+		type: "index",
+		path: "getting-started/installation/index.mdx",
 		meta: {
 			title: "Installation",
 			description:
@@ -800,6 +800,34 @@ export const contentRegistry: ContentRegistry = {
 		breadcrumbs: [
 			{ label: "Getting Started", path: "/docs/getting-started" },
 			{ label: "Installation", path: "/docs/getting-started/installation" },
+		],
+	},
+	"getting-started/installation/next": {
+		type: "file",
+		path: "getting-started/installation/next.mdx",
+		meta: {
+			title: "Next.js",
+			description: "Install 9ui in your Next.js project.",
+		},
+		urlPath: "getting-started/installation/next",
+		breadcrumbs: [
+			{ label: "Getting Started", path: "/docs/getting-started" },
+			{ label: "Installation", path: "/docs/getting-started/installation" },
+			{ label: "Next.js", path: "/docs/getting-started/installation/next" },
+		],
+	},
+	"getting-started/installation/vite": {
+		type: "file",
+		path: "getting-started/installation/vite.mdx",
+		meta: {
+			title: "Vite",
+			description: "Install 9ui in your Vite project.",
+		},
+		urlPath: "getting-started/installation/vite",
+		breadcrumbs: [
+			{ label: "Getting Started", path: "/docs/getting-started" },
+			{ label: "Installation", path: "/docs/getting-started/installation" },
+			{ label: "Vite", path: "/docs/getting-started/installation/vite" },
 		],
 	},
 	"getting-started/introduction": {
