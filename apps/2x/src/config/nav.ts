@@ -51,7 +51,6 @@ export const navConfig: NavConfig = {
 				{
 					title: "LLMs",
 					href: "/docs/getting-started/llms",
-					label: "New",
 				},
 				{
 					title: "Figma",
@@ -79,6 +78,11 @@ export const navConfig: NavConfig = {
 				{
 					title: "Aspect Ratio",
 					href: "/docs/components/aspect-ratio",
+				},
+				{
+					title: "Autocomplete",
+					href: "/docs/components/autocomplete",
+					label: "New",
 				},
 				{
 					title: "Avatar",
@@ -189,22 +193,18 @@ export const navConfig: NavConfig = {
 				{
 					title: "Navigation Menu",
 					href: "/docs/components/navigation-menu",
-					label: "New",
 				},
 				{
 					title: "Number Field",
 					href: "/docs/components/number-field",
-					label: "New",
 				},
 				{
 					title: "Pagination",
 					href: "/docs/components/pagination",
-					label: "New",
 				},
 				{
 					title: "Phone Input",
 					href: "/docs/components/phone-input",
-					label: "New",
 				},
 				{
 					title: "Popover",
@@ -225,7 +225,6 @@ export const navConfig: NavConfig = {
 				{
 					title: "Resizable",
 					href: "/docs/components/resizable",
-					label: "New",
 				},
 				{
 					title: "Scroll Area",
@@ -274,7 +273,6 @@ export const navConfig: NavConfig = {
 				{
 					title: "Toast",
 					href: "/docs/components/toast",
-					label: "New",
 				},
 				{
 					title: "Toggle",
