@@ -30,8 +30,8 @@ export default function AutocompleteVirtualized() {
 		getScrollElement: () => scrollElementRef.current,
 		estimateSize: () => 32,
 		overscan: 20,
-		paddingStart: 0,
-		paddingEnd: 10,
+		paddingStart: 4,
+		paddingEnd: 4,
 	})
 
 	const handleScrollElementRef = React.useCallback(
@@ -79,14 +79,14 @@ export default function AutocompleteVirtualized() {
 				<AutocompleteInput className="w-80" id="search-items-virtualized" />
 			</div>
 
-			<AutocompleteContent className="w-80">
+			<AutocompleteContent className="w-80 py-0 pr-0">
 				<AutocompleteEmpty>No items found.</AutocompleteEmpty>
 				<AutocompleteList>
 					{filteredItems.length > 0 && (
 						<div
 							role="presentation"
 							ref={handleScrollElementRef}
-							className="h-[min(22rem,var(--total-size))] max-h-[var(--available-height)] overflow-auto overscroll-contain"
+							className="h-[min(var(--total-size),18rem)] max-h-[calc(var(--available-height)-2rem)] overflow-y-scroll overscroll-contain"
 							style={{ "--total-size": totalSizePx } as React.CSSProperties}
 						>
 							<div
@@ -130,6 +130,6 @@ export default function AutocompleteVirtualized() {
 }
 
 const virtualItems = Array.from({ length: 10000 }, (_, i) => {
-	const indexLabel = String(i + 1).padStart(4, "0")
+	const indexLabel = String(i + 1).padStart(5, "0")
 	return `Item ${indexLabel}`
 })
