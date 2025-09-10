@@ -67,6 +67,19 @@
 			]
 		},
 		{
+			"name": "autocomplete",
+			"type": "registry:ui",
+			"dependencies": [],
+			"registryDependencies": [],
+			"files": [
+				{
+					"path": "src/components/ui/autocomplete.tsx",
+					"type": "registry:ui",
+					"target": ""
+				}
+			]
+		},
+		{
 			"name": "avatar",
 			"type": "registry:ui",
 			"dependencies": [],

@@ -30,7 +30,7 @@ export default function EmojiPickerPopoverDemo() {
 					</Button>
 				)}
 			/>
-			<PopoverContent className="rounded-md p-0 outline-offset-0">
+			<PopoverContent className="w-full rounded-md p-0 outline-offset-0">
 				<EmojiPicker
 					className="border-none"
 					onEmojiSelect={({ emoji, label }) => {

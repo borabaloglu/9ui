@@ -1,0 +1,97 @@
+<Title content="Autocomplete" />
+<Description content="A component that suggests options as the user types." />
+
+<ComponentLinks
+	links={[
+		{
+			label: "Docs",
+			href: "https://base-ui.com/react/components/autocomplete",
+		},
+	]}
+/>
+
+<ComponentPreview name="autocomplete-demo" />
+
+## Installation
+
+<ComponentInstallation>
+<div>
+```bash title="Terminal"
+npx shadcn@latest add @9ui/autocomplete
+```
+</div>
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="autocomplete" />
+
+</Steps>
+</ComponentInstallation>
+
+## Usage
+
+```tsx title="Imports"
+import {
+	Accordion,
+	AccordionContent,
+	AccordionItem,
+	AccordionTrigger,
+} from "@/components/ui/autocomplete"
+```
+
+```tsx title="Anatomy"
+<Autocomplete>
+	<AutocompleteItem>
+		<AccordionTrigger />
+		<AccordionContent />
+	</AutocompleteItem>
+</Autocomplete>
+```
+
+## Examples
+
+### Groupped
+
+<ComponentPreview name="autocomplete-groupped" />
+
+---
+
+### Async
+
+<ComponentPreview name="autocomplete-async" />
+
+### Inline Autocomplete
+
+<ComponentPreview name="autocomplete-inline" />
+
+---
+
+### Fuzzy Matcher
+
+<ComponentPreview name="autocomplete-fuzzy-matcher" />
+
+---
+
+### Auto Highlight
+
+<ComponentPreview name="autocomplete-autohighlight" />
+
+---
+
+### Limit Results
+
+<ComponentPreview name="autocomplete-limit-results" />
+
+---
+
+### With Rows
+
+<ComponentPreview name="autocomplete-row" />
+
+---
+
+### Virtualized
+
+<ComponentPreview name="autocomplete-virtualized" />
