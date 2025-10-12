@@ -24,7 +24,7 @@ function Input({
 				"group relative w-full data-[disabled]:pointer-events-none",
 				inputContainerClassName
 			)}
-			data-disabled={disabled}
+			data-disabled={disabled ? "" : undefined}
 			data-slot="input-container"
 		>
 			{leadingIcon && (
