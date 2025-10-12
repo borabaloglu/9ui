@@ -34,16 +34,19 @@ function DropdownMenuContent({
 	className,
 	sideOffset = 4,
 	align = "center",
+	side = "bottom",
 	...props
 }: React.ComponentProps<typeof BaseMenu.Popup> & {
 	align?: BaseMenu.Positioner.Props["align"]
 	sideOffset?: BaseMenu.Positioner.Props["sideOffset"]
+	side?: BaseMenu.Positioner.Props["side"]
 }) {
 	return (
 		<DropdownMenuPortal>
 			<DropdownMenuPositioner
 				className="max-h-[var(--available-height)]"
 				sideOffset={sideOffset}
+				side={side}
 				align={align}
 			>
 				<BaseMenu.Popup
