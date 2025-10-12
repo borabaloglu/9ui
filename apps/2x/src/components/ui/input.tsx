@@ -1,9 +1,8 @@
 import * as React from "react"
-import { Input as BaseInput } from "@base-ui-components/react/input"
 
 import { cn } from "@/lib/utils"
 
-interface InputProps extends React.ComponentProps<typeof BaseInput> {
+interface InputProps extends React.ComponentProps<"input"> {
 	inputContainerClassName?: string
 	leadingIcon?: React.ReactNode
 	trailingIcon?: React.ReactNode
