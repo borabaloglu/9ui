@@ -55,6 +55,19 @@ export const contentRegistry: ContentRegistry = {
 			{ label: "Aspect Ratio", path: "/docs/components/aspect-ratio" },
 		],
 	},
+	"components/autocomplete": {
+		type: "file",
+		path: "components/autocomplete.mdx",
+		meta: {
+			title: "Autocomplete",
+			description: "A component that suggests options as the user types.",
+		},
+		urlPath: "components/autocomplete",
+		breadcrumbs: [
+			{ label: "Components", path: "/docs/components" },
+			{ label: "Autocomplete", path: "/docs/components/autocomplete" },
+		],
+	},
 	"components/avatar": {
 		type: "file",
 		path: "components/avatar.mdx",

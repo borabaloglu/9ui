@@ -1,45 +1,83 @@
 <Title content="Combobox" />
 <Description content="Autocomplete component for selecting items from a list." />
 
+<ComponentLinks
+	links={[
+		{
+			label: "Docs",
+			href: "https://base-ui.com/react/components/combobox",
+		},
+	]}
+/>
+
 <ComponentPreview name="combobox-demo" />
 
 ## Installation
 
-The combobox component is a composition of the `Command` and `Popover` components.
+<ComponentInstallation>
+<div>
+```bash title="Terminal"
+npx shadcn@latest add @9ui/combobox
+```
+</div>
 
-Follow installation instructions for the [`Command`](/docs/components/command) and [`Popover`](/docs/components/popover) components.
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="combobox" />
+
+</Steps>
+</ComponentInstallation>
 
 ## Usage
 
 ```tsx title="Imports"
 import {
-	Command,
-	CommandEmpty,
-	CommandGroup,
-	CommandInput,
-	CommandItem,
-	CommandList,
-} from "@/components/ui/command"
-import {
-	Popover,
-	PopoverContent,
-	PopoverTrigger,
-} from "@/components/ui/popover"
+	Combobox,
+	ComboboxChip,
+	ComboboxChips,
+	ComboboxContent,
+	ComboboxEmpty,
+	ComboboxInput,
+	ComboboxItem,
+	ComboboxList,
+	ComboboxTrigger,
+	ComboboxValue,
+} from "@/components/ui/combobox"
 ```
 
 ```tsx title="Anatomy"
-<Popover>
-	<PopoverTrigger />
-	<PopoverContent>
-		<Command>
-			<CommandInput />
-			<CommandList>
-				<CommandEmpty />
-				<CommandGroup>
-					<CommandItem />
-				</CommandGroup>
-			</CommandList>
-		</Command>
-	</PopoverContent>
-</Popover>
+<Combobox>
+	<ComboboxInput />
+	<ComboboxTrigger />
+	<ComboboxValue />
+	<ComboboxChips>
+		<ComboboxChip />
+	</ComboboxChips>
+	<ComboboxContent>
+		<ComboboxEmpty />
+		<ComboboxList>
+			<ComboboxItem />
+		</ComboboxList>
+	</ComboboxContent>
+</Combobox>
 ```
+
+## Examples
+
+### Input inside popup
+
+<ComponentPreview name="combobox-input-inside-popup" />
+
+---
+
+### Multiple
+
+<ComponentPreview name="combobox-multiple" />
+
+---
+
+### Creatable
+
+<ComponentPreview name="combobox-creatable" />
