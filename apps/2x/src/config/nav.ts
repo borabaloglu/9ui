@@ -131,6 +131,7 @@ export const navConfig: NavConfig = {
 				{
 					title: "Combobox",
 					href: "/docs/components/combobox",
+					label: "Updated",
 				},
 				{
 					title: "Command",

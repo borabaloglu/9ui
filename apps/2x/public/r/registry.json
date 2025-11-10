@@ -236,6 +236,19 @@
 			]
 		},
 		{
+			"name": "combobox",
+			"type": "registry:ui",
+			"dependencies": [],
+			"registryDependencies": [],
+			"files": [
+				{
+					"path": "src/components/ui/combobox.tsx",
+					"type": "registry:ui",
+					"target": ""
+				}
+			]
+		},
+		{
 			"name": "context-menu",
 			"type": "registry:ui",
 			"dependencies": [],
