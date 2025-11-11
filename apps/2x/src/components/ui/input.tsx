@@ -1,4 +1,5 @@
 import * as React from "react"
+import { Input as BaseInput } from '@base-ui-components/react/input'
 
 import { cn } from "@/lib/utils"
 
@@ -34,7 +35,7 @@ function Input({
 					{leadingIcon}
 				</span>
 			)}
-			<input
+			<BaseInput
 				type={type}
 				data-slot="input"
 				className={cn(
