@@ -129,10 +129,12 @@ function ComboboxContent({
 	children,
 	sideOffset = 4,
 	anchor = null,
+	align = "start",
 	...props
 }: React.ComponentProps<typeof BaseCombobox.Popup> & {
 	sideOffset?: BaseCombobox.Positioner.Props["sideOffset"]
 	anchor?: BaseCombobox.Positioner.Props["anchor"]
+	align?: BaseCombobox.Positioner.Props["align"]
 }) {
 	return (
 		<ComboboxPortal>
@@ -140,6 +142,7 @@ function ComboboxContent({
 				className="outline-none"
 				sideOffset={sideOffset}
 				anchor={anchor}
+				align={align}
 			>
 				<BaseCombobox.Popup
 					data-slot="combobox-content"
