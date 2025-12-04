@@ -1,8 +1,5 @@
 {
 	"eslint.workingDirectories": [
 		{ "mode": "auto" }
-	],
-	"files.exclude": {
-		"apps/1x": true
-	}
+	]
 }
