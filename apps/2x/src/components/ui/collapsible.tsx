@@ -19,7 +19,7 @@ function CollapsibleContent({
 		<BaseCollapsible.Panel
 			data-slot="collapsible-content"
 			className={cn(
-				"h-[var(--collapsible-panel-height)] overflow-hidden text-sm transition-all duration-200 data-ending-style:h-0 data-starting-style:h-0",
+				"h-(--collapsible-panel-height) overflow-hidden text-sm transition-all duration-200 data-ending-style:h-0 data-starting-style:h-0 [&[hidden]:not([hidden='until-found'])]:hidden",
 				className
 			)}
 			{...props}

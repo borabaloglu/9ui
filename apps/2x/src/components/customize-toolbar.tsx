@@ -342,7 +342,7 @@ export const CustomizeToolbar = ({
 				</AnimatePresence>
 			</div>
 			<Dialog open={copyDialogOpen} onOpenChange={setCopyDialogOpen}>
-				<DialogContent className="w-[90%] !max-w-screen-md">
+				<DialogContent className="w-[90%] max-w-3xl!">
 					<DialogHeader>
 						<DialogTitle>Your Theme</DialogTitle>
 						<DialogDescription>

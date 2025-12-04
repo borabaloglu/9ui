@@ -109,7 +109,7 @@ export const AIChatInterface = () => {
 		<div className="relative grid h-[600px] grid-cols-1 gap-0 overflow-hidden rounded-lg border p-0 md:grid-cols-[240px_1fr]">
 			<div
 				className={cn(
-					"bg-background absolute inset-y-0 left-0 z-20 w-[240px] border-r transition-transform md:static md:translate-x-0",
+					"bg-background absolute inset-y-0 left-0 z-20 w-60 border-r transition-transform md:static md:translate-x-0",
 					isSidebarOpen ? "translate-x-0" : "-translate-x-full"
 				)}
 			>
@@ -209,7 +209,7 @@ export const AIChatInterface = () => {
 									)}
 								>
 									<div className="bg-muted rounded-lg px-4 py-2">
-										<p className="text-sm break-words">{message.content}</p>
+										<p className="text-sm wrap-break-word">{message.content}</p>
 									</div>
 									<span className="text-muted-foreground mt-1 text-xs">
 										{message.timestamp}

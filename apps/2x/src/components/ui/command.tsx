@@ -42,6 +42,7 @@ function CommandDialog({
 	description?: string
 	className?: string
 	showCloseButton?: boolean
+	children?: React.ReactNode
 }) {
 	return (
 		<Dialog {...props}>
@@ -117,7 +118,7 @@ function CommandGroup({
 		<CommandBase.Group
 			data-slot="command-group"
 			className={cn(
-				"text-foreground [&_[cmdk-group-heading]]:text-muted-foreground overflow-hidden p-1 [&_[cmdk-group-heading]]:px-2 [&_[cmdk-group-heading]]:py-1.5 [&_[cmdk-group-heading]]:text-xs [&_[cmdk-group-heading]]:font-medium",
+				"text-foreground **:[cmdk-group-heading]:text-muted-foreground overflow-hidden p-1 **:[cmdk-group-heading]:px-2 **:[cmdk-group-heading]:py-1.5 **:[cmdk-group-heading]:text-xs **:[cmdk-group-heading]:font-medium",
 				className
 			)}
 			{...props}

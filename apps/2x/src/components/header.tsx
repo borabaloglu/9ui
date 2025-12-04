@@ -34,6 +34,7 @@ export const Header = () => {
 								<span className="sr-only">GitHub</span>
 							</Link>
 						}
+						nativeButton={false}
 					/>
 					<ThemeToggle />
 				</div>

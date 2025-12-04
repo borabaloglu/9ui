@@ -101,6 +101,7 @@ export function PageActions() {
 							</Element>
 						)
 					}}
+					nativeButton={!Boolean(navigation.prev)}
 				/>
 
 				<Button
@@ -124,6 +125,7 @@ export function PageActions() {
 							</Element>
 						)
 					}}
+					nativeButton={!Boolean(navigation.next)}
 				/>
 			</div>
 
@@ -164,6 +166,7 @@ export function PageActions() {
 									<span>View as Markdown</span>
 								</a>
 							)}
+							nativeButton={false}
 						/>
 						<DropdownMenuItem
 							render={(props) => (
@@ -176,6 +179,7 @@ export function PageActions() {
 									<span>Open in v0</span>
 								</a>
 							)}
+							nativeButton={false}
 						/>
 						<DropdownMenuItem
 							render={(props) => (
@@ -188,6 +192,7 @@ export function PageActions() {
 									<span>Open in ChatGPT</span>
 								</a>
 							)}
+							nativeButton={false}
 						/>
 						<DropdownMenuItem
 							render={(props) => (
@@ -200,6 +205,7 @@ export function PageActions() {
 									<span>Open in Claude</span>
 								</a>
 							)}
+							nativeButton={false}
 						/>
 						<DropdownMenuItem
 							render={(props) => (
@@ -212,6 +218,7 @@ export function PageActions() {
 									<span>Open in Scira</span>
 								</a>
 							)}
+							nativeButton={false}
 						/>
 					</DropdownMenuContent>
 				</DropdownMenu>

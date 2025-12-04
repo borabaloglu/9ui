@@ -56,12 +56,12 @@ const models = [
 export default function ToolbarDemo() {
 	return (
 		<Toolbar>
-			<ToggleGroup className="border-none bg-transparent p-0" toggleMultiple>
+			<ToggleGroup className="border-none bg-transparent p-0" multiple>
 				<ToolbarButton
 					size="icon"
 					render={
 						<Toggle
-							className="data-[pressed]:bg-green-950 data-[pressed]:text-green-200"
+							className="data-pressed:bg-green-950 data-pressed:text-green-200"
 							aria-label="Show AI thinking"
 							value="ai-thinking"
 						>

@@ -21,14 +21,7 @@ function Menubar({
 }
 
 function MenubarMenu({ ...props }: React.ComponentProps<typeof BaseMenu.Root>) {
-	return (
-		<BaseMenu.Root
-			delay={0}
-			closeDelay={0}
-			data-slot="menubar-menu"
-			{...props}
-		/>
-	)
+	return <BaseMenu.Root data-slot="menubar-menu" {...props} />
 }
 
 function MenubarGroup({
@@ -55,6 +48,8 @@ function MenubarTrigger({
 }: React.ComponentProps<typeof BaseMenu.Trigger>) {
 	return (
 		<BaseMenu.Trigger
+			delay={0}
+			closeDelay={0}
 			data-slot="menubar-trigger"
 			className={cn(
 				"data-popup-open:bg-accent data-popup-open:text-accent-foreground flex items-center rounded-sm px-2 py-1 text-sm font-medium outline-hidden select-none",
@@ -79,7 +74,7 @@ function MenubarContent({
 	return (
 		<MenubarPortal>
 			<BaseMenu.Positioner
-				className="max-h-[var(--available-height)]"
+				className="max-h-(--available-height)"
 				align={align}
 				alignOffset={alignOffset}
 				sideOffset={sideOffset}
@@ -87,7 +82,7 @@ function MenubarContent({
 				<BaseMenu.Popup
 					data-slot="menubar-content"
 					className={cn(
-						"bg-popover data-open:animate-in data-open:fade-in-0 data-open:zoom-in-95 data-closed:animate-out data-closed:fade-out-0 data-closed:zoom-out-95 text-popover-foreground data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 z-50 min-w-[12rem] origin-[var(--transform-origin)] overflow-hidden rounded-md border p-1 shadow-md",
+						"bg-popover data-open:animate-in data-open:fade-in-0 data-open:zoom-in-95 data-closed:animate-out data-closed:fade-out-0 data-closed:zoom-out-95 text-popover-foreground data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 z-50 min-w-48 origin-(--transform-origin) overflow-hidden rounded-md border p-1 shadow-md",
 						className
 					)}
 					{...props}
@@ -112,7 +107,7 @@ function MenubarItem({
 			data-inset={inset}
 			data-variant={variant}
 			className={cn(
-				"focus:bg-accent focus:text-accent-foreground data-[variant=destructive]:text-destructive data-[variant=destructive]:focus:bg-destructive/20 data-[variant=destructive]:focus:text-destructive-foreground data-[variant=destructive]:*:[svg]:!text-destructive focus:data-[variant=destructive]:*:[svg]:!text-destructive-foreground [&_svg:not([class*='text-'])]:text-muted-foreground relative flex cursor-default items-center gap-2 rounded-sm px-2 py-1.5 text-sm outline-hidden transition-all select-none data-[disabled]:pointer-events-none data-[disabled]:opacity-50 data-[inset]:pl-8 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg]:transition-all [&_svg:not([class*='size-'])]:size-4",
+				"focus:bg-accent focus:text-accent-foreground data-[variant=destructive]:text-destructive data-[variant=destructive]:focus:bg-destructive/20 data-[variant=destructive]:focus:text-destructive-foreground data-[variant=destructive]:*:[svg]:text-destructive! focus:data-[variant=destructive]:*:[svg]:text-destructive-foreground! [&_svg:not([class*='text-'])]:text-muted-foreground relative flex cursor-default items-center gap-2 rounded-sm px-2 py-1.5 text-sm outline-hidden transition-all select-none data-disabled:pointer-events-none data-disabled:opacity-50 data-inset:pl-8 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg]:transition-all [&_svg:not([class*='size-'])]:size-4",
 				className
 			)}
 			{...props}
@@ -130,7 +125,7 @@ function MenubarCheckboxItem({
 		<BaseMenu.CheckboxItem
 			data-slot="menubar-checkbox-item"
 			className={cn(
-				"focus:bg-accent focus:text-accent-foreground relative flex cursor-default items-center gap-2 rounded-sm py-1.5 pr-2 pl-8 text-sm outline-hidden select-none data-[disabled]:pointer-events-none data-[disabled]:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
+				"focus:bg-accent focus:text-accent-foreground relative flex cursor-default items-center gap-2 rounded-sm py-1.5 pr-2 pl-8 text-sm outline-hidden select-none data-disabled:pointer-events-none data-disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
 				className
 			)}
 			checked={checked}
@@ -155,7 +150,7 @@ function MenubarRadioItem({
 		<BaseMenu.RadioItem
 			data-slot="menubar-radio-item"
 			className={cn(
-				"focus:bg-accent focus:text-accent-foreground relative flex cursor-default items-center gap-2 rounded-sm py-1.5 pr-2 pl-8 text-sm outline-hidden select-none data-[disabled]:pointer-events-none data-[disabled]:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
+				"focus:bg-accent focus:text-accent-foreground relative flex cursor-default items-center gap-2 rounded-sm py-1.5 pr-2 pl-8 text-sm outline-hidden select-none data-disabled:pointer-events-none data-disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
 				className
 			)}
 			{...props}
@@ -182,7 +177,7 @@ function MenubarLabel({
 			data-slot="menubar-label"
 			data-inset={inset}
 			className={cn(
-				"px-2 py-1.5 text-xs font-medium data-[inset]:pl-8",
+				"px-2 py-1.5 text-xs font-medium data-inset:pl-8",
 				className
 			)}
 			{...props}
@@ -222,14 +217,7 @@ function MenubarShortcut({
 function MenubarSub({
 	...props
 }: React.ComponentProps<typeof BaseMenu.SubmenuRoot>) {
-	return (
-		<BaseMenu.SubmenuRoot
-			delay={0}
-			closeDelay={0}
-			data-slot="menubar-sub"
-			{...props}
-		/>
-	)
+	return <BaseMenu.SubmenuRoot data-slot="menubar-sub" {...props} />
 }
 
 function MenubarSubTrigger({
@@ -242,10 +230,12 @@ function MenubarSubTrigger({
 }) {
 	return (
 		<BaseMenu.SubmenuTrigger
+			delay={0}
+			closeDelay={0}
 			data-slot="menubar-sub-trigger"
 			data-inset={inset}
 			className={cn(
-				"focus:bg-accent focus:text-accent-foreground data-popup-open:bg-accent data-popup-open:text-accent-foreground flex cursor-default items-center rounded-sm px-2 py-1.5 text-sm outline-hidden select-none data-[inset]:pl-8",
+				"focus:bg-accent focus:text-accent-foreground data-popup-open:bg-accent data-popup-open:text-accent-foreground flex cursor-default items-center rounded-sm px-2 py-1.5 text-sm outline-hidden select-none data-inset:pl-8",
 				className
 			)}
 			{...props}
@@ -268,14 +258,14 @@ function MenubarSubContent({
 	return (
 		<MenubarPortal>
 			<BaseMenu.Positioner
-				className="max-h-[var(--available-height)]"
+				className="max-h-(--available-height)"
 				sideOffset={sideOffset}
 				align={align}
 			>
 				<BaseMenu.Popup
 					data-slot="menubar-sub-content"
 					className={cn(
-						"bg-popover text-popover-foreground data-open:animate-in data-open:fade-in-0 data-open:zoom-in-95 data-closed:animate-out data-closed:fade-out-0 data-closed:zoom-out-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 z-50 min-w-[12rem] origin-[var(--transform-origin)] overflow-hidden rounded-md border p-1 shadow-md",
+						"bg-popover text-popover-foreground data-open:animate-in data-open:fade-in-0 data-open:zoom-in-95 data-closed:animate-out data-closed:fade-out-0 data-closed:zoom-out-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 z-50 min-w-48 origin-(--transform-origin) overflow-hidden rounded-md border p-1 shadow-md",
 						className
 					)}
 					{...props}

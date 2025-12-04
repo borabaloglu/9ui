@@ -19,9 +19,7 @@ function TooltipProvider({
 }
 
 function Tooltip({ ...props }: React.ComponentProps<typeof BaseTooltip.Root>) {
-	return (
-		<BaseTooltip.Root data-slot="tooltip" {...props} />
-	)
+	return <BaseTooltip.Root data-slot="tooltip" {...props} />
 }
 
 function TooltipTrigger({
@@ -66,13 +64,13 @@ function TooltipContent({
 				<BaseTooltip.Popup
 					data-slot="tooltip-content"
 					className={cn(
-						"bg-popover text-popover-foreground outline-border z-50 w-fit origin-[var(--transform-origin)] rounded-md px-3 py-1.5 text-xs text-balance shadow-sm outline -outline-offset-1 transition-[transform,scale,opacity] data-[ending-style]:scale-95 data-[ending-style]:opacity-0 data-[starting-style]:scale-95 data-[starting-style]:opacity-0",
+						"bg-popover text-popover-foreground outline-border z-50 w-fit origin-(--transform-origin) rounded-md px-3 py-1.5 text-xs text-balance shadow-sm outline -outline-offset-1 transition-[transform,scale,opacity] data-ending-style:scale-95 data-ending-style:opacity-0 data-starting-style:scale-95 data-starting-style:opacity-0",
 						className
 					)}
 					{...props}
 				>
 					{children}
-					<TooltipArrow className="data-[side=bottom]:top-[-8px] data-[side=left]:right-[-13px] data-[side=left]:rotate-90 data-[side=right]:left-[-13px] data-[side=right]:-rotate-90 data-[side=top]:bottom-[-8px] data-[side=top]:rotate-180">
+					<TooltipArrow className="data-[side=bottom]:-top-2 data-[side=left]:right-[-13px] data-[side=left]:rotate-90 data-[side=right]:left-[-13px] data-[side=right]:-rotate-90 data-[side=top]:-bottom-2 data-[side=top]:rotate-180">
 						<svg width="20" height="10" viewBox="0 0 20 10" fill="none">
 							<path
 								d="M9.66437 2.60207L4.80758 6.97318C4.07308 7.63423 3.11989 8 2.13172 8H0V9H20V8H18.5349C17.5468 8 16.5936 7.63423 15.8591 6.97318L11.0023 2.60207C10.622 2.2598 10.0447 2.25979 9.66437 2.60207Z"
