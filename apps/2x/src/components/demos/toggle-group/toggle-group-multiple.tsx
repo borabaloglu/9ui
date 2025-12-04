@@ -5,7 +5,7 @@ import { ToggleGroup } from "@/components/ui/toggle-group"
 
 export default function ToggleGroupMultiple() {
 	return (
-		<ToggleGroup toggleMultiple>
+		<ToggleGroup multiple>
 			<Toggle value="bold">
 				<BoldIcon />
 			</Toggle>

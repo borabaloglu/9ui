@@ -12,19 +12,19 @@ import {
 const users = {
 	"karen-smith": {
 		name: "Karen Smith",
-		image: "/memoji-1.png",
+		image: "/avatars/memoji-1.png",
 	},
 	"chris-williams": {
 		name: "Chris Williams",
-		image: "/memoji-3.png",
+		image: "/avatars/memoji-3.png",
 	},
 	"melissa-johnson": {
 		name: "Melissa Johnson",
-		image: "/memoji-2.png",
+		image: "/avatars/memoji-2.png",
 	},
 	"frank-lee": {
 		name: "Frank Lee",
-		image: "/memoji-4.png",
+		image: "/avatars/memoji-4.png",
 	},
 }
 

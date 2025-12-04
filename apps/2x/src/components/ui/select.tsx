@@ -68,6 +68,19 @@ function SelectTrigger({
 	)
 }
 
+function SelectList({
+	className,
+	...props
+}: React.ComponentProps<typeof BaseSelect.List>) {
+	return (
+		<BaseSelect.List
+			data-slot="select-list"
+			className={cn("outline-hidden", className)}
+			{...props}
+		/>
+	)
+}
+
 function SelectContent({
 	className,
 	children,
@@ -95,7 +108,7 @@ function SelectContent({
 					)}
 					{...props}
 				>
-					{children}
+					<SelectList>{children}</SelectList>
 				</BaseSelect.Popup>
 				<SelectScrollDownButton />
 			</SelectPositioner>
@@ -164,7 +177,7 @@ function SelectScrollUpButton({
 		<BaseSelect.ScrollUpArrow
 			data-slot="select-scroll-up-button"
 			className={cn(
-				"bg-popover top-px left-[1px] z-[100] flex w-[calc(100%-2px)] cursor-default items-center justify-center rounded-t-md py-1",
+				"bg-popover top-px left-[1px] z-[100] hidden w-[calc(100%-2px)] cursor-default items-center justify-center rounded-t-md py-1 data-[side=none]:flex",
 				className
 			)}
 			{...props}
@@ -182,7 +195,7 @@ function SelectScrollDownButton({
 		<BaseSelect.ScrollDownArrow
 			data-slot="select-scroll-down-button"
 			className={cn(
-				"bg-popover bottom-px left-[1px] z-[100] flex w-[calc(100%-2px)] cursor-default items-center justify-center rounded-b-md py-1",
+				"bg-popover bottom-px left-[1px] z-[100] hidden w-[calc(100%-2px)] cursor-default items-center justify-center rounded-b-md py-1 data-[side=none]:flex",
 				className
 			)}
 			{...props}
@@ -196,6 +209,7 @@ export {
 	Select,
 	SelectTrigger,
 	SelectContent,
+	SelectList,
 	SelectItem,
 	SelectValue,
 	SelectGroup,
