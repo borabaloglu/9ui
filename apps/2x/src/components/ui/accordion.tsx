@@ -33,7 +33,7 @@ function AccordionTrigger({
 			<BaseAccordion.Trigger
 				data-slot="accordion-trigger"
 				className={cn(
-					"focus-visible:ring-ring/50 flex flex-1 items-center justify-between gap-4 rounded-md py-3 text-left text-sm font-medium underline-offset-2 outline-none hover:underline focus-visible:ring-[3px] disabled:pointer-events-none disabled:opacity-50 data-[panel-open]:[&_*[data-slot=accordion-icon]]:rotate-180",
+					"focus-visible:ring-ring/50 flex flex-1 items-center justify-between gap-4 rounded-md py-3 text-left text-sm font-medium underline-offset-2 outline-none hover:underline focus-visible:ring-[3px] disabled:pointer-events-none disabled:opacity-50 data-panel-open:[&_*[data-slot=accordion-icon]]:rotate-180",
 					className
 				)}
 				{...props}
@@ -56,7 +56,7 @@ function AccordionContent({
 	return (
 		<BaseAccordion.Panel
 			data-slot="accordion-content"
-			className="h-[var(--accordion-panel-height)] overflow-hidden text-sm transition-[height] duration-200 ease-out data-ending-style:h-0 data-starting-style:h-0"
+			className="h-(--accordion-panel-height) overflow-hidden text-sm transition-[height] duration-200 ease-out data-ending-style:h-0 data-starting-style:h-0 [&[hidden]:not([hidden='until-found'])]:hidden"
 			{...props}
 		>
 			<div className={cn("pb-2.5", className)}>{children}</div>
