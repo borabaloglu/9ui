@@ -25,11 +25,19 @@ export default function PhoneInputFormattingValue() {
 			<div className="space-y-2 text-sm">
 				<div>
 					<span className="font-semibold">National:</span>{" "}
-					{phoneNumber && formatPhoneNumber(phoneNumber)}
+					{phoneNumber ? (
+						formatPhoneNumber(phoneNumber)
+					) : (
+						<span className="text-muted-foreground">Enter a phone number</span>
+					)}
 				</div>
 				<div>
 					<span className="font-semibold">International:</span>{" "}
-					{phoneNumber && formatPhoneNumberIntl(phoneNumber)}
+					{phoneNumber ? (
+						formatPhoneNumberIntl(phoneNumber)
+					) : (
+						<span className="text-muted-foreground">Enter a phone number</span>
+					)}
 				</div>
 				<div>
 					<span className="font-semibold">Country code:</span>{" "}

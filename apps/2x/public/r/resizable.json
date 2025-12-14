@@ -1,7 +1,6 @@
 {
 	"$schema": "https://ui.shadcn.com/schema/registry-item.json",
 	"name": "resizable",
-	"type": "registry:ui",
 	"dependencies": ["react-resizable-panels"],
 	"registryDependencies": [],
 	"files": [
@@ -11,5 +10,6 @@
 			"type": "registry:ui",
 			"target": ""
 		}
-	]
+	],
+	"type": "registry:ui"
 }

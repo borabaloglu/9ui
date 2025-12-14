@@ -1,7 +1,6 @@
 {
 	"$schema": "https://ui.shadcn.com/schema/registry-item.json",
 	"name": "command",
-	"type": "registry:ui",
 	"dependencies": ["cmdk-base"],
 	"registryDependencies": ["@9ui/dialog"],
 	"files": [
@@ -11,5 +10,6 @@
 			"type": "registry:ui",
 			"target": ""
 		}
-	]
+	],
+	"type": "registry:ui"
 }
