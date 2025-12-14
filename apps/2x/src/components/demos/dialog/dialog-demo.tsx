@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button"
 import {
 	Dialog,
+	DialogClose,
 	DialogContent,
 	DialogDescription,
 	DialogFooter,
@@ -64,7 +65,13 @@ export default function DialogDemo() {
 					arcu, fermentum scelerisque nibh at, lacinia sagittis neque.
 				</div>
 				<DialogFooter>
-					<Button className="w-full">Accept</Button>
+					<DialogClose
+						render={(props) => (
+							<Button {...props} className="w-full">
+								Accept
+							</Button>
+						)}
+					/>
 				</DialogFooter>
 			</DialogContent>
 		</Dialog>
