@@ -1,7 +1,6 @@
 {
 	"$schema": "https://ui.shadcn.com/schema/registry-item.json",
 	"name": "form",
-	"type": "registry:ui",
 	"dependencies": ["react-hook-form", "zod", "@hookform/resolvers"],
 	"registryDependencies": ["@9ui/label"],
 	"files": [
@@ -11,5 +10,6 @@
 			"type": "registry:ui",
 			"target": ""
 		}
-	]
+	],
+	"type": "registry:ui"
 }
