@@ -1,7 +1,6 @@
 {
 	"$schema": "https://ui.shadcn.com/schema/registry-item.json",
 	"name": "phone-input",
-	"type": "registry:ui",
 	"dependencies": ["react-phone-number-input"],
 	"registryDependencies": [
 		"@9ui/button",
@@ -17,5 +16,6 @@
 			"type": "registry:ui",
 			"target": ""
 		}
-	]
+	],
+	"type": "registry:ui"
 }

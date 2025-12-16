@@ -61,7 +61,7 @@ export default function ToolbarDemo() {
 					size="icon"
 					render={
 						<Toggle
-							className="data-pressed:bg-green-950 data-pressed:text-green-200"
+							className="data-[pressed]:bg-green-950 data-[pressed]:text-green-200"
 							aria-label="Show AI thinking"
 							value="ai-thinking"
 						>

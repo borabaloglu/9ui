@@ -1,7 +1,6 @@
 {
 	"$schema": "https://ui.shadcn.com/schema/registry-item.json",
 	"name": "checkbox",
-	"type": "registry:ui",
 	"dependencies": [],
 	"registryDependencies": [],
 	"files": [
@@ -11,5 +10,6 @@
 			"type": "registry:ui",
 			"target": ""
 		}
-	]
+	],
+	"type": "registry:ui"
 }

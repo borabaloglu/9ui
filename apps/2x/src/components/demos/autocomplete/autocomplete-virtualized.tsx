@@ -1,14 +1,16 @@
-import * as React from "react";
-import { useVirtualizer } from "@tanstack/react-virtual";
+import * as React from "react"
+import { useVirtualizer } from "@tanstack/react-virtual"
 
-
-
-import { Autocomplete, AutocompleteContent, AutocompleteEmpty, AutocompleteInput, AutocompleteItem, AutocompleteList, useFilter } from "@/components/ui/autocomplete";
-import { Label } from "@/components/ui/label";
-
-
-
-
+import {
+	Autocomplete,
+	AutocompleteContent,
+	AutocompleteEmpty,
+	AutocompleteInput,
+	AutocompleteItem,
+	AutocompleteList,
+	useFilter,
+} from "@/components/ui/autocomplete"
+import { Label } from "@/components/ui/label"
 
 export default function AutocompleteVirtualized() {
 	const [open, setOpen] = React.useState(false)

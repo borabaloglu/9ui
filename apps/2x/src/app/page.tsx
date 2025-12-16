@@ -1,16 +1,10 @@
-import Link from "next/link";
-import { ArrowUpRightIcon, BookOpenIcon } from "lucide-react";
+import Link from "next/link"
+import { ArrowUpRightIcon, BookOpenIcon } from "lucide-react"
 
-
-
-import Examples from "@/components/examples";
-import { FlickeringGrid } from "@/components/flickering-background";
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
-
-
-
-
+import Examples from "@/components/examples"
+import { FlickeringGrid } from "@/components/flickering-background"
+import { Badge } from "@/components/ui/badge"
+import { Button } from "@/components/ui/button"
 
 const Home = () => (
 	<div className="dark:border-border/40 relative container mx-auto space-y-6 border-dashed py-4 xl:border-x">
