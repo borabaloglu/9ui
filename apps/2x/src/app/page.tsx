@@ -51,6 +51,7 @@ const Home = () => (
 								Get Started
 							</Link>
 						}
+						nativeButton={false}
 					/>
 
 					<Button
@@ -62,6 +63,7 @@ const Home = () => (
 								<ArrowUpRightIcon className="size-3.5 transition-transform duration-300 group-hover:rotate-45" />
 							</Link>
 						}
+						nativeButton={false}
 					/>
 				</div>
 			</div>

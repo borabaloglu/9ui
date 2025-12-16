@@ -25,6 +25,7 @@ export const CtaCard = () => {
 						Go to Installation
 					</Link>
 				)}
+				nativeButton={false}
 			/>
 		</div>
 	)

@@ -35,7 +35,7 @@ export default function AutocompleteRowDemo() {
 	return (
 		<Autocomplete
 			items={avatarGroups}
-			cols={COLUMNS}
+			grid={true}
 			open={pickerOpen}
 			onOpenChange={setPickerOpen}
 			onOpenChangeComplete={() => setSearchValue("")}

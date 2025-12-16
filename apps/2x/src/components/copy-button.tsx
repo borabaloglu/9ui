@@ -4,12 +4,11 @@ import React from "react"
 import { useOpenPanel } from "@openpanel/nextjs"
 import { CheckIcon, CopyIcon } from "lucide-react"
 
-import { Button } from "@/components/ui/button"
+import { Button, type ButtonProps } from "@/components/ui/button"
 
 import { cn } from "@/lib/utils"
 
-interface CopyButtonProps
-	extends React.ComponentPropsWithoutRef<typeof Button> {
+type CopyButtonProps = ButtonProps & {
 	content: string
 	label?: string
 	eventType?: "demo" | "component" | "command" | "other"
