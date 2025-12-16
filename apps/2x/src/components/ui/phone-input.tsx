@@ -1,24 +1,19 @@
 import * as React from "react"
-import { CheckIcon, ChevronsUpDown } from "lucide-react"
+import { ChevronsUpDown } from "lucide-react"
 import * as BasePhoneInput from "react-phone-number-input"
 import flags from "react-phone-number-input/flags"
 
 import { Button } from "@/components/ui/button"
 import {
-	Command,
-	CommandEmpty,
-	CommandGroup,
-	CommandInput,
-	CommandItem,
-	CommandList,
-} from "@/components/ui/command"
+	Combobox,
+	ComboboxContent,
+	ComboboxEmpty,
+	ComboboxInput,
+	ComboboxItem,
+	ComboboxList,
+	ComboboxTrigger,
+} from "@/components/ui/combobox"
 import { Input } from "@/components/ui/input"
-import {
-	Popover,
-	PopoverContent,
-	PopoverTrigger,
-} from "@/components/ui/popover"
-import { ScrollArea } from "@/components/ui/scroll-area"
 
 import { cn } from "@/lib/utils"
 
@@ -36,7 +31,7 @@ function PhoneInput({ className, onChange, value, ...props }: PhoneInputProps) {
 			className={cn(
 				"flex",
 				props["aria-invalid"] &&
-					"[&_*[data-slot=popover-trigger]]:border-destructive [&_*[data-slot=popover-trigger]]:ring-destructive/50",
+					"[&_*[data-slot=combobox-trigger]]:border-destructive [&_*[data-slot=combobox-trigger]]:ring-destructive/50",
 				className
 			)}
 			flagComponent={FlagComponent}
@@ -71,31 +66,10 @@ function CountrySelect({
 	value: selectedCountry,
 	options: countryList,
 	onChange,
-	...other
 }: CountrySelectProps) {
-	console.log({ other })
-	const scrollAreaRef = React.useRef<HTMLDivElement>(null)
-	const viewportRef = React.useRef<HTMLElement | null>(null)
-	const [searchValue, setSearchValue] = React.useState("")
-	const [isOpen, setIsOpen] = React.useState(false)
-
 	return (
-		<Popover
-			open={isOpen}
-			modal
-			onOpenChange={(open) => {
-				setIsOpen(open)
-				if (open) {
-					setSearchValue("")
-					if (scrollAreaRef.current) {
-						viewportRef.current = scrollAreaRef.current.querySelector(
-							"[data-slot=scroll-area-viewport]"
-						)
-					}
-				}
-			}}
-		>
-			<PopoverTrigger
+		<Combobox items={countryList} value={selectedCountry || ""}>
+			<ComboboxTrigger
 				render={(props) => (
 					<Button
 						{...props}
@@ -112,72 +86,52 @@ function CountrySelect({
 					</Button>
 				)}
 			/>
-			<PopoverContent className="w-[300px] p-0" arrow={false}>
-				<Command>
-					<CommandInput
-						value={searchValue}
-						onValueChange={(value) => {
-							setSearchValue(value)
-							requestAnimationFrame(() => {
-								if (viewportRef.current) {
-									viewportRef.current.scrollTop = 0
-								}
-							})
-						}}
-						placeholder="Search country..."
-					/>
-					<CommandList>
-						<ScrollArea ref={scrollAreaRef} className="h-72">
-							<CommandEmpty>No country found.</CommandEmpty>
-							<CommandGroup>
-								{countryList.map(({ value, label }) =>
-									value ? (
-										<CountrySelectOption
-											key={value}
-											country={value}
-											countryName={label}
-											selectedCountry={selectedCountry}
-											onChange={onChange}
-											onSelectComplete={() => setIsOpen(false)}
-										/>
-									) : null
-								)}
-							</CommandGroup>
-						</ScrollArea>
-					</CommandList>
-				</Command>
-			</PopoverContent>
-		</Popover>
+			<ComboboxContent className="max-h-[20rem] w-[300px] [--input-container-height:4rem]">
+				<ComboboxInput
+					className="focus-visible:ring-0"
+					inputContainerClassName="mb-2"
+					placeholder="Search country..."
+					showClear={false}
+				/>
+				<ComboboxEmpty>No countries found.</ComboboxEmpty>
+				<ComboboxList className="max-h-[min(calc(20rem-var(--input-container-height)),calc(var(--available-height)-var(--input-container-height)))] scroll-py-2 overflow-y-auto overscroll-contain">
+					{(country: CountryEntry) =>
+						country.value ? (
+							<CountrySelectOption
+								key={country.value}
+								country={country.value}
+								countryName={country.label}
+								selectedCountry={selectedCountry}
+								onChange={onChange}
+							/>
+						) : null
+					}
+				</ComboboxList>
+			</ComboboxContent>
+		</Combobox>
 	)
 }
 
 interface CountrySelectOptionProps extends BasePhoneInput.FlagProps {
 	selectedCountry: BasePhoneInput.Country
 	onChange: (country: BasePhoneInput.Country) => void
-	onSelectComplete: () => void
 }
 
 function CountrySelectOption({
 	country,
 	countryName,
-	selectedCountry,
 	onChange,
-	onSelectComplete,
 }: CountrySelectOptionProps) {
 	const handleSelect = () => {
 		onChange(country)
-		onSelectComplete()
 	}
 
 	return (
-		<CommandItem className="gap-2" onSelect={handleSelect}>
+		<ComboboxItem onClick={handleSelect} value={country}>
 			<FlagComponent country={country} countryName={countryName} />
 			<span className="flex-1 text-sm">{countryName}</span>
 			<span className="text-foreground/50 text-sm">{`+${BasePhoneInput.getCountryCallingCode(country)}`}</span>
-			<CheckIcon
-				className={`ml-auto size-4 shrink-0 ${country === selectedCountry ? "opacity-100" : "opacity-0"}`}
-			/>
-		</CommandItem>
+		</ComboboxItem>
 	)
 }
 

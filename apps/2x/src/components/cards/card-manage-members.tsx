@@ -1,7 +1,6 @@
 "use client"
 
 import * as React from "react"
-import { ChevronsUpDownIcon } from "lucide-react"
 
 import { Avatar, AvatarFallback } from "@/components/ui/avatar"
 import { Button } from "@/components/ui/button"
@@ -13,18 +12,15 @@ import {
 	CardTitle,
 } from "@/components/ui/card"
 import {
-	Command,
-	CommandEmpty,
-	CommandGroup,
-	CommandInput,
-	CommandItem,
-	CommandList,
-} from "@/components/ui/command"
-import {
-	Popover,
-	PopoverContent,
-	PopoverTrigger,
-} from "@/components/ui/popover"
+	Combobox,
+	ComboboxContent,
+	ComboboxEmpty,
+	ComboboxInput,
+	ComboboxItem,
+	ComboboxList,
+	ComboboxTrigger,
+	ComboboxValue,
+} from "@/components/ui/combobox"
 
 const roles = [
 	{
@@ -62,49 +58,52 @@ function RoleCombobox({ member }: RoleComboboxProps) {
 	const [open, setOpen] = React.useState(false)
 
 	return (
-		<Popover open={open} onOpenChange={setOpen}>
-			<PopoverTrigger
-				render={(props) => (
-					<Button
-						variant="outline"
-						role="combobox"
-						aria-expanded={open}
-						className="justify-between"
-						{...props}
-					>
-						{roles.find((role) => role.value === member.role)?.label}
-						<ChevronsUpDownIcon className="ml-2 size-4 shrink-0 opacity-50" />
-					</Button>
-				)}
-			/>
-			<PopoverContent
-				className="w-[400px] p-0"
+		<Combobox
+			items={roles}
+			value={member.role}
+			onOpenChange={setOpen}
+			open={open}
+		>
+			<div className="relative flex flex-col gap-2">
+				<Button
+					variant="outline"
+					role="combobox"
+					aria-expanded={open}
+					className="justify-between"
+					render={
+						<ComboboxTrigger id="select-country">
+							<ComboboxValue />
+						</ComboboxTrigger>
+					}
+				/>
+			</div>
+			<ComboboxContent
+				className="max-h-[20rem] w-80 [--input-container-height:4rem]"
 				align="end"
-				sideOffset={4}
-				arrow={false}
 			>
-				<Command className="w-full border-none">
-					<CommandInput placeholder="Search role..." />
-					<CommandList>
-						<CommandEmpty>No role found.</CommandEmpty>
-						<CommandGroup>
-							{roles.map((role) => (
-								<CommandItem
-									className="flex flex-col items-start gap-1 font-medium"
-									key={role.value}
-									value={role.value}
-								>
-									{role.label}
-									<p className="text-muted-foreground text-sm font-normal">
-										{role.description}
-									</p>
-								</CommandItem>
-							))}
-						</CommandGroup>
-					</CommandList>
-				</Command>
-			</PopoverContent>
-		</Popover>
+				<ComboboxInput
+					className="focus-visible:ring-0"
+					inputContainerClassName="mb-2"
+					placeholder="Select role..."
+					showClear={false}
+				/>
+				<ComboboxEmpty>No roles found.</ComboboxEmpty>
+				<ComboboxList className="max-h-[min(calc(20rem-var(--input-container-height)),calc(var(--available-height)-var(--input-container-height)))] scroll-py-2 overflow-y-auto overscroll-contain">
+					{(role: (typeof roles)[number]) => (
+						<ComboboxItem
+							className="flex flex-col items-start gap-1 font-medium [&>span]:top-2.5"
+							key={role.value}
+							value={role.value}
+						>
+							{role.label ?? role.value}
+							<p className="text-muted-foreground text-sm font-normal">
+								{role.description}
+							</p>
+						</ComboboxItem>
+					)}
+				</ComboboxList>
+			</ComboboxContent>
+		</Combobox>
 	)
 }
 

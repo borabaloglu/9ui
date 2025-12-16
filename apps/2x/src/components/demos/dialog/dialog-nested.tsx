@@ -55,7 +55,9 @@ export default function DialogNested() {
 										</Button>
 									)}
 								/>
-								<Button>Save</Button>
+								<DialogClose
+									render={(props) => <Button {...props}>Save</Button>}
+								/>
 							</DialogFooter>
 						</DialogContent>
 					</Dialog>

@@ -1,8 +1,9 @@
 import * as React from "react"
+import { Input as BaseInput } from '@base-ui-components/react/input'
 
 import { cn } from "@/lib/utils"
 
-interface InputProps extends React.ComponentProps<"input"> {
+interface InputProps extends React.ComponentProps<typeof BaseInput> {
 	inputContainerClassName?: string
 	leadingIcon?: React.ReactNode
 	trailingIcon?: React.ReactNode
@@ -34,7 +35,7 @@ function Input({
 					{leadingIcon}
 				</span>
 			)}
-			<input
+			<BaseInput
 				type={type}
 				data-slot="input"
 				className={cn(
