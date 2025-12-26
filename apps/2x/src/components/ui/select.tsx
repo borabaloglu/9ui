@@ -61,7 +61,7 @@ function SelectTrigger({
 			<BaseSelect.Icon>
 				<ChevronDownIcon
 					data-slot="select-icon"
-					className="size-4 opacity-50 transition-transform duration-200"
+					className="size-4 opacity-50 transition-transform"
 				/>
 			</BaseSelect.Icon>
 		</BaseSelect.Trigger>
@@ -101,7 +101,7 @@ function SelectContent({
 				<BaseSelect.Popup
 					data-slot="select-content"
 					className={cn(
-						"bg-popover text-popover-foreground data-open:animate-in data-closed:animate-out data-closed:fade-out-0 data-open:fade-in-0 data-closed:zoom-out-95 data-open:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 relative z-50 max-h-(--available-height) min-w-(--anchor-width) origin-(--transform-origin) overflow-x-hidden overflow-y-auto rounded-md border p-1 shadow-md",
+						"bg-popover text-popover-foreground relative z-50 max-h-(--available-height) min-w-(--anchor-width) origin-(--transform-origin) overflow-x-hidden overflow-y-auto rounded-md border p-1 shadow-md transition-all data-ending-style:scale-98 data-ending-style:opacity-0 data-starting-style:scale-98 data-starting-style:opacity-0",
 						position === "item-aligned" &&
 							"[&_*[data-slot=select-item]]:min-w-(--anchor-width)",
 						className

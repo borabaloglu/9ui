@@ -144,7 +144,7 @@ function ComboboxContent({
 				<BaseCombobox.Popup
 					data-slot="combobox-content"
 					className={cn(
-						"bg-popover text-popover-foreground relative z-50 max-h-[min(var(--available-height),20rem)] min-w-[var(--anchor-width)] origin-[var(--transform-origin)] overflow-x-hidden overflow-y-auto overscroll-contain rounded-md border p-1 shadow-md [&_*[data-slot=combobox-input]]:rounded-sm",
+						"bg-popover text-popover-foreground relative z-50 max-h-[min(var(--available-height),20rem)] min-w-[var(--anchor-width)] origin-[var(--transform-origin)] overflow-x-hidden overflow-y-auto overscroll-contain rounded-md border p-1 shadow-md transition-all data-ending-style:scale-98 data-ending-style:opacity-0 data-starting-style:scale-98 data-starting-style:opacity-0 [&_*[data-slot=combobox-input]]:rounded-sm",
 						className
 					)}
 					{...props}
