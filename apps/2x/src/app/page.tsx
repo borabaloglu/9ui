@@ -20,7 +20,7 @@ const Home = () => (
 			<div className="absolute inset-0 bg-[radial-gradient(ellipse_120%_60%_at_bottom_center,oklch(from_var(--background)_l_c_h_/_0.3),var(--background))]" />
 
 			<div className="relative z-20 mx-auto flex max-w-2xl flex-col items-center justify-center gap-4 py-20 xl:py-40">
-				<Badge variant="secondary">Now supports Tailwind 4 and React 19</Badge>
+				<Badge variant="secondary">Now using Base UI v1.0.0 🎉</Badge>
 				<h1 className="text-center text-3xl leading-tight font-semibold tracking-tight md:text-5xl">
 					<span className="font-mono">Copy-Paste</span> Components That Adapt to
 					Your Design
