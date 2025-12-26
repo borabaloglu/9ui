@@ -367,6 +367,19 @@ export const contentRegistry: ContentRegistry = {
 			{ label: "Kbd", path: "/docs/components/kbd" },
 		],
 	},
+	"components/label": {
+		type: "file",
+		path: "components/label.mdx",
+		meta: {
+			title: "Label",
+			description: "Displays a label associated with controls.",
+		},
+		urlPath: "components/label",
+		breadcrumbs: [
+			{ label: "Components", path: "/docs/components" },
+			{ label: "Label", path: "/docs/components/label" },
+		],
+	},
 	"components/menubar": {
 		type: "file",
 		path: "components/menubar.mdx",

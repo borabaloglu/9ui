@@ -18,17 +18,17 @@ export default function CollapsibleDemo() {
 			open={open}
 			onOpenChange={setOpen}
 		>
-			<CollapsibleTrigger className="bg-card flex w-full items-center justify-between rounded-sm border px-2 py-1">
-				<span className="text-sm font-medium">Components</span>
+			<CollapsibleTrigger className="flex w-full items-center justify-between">
+				<span className="text-sm font-medium">Show recovery keys</span>
 				<div className={cn("transition-all duration-200", open && "rotate-90")}>
 					<ChevronRightIcon size={16} />
 				</div>
 			</CollapsibleTrigger>
 			<CollapsibleContent>
-				<ol className="bg-card mt-2 space-y-1 rounded-sm border py-1 font-medium">
-					<li className="px-2 py-1">Button</li>
-					<li className="px-2 py-1">Badge</li>
-					<li className="px-2 py-1">Breadcrumbs</li>
+				<ol className="mt-2 space-y-1.5 font-medium">
+					<li className="bg-secondary rounded-sm px-2 py-1">A5FD-7K1B-ZR92</li>
+					<li className="bg-secondary rounded-sm px-2 py-1">CQ9P-L02R-W8NV</li>
+					<li className="bg-secondary rounded-sm px-2 py-1">8FD5-GH2B-0SA7</li>
 				</ol>
 			</CollapsibleContent>
 		</Collapsible>

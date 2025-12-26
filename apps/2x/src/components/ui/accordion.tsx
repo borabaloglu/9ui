@@ -1,5 +1,5 @@
 import * as React from "react"
-import { Accordion as BaseAccordion } from "@base-ui-components/react/accordion"
+import { Accordion as BaseAccordion } from "@base-ui/react/accordion"
 import { ChevronDownIcon } from "lucide-react"
 
 import { cn } from "@/lib/utils"
@@ -33,7 +33,7 @@ function AccordionTrigger({
 			<BaseAccordion.Trigger
 				data-slot="accordion-trigger"
 				className={cn(
-					"focus-visible:ring-ring/50 flex flex-1 items-center justify-between gap-4 rounded-md py-3 text-left text-sm font-medium underline-offset-2 outline-none hover:underline focus-visible:ring-[3px] disabled:pointer-events-none disabled:opacity-50 data-panel-open:[&_*[data-slot=accordion-icon]]:rotate-180",
+					"focus-visible:ring-ring/50 flex flex-1 items-center justify-between gap-4 rounded-md py-3 text-left text-sm font-medium underline-offset-2 outline-none hover:underline focus-visible:ring-[3px] data-disabled:pointer-events-none data-disabled:opacity-50 data-panel-open:[&_*[data-slot=accordion-icon]]:rotate-180",
 					className
 				)}
 				{...props}

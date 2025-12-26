@@ -3,7 +3,7 @@
 ## Overview
 - Monorepo managed with `pnpm` and `turbo` in `package.json`.
 - Two Next.js 15 apps under `apps/1x` and `apps/2x`; `2x` is the primary docs/demo site.
-- Components are built on `@base-ui-components/react` and Tailwind CSS, exposed via docs pages and a generated component registry.
+- Components are built on `@base-ui/react` and Tailwind CSS, exposed via docs pages and a generated component registry.
 
 ## Key Workspaces
 - `apps/2x/src/app`: Next App Router pages/layouts; main site entry is `page.tsx`, root shell in `layout.tsx`.

@@ -1,7 +1,7 @@
 "use client"
 
 import { toastManager, useToast } from "@/hooks/use-toast"
-import { Toast } from "@base-ui-components/react/toast"
+import { Toast } from "@base-ui/react/toast"
 import {
 	CircleAlert,
 	CircleCheck,
@@ -65,13 +65,13 @@ function ToastList() {
 							// Initial position and scale with variable height stacking
 							"[transform:translateX(var(--toast-swipe-movement-x))_translateY(calc(var(--toast-swipe-movement-y)-(var(--toast-index)*var(--peek))-(var(--shrink)*var(--height))))_scale(var(--scale))]",
 							// Expanded state animation
-							"data-[expanded]:h-[var(--toast-height)] data-[expanded]:[transform:translateX(var(--toast-swipe-movement-x))_translateY(var(--offset-y))]",
+							"data-expanded:h-[var(--toast-height)] data-expanded:[transform:translateX(var(--toast-swipe-movement-x))_translateY(var(--offset-y))]",
 							// Starting/ending styles
-							"data-[ending-style]:opacity-0 data-[limited]:opacity-0 data-[starting-style]:[transform:translateY(150%)] data-[starting-style]:opacity-0 data-[ending-style]:[&:not([data-limited])]:[transform:translateY(150%)]",
+							"data-ending-style:opacity-0 data-limited:opacity-0 data-starting-style:[transform:translateY(150%)] data-starting-style:opacity-0",
 							// Right swipe animation
-							"data-[ending-style]:data-[swipe-direction=right]:[transform:translateX(calc(var(--toast-swipe-movement-x)+150%))_translateY(var(--offset-y))] data-[expanded]:data-[ending-style]:data-[swipe-direction=right]:[transform:translateX(calc(var(--toast-swipe-movement-x)+150%))_translateY(var(--offset-y))]",
+							"data-ending-style:data-[swipe-direction=right]:[transform:translateX(calc(var(--toast-swipe-movement-x)+150%))_translateY(var(--offset-y))] data-expanded:data-ending-style:data-[swipe-direction=right]:[transform:translateX(calc(var(--toast-swipe-movement-x)+150%))_translateY(var(--offset-y))]",
 							// Down swipe animation
-							"data-[ending-style]:data-[swipe-direction=down]:[transform:translateY(calc(var(--toast-swipe-movement-y)+150%))] data-[expanded]:data-[ending-style]:data-[swipe-direction=down]:[transform:translateY(calc(var(--toast-swipe-movement-y)+150%))]",
+							"data-ending-style:data-[swipe-direction=down]:[transform:translateY(calc(var(--toast-swipe-movement-y)+150%))] data-expanded:data-ending-style:data-[swipe-direction=down]:[transform:translateY(calc(var(--toast-swipe-movement-y)+150%))]",
 							// Type-specific styles
 							toast.type === "success" &&
 								"bg-success border-success-border text-success-foreground",
@@ -84,7 +84,7 @@ function ToastList() {
 						)}
 					>
 						<Toast.Content
-							className="flex w-full items-center justify-between gap-1.5 overflow-hidden transition-opacity duration-250 ease-[cubic-bezier(0.22,1,0.36,1)] data-[behind]:pointer-events-none data-[behind]:opacity-0 data-[expanded]:pointer-events-auto data-[expanded]:opacity-100"
+							className="flex w-full items-center justify-between gap-1.5 overflow-hidden transition-opacity duration-250 ease-[cubic-bezier(0.22,1,0.36,1)] data-behind:pointer-events-none data-behind:opacity-0 data-expanded:pointer-events-auto data-expanded:opacity-100"
 							data-slot="toast-content"
 						>
 							<div className="flex items-center gap-2">

@@ -62,6 +62,7 @@ function CommandDialog({
 
 function CommandInput({
 	className,
+	disabled,
 	...props
 }: React.ComponentProps<typeof CommandBase.Input>) {
 	return (
@@ -73,9 +74,11 @@ function CommandInput({
 			<CommandBase.Input
 				data-slot="command-input"
 				className={cn(
-					"placeholder:text-muted-foreground flex h-10 w-full rounded-md bg-transparent py-3 text-sm outline-hidden disabled:pointer-events-none disabled:opacity-50",
+					"placeholder:text-muted-foreground flex h-10 w-full rounded-md bg-transparent py-3 text-sm outline-hidden data-disabled:pointer-events-none data-disabled:opacity-50",
 					className
 				)}
+				data-disabled={disabled}
+				disabled={disabled}
 				{...props}
 			/>
 		</div>

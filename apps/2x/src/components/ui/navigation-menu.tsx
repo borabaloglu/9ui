@@ -1,5 +1,5 @@
 import * as React from "react"
-import { NavigationMenu as BaseNavigationMenu } from "@base-ui-components/react/navigation-menu"
+import { NavigationMenu as BaseNavigationMenu } from "@base-ui/react/navigation-menu"
 import { cva } from "class-variance-authority"
 import { ChevronDownIcon } from "lucide-react"
 
@@ -51,7 +51,7 @@ function NavigationMenuIcon({
 }
 
 const navigationMenuTriggerStyle = cva(
-	"inline-flex w-max items-center justify-center gap-1.5 h-9 rounded-md bg-background px-4 py-2 text-sm font-medium hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground disabled:pointer-events-none disabled:opacity-50 data-[popup-open]:hover:bg-accent data-[popup-open]:text-accent-foreground data-[popup-open]:focus:bg-accent data-[popup-open]:bg-accent/50 focus-visible:ring-ring/50 outline-none transition-[color,box-shadow] focus-visible:ring-3 focus-visible:outline-1 select-none no-underline [&_svg:not([class*='size-'])]:size-3 shrink-0 [&_svg]:shrink-0"
+	"inline-flex w-max items-center justify-center gap-1.5 h-9 rounded-md bg-background px-4 py-2 text-sm font-medium hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground data-disabled:pointer-events-none data-disabled:opacity-50 data-popup-open:hover:bg-accent data-popup-open:text-accent-foreground data-popup-open:focus:bg-accent data-popup-open:bg-accent/50 focus-visible:ring-ring/50 outline-none transition-[color,box-shadow] focus-visible:ring-3 focus-visible:outline-1 select-none no-underline [&_svg:not([class*='size-'])]:size-3 shrink-0 [&_svg]:shrink-0"
 )
 
 function NavigationMenuTrigger({
@@ -63,10 +63,11 @@ function NavigationMenuTrigger({
 		<BaseNavigationMenu.Trigger
 			data-slot="navigation-menu-trigger"
 			className={cn(navigationMenuTriggerStyle(), className)}
+			data-disabled={props.disabled}
 			{...props}
 		>
 			{children}
-			<NavigationMenuIcon className="transition-transform duration-300 data-[popup-open]:rotate-180">
+			<NavigationMenuIcon className="transition-transform duration-200 data-popup-open:rotate-180">
 				<ChevronDownIcon aria-hidden="true" />
 			</NavigationMenuIcon>
 		</BaseNavigationMenu.Trigger>
@@ -111,12 +112,12 @@ function NavigationMenuViewport({
 			<BaseNavigationMenu.Positioner
 				sideOffset={4}
 				align="start"
-				className="h-[var(--positioner-height)] w-[var(--positioner-width)] max-w-[var(--available-width)] origin-[var(--transform-origin)] duration-300"
+				className="h-[var(--positioner-height)] w-[var(--positioner-width)] max-w-[var(--available-width)] origin-[var(--transform-origin)] duration-200"
 				data-slot="navigation-menu-positioner"
 			>
 				<BaseNavigationMenu.Popup
 					className={cn(
-						"bg-popover data-open:animate-in data-open:fade-in-0 data-open:zoom-in-95 data-closed:animate-out data-closed:fade-out-0 data-closed:zoom-out-95 text-popover-foreground h-[var(--popup-height)] w-[var(--popup-width)] origin-[var(--transform-origin)] overflow-hidden rounded-md border shadow-md duration-300",
+						"bg-popover text-popover-foreground h-[var(--popup-height)] w-[var(--popup-width)] origin-[var(--transform-origin)] overflow-hidden rounded-md border shadow-md transition-all data-ending-style:scale-98 data-ending-style:opacity-0 data-starting-style:scale-98 data-starting-style:opacity-0",
 						className
 					)}
 					data-slot="navigation-menu-popup"

@@ -1,5 +1,5 @@
-import { Menu as BaseMenu } from "@base-ui-components/react/menu"
-import { Menubar as BaseMenubar } from "@base-ui-components/react/menubar"
+import { Menu as BaseMenu } from "@base-ui/react/menu"
+import { Menubar as BaseMenubar } from "@base-ui/react/menubar"
 import { CheckIcon, ChevronRightIcon, CircleIcon } from "lucide-react"
 
 import { cn } from "@/lib/utils"
@@ -52,7 +52,7 @@ function MenubarTrigger({
 			closeDelay={0}
 			data-slot="menubar-trigger"
 			className={cn(
-				"data-popup-open:bg-accent data-popup-open:text-accent-foreground flex items-center rounded-sm px-2 py-1 text-sm font-medium outline-hidden select-none",
+				"data-popup-open:bg-accent data-popup-open:text-accent-foreground flex items-center rounded-sm px-2 py-1 text-sm font-medium outline-hidden select-none data-disabled:pointer-events-none data-disabled:opacity-50",
 				className
 			)}
 			{...props}
@@ -82,7 +82,7 @@ function MenubarContent({
 				<BaseMenu.Popup
 					data-slot="menubar-content"
 					className={cn(
-						"bg-popover data-open:animate-in data-open:fade-in-0 data-open:zoom-in-95 data-closed:animate-out data-closed:fade-out-0 data-closed:zoom-out-95 text-popover-foreground data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 z-50 min-w-48 origin-(--transform-origin) overflow-hidden rounded-md border p-1 shadow-md",
+						"bg-popover text-popover-foreground z-50 min-w-48 origin-(--transform-origin) overflow-hidden rounded-md border p-1 shadow-md transition-all data-ending-style:scale-98 data-ending-style:opacity-0 data-starting-style:scale-98 data-starting-style:opacity-0",
 						className
 					)}
 					{...props}
@@ -235,7 +235,7 @@ function MenubarSubTrigger({
 			data-slot="menubar-sub-trigger"
 			data-inset={inset}
 			className={cn(
-				"focus:bg-accent focus:text-accent-foreground data-popup-open:bg-accent data-popup-open:text-accent-foreground flex cursor-default items-center rounded-sm px-2 py-1.5 text-sm outline-hidden select-none data-inset:pl-8",
+				"focus:bg-accent focus:text-accent-foreground data-popup-open:bg-accent data-popup-open:text-accent-foreground flex cursor-default items-center rounded-sm px-2 py-1.5 text-sm outline-hidden select-none data-disabled:pointer-events-none data-disabled:opacity-50 data-inset:pl-8",
 				className
 			)}
 			{...props}
@@ -265,7 +265,7 @@ function MenubarSubContent({
 				<BaseMenu.Popup
 					data-slot="menubar-sub-content"
 					className={cn(
-						"bg-popover text-popover-foreground data-open:animate-in data-open:fade-in-0 data-open:zoom-in-95 data-closed:animate-out data-closed:fade-out-0 data-closed:zoom-out-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 z-50 min-w-48 origin-(--transform-origin) overflow-hidden rounded-md border p-1 shadow-md",
+						"bg-popover text-popover-foreground z-50 min-w-48 origin-(--transform-origin) overflow-hidden rounded-md border p-1 shadow-md transition-all data-ending-style:scale-98 data-ending-style:opacity-0 data-starting-style:scale-98 data-starting-style:opacity-0",
 						className
 					)}
 					{...props}

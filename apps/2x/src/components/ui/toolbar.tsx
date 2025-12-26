@@ -1,7 +1,7 @@
 "use client"
 
 import * as React from "react"
-import { Toolbar as BaseToolbar } from "@base-ui-components/react/toolbar"
+import { Toolbar as BaseToolbar } from "@base-ui/react/toolbar"
 
 import { ButtonProps, buttonVariants } from "@/components/ui/button"
 
@@ -31,7 +31,10 @@ function ToolbarButton({
 	return (
 		<BaseToolbar.Button
 			className={cn(
-				buttonVariants({ variant: variant ?? "ghost", size: size ?? "md" }),
+				buttonVariants({
+					variant: variant ?? "ghost",
+					size: size ?? "default",
+				}),
 				"shrink-0",
 				className
 			)}

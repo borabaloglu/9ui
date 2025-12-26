@@ -1,7 +1,7 @@
 "use client"
 
 import * as React from "react"
-import { Dialog as BaseSheet } from "@base-ui-components/react/dialog"
+import { Dialog as BaseSheet } from "@base-ui/react/dialog"
 import { XIcon } from "lucide-react"
 
 import { cn } from "@/lib/utils"
@@ -58,7 +58,7 @@ function SheetContent({
 			<BaseSheet.Popup
 				data-slot="sheet-content"
 				className={cn(
-					"bg-popover text-popover-foreground fixed z-50 flex max-h-[calc(100vh-2rem)] flex-col gap-4 rounded-lg shadow-lg outline-hidden transition ease-in-out data-closed:duration-300 data-open:duration-500",
+					"bg-popover text-popover-foreground fixed z-50 flex max-h-[calc(100vh-2rem)] flex-col gap-4 rounded-lg shadow-lg outline-hidden transition ease-in-out data-closed:duration-200 data-open:duration-500",
 					side === "right" &&
 						"inset-y-0 top-4 right-0 h-full w-3/4 origin-right -translate-x-4 border sm:max-w-sm [&[data-ending-style]]:translate-x-full [&[data-starting-style]]:translate-x-full",
 					side === "left" &&
@@ -72,7 +72,7 @@ function SheetContent({
 				{...props}
 			>
 				{children}
-				<SheetClose className="ring-offset-popover focus:ring-ring text-muted-foreground absolute top-4 right-4 rounded-xs opacity-50 transition-opacity hover:opacity-100 focus:ring-[3px] focus:ring-offset-2 focus:outline-hidden disabled:pointer-events-none [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4">
+				<SheetClose className="ring-offset-popover focus:ring-ring text-muted-foreground absolute top-4 right-4 rounded-xs opacity-50 transition-opacity hover:opacity-100 focus:ring-[3px] focus:ring-offset-2 focus:outline-hidden [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4">
 					<XIcon className="size-4" />
 					<span className="sr-only">Close</span>
 				</SheetClose>

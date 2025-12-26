@@ -1,7 +1,7 @@
 "use client"
 
 import * as React from "react"
-import { Avatar as AvatarBase } from "@base-ui-components/react/avatar"
+import { Avatar as AvatarBase } from "@base-ui/react/avatar"
 import { cva, VariantProps } from "class-variance-authority"
 
 import { cn } from "@/lib/utils"

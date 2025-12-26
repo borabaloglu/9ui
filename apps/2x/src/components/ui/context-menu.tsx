@@ -1,7 +1,7 @@
 "use client"
 
 import * as React from "react"
-import { ContextMenu as BaseContextMenu } from "@base-ui-components/react/context-menu"
+import { ContextMenu as BaseContextMenu } from "@base-ui/react/context-menu"
 import { CheckIcon, ChevronRightIcon, CircleIcon } from "lucide-react"
 
 import { cn } from "@/lib/utils"
@@ -71,7 +71,7 @@ function ContextMenuContent({
 				<BaseContextMenu.Popup
 					data-slot="context-menu-content"
 					className={cn(
-						"bg-popover data-open:animate-in data-open:fade-in-0 data-open:zoom-in-95 data-closed:animate-out data-closed:fade-out-0 data-closed:zoom-out-95 text-popover-foreground data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 z-50 min-w-48 origin-(--transform-origin) overflow-hidden rounded-md border p-1 shadow-md outline-none",
+						"bg-popover text-popover-foreground z-50 min-w-48 origin-(--transform-origin) overflow-hidden rounded-md border p-1 shadow-md transition-all outline-none data-ending-style:scale-98 data-ending-style:opacity-0 data-starting-style:scale-98 data-starting-style:opacity-0",
 						className
 					)}
 					{...props}
@@ -166,7 +166,7 @@ function ContextMenuLabel({
 			data-slot="context-menu-label"
 			data-inset={inset}
 			className={cn(
-				"px-2 py-1.5 text-xs font-medium data-[inset]:pl-8",
+				"px-2 py-1.5 text-xs font-medium data-inset:pl-8",
 				className
 			)}
 			{...props}
@@ -224,7 +224,7 @@ function ContextMenuSubTrigger({
 			data-slot="context-menu-sub-trigger"
 			data-inset={inset}
 			className={cn(
-				"focus:bg-accent focus:text-accent-foreground data-popup-open:bg-accent data-popup-open:text-accent-foreground flex cursor-default items-center rounded-sm px-2 py-1.5 text-sm outline-hidden select-none data-[inset]:pl-8",
+				"focus:bg-accent focus:text-accent-foreground data-popup-open:bg-accent data-popup-open:text-accent-foreground flex cursor-default items-center rounded-sm px-2 py-1.5 text-sm outline-hidden select-none data-disabled:pointer-events-none data-disabled:opacity-50 data-inset:pl-8",
 				className
 			)}
 			{...props}
@@ -254,7 +254,7 @@ function ContextMenuSubContent({
 				<BaseContextMenu.Popup
 					data-slot="context-menu-sub-content"
 					className={cn(
-						"bg-popover text-popover-foreground data-open:animate-in data-open:fade-in-0 data-open:zoom-in-95 data-closed:animate-out data-closed:fade-out-0 data-closed:zoom-out-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 z-50 min-w-[12rem] origin-[var(--transform-origin)] overflow-hidden rounded-md border p-1 shadow-md",
+						"bg-popover text-popover-foreground z-50 min-w-[12rem] origin-[var(--transform-origin)] overflow-hidden rounded-md border p-1 shadow-md transition-all data-ending-style:scale-98 data-ending-style:opacity-0 data-starting-style:scale-98 data-starting-style:opacity-0",
 						className
 					)}
 					{...props}

@@ -2,17 +2,15 @@ import * as React from "react"
 
 import { cn } from "@/lib/utils"
 
-export interface AspectRatioProps extends React.HTMLAttributes<HTMLDivElement> {
-	ratio?: number
-}
-
 function AspectRatio({
 	children,
 	className,
 	ratio = 1,
 	style,
 	...props
-}: AspectRatioProps) {
+}: React.HTMLAttributes<HTMLDivElement> & {
+	ratio?: number
+}) {
 	return (
 		<div
 			data-slot="aspect-ratio"

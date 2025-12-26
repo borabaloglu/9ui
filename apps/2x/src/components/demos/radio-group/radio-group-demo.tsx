@@ -7,19 +7,18 @@ export default function RadioGroupDemo() {
 			<div id="radio-group-plan" className="text-foreground font-medium">
 				Select a plan
 			</div>
-			<div className="flex items-center gap-2">
+			<Label className="flex items-center gap-2">
 				<RadioGroupItem id="basic" value="basic" />
-				<Label htmlFor="basic">Basic</Label>
-			</div>
-
-			<div className="flex items-center gap-2">
+				Basic
+			</Label>
+			<Label className="flex items-center gap-2">
 				<RadioGroupItem id="standard" value="standard" />
-				<Label htmlFor="standard">Standard</Label>
-			</div>
-			<div className="flex items-center gap-2">
+				Standard
+			</Label>
+			<Label className="flex items-center gap-2">
 				<RadioGroupItem id="premium" value="premium" />
-				<Label htmlFor="premium">Premium</Label>
-			</div>
+				Premium
+			</Label>
 		</RadioGroup>
 	)
 }

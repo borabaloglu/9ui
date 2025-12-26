@@ -1,6 +1,6 @@
 import * as React from "react"
-import { mergeProps } from "@base-ui-components/react"
-import { useRender } from "@base-ui-components/react/use-render"
+import { mergeProps } from "@base-ui/react"
+import { useRender } from "@base-ui/react/use-render"
 import {
 	ChevronLeftIcon,
 	ChevronRightIcon,
@@ -80,7 +80,7 @@ function PaginationPrevious({
 	return (
 		<PaginationLink
 			aria-label="Go to previous page"
-			size="md"
+			size="default"
 			className={cn("gap-1 px-2.5 sm:pl-2.5", className)}
 			{...props}
 		>
@@ -97,7 +97,7 @@ function PaginationNext({
 	return (
 		<PaginationLink
 			aria-label="Go to next page"
-			size="md"
+			size="default"
 			className={cn("gap-1 px-2.5 sm:pr-2.5", className)}
 			{...props}
 		>

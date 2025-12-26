@@ -7,7 +7,7 @@ import {
 
 export default function AccordionDemo() {
 	return (
-		<Accordion className="mx-auto w-96" orientation="vertical">
+		<Accordion className="mx-auto w-96">
 			<AccordionItem>
 				<AccordionTrigger>What is accordion?</AccordionTrigger>
 				<AccordionContent>
