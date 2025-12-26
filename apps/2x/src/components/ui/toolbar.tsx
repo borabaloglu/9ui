@@ -31,7 +31,10 @@ function ToolbarButton({
 	return (
 		<BaseToolbar.Button
 			className={cn(
-				buttonVariants({ variant: variant ?? "ghost", size: size ?? "md" }),
+				buttonVariants({
+					variant: variant ?? "ghost",
+					size: size ?? "default",
+				}),
 				"shrink-0",
 				className
 			)}

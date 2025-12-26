@@ -26,7 +26,9 @@ export default function TabsDisabledDemo() {
 						className="w-full"
 						render={(props) => (
 							<div {...props}>
-								<TabsTrigger disabled>Sign up</TabsTrigger>
+								<TabsTrigger value="signup" disabled>
+									Sign up
+								</TabsTrigger>
 							</div>
 						)}
 					/>
