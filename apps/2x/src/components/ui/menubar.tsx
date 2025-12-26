@@ -1,5 +1,5 @@
-import { Menu as BaseMenu } from "@base-ui-components/react/menu"
-import { Menubar as BaseMenubar } from "@base-ui-components/react/menubar"
+import { Menu as BaseMenu } from "@base-ui/react/menu"
+import { Menubar as BaseMenubar } from "@base-ui/react/menubar"
 import { CheckIcon, ChevronRightIcon, CircleIcon } from "lucide-react"
 
 import { cn } from "@/lib/utils"
@@ -52,7 +52,7 @@ function MenubarTrigger({
 			closeDelay={0}
 			data-slot="menubar-trigger"
 			className={cn(
-				"data-popup-open:bg-accent data-popup-open:text-accent-foreground flex items-center rounded-sm px-2 py-1 text-sm font-medium outline-hidden select-none",
+				"data-popup-open:bg-accent data-popup-open:text-accent-foreground flex items-center rounded-sm px-2 py-1 text-sm font-medium outline-hidden select-none data-disabled:pointer-events-none data-disabled:opacity-50",
 				className
 			)}
 			{...props}
@@ -235,7 +235,7 @@ function MenubarSubTrigger({
 			data-slot="menubar-sub-trigger"
 			data-inset={inset}
 			className={cn(
-				"focus:bg-accent focus:text-accent-foreground data-popup-open:bg-accent data-popup-open:text-accent-foreground flex cursor-default items-center rounded-sm px-2 py-1.5 text-sm outline-hidden select-none data-inset:pl-8",
+				"focus:bg-accent focus:text-accent-foreground data-popup-open:bg-accent data-popup-open:text-accent-foreground flex cursor-default items-center rounded-sm px-2 py-1.5 text-sm outline-hidden select-none data-disabled:pointer-events-none data-disabled:opacity-50 data-inset:pl-8",
 				className
 			)}
 			{...props}

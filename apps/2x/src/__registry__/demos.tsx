@@ -5,13 +5,23 @@ import { type DemoRegistry } from "@/types/demo"
 export const demoRegistry: DemoRegistry = {
 	"accordion-demo": {
 		source:
-			'import {\n\tAccordion,\n\tAccordionContent,\n\tAccordionItem,\n\tAccordionTrigger,\n} from "@/components/ui/accordion"\n\nexport default function AccordionDemo() {\n\treturn (\n\t\t<Accordion className="mx-auto w-96" orientation="vertical">\n\t\t\t<AccordionItem>\n\t\t\t\t<AccordionTrigger>What is accordion?</AccordionTrigger>\n\t\t\t\t<AccordionContent>\n\t\t\t\t\tA collapsible component that organizes content into expandable\n\t\t\t\t\tsections.\n\t\t\t\t</AccordionContent>\n\t\t\t</AccordionItem>\n\t\t\t<AccordionItem>\n\t\t\t\t<AccordionTrigger>Is it customizable?</AccordionTrigger>\n\t\t\t\t<AccordionContent>\n\t\t\t\t\tYes. You can style it with tailwind classes to match your design\n\t\t\t\t\tsystem.\n\t\t\t\t</AccordionContent>\n\t\t\t</AccordionItem>\n\t\t\t<AccordionItem>\n\t\t\t\t<AccordionTrigger>Is it animated?</AccordionTrigger>\n\t\t\t\t<AccordionContent>\n\t\t\t\t\tYes. Smooth expand and collapse transitions are built in.\n\t\t\t\t</AccordionContent>\n\t\t\t</AccordionItem>\n\t\t\t<AccordionItem disabled>\n\t\t\t\t<AccordionTrigger>Can it be disabled?</AccordionTrigger>\n\t\t\t</AccordionItem>\n\t\t</Accordion>\n\t)\n}\n',
+			'import {\n\tAccordion,\n\tAccordionContent,\n\tAccordionItem,\n\tAccordionTrigger,\n} from "@/components/ui/accordion"\n\nexport default function AccordionDemo() {\n\treturn (\n\t\t<Accordion className="mx-auto w-96">\n\t\t\t<AccordionItem>\n\t\t\t\t<AccordionTrigger>What is accordion?</AccordionTrigger>\n\t\t\t\t<AccordionContent>\n\t\t\t\t\tA collapsible component that organizes content into expandable\n\t\t\t\t\tsections.\n\t\t\t\t</AccordionContent>\n\t\t\t</AccordionItem>\n\t\t\t<AccordionItem>\n\t\t\t\t<AccordionTrigger>Is it customizable?</AccordionTrigger>\n\t\t\t\t<AccordionContent>\n\t\t\t\t\tYes. You can style it with tailwind classes to match your design\n\t\t\t\t\tsystem.\n\t\t\t\t</AccordionContent>\n\t\t\t</AccordionItem>\n\t\t\t<AccordionItem>\n\t\t\t\t<AccordionTrigger>Is it animated?</AccordionTrigger>\n\t\t\t\t<AccordionContent>\n\t\t\t\t\tYes. Smooth expand and collapse transitions are built in.\n\t\t\t\t</AccordionContent>\n\t\t\t</AccordionItem>\n\t\t\t<AccordionItem disabled>\n\t\t\t\t<AccordionTrigger>Can it be disabled?</AccordionTrigger>\n\t\t\t</AccordionItem>\n\t\t</Accordion>\n\t)\n}\n',
 		component: React.lazy(
 			() => import("@/components/demos/accordion/accordion-demo")
 		),
 		title: "accordion-demo",
 		category: "accordion",
 		path: "src/components/demos/accordion/accordion-demo.tsx",
+	},
+	"accordion-multiple-demo": {
+		source:
+			'import {\n\tAccordion,\n\tAccordionContent,\n\tAccordionItem,\n\tAccordionTrigger,\n} from "@/components/ui/accordion"\n\nexport default function AccordionMultipleDemo() {\n\treturn (\n\t\t<Accordion className="mx-auto w-96" multiple>\n\t\t\t<AccordionItem>\n\t\t\t\t<AccordionTrigger>Can it be multiple?</AccordionTrigger>\n\t\t\t\t<AccordionContent>\n\t\t\t\t\tYes. You can open multiple items at the same time.\n\t\t\t\t</AccordionContent>\n\t\t\t</AccordionItem>\n\t\t\t<AccordionItem>\n\t\t\t\t<AccordionTrigger>\n\t\t\t\t\tTry to open multiple items at the same time.\n\t\t\t\t</AccordionTrigger>\n\t\t\t\t<AccordionContent>\n\t\t\t\t\tYou can open multiple items at the same time.\n\t\t\t\t</AccordionContent>\n\t\t\t</AccordionItem>\n\t\t\t<AccordionItem>\n\t\t\t\t<AccordionTrigger>\n\t\t\t\t\t<span>\n\t\t\t\t\t\tAdd <code className="inline-block">multiple</code> prop to the\n\t\t\t\t\t\taccordion.\n\t\t\t\t\t</span>\n\t\t\t\t</AccordionTrigger>\n\t\t\t\t<AccordionContent>\n\t\t\t\t\tYou can add the <code>multiple</code> prop to the accordion to allow\n\t\t\t\t\tmultiple items to be opened at the same time.\n\t\t\t\t</AccordionContent>\n\t\t\t</AccordionItem>\n\t\t</Accordion>\n\t)\n}\n',
+		component: React.lazy(
+			() => import("@/components/demos/accordion/accordion-multiple-demo")
+		),
+		title: "accordion-multiple-demo",
+		category: "accordion",
+		path: "src/components/demos/accordion/accordion-multiple-demo.tsx",
 	},
 	"alert-dialog-demo": {
 		source:
@@ -23,15 +33,15 @@ export const demoRegistry: DemoRegistry = {
 		category: "alert-dialog",
 		path: "src/components/demos/alert-dialog/alert-dialog-demo.tsx",
 	},
-	"alert-danger": {
+	"alert-danger-demo": {
 		source:
-			'import { XCircleIcon } from "lucide-react"\n\nimport { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"\n\nexport default function AlertDanger() {\n\treturn (\n\t\t<Alert variant="danger">\n\t\t\t<XCircleIcon />\n\t\t\t<AlertTitle>Your subscription has been canceled</AlertTitle>\n\t\t\t<AlertDescription>\n\t\t\t\tYour access to premium features will end in 30 days. You can reactivate\n\t\t\t\tyour subscription anytime.\n\t\t\t</AlertDescription>\n\t\t</Alert>\n\t)\n}\n',
+			'import { XCircleIcon } from "lucide-react"\n\nimport { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"\n\nexport default function AlertDangerDemo() {\n\treturn (\n\t\t<Alert variant="danger">\n\t\t\t<XCircleIcon />\n\t\t\t<AlertTitle>Your subscription has been canceled</AlertTitle>\n\t\t\t<AlertDescription>\n\t\t\t\tYour access to premium features will end in 30 days. You can reactivate\n\t\t\t\tyour subscription anytime.\n\t\t\t</AlertDescription>\n\t\t</Alert>\n\t)\n}\n',
 		component: React.lazy(
-			() => import("@/components/demos/alert/alert-danger")
+			() => import("@/components/demos/alert/alert-danger-demo")
 		),
-		title: "alert-danger",
+		title: "alert-danger-demo",
 		category: "alert",
-		path: "src/components/demos/alert/alert-danger.tsx",
+		path: "src/components/demos/alert/alert-danger-demo.tsx",
 	},
 	"alert-demo": {
 		source:
@@ -41,43 +51,45 @@ export const demoRegistry: DemoRegistry = {
 		category: "alert",
 		path: "src/components/demos/alert/alert-demo.tsx",
 	},
-	"alert-info": {
+	"alert-info-demo": {
 		source:
-			'import { InfoIcon } from "lucide-react"\n\nimport { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"\n\nexport default function AlertInfo() {\n\treturn (\n\t\t<Alert variant="info">\n\t\t\t<InfoIcon />\n\t\t\t<AlertTitle>Browser Update Available</AlertTitle>\n\t\t\t<AlertDescription>\n\t\t\t\tA new version of your browser is available. Updating your browser\n\t\t\t\tensures better security and performance.\n\t\t\t</AlertDescription>\n\t\t</Alert>\n\t)\n}\n',
-		component: React.lazy(() => import("@/components/demos/alert/alert-info")),
-		title: "alert-info",
-		category: "alert",
-		path: "src/components/demos/alert/alert-info.tsx",
-	},
-	"alert-success": {
-		source:
-			'import { CircleCheckIcon } from "lucide-react"\n\nimport { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"\n\nexport default function AlertSuccess() {\n\treturn (\n\t\t<Alert variant="success">\n\t\t\t<CircleCheckIcon />\n\t\t\t<AlertTitle>Your account has been created</AlertTitle>\n\t\t\t<AlertDescription>\n\t\t\t\tYou can now sign in with your new account credentials.\n\t\t\t</AlertDescription>\n\t\t</Alert>\n\t)\n}\n',
+			'import { InfoIcon } from "lucide-react"\n\nimport { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"\n\nexport default function AlertInfoDemo() {\n\treturn (\n\t\t<Alert variant="info">\n\t\t\t<InfoIcon />\n\t\t\t<AlertTitle>Browser Update Available</AlertTitle>\n\t\t\t<AlertDescription>\n\t\t\t\tA new version of your browser is available. Updating your browser\n\t\t\t\tensures better security and performance.\n\t\t\t</AlertDescription>\n\t\t</Alert>\n\t)\n}\n',
 		component: React.lazy(
-			() => import("@/components/demos/alert/alert-success")
+			() => import("@/components/demos/alert/alert-info-demo")
 		),
-		title: "alert-success",
+		title: "alert-info-demo",
 		category: "alert",
-		path: "src/components/demos/alert/alert-success.tsx",
+		path: "src/components/demos/alert/alert-info-demo.tsx",
 	},
-	"alert-warning": {
+	"alert-success-demo": {
 		source:
-			'import { AlertTriangleIcon } from "lucide-react"\n\nimport { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"\n\nexport default function AlertWarning() {\n\treturn (\n\t\t<Alert variant="warning">\n\t\t\t<AlertTriangleIcon />\n\t\t\t<AlertTitle>Your session is about to expire</AlertTitle>\n\t\t\t<AlertDescription>\n\t\t\t\tYou will be logged out in 5 minutes. Please save your work and refresh\n\t\t\t\tthe page.\n\t\t\t</AlertDescription>\n\t\t</Alert>\n\t)\n}\n',
+			'import { CircleCheckIcon } from "lucide-react"\n\nimport { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"\n\nexport default function AlertSuccessDemo() {\n\treturn (\n\t\t<Alert variant="success">\n\t\t\t<CircleCheckIcon />\n\t\t\t<AlertTitle>Your account has been created</AlertTitle>\n\t\t\t<AlertDescription>\n\t\t\t\tYou can now sign in with your new account credentials.\n\t\t\t</AlertDescription>\n\t\t</Alert>\n\t)\n}\n',
 		component: React.lazy(
-			() => import("@/components/demos/alert/alert-warning")
+			() => import("@/components/demos/alert/alert-success-demo")
 		),
-		title: "alert-warning",
+		title: "alert-success-demo",
 		category: "alert",
-		path: "src/components/demos/alert/alert-warning.tsx",
+		path: "src/components/demos/alert/alert-success-demo.tsx",
 	},
-	"alert-with-action": {
+	"alert-warning-demo": {
 		source:
-			'import { AlertTriangleIcon } from "lucide-react"\n\nimport { Alert, AlertTitle } from "@/components/ui/alert"\nimport { Button } from "@/components/ui/button"\n\nexport default function AlertWithAction() {\n\treturn (\n\t\t<Alert>\n\t\t\t<AlertTriangleIcon />\n\t\t\t<AlertTitle className="line-clamp-1 max-w-[calc(100%-4rem)] overflow-ellipsis">\n\t\t\t\tNo Internet Connection\n\t\t\t</AlertTitle>\n\t\t\t<Button\n\t\t\t\tclassName="absolute top-1/2 right-4 h-6 -translate-y-1/2 text-xs shadow-none"\n\t\t\t\tsize="sm"\n\t\t\t\tvariant="outline"\n\t\t\t>\n\t\t\t\tTry Again\n\t\t\t</Button>\n\t\t</Alert>\n\t)\n}\n',
+			'import { AlertTriangleIcon } from "lucide-react"\n\nimport { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"\n\nexport default function AlertWarningDemo() {\n\treturn (\n\t\t<Alert variant="warning">\n\t\t\t<AlertTriangleIcon />\n\t\t\t<AlertTitle>Your session is about to expire</AlertTitle>\n\t\t\t<AlertDescription>\n\t\t\t\tYou will be logged out in 5 minutes. Please save your work and refresh\n\t\t\t\tthe page.\n\t\t\t</AlertDescription>\n\t\t</Alert>\n\t)\n}\n',
 		component: React.lazy(
-			() => import("@/components/demos/alert/alert-with-action")
+			() => import("@/components/demos/alert/alert-warning-demo")
 		),
-		title: "alert-with-action",
+		title: "alert-warning-demo",
 		category: "alert",
-		path: "src/components/demos/alert/alert-with-action.tsx",
+		path: "src/components/demos/alert/alert-warning-demo.tsx",
+	},
+	"alert-with-action-demo": {
+		source:
+			'import { AlertTriangleIcon } from "lucide-react"\n\nimport { Alert, AlertTitle } from "@/components/ui/alert"\nimport { Button } from "@/components/ui/button"\n\nexport default function AlertWithActionDemo() {\n\treturn (\n\t\t<Alert>\n\t\t\t<AlertTriangleIcon />\n\t\t\t<AlertTitle className="line-clamp-1 max-w-[calc(100%-4rem)] overflow-ellipsis">\n\t\t\t\tNo Internet Connection\n\t\t\t</AlertTitle>\n\t\t\t<Button\n\t\t\t\tclassName="absolute top-1/2 right-4 h-6 -translate-y-1/2 text-xs shadow-none"\n\t\t\t\tsize="sm"\n\t\t\t\tvariant="outline"\n\t\t\t>\n\t\t\t\tTry Again\n\t\t\t</Button>\n\t\t</Alert>\n\t)\n}\n',
+		component: React.lazy(
+			() => import("@/components/demos/alert/alert-with-action-demo")
+		),
+		title: "alert-with-action-demo",
+		category: "alert",
+		path: "src/components/demos/alert/alert-with-action-demo.tsx",
 	},
 	"aspect-ratio-demo": {
 		source:
@@ -89,25 +101,28 @@ export const demoRegistry: DemoRegistry = {
 		category: "aspect-ratio",
 		path: "src/components/demos/aspect-ratio/aspect-ratio-demo.tsx",
 	},
-	"autocomplete-async": {
+	"autocomplete-async-demo": {
 		source:
-			'"use client"\n\nimport * as React from "react"\nimport { Loader2Icon } from "lucide-react"\n\nimport {\n\tAutocomplete,\n\tAutocompleteContent,\n\tAutocompleteInput,\n\tAutocompleteItem,\n\tAutocompleteList,\n\tAutocompleteStatus,\n\tuseFilter,\n} from "@/components/ui/autocomplete"\nimport { Label } from "@/components/ui/label"\n\nexport default function AutocompleteAsync() {\n\tconst [searchValue, setSearchValue] = React.useState("")\n\tconst [isLoading, setIsLoading] = React.useState(false)\n\tconst [searchResults, setSearchResults] = React.useState<Book[]>([])\n\tconst [error, setError] = React.useState<string | null>(null)\n\n\tconst { contains } = useFilter({ sensitivity: "base" })\n\n\tReact.useEffect(() => {\n\t\tif (!searchValue) {\n\t\t\tsetSearchResults([])\n\t\t\tsetIsLoading(false)\n\t\t\treturn undefined\n\t\t}\n\n\t\tsetIsLoading(true)\n\t\tsetError(null)\n\n\t\tlet ignore = false\n\n\t\tasync function fetchBooks() {\n\t\t\ttry {\n\t\t\t\tconst results = await searchBooks(searchValue, contains)\n\t\t\t\tif (!ignore) {\n\t\t\t\t\tsetSearchResults(results)\n\t\t\t\t}\n\t\t\t} catch {\n\t\t\t\tif (!ignore) {\n\t\t\t\t\tsetError("Failed to find books. Please try again.")\n\t\t\t\t\tsetSearchResults([])\n\t\t\t\t}\n\t\t\t} finally {\n\t\t\t\tif (!ignore) {\n\t\t\t\t\tsetIsLoading(false)\n\t\t\t\t}\n\t\t\t}\n\t\t}\n\n\t\tconst timeoutId = setTimeout(fetchBooks, 300)\n\n\t\treturn () => {\n\t\t\tclearTimeout(timeoutId)\n\t\t\tignore = true\n\t\t}\n\t}, [searchValue, contains])\n\n\tlet status: React.ReactNode = `${searchResults.length} book${\n\t\tsearchResults.length === 1 ? "" : "s"\n\t} found`\n\tif (isLoading) {\n\t\tstatus = (\n\t\t\t<React.Fragment>\n\t\t\t\t<Loader2Icon className="size-4 animate-spin" />\n\t\t\t\tSearching books...\n\t\t\t</React.Fragment>\n\t\t)\n\t} else if (error) {\n\t\tstatus = error\n\t} else if (searchResults.length === 0 && searchValue) {\n\t\tstatus = `No books found for "${searchValue}"`\n\t}\n\n\tconst shouldRenderPopup = searchValue !== ""\n\n\treturn (\n\t\t<div className="w-80">\n\t\t\t<Autocomplete\n\t\t\t\titems={searchResults}\n\t\t\t\tvalue={searchValue}\n\t\t\t\tonValueChange={setSearchValue}\n\t\t\t\titemToStringValue={(item: unknown) => (item as Book).title}\n\t\t\t\tfilter={null}\n\t\t\t>\n\t\t\t\t<div className="flex flex-col gap-2">\n\t\t\t\t\t<Label htmlFor="search-books">Search books</Label>\n\t\t\t\t\t<AutocompleteInput\n\t\t\t\t\t\tid="search-books"\n\t\t\t\t\t\tplaceholder="e.g. Hamlet or Shakespeare or 1603"\n\t\t\t\t\t/>\n\t\t\t\t</div>\n\n\t\t\t\t{shouldRenderPopup && (\n\t\t\t\t\t<AutocompleteContent aria-busy={isLoading || undefined}>\n\t\t\t\t\t\t<AutocompleteStatus>{status}</AutocompleteStatus>\n\t\t\t\t\t\t<AutocompleteList>\n\t\t\t\t\t\t\t{(book: Book) => (\n\t\t\t\t\t\t\t\t<AutocompleteItem key={book.id} value={book}>\n\t\t\t\t\t\t\t\t\t<div className="flex w-full flex-col gap-1">\n\t\t\t\t\t\t\t\t\t\t<div className="font-medium">{book.title}</div>\n\t\t\t\t\t\t\t\t\t\t<div className="text-muted-foreground text-xs">\n\t\t\t\t\t\t\t\t\t\t\tby {book.author}, {book.publishedYear}\n\t\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t</AutocompleteItem>\n\t\t\t\t\t\t\t)}\n\t\t\t\t\t\t</AutocompleteList>\n\t\t\t\t\t</AutocompleteContent>\n\t\t\t\t)}\n\t\t\t</Autocomplete>\n\t\t</div>\n\t)\n}\n\ninterface Book {\n\tid: string\n\ttitle: string\n\tauthor: string\n\tpublishedYear: number\n}\n\nconst books: Book[] = [\n\t{\n\t\tid: "1",\n\t\ttitle: "Pride and Prejudice",\n\t\tauthor: "Jane Austen",\n\t\tpublishedYear: 1813,\n\t},\n\t{\n\t\tid: "2",\n\t\ttitle: "To Kill a Mockingbird",\n\t\tauthor: "Harper Lee",\n\t\tpublishedYear: 1960,\n\t},\n\t{ id: "3", title: "1984", author: "George Orwell", publishedYear: 1949 },\n\t{\n\t\tid: "4",\n\t\ttitle: "The Great Gatsby",\n\t\tauthor: "F. Scott Fitzgerald",\n\t\tpublishedYear: 1925,\n\t},\n\t{\n\t\tid: "5",\n\t\ttitle: "Jane Eyre",\n\t\tauthor: "Charlotte Brontë",\n\t\tpublishedYear: 1847,\n\t},\n\t{\n\t\tid: "6",\n\t\ttitle: "Wuthering Heights",\n\t\tauthor: "Emily Brontë",\n\t\tpublishedYear: 1847,\n\t},\n\t{\n\t\tid: "7",\n\t\ttitle: "The Catcher in the Rye",\n\t\tauthor: "J.D. Salinger",\n\t\tpublishedYear: 1951,\n\t},\n\t{\n\t\tid: "8",\n\t\ttitle: "Lord of the Flies",\n\t\tauthor: "William Golding",\n\t\tpublishedYear: 1954,\n\t},\n\t{\n\t\tid: "9",\n\t\ttitle: "Of Mice and Men",\n\t\tauthor: "John Steinbeck",\n\t\tpublishedYear: 1937,\n\t},\n\t{\n\t\tid: "10",\n\t\ttitle: "Romeo and Juliet",\n\t\tauthor: "William Shakespeare",\n\t\tpublishedYear: 1597,\n\t},\n\t{\n\t\tid: "11",\n\t\ttitle: "The Adventures of Huckleberry Finn",\n\t\tauthor: "Mark Twain",\n\t\tpublishedYear: 1884,\n\t},\n\t{\n\t\tid: "12",\n\t\ttitle: "The Lord of the Rings",\n\t\tauthor: "J.R.R. Tolkien",\n\t\tpublishedYear: 1954,\n\t},\n\t{\n\t\tid: "13",\n\t\ttitle: "Animal Farm",\n\t\tauthor: "George Orwell",\n\t\tpublishedYear: 1945,\n\t},\n\t{\n\t\tid: "14",\n\t\ttitle: "Brave New World",\n\t\tauthor: "Aldous Huxley",\n\t\tpublishedYear: 1932,\n\t},\n\t{\n\t\tid: "15",\n\t\ttitle: "The Picture of Dorian Gray",\n\t\tauthor: "Oscar Wilde",\n\t\tpublishedYear: 1890,\n\t},\n\t{\n\t\tid: "16",\n\t\ttitle: "Crime and Punishment",\n\t\tauthor: "Fyodor Dostoevsky",\n\t\tpublishedYear: 1866,\n\t},\n\t{\n\t\tid: "17",\n\t\ttitle: "The Brothers Karamazov",\n\t\tauthor: "Fyodor Dostoevsky",\n\t\tpublishedYear: 1880,\n\t},\n\t{\n\t\tid: "18",\n\t\ttitle: "War and Peace",\n\t\tauthor: "Leo Tolstoy",\n\t\tpublishedYear: 1869,\n\t},\n\t{\n\t\tid: "19",\n\t\ttitle: "Anna Karenina",\n\t\tauthor: "Leo Tolstoy",\n\t\tpublishedYear: 1877,\n\t},\n\t{ id: "20", title: "The Odyssey", author: "Homer", publishedYear: -800 },\n\t{ id: "21", title: "The Iliad", author: "Homer", publishedYear: -750 },\n\t{\n\t\tid: "22",\n\t\ttitle: "Hamlet",\n\t\tauthor: "William Shakespeare",\n\t\tpublishedYear: 1603,\n\t},\n\t{\n\t\tid: "23",\n\t\ttitle: "Macbeth",\n\t\tauthor: "William Shakespeare",\n\t\tpublishedYear: 1623,\n\t},\n\t{\n\t\tid: "24",\n\t\ttitle: "One Hundred Years of Solitude",\n\t\tauthor: "Gabriel García Márquez",\n\t\tpublishedYear: 1967,\n\t},\n\t{\n\t\tid: "25",\n\t\ttitle: "The Divine Comedy",\n\t\tauthor: "Dante Alighieri",\n\t\tpublishedYear: 1320,\n\t},\n\t{\n\t\tid: "26",\n\t\ttitle: "Don Quixote",\n\t\tauthor: "Miguel de Cervantes",\n\t\tpublishedYear: 1605,\n\t},\n\t{\n\t\tid: "27",\n\t\ttitle: "Moby Dick",\n\t\tauthor: "Herman Melville",\n\t\tpublishedYear: 1851,\n\t},\n\t{\n\t\tid: "28",\n\t\ttitle: "The Scarlet Letter",\n\t\tauthor: "Nathaniel Hawthorne",\n\t\tpublishedYear: 1850,\n\t},\n\t{\n\t\tid: "29",\n\t\ttitle: "The Canterbury Tales",\n\t\tauthor: "Geoffrey Chaucer",\n\t\tpublishedYear: 1400,\n\t},\n\t{\n\t\tid: "30",\n\t\ttitle: "Great Expectations",\n\t\tauthor: "Charles Dickens",\n\t\tpublishedYear: 1861,\n\t},\n\t{\n\t\tid: "31",\n\t\ttitle: "A Tale of Two Cities",\n\t\tauthor: "Charles Dickens",\n\t\tpublishedYear: 1859,\n\t},\n\t{\n\t\tid: "32",\n\t\ttitle: "Oliver Twist",\n\t\tauthor: "Charles Dickens",\n\t\tpublishedYear: 1838,\n\t},\n\t{\n\t\tid: "33",\n\t\ttitle: "David Copperfield",\n\t\tauthor: "Charles Dickens",\n\t\tpublishedYear: 1850,\n\t},\n\t{\n\t\tid: "34",\n\t\ttitle: "Little Women",\n\t\tauthor: "Louisa May Alcott",\n\t\tpublishedYear: 1868,\n\t},\n\t{\n\t\tid: "35",\n\t\ttitle: "The Count of Monte Cristo",\n\t\tauthor: "Alexandre Dumas",\n\t\tpublishedYear: 1844,\n\t},\n\t{\n\t\tid: "36",\n\t\ttitle: "Les Misérables",\n\t\tauthor: "Victor Hugo",\n\t\tpublishedYear: 1862,\n\t},\n\t{\n\t\tid: "37",\n\t\ttitle: "The Hunchback of Notre-Dame",\n\t\tauthor: "Victor Hugo",\n\t\tpublishedYear: 1831,\n\t},\n\t{\n\t\tid: "38",\n\t\ttitle: "Madame Bovary",\n\t\tauthor: "Gustave Flaubert",\n\t\tpublishedYear: 1857,\n\t},\n\t{\n\t\tid: "39",\n\t\ttitle: "The Stranger",\n\t\tauthor: "Albert Camus",\n\t\tpublishedYear: 1942,\n\t},\n\t{\n\t\tid: "40",\n\t\ttitle: "The Metamorphosis",\n\t\tauthor: "Franz Kafka",\n\t\tpublishedYear: 1915,\n\t},\n]\n\nasync function searchBooks(\n\tquery: string,\n\tfilter: (item: string, query: string) => boolean\n): Promise<Book[]> {\n\t// Simulate network delay\n\tawait new Promise((resolve) => {\n\t\tsetTimeout(resolve, Math.random() * 400 + 200)\n\t})\n\n\t// Simulate occasional network errors (1% chance)\n\tif (Math.random() < 0.01 || query === "will_error") {\n\t\tthrow new Error("Network error")\n\t}\n\n\treturn books.filter(\n\t\t(book) =>\n\t\t\tfilter(book.title, query) ||\n\t\t\tfilter(book.author, query) ||\n\t\t\tfilter(book.publishedYear.toString(), query)\n\t)\n}\n',
+			'"use client"\n\nimport * as React from "react"\nimport { Loader2Icon } from "lucide-react"\n\nimport {\n\tAutocomplete,\n\tAutocompleteContent,\n\tAutocompleteInput,\n\tAutocompleteItem,\n\tAutocompleteList,\n\tAutocompleteStatus,\n\tuseFilter,\n} from "@/components/ui/autocomplete"\nimport { Label } from "@/components/ui/label"\n\nexport default function AutocompleteAsyncDemo() {\n\tconst [searchValue, setSearchValue] = React.useState("")\n\tconst [isLoading, setIsLoading] = React.useState(false)\n\tconst [searchResults, setSearchResults] = React.useState<Book[]>([])\n\tconst [error, setError] = React.useState<string | null>(null)\n\n\tconst { contains } = useFilter({ sensitivity: "base" })\n\n\tReact.useEffect(() => {\n\t\tif (!searchValue) {\n\t\t\tsetSearchResults([])\n\t\t\tsetIsLoading(false)\n\t\t\treturn undefined\n\t\t}\n\n\t\tsetIsLoading(true)\n\t\tsetError(null)\n\n\t\tlet ignore = false\n\n\t\tasync function fetchBooks() {\n\t\t\ttry {\n\t\t\t\tconst results = await searchBooks(searchValue, contains)\n\t\t\t\tif (!ignore) {\n\t\t\t\t\tsetSearchResults(results)\n\t\t\t\t}\n\t\t\t} catch {\n\t\t\t\tif (!ignore) {\n\t\t\t\t\tsetError("Failed to find books. Please try again.")\n\t\t\t\t\tsetSearchResults([])\n\t\t\t\t}\n\t\t\t} finally {\n\t\t\t\tif (!ignore) {\n\t\t\t\t\tsetIsLoading(false)\n\t\t\t\t}\n\t\t\t}\n\t\t}\n\n\t\tconst timeoutId = setTimeout(fetchBooks, 300)\n\n\t\treturn () => {\n\t\t\tclearTimeout(timeoutId)\n\t\t\tignore = true\n\t\t}\n\t}, [searchValue, contains])\n\n\tlet status: React.ReactNode = `${searchResults.length} book${\n\t\tsearchResults.length === 1 ? "" : "s"\n\t} found`\n\tif (isLoading) {\n\t\tstatus = (\n\t\t\t<React.Fragment>\n\t\t\t\t<Loader2Icon className="size-4 animate-spin" />\n\t\t\t\tSearching books...\n\t\t\t</React.Fragment>\n\t\t)\n\t} else if (error) {\n\t\tstatus = error\n\t} else if (searchResults.length === 0 && searchValue) {\n\t\tstatus = `No books found for "${searchValue}"`\n\t}\n\n\tconst shouldRenderPopup = searchValue !== ""\n\n\treturn (\n\t\t<div className="w-80">\n\t\t\t<Autocomplete\n\t\t\t\titems={searchResults}\n\t\t\t\tvalue={searchValue}\n\t\t\t\tonValueChange={setSearchValue}\n\t\t\t\titemToStringValue={(item: unknown) => (item as Book).title}\n\t\t\t\tfilter={null}\n\t\t\t>\n\t\t\t\t<div className="flex flex-col gap-2">\n\t\t\t\t\t<Label htmlFor="search-books">Search books</Label>\n\t\t\t\t\t<AutocompleteInput\n\t\t\t\t\t\tid="search-books"\n\t\t\t\t\t\tplaceholder="e.g. Hamlet or Shakespeare or 1603"\n\t\t\t\t\t/>\n\t\t\t\t</div>\n\n\t\t\t\t{shouldRenderPopup && (\n\t\t\t\t\t<AutocompleteContent aria-busy={isLoading || undefined}>\n\t\t\t\t\t\t<AutocompleteStatus>{status}</AutocompleteStatus>\n\t\t\t\t\t\t<AutocompleteList>\n\t\t\t\t\t\t\t{(book: Book) => (\n\t\t\t\t\t\t\t\t<AutocompleteItem key={book.id} value={book}>\n\t\t\t\t\t\t\t\t\t<div className="flex w-full flex-col gap-1">\n\t\t\t\t\t\t\t\t\t\t<div className="font-medium">{book.title}</div>\n\t\t\t\t\t\t\t\t\t\t<div className="text-muted-foreground text-xs">\n\t\t\t\t\t\t\t\t\t\t\tby {book.author}, {book.publishedYear}\n\t\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t</AutocompleteItem>\n\t\t\t\t\t\t\t)}\n\t\t\t\t\t\t</AutocompleteList>\n\t\t\t\t\t</AutocompleteContent>\n\t\t\t\t)}\n\t\t\t</Autocomplete>\n\t\t</div>\n\t)\n}\n\ninterface Book {\n\tid: string\n\ttitle: string\n\tauthor: string\n\tpublishedYear: number\n}\n\nconst books: Book[] = [\n\t{\n\t\tid: "1",\n\t\ttitle: "Pride and Prejudice",\n\t\tauthor: "Jane Austen",\n\t\tpublishedYear: 1813,\n\t},\n\t{\n\t\tid: "2",\n\t\ttitle: "To Kill a Mockingbird",\n\t\tauthor: "Harper Lee",\n\t\tpublishedYear: 1960,\n\t},\n\t{ id: "3", title: "1984", author: "George Orwell", publishedYear: 1949 },\n\t{\n\t\tid: "4",\n\t\ttitle: "The Great Gatsby",\n\t\tauthor: "F. Scott Fitzgerald",\n\t\tpublishedYear: 1925,\n\t},\n\t{\n\t\tid: "5",\n\t\ttitle: "Jane Eyre",\n\t\tauthor: "Charlotte Brontë",\n\t\tpublishedYear: 1847,\n\t},\n\t{\n\t\tid: "6",\n\t\ttitle: "Wuthering Heights",\n\t\tauthor: "Emily Brontë",\n\t\tpublishedYear: 1847,\n\t},\n\t{\n\t\tid: "7",\n\t\ttitle: "The Catcher in the Rye",\n\t\tauthor: "J.D. Salinger",\n\t\tpublishedYear: 1951,\n\t},\n\t{\n\t\tid: "8",\n\t\ttitle: "Lord of the Flies",\n\t\tauthor: "William Golding",\n\t\tpublishedYear: 1954,\n\t},\n\t{\n\t\tid: "9",\n\t\ttitle: "Of Mice and Men",\n\t\tauthor: "John Steinbeck",\n\t\tpublishedYear: 1937,\n\t},\n\t{\n\t\tid: "10",\n\t\ttitle: "Romeo and Juliet",\n\t\tauthor: "William Shakespeare",\n\t\tpublishedYear: 1597,\n\t},\n\t{\n\t\tid: "11",\n\t\ttitle: "The Adventures of Huckleberry Finn",\n\t\tauthor: "Mark Twain",\n\t\tpublishedYear: 1884,\n\t},\n\t{\n\t\tid: "12",\n\t\ttitle: "The Lord of the Rings",\n\t\tauthor: "J.R.R. Tolkien",\n\t\tpublishedYear: 1954,\n\t},\n\t{\n\t\tid: "13",\n\t\ttitle: "Animal Farm",\n\t\tauthor: "George Orwell",\n\t\tpublishedYear: 1945,\n\t},\n\t{\n\t\tid: "14",\n\t\ttitle: "Brave New World",\n\t\tauthor: "Aldous Huxley",\n\t\tpublishedYear: 1932,\n\t},\n\t{\n\t\tid: "15",\n\t\ttitle: "The Picture of Dorian Gray",\n\t\tauthor: "Oscar Wilde",\n\t\tpublishedYear: 1890,\n\t},\n\t{\n\t\tid: "16",\n\t\ttitle: "Crime and Punishment",\n\t\tauthor: "Fyodor Dostoevsky",\n\t\tpublishedYear: 1866,\n\t},\n\t{\n\t\tid: "17",\n\t\ttitle: "The Brothers Karamazov",\n\t\tauthor: "Fyodor Dostoevsky",\n\t\tpublishedYear: 1880,\n\t},\n\t{\n\t\tid: "18",\n\t\ttitle: "War and Peace",\n\t\tauthor: "Leo Tolstoy",\n\t\tpublishedYear: 1869,\n\t},\n\t{\n\t\tid: "19",\n\t\ttitle: "Anna Karenina",\n\t\tauthor: "Leo Tolstoy",\n\t\tpublishedYear: 1877,\n\t},\n\t{ id: "20", title: "The Odyssey", author: "Homer", publishedYear: -800 },\n\t{ id: "21", title: "The Iliad", author: "Homer", publishedYear: -750 },\n\t{\n\t\tid: "22",\n\t\ttitle: "Hamlet",\n\t\tauthor: "William Shakespeare",\n\t\tpublishedYear: 1603,\n\t},\n\t{\n\t\tid: "23",\n\t\ttitle: "Macbeth",\n\t\tauthor: "William Shakespeare",\n\t\tpublishedYear: 1623,\n\t},\n\t{\n\t\tid: "24",\n\t\ttitle: "One Hundred Years of Solitude",\n\t\tauthor: "Gabriel García Márquez",\n\t\tpublishedYear: 1967,\n\t},\n\t{\n\t\tid: "25",\n\t\ttitle: "The Divine Comedy",\n\t\tauthor: "Dante Alighieri",\n\t\tpublishedYear: 1320,\n\t},\n\t{\n\t\tid: "26",\n\t\ttitle: "Don Quixote",\n\t\tauthor: "Miguel de Cervantes",\n\t\tpublishedYear: 1605,\n\t},\n\t{\n\t\tid: "27",\n\t\ttitle: "Moby Dick",\n\t\tauthor: "Herman Melville",\n\t\tpublishedYear: 1851,\n\t},\n\t{\n\t\tid: "28",\n\t\ttitle: "The Scarlet Letter",\n\t\tauthor: "Nathaniel Hawthorne",\n\t\tpublishedYear: 1850,\n\t},\n\t{\n\t\tid: "29",\n\t\ttitle: "The Canterbury Tales",\n\t\tauthor: "Geoffrey Chaucer",\n\t\tpublishedYear: 1400,\n\t},\n\t{\n\t\tid: "30",\n\t\ttitle: "Great Expectations",\n\t\tauthor: "Charles Dickens",\n\t\tpublishedYear: 1861,\n\t},\n\t{\n\t\tid: "31",\n\t\ttitle: "A Tale of Two Cities",\n\t\tauthor: "Charles Dickens",\n\t\tpublishedYear: 1859,\n\t},\n\t{\n\t\tid: "32",\n\t\ttitle: "Oliver Twist",\n\t\tauthor: "Charles Dickens",\n\t\tpublishedYear: 1838,\n\t},\n\t{\n\t\tid: "33",\n\t\ttitle: "David Copperfield",\n\t\tauthor: "Charles Dickens",\n\t\tpublishedYear: 1850,\n\t},\n\t{\n\t\tid: "34",\n\t\ttitle: "Little Women",\n\t\tauthor: "Louisa May Alcott",\n\t\tpublishedYear: 1868,\n\t},\n\t{\n\t\tid: "35",\n\t\ttitle: "The Count of Monte Cristo",\n\t\tauthor: "Alexandre Dumas",\n\t\tpublishedYear: 1844,\n\t},\n\t{\n\t\tid: "36",\n\t\ttitle: "Les Misérables",\n\t\tauthor: "Victor Hugo",\n\t\tpublishedYear: 1862,\n\t},\n\t{\n\t\tid: "37",\n\t\ttitle: "The Hunchback of Notre-Dame",\n\t\tauthor: "Victor Hugo",\n\t\tpublishedYear: 1831,\n\t},\n\t{\n\t\tid: "38",\n\t\ttitle: "Madame Bovary",\n\t\tauthor: "Gustave Flaubert",\n\t\tpublishedYear: 1857,\n\t},\n\t{\n\t\tid: "39",\n\t\ttitle: "The Stranger",\n\t\tauthor: "Albert Camus",\n\t\tpublishedYear: 1942,\n\t},\n\t{\n\t\tid: "40",\n\t\ttitle: "The Metamorphosis",\n\t\tauthor: "Franz Kafka",\n\t\tpublishedYear: 1915,\n\t},\n]\n\nasync function searchBooks(\n\tquery: string,\n\tfilter: (item: string, query: string) => boolean\n): Promise<Book[]> {\n\t// Simulate network delay\n\tawait new Promise((resolve) => {\n\t\tsetTimeout(resolve, Math.random() * 400 + 200)\n\t})\n\n\t// Simulate occasional network errors (1% chance)\n\tif (Math.random() < 0.01 || query === "will_error") {\n\t\tthrow new Error("Network error")\n\t}\n\n\treturn books.filter(\n\t\t(book) =>\n\t\t\tfilter(book.title, query) ||\n\t\t\tfilter(book.author, query) ||\n\t\t\tfilter(book.publishedYear.toString(), query)\n\t)\n}\n',
 		component: React.lazy(
-			() => import("@/components/demos/autocomplete/autocomplete-async")
+			() => import("@/components/demos/autocomplete/autocomplete-async-demo")
 		),
-		title: "autocomplete-async",
+		title: "autocomplete-async-demo",
 		category: "autocomplete",
-		path: "src/components/demos/autocomplete/autocomplete-async.tsx",
+		path: "src/components/demos/autocomplete/autocomplete-async-demo.tsx",
 	},
-	"autocomplete-autohighlight": {
+	"autocomplete-autohighlight-demo": {
 		source:
-			'import * as React from "react"\n\nimport {\n\tAutocomplete,\n\tAutocompleteContent,\n\tAutocompleteEmpty,\n\tAutocompleteInput,\n\tAutocompleteItem,\n\tAutocompleteList,\n} from "@/components/ui/autocomplete"\nimport { Label } from "@/components/ui/label"\n\nexport default function AutocompleteAutoHighlight() {\n\treturn (\n\t\t<div className="w-80">\n\t\t\t<Autocomplete items={tags} autoHighlight>\n\t\t\t\t<div className="flex flex-col gap-2">\n\t\t\t\t\t<Label htmlFor="search-tags-autohighlight">Search tags</Label>\n\t\t\t\t\t<AutocompleteInput\n\t\t\t\t\t\tid="search-tags-autohighlight"\n\t\t\t\t\t\tplaceholder="e.g. feature, fix, bug"\n\t\t\t\t\t/>\n\t\t\t\t</div>\n\t\t\t\t<AutocompleteContent>\n\t\t\t\t\t<AutocompleteEmpty>No tags found.</AutocompleteEmpty>\n\t\t\t\t\t<AutocompleteList>\n\t\t\t\t\t\t{(tag: Tag) => (\n\t\t\t\t\t\t\t<AutocompleteItem key={tag.id} value={tag}>\n\t\t\t\t\t\t\t\t{tag.value}\n\t\t\t\t\t\t\t</AutocompleteItem>\n\t\t\t\t\t\t)}\n\t\t\t\t\t</AutocompleteList>\n\t\t\t\t</AutocompleteContent>\n\t\t\t</Autocomplete>\n\t\t</div>\n\t)\n}\n\ninterface Tag {\n\tid: string\n\tvalue: string\n}\n\nconst tags: Tag[] = [\n\t{ id: "t1", value: "feature" },\n\t{ id: "t2", value: "fix" },\n\t{ id: "t3", value: "bug" },\n\t{ id: "t4", value: "docs" },\n\t{ id: "t5", value: "internal" },\n\t{ id: "t6", value: "mobile" },\n\t{ id: "c-accordion", value: "component: accordion" },\n\t{ id: "c-alert-dialog", value: "component: alert dialog" },\n\t{ id: "c-autocomplete", value: "component: autocomplete" },\n\t{ id: "c-avatar", value: "component: avatar" },\n\t{ id: "c-checkbox", value: "component: checkbox" },\n\t{ id: "c-checkbox-group", value: "component: checkbox group" },\n\t{ id: "c-collapsible", value: "component: collapsible" },\n\t{ id: "c-combobox", value: "component: combobox" },\n\t{ id: "c-context-menu", value: "component: context menu" },\n\t{ id: "c-dialog", value: "component: dialog" },\n\t{ id: "c-field", value: "component: field" },\n\t{ id: "c-form", value: "component: form" },\n\t{ id: "c-input", value: "component: input" },\n\t{ id: "c-popover", value: "component: popover" },\n\t{ id: "c-select", value: "component: select" },\n\t{ id: "c-switch", value: "component: switch" },\n\t{ id: "c-tabs", value: "component: tabs" },\n\t{ id: "c-tooltip", value: "component: tooltip" },\n]\n',
+			'import * as React from "react"\n\nimport {\n\tAutocomplete,\n\tAutocompleteContent,\n\tAutocompleteEmpty,\n\tAutocompleteInput,\n\tAutocompleteItem,\n\tAutocompleteList,\n} from "@/components/ui/autocomplete"\nimport { Label } from "@/components/ui/label"\n\nexport default function AutocompleteAutoHighlightDemo() {\n\treturn (\n\t\t<div className="w-80">\n\t\t\t<Autocomplete items={tags} autoHighlight>\n\t\t\t\t<div className="flex flex-col gap-2">\n\t\t\t\t\t<Label htmlFor="search-tags-autohighlight">Search tags</Label>\n\t\t\t\t\t<AutocompleteInput\n\t\t\t\t\t\tid="search-tags-autohighlight"\n\t\t\t\t\t\tplaceholder="e.g. feature, fix, bug"\n\t\t\t\t\t/>\n\t\t\t\t</div>\n\t\t\t\t<AutocompleteContent>\n\t\t\t\t\t<AutocompleteEmpty>No tags found.</AutocompleteEmpty>\n\t\t\t\t\t<AutocompleteList>\n\t\t\t\t\t\t{(tag: Tag) => (\n\t\t\t\t\t\t\t<AutocompleteItem key={tag.id} value={tag}>\n\t\t\t\t\t\t\t\t{tag.value}\n\t\t\t\t\t\t\t</AutocompleteItem>\n\t\t\t\t\t\t)}\n\t\t\t\t\t</AutocompleteList>\n\t\t\t\t</AutocompleteContent>\n\t\t\t</Autocomplete>\n\t\t</div>\n\t)\n}\n\ninterface Tag {\n\tid: string\n\tvalue: string\n}\n\nconst tags: Tag[] = [\n\t{ id: "t1", value: "feature" },\n\t{ id: "t2", value: "fix" },\n\t{ id: "t3", value: "bug" },\n\t{ id: "t4", value: "docs" },\n\t{ id: "t5", value: "internal" },\n\t{ id: "t6", value: "mobile" },\n\t{ id: "c-accordion", value: "component: accordion" },\n\t{ id: "c-alert-dialog", value: "component: alert dialog" },\n\t{ id: "c-autocomplete", value: "component: autocomplete" },\n\t{ id: "c-avatar", value: "component: avatar" },\n\t{ id: "c-checkbox", value: "component: checkbox" },\n\t{ id: "c-checkbox-group", value: "component: checkbox group" },\n\t{ id: "c-collapsible", value: "component: collapsible" },\n\t{ id: "c-combobox", value: "component: combobox" },\n\t{ id: "c-context-menu", value: "component: context menu" },\n\t{ id: "c-dialog", value: "component: dialog" },\n\t{ id: "c-field", value: "component: field" },\n\t{ id: "c-form", value: "component: form" },\n\t{ id: "c-input", value: "component: input" },\n\t{ id: "c-popover", value: "component: popover" },\n\t{ id: "c-select", value: "component: select" },\n\t{ id: "c-switch", value: "component: switch" },\n\t{ id: "c-tabs", value: "component: tabs" },\n\t{ id: "c-tooltip", value: "component: tooltip" },\n]\n',
 		component: React.lazy(
-			() => import("@/components/demos/autocomplete/autocomplete-autohighlight")
+			() =>
+				import(
+					"@/components/demos/autocomplete/autocomplete-autohighlight-demo"
+				)
 		),
-		title: "autocomplete-autohighlight",
+		title: "autocomplete-autohighlight-demo",
 		category: "autocomplete",
-		path: "src/components/demos/autocomplete/autocomplete-autohighlight.tsx",
+		path: "src/components/demos/autocomplete/autocomplete-autohighlight-demo.tsx",
 	},
 	"autocomplete-demo": {
 		source:
@@ -119,65 +134,72 @@ export const demoRegistry: DemoRegistry = {
 		category: "autocomplete",
 		path: "src/components/demos/autocomplete/autocomplete-demo.tsx",
 	},
-	"autocomplete-fuzzy-matcher": {
+	"autocomplete-fuzzy-matcher-demo": {
 		source:
-			'"use client"\n\nimport * as React from "react"\nimport { matchSorter } from "match-sorter"\n\nimport {\n\tAutocomplete,\n\tAutocompleteContent,\n\tAutocompleteEmpty,\n\tAutocompleteInput,\n\tAutocompleteItem,\n\tAutocompleteList,\n\tAutocompleteValue,\n} from "@/components/ui/autocomplete"\nimport { Label } from "@/components/ui/label"\n\nexport default function AutocompleteFuzzyMatcher() {\n\tconst fuzzyFilter = React.useCallback(\n\t\t(item: unknown, query: string): boolean => {\n\t\t\tconst doc = item as DevDoc\n\t\t\tif (!query) {\n\t\t\t\treturn true\n\t\t\t}\n\n\t\t\tconst results = matchSorter([doc], query, {\n\t\t\t\tkeys: ["title", "description"],\n\t\t\t\tthreshold: matchSorter.rankings.MATCHES,\n\t\t\t})\n\n\t\t\treturn results.length > 0\n\t\t},\n\t\t[]\n\t)\n\n\treturn (\n\t\t<div className="w-80">\n\t\t\t<Autocomplete\n\t\t\t\titems={devDocs}\n\t\t\t\tfilter={fuzzyFilter}\n\t\t\t\titemToStringValue={(item: unknown) => (item as DevDoc).title}\n\t\t\t>\n\t\t\t\t<div className="flex flex-col gap-2">\n\t\t\t\t\t<Label htmlFor="search-docs">Search developer docs</Label>\n\t\t\t\t\t<AutocompleteInput\n\t\t\t\t\t\tid="search-docs"\n\t\t\t\t\t\tplaceholder="e.g. react hooks, api"\n\t\t\t\t\t/>\n\t\t\t\t</div>\n\t\t\t\t<AutocompleteContent className="w-80">\n\t\t\t\t\t<AutocompleteEmpty>\n\t\t\t\t\t\tNo docs found for &quot;\n\t\t\t\t\t\t<AutocompleteValue />\n\t\t\t\t\t\t&quot;\n\t\t\t\t\t</AutocompleteEmpty>\n\t\t\t\t\t<AutocompleteList>\n\t\t\t\t\t\t{(doc: DevDoc) => (\n\t\t\t\t\t\t\t<AutocompleteItem key={doc.id} value={doc}>\n\t\t\t\t\t\t\t\t<AutocompleteValue>\n\t\t\t\t\t\t\t\t\t{(value) => (\n\t\t\t\t\t\t\t\t\t\t<div className="flex w-full flex-col gap-1">\n\t\t\t\t\t\t\t\t\t\t\t<div className="text-sm font-medium">\n\t\t\t\t\t\t\t\t\t\t\t\t{highlightText(doc.title, value)}\n\t\t\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t\t\t<div className="text-muted-foreground text-xs leading-relaxed">\n\t\t\t\t\t\t\t\t\t\t\t\t{highlightText(doc.description, value)}\n\t\t\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t)}\n\t\t\t\t\t\t\t\t</AutocompleteValue>\n\t\t\t\t\t\t\t</AutocompleteItem>\n\t\t\t\t\t\t)}\n\t\t\t\t\t</AutocompleteList>\n\t\t\t\t</AutocompleteContent>\n\t\t\t</Autocomplete>\n\t\t</div>\n\t)\n}\n\nfunction highlightText(text: string, query: string): React.ReactNode {\n\tconst trimmed = query.trim()\n\tif (!trimmed) {\n\t\treturn text\n\t}\n\n\tconst limited = trimmed.slice(0, 100)\n\tconst escaped = limited.replace(/[.*+?^${}()|[\\]\\\\]/g, "\\\\$&")\n\tconst regex = new RegExp(`(${escaped})`, "gi")\n\n\treturn text.split(regex).map((part, idx) =>\n\t\tregex.test(part) ? (\n\t\t\t<mark key={idx} className="bg-transparent font-medium text-yellow-300">\n\t\t\t\t{part}\n\t\t\t</mark>\n\t\t) : (\n\t\t\tpart\n\t\t)\n\t)\n}\n\ninterface DevDoc {\n\tid: string\n\ttitle: string\n\tdescription: string\n}\n\nconst devDocs: DevDoc[] = [\n\t{\n\t\tid: "1",\n\t\ttitle: "React Hooks Guide",\n\t\tdescription:\n\t\t\t"Learn how to use React Hooks like useState, useEffect, and custom hooks to manage state and side effects in functional components.",\n\t},\n\t{\n\t\tid: "2",\n\t\ttitle: "JavaScript Array Methods",\n\t\tdescription:\n\t\t\t"Master array methods like map, filter, reduce, and forEach for functional programming in JavaScript.",\n\t},\n\t{\n\t\tid: "3",\n\t\ttitle: "CSS Flexbox Layout",\n\t\tdescription:\n\t\t\t"Complete guide to CSS Flexbox for creating responsive and flexible layouts with ease.",\n\t},\n\t{\n\t\tid: "4",\n\t\ttitle: "TypeScript Interfaces",\n\t\tdescription:\n\t\t\t"Understanding TypeScript interfaces and type definitions for better code safety and documentation.",\n\t},\n\t{\n\t\tid: "5",\n\t\ttitle: "API Design Best Practices",\n\t\tdescription:\n\t\t\t"Learn how to design RESTful APIs that are intuitive, scalable, and maintainable.",\n\t},\n\t{\n\t\tid: "6",\n\t\ttitle: "React Performance Optimization",\n\t\tdescription:\n\t\t\t"Tips and techniques for optimizing React application performance using memoization and lazy loading.",\n\t},\n\t{\n\t\tid: "7",\n\t\ttitle: "Git Workflow Strategies",\n\t\tdescription:\n\t\t\t"Understanding different Git workflows like GitFlow, GitHub Flow, and trunk-based development.",\n\t},\n\t{\n\t\tid: "8",\n\t\ttitle: "Node.js Express Server",\n\t\tdescription:\n\t\t\t"Building RESTful APIs with Node.js and Express framework for scalable backend applications.",\n\t},\n\t{\n\t\tid: "9",\n\t\ttitle: "Database Indexing",\n\t\tdescription:\n\t\t\t"How to use database indexes effectively to improve query performance and reduce response times.",\n\t},\n\t{\n\t\tid: "10",\n\t\ttitle: "Docker Containerization",\n\t\tdescription:\n\t\t\t"Learn how to containerize applications with Docker for consistent deployment across environments.",\n\t},\n\t{\n\t\tid: "11",\n\t\ttitle: "Authentication & Authorization",\n\t\tdescription:\n\t\t\t"Implementing secure authentication and authorization using JWT tokens and OAuth protocols.",\n\t},\n\t{\n\t\tid: "12",\n\t\ttitle: "Testing Strategies",\n\t\tdescription:\n\t\t\t"Comprehensive guide to unit testing, integration testing, and end-to-end testing practices.",\n\t},\n\t{\n\t\tid: "13",\n\t\ttitle: "Webpack Configuration",\n\t\tdescription:\n\t\t\t"Optimizing Webpack configuration for production builds and development workflows.",\n\t},\n\t{\n\t\tid: "14",\n\t\ttitle: "Microservices Architecture",\n\t\tdescription:\n\t\t\t"Designing and implementing microservices architecture for scalable distributed systems.",\n\t},\n\t{\n\t\tid: "15",\n\t\ttitle: "GraphQL API Development",\n\t\tdescription:\n\t\t\t"Building efficient GraphQL APIs with type safety and flexible data fetching capabilities.",\n\t},\n]\n',
+			'"use client"\n\nimport * as React from "react"\nimport { matchSorter } from "match-sorter"\n\nimport {\n\tAutocomplete,\n\tAutocompleteContent,\n\tAutocompleteEmpty,\n\tAutocompleteInput,\n\tAutocompleteItem,\n\tAutocompleteList,\n\tAutocompleteValue,\n} from "@/components/ui/autocomplete"\nimport { Label } from "@/components/ui/label"\n\nexport default function AutocompleteFuzzyMatcherDemo() {\n\tconst fuzzyFilter = React.useCallback(\n\t\t(item: unknown, query: string): boolean => {\n\t\t\tconst doc = item as DevDoc\n\t\t\tif (!query) {\n\t\t\t\treturn true\n\t\t\t}\n\n\t\t\tconst results = matchSorter([doc], query, {\n\t\t\t\tkeys: ["title", "description"],\n\t\t\t\tthreshold: matchSorter.rankings.MATCHES,\n\t\t\t})\n\n\t\t\treturn results.length > 0\n\t\t},\n\t\t[]\n\t)\n\n\treturn (\n\t\t<div className="w-80">\n\t\t\t<Autocomplete\n\t\t\t\titems={devDocs}\n\t\t\t\tfilter={fuzzyFilter}\n\t\t\t\titemToStringValue={(item: unknown) => (item as DevDoc).title}\n\t\t\t>\n\t\t\t\t<div className="flex flex-col gap-2">\n\t\t\t\t\t<Label htmlFor="search-docs">Search developer docs</Label>\n\t\t\t\t\t<AutocompleteInput\n\t\t\t\t\t\tid="search-docs"\n\t\t\t\t\t\tplaceholder="e.g. react hooks, api"\n\t\t\t\t\t/>\n\t\t\t\t</div>\n\t\t\t\t<AutocompleteContent className="w-80">\n\t\t\t\t\t<AutocompleteEmpty>\n\t\t\t\t\t\tNo docs found for &quot;\n\t\t\t\t\t\t<AutocompleteValue />\n\t\t\t\t\t\t&quot;\n\t\t\t\t\t</AutocompleteEmpty>\n\t\t\t\t\t<AutocompleteList>\n\t\t\t\t\t\t{(doc: DevDoc) => (\n\t\t\t\t\t\t\t<AutocompleteItem key={doc.id} value={doc}>\n\t\t\t\t\t\t\t\t<AutocompleteValue>\n\t\t\t\t\t\t\t\t\t{(value) => (\n\t\t\t\t\t\t\t\t\t\t<div className="flex w-full flex-col gap-1">\n\t\t\t\t\t\t\t\t\t\t\t<div className="text-sm font-medium">\n\t\t\t\t\t\t\t\t\t\t\t\t{highlightText(doc.title, value)}\n\t\t\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t\t\t<div className="text-muted-foreground text-xs leading-relaxed">\n\t\t\t\t\t\t\t\t\t\t\t\t{highlightText(doc.description, value)}\n\t\t\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t)}\n\t\t\t\t\t\t\t\t</AutocompleteValue>\n\t\t\t\t\t\t\t</AutocompleteItem>\n\t\t\t\t\t\t)}\n\t\t\t\t\t</AutocompleteList>\n\t\t\t\t</AutocompleteContent>\n\t\t\t</Autocomplete>\n\t\t</div>\n\t)\n}\n\nfunction highlightText(text: string, query: string): React.ReactNode {\n\tconst trimmed = query.trim()\n\tif (!trimmed) {\n\t\treturn text\n\t}\n\n\tconst limited = trimmed.slice(0, 100)\n\tconst escaped = limited.replace(/[.*+?^${}()|[\\]\\\\]/g, "\\\\$&")\n\tconst regex = new RegExp(`(${escaped})`, "gi")\n\n\treturn text.split(regex).map((part, idx) =>\n\t\tregex.test(part) ? (\n\t\t\t<mark key={idx} className="bg-transparent font-medium text-yellow-300">\n\t\t\t\t{part}\n\t\t\t</mark>\n\t\t) : (\n\t\t\tpart\n\t\t)\n\t)\n}\n\ninterface DevDoc {\n\tid: string\n\ttitle: string\n\tdescription: string\n}\n\nconst devDocs: DevDoc[] = [\n\t{\n\t\tid: "1",\n\t\ttitle: "React Hooks Guide",\n\t\tdescription:\n\t\t\t"Learn how to use React Hooks like useState, useEffect, and custom hooks to manage state and side effects in functional components.",\n\t},\n\t{\n\t\tid: "2",\n\t\ttitle: "JavaScript Array Methods",\n\t\tdescription:\n\t\t\t"Master array methods like map, filter, reduce, and forEach for functional programming in JavaScript.",\n\t},\n\t{\n\t\tid: "3",\n\t\ttitle: "CSS Flexbox Layout",\n\t\tdescription:\n\t\t\t"Complete guide to CSS Flexbox for creating responsive and flexible layouts with ease.",\n\t},\n\t{\n\t\tid: "4",\n\t\ttitle: "TypeScript Interfaces",\n\t\tdescription:\n\t\t\t"Understanding TypeScript interfaces and type definitions for better code safety and documentation.",\n\t},\n\t{\n\t\tid: "5",\n\t\ttitle: "API Design Best Practices",\n\t\tdescription:\n\t\t\t"Learn how to design RESTful APIs that are intuitive, scalable, and maintainable.",\n\t},\n\t{\n\t\tid: "6",\n\t\ttitle: "React Performance Optimization",\n\t\tdescription:\n\t\t\t"Tips and techniques for optimizing React application performance using memoization and lazy loading.",\n\t},\n\t{\n\t\tid: "7",\n\t\ttitle: "Git Workflow Strategies",\n\t\tdescription:\n\t\t\t"Understanding different Git workflows like GitFlow, GitHub Flow, and trunk-based development.",\n\t},\n\t{\n\t\tid: "8",\n\t\ttitle: "Node.js Express Server",\n\t\tdescription:\n\t\t\t"Building RESTful APIs with Node.js and Express framework for scalable backend applications.",\n\t},\n\t{\n\t\tid: "9",\n\t\ttitle: "Database Indexing",\n\t\tdescription:\n\t\t\t"How to use database indexes effectively to improve query performance and reduce response times.",\n\t},\n\t{\n\t\tid: "10",\n\t\ttitle: "Docker Containerization",\n\t\tdescription:\n\t\t\t"Learn how to containerize applications with Docker for consistent deployment across environments.",\n\t},\n\t{\n\t\tid: "11",\n\t\ttitle: "Authentication & Authorization",\n\t\tdescription:\n\t\t\t"Implementing secure authentication and authorization using JWT tokens and OAuth protocols.",\n\t},\n\t{\n\t\tid: "12",\n\t\ttitle: "Testing Strategies",\n\t\tdescription:\n\t\t\t"Comprehensive guide to unit testing, integration testing, and end-to-end testing practices.",\n\t},\n\t{\n\t\tid: "13",\n\t\ttitle: "Webpack Configuration",\n\t\tdescription:\n\t\t\t"Optimizing Webpack configuration for production builds and development workflows.",\n\t},\n\t{\n\t\tid: "14",\n\t\ttitle: "Microservices Architecture",\n\t\tdescription:\n\t\t\t"Designing and implementing microservices architecture for scalable distributed systems.",\n\t},\n\t{\n\t\tid: "15",\n\t\ttitle: "GraphQL API Development",\n\t\tdescription:\n\t\t\t"Building efficient GraphQL APIs with type safety and flexible data fetching capabilities.",\n\t},\n]\n',
 		component: React.lazy(
-			() => import("@/components/demos/autocomplete/autocomplete-fuzzy-matcher")
+			() =>
+				import(
+					"@/components/demos/autocomplete/autocomplete-fuzzy-matcher-demo"
+				)
 		),
-		title: "autocomplete-fuzzy-matcher",
+		title: "autocomplete-fuzzy-matcher-demo",
 		category: "autocomplete",
-		path: "src/components/demos/autocomplete/autocomplete-fuzzy-matcher.tsx",
+		path: "src/components/demos/autocomplete/autocomplete-fuzzy-matcher-demo.tsx",
 	},
-	"autocomplete-groupped": {
+	"autocomplete-groupped-demo": {
 		source:
-			'import * as React from "react"\n\nimport {\n\tAutocomplete,\n\tAutocompleteCollection,\n\tAutocompleteContent,\n\tAutocompleteEmpty,\n\tAutocompleteGroup,\n\tAutocompleteGroupLabel,\n\tAutocompleteInput,\n\tAutocompleteItem,\n\tAutocompleteList,\n\tAutocompleteSeparator,\n\tAutocompleteValue,\n} from "@/components/ui/autocomplete"\nimport { Label } from "@/components/ui/label"\n\nexport default function AutocompleteGroupped() {\n\t// Filter and group items by category\n\tconst groupedItems = React.useMemo(() => {\n\t\tconst groups: { [key: string]: Item[] } = items.reduce(\n\t\t\t(acc, item) => {\n\t\t\t\tacc[item.category] = acc[item.category] || []\n\t\t\t\tacc[item.category].push(item)\n\t\t\t\treturn acc\n\t\t\t},\n\t\t\t{} as { [key: string]: Item[] }\n\t\t)\n\n\t\tconst order = [\n\t\t\t"Frontend Frameworks",\n\t\t\t"Backend Runtime",\n\t\t\t"Backend Frameworks",\n\t\t\t"Meta Frameworks",\n\t\t]\n\n\t\treturn order.map((value) => ({ value, items: groups[value] ?? [] }))\n\t}, [])\n\n\treturn (\n\t\t<div className="w-80">\n\t\t\t<Autocomplete items={groupedItems}>\n\t\t\t\t<div className="flex flex-col gap-2">\n\t\t\t\t\t<Label htmlFor="search-technologies">Search technologies</Label>\n\t\t\t\t\t<AutocompleteInput\n\t\t\t\t\t\tid="search-technologies"\n\t\t\t\t\t\tplaceholder="e.g. React, Vue, Angular"\n\t\t\t\t\t/>\n\t\t\t\t</div>\n\t\t\t\t<AutocompleteContent>\n\t\t\t\t\t<AutocompleteEmpty>\n\t\t\t\t\t\tNo technologies found for &quot;\n\t\t\t\t\t\t<AutocompleteValue />\n\t\t\t\t\t\t&quot;\n\t\t\t\t\t</AutocompleteEmpty>\n\t\t\t\t\t<AutocompleteList>\n\t\t\t\t\t\t{(group: Group, index: number) => (\n\t\t\t\t\t\t\t<React.Fragment key={group.value}>\n\t\t\t\t\t\t\t\t{index > 0 && <AutocompleteSeparator />}\n\t\t\t\t\t\t\t\t<AutocompleteGroup items={group.items}>\n\t\t\t\t\t\t\t\t\t<AutocompleteGroupLabel>{group.value}</AutocompleteGroupLabel>\n\t\t\t\t\t\t\t\t\t<AutocompleteCollection>\n\t\t\t\t\t\t\t\t\t\t{(item: Item) => (\n\t\t\t\t\t\t\t\t\t\t\t<AutocompleteItem key={item.id} value={item.value}>\n\t\t\t\t\t\t\t\t\t\t\t\t{item.value}\n\t\t\t\t\t\t\t\t\t\t\t</AutocompleteItem>\n\t\t\t\t\t\t\t\t\t\t)}\n\t\t\t\t\t\t\t\t\t</AutocompleteCollection>\n\t\t\t\t\t\t\t\t</AutocompleteGroup>\n\t\t\t\t\t\t\t</React.Fragment>\n\t\t\t\t\t\t)}\n\t\t\t\t\t</AutocompleteList>\n\t\t\t\t</AutocompleteContent>\n\t\t\t</Autocomplete>\n\t\t</div>\n\t)\n}\n\ninterface Group {\n\tvalue: string\n\titems: Item[]\n}\n\ninterface Item {\n\tid: string\n\tvalue: string\n\tcategory: string\n}\n\nconst items: Item[] = [\n\t{ id: "react", value: "React", category: "Frontend Frameworks" },\n\t{ id: "vue", value: "Vue.js", category: "Frontend Frameworks" },\n\t{ id: "angular", value: "Angular", category: "Frontend Frameworks" },\n\t{ id: "svelte", value: "Svelte", category: "Frontend Frameworks" },\n\t{ id: "nodejs", value: "Node.js", category: "Backend Runtime" },\n\t{ id: "deno", value: "Deno", category: "Backend Runtime" },\n\t{ id: "bun", value: "Bun", category: "Backend Runtime" },\n\t{ id: "express", value: "Express.js", category: "Backend Frameworks" },\n\t{ id: "fastify", value: "Fastify", category: "Backend Frameworks" },\n\t{ id: "nestjs", value: "NestJS", category: "Backend Frameworks" },\n\t{ id: "nextjs", value: "Next.js", category: "Meta Frameworks" },\n\t{ id: "nuxt", value: "Nuxt.js", category: "Meta Frameworks" },\n\t{ id: "remix", value: "Remix", category: "Meta Frameworks" },\n]\n',
+			'import * as React from "react"\n\nimport {\n\tAutocomplete,\n\tAutocompleteCollection,\n\tAutocompleteContent,\n\tAutocompleteEmpty,\n\tAutocompleteGroup,\n\tAutocompleteGroupLabel,\n\tAutocompleteInput,\n\tAutocompleteItem,\n\tAutocompleteList,\n\tAutocompleteSeparator,\n\tAutocompleteValue,\n} from "@/components/ui/autocomplete"\nimport { Label } from "@/components/ui/label"\n\nexport default function AutocompleteGrouppedDemo() {\n\t// Filter and group items by category\n\tconst groupedItems = React.useMemo(() => {\n\t\tconst groups: { [key: string]: Item[] } = items.reduce(\n\t\t\t(acc, item) => {\n\t\t\t\tacc[item.category] = acc[item.category] || []\n\t\t\t\tacc[item.category].push(item)\n\t\t\t\treturn acc\n\t\t\t},\n\t\t\t{} as { [key: string]: Item[] }\n\t\t)\n\n\t\tconst order = [\n\t\t\t"Frontend Frameworks",\n\t\t\t"Backend Runtime",\n\t\t\t"Backend Frameworks",\n\t\t\t"Meta Frameworks",\n\t\t]\n\n\t\treturn order.map((value) => ({ value, items: groups[value] ?? [] }))\n\t}, [])\n\n\treturn (\n\t\t<div className="w-80">\n\t\t\t<Autocomplete items={groupedItems}>\n\t\t\t\t<div className="flex flex-col gap-2">\n\t\t\t\t\t<Label htmlFor="search-technologies">Search technologies</Label>\n\t\t\t\t\t<AutocompleteInput\n\t\t\t\t\t\tid="search-technologies"\n\t\t\t\t\t\tplaceholder="e.g. React, Vue, Angular"\n\t\t\t\t\t/>\n\t\t\t\t</div>\n\t\t\t\t<AutocompleteContent>\n\t\t\t\t\t<AutocompleteEmpty>\n\t\t\t\t\t\tNo technologies found for &quot;\n\t\t\t\t\t\t<AutocompleteValue />\n\t\t\t\t\t\t&quot;\n\t\t\t\t\t</AutocompleteEmpty>\n\t\t\t\t\t<AutocompleteList>\n\t\t\t\t\t\t{(group: Group, index: number) => (\n\t\t\t\t\t\t\t<React.Fragment key={group.value}>\n\t\t\t\t\t\t\t\t{index > 0 && <AutocompleteSeparator />}\n\t\t\t\t\t\t\t\t<AutocompleteGroup items={group.items}>\n\t\t\t\t\t\t\t\t\t<AutocompleteGroupLabel>{group.value}</AutocompleteGroupLabel>\n\t\t\t\t\t\t\t\t\t<AutocompleteCollection>\n\t\t\t\t\t\t\t\t\t\t{(item: Item) => (\n\t\t\t\t\t\t\t\t\t\t\t<AutocompleteItem key={item.id} value={item.value}>\n\t\t\t\t\t\t\t\t\t\t\t\t{item.value}\n\t\t\t\t\t\t\t\t\t\t\t</AutocompleteItem>\n\t\t\t\t\t\t\t\t\t\t)}\n\t\t\t\t\t\t\t\t\t</AutocompleteCollection>\n\t\t\t\t\t\t\t\t</AutocompleteGroup>\n\t\t\t\t\t\t\t</React.Fragment>\n\t\t\t\t\t\t)}\n\t\t\t\t\t</AutocompleteList>\n\t\t\t\t</AutocompleteContent>\n\t\t\t</Autocomplete>\n\t\t</div>\n\t)\n}\n\ninterface Group {\n\tvalue: string\n\titems: Item[]\n}\n\ninterface Item {\n\tid: string\n\tvalue: string\n\tcategory: string\n}\n\nconst items: Item[] = [\n\t{ id: "react", value: "React", category: "Frontend Frameworks" },\n\t{ id: "vue", value: "Vue.js", category: "Frontend Frameworks" },\n\t{ id: "angular", value: "Angular", category: "Frontend Frameworks" },\n\t{ id: "svelte", value: "Svelte", category: "Frontend Frameworks" },\n\t{ id: "nodejs", value: "Node.js", category: "Backend Runtime" },\n\t{ id: "deno", value: "Deno", category: "Backend Runtime" },\n\t{ id: "bun", value: "Bun", category: "Backend Runtime" },\n\t{ id: "express", value: "Express.js", category: "Backend Frameworks" },\n\t{ id: "fastify", value: "Fastify", category: "Backend Frameworks" },\n\t{ id: "nestjs", value: "NestJS", category: "Backend Frameworks" },\n\t{ id: "nextjs", value: "Next.js", category: "Meta Frameworks" },\n\t{ id: "nuxt", value: "Nuxt.js", category: "Meta Frameworks" },\n\t{ id: "remix", value: "Remix", category: "Meta Frameworks" },\n]\n',
 		component: React.lazy(
-			() => import("@/components/demos/autocomplete/autocomplete-groupped")
+			() => import("@/components/demos/autocomplete/autocomplete-groupped-demo")
 		),
-		title: "autocomplete-groupped",
+		title: "autocomplete-groupped-demo",
 		category: "autocomplete",
-		path: "src/components/demos/autocomplete/autocomplete-groupped.tsx",
+		path: "src/components/demos/autocomplete/autocomplete-groupped-demo.tsx",
 	},
-	"autocomplete-inline": {
+	"autocomplete-inline-demo": {
 		source:
-			'import * as React from "react"\n\nimport {\n\tAutocomplete,\n\tAutocompleteContent,\n\tAutocompleteEmpty,\n\tAutocompleteInput,\n\tAutocompleteItem,\n\tAutocompleteList,\n} from "@/components/ui/autocomplete"\nimport { Label } from "@/components/ui/label"\n\nexport default function AutocompleteInline() {\n\treturn (\n\t\t<div className="w-80">\n\t\t\t<Autocomplete items={tags} mode="both">\n\t\t\t\t<div className="flex flex-col gap-2">\n\t\t\t\t\t<Label htmlFor="search-tags-inline">Search tags</Label>\n\t\t\t\t\t<AutocompleteInput\n\t\t\t\t\t\tid="search-tags-inline"\n\t\t\t\t\t\tplaceholder="e.g. feature, fix, bug"\n\t\t\t\t\t/>\n\t\t\t\t</div>\n\t\t\t\t<AutocompleteContent>\n\t\t\t\t\t<AutocompleteEmpty>No tags found.</AutocompleteEmpty>\n\t\t\t\t\t<AutocompleteList>\n\t\t\t\t\t\t{(tag: Tag) => (\n\t\t\t\t\t\t\t<AutocompleteItem key={tag.id} value={tag}>\n\t\t\t\t\t\t\t\t{tag.value}\n\t\t\t\t\t\t\t</AutocompleteItem>\n\t\t\t\t\t\t)}\n\t\t\t\t\t</AutocompleteList>\n\t\t\t\t</AutocompleteContent>\n\t\t\t</Autocomplete>\n\t\t</div>\n\t)\n}\n\ninterface Tag {\n\tid: string\n\tvalue: string\n}\n\nconst tags: Tag[] = [\n\t{ id: "t1", value: "feature" },\n\t{ id: "t2", value: "fix" },\n\t{ id: "t3", value: "bug" },\n\t{ id: "t4", value: "docs" },\n\t{ id: "t5", value: "internal" },\n\t{ id: "t6", value: "mobile" },\n\t{ id: "c-accordion", value: "component: accordion" },\n\t{ id: "c-alert-dialog", value: "component: alert dialog" },\n\t{ id: "c-autocomplete", value: "component: autocomplete" },\n\t{ id: "c-avatar", value: "component: avatar" },\n\t{ id: "c-checkbox", value: "component: checkbox" },\n\t{ id: "c-checkbox-group", value: "component: checkbox group" },\n\t{ id: "c-collapsible", value: "component: collapsible" },\n\t{ id: "c-combobox", value: "component: combobox" },\n\t{ id: "c-context-menu", value: "component: context menu" },\n\t{ id: "c-dialog", value: "component: dialog" },\n\t{ id: "c-field", value: "component: field" },\n\t{ id: "c-form", value: "component: form" },\n\t{ id: "c-input", value: "component: input" },\n\t{ id: "c-popover", value: "component: popover" },\n\t{ id: "c-select", value: "component: select" },\n\t{ id: "c-switch", value: "component: switch" },\n\t{ id: "c-tabs", value: "component: tabs" },\n\t{ id: "c-tooltip", value: "component: tooltip" },\n]\n',
+			'import * as React from "react"\n\nimport {\n\tAutocomplete,\n\tAutocompleteContent,\n\tAutocompleteEmpty,\n\tAutocompleteInput,\n\tAutocompleteItem,\n\tAutocompleteList,\n} from "@/components/ui/autocomplete"\nimport { Label } from "@/components/ui/label"\n\nexport default function AutocompleteInlineDemo() {\n\treturn (\n\t\t<div className="w-80">\n\t\t\t<Autocomplete items={tags} mode="both">\n\t\t\t\t<div className="flex flex-col gap-2">\n\t\t\t\t\t<Label htmlFor="search-tags-inline">Search tags</Label>\n\t\t\t\t\t<AutocompleteInput\n\t\t\t\t\t\tid="search-tags-inline"\n\t\t\t\t\t\tplaceholder="e.g. feature, fix, bug"\n\t\t\t\t\t/>\n\t\t\t\t</div>\n\t\t\t\t<AutocompleteContent>\n\t\t\t\t\t<AutocompleteEmpty>No tags found.</AutocompleteEmpty>\n\t\t\t\t\t<AutocompleteList>\n\t\t\t\t\t\t{(tag: Tag) => (\n\t\t\t\t\t\t\t<AutocompleteItem key={tag.id} value={tag}>\n\t\t\t\t\t\t\t\t{tag.value}\n\t\t\t\t\t\t\t</AutocompleteItem>\n\t\t\t\t\t\t)}\n\t\t\t\t\t</AutocompleteList>\n\t\t\t\t</AutocompleteContent>\n\t\t\t</Autocomplete>\n\t\t</div>\n\t)\n}\n\ninterface Tag {\n\tid: string\n\tvalue: string\n}\n\nconst tags: Tag[] = [\n\t{ id: "t1", value: "feature" },\n\t{ id: "t2", value: "fix" },\n\t{ id: "t3", value: "bug" },\n\t{ id: "t4", value: "docs" },\n\t{ id: "t5", value: "internal" },\n\t{ id: "t6", value: "mobile" },\n\t{ id: "c-accordion", value: "component: accordion" },\n\t{ id: "c-alert-dialog", value: "component: alert dialog" },\n\t{ id: "c-autocomplete", value: "component: autocomplete" },\n\t{ id: "c-avatar", value: "component: avatar" },\n\t{ id: "c-checkbox", value: "component: checkbox" },\n\t{ id: "c-checkbox-group", value: "component: checkbox group" },\n\t{ id: "c-collapsible", value: "component: collapsible" },\n\t{ id: "c-combobox", value: "component: combobox" },\n\t{ id: "c-context-menu", value: "component: context menu" },\n\t{ id: "c-dialog", value: "component: dialog" },\n\t{ id: "c-field", value: "component: field" },\n\t{ id: "c-form", value: "component: form" },\n\t{ id: "c-input", value: "component: input" },\n\t{ id: "c-popover", value: "component: popover" },\n\t{ id: "c-select", value: "component: select" },\n\t{ id: "c-switch", value: "component: switch" },\n\t{ id: "c-tabs", value: "component: tabs" },\n\t{ id: "c-tooltip", value: "component: tooltip" },\n]\n',
 		component: React.lazy(
-			() => import("@/components/demos/autocomplete/autocomplete-inline")
+			() => import("@/components/demos/autocomplete/autocomplete-inline-demo")
 		),
-		title: "autocomplete-inline",
+		title: "autocomplete-inline-demo",
 		category: "autocomplete",
-		path: "src/components/demos/autocomplete/autocomplete-inline.tsx",
+		path: "src/components/demos/autocomplete/autocomplete-inline-demo.tsx",
 	},
-	"autocomplete-limit-results": {
+	"autocomplete-limit-results-demo": {
 		source:
-			'import * as React from "react"\n\nimport {\n\tAutocomplete,\n\tAutocompleteContent,\n\tAutocompleteEmpty,\n\tAutocompleteInput,\n\tAutocompleteItem,\n\tAutocompleteList,\n\tAutocompleteStatus,\n\tuseFilter,\n} from "@/components/ui/autocomplete"\nimport { Label } from "@/components/ui/label"\n\nconst limit = 8\n\nexport default function AutocompleteLimitResults() {\n\tconst [value, setValue] = React.useState("")\n\n\tconst { contains } = useFilter({ sensitivity: "base" })\n\n\tconst totalMatches = React.useMemo(() => {\n\t\tconst trimmed = value.trim()\n\t\tif (!trimmed) {\n\t\t\treturn tags.length\n\t\t}\n\t\treturn tags.filter((t) => contains(t.value, trimmed)).length\n\t}, [value, contains])\n\n\tconst moreCount = Math.max(0, totalMatches - limit)\n\n\treturn (\n\t\t<div className="w-80">\n\t\t\t<Autocomplete\n\t\t\t\titems={tags}\n\t\t\t\tvalue={value}\n\t\t\t\tonValueChange={setValue}\n\t\t\t\tlimit={limit}\n\t\t\t>\n\t\t\t\t<div className="flex flex-col gap-2">\n\t\t\t\t\t<Label htmlFor="search-tags-limit">\n\t\t\t\t\t\tSearch tags (limited to {limit})\n\t\t\t\t\t</Label>\n\t\t\t\t\t<AutocompleteInput\n\t\t\t\t\t\tid="search-tags-limit"\n\t\t\t\t\t\tplaceholder="e.g. component"\n\t\t\t\t\t/>\n\t\t\t\t</div>\n\t\t\t\t<AutocompleteContent className="w-80">\n\t\t\t\t\t<AutocompleteEmpty>No tags found.</AutocompleteEmpty>\n\t\t\t\t\t<AutocompleteList>\n\t\t\t\t\t\t{(tag: Tag) => (\n\t\t\t\t\t\t\t<AutocompleteItem key={tag.id} value={tag}>\n\t\t\t\t\t\t\t\t{tag.value}\n\t\t\t\t\t\t\t</AutocompleteItem>\n\t\t\t\t\t\t)}\n\t\t\t\t\t</AutocompleteList>\n\t\t\t\t\t{moreCount > 0 && (\n\t\t\t\t\t\t<AutocompleteStatus>\n\t\t\t\t\t\t\t{moreCount} results hidden (type a more specific query to narrow\n\t\t\t\t\t\t\tresults)\n\t\t\t\t\t\t</AutocompleteStatus>\n\t\t\t\t\t)}\n\t\t\t\t</AutocompleteContent>\n\t\t\t</Autocomplete>\n\t\t</div>\n\t)\n}\n\ninterface Tag {\n\tid: string\n\tvalue: string\n}\n\nconst tags: Tag[] = [\n\t{ id: "t1", value: "feature" },\n\t{ id: "t2", value: "fix" },\n\t{ id: "t3", value: "bug" },\n\t{ id: "t4", value: "docs" },\n\t{ id: "t5", value: "internal" },\n\t{ id: "t6", value: "mobile" },\n\t{ id: "c-accordion", value: "component: accordion" },\n\t{ id: "c-alert-dialog", value: "component: alert dialog" },\n\t{ id: "c-autocomplete", value: "component: autocomplete" },\n\t{ id: "c-avatar", value: "component: avatar" },\n\t{ id: "c-checkbox", value: "component: checkbox" },\n\t{ id: "c-checkbox-group", value: "component: checkbox group" },\n\t{ id: "c-collapsible", value: "component: collapsible" },\n\t{ id: "c-combobox", value: "component: combobox" },\n\t{ id: "c-context-menu", value: "component: context menu" },\n\t{ id: "c-dialog", value: "component: dialog" },\n\t{ id: "c-field", value: "component: field" },\n\t{ id: "c-form", value: "component: form" },\n\t{ id: "c-input", value: "component: input" },\n\t{ id: "c-popover", value: "component: popover" },\n\t{ id: "c-select", value: "component: select" },\n\t{ id: "c-switch", value: "component: switch" },\n\t{ id: "c-tabs", value: "component: tabs" },\n\t{ id: "c-tooltip", value: "component: tooltip" },\n]\n',
+			'import * as React from "react"\n\nimport {\n\tAutocomplete,\n\tAutocompleteContent,\n\tAutocompleteEmpty,\n\tAutocompleteInput,\n\tAutocompleteItem,\n\tAutocompleteList,\n\tAutocompleteStatus,\n\tuseFilter,\n} from "@/components/ui/autocomplete"\nimport { Label } from "@/components/ui/label"\n\nconst limit = 8\n\nexport default function AutocompleteLimitResultsDemo() {\n\tconst [value, setValue] = React.useState("")\n\n\tconst { contains } = useFilter({ sensitivity: "base" })\n\n\tconst totalMatches = React.useMemo(() => {\n\t\tconst trimmed = value.trim()\n\t\tif (!trimmed) {\n\t\t\treturn tags.length\n\t\t}\n\t\treturn tags.filter((t) => contains(t.value, trimmed)).length\n\t}, [value, contains])\n\n\tconst moreCount = Math.max(0, totalMatches - limit)\n\n\treturn (\n\t\t<div className="w-80">\n\t\t\t<Autocomplete\n\t\t\t\titems={tags}\n\t\t\t\tvalue={value}\n\t\t\t\tonValueChange={setValue}\n\t\t\t\tlimit={limit}\n\t\t\t>\n\t\t\t\t<div className="flex flex-col gap-2">\n\t\t\t\t\t<Label htmlFor="search-tags-limit">\n\t\t\t\t\t\tSearch tags (limited to {limit})\n\t\t\t\t\t</Label>\n\t\t\t\t\t<AutocompleteInput\n\t\t\t\t\t\tid="search-tags-limit"\n\t\t\t\t\t\tplaceholder="e.g. component"\n\t\t\t\t\t/>\n\t\t\t\t</div>\n\t\t\t\t<AutocompleteContent className="w-80">\n\t\t\t\t\t<AutocompleteEmpty>No tags found.</AutocompleteEmpty>\n\t\t\t\t\t<AutocompleteList>\n\t\t\t\t\t\t{(tag: Tag) => (\n\t\t\t\t\t\t\t<AutocompleteItem key={tag.id} value={tag}>\n\t\t\t\t\t\t\t\t{tag.value}\n\t\t\t\t\t\t\t</AutocompleteItem>\n\t\t\t\t\t\t)}\n\t\t\t\t\t</AutocompleteList>\n\t\t\t\t\t{moreCount > 0 && (\n\t\t\t\t\t\t<AutocompleteStatus>\n\t\t\t\t\t\t\t{moreCount} results hidden (type a more specific query to narrow\n\t\t\t\t\t\t\tresults)\n\t\t\t\t\t\t</AutocompleteStatus>\n\t\t\t\t\t)}\n\t\t\t\t</AutocompleteContent>\n\t\t\t</Autocomplete>\n\t\t</div>\n\t)\n}\n\ninterface Tag {\n\tid: string\n\tvalue: string\n}\n\nconst tags: Tag[] = [\n\t{ id: "t1", value: "feature" },\n\t{ id: "t2", value: "fix" },\n\t{ id: "t3", value: "bug" },\n\t{ id: "t4", value: "docs" },\n\t{ id: "t5", value: "internal" },\n\t{ id: "t6", value: "mobile" },\n\t{ id: "c-accordion", value: "component: accordion" },\n\t{ id: "c-alert-dialog", value: "component: alert dialog" },\n\t{ id: "c-autocomplete", value: "component: autocomplete" },\n\t{ id: "c-avatar", value: "component: avatar" },\n\t{ id: "c-checkbox", value: "component: checkbox" },\n\t{ id: "c-checkbox-group", value: "component: checkbox group" },\n\t{ id: "c-collapsible", value: "component: collapsible" },\n\t{ id: "c-combobox", value: "component: combobox" },\n\t{ id: "c-context-menu", value: "component: context menu" },\n\t{ id: "c-dialog", value: "component: dialog" },\n\t{ id: "c-field", value: "component: field" },\n\t{ id: "c-form", value: "component: form" },\n\t{ id: "c-input", value: "component: input" },\n\t{ id: "c-popover", value: "component: popover" },\n\t{ id: "c-select", value: "component: select" },\n\t{ id: "c-switch", value: "component: switch" },\n\t{ id: "c-tabs", value: "component: tabs" },\n\t{ id: "c-tooltip", value: "component: tooltip" },\n]\n',
 		component: React.lazy(
-			() => import("@/components/demos/autocomplete/autocomplete-limit-results")
+			() =>
+				import(
+					"@/components/demos/autocomplete/autocomplete-limit-results-demo"
+				)
 		),
-		title: "autocomplete-limit-results",
+		title: "autocomplete-limit-results-demo",
 		category: "autocomplete",
-		path: "src/components/demos/autocomplete/autocomplete-limit-results.tsx",
+		path: "src/components/demos/autocomplete/autocomplete-limit-results-demo.tsx",
 	},
-	"autocomplete-row": {
+	"autocomplete-row-demo": {
 		source:
 			'"use client"\n\nimport * as React from "react"\n\nimport {\n\tAutocomplete,\n\tAutocompleteContent,\n\tAutocompleteEmpty,\n\tAutocompleteGroup,\n\tAutocompleteGroupLabel,\n\tAutocompleteInput,\n\tAutocompleteItem,\n\tAutocompleteList,\n\tAutocompleteRow,\n\tAutocompleteTrigger,\n} from "@/components/ui/autocomplete"\nimport { Avatar, AvatarFallback } from "@/components/ui/avatar"\nimport { Label } from "@/components/ui/label"\n\nexport default function AutocompleteRowDemo() {\n\tconst [pickerOpen, setPickerOpen] = React.useState(false)\n\tconst [avatar, setAvatar] = React.useState<string | null>(null)\n\tconst [searchValue, setSearchValue] = React.useState("")\n\n\tfunction handleSelectAvatar(value: string | null) {\n\t\tif (!value) {\n\t\t\treturn\n\t\t}\n\n\t\tsetPickerOpen(false)\n\t\tsetAvatar(value)\n\t\tsetSearchValue("")\n\t}\n\n\treturn (\n\t\t<Autocomplete\n\t\t\titems={avatarGroups}\n\t\t\tgrid={true}\n\t\t\topen={pickerOpen}\n\t\t\tonOpenChange={setPickerOpen}\n\t\t\tonOpenChangeComplete={() => setSearchValue("")}\n\t\t\tvalue={searchValue}\n\t\t\tonValueChange={(value, details) => {\n\t\t\t\tif (details.reason !== "item-press") {\n\t\t\t\t\tsetSearchValue(value)\n\t\t\t\t}\n\t\t\t}}\n\t\t>\n\t\t\t<AutocompleteTrigger\n\t\t\t\tclassName="flex flex-col items-center gap-2 outline-none"\n\t\t\t\taria-label="Choose avatar"\n\t\t\t>\n\t\t\t\t<Avatar id="avatar-selector">\n\t\t\t\t\t<AvatarFallback>{avatar || "+"}</AvatarFallback>\n\t\t\t\t</Avatar>\n\t\t\t\t<Label\n\t\t\t\t\tclassName="text-muted-foreground text-xs"\n\t\t\t\t\thtmlFor="avatar-selector"\n\t\t\t\t>\n\t\t\t\t\tChoose an avatar\n\t\t\t\t</Label>\n\t\t\t</AutocompleteTrigger>\n\t\t\t<AutocompleteContent className="w-80">\n\t\t\t\t<AutocompleteInput placeholder="e.g. cat, doctor, star" />\n\t\t\t\t<AutocompleteEmpty>No avatars found</AutocompleteEmpty>\n\t\t\t\t<AutocompleteList>\n\t\t\t\t\t{(group: AvatarGroup) => (\n\t\t\t\t\t\t<AutocompleteGroup\n\t\t\t\t\t\t\tclassName="mt-2"\n\t\t\t\t\t\t\tkey={group.value}\n\t\t\t\t\t\t\titems={group.items}\n\t\t\t\t\t\t>\n\t\t\t\t\t\t\t<AutocompleteGroupLabel>{group.label}</AutocompleteGroupLabel>\n\t\t\t\t\t\t\t<div role="presentation">\n\t\t\t\t\t\t\t\t{chunkArray(group.items, COLUMNS).map((row, rowIdx) => (\n\t\t\t\t\t\t\t\t\t<AutocompleteRow key={rowIdx} className="grid-cols-6">\n\t\t\t\t\t\t\t\t\t\t{row.map((avatar) => (\n\t\t\t\t\t\t\t\t\t\t\t<AutocompleteItem\n\t\t\t\t\t\t\t\t\t\t\t\tkey={avatar.id}\n\t\t\t\t\t\t\t\t\t\t\t\tvalue={avatar}\n\t\t\t\t\t\t\t\t\t\t\t\tclassName="flex aspect-square size-full items-center justify-center rounded-md"\n\t\t\t\t\t\t\t\t\t\t\t\tonClick={() => handleSelectAvatar(avatar.emoji)}\n\t\t\t\t\t\t\t\t\t\t\t>\n\t\t\t\t\t\t\t\t\t\t\t\t<span className="text-xl">{avatar.emoji}</span>\n\t\t\t\t\t\t\t\t\t\t\t</AutocompleteItem>\n\t\t\t\t\t\t\t\t\t\t))}\n\t\t\t\t\t\t\t\t\t</AutocompleteRow>\n\t\t\t\t\t\t\t\t))}\n\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t</AutocompleteGroup>\n\t\t\t\t\t)}\n\t\t\t\t</AutocompleteList>\n\t\t\t</AutocompleteContent>\n\t\t</Autocomplete>\n\t)\n}\n\ninterface Avatar {\n\tid: string\n\temoji: string\n\tname: string\n\tcategory: string\n}\n\ninterface AvatarGroup {\n\tvalue: string\n\tlabel: string\n\titems: Avatar[]\n}\n\nconst avatarCategories = [\n\t{\n\t\tlabel: "People",\n\t\tavatars: [\n\t\t\t{ id: "1", emoji: "👤", name: "default user" },\n\t\t\t{ id: "2", emoji: "👨", name: "man" },\n\t\t\t{ id: "3", emoji: "👩", name: "woman" },\n\t\t\t{ id: "4", emoji: "🧑", name: "person" },\n\t\t\t{ id: "5", emoji: "👦", name: "boy" },\n\t\t\t{ id: "6", emoji: "👧", name: "girl" },\n\t\t\t{ id: "7", emoji: "👴", name: "old man" },\n\t\t\t{ id: "8", emoji: "👵", name: "old woman" },\n\t\t\t{ id: "9", emoji: "👶", name: "baby" },\n\t\t\t{ id: "10", emoji: "🧒", name: "child" },\n\t\t\t{ id: "11", emoji: "🧓", name: "older person" },\n\t\t\t{ id: "12", emoji: "👨‍💼", name: "businessman" },\n\t\t\t{ id: "13", emoji: "👩‍💼", name: "businesswoman" },\n\t\t\t{ id: "14", emoji: "👨‍💻", name: "developer" },\n\t\t\t{ id: "15", emoji: "👩‍💻", name: "developer woman" },\n\t\t\t{ id: "16", emoji: "👨‍🎨", name: "artist" },\n\t\t],\n\t},\n\t{\n\t\tlabel: "Professions",\n\t\tavatars: [\n\t\t\t{ id: "17", emoji: "👩‍🎨", name: "artist woman" },\n\t\t\t{ id: "18", emoji: "👨‍⚕️", name: "doctor" },\n\t\t\t{ id: "19", emoji: "👩‍⚕️", name: "doctor woman" },\n\t\t\t{ id: "20", emoji: "👨‍🏫", name: "teacher" },\n\t\t\t{ id: "21", emoji: "👩‍🏫", name: "teacher woman" },\n\t\t\t{ id: "22", emoji: "👨‍🚀", name: "astronaut" },\n\t\t\t{ id: "23", emoji: "👩‍🚀", name: "astronaut woman" },\n\t\t\t{ id: "24", emoji: "👨‍🔬", name: "scientist" },\n\t\t\t{ id: "25", emoji: "👩‍🔬", name: "scientist woman" },\n\t\t\t{ id: "26", emoji: "👨‍🍳", name: "chef" },\n\t\t\t{ id: "27", emoji: "👩‍🍳", name: "chef woman" },\n\t\t\t{ id: "28", emoji: "👨‍🎤", name: "singer" },\n\t\t\t{ id: "29", emoji: "👩‍🎤", name: "singer woman" },\n\t\t\t{ id: "30", emoji: "👨‍✈️", name: "pilot" },\n\t\t\t{ id: "31", emoji: "👩‍✈️", name: "pilot woman" },\n\t\t\t{ id: "32", emoji: "👮", name: "police officer" },\n\t\t],\n\t},\n\t{\n\t\tlabel: "Animals",\n\t\tavatars: [\n\t\t\t{ id: "33", emoji: "🐶", name: "dog" },\n\t\t\t{ id: "34", emoji: "🐱", name: "cat" },\n\t\t\t{ id: "35", emoji: "🐭", name: "mouse" },\n\t\t\t{ id: "36", emoji: "🐹", name: "hamster" },\n\t\t\t{ id: "37", emoji: "🐰", name: "rabbit" },\n\t\t\t{ id: "38", emoji: "🦊", name: "fox" },\n\t\t\t{ id: "39", emoji: "🐻", name: "bear" },\n\t\t\t{ id: "40", emoji: "🐼", name: "panda" },\n\t\t\t{ id: "41", emoji: "🐨", name: "koala" },\n\t\t\t{ id: "42", emoji: "🐯", name: "tiger" },\n\t\t\t{ id: "43", emoji: "🦁", name: "lion" },\n\t\t\t{ id: "44", emoji: "🐮", name: "cow" },\n\t\t\t{ id: "45", emoji: "🐷", name: "pig" },\n\t\t\t{ id: "46", emoji: "🐸", name: "frog" },\n\t\t\t{ id: "47", emoji: "🐵", name: "monkey" },\n\t\t\t{ id: "48", emoji: "🐧", name: "penguin" },\n\t\t],\n\t},\n\t{\n\t\tlabel: "Objects & Symbols",\n\t\tavatars: [\n\t\t\t{ id: "49", emoji: "⭐", name: "star" },\n\t\t\t{ id: "50", emoji: "🌟", name: "glowing star" },\n\t\t\t{ id: "51", emoji: "💎", name: "diamond" },\n\t\t\t{ id: "52", emoji: "🔥", name: "fire" },\n\t\t\t{ id: "53", emoji: "⚡", name: "lightning" },\n\t\t\t{ id: "54", emoji: "🌙", name: "moon" },\n\t\t\t{ id: "55", emoji: "☀️", name: "sun" },\n\t\t\t{ id: "56", emoji: "🌈", name: "rainbow" },\n\t\t\t{ id: "57", emoji: "🎯", name: "target" },\n\t\t\t{ id: "58", emoji: "🚀", name: "rocket" },\n\t\t\t{ id: "59", emoji: "🎮", name: "gaming" },\n\t\t\t{ id: "60", emoji: "💻", name: "laptop" },\n\t\t\t{ id: "61", emoji: "📱", name: "phone" },\n\t\t\t{ id: "62", emoji: "🎨", name: "art" },\n\t\t\t{ id: "63", emoji: "🏆", name: "trophy" },\n\t\t\t{ id: "64", emoji: "🎪", name: "circus" },\n\t\t],\n\t},\n]\n\nconst avatarGroups: AvatarGroup[] = avatarCategories.map((category) => ({\n\tvalue: category.label,\n\tlabel: category.label,\n\titems: category.avatars.map((avatar) => ({\n\t\t...avatar,\n\t\tvalue: avatar.name.toLowerCase(),\n\t\tcategory: category.label,\n\t})),\n}))\n\nconst COLUMNS = 6\n\nfunction chunkArray<T>(array: T[], size: number): T[][] {\n\tconst result: T[][] = []\n\tfor (let i = 0; i < array.length; i += size) {\n\t\tresult.push(array.slice(i, i + size))\n\t}\n\treturn result\n}\n',
 		component: React.lazy(
-			() => import("@/components/demos/autocomplete/autocomplete-row")
+			() => import("@/components/demos/autocomplete/autocomplete-row-demo")
 		),
-		title: "autocomplete-row",
+		title: "autocomplete-row-demo",
 		category: "autocomplete",
-		path: "src/components/demos/autocomplete/autocomplete-row.tsx",
+		path: "src/components/demos/autocomplete/autocomplete-row-demo.tsx",
 	},
-	"autocomplete-virtualized": {
+	"autocomplete-virtualized-demo": {
 		source:
-			'import * as React from "react"\nimport { useVirtualizer } from "@tanstack/react-virtual"\n\nimport {\n\tAutocomplete,\n\tAutocompleteContent,\n\tAutocompleteEmpty,\n\tAutocompleteInput,\n\tAutocompleteItem,\n\tAutocompleteList,\n\tuseFilter,\n} from "@/components/ui/autocomplete"\nimport { Label } from "@/components/ui/label"\n\nexport default function AutocompleteVirtualized() {\n\tconst [open, setOpen] = React.useState(false)\n\tconst [searchValue, setSearchValue] = React.useState("")\n\n\tconst scrollElementRef = React.useRef<HTMLDivElement>(null)\n\n\tconst { contains } = useFilter({ sensitivity: "base" })\n\n\tconst filteredItems = React.useMemo(() => {\n\t\treturn virtualItems.filter((item) => contains(item, searchValue))\n\t}, [contains, searchValue])\n\n\tconst virtualizer = useVirtualizer({\n\t\tenabled: open,\n\t\tcount: filteredItems.length,\n\t\tgetScrollElement: () => scrollElementRef.current,\n\t\testimateSize: () => 32,\n\t\toverscan: 20,\n\t\tpaddingStart: 4,\n\t\tpaddingEnd: 4,\n\t})\n\n\tconst handleScrollElementRef = React.useCallback(\n\t\t(element: HTMLDivElement) => {\n\t\t\tscrollElementRef.current = element\n\t\t\tif (element) {\n\t\t\t\tvirtualizer.measure()\n\t\t\t}\n\t\t},\n\t\t[virtualizer]\n\t)\n\n\tconst totalSize = virtualizer.getTotalSize()\n\tconst totalSizePx = `${totalSize}px`\n\n\treturn (\n\t\t<Autocomplete\n\t\t\tvirtualized\n\t\t\titems={virtualItems}\n\t\t\topen={open}\n\t\t\tonOpenChange={setOpen}\n\t\t\tvalue={searchValue}\n\t\t\tonValueChange={setSearchValue}\n\t\t\topenOnInputClick\n\t\t\tonItemHighlighted={(item, { reason, index }) => {\n\t\t\t\tif (!item) {\n\t\t\t\t\treturn\n\t\t\t\t}\n\n\t\t\t\tconst isStart = index === 0\n\t\t\t\tconst isEnd = index === filteredItems.length - 1\n\t\t\t\tconst shouldScroll =\n\t\t\t\t\treason === "none" || (reason === "keyboard" && (isStart || isEnd))\n\t\t\t\tif (shouldScroll) {\n\t\t\t\t\tqueueMicrotask(() => {\n\t\t\t\t\t\tvirtualizer.scrollToIndex(index, { align: isEnd ? "start" : "end" })\n\t\t\t\t\t})\n\t\t\t\t}\n\t\t\t}}\n\t\t>\n\t\t\t<div className="flex flex-col gap-2">\n\t\t\t\t<Label htmlFor="search-items-virtualized">\n\t\t\t\t\tSearch 10,000 items (virtualized)\n\t\t\t\t</Label>\n\t\t\t\t<AutocompleteInput className="w-80" id="search-items-virtualized" />\n\t\t\t</div>\n\n\t\t\t<AutocompleteContent className="w-80 py-0 pr-0">\n\t\t\t\t<AutocompleteEmpty>No items found.</AutocompleteEmpty>\n\t\t\t\t<AutocompleteList>\n\t\t\t\t\t{filteredItems.length > 0 && (\n\t\t\t\t\t\t<div\n\t\t\t\t\t\t\trole="presentation"\n\t\t\t\t\t\t\tref={handleScrollElementRef}\n\t\t\t\t\t\t\tclassName="h-[min(var(--total-size),18rem)] max-h-[calc(var(--available-height)-2rem)] overflow-y-scroll overscroll-contain"\n\t\t\t\t\t\t\tstyle={{ "--total-size": totalSizePx } as React.CSSProperties}\n\t\t\t\t\t\t>\n\t\t\t\t\t\t\t<div\n\t\t\t\t\t\t\t\trole="presentation"\n\t\t\t\t\t\t\t\tclassName="relative w-full"\n\t\t\t\t\t\t\t\tstyle={{ height: totalSizePx }}\n\t\t\t\t\t\t\t>\n\t\t\t\t\t\t\t\t{virtualizer.getVirtualItems().map((virtualItem) => {\n\t\t\t\t\t\t\t\t\tconst item = filteredItems[virtualItem.index]\n\t\t\t\t\t\t\t\t\tif (!item) {\n\t\t\t\t\t\t\t\t\t\treturn null\n\t\t\t\t\t\t\t\t\t}\n\n\t\t\t\t\t\t\t\t\treturn (\n\t\t\t\t\t\t\t\t\t\t<AutocompleteItem\n\t\t\t\t\t\t\t\t\t\t\tkey={virtualItem.key}\n\t\t\t\t\t\t\t\t\t\t\tindex={virtualItem.index}\n\t\t\t\t\t\t\t\t\t\t\tvalue={item}\n\t\t\t\t\t\t\t\t\t\t\taria-setsize={filteredItems.length}\n\t\t\t\t\t\t\t\t\t\t\taria-posinset={virtualItem.index + 1}\n\t\t\t\t\t\t\t\t\t\t\tstyle={{\n\t\t\t\t\t\t\t\t\t\t\t\tposition: "absolute",\n\t\t\t\t\t\t\t\t\t\t\t\ttop: 0,\n\t\t\t\t\t\t\t\t\t\t\t\tleft: 0,\n\t\t\t\t\t\t\t\t\t\t\t\twidth: "100%",\n\t\t\t\t\t\t\t\t\t\t\t\theight: `${virtualItem.size}px`,\n\t\t\t\t\t\t\t\t\t\t\t\ttransform: `translateY(${virtualItem.start}px)`,\n\t\t\t\t\t\t\t\t\t\t\t}}\n\t\t\t\t\t\t\t\t\t\t>\n\t\t\t\t\t\t\t\t\t\t\t{item}\n\t\t\t\t\t\t\t\t\t\t</AutocompleteItem>\n\t\t\t\t\t\t\t\t\t)\n\t\t\t\t\t\t\t\t})}\n\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t</div>\n\t\t\t\t\t)}\n\t\t\t\t</AutocompleteList>\n\t\t\t</AutocompleteContent>\n\t\t</Autocomplete>\n\t)\n}\n\nconst virtualItems = Array.from({ length: 10000 }, (_, i) => {\n\tconst indexLabel = String(i + 1).padStart(5, "0")\n\treturn `Item ${indexLabel}`\n})\n',
+			'import * as React from "react"\nimport { useVirtualizer } from "@tanstack/react-virtual"\n\nimport {\n\tAutocomplete,\n\tAutocompleteContent,\n\tAutocompleteEmpty,\n\tAutocompleteInput,\n\tAutocompleteItem,\n\tAutocompleteList,\n\tuseFilter,\n} from "@/components/ui/autocomplete"\nimport { Label } from "@/components/ui/label"\n\nexport default function AutocompleteVirtualizedDemo() {\n\tconst [open, setOpen] = React.useState(false)\n\tconst [searchValue, setSearchValue] = React.useState("")\n\n\tconst scrollElementRef = React.useRef<HTMLDivElement>(null)\n\n\tconst { contains } = useFilter({ sensitivity: "base" })\n\n\tconst filteredItems = React.useMemo(() => {\n\t\treturn virtualItems.filter((item) => contains(item, searchValue))\n\t}, [contains, searchValue])\n\n\tconst virtualizer = useVirtualizer({\n\t\tenabled: open,\n\t\tcount: filteredItems.length,\n\t\tgetScrollElement: () => scrollElementRef.current,\n\t\testimateSize: () => 32,\n\t\toverscan: 20,\n\t\tpaddingStart: 4,\n\t\tpaddingEnd: 4,\n\t})\n\n\tconst handleScrollElementRef = React.useCallback(\n\t\t(element: HTMLDivElement) => {\n\t\t\tscrollElementRef.current = element\n\t\t\tif (element) {\n\t\t\t\tvirtualizer.measure()\n\t\t\t}\n\t\t},\n\t\t[virtualizer]\n\t)\n\n\tconst totalSize = virtualizer.getTotalSize()\n\tconst totalSizePx = `${totalSize}px`\n\n\treturn (\n\t\t<Autocomplete\n\t\t\tvirtualized\n\t\t\titems={virtualItems}\n\t\t\topen={open}\n\t\t\tonOpenChange={setOpen}\n\t\t\tvalue={searchValue}\n\t\t\tonValueChange={setSearchValue}\n\t\t\topenOnInputClick\n\t\t\tonItemHighlighted={(item, { reason, index }) => {\n\t\t\t\tif (!item) {\n\t\t\t\t\treturn\n\t\t\t\t}\n\n\t\t\t\tconst isStart = index === 0\n\t\t\t\tconst isEnd = index === filteredItems.length - 1\n\t\t\t\tconst shouldScroll =\n\t\t\t\t\treason === "none" || (reason === "keyboard" && (isStart || isEnd))\n\t\t\t\tif (shouldScroll) {\n\t\t\t\t\tqueueMicrotask(() => {\n\t\t\t\t\t\tvirtualizer.scrollToIndex(index, { align: isEnd ? "start" : "end" })\n\t\t\t\t\t})\n\t\t\t\t}\n\t\t\t}}\n\t\t>\n\t\t\t<div className="flex flex-col gap-2">\n\t\t\t\t<Label htmlFor="search-items-virtualized">\n\t\t\t\t\tSearch 10,000 items (virtualized)\n\t\t\t\t</Label>\n\t\t\t\t<AutocompleteInput className="w-80" id="search-items-virtualized" />\n\t\t\t</div>\n\n\t\t\t<AutocompleteContent className="w-80 py-0 pr-0">\n\t\t\t\t<AutocompleteEmpty>No items found.</AutocompleteEmpty>\n\t\t\t\t<AutocompleteList>\n\t\t\t\t\t{filteredItems.length > 0 && (\n\t\t\t\t\t\t<div\n\t\t\t\t\t\t\trole="presentation"\n\t\t\t\t\t\t\tref={handleScrollElementRef}\n\t\t\t\t\t\t\tclassName="h-[min(var(--total-size),18rem)] max-h-[calc(var(--available-height)-2rem)] overflow-y-scroll overscroll-contain"\n\t\t\t\t\t\t\tstyle={{ "--total-size": totalSizePx } as React.CSSProperties}\n\t\t\t\t\t\t>\n\t\t\t\t\t\t\t<div\n\t\t\t\t\t\t\t\trole="presentation"\n\t\t\t\t\t\t\t\tclassName="relative w-full"\n\t\t\t\t\t\t\t\tstyle={{ height: totalSizePx }}\n\t\t\t\t\t\t\t>\n\t\t\t\t\t\t\t\t{virtualizer.getVirtualItems().map((virtualItem) => {\n\t\t\t\t\t\t\t\t\tconst item = filteredItems[virtualItem.index]\n\t\t\t\t\t\t\t\t\tif (!item) {\n\t\t\t\t\t\t\t\t\t\treturn null\n\t\t\t\t\t\t\t\t\t}\n\n\t\t\t\t\t\t\t\t\treturn (\n\t\t\t\t\t\t\t\t\t\t<AutocompleteItem\n\t\t\t\t\t\t\t\t\t\t\tkey={virtualItem.key}\n\t\t\t\t\t\t\t\t\t\t\tindex={virtualItem.index}\n\t\t\t\t\t\t\t\t\t\t\tvalue={item}\n\t\t\t\t\t\t\t\t\t\t\taria-setsize={filteredItems.length}\n\t\t\t\t\t\t\t\t\t\t\taria-posinset={virtualItem.index + 1}\n\t\t\t\t\t\t\t\t\t\t\tstyle={{\n\t\t\t\t\t\t\t\t\t\t\t\tposition: "absolute",\n\t\t\t\t\t\t\t\t\t\t\t\ttop: 0,\n\t\t\t\t\t\t\t\t\t\t\t\tleft: 0,\n\t\t\t\t\t\t\t\t\t\t\t\twidth: "100%",\n\t\t\t\t\t\t\t\t\t\t\t\theight: `${virtualItem.size}px`,\n\t\t\t\t\t\t\t\t\t\t\t\ttransform: `translateY(${virtualItem.start}px)`,\n\t\t\t\t\t\t\t\t\t\t\t}}\n\t\t\t\t\t\t\t\t\t\t>\n\t\t\t\t\t\t\t\t\t\t\t{item}\n\t\t\t\t\t\t\t\t\t\t</AutocompleteItem>\n\t\t\t\t\t\t\t\t\t)\n\t\t\t\t\t\t\t\t})}\n\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t</div>\n\t\t\t\t\t)}\n\t\t\t\t</AutocompleteList>\n\t\t\t</AutocompleteContent>\n\t\t</Autocomplete>\n\t)\n}\n\nconst virtualItems = Array.from({ length: 10000 }, (_, i) => {\n\tconst indexLabel = String(i + 1).padStart(5, "0")\n\treturn `Item ${indexLabel}`\n})\n',
 		component: React.lazy(
-			() => import("@/components/demos/autocomplete/autocomplete-virtualized")
+			() =>
+				import("@/components/demos/autocomplete/autocomplete-virtualized-demo")
 		),
-		title: "autocomplete-virtualized",
+		title: "autocomplete-virtualized-demo",
 		category: "autocomplete",
-		path: "src/components/demos/autocomplete/autocomplete-virtualized.tsx",
+		path: "src/components/demos/autocomplete/autocomplete-virtualized-demo.tsx",
 	},
 	"avatar-demo": {
 		source:
@@ -189,45 +211,45 @@ export const demoRegistry: DemoRegistry = {
 		category: "avatar",
 		path: "src/components/demos/avatar/avatar-demo.tsx",
 	},
-	"avatar-fallback": {
+	"avatar-group-demo": {
 		source:
-			'import { Avatar, AvatarFallback } from "@/components/ui/avatar"\n\nexport default function AvatarWithFallback() {\n\treturn (\n\t\t<Avatar>\n\t\t\t<AvatarFallback>BB</AvatarFallback>\n\t\t</Avatar>\n\t)\n}\n',
+			'import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"\n\nexport default function AvatarGroupDemo() {\n\treturn (\n\t\t<div className="*:data-[slot=avatar]:ring-background flex -space-x-2 *:data-[slot=avatar]:ring-[3px]">\n\t\t\t<Avatar>\n\t\t\t\t<AvatarImage src="/avatars/memoji-1.png" alt="person-1" />\n\t\t\t\t<AvatarFallback>P1</AvatarFallback>\n\t\t\t</Avatar>\n\t\t\t<Avatar>\n\t\t\t\t<AvatarImage src="/avatars/memoji-2.png" alt="person-2" />\n\t\t\t\t<AvatarFallback>P2</AvatarFallback>\n\t\t\t</Avatar>\n\t\t\t<Avatar>\n\t\t\t\t<AvatarImage src="/avatars/memoji-3.png" alt="person-3" />\n\t\t\t\t<AvatarFallback>P3</AvatarFallback>\n\t\t\t</Avatar>\n\t\t</div>\n\t)\n}\n',
 		component: React.lazy(
-			() => import("@/components/demos/avatar/avatar-fallback")
+			() => import("@/components/demos/avatar/avatar-group-demo")
 		),
-		title: "avatar-fallback",
+		title: "avatar-group-demo",
 		category: "avatar",
-		path: "src/components/demos/avatar/avatar-fallback.tsx",
+		path: "src/components/demos/avatar/avatar-group-demo.tsx",
 	},
-	"avatar-group": {
+	"avatar-sizes-demo": {
 		source:
-			'import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"\n\nexport default function AvatarGroup() {\n\treturn (\n\t\t<div className="*:data-[slot=avatar]:ring-background flex -space-x-2 *:data-[slot=avatar]:ring-[3px]">\n\t\t\t<Avatar>\n\t\t\t\t<AvatarImage src="/avatars/memoji-1.png" alt="person-1" />\n\t\t\t\t<AvatarFallback>P1</AvatarFallback>\n\t\t\t</Avatar>\n\t\t\t<Avatar>\n\t\t\t\t<AvatarImage src="/avatars/memoji-2.png" alt="person-2" />\n\t\t\t\t<AvatarFallback>P2</AvatarFallback>\n\t\t\t</Avatar>\n\t\t\t<Avatar>\n\t\t\t\t<AvatarImage src="/avatars/memoji-3.png" alt="person-3" />\n\t\t\t\t<AvatarFallback>P3</AvatarFallback>\n\t\t\t</Avatar>\n\t\t</div>\n\t)\n}\n',
+			'import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"\n\nexport default function AvatarSizesDemo() {\n\treturn (\n\t\t<div className="flex flex-row items-center gap-4">\n\t\t\t<Avatar size="sm">\n\t\t\t\t<AvatarImage src="/avatars/bora.png" alt="User" />\n\t\t\t\t<AvatarFallback>BB</AvatarFallback>\n\t\t\t</Avatar>\n\t\t\t<Avatar size="md">\n\t\t\t\t<AvatarImage src="/avatars/bora.png" alt="User" />\n\t\t\t\t<AvatarFallback>BB</AvatarFallback>\n\t\t\t</Avatar>\n\t\t\t<Avatar size="lg">\n\t\t\t\t<AvatarImage src="/avatars/bora.png" alt="User" />\n\t\t\t\t<AvatarFallback>BB</AvatarFallback>\n\t\t\t</Avatar>\n\t\t</div>\n\t)\n}\n',
 		component: React.lazy(
-			() => import("@/components/demos/avatar/avatar-group")
+			() => import("@/components/demos/avatar/avatar-sizes-demo")
 		),
-		title: "avatar-group",
+		title: "avatar-sizes-demo",
 		category: "avatar",
-		path: "src/components/demos/avatar/avatar-group.tsx",
+		path: "src/components/demos/avatar/avatar-sizes-demo.tsx",
 	},
-	"avatar-sizes": {
+	"avatar-with-fallback-demo": {
 		source:
-			'import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"\n\nexport default function AvatarSizes() {\n\treturn (\n\t\t<div className="flex flex-row items-center gap-4">\n\t\t\t<Avatar size="sm">\n\t\t\t\t<AvatarImage src="/avatars/bora.png" alt="User" />\n\t\t\t\t<AvatarFallback>BB</AvatarFallback>\n\t\t\t</Avatar>\n\t\t\t<Avatar size="md">\n\t\t\t\t<AvatarImage src="/avatars/bora.png" alt="User" />\n\t\t\t\t<AvatarFallback>BB</AvatarFallback>\n\t\t\t</Avatar>\n\t\t\t<Avatar size="lg">\n\t\t\t\t<AvatarImage src="/avatars/bora.png" alt="User" />\n\t\t\t\t<AvatarFallback>BB</AvatarFallback>\n\t\t\t</Avatar>\n\t\t</div>\n\t)\n}\n',
+			'import { Avatar, AvatarFallback } from "@/components/ui/avatar"\n\nexport default function AvatarWithFallbackDemo() {\n\treturn (\n\t\t<Avatar>\n\t\t\t<AvatarFallback>BB</AvatarFallback>\n\t\t</Avatar>\n\t)\n}\n',
 		component: React.lazy(
-			() => import("@/components/demos/avatar/avatar-sizes")
+			() => import("@/components/demos/avatar/avatar-with-fallback-demo")
 		),
-		title: "avatar-sizes",
+		title: "avatar-with-fallback-demo",
 		category: "avatar",
-		path: "src/components/demos/avatar/avatar-sizes.tsx",
+		path: "src/components/demos/avatar/avatar-with-fallback-demo.tsx",
 	},
-	"badge-danger": {
+	"badge-danger-demo": {
 		source:
-			'import { Badge } from "@/components/ui/badge"\n\nexport default function BadgeDanger() {\n\treturn <Badge variant="danger">Danger</Badge>\n}\n',
+			'import { Badge } from "@/components/ui/badge"\n\nexport default function BadgeDangerDemo() {\n\treturn <Badge variant="danger">Danger</Badge>\n}\n',
 		component: React.lazy(
-			() => import("@/components/demos/badge/badge-danger")
+			() => import("@/components/demos/badge/badge-danger-demo")
 		),
-		title: "badge-danger",
+		title: "badge-danger-demo",
 		category: "badge",
-		path: "src/components/demos/badge/badge-danger.tsx",
+		path: "src/components/demos/badge/badge-danger-demo.tsx",
 	},
 	"badge-demo": {
 		source:
@@ -237,64 +259,68 @@ export const demoRegistry: DemoRegistry = {
 		category: "badge",
 		path: "src/components/demos/badge/badge-demo.tsx",
 	},
-	"badge-info": {
+	"badge-info-demo": {
 		source:
-			'import { Badge } from "@/components/ui/badge"\n\nexport default function BadgeInfo() {\n\treturn <Badge variant="info">Info</Badge>\n}\n',
-		component: React.lazy(() => import("@/components/demos/badge/badge-info")),
-		title: "badge-info",
-		category: "badge",
-		path: "src/components/demos/badge/badge-info.tsx",
-	},
-	"badge-outline": {
-		source:
-			'import { Badge } from "@/components/ui/badge"\n\nexport default function BadgeOutline() {\n\treturn <Badge variant="outline">Outline</Badge>\n}\n',
+			'import { Badge } from "@/components/ui/badge"\n\nexport default function BadgeInfoDemo() {\n\treturn <Badge variant="info">Info</Badge>\n}\n',
 		component: React.lazy(
-			() => import("@/components/demos/badge/badge-outline")
+			() => import("@/components/demos/badge/badge-info-demo")
 		),
-		title: "badge-outline",
+		title: "badge-info-demo",
 		category: "badge",
-		path: "src/components/demos/badge/badge-outline.tsx",
+		path: "src/components/demos/badge/badge-info-demo.tsx",
 	},
-	"badge-secondary": {
+	"badge-outline-demo": {
 		source:
-			'import { Badge } from "@/components/ui/badge"\n\nexport default function BadgeSecondary() {\n\treturn <Badge variant="secondary">Secondary</Badge>\n}\n',
+			'import { Badge } from "@/components/ui/badge"\n\nexport default function BadgeOutlineDemo() {\n\treturn <Badge variant="outline">Outline</Badge>\n}\n',
 		component: React.lazy(
-			() => import("@/components/demos/badge/badge-secondary")
+			() => import("@/components/demos/badge/badge-outline-demo")
 		),
-		title: "badge-secondary",
+		title: "badge-outline-demo",
 		category: "badge",
-		path: "src/components/demos/badge/badge-secondary.tsx",
+		path: "src/components/demos/badge/badge-outline-demo.tsx",
 	},
-	"badge-success": {
+	"badge-secondary-demo": {
 		source:
-			'import { Badge } from "@/components/ui/badge"\n\nexport default function BadgeSuccess() {\n\treturn <Badge variant="success">Success</Badge>\n}\n',
+			'import { Badge } from "@/components/ui/badge"\n\nexport default function BadgeSecondaryDemo() {\n\treturn <Badge variant="secondary">Secondary</Badge>\n}\n',
 		component: React.lazy(
-			() => import("@/components/demos/badge/badge-success")
+			() => import("@/components/demos/badge/badge-secondary-demo")
 		),
-		title: "badge-success",
+		title: "badge-secondary-demo",
 		category: "badge",
-		path: "src/components/demos/badge/badge-success.tsx",
+		path: "src/components/demos/badge/badge-secondary-demo.tsx",
 	},
-	"badge-warning": {
+	"badge-success-demo": {
 		source:
-			'import { Badge } from "@/components/ui/badge"\n\nexport default function BadgeWarning() {\n\treturn <Badge variant="warning">Warning</Badge>\n}\n',
+			'import { Badge } from "@/components/ui/badge"\n\nexport default function BadgeSuccessDemo() {\n\treturn <Badge variant="success">Success</Badge>\n}\n',
 		component: React.lazy(
-			() => import("@/components/demos/badge/badge-warning")
+			() => import("@/components/demos/badge/badge-success-demo")
 		),
-		title: "badge-warning",
+		title: "badge-success-demo",
 		category: "badge",
-		path: "src/components/demos/badge/badge-warning.tsx",
+		path: "src/components/demos/badge/badge-success-demo.tsx",
 	},
-	"breadcrumbs-custom-separator": {
+	"badge-warning-demo": {
 		source:
-			'import { SlashIcon } from "lucide-react"\n\nimport {\n\tBreadcrumb,\n\tBreadcrumbEllipsis,\n\tBreadcrumbItem,\n\tBreadcrumbLink,\n\tBreadcrumbList,\n\tBreadcrumbPage,\n\tBreadcrumbSeparator,\n} from "@/components/ui/breadcrumbs"\nimport {\n\tDropdownMenu,\n\tDropdownMenuContent,\n\tDropdownMenuItem,\n\tDropdownMenuTrigger,\n} from "@/components/ui/dropdown-menu"\n\nexport default function BreadcrumbsCustomSeparator() {\n\treturn (\n\t\t<Breadcrumb>\n\t\t\t<BreadcrumbList>\n\t\t\t\t<BreadcrumbItem>\n\t\t\t\t\t<BreadcrumbLink href="/">Home</BreadcrumbLink>\n\t\t\t\t</BreadcrumbItem>\n\t\t\t\t<BreadcrumbSeparator>\n\t\t\t\t\t<SlashIcon className="h-4 w-4" />\n\t\t\t\t</BreadcrumbSeparator>\n\t\t\t\t<BreadcrumbItem>\n\t\t\t\t\t<DropdownMenu>\n\t\t\t\t\t\t<DropdownMenuTrigger className="flex items-center gap-1">\n\t\t\t\t\t\t\t<BreadcrumbEllipsis className="h-4 w-4" />\n\t\t\t\t\t\t\t<span className="sr-only">Toggle menu</span>\n\t\t\t\t\t\t</DropdownMenuTrigger>\n\t\t\t\t\t\t<DropdownMenuContent align="start">\n\t\t\t\t\t\t\t<DropdownMenuItem>Documentation</DropdownMenuItem>\n\t\t\t\t\t\t\t<DropdownMenuItem>Themes</DropdownMenuItem>\n\t\t\t\t\t\t\t<DropdownMenuItem>GitHub</DropdownMenuItem>\n\t\t\t\t\t\t</DropdownMenuContent>\n\t\t\t\t\t</DropdownMenu>\n\t\t\t\t</BreadcrumbItem>\n\t\t\t\t<BreadcrumbSeparator>\n\t\t\t\t\t<SlashIcon className="h-4 w-4" />\n\t\t\t\t</BreadcrumbSeparator>\n\t\t\t\t<BreadcrumbItem>\n\t\t\t\t\t<BreadcrumbLink href="/docs/components">Components</BreadcrumbLink>\n\t\t\t\t</BreadcrumbItem>\n\t\t\t\t<BreadcrumbSeparator>\n\t\t\t\t\t<SlashIcon className="h-4 w-4" />\n\t\t\t\t</BreadcrumbSeparator>\n\t\t\t\t<BreadcrumbItem>\n\t\t\t\t\t<BreadcrumbPage>Breadcrumb</BreadcrumbPage>\n\t\t\t\t</BreadcrumbItem>\n\t\t\t</BreadcrumbList>\n\t\t</Breadcrumb>\n\t)\n}\n',
+			'import { Badge } from "@/components/ui/badge"\n\nexport default function BadgeWarningDemo() {\n\treturn <Badge variant="warning">Warning</Badge>\n}\n',
+		component: React.lazy(
+			() => import("@/components/demos/badge/badge-warning-demo")
+		),
+		title: "badge-warning-demo",
+		category: "badge",
+		path: "src/components/demos/badge/badge-warning-demo.tsx",
+	},
+	"breadcrumbs-custom-separator-demo": {
+		source:
+			'import { SlashIcon } from "lucide-react"\n\nimport {\n\tBreadcrumb,\n\tBreadcrumbEllipsis,\n\tBreadcrumbItem,\n\tBreadcrumbLink,\n\tBreadcrumbList,\n\tBreadcrumbPage,\n\tBreadcrumbSeparator,\n} from "@/components/ui/breadcrumbs"\nimport {\n\tDropdownMenu,\n\tDropdownMenuContent,\n\tDropdownMenuItem,\n\tDropdownMenuTrigger,\n} from "@/components/ui/dropdown-menu"\n\nexport default function BreadcrumbsCustomSeparatorDemo() {\n\treturn (\n\t\t<Breadcrumb>\n\t\t\t<BreadcrumbList>\n\t\t\t\t<BreadcrumbItem>\n\t\t\t\t\t<BreadcrumbLink href="/">Home</BreadcrumbLink>\n\t\t\t\t</BreadcrumbItem>\n\t\t\t\t<BreadcrumbSeparator>\n\t\t\t\t\t<SlashIcon className="h-4 w-4" />\n\t\t\t\t</BreadcrumbSeparator>\n\t\t\t\t<BreadcrumbItem>\n\t\t\t\t\t<DropdownMenu>\n\t\t\t\t\t\t<DropdownMenuTrigger className="flex items-center gap-1">\n\t\t\t\t\t\t\t<BreadcrumbEllipsis className="h-4 w-4" />\n\t\t\t\t\t\t\t<span className="sr-only">Toggle menu</span>\n\t\t\t\t\t\t</DropdownMenuTrigger>\n\t\t\t\t\t\t<DropdownMenuContent align="start">\n\t\t\t\t\t\t\t<DropdownMenuItem>Documentation</DropdownMenuItem>\n\t\t\t\t\t\t\t<DropdownMenuItem>Themes</DropdownMenuItem>\n\t\t\t\t\t\t\t<DropdownMenuItem>GitHub</DropdownMenuItem>\n\t\t\t\t\t\t</DropdownMenuContent>\n\t\t\t\t\t</DropdownMenu>\n\t\t\t\t</BreadcrumbItem>\n\t\t\t\t<BreadcrumbSeparator>\n\t\t\t\t\t<SlashIcon className="h-4 w-4" />\n\t\t\t\t</BreadcrumbSeparator>\n\t\t\t\t<BreadcrumbItem>\n\t\t\t\t\t<BreadcrumbLink href="/docs/components">Components</BreadcrumbLink>\n\t\t\t\t</BreadcrumbItem>\n\t\t\t\t<BreadcrumbSeparator>\n\t\t\t\t\t<SlashIcon className="h-4 w-4" />\n\t\t\t\t</BreadcrumbSeparator>\n\t\t\t\t<BreadcrumbItem>\n\t\t\t\t\t<BreadcrumbPage>Breadcrumb</BreadcrumbPage>\n\t\t\t\t</BreadcrumbItem>\n\t\t\t</BreadcrumbList>\n\t\t</Breadcrumb>\n\t)\n}\n',
 		component: React.lazy(
 			() =>
-				import("@/components/demos/breadcrumbs/breadcrumbs-custom-separator")
+				import(
+					"@/components/demos/breadcrumbs/breadcrumbs-custom-separator-demo"
+				)
 		),
-		title: "breadcrumbs-custom-separator",
+		title: "breadcrumbs-custom-separator-demo",
 		category: "breadcrumbs",
-		path: "src/components/demos/breadcrumbs/breadcrumbs-custom-separator.tsx",
+		path: "src/components/demos/breadcrumbs/breadcrumbs-custom-separator-demo.tsx",
 	},
 	"breadcrumbs-demo": {
 		source:
@@ -316,85 +342,85 @@ export const demoRegistry: DemoRegistry = {
 		category: "button",
 		path: "src/components/demos/button/button-demo.tsx",
 	},
-	"button-destructive": {
+	"button-destructive-demo": {
 		source:
-			'import { Button } from "@/components/ui/button"\n\nexport default function ButtonDestructive() {\n\treturn <Button variant="destructive">Destructive</Button>\n}\n',
+			'import { Button } from "@/components/ui/button"\n\nexport default function ButtonDestructiveDemo() {\n\treturn <Button variant="destructive">Destructive</Button>\n}\n',
 		component: React.lazy(
-			() => import("@/components/demos/button/button-destructive")
+			() => import("@/components/demos/button/button-destructive-demo")
 		),
-		title: "button-destructive",
+		title: "button-destructive-demo",
 		category: "button",
-		path: "src/components/demos/button/button-destructive.tsx",
+		path: "src/components/demos/button/button-destructive-demo.tsx",
 	},
-	"button-ghost": {
+	"button-ghost-demo": {
 		source:
-			'import { Button } from "@/components/ui/button"\n\nexport default function ButtonGhost() {\n\treturn <Button variant="ghost">Ghost</Button>\n}\n',
+			'import { Button } from "@/components/ui/button"\n\nexport default function ButtonGhostDemo() {\n\treturn <Button variant="ghost">Ghost</Button>\n}\n',
 		component: React.lazy(
-			() => import("@/components/demos/button/button-ghost")
+			() => import("@/components/demos/button/button-ghost-demo")
 		),
-		title: "button-ghost",
+		title: "button-ghost-demo",
 		category: "button",
-		path: "src/components/demos/button/button-ghost.tsx",
+		path: "src/components/demos/button/button-ghost-demo.tsx",
 	},
-	"button-icon": {
+	"button-icon-demo": {
 		source:
-			'import { PencilIcon } from "lucide-react"\n\nimport { Button } from "@/components/ui/button"\n\nexport default function ButtonIcon() {\n\treturn (\n\t\t<Button size="icon" variant="outline">\n\t\t\t<PencilIcon />\n\t\t</Button>\n\t)\n}\n',
+			'import { PencilIcon } from "lucide-react"\n\nimport { Button } from "@/components/ui/button"\n\nexport default function ButtonIconDemo() {\n\treturn (\n\t\t<Button size="icon" variant="outline">\n\t\t\t<PencilIcon />\n\t\t</Button>\n\t)\n}\n',
 		component: React.lazy(
-			() => import("@/components/demos/button/button-icon")
+			() => import("@/components/demos/button/button-icon-demo")
 		),
-		title: "button-icon",
+		title: "button-icon-demo",
 		category: "button",
-		path: "src/components/demos/button/button-icon.tsx",
+		path: "src/components/demos/button/button-icon-demo.tsx",
 	},
-	"button-link": {
+	"button-link-demo": {
 		source:
-			'import { Button } from "@/components/ui/button"\n\nexport default function ButtonLink() {\n\treturn <Button variant="link">Link</Button>\n}\n',
+			'import { Button } from "@/components/ui/button"\n\nexport default function ButtonLinkDemo() {\n\treturn <Button variant="link">Link</Button>\n}\n',
 		component: React.lazy(
-			() => import("@/components/demos/button/button-link")
+			() => import("@/components/demos/button/button-link-demo")
 		),
-		title: "button-link",
+		title: "button-link-demo",
 		category: "button",
-		path: "src/components/demos/button/button-link.tsx",
+		path: "src/components/demos/button/button-link-demo.tsx",
 	},
-	"button-loading": {
+	"button-loading-demo": {
 		source:
-			'import { Loader2Icon } from "lucide-react"\n\nimport { Button } from "@/components/ui/button"\n\nexport default function ButtonLoading() {\n\treturn (\n\t\t<Button className="gap-2" disabled>\n\t\t\t<div className="animate-spin">\n\t\t\t\t<Loader2Icon />\n\t\t\t</div>\n\t\t\tLoading\n\t\t</Button>\n\t)\n}\n',
+			'import { Loader2Icon } from "lucide-react"\n\nimport { Button } from "@/components/ui/button"\n\nexport default function ButtonLoadingDemo() {\n\treturn (\n\t\t<Button className="gap-2" disabled>\n\t\t\t<div className="animate-spin">\n\t\t\t\t<Loader2Icon />\n\t\t\t</div>\n\t\t\tLoading\n\t\t</Button>\n\t)\n}\n',
 		component: React.lazy(
-			() => import("@/components/demos/button/button-loading")
+			() => import("@/components/demos/button/button-loading-demo")
 		),
-		title: "button-loading",
+		title: "button-loading-demo",
 		category: "button",
-		path: "src/components/demos/button/button-loading.tsx",
+		path: "src/components/demos/button/button-loading-demo.tsx",
 	},
-	"button-outline": {
+	"button-outline-demo": {
 		source:
-			'import { Button } from "@/components/ui/button"\n\nexport default function ButtonOutline() {\n\treturn <Button variant="outline">Outline</Button>\n}\n',
+			'import { Button } from "@/components/ui/button"\n\nexport default function ButtonOutlineDemo() {\n\treturn <Button variant="outline">Outline</Button>\n}\n',
 		component: React.lazy(
-			() => import("@/components/demos/button/button-outline")
+			() => import("@/components/demos/button/button-outline-demo")
 		),
-		title: "button-outline",
+		title: "button-outline-demo",
 		category: "button",
-		path: "src/components/demos/button/button-outline.tsx",
+		path: "src/components/demos/button/button-outline-demo.tsx",
 	},
-	"button-secondary": {
+	"button-secondary-demo": {
 		source:
-			'import { Button } from "@/components/ui/button"\n\nexport default function ButtonSecondary() {\n\treturn <Button variant="secondary">Secondary</Button>\n}\n',
+			'import { Button } from "@/components/ui/button"\n\nexport default function ButtonSecondaryDemo() {\n\treturn <Button variant="secondary">Secondary</Button>\n}\n',
 		component: React.lazy(
-			() => import("@/components/demos/button/button-secondary")
+			() => import("@/components/demos/button/button-secondary-demo")
 		),
-		title: "button-secondary",
+		title: "button-secondary-demo",
 		category: "button",
-		path: "src/components/demos/button/button-secondary.tsx",
+		path: "src/components/demos/button/button-secondary-demo.tsx",
 	},
-	"button-sizes": {
+	"button-sizes-demo": {
 		source:
-			'import { Button } from "@/components/ui/button"\n\nexport default function ButtonSizes() {\n\treturn (\n\t\t<div className="flex flex-row items-center gap-2">\n\t\t\t<Button size="sm">Small</Button>\n\t\t\t<Button size="md">Medium</Button>\n\t\t\t<Button size="lg">Large</Button>\n\t\t</div>\n\t)\n}\n',
+			'import { Button } from "@/components/ui/button"\n\nexport default function ButtonSizesDemo() {\n\treturn (\n\t\t<div className="flex flex-row items-center gap-2">\n\t\t\t<Button size="sm">Small</Button>\n\t\t\t<Button>Default</Button>\n\t\t\t<Button size="lg">Large</Button>\n\t\t</div>\n\t)\n}\n',
 		component: React.lazy(
-			() => import("@/components/demos/button/button-sizes")
+			() => import("@/components/demos/button/button-sizes-demo")
 		),
-		title: "button-sizes",
+		title: "button-sizes-demo",
 		category: "button",
-		path: "src/components/demos/button/button-sizes.tsx",
+		path: "src/components/demos/button/button-sizes-demo.tsx",
 	},
 	"calendar-demo": {
 		source:
@@ -406,45 +432,45 @@ export const demoRegistry: DemoRegistry = {
 		category: "calendar",
 		path: "src/components/demos/calendar/calendar-demo.tsx",
 	},
-	"calendar-disabled": {
+	"calendar-disabled-demo": {
 		source:
-			'"use client"\n\nimport { useState } from "react"\n\nimport { Calendar } from "@/components/ui/calendar"\n\nexport default function CalendarDisabled() {\n\tconst [selectedDate, setSelectedDate] = useState<Date | undefined>(undefined)\n\n\treturn (\n\t\t<Calendar\n\t\t\tmode="single"\n\t\t\tdisabled={(date) => date < new Date()}\n\t\t\tselected={selectedDate}\n\t\t\tonSelect={setSelectedDate}\n\t\t/>\n\t)\n}\n',
+			'"use client"\n\nimport { useState } from "react"\n\nimport { Calendar } from "@/components/ui/calendar"\n\nexport default function CalendarDisabledDemo() {\n\tconst [selectedDate, setSelectedDate] = useState<Date | undefined>(undefined)\n\n\treturn (\n\t\t<Calendar\n\t\t\tmode="single"\n\t\t\tdisabled={(date) => date < new Date()}\n\t\t\tselected={selectedDate}\n\t\t\tonSelect={setSelectedDate}\n\t\t/>\n\t)\n}\n',
 		component: React.lazy(
-			() => import("@/components/demos/calendar/calendar-disabled")
+			() => import("@/components/demos/calendar/calendar-disabled-demo")
 		),
-		title: "calendar-disabled",
+		title: "calendar-disabled-demo",
 		category: "calendar",
-		path: "src/components/demos/calendar/calendar-disabled.tsx",
+		path: "src/components/demos/calendar/calendar-disabled-demo.tsx",
 	},
-	"calendar-multiple": {
+	"calendar-multiple-demo": {
 		source:
-			'"use client"\n\nimport { useState } from "react"\n\nimport { Calendar } from "@/components/ui/calendar"\n\nexport default function CalendarMultiple() {\n\tconst [selectedDates, setSelectedDates] = useState<Date[] | undefined>(\n\t\tundefined\n\t)\n\n\treturn (\n\t\t<Calendar\n\t\t\tmode="multiple"\n\t\t\tselected={selectedDates}\n\t\t\tonSelect={setSelectedDates}\n\t\t\tshowOutsideDays\n\t\t/>\n\t)\n}\n',
+			'"use client"\n\nimport { useState } from "react"\n\nimport { Calendar } from "@/components/ui/calendar"\n\nexport default function CalendarMultipleDemo() {\n\tconst [selectedDates, setSelectedDates] = useState<Date[] | undefined>(\n\t\tundefined\n\t)\n\n\treturn (\n\t\t<Calendar\n\t\t\tmode="multiple"\n\t\t\tselected={selectedDates}\n\t\t\tonSelect={setSelectedDates}\n\t\t\tshowOutsideDays\n\t\t/>\n\t)\n}\n',
 		component: React.lazy(
-			() => import("@/components/demos/calendar/calendar-multiple")
+			() => import("@/components/demos/calendar/calendar-multiple-demo")
 		),
-		title: "calendar-multiple",
+		title: "calendar-multiple-demo",
 		category: "calendar",
-		path: "src/components/demos/calendar/calendar-multiple.tsx",
+		path: "src/components/demos/calendar/calendar-multiple-demo.tsx",
 	},
-	"calendar-range": {
+	"calendar-range-demo": {
 		source:
-			'"use client"\n\nimport { useState } from "react"\nimport { DateRange } from "react-day-picker"\n\nimport { Calendar } from "@/components/ui/calendar"\n\nexport default function CalendarRange() {\n\tconst [range, setRange] = useState<DateRange | undefined>(undefined)\n\n\treturn (\n\t\t<Calendar\n\t\t\tmode="range"\n\t\t\tselected={range}\n\t\t\tonSelect={setRange}\n\t\t\tshowOutsideDays\n\t\t/>\n\t)\n}\n',
+			'"use client"\n\nimport { useState } from "react"\nimport { DateRange } from "react-day-picker"\n\nimport { Calendar } from "@/components/ui/calendar"\n\nexport default function CalendarRangeDemo() {\n\tconst [range, setRange] = useState<DateRange | undefined>(undefined)\n\n\treturn (\n\t\t<Calendar\n\t\t\tmode="range"\n\t\t\tselected={range}\n\t\t\tonSelect={setRange}\n\t\t\tshowOutsideDays\n\t\t/>\n\t)\n}\n',
 		component: React.lazy(
-			() => import("@/components/demos/calendar/calendar-range")
+			() => import("@/components/demos/calendar/calendar-range-demo")
 		),
-		title: "calendar-range",
+		title: "calendar-range-demo",
 		category: "calendar",
-		path: "src/components/demos/calendar/calendar-range.tsx",
+		path: "src/components/demos/calendar/calendar-range-demo.tsx",
 	},
-	"calendar-single": {
+	"calendar-single-demo": {
 		source:
-			'"use client"\n\nimport { useState } from "react"\n\nimport { Calendar } from "@/components/ui/calendar"\n\nexport default function CalendarSingle() {\n\tconst [selectedDate, setSelectedDate] = useState<Date | undefined>(undefined)\n\n\treturn (\n\t\t<Calendar\n\t\t\tmode="single"\n\t\t\tselected={selectedDate}\n\t\t\tonSelect={setSelectedDate}\n\t\t\tshowOutsideDays\n\t\t/>\n\t)\n}\n',
+			'"use client"\n\nimport { useState } from "react"\n\nimport { Calendar } from "@/components/ui/calendar"\n\nexport default function CalendarSingleDemo() {\n\tconst [selectedDate, setSelectedDate] = useState<Date | undefined>(undefined)\n\n\treturn (\n\t\t<Calendar\n\t\t\tmode="single"\n\t\t\tselected={selectedDate}\n\t\t\tonSelect={setSelectedDate}\n\t\t\tshowOutsideDays\n\t\t/>\n\t)\n}\n',
 		component: React.lazy(
-			() => import("@/components/demos/calendar/calendar-single")
+			() => import("@/components/demos/calendar/calendar-single-demo")
 		),
-		title: "calendar-single",
+		title: "calendar-single-demo",
 		category: "calendar",
-		path: "src/components/demos/calendar/calendar-single.tsx",
+		path: "src/components/demos/calendar/calendar-single-demo.tsx",
 	},
 	"card-demo": {
 		source:
@@ -454,15 +480,15 @@ export const demoRegistry: DemoRegistry = {
 		category: "card",
 		path: "src/components/demos/card/card-demo.tsx",
 	},
-	"card-with-image": {
+	"card-with-image-demo": {
 		source:
-			'import Image from "next/image"\n\nimport { Button } from "@/components/ui/button"\nimport {\n\tCard,\n\tCardDescription,\n\tCardFooter,\n\tCardHeader,\n\tCardTitle,\n} from "@/components/ui/card"\n\nexport default function CardWithImage() {\n\treturn (\n\t\t<Card className="w-full max-w-80">\n\t\t\t<CardHeader>\n\t\t\t\t<div className="relative aspect-video rounded-lg">\n\t\t\t\t\t<Image\n\t\t\t\t\t\tsrc="https://images.pexels.com/photos/1616403/pexels-photo-1616403.jpeg?auto=compress&cs=tinysrgb&w=450&h=800&dpr=2"\n\t\t\t\t\t\talt="Blog Image"\n\t\t\t\t\t\tfill\n\t\t\t\t\t\tclassName="rounded-lg"\n\t\t\t\t\t/>\n\t\t\t\t</div>\n\t\t\t\t<CardTitle className="mt-2">What is 9ui?</CardTitle>\n\t\t\t\t<CardDescription>\n\t\t\t\t\tDeep dive into the 9ui components and learn how to use them in your\n\t\t\t\t\town projects.\n\t\t\t\t</CardDescription>\n\t\t\t</CardHeader>\n\t\t\t<CardFooter>\n\t\t\t\t<Button className="w-full">Read more</Button>\n\t\t\t</CardFooter>\n\t\t</Card>\n\t)\n}\n',
+			'import Image from "next/image"\n\nimport { Button } from "@/components/ui/button"\nimport {\n\tCard,\n\tCardDescription,\n\tCardFooter,\n\tCardHeader,\n\tCardTitle,\n} from "@/components/ui/card"\n\nexport default function CardWithImageDemo() {\n\treturn (\n\t\t<Card className="w-full max-w-80">\n\t\t\t<CardHeader>\n\t\t\t\t<div className="relative aspect-video rounded-lg">\n\t\t\t\t\t<Image\n\t\t\t\t\t\tsrc="https://images.pexels.com/photos/1616403/pexels-photo-1616403.jpeg?auto=compress&cs=tinysrgb&w=450&h=800&dpr=2"\n\t\t\t\t\t\talt="Blog Image"\n\t\t\t\t\t\tfill\n\t\t\t\t\t\tclassName="rounded-lg"\n\t\t\t\t\t/>\n\t\t\t\t</div>\n\t\t\t\t<CardTitle className="mt-2">What is 9ui?</CardTitle>\n\t\t\t\t<CardDescription>\n\t\t\t\t\tDeep dive into the 9ui components and learn how to use them in your\n\t\t\t\t\town projects.\n\t\t\t\t</CardDescription>\n\t\t\t</CardHeader>\n\t\t\t<CardFooter>\n\t\t\t\t<Button className="w-full">Read more</Button>\n\t\t\t</CardFooter>\n\t\t</Card>\n\t)\n}\n',
 		component: React.lazy(
-			() => import("@/components/demos/card/card-with-image")
+			() => import("@/components/demos/card/card-with-image-demo")
 		),
-		title: "card-with-image",
+		title: "card-with-image-demo",
 		category: "card",
-		path: "src/components/demos/card/card-with-image.tsx",
+		path: "src/components/demos/card/card-with-image-demo.tsx",
 	},
 	"carousel-demo": {
 		source:
@@ -474,61 +500,65 @@ export const demoRegistry: DemoRegistry = {
 		category: "carousel",
 		path: "src/components/demos/carousel/carousel-demo.tsx",
 	},
-	"carousel-looped": {
+	"carousel-looped-demo": {
 		source:
-			'import { AspectRatio } from "@/components/ui/aspect-ratio"\nimport {\n\tCarousel,\n\tCarouselContent,\n\tCarouselItem,\n\tCarouselNext,\n\tCarouselPrevious,\n} from "@/components/ui/carousel"\n\nconst slides = [1, 2, 3, 4, 5]\n\nexport default function CarouselLooped() {\n\treturn (\n\t\t<div className="w-60 sm:w-80 lg:w-96">\n\t\t\t<Carousel opts={{ loop: true }}>\n\t\t\t\t<CarouselContent>\n\t\t\t\t\t{slides.map((slide) => (\n\t\t\t\t\t\t<CarouselItem key={slide}>\n\t\t\t\t\t\t\t<AspectRatio ratio={16 / 9} className="bg-card rounded-lg border">\n\t\t\t\t\t\t\t\t<div className="text-foreground flex size-full items-center justify-center text-xl font-semibold">\n\t\t\t\t\t\t\t\t\t{slide}\n\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t</AspectRatio>\n\t\t\t\t\t\t</CarouselItem>\n\t\t\t\t\t))}\n\t\t\t\t</CarouselContent>\n\t\t\t\t<CarouselPrevious />\n\t\t\t\t<CarouselNext />\n\t\t\t</Carousel>\n\t\t</div>\n\t)\n}\n',
+			'import { AspectRatio } from "@/components/ui/aspect-ratio"\nimport {\n\tCarousel,\n\tCarouselContent,\n\tCarouselItem,\n\tCarouselNext,\n\tCarouselPrevious,\n} from "@/components/ui/carousel"\n\nconst slides = [1, 2, 3, 4, 5]\n\nexport default function CarouselLoopedDemo() {\n\treturn (\n\t\t<div className="w-60 sm:w-80 lg:w-96">\n\t\t\t<Carousel opts={{ loop: true }}>\n\t\t\t\t<CarouselContent>\n\t\t\t\t\t{slides.map((slide) => (\n\t\t\t\t\t\t<CarouselItem key={slide}>\n\t\t\t\t\t\t\t<AspectRatio ratio={16 / 9} className="bg-card rounded-lg border">\n\t\t\t\t\t\t\t\t<div className="text-foreground flex size-full items-center justify-center text-xl font-semibold">\n\t\t\t\t\t\t\t\t\t{slide}\n\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t</AspectRatio>\n\t\t\t\t\t\t</CarouselItem>\n\t\t\t\t\t))}\n\t\t\t\t</CarouselContent>\n\t\t\t\t<CarouselPrevious />\n\t\t\t\t<CarouselNext />\n\t\t\t</Carousel>\n\t\t</div>\n\t)\n}\n',
 		component: React.lazy(
-			() => import("@/components/demos/carousel/carousel-looped")
+			() => import("@/components/demos/carousel/carousel-looped-demo")
 		),
-		title: "carousel-looped",
+		title: "carousel-looped-demo",
 		category: "carousel",
-		path: "src/components/demos/carousel/carousel-looped.tsx",
+		path: "src/components/demos/carousel/carousel-looped-demo.tsx",
 	},
-	"carousel-multiple": {
+	"carousel-multiple-demo": {
 		source:
-			'import { AspectRatio } from "@/components/ui/aspect-ratio"\nimport {\n\tCarousel,\n\tCarouselContent,\n\tCarouselItem,\n\tCarouselNext,\n\tCarouselPrevious,\n} from "@/components/ui/carousel"\n\nconst slides = [1, 2, 3, 4, 5]\n\nexport default function CarouselMultiple() {\n\treturn (\n\t\t<div className="w-60 sm:w-80 lg:w-96">\n\t\t\t<Carousel>\n\t\t\t\t<CarouselContent>\n\t\t\t\t\t{slides.map((slide) => (\n\t\t\t\t\t\t<CarouselItem key={slide} className="basis-1/2">\n\t\t\t\t\t\t\t<AspectRatio\n\t\t\t\t\t\t\t\tratio={16 / 10}\n\t\t\t\t\t\t\t\tclassName="bg-card rounded-lg border"\n\t\t\t\t\t\t\t>\n\t\t\t\t\t\t\t\t<div className="text-foreground flex size-full items-center justify-center text-xl font-semibold">\n\t\t\t\t\t\t\t\t\t{slide}\n\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t</AspectRatio>\n\t\t\t\t\t\t</CarouselItem>\n\t\t\t\t\t))}\n\t\t\t\t</CarouselContent>\n\t\t\t\t<CarouselPrevious />\n\t\t\t\t<CarouselNext />\n\t\t\t</Carousel>\n\t\t</div>\n\t)\n}\n',
+			'import { AspectRatio } from "@/components/ui/aspect-ratio"\nimport {\n\tCarousel,\n\tCarouselContent,\n\tCarouselItem,\n\tCarouselNext,\n\tCarouselPrevious,\n} from "@/components/ui/carousel"\n\nconst slides = [1, 2, 3, 4, 5]\n\nexport default function CarouselMultipleDemo() {\n\treturn (\n\t\t<div className="w-60 sm:w-80 lg:w-96">\n\t\t\t<Carousel>\n\t\t\t\t<CarouselContent>\n\t\t\t\t\t{slides.map((slide) => (\n\t\t\t\t\t\t<CarouselItem key={slide} className="basis-1/2">\n\t\t\t\t\t\t\t<AspectRatio\n\t\t\t\t\t\t\t\tratio={16 / 10}\n\t\t\t\t\t\t\t\tclassName="bg-card rounded-lg border"\n\t\t\t\t\t\t\t>\n\t\t\t\t\t\t\t\t<div className="text-foreground flex size-full items-center justify-center text-xl font-semibold">\n\t\t\t\t\t\t\t\t\t{slide}\n\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t</AspectRatio>\n\t\t\t\t\t\t</CarouselItem>\n\t\t\t\t\t))}\n\t\t\t\t</CarouselContent>\n\t\t\t\t<CarouselPrevious />\n\t\t\t\t<CarouselNext />\n\t\t\t</Carousel>\n\t\t</div>\n\t)\n}\n',
 		component: React.lazy(
-			() => import("@/components/demos/carousel/carousel-multiple")
+			() => import("@/components/demos/carousel/carousel-multiple-demo")
 		),
-		title: "carousel-multiple",
+		title: "carousel-multiple-demo",
 		category: "carousel",
-		path: "src/components/demos/carousel/carousel-multiple.tsx",
+		path: "src/components/demos/carousel/carousel-multiple-demo.tsx",
 	},
-	"carousel-thumbnail": {
+	"carousel-thumbnail-demo": {
 		source:
-			'import { useState } from "react"\nimport Image from "next/image"\n\nimport { AspectRatio } from "@/components/ui/aspect-ratio"\nimport {\n\tCarousel,\n\tCarouselApi,\n\tCarouselContent,\n\tCarouselItem,\n} from "@/components/ui/carousel"\n\nimport { cn } from "@/lib/utils"\n\nconst slides = [\n\t"https://images.pexels.com/photos/1616403/pexels-photo-1616403.jpeg?auto=compress&cs=tinysrgb&w=450&h=800&dpr=2",\n\t"https://images.pexels.com/photos/1293120/pexels-photo-1293120.jpeg?auto=compress&cs=tinysrgb&w=450&h=800&dpr=2",\n\t"https://images.pexels.com/photos/1103970/pexels-photo-1103970.jpeg?auto=compress&cs=tinysrgb&w=450&h=800&dpr=2",\n\t"https://images.pexels.com/photos/2011824/pexels-photo-2011824.jpeg?auto=compress&cs=tinysrgb&w=450&h=800&dpr=2",\n\t"https://images.pexels.com/photos/2471235/pexels-photo-2471235.jpeg?auto=compress&cs=tinysrgb&w=450&h=800&dpr=2",\n]\n\nexport default function CarouselThumbnail() {\n\tconst [api, setApi] = useState<CarouselApi>()\n\tconst [selectedIndex, setSelectedIndex] = useState(0)\n\n\tapi?.on("select", () => {\n\t\tsetSelectedIndex(api?.selectedScrollSnap() ?? 0)\n\t})\n\n\treturn (\n\t\t<div className="w-60">\n\t\t\t<Carousel setApi={setApi}>\n\t\t\t\t<CarouselContent>\n\t\t\t\t\t{slides.map((slide) => (\n\t\t\t\t\t\t<CarouselItem key={slide}>\n\t\t\t\t\t\t\t<AspectRatio\n\t\t\t\t\t\t\t\tratio={16 / 9}\n\t\t\t\t\t\t\t\tclassName="bg-background rounded-lg border"\n\t\t\t\t\t\t\t>\n\t\t\t\t\t\t\t\t<Image\n\t\t\t\t\t\t\t\t\tsrc={slide}\n\t\t\t\t\t\t\t\t\talt="Carousel slide"\n\t\t\t\t\t\t\t\t\tfill\n\t\t\t\t\t\t\t\t\tclassName="rounded-lg object-cover"\n\t\t\t\t\t\t\t\t/>\n\t\t\t\t\t\t\t</AspectRatio>\n\t\t\t\t\t\t</CarouselItem>\n\t\t\t\t\t))}\n\t\t\t\t</CarouselContent>\n\t\t\t\t<div className="mt-2 flex w-full items-center justify-between">\n\t\t\t\t\t{slides.map((slide, index) => (\n\t\t\t\t\t\t<button\n\t\t\t\t\t\t\tkey={slide}\n\t\t\t\t\t\t\tclassName="relative size-10"\n\t\t\t\t\t\t\tonClick={() => api?.scrollTo(index)}\n\t\t\t\t\t\t>\n\t\t\t\t\t\t\t<Image\n\t\t\t\t\t\t\t\tsrc={slide}\n\t\t\t\t\t\t\t\talt="Carousel slide"\n\t\t\t\t\t\t\t\tfill\n\t\t\t\t\t\t\t\tclassName={cn(\n\t\t\t\t\t\t\t\t\t"rounded-md object-cover opacity-60 transition-opacity duration-200 hover:opacity-100",\n\t\t\t\t\t\t\t\t\tselectedIndex === index && "opacity-100"\n\t\t\t\t\t\t\t\t)}\n\t\t\t\t\t\t\t/>\n\t\t\t\t\t\t</button>\n\t\t\t\t\t))}\n\t\t\t\t</div>\n\t\t\t</Carousel>\n\t\t</div>\n\t)\n}\n',
+			'import { useState } from "react"\nimport Image from "next/image"\n\nimport { AspectRatio } from "@/components/ui/aspect-ratio"\nimport {\n\tCarousel,\n\tCarouselApi,\n\tCarouselContent,\n\tCarouselItem,\n} from "@/components/ui/carousel"\n\nimport { cn } from "@/lib/utils"\n\nconst slides = [\n\t"https://images.pexels.com/photos/1616403/pexels-photo-1616403.jpeg?auto=compress&cs=tinysrgb&w=450&h=800&dpr=2",\n\t"https://images.pexels.com/photos/1293120/pexels-photo-1293120.jpeg?auto=compress&cs=tinysrgb&w=450&h=800&dpr=2",\n\t"https://images.pexels.com/photos/1103970/pexels-photo-1103970.jpeg?auto=compress&cs=tinysrgb&w=450&h=800&dpr=2",\n\t"https://images.pexels.com/photos/2011824/pexels-photo-2011824.jpeg?auto=compress&cs=tinysrgb&w=450&h=800&dpr=2",\n\t"https://images.pexels.com/photos/2471235/pexels-photo-2471235.jpeg?auto=compress&cs=tinysrgb&w=450&h=800&dpr=2",\n]\n\nexport default function CarouselThumbnailDemo() {\n\tconst [api, setApi] = useState<CarouselApi>()\n\tconst [selectedIndex, setSelectedIndex] = useState(0)\n\n\tapi?.on("select", () => {\n\t\tsetSelectedIndex(api?.selectedScrollSnap() ?? 0)\n\t})\n\n\treturn (\n\t\t<div className="w-60">\n\t\t\t<Carousel setApi={setApi}>\n\t\t\t\t<CarouselContent>\n\t\t\t\t\t{slides.map((slide) => (\n\t\t\t\t\t\t<CarouselItem key={slide}>\n\t\t\t\t\t\t\t<AspectRatio\n\t\t\t\t\t\t\t\tratio={16 / 9}\n\t\t\t\t\t\t\t\tclassName="bg-background rounded-lg border"\n\t\t\t\t\t\t\t>\n\t\t\t\t\t\t\t\t<Image\n\t\t\t\t\t\t\t\t\tsrc={slide}\n\t\t\t\t\t\t\t\t\talt="Carousel slide"\n\t\t\t\t\t\t\t\t\tfill\n\t\t\t\t\t\t\t\t\tclassName="rounded-lg object-cover"\n\t\t\t\t\t\t\t\t/>\n\t\t\t\t\t\t\t</AspectRatio>\n\t\t\t\t\t\t</CarouselItem>\n\t\t\t\t\t))}\n\t\t\t\t</CarouselContent>\n\t\t\t\t<div className="mt-2 flex w-full items-center justify-between">\n\t\t\t\t\t{slides.map((slide, index) => (\n\t\t\t\t\t\t<button\n\t\t\t\t\t\t\tkey={slide}\n\t\t\t\t\t\t\tclassName="relative size-10"\n\t\t\t\t\t\t\tonClick={() => api?.scrollTo(index)}\n\t\t\t\t\t\t>\n\t\t\t\t\t\t\t<Image\n\t\t\t\t\t\t\t\tsrc={slide}\n\t\t\t\t\t\t\t\talt="Carousel slide"\n\t\t\t\t\t\t\t\tfill\n\t\t\t\t\t\t\t\tclassName={cn(\n\t\t\t\t\t\t\t\t\t"rounded-md object-cover opacity-60 transition-opacity duration-200 hover:opacity-100",\n\t\t\t\t\t\t\t\t\tselectedIndex === index && "opacity-100"\n\t\t\t\t\t\t\t\t)}\n\t\t\t\t\t\t\t/>\n\t\t\t\t\t\t</button>\n\t\t\t\t\t))}\n\t\t\t\t</div>\n\t\t\t</Carousel>\n\t\t</div>\n\t)\n}\n',
 		component: React.lazy(
-			() => import("@/components/demos/carousel/carousel-thumbnail")
+			() => import("@/components/demos/carousel/carousel-thumbnail-demo")
 		),
-		title: "carousel-thumbnail",
+		title: "carousel-thumbnail-demo",
 		category: "carousel",
-		path: "src/components/demos/carousel/carousel-thumbnail.tsx",
+		path: "src/components/demos/carousel/carousel-thumbnail-demo.tsx",
 	},
-	"carousel-vertical": {
+	"carousel-vertical-demo": {
 		source:
-			'import { AspectRatio } from "@/components/ui/aspect-ratio"\nimport {\n\tCarousel,\n\tCarouselContent,\n\tCarouselItem,\n\tCarouselNext,\n\tCarouselPrevious,\n} from "@/components/ui/carousel"\n\nconst slides = [1, 2, 3, 4, 5]\n\nexport default function CarouselVertical() {\n\treturn (\n\t\t<div className="w-60 py-8 sm:w-80 lg:w-96">\n\t\t\t<Carousel orientation="vertical" opts={{ loop: true }}>\n\t\t\t\t<CarouselContent className="aspect-video h-[-webkit-fill-available] w-full p-4">\n\t\t\t\t\t{slides.map((slide) => (\n\t\t\t\t\t\t<CarouselItem key={slide} className="basis-full">\n\t\t\t\t\t\t\t<AspectRatio ratio={16 / 9} className="bg-card rounded-lg border">\n\t\t\t\t\t\t\t\t<div className="text-foreground flex size-full items-center justify-center font-medium">\n\t\t\t\t\t\t\t\t\t{slide}\n\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t</AspectRatio>\n\t\t\t\t\t\t</CarouselItem>\n\t\t\t\t\t))}\n\t\t\t\t</CarouselContent>\n\t\t\t\t<CarouselPrevious />\n\t\t\t\t<CarouselNext />\n\t\t\t</Carousel>\n\t\t</div>\n\t)\n}\n',
+			'import { AspectRatio } from "@/components/ui/aspect-ratio"\nimport {\n\tCarousel,\n\tCarouselContent,\n\tCarouselItem,\n\tCarouselNext,\n\tCarouselPrevious,\n} from "@/components/ui/carousel"\n\nconst slides = [1, 2, 3, 4, 5]\n\nexport default function CarouselVerticalDemo() {\n\treturn (\n\t\t<div className="w-60 py-8 sm:w-80 lg:w-96">\n\t\t\t<Carousel orientation="vertical" opts={{ loop: true }}>\n\t\t\t\t<CarouselContent className="aspect-video h-[-webkit-fill-available] w-full p-4">\n\t\t\t\t\t{slides.map((slide) => (\n\t\t\t\t\t\t<CarouselItem key={slide} className="basis-full">\n\t\t\t\t\t\t\t<AspectRatio ratio={16 / 9} className="bg-card rounded-lg border">\n\t\t\t\t\t\t\t\t<div className="text-foreground flex size-full items-center justify-center font-medium">\n\t\t\t\t\t\t\t\t\t{slide}\n\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t</AspectRatio>\n\t\t\t\t\t\t</CarouselItem>\n\t\t\t\t\t))}\n\t\t\t\t</CarouselContent>\n\t\t\t\t<CarouselPrevious />\n\t\t\t\t<CarouselNext />\n\t\t\t</Carousel>\n\t\t</div>\n\t)\n}\n',
 		component: React.lazy(
-			() => import("@/components/demos/carousel/carousel-vertical")
+			() => import("@/components/demos/carousel/carousel-vertical-demo")
 		),
-		title: "carousel-vertical",
+		title: "carousel-vertical-demo",
 		category: "carousel",
-		path: "src/components/demos/carousel/carousel-vertical.tsx",
+		path: "src/components/demos/carousel/carousel-vertical-demo.tsx",
 	},
-	"chart-area": {
+	"chart-area-demo": {
 		source:
 			'"use client"\n\nimport { TrendingUpIcon } from "lucide-react"\nimport { Area, AreaChart, CartesianGrid, XAxis } from "recharts"\n\nimport {\n\tCard,\n\tCardContent,\n\tCardDescription,\n\tCardFooter,\n\tCardHeader,\n\tCardTitle,\n} from "@/components/ui/card"\nimport {\n\tChartConfig,\n\tChartContainer,\n\tChartTooltip,\n\tChartTooltipContent,\n} from "@/components/ui/chart"\n\nconst chartData = [\n\t{ month: "Jan", revenue: 1500 },\n\t{ month: "Feb", revenue: 3200 },\n\t{ month: "Mar", revenue: 2900 },\n\t{ month: "Apr", revenue: 2100 },\n\t{ month: "May", revenue: 4000 },\n\t{ month: "Jun", revenue: 3700 },\n\t{ month: "Jul", revenue: 4300 },\n\t{ month: "Aug", revenue: 4900 },\n\t{ month: "Sep", revenue: 4700 },\n\t{ month: "Oct", revenue: 5200 },\n\t{ month: "Nov", revenue: 6000 },\n\t{ month: "Dec", revenue: 7200 },\n]\n\nconst chartConfig = {\n\trevenue: {\n\t\tlabel: "Revenue",\n\t\tcolor: "var(--chart-1)",\n\t},\n} satisfies ChartConfig\n\nexport default function ChartAreaDemo() {\n\tconst totalRevenue = chartData.reduce((sum, item) => sum + item.revenue, 0)\n\tconst averageRevenue = totalRevenue / chartData.length\n\tconst lastMonthGrowth =\n\t\t((chartData[11].revenue - chartData[10].revenue) / chartData[10].revenue) *\n\t\t100\n\n\treturn (\n\t\t<Card className="flex w-full flex-col">\n\t\t\t<CardHeader className="text-center">\n\t\t\t\t<CardTitle>Monthly Revenue Trend</CardTitle>\n\t\t\t\t<CardDescription>Performance overview for 2024</CardDescription>\n\t\t\t</CardHeader>\n\t\t\t<CardContent className="flex-1">\n\t\t\t\t<ChartContainer config={chartConfig} className="h-[300px] w-full">\n\t\t\t\t\t<AreaChart\n\t\t\t\t\t\taccessibilityLayer\n\t\t\t\t\t\tdata={chartData}\n\t\t\t\t\t\tmargin={{\n\t\t\t\t\t\t\tleft: 12,\n\t\t\t\t\t\t\tright: 12,\n\t\t\t\t\t\t}}\n\t\t\t\t\t>\n\t\t\t\t\t\t<CartesianGrid vertical={false} />\n\t\t\t\t\t\t<XAxis\n\t\t\t\t\t\t\tdataKey="month"\n\t\t\t\t\t\t\ttickLine={false}\n\t\t\t\t\t\t\taxisLine={false}\n\t\t\t\t\t\t\ttickMargin={8}\n\t\t\t\t\t\t\ttickFormatter={(value) => value.slice(0, 3)}\n\t\t\t\t\t\t/>\n\t\t\t\t\t\t<ChartTooltip\n\t\t\t\t\t\t\tcursor={false}\n\t\t\t\t\t\t\tcontent={<ChartTooltipContent indicator="line" />}\n\t\t\t\t\t\t/>\n\t\t\t\t\t\t<Area\n\t\t\t\t\t\t\tdataKey="revenue"\n\t\t\t\t\t\t\ttype="natural"\n\t\t\t\t\t\t\tfill="var(--chart-1)"\n\t\t\t\t\t\t\tfillOpacity={0.2}\n\t\t\t\t\t\t\tstroke="var(--chart-1)"\n\t\t\t\t\t\t/>\n\t\t\t\t\t</AreaChart>\n\t\t\t\t</ChartContainer>\n\t\t\t</CardContent>\n\t\t\t<CardFooter className="flex-col gap-2 text-sm leading-none">\n\t\t\t\t<div className="flex w-full justify-between font-medium">\n\t\t\t\t\t<span>Total Revenue:</span>\n\t\t\t\t\t<span>${totalRevenue.toLocaleString()}</span>\n\t\t\t\t</div>\n\t\t\t\t<div className="text-muted-foreground flex w-full justify-between">\n\t\t\t\t\t<span>Monthly Average:</span>\n\t\t\t\t\t<span>\n\t\t\t\t\t\t$\n\t\t\t\t\t\t{averageRevenue.toLocaleString(undefined, {\n\t\t\t\t\t\t\tmaximumFractionDigits: 0,\n\t\t\t\t\t\t})}\n\t\t\t\t\t</span>\n\t\t\t\t</div>\n\t\t\t\t<div className="text-muted-foreground flex w-full justify-between">\n\t\t\t\t\t<span>Month-over-month growth:</span>\n\t\t\t\t\t<span className="flex items-center gap-1">\n\t\t\t\t\t\t<TrendingUpIcon className="size-4" />\n\t\t\t\t\t\t{lastMonthGrowth.toFixed(1)}%\n\t\t\t\t\t</span>\n\t\t\t\t</div>\n\t\t\t</CardFooter>\n\t\t</Card>\n\t)\n}\n',
-		component: React.lazy(() => import("@/components/demos/chart/chart-area")),
-		title: "chart-area",
+		component: React.lazy(
+			() => import("@/components/demos/chart/chart-area-demo")
+		),
+		title: "chart-area-demo",
 		category: "chart",
-		path: "src/components/demos/chart/chart-area.tsx",
+		path: "src/components/demos/chart/chart-area-demo.tsx",
 	},
-	"chart-bar": {
+	"chart-bar-demo": {
 		source:
 			'"use client"\n\nimport { TrendingUpIcon } from "lucide-react"\nimport { Bar, BarChart, CartesianGrid, Legend, XAxis } from "recharts"\n\nimport {\n\tCard,\n\tCardContent,\n\tCardDescription,\n\tCardFooter,\n\tCardHeader,\n\tCardTitle,\n} from "@/components/ui/card"\nimport {\n\tChartConfig,\n\tChartContainer,\n\tChartTooltip,\n\tChartTooltipContent,\n} from "@/components/ui/chart"\n\nconst chartData = [\n\t{ month: "Jan", revenue: 1500, expenses: 1200 },\n\t{ month: "Feb", revenue: 3200, expenses: 2800 },\n\t{ month: "Mar", revenue: 2900, expenses: 2500 },\n\t{ month: "Apr", revenue: 2100, expenses: 1900 },\n\t{ month: "May", revenue: 4000, expenses: 3500 },\n\t{ month: "Jun", revenue: 3700, expenses: 3200 },\n]\n\nconst chartConfig = {\n\trevenue: {\n\t\tlabel: "Revenue",\n\t\tcolor: "var(--chart-1)",\n\t},\n\texpenses: {\n\t\tlabel: "Expenses",\n\t\tcolor: "var(--chart-3)",\n\t},\n} satisfies ChartConfig\n\nexport default function ChartBarDemo() {\n\tconst totalRevenue = chartData.reduce((sum, item) => sum + item.revenue, 0)\n\tconst totalExpenses = chartData.reduce((sum, item) => sum + item.expenses, 0)\n\tconst netProfit = totalRevenue - totalExpenses\n\tconst profitMargin = (netProfit / totalRevenue) * 100\n\n\treturn (\n\t\t<Card className="flex w-full flex-col">\n\t\t\t<CardHeader className="text-center">\n\t\t\t\t<CardTitle>Revenue vs Expenses</CardTitle>\n\t\t\t\t<CardDescription>First half of 2024</CardDescription>\n\t\t\t</CardHeader>\n\t\t\t<CardContent className="flex-1">\n\t\t\t\t<ChartContainer config={chartConfig} className="h-[300px] w-full">\n\t\t\t\t\t<BarChart\n\t\t\t\t\t\tdata={chartData}\n\t\t\t\t\t\tmargin={{\n\t\t\t\t\t\t\tleft: 12,\n\t\t\t\t\t\t\tright: 12,\n\t\t\t\t\t\t}}\n\t\t\t\t\t>\n\t\t\t\t\t\t<CartesianGrid vertical={false} />\n\t\t\t\t\t\t<XAxis\n\t\t\t\t\t\t\tdataKey="month"\n\t\t\t\t\t\t\ttickLine={false}\n\t\t\t\t\t\t\taxisLine={false}\n\t\t\t\t\t\t\ttickMargin={8}\n\t\t\t\t\t\t\ttickFormatter={(value) => value.slice(0, 3)}\n\t\t\t\t\t\t/>\n\t\t\t\t\t\t<ChartTooltip\n\t\t\t\t\t\t\tcursor={{ fill: "var(--background)" }}\n\t\t\t\t\t\t\tcontent={<ChartTooltipContent />}\n\t\t\t\t\t\t/>\n\t\t\t\t\t\t<Legend />\n\t\t\t\t\t\t<Bar\n\t\t\t\t\t\t\tdataKey="revenue"\n\t\t\t\t\t\t\tfill={chartConfig.revenue.color}\n\t\t\t\t\t\t\tradius={[4, 4, 0, 0]}\n\t\t\t\t\t\t\tmaxBarSize={32}\n\t\t\t\t\t\t/>\n\t\t\t\t\t\t<Bar\n\t\t\t\t\t\t\tdataKey="expenses"\n\t\t\t\t\t\t\tfill={chartConfig.expenses.color}\n\t\t\t\t\t\t\tradius={[4, 4, 0, 0]}\n\t\t\t\t\t\t\tmaxBarSize={32}\n\t\t\t\t\t\t/>\n\t\t\t\t\t</BarChart>\n\t\t\t\t</ChartContainer>\n\t\t\t</CardContent>\n\t\t\t<CardFooter className="flex-col gap-2 text-sm leading-none">\n\t\t\t\t<div className="flex w-full justify-between font-medium">\n\t\t\t\t\t<span>Net Profit:</span>\n\t\t\t\t\t<span>${netProfit.toLocaleString()}</span>\n\t\t\t\t</div>\n\t\t\t\t<div className="text-muted-foreground flex w-full justify-between">\n\t\t\t\t\t<span>Profit Margin:</span>\n\t\t\t\t\t<span className="flex items-center gap-1">\n\t\t\t\t\t\t<TrendingUpIcon className="size-4" />\n\t\t\t\t\t\t{profitMargin.toFixed(1)}%\n\t\t\t\t\t</span>\n\t\t\t\t</div>\n\t\t\t\t<div className="text-muted-foreground flex w-full justify-between">\n\t\t\t\t\t<span>Total Expenses:</span>\n\t\t\t\t\t<span>${totalExpenses.toLocaleString()}</span>\n\t\t\t\t</div>\n\t\t\t</CardFooter>\n\t\t</Card>\n\t)\n}\n',
-		component: React.lazy(() => import("@/components/demos/chart/chart-bar")),
-		title: "chart-bar",
+		component: React.lazy(
+			() => import("@/components/demos/chart/chart-bar-demo")
+		),
+		title: "chart-bar-demo",
 		category: "chart",
-		path: "src/components/demos/chart/chart-bar.tsx",
+		path: "src/components/demos/chart/chart-bar-demo.tsx",
 	},
 	"chart-demo": {
 		source:
@@ -538,49 +568,55 @@ export const demoRegistry: DemoRegistry = {
 		category: "chart",
 		path: "src/components/demos/chart/chart-demo.tsx",
 	},
-	"chart-line": {
+	"chart-line-demo": {
 		source:
 			'"use client"\n\nimport { CartesianGrid, Legend, Line, LineChart, XAxis } from "recharts"\n\nimport {\n\tCard,\n\tCardContent,\n\tCardDescription,\n\tCardFooter,\n\tCardHeader,\n\tCardTitle,\n} from "@/components/ui/card"\nimport {\n\tChartConfig,\n\tChartContainer,\n\tChartTooltip,\n\tChartTooltipContent,\n} from "@/components/ui/chart"\n\nconst chartData = [\n\t{ month: "Jan", users: 100, activeUsers: 80, newUsers: 20 },\n\t{ month: "Feb", users: 120, activeUsers: 90, newUsers: 30 },\n\t{ month: "Mar", users: 150, activeUsers: 100, newUsers: 50 },\n\t{ month: "Apr", users: 200, activeUsers: 140, newUsers: 60 },\n\t{ month: "May", users: 250, activeUsers: 180, newUsers: 70 },\n\t{ month: "Jun", users: 300, activeUsers: 220, newUsers: 80 },\n]\n\nconst chartConfig = {\n\tusers: {\n\t\tlabel: "Total Users",\n\t\tcolor: "var(--chart-1)",\n\t},\n\tactiveUsers: {\n\t\tlabel: "Active Users",\n\t\tcolor: "var(--chart-2)",\n\t},\n\tnewUsers: {\n\t\tlabel: "New Users",\n\t\tcolor: "var(--chart-3)",\n\t},\n} satisfies ChartConfig\n\nexport default function ChartLineDemo() {\n\tconst totalUsers = chartData[chartData.length - 1].users\n\tconst totalActiveUsers = chartData[chartData.length - 1].activeUsers\n\tconst userGrowth =\n\t\t((chartData[5].users - chartData[0].users) / chartData[0].users) * 100\n\tconst activeUsersRate = (totalActiveUsers / totalUsers) * 100\n\n\treturn (\n\t\t<Card className="flex w-full flex-col">\n\t\t\t<CardHeader className="text-center">\n\t\t\t\t<CardTitle>User Growth</CardTitle>\n\t\t\t\t<CardDescription>User metrics for first half of 2024</CardDescription>\n\t\t\t</CardHeader>\n\t\t\t<CardContent className="flex-1">\n\t\t\t\t<ChartContainer config={chartConfig} className="h-[300px] w-full">\n\t\t\t\t\t<LineChart\n\t\t\t\t\t\tdata={chartData}\n\t\t\t\t\t\tmargin={{\n\t\t\t\t\t\t\tleft: 12,\n\t\t\t\t\t\t\tright: 12,\n\t\t\t\t\t\t}}\n\t\t\t\t\t>\n\t\t\t\t\t\t<CartesianGrid vertical={false} />\n\t\t\t\t\t\t<XAxis\n\t\t\t\t\t\t\tdataKey="month"\n\t\t\t\t\t\t\ttickLine={false}\n\t\t\t\t\t\t\taxisLine={false}\n\t\t\t\t\t\t\ttickMargin={8}\n\t\t\t\t\t\t\ttickFormatter={(value) => value.slice(0, 3)}\n\t\t\t\t\t\t/>\n\t\t\t\t\t\t<ChartTooltip content={<ChartTooltipContent />} />\n\t\t\t\t\t\t<Legend />\n\t\t\t\t\t\t<Line\n\t\t\t\t\t\t\ttype="monotone"\n\t\t\t\t\t\t\tdataKey="users"\n\t\t\t\t\t\t\tstroke={chartConfig.users.color}\n\t\t\t\t\t\t\tstrokeWidth={2}\n\t\t\t\t\t\t\tdot={false}\n\t\t\t\t\t\t/>\n\t\t\t\t\t\t<Line\n\t\t\t\t\t\t\ttype="monotone"\n\t\t\t\t\t\t\tdataKey="activeUsers"\n\t\t\t\t\t\t\tstroke={chartConfig.activeUsers.color}\n\t\t\t\t\t\t\tstrokeWidth={2}\n\t\t\t\t\t\t\tdot={false}\n\t\t\t\t\t\t/>\n\t\t\t\t\t\t<Line\n\t\t\t\t\t\t\ttype="monotone"\n\t\t\t\t\t\t\tdataKey="newUsers"\n\t\t\t\t\t\t\tstroke={chartConfig.newUsers.color}\n\t\t\t\t\t\t\tstrokeWidth={2}\n\t\t\t\t\t\t\tdot={false}\n\t\t\t\t\t\t/>\n\t\t\t\t\t</LineChart>\n\t\t\t\t</ChartContainer>\n\t\t\t</CardContent>\n\t\t\t<CardFooter className="flex-col gap-2 text-sm leading-none">\n\t\t\t\t<div className="flex w-full justify-between font-medium">\n\t\t\t\t\t<span>Total Users:</span>\n\t\t\t\t\t<span>{totalUsers.toLocaleString()}</span>\n\t\t\t\t</div>\n\t\t\t\t<div className="text-muted-foreground flex w-full justify-between">\n\t\t\t\t\t<span>Active Users Rate:</span>\n\t\t\t\t\t<span>{activeUsersRate.toFixed(1)}%</span>\n\t\t\t\t</div>\n\t\t\t\t<div className="text-muted-foreground flex w-full justify-between">\n\t\t\t\t\t<span>6-Month Growth:</span>\n\t\t\t\t\t<span>{userGrowth.toFixed(1)}%</span>\n\t\t\t\t</div>\n\t\t\t</CardFooter>\n\t\t</Card>\n\t)\n}\n',
-		component: React.lazy(() => import("@/components/demos/chart/chart-line")),
-		title: "chart-line",
+		component: React.lazy(
+			() => import("@/components/demos/chart/chart-line-demo")
+		),
+		title: "chart-line-demo",
 		category: "chart",
-		path: "src/components/demos/chart/chart-line.tsx",
+		path: "src/components/demos/chart/chart-line-demo.tsx",
 	},
-	"chart-pie": {
+	"chart-pie-demo": {
 		source:
 			'"use client"\n\nimport { Cell, Legend, Pie, PieChart } from "recharts"\n\nimport {\n\tCard,\n\tCardContent,\n\tCardDescription,\n\tCardFooter,\n\tCardHeader,\n\tCardTitle,\n} from "@/components/ui/card"\nimport {\n\tChartConfig,\n\tChartContainer,\n\tChartTooltip,\n\tChartTooltipContent,\n} from "@/components/ui/chart"\n\nconst chartData = [\n\t{ category: "Sales", amount: 4000, fill: "var(--chart-1)" },\n\t{ category: "Marketing", amount: 3000, fill: "var(--chart-2)" },\n\t{ category: "IT", amount: 2000, fill: "var(--chart-3)" },\n\t{ category: "HR", amount: 1000, fill: "var(--chart-4)" },\n\t{ category: "Operations", amount: 1000, fill: "var(--chart-5)" },\n]\n\nconst chartConfig = {\n\tsales: {\n\t\tlabel: "Sales",\n\t\tcolor: "var(--chart-1)",\n\t},\n\tmarketing: {\n\t\tlabel: "Marketing",\n\t\tcolor: "var(--chart-2)",\n\t},\n\tit: {\n\t\tlabel: "IT",\n\t\tcolor: "var(--chart-3)",\n\t},\n\thr: {\n\t\tlabel: "HR",\n\t\tcolor: "var(--chart-4)",\n\t},\n\toperations: {\n\t\tlabel: "Operations",\n\t\tcolor: "var(--chart-5)",\n\t},\n} satisfies ChartConfig\n\nexport default function ChartPieDemo() {\n\tconst totalBudget = chartData.reduce((sum, item) => sum + item.amount, 0)\n\tconst highestBudget = Math.max(...chartData.map((item) => item.amount))\n\tconst highestCategory = chartData.find(\n\t\t(item) => item.amount === highestBudget\n\t)?.category\n\n\treturn (\n\t\t<Card className="flex w-full flex-col">\n\t\t\t<CardHeader className="pb-0 text-center">\n\t\t\t\t<CardTitle>Budget Distribution</CardTitle>\n\t\t\t\t<CardDescription>Department budget allocation for 2024</CardDescription>\n\t\t\t</CardHeader>\n\t\t\t<CardContent className="flex-1">\n\t\t\t\t<ChartContainer config={chartConfig} className="h-[300px] w-full">\n\t\t\t\t\t<PieChart>\n\t\t\t\t\t\t<ChartTooltip\n\t\t\t\t\t\t\tcursor={false}\n\t\t\t\t\t\t\tcontent={<ChartTooltipContent hideLabel />}\n\t\t\t\t\t\t/>\n\t\t\t\t\t\t<Legend />\n\t\t\t\t\t\t<Pie\n\t\t\t\t\t\t\tdata={chartData}\n\t\t\t\t\t\t\tdataKey="amount"\n\t\t\t\t\t\t\tnameKey="category"\n\t\t\t\t\t\t\tcx="50%"\n\t\t\t\t\t\t\tcy="50%"\n\t\t\t\t\t\t>\n\t\t\t\t\t\t\t{chartData.map((entry, index) => (\n\t\t\t\t\t\t\t\t<Cell key={`cell-${index}`} fill={entry.fill} />\n\t\t\t\t\t\t\t))}\n\t\t\t\t\t\t</Pie>\n\t\t\t\t\t</PieChart>\n\t\t\t\t</ChartContainer>\n\t\t\t</CardContent>\n\t\t\t<CardFooter className="flex-col gap-2 text-sm leading-none">\n\t\t\t\t<div className="flex w-full justify-between font-medium">\n\t\t\t\t\t<span>Total Budget:</span>\n\t\t\t\t\t<span>${totalBudget.toLocaleString()}</span>\n\t\t\t\t</div>\n\t\t\t\t<div className="text-muted-foreground flex w-full justify-between">\n\t\t\t\t\t<span>Largest Department:</span>\n\t\t\t\t\t<span>{highestCategory}</span>\n\t\t\t\t</div>\n\t\t\t\t<div className="text-muted-foreground flex w-full justify-between">\n\t\t\t\t\t<span>Highest Budget:</span>\n\t\t\t\t\t<span>${highestBudget.toLocaleString()}</span>\n\t\t\t\t</div>\n\t\t\t</CardFooter>\n\t\t</Card>\n\t)\n}\n',
-		component: React.lazy(() => import("@/components/demos/chart/chart-pie")),
-		title: "chart-pie",
+		component: React.lazy(
+			() => import("@/components/demos/chart/chart-pie-demo")
+		),
+		title: "chart-pie-demo",
 		category: "chart",
-		path: "src/components/demos/chart/chart-pie.tsx",
+		path: "src/components/demos/chart/chart-pie-demo.tsx",
 	},
-	"chart-radar": {
+	"chart-radar-demo": {
 		source:
 			'"use client"\n\nimport { Legend, PolarAngleAxis, PolarGrid, Radar, RadarChart } from "recharts"\n\nimport {\n\tCard,\n\tCardContent,\n\tCardDescription,\n\tCardFooter,\n\tCardHeader,\n\tCardTitle,\n} from "@/components/ui/card"\nimport {\n\tChartConfig,\n\tChartContainer,\n\tChartTooltip,\n\tChartTooltipContent,\n} from "@/components/ui/chart"\n\nconst chartData = [\n\t{ category: "Performance", a: 90, b: 60 },\n\t{ category: "Reliability", a: 75, b: 90 },\n\t{ category: "Scalability", a: 95, b: 90 },\n\t{ category: "Security", a: 88, b: 65 },\n\t{ category: "Usability", a: 92, b: 88 },\n]\n\nconst chartConfig = {\n\ta: {\n\t\tlabel: "Product A",\n\t\tcolor: "var(--chart-1)",\n\t},\n\tb: {\n\t\tlabel: "Product B",\n\t\tcolor: "var(--chart-2)",\n\t},\n} satisfies ChartConfig\n\nexport default function ChartRadarDemo() {\n\tconst productAAverage =\n\t\tchartData.reduce((sum, item) => sum + item.a, 0) / chartData.length\n\tconst productBAverage =\n\t\tchartData.reduce((sum, item) => sum + item.b, 0) / chartData.length\n\tconst bestPerformer =\n\t\tproductAAverage > productBAverage ? "Product A" : "Product B"\n\n\treturn (\n\t\t<Card className="flex w-full flex-col">\n\t\t\t<CardHeader className="text-center">\n\t\t\t\t<CardTitle>Product Comparison</CardTitle>\n\t\t\t\t<CardDescription>\n\t\t\t\t\tPerformance metrics across key categories\n\t\t\t\t</CardDescription>\n\t\t\t</CardHeader>\n\t\t\t<CardContent className="flex-1">\n\t\t\t\t<ChartContainer config={chartConfig} className="h-[300px] w-full">\n\t\t\t\t\t<RadarChart data={chartData}>\n\t\t\t\t\t\t<PolarGrid />\n\t\t\t\t\t\t<PolarAngleAxis dataKey="category" />\n\t\t\t\t\t\t<ChartTooltip content={<ChartTooltipContent />} />\n\t\t\t\t\t\t<Legend />\n\t\t\t\t\t\t<Radar\n\t\t\t\t\t\t\tname="Product A"\n\t\t\t\t\t\t\tdataKey="a"\n\t\t\t\t\t\t\tstroke={chartConfig.a.color}\n\t\t\t\t\t\t\tfill={chartConfig.a.color}\n\t\t\t\t\t\t\tfillOpacity={0.2}\n\t\t\t\t\t\t/>\n\t\t\t\t\t\t<Radar\n\t\t\t\t\t\t\tname="Product B"\n\t\t\t\t\t\t\tdataKey="b"\n\t\t\t\t\t\t\tstroke={chartConfig.b.color}\n\t\t\t\t\t\t\tfill={chartConfig.b.color}\n\t\t\t\t\t\t\tfillOpacity={0.2}\n\t\t\t\t\t\t/>\n\t\t\t\t\t</RadarChart>\n\t\t\t\t</ChartContainer>\n\t\t\t</CardContent>\n\t\t\t<CardFooter className="flex-col gap-2 text-sm leading-none">\n\t\t\t\t<div className="flex w-full justify-between font-medium">\n\t\t\t\t\t<span>Best Overall:</span>\n\t\t\t\t\t<span>{bestPerformer}</span>\n\t\t\t\t</div>\n\t\t\t\t<div className="text-muted-foreground flex w-full justify-between">\n\t\t\t\t\t<span>Product A Average:</span>\n\t\t\t\t\t<span>{productAAverage.toFixed(1)}%</span>\n\t\t\t\t</div>\n\t\t\t\t<div className="text-muted-foreground flex w-full justify-between">\n\t\t\t\t\t<span>Product B Average:</span>\n\t\t\t\t\t<span>{productBAverage.toFixed(1)}%</span>\n\t\t\t\t</div>\n\t\t\t</CardFooter>\n\t\t</Card>\n\t)\n}\n',
-		component: React.lazy(() => import("@/components/demos/chart/chart-radar")),
-		title: "chart-radar",
+		component: React.lazy(
+			() => import("@/components/demos/chart/chart-radar-demo")
+		),
+		title: "chart-radar-demo",
 		category: "chart",
-		path: "src/components/demos/chart/chart-radar.tsx",
+		path: "src/components/demos/chart/chart-radar-demo.tsx",
 	},
-	"chart-radial-bar": {
+	"chart-radial-bar-demo": {
 		source:
 			'"use client"\n\nimport { RadialBar, RadialBarChart } from "recharts"\n\nimport {\n\tCard,\n\tCardContent,\n\tCardDescription,\n\tCardFooter,\n\tCardHeader,\n\tCardTitle,\n} from "@/components/ui/card"\nimport {\n\tChartConfig,\n\tChartContainer,\n\tChartTooltip,\n\tChartTooltipContent,\n} from "@/components/ui/chart"\n\nconst chartData = [\n\t{ browser: "chrome", visitors: 540, fill: "var(--color-chrome)" },\n\t{ browser: "safari", visitors: 410, fill: "var(--color-safari)" },\n\t{ browser: "firefox", visitors: 262, fill: "var(--color-firefox)" },\n\t{ browser: "edge", visitors: 160, fill: "var(--color-edge)" },\n\t{ browser: "other", visitors: 100, fill: "var(--color-other)" },\n]\n\nconst chartConfig = {\n\tvisitors: {\n\t\tlabel: "Visitors",\n\t},\n\tchrome: {\n\t\tlabel: "Chrome",\n\t\tcolor: "var(--chart-1)",\n\t},\n\tsafari: {\n\t\tlabel: "Safari",\n\t\tcolor: "var(--chart-2)",\n\t},\n\tfirefox: {\n\t\tlabel: "Firefox",\n\t\tcolor: "var(--chart-3)",\n\t},\n\tedge: {\n\t\tlabel: "Edge",\n\t\tcolor: "var(--chart-4)",\n\t},\n\tother: {\n\t\tlabel: "Other",\n\t\tcolor: "var(--chart-5)",\n\t},\n} satisfies ChartConfig\n\nexport default function ChartRadialBarDemo() {\n\tconst totalVisitors = chartData.reduce((sum, item) => sum + item.visitors, 0)\n\tconst highestVisitors = Math.max(...chartData.map((item) => item.visitors))\n\tconst topBrowser = chartData.find(\n\t\t(item) => item.visitors === highestVisitors\n\t)?.browser\n\n\treturn (\n\t\t<Card className="flex w-full flex-col">\n\t\t\t<CardHeader className="text-center">\n\t\t\t\t<CardTitle>Browser Usage</CardTitle>\n\t\t\t\t<CardDescription>Visitor distribution by browser</CardDescription>\n\t\t\t</CardHeader>\n\t\t\t<CardContent className="flex-1">\n\t\t\t\t<ChartContainer\n\t\t\t\t\tconfig={chartConfig}\n\t\t\t\t\tclassName="mx-auto aspect-square h-[250px]"\n\t\t\t\t>\n\t\t\t\t\t<RadialBarChart data={chartData} innerRadius={30} outerRadius={110}>\n\t\t\t\t\t\t<ChartTooltip\n\t\t\t\t\t\t\tcursor={false}\n\t\t\t\t\t\t\tcontent={<ChartTooltipContent hideLabel nameKey="browser" />}\n\t\t\t\t\t\t/>\n\t\t\t\t\t\t<RadialBar dataKey="visitors" background />\n\t\t\t\t\t</RadialBarChart>\n\t\t\t\t</ChartContainer>\n\t\t\t</CardContent>\n\t\t\t<CardFooter className="flex-col gap-2 text-sm leading-none">\n\t\t\t\t<div className="flex w-full justify-between font-medium">\n\t\t\t\t\t<span>Total Visitors:</span>\n\t\t\t\t\t<span>{totalVisitors.toLocaleString()}</span>\n\t\t\t\t</div>\n\t\t\t\t<div className="text-muted-foreground flex w-full justify-between">\n\t\t\t\t\t<span>Most Used Browser:</span>\n\t\t\t\t\t<span className="capitalize">{topBrowser}</span>\n\t\t\t\t</div>\n\t\t\t\t<div className="text-muted-foreground flex w-full justify-between">\n\t\t\t\t\t<span>Peak Visitors:</span>\n\t\t\t\t\t<span>{highestVisitors.toLocaleString()}</span>\n\t\t\t\t</div>\n\t\t\t</CardFooter>\n\t\t</Card>\n\t)\n}\n',
 		component: React.lazy(
-			() => import("@/components/demos/chart/chart-radial-bar")
+			() => import("@/components/demos/chart/chart-radial-bar-demo")
 		),
-		title: "chart-radial-bar",
+		title: "chart-radial-bar-demo",
 		category: "chart",
-		path: "src/components/demos/chart/chart-radial-bar.tsx",
+		path: "src/components/demos/chart/chart-radial-bar-demo.tsx",
 	},
-	"chart-scatter": {
+	"chart-scatter-demo": {
 		source:
 			'"use client"\n\nimport {\n\tCartesianGrid,\n\tScatter,\n\tScatterChart,\n\tXAxis,\n\tYAxis,\n\tZAxis,\n} from "recharts"\n\nimport {\n\tCard,\n\tCardContent,\n\tCardDescription,\n\tCardFooter,\n\tCardHeader,\n\tCardTitle,\n} from "@/components/ui/card"\nimport {\n\tChartConfig,\n\tChartContainer,\n\tChartTooltip,\n\tChartTooltipContent,\n} from "@/components/ui/chart"\n\nconst chartData = [\n\t{ population: 850000, price: 425000, city: "San Francisco" },\n\t{ population: 2700000, price: 385000, city: "Chicago" },\n\t{ population: 8400000, price: 750000, city: "New York" },\n\t{ population: 4000000, price: 890000, city: "Los Angeles" },\n\t{ population: 2300000, price: 350000, city: "Houston" },\n\t{ population: 1600000, price: 420000, city: "Philadelphia" },\n\t{ population: 730000, price: 480000, city: "Seattle" },\n\t{ population: 690000, price: 445000, city: "Boston" },\n\t{ population: 710000, price: 320000, city: "Denver" },\n\t{ population: 950000, price: 295000, city: "Austin" },\n]\n\nconst chartConfig = {\n\tscatter: {\n\t\tlabel: "Cities",\n\t\tcolor: "var(--chart-1)",\n\t},\n} satisfies ChartConfig\n\nexport default function ChartScatterDemo() {\n\tconst averagePrice =\n\t\tchartData.reduce((sum, item) => sum + item.price, 0) / chartData.length\n\tconst highestPrice = Math.max(...chartData.map((item) => item.price))\n\tconst mostExpensiveCity = chartData.find(\n\t\t(item) => item.price === highestPrice\n\t)?.city\n\n\treturn (\n\t\t<Card className="flex w-full flex-col">\n\t\t\t<CardHeader className="text-center">\n\t\t\t\t<CardTitle>Housing Market Analysis</CardTitle>\n\t\t\t\t<CardDescription>\n\t\t\t\t\tPopulation vs House Prices in Major Cities\n\t\t\t\t</CardDescription>\n\t\t\t</CardHeader>\n\t\t\t<CardContent>\n\t\t\t\t<ChartContainer config={chartConfig} className="h-[300px] w-full">\n\t\t\t\t\t<ScatterChart>\n\t\t\t\t\t\t<CartesianGrid strokeDasharray="3 3" />\n\t\t\t\t\t\t<XAxis\n\t\t\t\t\t\t\ttype="number"\n\t\t\t\t\t\t\tdataKey="price"\n\t\t\t\t\t\t\tname="Average House Price"\n\t\t\t\t\t\t\tunit="$"\n\t\t\t\t\t\t\ttickLine={false}\n\t\t\t\t\t\t\taxisLine={false}\n\t\t\t\t\t\t\ttickFormatter={(value) => `$${(value / 1000).toFixed(0)}k`}\n\t\t\t\t\t\t/>\n\t\t\t\t\t\t<YAxis\n\t\t\t\t\t\t\ttype="number"\n\t\t\t\t\t\t\tdataKey="population"\n\t\t\t\t\t\t\tname="Population"\n\t\t\t\t\t\t\ttickLine={false}\n\t\t\t\t\t\t\taxisLine={false}\n\t\t\t\t\t\t\ttickFormatter={(value) => `${(value / 1000000).toFixed(1)}M`}\n\t\t\t\t\t\t/>\n\t\t\t\t\t\t<ZAxis type="category" dataKey="city" name="City" />\n\t\t\t\t\t\t<ChartTooltip\n\t\t\t\t\t\t\tcontent={\n\t\t\t\t\t\t\t\t<ChartTooltipContent\n\t\t\t\t\t\t\t\t\tnameKey="city"\n\t\t\t\t\t\t\t\t\tlabelKey="price"\n\t\t\t\t\t\t\t\t\thideIndicator\n\t\t\t\t\t\t\t\t/>\n\t\t\t\t\t\t\t}\n\t\t\t\t\t\t/>\n\t\t\t\t\t\t<Scatter\n\t\t\t\t\t\t\tname="Cities"\n\t\t\t\t\t\t\tdata={chartData}\n\t\t\t\t\t\t\tfill={chartConfig.scatter.color}\n\t\t\t\t\t\t/>\n\t\t\t\t\t</ScatterChart>\n\t\t\t\t</ChartContainer>\n\t\t\t</CardContent>\n\t\t\t<CardFooter className="flex-col gap-2 text-sm leading-none">\n\t\t\t\t<div className="flex w-full justify-between font-medium">\n\t\t\t\t\t<span>Most Expensive City:</span>\n\t\t\t\t\t<span>{mostExpensiveCity}</span>\n\t\t\t\t</div>\n\t\t\t\t<div className="text-muted-foreground flex w-full justify-between">\n\t\t\t\t\t<span>Average House Price:</span>\n\t\t\t\t\t<span>${averagePrice.toLocaleString()}</span>\n\t\t\t\t</div>\n\t\t\t\t<div className="text-muted-foreground flex w-full justify-between">\n\t\t\t\t\t<span>Highest House Price:</span>\n\t\t\t\t\t<span>${highestPrice.toLocaleString()}</span>\n\t\t\t\t</div>\n\t\t\t</CardFooter>\n\t\t</Card>\n\t)\n}\n',
 		component: React.lazy(
-			() => import("@/components/demos/chart/chart-scatter")
+			() => import("@/components/demos/chart/chart-scatter-demo")
 		),
-		title: "chart-scatter",
+		title: "chart-scatter-demo",
 		category: "chart",
-		path: "src/components/demos/chart/chart-scatter.tsx",
+		path: "src/components/demos/chart/chart-scatter-demo.tsx",
 	},
 	"checkbox-group-demo": {
 		source:
@@ -602,39 +638,39 @@ export const demoRegistry: DemoRegistry = {
 		category: "checkbox",
 		path: "src/components/demos/checkbox/checkbox-demo.tsx",
 	},
-	"checkbox-disabled": {
+	"checkbox-disabled-demo": {
 		source:
-			'import { Checkbox } from "@/components/ui/checkbox"\n\nexport default function CheckboxDisabled() {\n\treturn <Checkbox disabled />\n}\n',
+			'import { Checkbox } from "@/components/ui/checkbox"\n\nexport default function CheckboxDisabledDemo() {\n\treturn <Checkbox disabled />\n}\n',
 		component: React.lazy(
-			() => import("@/components/demos/checkbox/checkbox-disabled")
+			() => import("@/components/demos/checkbox/checkbox-disabled-demo")
 		),
-		title: "checkbox-disabled",
+		title: "checkbox-disabled-demo",
 		category: "checkbox",
-		path: "src/components/demos/checkbox/checkbox-disabled.tsx",
+		path: "src/components/demos/checkbox/checkbox-disabled-demo.tsx",
 	},
-	"checkbox-error": {
+	"checkbox-error-demo": {
 		source:
-			'import { Checkbox } from "@/components/ui/checkbox"\n\nexport default function CheckboxError() {\n\treturn <Checkbox aria-invalid />\n}\n',
+			'import { Checkbox } from "@/components/ui/checkbox"\n\nexport default function CheckboxErrorDemo() {\n\treturn <Checkbox aria-invalid />\n}\n',
 		component: React.lazy(
-			() => import("@/components/demos/checkbox/checkbox-error")
+			() => import("@/components/demos/checkbox/checkbox-error-demo")
 		),
-		title: "checkbox-error",
+		title: "checkbox-error-demo",
 		category: "checkbox",
-		path: "src/components/demos/checkbox/checkbox-error.tsx",
+		path: "src/components/demos/checkbox/checkbox-error-demo.tsx",
 	},
-	"checkbox-with-label": {
+	"checkbox-with-label-demo": {
 		source:
-			'import { Checkbox } from "@/components/ui/checkbox"\nimport { Label } from "@/components/ui/label"\n\nexport default function CheckboxWithLabel() {\n\treturn (\n\t\t<div className="flex items-center gap-2">\n\t\t\t<Checkbox id="accept" />\n\t\t\t<Label htmlFor="accept">Accept</Label>\n\t\t</div>\n\t)\n}\n',
+			'import { Checkbox } from "@/components/ui/checkbox"\nimport { Label } from "@/components/ui/label"\n\nexport default function CheckboxWithLabelDemo() {\n\treturn (\n\t\t<Label className="flex items-center gap-2">\n\t\t\t<Checkbox id="accept" />\n\t\t\tAccept\n\t\t</Label>\n\t)\n}\n',
 		component: React.lazy(
-			() => import("@/components/demos/checkbox/checkbox-with-label")
+			() => import("@/components/demos/checkbox/checkbox-with-label-demo")
 		),
-		title: "checkbox-with-label",
+		title: "checkbox-with-label-demo",
 		category: "checkbox",
-		path: "src/components/demos/checkbox/checkbox-with-label.tsx",
+		path: "src/components/demos/checkbox/checkbox-with-label-demo.tsx",
 	},
 	"collapsible-demo": {
 		source:
-			'import { useState } from "react"\nimport { ChevronRightIcon } from "lucide-react"\n\nimport {\n\tCollapsible,\n\tCollapsibleContent,\n\tCollapsibleTrigger,\n} from "@/components/ui/collapsible"\n\nimport { cn } from "@/lib/utils"\n\nexport default function CollapsibleDemo() {\n\tconst [open, setOpen] = useState(false)\n\n\treturn (\n\t\t<Collapsible\n\t\t\tclassName="mx-auto w-40 py-12"\n\t\t\topen={open}\n\t\t\tonOpenChange={setOpen}\n\t\t>\n\t\t\t<CollapsibleTrigger className="bg-card flex w-full items-center justify-between rounded-sm border px-2 py-1">\n\t\t\t\t<span className="text-sm font-medium">Components</span>\n\t\t\t\t<div className={cn("transition-all duration-200", open && "rotate-90")}>\n\t\t\t\t\t<ChevronRightIcon size={16} />\n\t\t\t\t</div>\n\t\t\t</CollapsibleTrigger>\n\t\t\t<CollapsibleContent>\n\t\t\t\t<ol className="bg-card mt-2 space-y-1 rounded-sm border py-1 font-medium">\n\t\t\t\t\t<li className="px-2 py-1">Button</li>\n\t\t\t\t\t<li className="px-2 py-1">Badge</li>\n\t\t\t\t\t<li className="px-2 py-1">Breadcrumbs</li>\n\t\t\t\t</ol>\n\t\t\t</CollapsibleContent>\n\t\t</Collapsible>\n\t)\n}\n',
+			'import { useState } from "react"\nimport { ChevronRightIcon } from "lucide-react"\n\nimport {\n\tCollapsible,\n\tCollapsibleContent,\n\tCollapsibleTrigger,\n} from "@/components/ui/collapsible"\n\nimport { cn } from "@/lib/utils"\n\nexport default function CollapsibleDemo() {\n\tconst [open, setOpen] = useState(false)\n\n\treturn (\n\t\t<Collapsible\n\t\t\tclassName="mx-auto w-40 py-12"\n\t\t\topen={open}\n\t\t\tonOpenChange={setOpen}\n\t\t>\n\t\t\t<CollapsibleTrigger className="flex w-full items-center justify-between">\n\t\t\t\t<span className="text-sm font-medium">Show recovery keys</span>\n\t\t\t\t<div className={cn("transition-all duration-200", open && "rotate-90")}>\n\t\t\t\t\t<ChevronRightIcon size={16} />\n\t\t\t\t</div>\n\t\t\t</CollapsibleTrigger>\n\t\t\t<CollapsibleContent>\n\t\t\t\t<ol className="mt-2 space-y-1.5 font-medium">\n\t\t\t\t\t<li className="bg-secondary rounded-sm px-2 py-1">A5FD-7K1B-ZR92</li>\n\t\t\t\t\t<li className="bg-secondary rounded-sm px-2 py-1">CQ9P-L02R-W8NV</li>\n\t\t\t\t\t<li className="bg-secondary rounded-sm px-2 py-1">8FD5-GH2B-0SA7</li>\n\t\t\t\t</ol>\n\t\t\t</CollapsibleContent>\n\t\t</Collapsible>\n\t)\n}\n',
 		component: React.lazy(
 			() => import("@/components/demos/collapsible/collapsible-demo")
 		),
@@ -642,15 +678,15 @@ export const demoRegistry: DemoRegistry = {
 		category: "collapsible",
 		path: "src/components/demos/collapsible/collapsible-demo.tsx",
 	},
-	"combobox-creatable": {
+	"combobox-creatable-demo": {
 		source:
-			'import * as React from "react"\nimport { Plus } from "lucide-react"\n\nimport { Button } from "@/components/ui/button"\nimport {\n\tCombobox,\n\tComboboxChip,\n\tComboboxChips,\n\tComboboxContent,\n\tComboboxEmpty,\n\tComboboxInput,\n\tComboboxItem,\n\tComboboxList,\n\tComboboxValue,\n} from "@/components/ui/combobox"\nimport {\n\tDialog,\n\tDialogContent,\n\tDialogDescription,\n\tDialogFooter,\n\tDialogTitle,\n} from "@/components/ui/dialog"\nimport { Input } from "@/components/ui/input"\nimport { Label } from "@/components/ui/label"\n\nexport default function CreatableComboboxDemo() {\n\tconst id = React.useId()\n\n\tconst [labels, setLabels] = React.useState<LabelItem[]>(initialLabels)\n\tconst [selected, setSelected] = React.useState<LabelItem[]>([])\n\tconst [query, setQuery] = React.useState("")\n\tconst [openDialog, setOpenDialog] = React.useState(false)\n\n\tconst containerRef = React.useRef<HTMLDivElement | null>(null)\n\tconst createInputRef = React.useRef<HTMLInputElement | null>(null)\n\tconst pendingQueryRef = React.useRef("")\n\n\tfunction handleCreate() {\n\t\tconst input = createInputRef.current\n\t\tconst value = input ? input.value.trim() : ""\n\t\tif (!value) {\n\t\t\treturn\n\t\t}\n\n\t\tconst normalized = value.toLocaleLowerCase()\n\t\tconst baseId = normalized.replace(/\\s+/g, "-")\n\t\tconst existing = labels.find(\n\t\t\t(l) => l.value.trim().toLocaleLowerCase() === normalized\n\t\t)\n\n\t\tif (existing) {\n\t\t\tsetSelected((prev) =>\n\t\t\t\tprev.some((i) => i.id === existing.id) ? prev : [...prev, existing]\n\t\t\t)\n\t\t\tsetOpenDialog(false)\n\t\t\tsetQuery("")\n\t\t\treturn\n\t\t}\n\n\t\t// Ensure we don\'t collide with an existing id (e.g., value "docs" vs. existing id "docs")\n\t\tconst existingIds = new Set(labels.map((l) => l.id))\n\t\tlet uniqueId = baseId\n\t\tif (existingIds.has(uniqueId)) {\n\t\t\tlet i = 2\n\t\t\twhile (existingIds.has(`${baseId}-${i}`)) {\n\t\t\t\ti += 1\n\t\t\t}\n\t\t\tuniqueId = `${baseId}-${i}`\n\t\t}\n\n\t\tconst newItem: LabelItem = { id: uniqueId, value }\n\n\t\tif (!selected.find((item) => item.id === newItem.id)) {\n\t\t\tsetLabels((prev) => [...prev, newItem])\n\t\t\tsetSelected((prev) => [...prev, newItem])\n\t\t}\n\n\t\tsetOpenDialog(false)\n\t\tsetQuery("")\n\t}\n\n\tfunction handleCreateSubmit(event: React.FormEvent<HTMLFormElement>) {\n\t\tevent.preventDefault()\n\t\thandleCreate()\n\t}\n\n\tconst trimmed = query.trim()\n\tconst lowered = trimmed.toLocaleLowerCase()\n\tconst exactExists = labels.some(\n\t\t(l) => l.value.trim().toLocaleLowerCase() === lowered\n\t)\n\t// Show the creatable item alongside matches if there\'s no exact match\n\tconst itemsForView: Array<LabelItem> =\n\t\ttrimmed !== "" && !exactExists\n\t\t\t? [\n\t\t\t\t\t...labels,\n\t\t\t\t\t{\n\t\t\t\t\t\tcreatable: trimmed,\n\t\t\t\t\t\tid: `create:${lowered}`,\n\t\t\t\t\t\tvalue: `Create "${trimmed}"`,\n\t\t\t\t\t},\n\t\t\t\t]\n\t\t\t: labels\n\n\treturn (\n\t\t<React.Fragment>\n\t\t\t<Combobox\n\t\t\t\titems={itemsForView}\n\t\t\t\tmultiple\n\t\t\t\tonValueChange={(value) => {\n\t\t\t\t\tconst next = value as LabelItem[]\n\t\t\t\t\tconst last = next[next.length - 1]\n\t\t\t\t\tif (last && last.creatable) {\n\t\t\t\t\t\tpendingQueryRef.current = last.creatable\n\t\t\t\t\t\tsetOpenDialog(true)\n\t\t\t\t\t\treturn\n\t\t\t\t\t}\n\t\t\t\t\tconst clean = next.filter((i: LabelItem) => !i.creatable)\n\t\t\t\t\tsetSelected(clean)\n\t\t\t\t\tsetQuery("")\n\t\t\t\t}}\n\t\t\t\tvalue={selected}\n\t\t\t\tinputValue={query}\n\t\t\t\tonInputValueChange={setQuery}\n\t\t\t\tonOpenChange={(open, details) => {\n\t\t\t\t\tif ("key" in details.event && details.event.key === "Enter") {\n\t\t\t\t\t\t// When pressing Enter:\n\t\t\t\t\t\t// - If the typed value exactly matches an existing item, add that item to the selected chips\n\t\t\t\t\t\t// - Otherwise, create a new item\n\t\t\t\t\t\tif (trimmed === "") {\n\t\t\t\t\t\t\treturn\n\t\t\t\t\t\t}\n\n\t\t\t\t\t\tconst existing = labels.find(\n\t\t\t\t\t\t\t(l) => l.value.trim().toLocaleLowerCase() === lowered\n\t\t\t\t\t\t)\n\n\t\t\t\t\t\tif (existing) {\n\t\t\t\t\t\t\tsetSelected((prev) =>\n\t\t\t\t\t\t\t\tprev.some((i) => i.id === existing.id)\n\t\t\t\t\t\t\t\t\t? prev\n\t\t\t\t\t\t\t\t\t: [...prev, existing]\n\t\t\t\t\t\t\t)\n\t\t\t\t\t\t\tsetQuery("")\n\t\t\t\t\t\t\treturn\n\t\t\t\t\t\t}\n\n\t\t\t\t\t\tpendingQueryRef.current = trimmed\n\t\t\t\t\t\tsetOpenDialog(true)\n\t\t\t\t\t}\n\t\t\t\t}}\n\t\t\t>\n\t\t\t\t<div className="flex w-80 flex-col gap-2">\n\t\t\t\t\t<Label htmlFor={id}>Labels</Label>\n\t\t\t\t\t<ComboboxChips ref={containerRef}>\n\t\t\t\t\t\t<ComboboxValue>\n\t\t\t\t\t\t\t{(value: LabelItem[]) => (\n\t\t\t\t\t\t\t\t<React.Fragment>\n\t\t\t\t\t\t\t\t\t{value.length > 0 && (\n\t\t\t\t\t\t\t\t\t\t<div className="flex flex-wrap gap-1 p-1">\n\t\t\t\t\t\t\t\t\t\t\t{value.map((label) => (\n\t\t\t\t\t\t\t\t\t\t\t\t<ComboboxChip key={label.id} aria-label={label.value}>\n\t\t\t\t\t\t\t\t\t\t\t\t\t{label.value}\n\t\t\t\t\t\t\t\t\t\t\t\t</ComboboxChip>\n\t\t\t\t\t\t\t\t\t\t\t))}\n\t\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t)}\n\t\t\t\t\t\t\t\t\t<ComboboxInput\n\t\t\t\t\t\t\t\t\t\tid={id}\n\t\t\t\t\t\t\t\t\t\tplaceholder="e.g. bug"\n\t\t\t\t\t\t\t\t\t\tshowClear={false}\n\t\t\t\t\t\t\t\t\t\tmultiple\n\t\t\t\t\t\t\t\t\t/>\n\t\t\t\t\t\t\t\t</React.Fragment>\n\t\t\t\t\t\t\t)}\n\t\t\t\t\t\t</ComboboxValue>\n\t\t\t\t\t</ComboboxChips>\n\t\t\t\t</div>\n\n\t\t\t\t<ComboboxContent anchor={containerRef}>\n\t\t\t\t\t<ComboboxEmpty>No labels found.</ComboboxEmpty>\n\t\t\t\t\t<ComboboxList>\n\t\t\t\t\t\t{(item: LabelItem) =>\n\t\t\t\t\t\t\titem.creatable ? (\n\t\t\t\t\t\t\t\t<ComboboxItem key={item.id} value={item}>\n\t\t\t\t\t\t\t\t\t<Plus className="size-4" />\n\t\t\t\t\t\t\t\t\t<span>Create &quot;{item.creatable}&quot;</span>\n\t\t\t\t\t\t\t\t</ComboboxItem>\n\t\t\t\t\t\t\t) : (\n\t\t\t\t\t\t\t\t<ComboboxItem key={item.id} value={item}>\n\t\t\t\t\t\t\t\t\t{item.value}\n\t\t\t\t\t\t\t\t</ComboboxItem>\n\t\t\t\t\t\t\t)\n\t\t\t\t\t\t}\n\t\t\t\t\t</ComboboxList>\n\t\t\t\t</ComboboxContent>\n\t\t\t</Combobox>\n\n\t\t\t<Dialog open={openDialog} onOpenChange={setOpenDialog}>\n\t\t\t\t<DialogContent initialFocus={createInputRef}>\n\t\t\t\t\t<DialogTitle>Create new label</DialogTitle>\n\t\t\t\t\t<DialogDescription>Add a new label to select.</DialogDescription>\n\t\t\t\t\t<form onSubmit={handleCreateSubmit} className="space-y-4">\n\t\t\t\t\t\t<Input\n\t\t\t\t\t\t\tref={createInputRef}\n\t\t\t\t\t\t\tplaceholder="Label name"\n\t\t\t\t\t\t\tdefaultValue={pendingQueryRef.current}\n\t\t\t\t\t\t/>\n\t\t\t\t\t\t<DialogFooter>\n\t\t\t\t\t\t\t<Button\n\t\t\t\t\t\t\t\ttype="button"\n\t\t\t\t\t\t\t\tvariant="outline"\n\t\t\t\t\t\t\t\tonClick={() => setOpenDialog(false)}\n\t\t\t\t\t\t\t>\n\t\t\t\t\t\t\t\tCancel\n\t\t\t\t\t\t\t</Button>\n\t\t\t\t\t\t\t<Button type="submit">Create</Button>\n\t\t\t\t\t\t</DialogFooter>\n\t\t\t\t\t</form>\n\t\t\t\t</DialogContent>\n\t\t\t</Dialog>\n\t\t</React.Fragment>\n\t)\n}\n\ninterface LabelItem {\n\tcreatable?: string\n\tid: string\n\tvalue: string\n}\n\nconst initialLabels: LabelItem[] = [\n\t{ id: "bug", value: "bug" },\n\t{ id: "docs", value: "documentation" },\n\t{ id: "enhancement", value: "enhancement" },\n\t{ id: "help-wanted", value: "help wanted" },\n\t{ id: "good-first-issue", value: "good first issue" },\n]\n',
+			'import * as React from "react"\nimport { Plus } from "lucide-react"\n\nimport { Button } from "@/components/ui/button"\nimport {\n\tCombobox,\n\tComboboxChip,\n\tComboboxChips,\n\tComboboxContent,\n\tComboboxEmpty,\n\tComboboxInput,\n\tComboboxItem,\n\tComboboxList,\n\tComboboxValue,\n} from "@/components/ui/combobox"\nimport {\n\tDialog,\n\tDialogContent,\n\tDialogDescription,\n\tDialogFooter,\n\tDialogTitle,\n} from "@/components/ui/dialog"\nimport { Input } from "@/components/ui/input"\nimport { Label } from "@/components/ui/label"\n\nexport default function ComboboxCreatableDemo() {\n\tconst id = React.useId()\n\n\tconst [labels, setLabels] = React.useState<LabelItem[]>(initialLabels)\n\tconst [selected, setSelected] = React.useState<LabelItem[]>([])\n\tconst [query, setQuery] = React.useState("")\n\tconst [openDialog, setOpenDialog] = React.useState(false)\n\n\tconst containerRef = React.useRef<HTMLDivElement | null>(null)\n\tconst createInputRef = React.useRef<HTMLInputElement | null>(null)\n\tconst pendingQueryRef = React.useRef("")\n\n\tfunction handleCreate() {\n\t\tconst input = createInputRef.current\n\t\tconst value = input ? input.value.trim() : ""\n\t\tif (!value) {\n\t\t\treturn\n\t\t}\n\n\t\tconst normalized = value.toLocaleLowerCase()\n\t\tconst baseId = normalized.replace(/\\s+/g, "-")\n\t\tconst existing = labels.find(\n\t\t\t(l) => l.value.trim().toLocaleLowerCase() === normalized\n\t\t)\n\n\t\tif (existing) {\n\t\t\tsetSelected((prev) =>\n\t\t\t\tprev.some((i) => i.id === existing.id) ? prev : [...prev, existing]\n\t\t\t)\n\t\t\tsetOpenDialog(false)\n\t\t\tsetQuery("")\n\t\t\treturn\n\t\t}\n\n\t\t// Ensure we don\'t collide with an existing id (e.g., value "docs" vs. existing id "docs")\n\t\tconst existingIds = new Set(labels.map((l) => l.id))\n\t\tlet uniqueId = baseId\n\t\tif (existingIds.has(uniqueId)) {\n\t\t\tlet i = 2\n\t\t\twhile (existingIds.has(`${baseId}-${i}`)) {\n\t\t\t\ti += 1\n\t\t\t}\n\t\t\tuniqueId = `${baseId}-${i}`\n\t\t}\n\n\t\tconst newItem: LabelItem = { id: uniqueId, value }\n\n\t\tif (!selected.find((item) => item.id === newItem.id)) {\n\t\t\tsetLabels((prev) => [...prev, newItem])\n\t\t\tsetSelected((prev) => [...prev, newItem])\n\t\t}\n\n\t\tsetOpenDialog(false)\n\t\tsetQuery("")\n\t}\n\n\tfunction handleCreateSubmit(event: React.FormEvent<HTMLFormElement>) {\n\t\tevent.preventDefault()\n\t\thandleCreate()\n\t}\n\n\tconst trimmed = query.trim()\n\tconst lowered = trimmed.toLocaleLowerCase()\n\tconst exactExists = labels.some(\n\t\t(l) => l.value.trim().toLocaleLowerCase() === lowered\n\t)\n\t// Show the creatable item alongside matches if there\'s no exact match\n\tconst itemsForView: Array<LabelItem> =\n\t\ttrimmed !== "" && !exactExists\n\t\t\t? [\n\t\t\t\t\t...labels,\n\t\t\t\t\t{\n\t\t\t\t\t\tcreatable: trimmed,\n\t\t\t\t\t\tid: `create:${lowered}`,\n\t\t\t\t\t\tvalue: `Create "${trimmed}"`,\n\t\t\t\t\t},\n\t\t\t\t]\n\t\t\t: labels\n\n\treturn (\n\t\t<React.Fragment>\n\t\t\t<Combobox\n\t\t\t\titems={itemsForView}\n\t\t\t\tmultiple\n\t\t\t\tonValueChange={(value) => {\n\t\t\t\t\tconst next = value as LabelItem[]\n\t\t\t\t\tconst last = next[next.length - 1]\n\t\t\t\t\tif (last && last.creatable) {\n\t\t\t\t\t\tpendingQueryRef.current = last.creatable\n\t\t\t\t\t\tsetOpenDialog(true)\n\t\t\t\t\t\treturn\n\t\t\t\t\t}\n\t\t\t\t\tconst clean = next.filter((i: LabelItem) => !i.creatable)\n\t\t\t\t\tsetSelected(clean)\n\t\t\t\t\tsetQuery("")\n\t\t\t\t}}\n\t\t\t\tvalue={selected}\n\t\t\t\tinputValue={query}\n\t\t\t\tonInputValueChange={setQuery}\n\t\t\t\tonOpenChange={(open, details) => {\n\t\t\t\t\tif ("key" in details.event && details.event.key === "Enter") {\n\t\t\t\t\t\t// When pressing Enter:\n\t\t\t\t\t\t// - If the typed value exactly matches an existing item, add that item to the selected chips\n\t\t\t\t\t\t// - Otherwise, create a new item\n\t\t\t\t\t\tif (trimmed === "") {\n\t\t\t\t\t\t\treturn\n\t\t\t\t\t\t}\n\n\t\t\t\t\t\tconst existing = labels.find(\n\t\t\t\t\t\t\t(l) => l.value.trim().toLocaleLowerCase() === lowered\n\t\t\t\t\t\t)\n\n\t\t\t\t\t\tif (existing) {\n\t\t\t\t\t\t\tsetSelected((prev) =>\n\t\t\t\t\t\t\t\tprev.some((i) => i.id === existing.id)\n\t\t\t\t\t\t\t\t\t? prev\n\t\t\t\t\t\t\t\t\t: [...prev, existing]\n\t\t\t\t\t\t\t)\n\t\t\t\t\t\t\tsetQuery("")\n\t\t\t\t\t\t\treturn\n\t\t\t\t\t\t}\n\n\t\t\t\t\t\tpendingQueryRef.current = trimmed\n\t\t\t\t\t\tsetOpenDialog(true)\n\t\t\t\t\t}\n\t\t\t\t}}\n\t\t\t>\n\t\t\t\t<div className="flex w-80 flex-col gap-2">\n\t\t\t\t\t<Label htmlFor={id}>Labels</Label>\n\t\t\t\t\t<ComboboxChips ref={containerRef}>\n\t\t\t\t\t\t<ComboboxValue>\n\t\t\t\t\t\t\t{(value: LabelItem[]) => (\n\t\t\t\t\t\t\t\t<React.Fragment>\n\t\t\t\t\t\t\t\t\t{value.length > 0 && (\n\t\t\t\t\t\t\t\t\t\t<div className="flex flex-wrap gap-1 p-1">\n\t\t\t\t\t\t\t\t\t\t\t{value.map((label) => (\n\t\t\t\t\t\t\t\t\t\t\t\t<ComboboxChip key={label.id} aria-label={label.value}>\n\t\t\t\t\t\t\t\t\t\t\t\t\t{label.value}\n\t\t\t\t\t\t\t\t\t\t\t\t</ComboboxChip>\n\t\t\t\t\t\t\t\t\t\t\t))}\n\t\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t)}\n\t\t\t\t\t\t\t\t\t<ComboboxInput\n\t\t\t\t\t\t\t\t\t\tid={id}\n\t\t\t\t\t\t\t\t\t\tplaceholder="e.g. bug"\n\t\t\t\t\t\t\t\t\t\tshowClear={false}\n\t\t\t\t\t\t\t\t\t\tmultiple\n\t\t\t\t\t\t\t\t\t/>\n\t\t\t\t\t\t\t\t</React.Fragment>\n\t\t\t\t\t\t\t)}\n\t\t\t\t\t\t</ComboboxValue>\n\t\t\t\t\t</ComboboxChips>\n\t\t\t\t</div>\n\n\t\t\t\t<ComboboxContent anchor={containerRef}>\n\t\t\t\t\t<ComboboxEmpty>No labels found.</ComboboxEmpty>\n\t\t\t\t\t<ComboboxList>\n\t\t\t\t\t\t{(item: LabelItem) =>\n\t\t\t\t\t\t\titem.creatable ? (\n\t\t\t\t\t\t\t\t<ComboboxItem key={item.id} value={item}>\n\t\t\t\t\t\t\t\t\t<Plus className="size-4" />\n\t\t\t\t\t\t\t\t\t<span>Create &quot;{item.creatable}&quot;</span>\n\t\t\t\t\t\t\t\t</ComboboxItem>\n\t\t\t\t\t\t\t) : (\n\t\t\t\t\t\t\t\t<ComboboxItem key={item.id} value={item}>\n\t\t\t\t\t\t\t\t\t{item.value}\n\t\t\t\t\t\t\t\t</ComboboxItem>\n\t\t\t\t\t\t\t)\n\t\t\t\t\t\t}\n\t\t\t\t\t</ComboboxList>\n\t\t\t\t</ComboboxContent>\n\t\t\t</Combobox>\n\n\t\t\t<Dialog open={openDialog} onOpenChange={setOpenDialog}>\n\t\t\t\t<DialogContent initialFocus={createInputRef}>\n\t\t\t\t\t<DialogTitle>Create new label</DialogTitle>\n\t\t\t\t\t<DialogDescription>Add a new label to select.</DialogDescription>\n\t\t\t\t\t<form onSubmit={handleCreateSubmit} className="space-y-4">\n\t\t\t\t\t\t<Input\n\t\t\t\t\t\t\tref={createInputRef}\n\t\t\t\t\t\t\tplaceholder="Label name"\n\t\t\t\t\t\t\tdefaultValue={pendingQueryRef.current}\n\t\t\t\t\t\t/>\n\t\t\t\t\t\t<DialogFooter>\n\t\t\t\t\t\t\t<Button\n\t\t\t\t\t\t\t\ttype="button"\n\t\t\t\t\t\t\t\tvariant="outline"\n\t\t\t\t\t\t\t\tonClick={() => setOpenDialog(false)}\n\t\t\t\t\t\t\t>\n\t\t\t\t\t\t\t\tCancel\n\t\t\t\t\t\t\t</Button>\n\t\t\t\t\t\t\t<Button type="submit">Create</Button>\n\t\t\t\t\t\t</DialogFooter>\n\t\t\t\t\t</form>\n\t\t\t\t</DialogContent>\n\t\t\t</Dialog>\n\t\t</React.Fragment>\n\t)\n}\n\ninterface LabelItem {\n\tcreatable?: string\n\tid: string\n\tvalue: string\n}\n\nconst initialLabels: LabelItem[] = [\n\t{ id: "bug", value: "bug" },\n\t{ id: "docs", value: "documentation" },\n\t{ id: "enhancement", value: "enhancement" },\n\t{ id: "help-wanted", value: "help wanted" },\n\t{ id: "good-first-issue", value: "good first issue" },\n]\n',
 		component: React.lazy(
-			() => import("@/components/demos/combobox/combobox-creatable")
+			() => import("@/components/demos/combobox/combobox-creatable-demo")
 		),
-		title: "combobox-creatable",
+		title: "combobox-creatable-demo",
 		category: "combobox",
-		path: "src/components/demos/combobox/combobox-creatable.tsx",
+		path: "src/components/demos/combobox/combobox-creatable-demo.tsx",
 	},
 	"combobox-demo": {
 		source:
@@ -662,25 +698,26 @@ export const demoRegistry: DemoRegistry = {
 		category: "combobox",
 		path: "src/components/demos/combobox/combobox-demo.tsx",
 	},
-	"combobox-input-inside-popup": {
+	"combobox-input-inside-popup-demo": {
 		source:
 			'import * as React from "react"\n\nimport {\n\tCombobox,\n\tComboboxContent,\n\tComboboxEmpty,\n\tComboboxInput,\n\tComboboxItem,\n\tComboboxList,\n\tComboboxTrigger,\n\tComboboxValue,\n} from "@/components/ui/combobox"\nimport { Label } from "@/components/ui/label"\n\nexport default function ComboboxInputInsidePopupDemo() {\n\treturn (\n\t\t<Combobox items={countries} defaultValue={countries[0]}>\n\t\t\t<div className="relative flex flex-col gap-2">\n\t\t\t\t<Label htmlFor="select-country">Select country</Label>\n\t\t\t\t<ComboboxTrigger id="select-country" className="w-80">\n\t\t\t\t\t<ComboboxValue />\n\t\t\t\t</ComboboxTrigger>\n\t\t\t</div>\n\t\t\t<ComboboxContent className="max-h-[20rem] [--input-container-height:4rem]">\n\t\t\t\t<ComboboxInput\n\t\t\t\t\tclassName="focus-visible:ring-0"\n\t\t\t\t\tinputContainerClassName="mb-2"\n\t\t\t\t\tplaceholder="e.g. United Kingdom"\n\t\t\t\t\tshowClear={false}\n\t\t\t\t/>\n\t\t\t\t<ComboboxEmpty>No countries found.</ComboboxEmpty>\n\t\t\t\t<ComboboxList className="max-h-[min(calc(20rem-var(--input-container-height)),calc(var(--available-height)-var(--input-container-height)))] scroll-py-2 overflow-y-auto overscroll-contain">\n\t\t\t\t\t{(country: Country) => (\n\t\t\t\t\t\t<ComboboxItem key={country.code} value={country}>\n\t\t\t\t\t\t\t{country.label ?? country.value}\n\t\t\t\t\t\t</ComboboxItem>\n\t\t\t\t\t)}\n\t\t\t\t</ComboboxList>\n\t\t\t</ComboboxContent>\n\t\t</Combobox>\n\t)\n}\n\ninterface Country {\n\tcode: string\n\tvalue: string | null\n\tcontinent: string\n\tlabel: string\n}\n\nconst countries: Country[] = [\n\t{ code: "", value: null, continent: "", label: "Select country" },\n\t{ code: "af", value: "afghanistan", label: "Afghanistan", continent: "Asia" },\n\t{ code: "al", value: "albania", label: "Albania", continent: "Europe" },\n\t{ code: "dz", value: "algeria", label: "Algeria", continent: "Africa" },\n\t{ code: "ad", value: "andorra", label: "Andorra", continent: "Europe" },\n\t{ code: "ao", value: "angola", label: "Angola", continent: "Africa" },\n\t{\n\t\tcode: "ar",\n\t\tvalue: "argentina",\n\t\tlabel: "Argentina",\n\t\tcontinent: "South America",\n\t},\n\t{ code: "am", value: "armenia", label: "Armenia", continent: "Asia" },\n\t{ code: "au", value: "australia", label: "Australia", continent: "Oceania" },\n\t{ code: "at", value: "austria", label: "Austria", continent: "Europe" },\n\t{ code: "az", value: "azerbaijan", label: "Azerbaijan", continent: "Asia" },\n\t{\n\t\tcode: "bs",\n\t\tvalue: "bahamas",\n\t\tlabel: "Bahamas",\n\t\tcontinent: "North America",\n\t},\n\t{ code: "bh", value: "bahrain", label: "Bahrain", continent: "Asia" },\n\t{ code: "bd", value: "bangladesh", label: "Bangladesh", continent: "Asia" },\n\t{\n\t\tcode: "bb",\n\t\tvalue: "barbados",\n\t\tlabel: "Barbados",\n\t\tcontinent: "North America",\n\t},\n\t{ code: "by", value: "belarus", label: "Belarus", continent: "Europe" },\n\t{ code: "be", value: "belgium", label: "Belgium", continent: "Europe" },\n\t{ code: "bz", value: "belize", label: "Belize", continent: "North America" },\n\t{ code: "bj", value: "benin", label: "Benin", continent: "Africa" },\n\t{ code: "bt", value: "bhutan", label: "Bhutan", continent: "Asia" },\n\t{\n\t\tcode: "bo",\n\t\tvalue: "bolivia",\n\t\tlabel: "Bolivia",\n\t\tcontinent: "South America",\n\t},\n\t{\n\t\tcode: "ba",\n\t\tvalue: "bosnia-and-herzegovina",\n\t\tlabel: "Bosnia and Herzegovina",\n\t\tcontinent: "Europe",\n\t},\n\t{ code: "bw", value: "botswana", label: "Botswana", continent: "Africa" },\n\t{ code: "br", value: "brazil", label: "Brazil", continent: "South America" },\n\t{ code: "bn", value: "brunei", label: "Brunei", continent: "Asia" },\n\t{ code: "bg", value: "bulgaria", label: "Bulgaria", continent: "Europe" },\n\t{\n\t\tcode: "bf",\n\t\tvalue: "burkina-faso",\n\t\tlabel: "Burkina Faso",\n\t\tcontinent: "Africa",\n\t},\n\t{ code: "bi", value: "burundi", label: "Burundi", continent: "Africa" },\n\t{ code: "kh", value: "cambodia", label: "Cambodia", continent: "Asia" },\n\t{ code: "cm", value: "cameroon", label: "Cameroon", continent: "Africa" },\n\t{ code: "ca", value: "canada", label: "Canada", continent: "North America" },\n\t{ code: "cv", value: "cape-verde", label: "Cape Verde", continent: "Africa" },\n\t{\n\t\tcode: "cf",\n\t\tvalue: "central-african-republic",\n\t\tlabel: "Central African Republic",\n\t\tcontinent: "Africa",\n\t},\n\t{ code: "td", value: "chad", label: "Chad", continent: "Africa" },\n\t{ code: "cl", value: "chile", label: "Chile", continent: "South America" },\n\t{ code: "cn", value: "china", label: "China", continent: "Asia" },\n\t{\n\t\tcode: "co",\n\t\tvalue: "colombia",\n\t\tlabel: "Colombia",\n\t\tcontinent: "South America",\n\t},\n\t{ code: "km", value: "comoros", label: "Comoros", continent: "Africa" },\n\t{ code: "cg", value: "congo", label: "Congo", continent: "Africa" },\n\t{\n\t\tcode: "cr",\n\t\tvalue: "costa-rica",\n\t\tlabel: "Costa Rica",\n\t\tcontinent: "North America",\n\t},\n\t{ code: "hr", value: "croatia", label: "Croatia", continent: "Europe" },\n\t{ code: "cu", value: "cuba", label: "Cuba", continent: "North America" },\n\t{ code: "cy", value: "cyprus", label: "Cyprus", continent: "Asia" },\n\t{\n\t\tcode: "cz",\n\t\tvalue: "czech-republic",\n\t\tlabel: "Czech Republic",\n\t\tcontinent: "Europe",\n\t},\n\t{ code: "dk", value: "denmark", label: "Denmark", continent: "Europe" },\n\t{ code: "dj", value: "djibouti", label: "Djibouti", continent: "Africa" },\n\t{\n\t\tcode: "dm",\n\t\tvalue: "dominica",\n\t\tlabel: "Dominica",\n\t\tcontinent: "North America",\n\t},\n\t{\n\t\tcode: "do",\n\t\tvalue: "dominican-republic",\n\t\tlabel: "Dominican Republic",\n\t\tcontinent: "North America",\n\t},\n\t{\n\t\tcode: "ec",\n\t\tvalue: "ecuador",\n\t\tlabel: "Ecuador",\n\t\tcontinent: "South America",\n\t},\n\t{ code: "eg", value: "egypt", label: "Egypt", continent: "Africa" },\n\t{\n\t\tcode: "sv",\n\t\tvalue: "el-salvador",\n\t\tlabel: "El Salvador",\n\t\tcontinent: "North America",\n\t},\n\t{\n\t\tcode: "gq",\n\t\tvalue: "equatorial-guinea",\n\t\tlabel: "Equatorial Guinea",\n\t\tcontinent: "Africa",\n\t},\n\t{ code: "er", value: "eritrea", label: "Eritrea", continent: "Africa" },\n\t{ code: "ee", value: "estonia", label: "Estonia", continent: "Europe" },\n\t{ code: "et", value: "ethiopia", label: "Ethiopia", continent: "Africa" },\n\t{ code: "fj", value: "fiji", label: "Fiji", continent: "Oceania" },\n\t{ code: "fi", value: "finland", label: "Finland", continent: "Europe" },\n\t{ code: "fr", value: "france", label: "France", continent: "Europe" },\n\t{ code: "ga", value: "gabon", label: "Gabon", continent: "Africa" },\n\t{ code: "gm", value: "gambia", label: "Gambia", continent: "Africa" },\n\t{ code: "ge", value: "georgia", label: "Georgia", continent: "Asia" },\n\t{ code: "de", value: "germany", label: "Germany", continent: "Europe" },\n\t{ code: "gh", value: "ghana", label: "Ghana", continent: "Africa" },\n\t{ code: "gr", value: "greece", label: "Greece", continent: "Europe" },\n\t{\n\t\tcode: "gd",\n\t\tvalue: "grenada",\n\t\tlabel: "Grenada",\n\t\tcontinent: "North America",\n\t},\n\t{\n\t\tcode: "gt",\n\t\tvalue: "guatemala",\n\t\tlabel: "Guatemala",\n\t\tcontinent: "North America",\n\t},\n\t{ code: "gn", value: "guinea", label: "Guinea", continent: "Africa" },\n\t{\n\t\tcode: "gw",\n\t\tvalue: "guinea-bissau",\n\t\tlabel: "Guinea-Bissau",\n\t\tcontinent: "Africa",\n\t},\n\t{ code: "gy", value: "guyana", label: "Guyana", continent: "South America" },\n\t{ code: "ht", value: "haiti", label: "Haiti", continent: "North America" },\n\t{\n\t\tcode: "hn",\n\t\tvalue: "honduras",\n\t\tlabel: "Honduras",\n\t\tcontinent: "North America",\n\t},\n\t{ code: "hu", value: "hungary", label: "Hungary", continent: "Europe" },\n\t{ code: "is", value: "iceland", label: "Iceland", continent: "Europe" },\n\t{ code: "in", value: "india", label: "India", continent: "Asia" },\n\t{ code: "id", value: "indonesia", label: "Indonesia", continent: "Asia" },\n\t{ code: "ir", value: "iran", label: "Iran", continent: "Asia" },\n\t{ code: "iq", value: "iraq", label: "Iraq", continent: "Asia" },\n\t{ code: "ie", value: "ireland", label: "Ireland", continent: "Europe" },\n\t{ code: "il", value: "israel", label: "Israel", continent: "Asia" },\n\t{ code: "it", value: "italy", label: "Italy", continent: "Europe" },\n\t{\n\t\tcode: "jm",\n\t\tvalue: "jamaica",\n\t\tlabel: "Jamaica",\n\t\tcontinent: "North America",\n\t},\n\t{ code: "jp", value: "japan", label: "Japan", continent: "Asia" },\n\t{ code: "jo", value: "jordan", label: "Jordan", continent: "Asia" },\n\t{ code: "kz", value: "kazakhstan", label: "Kazakhstan", continent: "Asia" },\n\t{ code: "ke", value: "kenya", label: "Kenya", continent: "Africa" },\n\t{ code: "kw", value: "kuwait", label: "Kuwait", continent: "Asia" },\n\t{ code: "kg", value: "kyrgyzstan", label: "Kyrgyzstan", continent: "Asia" },\n\t{ code: "la", value: "laos", label: "Laos", continent: "Asia" },\n\t{ code: "lv", value: "latvia", label: "Latvia", continent: "Europe" },\n\t{ code: "lb", value: "lebanon", label: "Lebanon", continent: "Asia" },\n\t{ code: "ls", value: "lesotho", label: "Lesotho", continent: "Africa" },\n\t{ code: "lr", value: "liberia", label: "Liberia", continent: "Africa" },\n\t{ code: "ly", value: "libya", label: "Libya", continent: "Africa" },\n\t{\n\t\tcode: "li",\n\t\tvalue: "liechtenstein",\n\t\tlabel: "Liechtenstein",\n\t\tcontinent: "Europe",\n\t},\n\t{ code: "lt", value: "lithuania", label: "Lithuania", continent: "Europe" },\n\t{ code: "lu", value: "luxembourg", label: "Luxembourg", continent: "Europe" },\n\t{ code: "mg", value: "madagascar", label: "Madagascar", continent: "Africa" },\n\t{ code: "mw", value: "malawi", label: "Malawi", continent: "Africa" },\n\t{ code: "my", value: "malaysia", label: "Malaysia", continent: "Asia" },\n\t{ code: "mv", value: "maldives", label: "Maldives", continent: "Asia" },\n\t{ code: "ml", value: "mali", label: "Mali", continent: "Africa" },\n\t{ code: "mt", value: "malta", label: "Malta", continent: "Europe" },\n\t{\n\t\tcode: "mh",\n\t\tvalue: "marshall-islands",\n\t\tlabel: "Marshall Islands",\n\t\tcontinent: "Oceania",\n\t},\n\t{ code: "mr", value: "mauritania", label: "Mauritania", continent: "Africa" },\n\t{ code: "mu", value: "mauritius", label: "Mauritius", continent: "Africa" },\n\t{ code: "mx", value: "mexico", label: "Mexico", continent: "North America" },\n\t{\n\t\tcode: "fm",\n\t\tvalue: "micronesia",\n\t\tlabel: "Micronesia",\n\t\tcontinent: "Oceania",\n\t},\n\t{ code: "md", value: "moldova", label: "Moldova", continent: "Europe" },\n\t{ code: "mc", value: "monaco", label: "Monaco", continent: "Europe" },\n\t{ code: "mn", value: "mongolia", label: "Mongolia", continent: "Asia" },\n\t{ code: "me", value: "montenegro", label: "Montenegro", continent: "Europe" },\n\t{ code: "ma", value: "morocco", label: "Morocco", continent: "Africa" },\n\t{ code: "mz", value: "mozambique", label: "Mozambique", continent: "Africa" },\n\t{ code: "mm", value: "myanmar", label: "Myanmar", continent: "Asia" },\n\t{ code: "na", value: "namibia", label: "Namibia", continent: "Africa" },\n\t{ code: "nr", value: "nauru", label: "Nauru", continent: "Oceania" },\n\t{ code: "np", value: "nepal", label: "Nepal", continent: "Asia" },\n\t{\n\t\tcode: "nl",\n\t\tvalue: "netherlands",\n\t\tlabel: "Netherlands",\n\t\tcontinent: "Europe",\n\t},\n\t{\n\t\tcode: "nz",\n\t\tvalue: "new-zealand",\n\t\tlabel: "New Zealand",\n\t\tcontinent: "Oceania",\n\t},\n\t{\n\t\tcode: "ni",\n\t\tvalue: "nicaragua",\n\t\tlabel: "Nicaragua",\n\t\tcontinent: "North America",\n\t},\n\t{ code: "ne", value: "niger", label: "Niger", continent: "Africa" },\n\t{ code: "ng", value: "nigeria", label: "Nigeria", continent: "Africa" },\n\t{ code: "kp", value: "north-korea", label: "North Korea", continent: "Asia" },\n\t{\n\t\tcode: "mk",\n\t\tvalue: "north-macedonia",\n\t\tlabel: "North Macedonia",\n\t\tcontinent: "Europe",\n\t},\n\t{ code: "no", value: "norway", label: "Norway", continent: "Europe" },\n\t{ code: "om", value: "oman", label: "Oman", continent: "Asia" },\n\t{ code: "pk", value: "pakistan", label: "Pakistan", continent: "Asia" },\n\t{ code: "pw", value: "palau", label: "Palau", continent: "Oceania" },\n\t{ code: "ps", value: "palestine", label: "Palestine", continent: "Asia" },\n\t{ code: "pa", value: "panama", label: "Panama", continent: "North America" },\n\t{\n\t\tcode: "pg",\n\t\tvalue: "papua-new-guinea",\n\t\tlabel: "Papua New Guinea",\n\t\tcontinent: "Oceania",\n\t},\n\t{\n\t\tcode: "py",\n\t\tvalue: "paraguay",\n\t\tlabel: "Paraguay",\n\t\tcontinent: "South America",\n\t},\n\t{ code: "pe", value: "peru", label: "Peru", continent: "South America" },\n\t{ code: "ph", value: "philippines", label: "Philippines", continent: "Asia" },\n\t{ code: "pl", value: "poland", label: "Poland", continent: "Europe" },\n\t{ code: "pt", value: "portugal", label: "Portugal", continent: "Europe" },\n\t{ code: "qa", value: "qatar", label: "Qatar", continent: "Asia" },\n\t{ code: "ro", value: "romania", label: "Romania", continent: "Europe" },\n\t{ code: "ru", value: "russia", label: "Russia", continent: "Europe" },\n\t{ code: "rw", value: "rwanda", label: "Rwanda", continent: "Africa" },\n\t{ code: "ws", value: "samoa", label: "Samoa", continent: "Oceania" },\n\t{ code: "sm", value: "san-marino", label: "San Marino", continent: "Europe" },\n\t{\n\t\tcode: "sa",\n\t\tvalue: "saudi-arabia",\n\t\tlabel: "Saudi Arabia",\n\t\tcontinent: "Asia",\n\t},\n\t{ code: "sn", value: "senegal", label: "Senegal", continent: "Africa" },\n\t{ code: "rs", value: "serbia", label: "Serbia", continent: "Europe" },\n\t{ code: "sc", value: "seychelles", label: "Seychelles", continent: "Africa" },\n\t{\n\t\tcode: "sl",\n\t\tvalue: "sierra-leone",\n\t\tlabel: "Sierra Leone",\n\t\tcontinent: "Africa",\n\t},\n\t{ code: "sg", value: "singapore", label: "Singapore", continent: "Asia" },\n\t{ code: "sk", value: "slovakia", label: "Slovakia", continent: "Europe" },\n\t{ code: "si", value: "slovenia", label: "Slovenia", continent: "Europe" },\n\t{\n\t\tcode: "sb",\n\t\tvalue: "solomon-islands",\n\t\tlabel: "Solomon Islands",\n\t\tcontinent: "Oceania",\n\t},\n\t{ code: "so", value: "somalia", label: "Somalia", continent: "Africa" },\n\t{\n\t\tcode: "za",\n\t\tvalue: "south-africa",\n\t\tlabel: "South Africa",\n\t\tcontinent: "Africa",\n\t},\n\t{ code: "kr", value: "south-korea", label: "South Korea", continent: "Asia" },\n\t{\n\t\tcode: "ss",\n\t\tvalue: "south-sudan",\n\t\tlabel: "South Sudan",\n\t\tcontinent: "Africa",\n\t},\n\t{ code: "es", value: "spain", label: "Spain", continent: "Europe" },\n\t{ code: "lk", value: "sri-lanka", label: "Sri Lanka", continent: "Asia" },\n\t{ code: "sd", value: "sudan", label: "Sudan", continent: "Africa" },\n\t{\n\t\tcode: "sr",\n\t\tvalue: "suriname",\n\t\tlabel: "Suriname",\n\t\tcontinent: "South America",\n\t},\n\t{ code: "se", value: "sweden", label: "Sweden", continent: "Europe" },\n\t{\n\t\tcode: "ch",\n\t\tvalue: "switzerland",\n\t\tlabel: "Switzerland",\n\t\tcontinent: "Europe",\n\t},\n\t{ code: "sy", value: "syria", label: "Syria", continent: "Asia" },\n\t{ code: "tw", value: "taiwan", label: "Taiwan", continent: "Asia" },\n\t{ code: "tj", value: "tajikistan", label: "Tajikistan", continent: "Asia" },\n\t{ code: "tz", value: "tanzania", label: "Tanzania", continent: "Africa" },\n\t{ code: "th", value: "thailand", label: "Thailand", continent: "Asia" },\n\t{ code: "tl", value: "timor-leste", label: "Timor-Leste", continent: "Asia" },\n\t{ code: "tg", value: "togo", label: "Togo", continent: "Africa" },\n\t{ code: "to", value: "tonga", label: "Tonga", continent: "Oceania" },\n\t{\n\t\tcode: "tt",\n\t\tvalue: "trinidad-and-tobago",\n\t\tlabel: "Trinidad and Tobago",\n\t\tcontinent: "North America",\n\t},\n\t{ code: "tn", value: "tunisia", label: "Tunisia", continent: "Africa" },\n\t{ code: "tr", value: "turkey", label: "Turkey", continent: "Asia" },\n\t{\n\t\tcode: "tm",\n\t\tvalue: "turkmenistan",\n\t\tlabel: "Turkmenistan",\n\t\tcontinent: "Asia",\n\t},\n\t{ code: "tv", value: "tuvalu", label: "Tuvalu", continent: "Oceania" },\n\t{ code: "ug", value: "uganda", label: "Uganda", continent: "Africa" },\n\t{ code: "ua", value: "ukraine", label: "Ukraine", continent: "Europe" },\n\t{\n\t\tcode: "ae",\n\t\tvalue: "united-arab-emirates",\n\t\tlabel: "United Arab Emirates",\n\t\tcontinent: "Asia",\n\t},\n\t{\n\t\tcode: "gb",\n\t\tvalue: "united-kingdom",\n\t\tlabel: "United Kingdom",\n\t\tcontinent: "Europe",\n\t},\n\t{\n\t\tcode: "us",\n\t\tvalue: "united-states",\n\t\tlabel: "United States",\n\t\tcontinent: "North America",\n\t},\n\t{\n\t\tcode: "uy",\n\t\tvalue: "uruguay",\n\t\tlabel: "Uruguay",\n\t\tcontinent: "South America",\n\t},\n\t{ code: "uz", value: "uzbekistan", label: "Uzbekistan", continent: "Asia" },\n\t{ code: "vu", value: "vanuatu", label: "Vanuatu", continent: "Oceania" },\n\t{\n\t\tcode: "va",\n\t\tvalue: "vatican-city",\n\t\tlabel: "Vatican City",\n\t\tcontinent: "Europe",\n\t},\n\t{\n\t\tcode: "ve",\n\t\tvalue: "venezuela",\n\t\tlabel: "Venezuela",\n\t\tcontinent: "South America",\n\t},\n\t{ code: "vn", value: "vietnam", label: "Vietnam", continent: "Asia" },\n\t{ code: "ye", value: "yemen", label: "Yemen", continent: "Asia" },\n\t{ code: "zm", value: "zambia", label: "Zambia", continent: "Africa" },\n\t{ code: "zw", value: "zimbabwe", label: "Zimbabwe", continent: "Africa" },\n]\n',
 		component: React.lazy(
-			() => import("@/components/demos/combobox/combobox-input-inside-popup")
+			() =>
+				import("@/components/demos/combobox/combobox-input-inside-popup-demo")
 		),
-		title: "combobox-input-inside-popup",
+		title: "combobox-input-inside-popup-demo",
 		category: "combobox",
-		path: "src/components/demos/combobox/combobox-input-inside-popup.tsx",
+		path: "src/components/demos/combobox/combobox-input-inside-popup-demo.tsx",
 	},
-	"combobox-multiple": {
+	"combobox-multiple-demo": {
 		source:
 			'import * as React from "react"\n\nimport {\n\tCombobox,\n\tComboboxChip,\n\tComboboxChips,\n\tComboboxContent,\n\tComboboxEmpty,\n\tComboboxInput,\n\tComboboxItem,\n\tComboboxList,\n\tComboboxValue,\n} from "@/components/ui/combobox"\nimport { Label } from "@/components/ui/label"\n\nexport default function ComboboxMultipleDemo() {\n\tconst containerRef = React.useRef<HTMLDivElement | null>(null)\n\n\treturn (\n\t\t<Combobox items={langs} multiple>\n\t\t\t<div className="flex w-80 flex-col gap-2">\n\t\t\t\t<Label htmlFor="select-language">Select a language</Label>\n\t\t\t\t<ComboboxChips ref={containerRef}>\n\t\t\t\t\t<ComboboxValue>\n\t\t\t\t\t\t{(value: ProgrammingLanguage[]) => (\n\t\t\t\t\t\t\t<React.Fragment>\n\t\t\t\t\t\t\t\t{value.length > 0 && (\n\t\t\t\t\t\t\t\t\t<div className="flex flex-wrap gap-1 p-1">\n\t\t\t\t\t\t\t\t\t\t{value.map((language) => (\n\t\t\t\t\t\t\t\t\t\t\t<ComboboxChip\n\t\t\t\t\t\t\t\t\t\t\t\tkey={language.id}\n\t\t\t\t\t\t\t\t\t\t\t\taria-label={language.value}\n\t\t\t\t\t\t\t\t\t\t\t>\n\t\t\t\t\t\t\t\t\t\t\t\t{language.value}\n\t\t\t\t\t\t\t\t\t\t\t</ComboboxChip>\n\t\t\t\t\t\t\t\t\t\t))}\n\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t)}\n\t\t\t\t\t\t\t\t<ComboboxInput\n\t\t\t\t\t\t\t\t\tid="select-language"\n\t\t\t\t\t\t\t\t\tplaceholder="e.g. TypeScript"\n\t\t\t\t\t\t\t\t\tshowClear={false}\n\t\t\t\t\t\t\t\t\tmultiple\n\t\t\t\t\t\t\t\t/>\n\t\t\t\t\t\t\t</React.Fragment>\n\t\t\t\t\t\t)}\n\t\t\t\t\t</ComboboxValue>\n\t\t\t\t</ComboboxChips>\n\t\t\t</div>\n\n\t\t\t<ComboboxContent anchor={containerRef}>\n\t\t\t\t<ComboboxEmpty>No languages found.</ComboboxEmpty>\n\t\t\t\t<ComboboxList>\n\t\t\t\t\t{(language: ProgrammingLanguage) => (\n\t\t\t\t\t\t<ComboboxItem key={language.id} value={language}>\n\t\t\t\t\t\t\t{language.value}\n\t\t\t\t\t\t</ComboboxItem>\n\t\t\t\t\t)}\n\t\t\t\t</ComboboxList>\n\t\t\t</ComboboxContent>\n\t\t</Combobox>\n\t)\n}\n\ninterface ProgrammingLanguage {\n\tid: string\n\tvalue: string\n}\n\nconst langs: ProgrammingLanguage[] = [\n\t{ id: "js", value: "JavaScript" },\n\t{ id: "ts", value: "TypeScript" },\n\t{ id: "py", value: "Python" },\n\t{ id: "java", value: "Java" },\n\t{ id: "cpp", value: "C++" },\n\t{ id: "cs", value: "C#" },\n\t{ id: "php", value: "PHP" },\n\t{ id: "ruby", value: "Ruby" },\n\t{ id: "go", value: "Go" },\n\t{ id: "rust", value: "Rust" },\n\t{ id: "swift", value: "Swift" },\n]\n',
 		component: React.lazy(
-			() => import("@/components/demos/combobox/combobox-multiple")
+			() => import("@/components/demos/combobox/combobox-multiple-demo")
 		),
-		title: "combobox-multiple",
+		title: "combobox-multiple-demo",
 		category: "combobox",
-		path: "src/components/demos/combobox/combobox-multiple.tsx",
+		path: "src/components/demos/combobox/combobox-multiple-demo.tsx",
 	},
 	"command-demo": {
 		source:
@@ -692,15 +729,15 @@ export const demoRegistry: DemoRegistry = {
 		category: "command",
 		path: "src/components/demos/command/command-demo.tsx",
 	},
-	"command-dialog": {
+	"command-dialog-demo": {
 		source:
 			'"use client"\n\nimport { useEffect, useState } from "react"\nimport {\n\tArrowRightIcon,\n\tLayoutGridIcon,\n\tPlusIcon,\n\tUsersIcon,\n} from "lucide-react"\n\nimport {\n\tCommandDialog,\n\tCommandEmpty,\n\tCommandGroup,\n\tCommandInput,\n\tCommandItem,\n\tCommandList,\n\tCommandSeparator,\n\tCommandShortcut,\n} from "@/components/ui/command"\nimport { Kbd } from "@/components/ui/kbd"\n\nexport default function CommandDialogDemo() {\n\tconst [open, setOpen] = useState(false)\n\n\tuseEffect(() => {\n\t\tconst down = (e: KeyboardEvent) => {\n\t\t\tif (e.key === "j" && (e.metaKey || e.ctrlKey)) {\n\t\t\t\te.preventDefault()\n\t\t\t\tsetOpen((open) => !open)\n\t\t\t}\n\t\t}\n\t\tdocument.addEventListener("keydown", down)\n\t\treturn () => document.removeEventListener("keydown", down)\n\t}, [])\n\n\treturn (\n\t\t<>\n\t\t\t<div className="flex items-center gap-2 text-sm">\n\t\t\t\t<Kbd>⌘</Kbd>+<Kbd>J</Kbd>\n\t\t\t</div>\n\t\t\t<CommandDialog open={open} onOpenChange={setOpen}>\n\t\t\t\t<CommandInput placeholder="Type a command or search..." />\n\t\t\t\t<CommandList>\n\t\t\t\t\t<CommandEmpty>No results found.</CommandEmpty>\n\t\t\t\t\t<CommandGroup heading="Projects">\n\t\t\t\t\t\t<CommandItem>\n\t\t\t\t\t\t\t<LayoutGridIcon />\n\t\t\t\t\t\t\t<span>Search projects...</span>\n\t\t\t\t\t\t\t<CommandShortcut>\n\t\t\t\t\t\t\t\t<Kbd>⌘</Kbd>\n\t\t\t\t\t\t\t\t<Kbd>P</Kbd>\n\t\t\t\t\t\t\t</CommandShortcut>\n\t\t\t\t\t\t</CommandItem>\n\t\t\t\t\t\t<CommandItem>\n\t\t\t\t\t\t\t<PlusIcon />\n\t\t\t\t\t\t\t<span>Create new project...</span>\n\t\t\t\t\t\t\t<CommandShortcut>\n\t\t\t\t\t\t\t\t<Kbd>C</Kbd>\n\t\t\t\t\t\t\t</CommandShortcut>\n\t\t\t\t\t\t</CommandItem>\n\t\t\t\t\t</CommandGroup>\n\t\t\t\t\t<CommandSeparator />\n\t\t\t\t\t<CommandGroup heading="Teams">\n\t\t\t\t\t\t<CommandItem>\n\t\t\t\t\t\t\t<UsersIcon />\n\t\t\t\t\t\t\t<span>Search teams...</span>\n\t\t\t\t\t\t</CommandItem>\n\t\t\t\t\t\t<CommandItem>\n\t\t\t\t\t\t\t<PlusIcon />\n\t\t\t\t\t\t\t<span>Create new team...</span>\n\t\t\t\t\t\t\t<CommandShortcut>\n\t\t\t\t\t\t\t\t<Kbd>T</Kbd>\n\t\t\t\t\t\t\t</CommandShortcut>\n\t\t\t\t\t\t</CommandItem>\n\t\t\t\t\t</CommandGroup>\n\t\t\t\t\t<CommandGroup heading="Navigation">\n\t\t\t\t\t\t<CommandItem>\n\t\t\t\t\t\t\t<ArrowRightIcon />\n\t\t\t\t\t\t\t<span>Go to home</span>\n\t\t\t\t\t\t</CommandItem>\n\t\t\t\t\t\t<CommandItem>\n\t\t\t\t\t\t\t<ArrowRightIcon />\n\t\t\t\t\t\t\t<span>Go to profile</span>\n\t\t\t\t\t\t</CommandItem>\n\t\t\t\t\t\t<CommandItem>\n\t\t\t\t\t\t\t<ArrowRightIcon />\n\t\t\t\t\t\t\t<span>Go to settings</span>\n\t\t\t\t\t\t</CommandItem>\n\t\t\t\t\t\t<CommandItem>\n\t\t\t\t\t\t\t<ArrowRightIcon />\n\t\t\t\t\t\t\t<span>Go to billing</span>\n\t\t\t\t\t\t</CommandItem>\n\t\t\t\t\t</CommandGroup>\n\t\t\t\t</CommandList>\n\t\t\t</CommandDialog>\n\t\t</>\n\t)\n}\n',
 		component: React.lazy(
-			() => import("@/components/demos/command/command-dialog")
+			() => import("@/components/demos/command/command-dialog-demo")
 		),
-		title: "command-dialog",
+		title: "command-dialog-demo",
 		category: "command",
-		path: "src/components/demos/command/command-dialog.tsx",
+		path: "src/components/demos/command/command-dialog-demo.tsx",
 	},
 	"context-menu-demo": {
 		source:
@@ -732,15 +769,15 @@ export const demoRegistry: DemoRegistry = {
 		category: "dialog",
 		path: "src/components/demos/dialog/dialog-demo.tsx",
 	},
-	"dialog-nested": {
+	"dialog-nested-demo": {
 		source:
-			'import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"\nimport { Button } from "@/components/ui/button"\nimport {\n\tDialog,\n\tDialogClose,\n\tDialogContent,\n\tDialogDescription,\n\tDialogFooter,\n\tDialogHeader,\n\tDialogTitle,\n\tDialogTrigger,\n} from "@/components/ui/dialog"\n\nexport default function DialogNested() {\n\treturn (\n\t\t<Dialog>\n\t\t\t<DialogTrigger\n\t\t\t\trender={(props) => <Button {...props}>View Details</Button>}\n\t\t\t/>\n\t\t\t<DialogContent>\n\t\t\t\t<DialogHeader>\n\t\t\t\t\t<DialogTitle>Profile</DialogTitle>\n\t\t\t\t\t<DialogDescription>\n\t\t\t\t\t\tView and edit your profile details.\n\t\t\t\t\t</DialogDescription>\n\t\t\t\t</DialogHeader>\n\t\t\t\t<div>\n\t\t\t\t\t<div className="flex items-center gap-4">\n\t\t\t\t\t\t<Avatar>\n\t\t\t\t\t\t\t<AvatarImage src="/avatars/bora.png" />\n\t\t\t\t\t\t\t<AvatarFallback>BB</AvatarFallback>\n\t\t\t\t\t\t</Avatar>\n\t\t\t\t\t\t<span className="text-foreground">Bora Baloglu</span>\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t\t<DialogFooter>\n\t\t\t\t\t<Dialog>\n\t\t\t\t\t\t<DialogTrigger\n\t\t\t\t\t\t\trender={(props) => (\n\t\t\t\t\t\t\t\t<Button {...props} variant="outline">\n\t\t\t\t\t\t\t\t\tEdit\n\t\t\t\t\t\t\t\t</Button>\n\t\t\t\t\t\t\t)}\n\t\t\t\t\t\t/>\n\t\t\t\t\t\t<DialogContent>\n\t\t\t\t\t\t\t<DialogTitle>Edit</DialogTitle>\n\t\t\t\t\t\t\t<DialogDescription>\n\t\t\t\t\t\t\t\tEdit the details of the item\n\t\t\t\t\t\t\t</DialogDescription>\n\t\t\t\t\t\t\t<DialogFooter>\n\t\t\t\t\t\t\t\t<DialogClose\n\t\t\t\t\t\t\t\t\trender={(props) => (\n\t\t\t\t\t\t\t\t\t\t<Button {...props} variant="ghost">\n\t\t\t\t\t\t\t\t\t\t\tCancel\n\t\t\t\t\t\t\t\t\t\t</Button>\n\t\t\t\t\t\t\t\t\t)}\n\t\t\t\t\t\t\t\t/>\n\t\t\t\t\t\t\t\t<DialogClose\n\t\t\t\t\t\t\t\t\trender={(props) => <Button {...props}>Save</Button>}\n\t\t\t\t\t\t\t\t/>\n\t\t\t\t\t\t\t</DialogFooter>\n\t\t\t\t\t\t</DialogContent>\n\t\t\t\t\t</Dialog>\n\t\t\t\t</DialogFooter>\n\t\t\t</DialogContent>\n\t\t</Dialog>\n\t)\n}\n',
+			'import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"\nimport { Button } from "@/components/ui/button"\nimport {\n\tDialog,\n\tDialogClose,\n\tDialogContent,\n\tDialogDescription,\n\tDialogFooter,\n\tDialogHeader,\n\tDialogTitle,\n\tDialogTrigger,\n} from "@/components/ui/dialog"\n\nexport default function DialogNestedDemo() {\n\treturn (\n\t\t<Dialog>\n\t\t\t<DialogTrigger\n\t\t\t\trender={(props) => <Button {...props}>View Details</Button>}\n\t\t\t/>\n\t\t\t<DialogContent>\n\t\t\t\t<DialogHeader>\n\t\t\t\t\t<DialogTitle>Profile</DialogTitle>\n\t\t\t\t\t<DialogDescription>\n\t\t\t\t\t\tView and edit your profile details.\n\t\t\t\t\t</DialogDescription>\n\t\t\t\t</DialogHeader>\n\t\t\t\t<div>\n\t\t\t\t\t<div className="flex items-center gap-4">\n\t\t\t\t\t\t<Avatar>\n\t\t\t\t\t\t\t<AvatarImage src="/avatars/bora.png" />\n\t\t\t\t\t\t\t<AvatarFallback>BB</AvatarFallback>\n\t\t\t\t\t\t</Avatar>\n\t\t\t\t\t\t<span className="text-foreground">Bora Baloglu</span>\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t\t<DialogFooter>\n\t\t\t\t\t<Dialog>\n\t\t\t\t\t\t<DialogTrigger\n\t\t\t\t\t\t\trender={(props) => (\n\t\t\t\t\t\t\t\t<Button {...props} variant="outline">\n\t\t\t\t\t\t\t\t\tEdit\n\t\t\t\t\t\t\t\t</Button>\n\t\t\t\t\t\t\t)}\n\t\t\t\t\t\t/>\n\t\t\t\t\t\t<DialogContent>\n\t\t\t\t\t\t\t<DialogTitle>Edit</DialogTitle>\n\t\t\t\t\t\t\t<DialogDescription>\n\t\t\t\t\t\t\t\tEdit the details of the item\n\t\t\t\t\t\t\t</DialogDescription>\n\t\t\t\t\t\t\t<DialogFooter>\n\t\t\t\t\t\t\t\t<DialogClose\n\t\t\t\t\t\t\t\t\trender={(props) => (\n\t\t\t\t\t\t\t\t\t\t<Button {...props} variant="ghost">\n\t\t\t\t\t\t\t\t\t\t\tCancel\n\t\t\t\t\t\t\t\t\t\t</Button>\n\t\t\t\t\t\t\t\t\t)}\n\t\t\t\t\t\t\t\t/>\n\t\t\t\t\t\t\t\t<DialogClose\n\t\t\t\t\t\t\t\t\trender={(props) => <Button {...props}>Save</Button>}\n\t\t\t\t\t\t\t\t/>\n\t\t\t\t\t\t\t</DialogFooter>\n\t\t\t\t\t\t</DialogContent>\n\t\t\t\t\t</Dialog>\n\t\t\t\t</DialogFooter>\n\t\t\t</DialogContent>\n\t\t</Dialog>\n\t)\n}\n',
 		component: React.lazy(
-			() => import("@/components/demos/dialog/dialog-nested")
+			() => import("@/components/demos/dialog/dialog-nested-demo")
 		),
-		title: "dialog-nested",
+		title: "dialog-nested-demo",
 		category: "dialog",
-		path: "src/components/demos/dialog/dialog-nested.tsx",
+		path: "src/components/demos/dialog/dialog-nested-demo.tsx",
 	},
 	"drawer-demo": {
 		source:
@@ -754,7 +791,7 @@ export const demoRegistry: DemoRegistry = {
 	},
 	"dropdown-menu-demo": {
 		source:
-			'"use client"\n\nimport { useState } from "react"\nimport {\n\tPauseIcon,\n\tPlayIcon,\n\tSkipBackIcon,\n\tSkipForwardIcon,\n} from "lucide-react"\n\nimport { Button } from "@/components/ui/button"\nimport {\n\tDropdownMenu,\n\tDropdownMenuCheckboxItem,\n\tDropdownMenuContent,\n\tDropdownMenuGroup,\n\tDropdownMenuItem,\n\tDropdownMenuLabel,\n\tDropdownMenuRadioGroup,\n\tDropdownMenuRadioItem,\n\tDropdownMenuSeparator,\n\tDropdownMenuShortcut,\n\tDropdownMenuSub,\n\tDropdownMenuSubContent,\n\tDropdownMenuSubTrigger,\n\tDropdownMenuTrigger,\n} from "@/components/ui/dropdown-menu"\n\nexport default function DropdownDemo() {\n\tconst [shuffle, setShuffle] = useState(false)\n\tconst [repeat, setRepeat] = useState(false)\n\tconst [sortBy, setSortBy] = useState("artist")\n\n\treturn (\n\t\t<DropdownMenu>\n\t\t\t<DropdownMenuTrigger\n\t\t\t\trender={(props) => <Button {...props}>Controls</Button>}\n\t\t\t/>\n\t\t\t<DropdownMenuContent>\n\t\t\t\t<DropdownMenuGroup>\n\t\t\t\t\t<DropdownMenuLabel>Playback</DropdownMenuLabel>\n\t\t\t\t\t<DropdownMenuItem>\n\t\t\t\t\t\t<PlayIcon />\n\t\t\t\t\t\tPlay\n\t\t\t\t\t\t<DropdownMenuShortcut>⌘P</DropdownMenuShortcut>\n\t\t\t\t\t</DropdownMenuItem>\n\t\t\t\t\t<DropdownMenuItem>\n\t\t\t\t\t\t<PauseIcon />\n\t\t\t\t\t\tPause\n\t\t\t\t\t\t<DropdownMenuShortcut>⇧⌘P</DropdownMenuShortcut>\n\t\t\t\t\t</DropdownMenuItem>\n\t\t\t\t\t<DropdownMenuItem>\n\t\t\t\t\t\t<SkipBackIcon />\n\t\t\t\t\t\tPrevious\n\t\t\t\t\t\t<DropdownMenuShortcut>⌘[</DropdownMenuShortcut>\n\t\t\t\t\t</DropdownMenuItem>\n\t\t\t\t\t<DropdownMenuItem>\n\t\t\t\t\t\t<SkipForwardIcon />\n\t\t\t\t\t\tNext\n\t\t\t\t\t\t<DropdownMenuShortcut>⌘]</DropdownMenuShortcut>\n\t\t\t\t\t</DropdownMenuItem>\n\t\t\t\t</DropdownMenuGroup>\n\t\t\t\t<DropdownMenuSeparator />\n\t\t\t\t<DropdownMenuCheckboxItem\n\t\t\t\t\tchecked={shuffle}\n\t\t\t\t\tonCheckedChange={setShuffle}\n\t\t\t\t>\n\t\t\t\t\tShuffle\n\t\t\t\t</DropdownMenuCheckboxItem>\n\t\t\t\t<DropdownMenuCheckboxItem checked={repeat} onCheckedChange={setRepeat}>\n\t\t\t\t\tRepeat\n\t\t\t\t</DropdownMenuCheckboxItem>\n\t\t\t\t<DropdownMenuCheckboxItem disabled>\n\t\t\t\t\tEnhanced Audio\n\t\t\t\t</DropdownMenuCheckboxItem>\n\t\t\t\t<DropdownMenuSeparator />\n\t\t\t\t<DropdownMenuGroup>\n\t\t\t\t\t<DropdownMenuLabel>Sort by</DropdownMenuLabel>\n\t\t\t\t\t<DropdownMenuRadioGroup value={sortBy} onValueChange={setSortBy}>\n\t\t\t\t\t\t<DropdownMenuRadioItem value="artist">Artist</DropdownMenuRadioItem>\n\t\t\t\t\t\t<DropdownMenuRadioItem value="album">Repeat</DropdownMenuRadioItem>\n\t\t\t\t\t\t<DropdownMenuRadioItem value="title">Title</DropdownMenuRadioItem>\n\t\t\t\t\t</DropdownMenuRadioGroup>\n\t\t\t\t</DropdownMenuGroup>\n\t\t\t\t<DropdownMenuSeparator />\n\t\t\t\t<DropdownMenuSub>\n\t\t\t\t\t<DropdownMenuSubTrigger>Add to Playlist</DropdownMenuSubTrigger>\n\t\t\t\t\t<DropdownMenuSubContent>\n\t\t\t\t\t\t<DropdownMenuItem>Jazz</DropdownMenuItem>\n\t\t\t\t\t\t<DropdownMenuItem>Rock</DropdownMenuItem>\n\t\t\t\t\t\t<DropdownMenuItem>Pop</DropdownMenuItem>\n\t\t\t\t\t</DropdownMenuSubContent>\n\t\t\t\t</DropdownMenuSub>\n\t\t\t</DropdownMenuContent>\n\t\t</DropdownMenu>\n\t)\n}\n',
+			'"use client"\n\nimport { useState } from "react"\nimport {\n\tPauseIcon,\n\tPlayIcon,\n\tSkipBackIcon,\n\tSkipForwardIcon,\n} from "lucide-react"\n\nimport { Button } from "@/components/ui/button"\nimport {\n\tDropdownMenu,\n\tDropdownMenuCheckboxItem,\n\tDropdownMenuContent,\n\tDropdownMenuGroup,\n\tDropdownMenuItem,\n\tDropdownMenuLabel,\n\tDropdownMenuRadioGroup,\n\tDropdownMenuRadioItem,\n\tDropdownMenuSeparator,\n\tDropdownMenuShortcut,\n\tDropdownMenuSub,\n\tDropdownMenuSubContent,\n\tDropdownMenuSubTrigger,\n\tDropdownMenuTrigger,\n} from "@/components/ui/dropdown-menu"\n\nexport default function DropdownMenuDemo() {\n\tconst [shuffle, setShuffle] = useState(false)\n\tconst [repeat, setRepeat] = useState(false)\n\tconst [sortBy, setSortBy] = useState("artist")\n\n\treturn (\n\t\t<DropdownMenu>\n\t\t\t<DropdownMenuTrigger\n\t\t\t\trender={(props) => <Button {...props}>Controls</Button>}\n\t\t\t/>\n\t\t\t<DropdownMenuContent>\n\t\t\t\t<DropdownMenuGroup>\n\t\t\t\t\t<DropdownMenuLabel>Playback</DropdownMenuLabel>\n\t\t\t\t\t<DropdownMenuItem>\n\t\t\t\t\t\t<PlayIcon />\n\t\t\t\t\t\tPlay\n\t\t\t\t\t\t<DropdownMenuShortcut>⌘P</DropdownMenuShortcut>\n\t\t\t\t\t</DropdownMenuItem>\n\t\t\t\t\t<DropdownMenuItem>\n\t\t\t\t\t\t<PauseIcon />\n\t\t\t\t\t\tPause\n\t\t\t\t\t\t<DropdownMenuShortcut>⇧⌘P</DropdownMenuShortcut>\n\t\t\t\t\t</DropdownMenuItem>\n\t\t\t\t\t<DropdownMenuItem>\n\t\t\t\t\t\t<SkipBackIcon />\n\t\t\t\t\t\tPrevious\n\t\t\t\t\t\t<DropdownMenuShortcut>⌘[</DropdownMenuShortcut>\n\t\t\t\t\t</DropdownMenuItem>\n\t\t\t\t\t<DropdownMenuItem>\n\t\t\t\t\t\t<SkipForwardIcon />\n\t\t\t\t\t\tNext\n\t\t\t\t\t\t<DropdownMenuShortcut>⌘]</DropdownMenuShortcut>\n\t\t\t\t\t</DropdownMenuItem>\n\t\t\t\t</DropdownMenuGroup>\n\t\t\t\t<DropdownMenuSeparator />\n\t\t\t\t<DropdownMenuCheckboxItem\n\t\t\t\t\tchecked={shuffle}\n\t\t\t\t\tonCheckedChange={setShuffle}\n\t\t\t\t>\n\t\t\t\t\tShuffle\n\t\t\t\t</DropdownMenuCheckboxItem>\n\t\t\t\t<DropdownMenuCheckboxItem checked={repeat} onCheckedChange={setRepeat}>\n\t\t\t\t\tRepeat\n\t\t\t\t</DropdownMenuCheckboxItem>\n\t\t\t\t<DropdownMenuCheckboxItem disabled>\n\t\t\t\t\tEnhanced Audio\n\t\t\t\t</DropdownMenuCheckboxItem>\n\t\t\t\t<DropdownMenuSeparator />\n\t\t\t\t<DropdownMenuGroup>\n\t\t\t\t\t<DropdownMenuLabel>Sort by</DropdownMenuLabel>\n\t\t\t\t\t<DropdownMenuRadioGroup value={sortBy} onValueChange={setSortBy}>\n\t\t\t\t\t\t<DropdownMenuRadioItem value="artist">Artist</DropdownMenuRadioItem>\n\t\t\t\t\t\t<DropdownMenuRadioItem value="album">Repeat</DropdownMenuRadioItem>\n\t\t\t\t\t\t<DropdownMenuRadioItem value="title">Title</DropdownMenuRadioItem>\n\t\t\t\t\t</DropdownMenuRadioGroup>\n\t\t\t\t</DropdownMenuGroup>\n\t\t\t\t<DropdownMenuSeparator />\n\t\t\t\t<DropdownMenuSub>\n\t\t\t\t\t<DropdownMenuSubTrigger>Add to Playlist</DropdownMenuSubTrigger>\n\t\t\t\t\t<DropdownMenuSubContent>\n\t\t\t\t\t\t<DropdownMenuItem>Jazz</DropdownMenuItem>\n\t\t\t\t\t\t<DropdownMenuItem>Rock</DropdownMenuItem>\n\t\t\t\t\t\t<DropdownMenuItem>Pop</DropdownMenuItem>\n\t\t\t\t\t</DropdownMenuSubContent>\n\t\t\t\t</DropdownMenuSub>\n\t\t\t</DropdownMenuContent>\n\t\t</DropdownMenu>\n\t)\n}\n',
 		component: React.lazy(
 			() => import("@/components/demos/dropdown-menu/dropdown-menu-demo")
 		),
@@ -772,15 +809,15 @@ export const demoRegistry: DemoRegistry = {
 		category: "emoji-picker",
 		path: "src/components/demos/emoji-picker/emoji-picker-demo.tsx",
 	},
-	"emoji-picker-popover": {
+	"emoji-picker-popover-demo": {
 		source:
 			'import * as React from "react"\nimport { Loader2 } from "lucide-react"\nimport { toast } from "sonner"\n\nimport { Button } from "@/components/ui/button"\nimport {\n\tEmojiPicker,\n\tEmojiPickerContent,\n\tEmojiPickerEmpty,\n\tEmojiPickerList,\n\tEmojiPickerLoading,\n\tEmojiPickerSearch,\n} from "@/components/ui/emoji-picker"\nimport {\n\tPopover,\n\tPopoverContent,\n\tPopoverTrigger,\n} from "@/components/ui/popover"\n\nexport default function EmojiPickerPopoverDemo() {\n\tconst [open, setOpen] = React.useState(false)\n\tconst [emoji, setEmoji] = React.useState<string | undefined>(undefined)\n\n\treturn (\n\t\t<Popover open={open} onOpenChange={setOpen}>\n\t\t\t<PopoverTrigger\n\t\t\t\trender={(props) => (\n\t\t\t\t\t<Button {...props} variant="outline" size="icon">\n\t\t\t\t\t\t{emoji ? emoji : "👇"}\n\t\t\t\t\t</Button>\n\t\t\t\t)}\n\t\t\t/>\n\t\t\t<PopoverContent className="w-full rounded-md p-0 outline-offset-0">\n\t\t\t\t<EmojiPicker\n\t\t\t\t\tclassName="border-none"\n\t\t\t\t\tonEmojiSelect={({ emoji, label }) => {\n\t\t\t\t\t\tsetEmoji(emoji)\n\t\t\t\t\t\tsetOpen(false)\n\t\t\t\t\t\ttoast(() => (\n\t\t\t\t\t\t\t<p className="flex items-center gap-2 text-sm">\n\t\t\t\t\t\t\t\t<span className="text-lg">{emoji}</span>\n\t\t\t\t\t\t\t\t{label}\n\t\t\t\t\t\t\t</p>\n\t\t\t\t\t\t))\n\t\t\t\t\t}}\n\t\t\t\t>\n\t\t\t\t\t<EmojiPickerSearch />\n\t\t\t\t\t<EmojiPickerContent>\n\t\t\t\t\t\t<EmojiPickerLoading>\n\t\t\t\t\t\t\t<Loader2 className="size-4 animate-spin" />\n\t\t\t\t\t\t</EmojiPickerLoading>\n\t\t\t\t\t\t<EmojiPickerEmpty>No results</EmojiPickerEmpty>\n\t\t\t\t\t\t<EmojiPickerList />\n\t\t\t\t\t</EmojiPickerContent>\n\t\t\t\t</EmojiPicker>\n\t\t\t</PopoverContent>\n\t\t</Popover>\n\t)\n}\n',
 		component: React.lazy(
-			() => import("@/components/demos/emoji-picker/emoji-picker-popover")
+			() => import("@/components/demos/emoji-picker/emoji-picker-popover-demo")
 		),
-		title: "emoji-picker-popover",
+		title: "emoji-picker-popover-demo",
 		category: "emoji-picker",
-		path: "src/components/demos/emoji-picker/emoji-picker-popover.tsx",
+		path: "src/components/demos/emoji-picker/emoji-picker-popover-demo.tsx",
 	},
 	"form-demo": {
 		source:
@@ -808,33 +845,35 @@ export const demoRegistry: DemoRegistry = {
 		category: "input",
 		path: "src/components/demos/input/input-demo.tsx",
 	},
-	"input-disabled": {
+	"input-disabled-demo": {
 		source:
-			'import { Input } from "@/components/ui/input"\n\nexport default function InputDisabled() {\n\treturn <Input inputContainerClassName="w-80" placeholder="Name" disabled />\n}\n',
+			'import { Input } from "@/components/ui/input"\n\nexport default function InputDisabledDemo() {\n\treturn <Input inputContainerClassName="w-80" placeholder="Name" disabled />\n}\n',
 		component: React.lazy(
-			() => import("@/components/demos/input/input-disabled")
+			() => import("@/components/demos/input/input-disabled-demo")
 		),
-		title: "input-disabled",
+		title: "input-disabled-demo",
 		category: "input",
-		path: "src/components/demos/input/input-disabled.tsx",
+		path: "src/components/demos/input/input-disabled-demo.tsx",
 	},
-	"input-error": {
+	"input-error-demo": {
 		source:
-			'import { Input } from "@/components/ui/input"\n\nexport default function InputError() {\n\treturn (\n\t\t<Input inputContainerClassName="w-80" placeholder="Name" aria-invalid />\n\t)\n}\n',
-		component: React.lazy(() => import("@/components/demos/input/input-error")),
-		title: "input-error",
-		category: "input",
-		path: "src/components/demos/input/input-error.tsx",
-	},
-	"input-with-icons": {
-		source:
-			'import { useState } from "react"\nimport { EyeIcon, EyeOffIcon, LockIcon } from "lucide-react"\n\nimport { Input } from "@/components/ui/input"\n\nexport default function InputWithIcons() {\n\tconst [isPasswordVisible, setIsPasswordVisible] = useState(false)\n\n\tconst togglePasswordVisibility = () => {\n\t\tsetIsPasswordVisible(!isPasswordVisible)\n\t}\n\n\tconst passwordType = isPasswordVisible ? "text" : "password"\n\n\treturn (\n\t\t<Input\n\t\t\tplaceholder="Password"\n\t\t\tinputContainerClassName="w-80"\n\t\t\ttype={passwordType}\n\t\t\tleadingIcon={<LockIcon />}\n\t\t\ttrailingIcon={\n\t\t\t\tisPasswordVisible ? (\n\t\t\t\t\t<EyeIcon\n\t\t\t\t\t\tclassName="hover:text-foreground pointer-events-auto cursor-pointer transition-colors duration-200"\n\t\t\t\t\t\tonClick={togglePasswordVisibility}\n\t\t\t\t\t/>\n\t\t\t\t) : (\n\t\t\t\t\t<EyeOffIcon\n\t\t\t\t\t\tclassName="hover:text-foreground pointer-events-auto cursor-pointer transition-colors duration-200"\n\t\t\t\t\t\tonClick={togglePasswordVisibility}\n\t\t\t\t\t/>\n\t\t\t\t)\n\t\t\t}\n\t\t/>\n\t)\n}\n',
+			'import { Input } from "@/components/ui/input"\n\nexport default function InputErrorDemo() {\n\treturn (\n\t\t<Input inputContainerClassName="w-80" placeholder="Name" aria-invalid />\n\t)\n}\n',
 		component: React.lazy(
-			() => import("@/components/demos/input/input-with-icons")
+			() => import("@/components/demos/input/input-error-demo")
 		),
-		title: "input-with-icons",
+		title: "input-error-demo",
 		category: "input",
-		path: "src/components/demos/input/input-with-icons.tsx",
+		path: "src/components/demos/input/input-error-demo.tsx",
+	},
+	"input-with-icons-demo": {
+		source:
+			'import { useState } from "react"\nimport { EyeIcon, EyeOffIcon, LockIcon } from "lucide-react"\n\nimport { Input } from "@/components/ui/input"\n\nexport default function InputWithIconsDemo() {\n\tconst [isPasswordVisible, setIsPasswordVisible] = useState(false)\n\n\tconst togglePasswordVisibility = () => {\n\t\tsetIsPasswordVisible(!isPasswordVisible)\n\t}\n\n\tconst passwordType = isPasswordVisible ? "text" : "password"\n\n\treturn (\n\t\t<Input\n\t\t\tplaceholder="Password"\n\t\t\tinputContainerClassName="w-80"\n\t\t\ttype={passwordType}\n\t\t\tleadingIcon={<LockIcon />}\n\t\t\ttrailingIcon={\n\t\t\t\tisPasswordVisible ? (\n\t\t\t\t\t<EyeIcon\n\t\t\t\t\t\tclassName="hover:text-foreground pointer-events-auto cursor-pointer transition-colors duration-200"\n\t\t\t\t\t\tonClick={togglePasswordVisibility}\n\t\t\t\t\t/>\n\t\t\t\t) : (\n\t\t\t\t\t<EyeOffIcon\n\t\t\t\t\t\tclassName="hover:text-foreground pointer-events-auto cursor-pointer transition-colors duration-200"\n\t\t\t\t\t\tonClick={togglePasswordVisibility}\n\t\t\t\t\t/>\n\t\t\t\t)\n\t\t\t}\n\t\t/>\n\t)\n}\n',
+		component: React.lazy(
+			() => import("@/components/demos/input/input-with-icons-demo")
+		),
+		title: "input-with-icons-demo",
+		category: "input",
+		path: "src/components/demos/input/input-with-icons-demo.tsx",
 	},
 	"kbd-demo": {
 		source:
@@ -844,9 +883,17 @@ export const demoRegistry: DemoRegistry = {
 		category: "kbd",
 		path: "src/components/demos/kbd/kbd-demo.tsx",
 	},
+	"label-demo": {
+		source:
+			'import { Checkbox } from "@/components/ui/checkbox"\nimport { Label } from "@/components/ui/label"\n\nexport default function LabelDemo() {\n\treturn (\n\t\t<Label className="flex items-center gap-2">\n\t\t\t<Checkbox id="accept" />\n\t\t\tAccept terms and conditions\n\t\t</Label>\n\t)\n}\n',
+		component: React.lazy(() => import("@/components/demos/label/label-demo")),
+		title: "label-demo",
+		category: "label",
+		path: "src/components/demos/label/label-demo.tsx",
+	},
 	"menubar-demo": {
 		source:
-			'import {\n\tMenubar,\n\tMenubarContent,\n\tMenubarItem,\n\tMenubarMenu,\n\tMenubarRadioGroup,\n\tMenubarRadioItem,\n\tMenubarSeparator,\n\tMenubarShortcut,\n\tMenubarSub,\n\tMenubarSubContent,\n\tMenubarSubTrigger,\n\tMenubarTrigger,\n} from "@/components/ui/menubar"\n\nexport default function MenubarDemo() {\n\treturn (\n\t\t<Menubar>\n\t\t\t<MenubarMenu>\n\t\t\t\t<MenubarTrigger>File</MenubarTrigger>\n\t\t\t\t<MenubarContent>\n\t\t\t\t\t<MenubarItem>\n\t\t\t\t\t\tNew File\n\t\t\t\t\t\t<MenubarShortcut>⌘N</MenubarShortcut>\n\t\t\t\t\t</MenubarItem>\n\t\t\t\t\t<MenubarItem>\n\t\t\t\t\t\tNew Window\n\t\t\t\t\t\t<MenubarShortcut>⇧⌘N</MenubarShortcut>\n\t\t\t\t\t</MenubarItem>\n\t\t\t\t\t<MenubarSeparator />\n\t\t\t\t\t<MenubarItem>\n\t\t\t\t\t\tOpen\n\t\t\t\t\t\t<MenubarShortcut>⌘O</MenubarShortcut>\n\t\t\t\t\t</MenubarItem>\n\t\t\t\t\t<MenubarItem>\n\t\t\t\t\t\tOpen Folder\n\t\t\t\t\t\t<MenubarShortcut>⇧⌘O</MenubarShortcut>\n\t\t\t\t\t</MenubarItem>\n\t\t\t\t\t<MenubarItem>Open Recent</MenubarItem>\n\t\t\t\t\t<MenubarSeparator />\n\t\t\t\t\t<MenubarItem>\n\t\t\t\t\t\tSave\n\t\t\t\t\t\t<MenubarShortcut>⌘S</MenubarShortcut>\n\t\t\t\t\t</MenubarItem>\n\t\t\t\t\t<MenubarItem>\n\t\t\t\t\t\tSave As\n\t\t\t\t\t\t<MenubarShortcut>⇧⌘S</MenubarShortcut>\n\t\t\t\t\t</MenubarItem>\n\t\t\t\t\t<MenubarSeparator />\n\t\t\t\t\t<MenubarItem>\n\t\t\t\t\t\tClose Window\n\t\t\t\t\t\t<MenubarShortcut>⌘W</MenubarShortcut>\n\t\t\t\t\t</MenubarItem>\n\t\t\t\t</MenubarContent>\n\t\t\t</MenubarMenu>\n\t\t\t<MenubarMenu>\n\t\t\t\t<MenubarTrigger>Edit</MenubarTrigger>\n\t\t\t\t<MenubarContent>\n\t\t\t\t\t<MenubarItem>\n\t\t\t\t\t\tUndo\n\t\t\t\t\t\t<MenubarShortcut>⌘Z</MenubarShortcut>\n\t\t\t\t\t</MenubarItem>\n\t\t\t\t\t<MenubarItem>\n\t\t\t\t\t\tRedo\n\t\t\t\t\t\t<MenubarShortcut>⌘Y</MenubarShortcut>\n\t\t\t\t\t</MenubarItem>\n\t\t\t\t\t<MenubarSeparator />\n\t\t\t\t\t<MenubarItem>\n\t\t\t\t\t\tCut\n\t\t\t\t\t\t<MenubarShortcut>⌘X</MenubarShortcut>\n\t\t\t\t\t</MenubarItem>\n\t\t\t\t\t<MenubarItem>\n\t\t\t\t\t\tCopy\n\t\t\t\t\t\t<MenubarShortcut>⌘C</MenubarShortcut>\n\t\t\t\t\t</MenubarItem>\n\t\t\t\t\t<MenubarItem>\n\t\t\t\t\t\tPaste\n\t\t\t\t\t\t<MenubarShortcut>⌘V</MenubarShortcut>\n\t\t\t\t\t</MenubarItem>\n\t\t\t\t\t<MenubarSeparator />\n\t\t\t\t\t<MenubarItem>\n\t\t\t\t\t\tFind\n\t\t\t\t\t\t<MenubarShortcut>⌘F</MenubarShortcut>\n\t\t\t\t\t</MenubarItem>\n\t\t\t\t\t<MenubarItem>\n\t\t\t\t\t\tReplace\n\t\t\t\t\t\t<MenubarShortcut>⌥⌘F</MenubarShortcut>\n\t\t\t\t\t</MenubarItem>\n\t\t\t\t</MenubarContent>\n\t\t\t</MenubarMenu>\n\t\t\t<MenubarMenu>\n\t\t\t\t<MenubarTrigger>View</MenubarTrigger>\n\t\t\t\t<MenubarContent>\n\t\t\t\t\t<MenubarSub>\n\t\t\t\t\t\t<MenubarSubTrigger>Appearance</MenubarSubTrigger>\n\t\t\t\t\t\t<MenubarSubContent>\n\t\t\t\t\t\t\t<MenubarRadioGroup>\n\t\t\t\t\t\t\t\t<MenubarRadioItem value="system">System</MenubarRadioItem>\n\t\t\t\t\t\t\t\t<MenubarRadioItem value="light">Light</MenubarRadioItem>\n\t\t\t\t\t\t\t\t<MenubarRadioItem value="dark">Dark</MenubarRadioItem>\n\t\t\t\t\t\t\t</MenubarRadioGroup>\n\t\t\t\t\t\t</MenubarSubContent>\n\t\t\t\t\t</MenubarSub>\n\t\t\t\t\t<MenubarSeparator />\n\t\t\t\t\t<MenubarItem>\n\t\t\t\t\t\tShow/Hide Sidebar\n\t\t\t\t\t\t<MenubarShortcut>⌃⌥⌘*</MenubarShortcut>\n\t\t\t\t\t</MenubarItem>\n\t\t\t\t\t<MenubarItem>\n\t\t\t\t\t\tCommand Palette\n\t\t\t\t\t\t<MenubarShortcut>⇧⌘P</MenubarShortcut>\n\t\t\t\t\t</MenubarItem>\n\t\t\t\t\t<MenubarItem>Expand Tabs</MenubarItem>\n\t\t\t\t\t<MenubarSeparator />\n\t\t\t\t\t<MenubarItem>\n\t\t\t\t\t\tZoom In\n\t\t\t\t\t\t<MenubarShortcut>⌘+</MenubarShortcut>\n\t\t\t\t\t</MenubarItem>\n\t\t\t\t\t<MenubarItem>\n\t\t\t\t\t\tZoom Out\n\t\t\t\t\t\t<MenubarShortcut>⌘-</MenubarShortcut>\n\t\t\t\t\t</MenubarItem>\n\t\t\t\t\t<MenubarItem>\n\t\t\t\t\t\tReset Zoom\n\t\t\t\t\t\t<MenubarShortcut>⌘0</MenubarShortcut>\n\t\t\t\t\t</MenubarItem>\n\t\t\t\t</MenubarContent>\n\t\t\t</MenubarMenu>\n\t\t\t<MenubarMenu>\n\t\t\t\t<MenubarTrigger>Help</MenubarTrigger>\n\t\t\t\t<MenubarContent>\n\t\t\t\t\t<MenubarItem>Getting Started</MenubarItem>\n\t\t\t\t\t<MenubarItem>Report Issue</MenubarItem>\n\t\t\t\t\t<MenubarItem>Check for Updates</MenubarItem>\n\t\t\t\t\t<MenubarItem>Contact the Team</MenubarItem>\n\t\t\t\t</MenubarContent>\n\t\t\t</MenubarMenu>\n\t\t</Menubar>\n\t)\n}\n',
+			'import {\n\tMenubar,\n\tMenubarCheckboxItem,\n\tMenubarContent,\n\tMenubarItem,\n\tMenubarMenu,\n\tMenubarRadioGroup,\n\tMenubarRadioItem,\n\tMenubarSeparator,\n\tMenubarShortcut,\n\tMenubarSub,\n\tMenubarSubContent,\n\tMenubarSubTrigger,\n\tMenubarTrigger,\n} from "@/components/ui/menubar"\n\nexport default function MenubarDemo() {\n\treturn (\n\t\t<Menubar>\n\t\t\t<MenubarMenu>\n\t\t\t\t<MenubarTrigger>File</MenubarTrigger>\n\t\t\t\t<MenubarContent>\n\t\t\t\t\t<MenubarItem>\n\t\t\t\t\t\tNew File\n\t\t\t\t\t\t<MenubarShortcut>⌘N</MenubarShortcut>\n\t\t\t\t\t</MenubarItem>\n\t\t\t\t\t<MenubarItem>\n\t\t\t\t\t\tNew Window\n\t\t\t\t\t\t<MenubarShortcut>⇧⌘N</MenubarShortcut>\n\t\t\t\t\t</MenubarItem>\n\t\t\t\t\t<MenubarSeparator />\n\t\t\t\t\t<MenubarItem>\n\t\t\t\t\t\tOpen\n\t\t\t\t\t\t<MenubarShortcut>⌘O</MenubarShortcut>\n\t\t\t\t\t</MenubarItem>\n\t\t\t\t\t<MenubarItem>\n\t\t\t\t\t\tOpen Folder\n\t\t\t\t\t\t<MenubarShortcut>⇧⌘O</MenubarShortcut>\n\t\t\t\t\t</MenubarItem>\n\t\t\t\t\t<MenubarItem>Open Recent</MenubarItem>\n\t\t\t\t\t<MenubarSeparator />\n\t\t\t\t\t<MenubarItem>\n\t\t\t\t\t\tSave\n\t\t\t\t\t\t<MenubarShortcut>⌘S</MenubarShortcut>\n\t\t\t\t\t</MenubarItem>\n\t\t\t\t\t<MenubarItem>\n\t\t\t\t\t\tSave As\n\t\t\t\t\t\t<MenubarShortcut>⇧⌘S</MenubarShortcut>\n\t\t\t\t\t</MenubarItem>\n\t\t\t\t\t<MenubarSeparator />\n\t\t\t\t\t<MenubarItem>\n\t\t\t\t\t\tClose Window\n\t\t\t\t\t\t<MenubarShortcut>⌘W</MenubarShortcut>\n\t\t\t\t\t</MenubarItem>\n\t\t\t\t</MenubarContent>\n\t\t\t</MenubarMenu>\n\t\t\t<MenubarMenu>\n\t\t\t\t<MenubarTrigger>Edit</MenubarTrigger>\n\t\t\t\t<MenubarContent>\n\t\t\t\t\t<MenubarItem>\n\t\t\t\t\t\tUndo\n\t\t\t\t\t\t<MenubarShortcut>⌘Z</MenubarShortcut>\n\t\t\t\t\t</MenubarItem>\n\t\t\t\t\t<MenubarItem>\n\t\t\t\t\t\tRedo\n\t\t\t\t\t\t<MenubarShortcut>⌘Y</MenubarShortcut>\n\t\t\t\t\t</MenubarItem>\n\t\t\t\t\t<MenubarSeparator />\n\t\t\t\t\t<MenubarItem>\n\t\t\t\t\t\tCut\n\t\t\t\t\t\t<MenubarShortcut>⌘X</MenubarShortcut>\n\t\t\t\t\t</MenubarItem>\n\t\t\t\t\t<MenubarItem>\n\t\t\t\t\t\tCopy\n\t\t\t\t\t\t<MenubarShortcut>⌘C</MenubarShortcut>\n\t\t\t\t\t</MenubarItem>\n\t\t\t\t\t<MenubarItem>\n\t\t\t\t\t\tPaste\n\t\t\t\t\t\t<MenubarShortcut>⌘V</MenubarShortcut>\n\t\t\t\t\t</MenubarItem>\n\t\t\t\t\t<MenubarSeparator />\n\t\t\t\t\t<MenubarItem>\n\t\t\t\t\t\tFind\n\t\t\t\t\t\t<MenubarShortcut>⌘F</MenubarShortcut>\n\t\t\t\t\t</MenubarItem>\n\t\t\t\t\t<MenubarItem>\n\t\t\t\t\t\tReplace\n\t\t\t\t\t\t<MenubarShortcut>⌥⌘F</MenubarShortcut>\n\t\t\t\t\t</MenubarItem>\n\t\t\t\t</MenubarContent>\n\t\t\t</MenubarMenu>\n\t\t\t<MenubarMenu>\n\t\t\t\t<MenubarTrigger>View</MenubarTrigger>\n\t\t\t\t<MenubarContent>\n\t\t\t\t\t<MenubarSub>\n\t\t\t\t\t\t<MenubarSubTrigger>Appearance</MenubarSubTrigger>\n\t\t\t\t\t\t<MenubarSubContent>\n\t\t\t\t\t\t\t<MenubarRadioGroup>\n\t\t\t\t\t\t\t\t<MenubarRadioItem value="system">System</MenubarRadioItem>\n\t\t\t\t\t\t\t\t<MenubarRadioItem value="light">Light</MenubarRadioItem>\n\t\t\t\t\t\t\t\t<MenubarRadioItem value="dark">Dark</MenubarRadioItem>\n\t\t\t\t\t\t\t</MenubarRadioGroup>\n\t\t\t\t\t\t</MenubarSubContent>\n\t\t\t\t\t</MenubarSub>\n\t\t\t\t\t<MenubarSeparator />\n\t\t\t\t\t<MenubarItem>\n\t\t\t\t\t\tShow/Hide Sidebar\n\t\t\t\t\t\t<MenubarShortcut>⌃⌥⌘*</MenubarShortcut>\n\t\t\t\t\t</MenubarItem>\n\t\t\t\t\t<MenubarItem>\n\t\t\t\t\t\tCommand Palette\n\t\t\t\t\t\t<MenubarShortcut>⇧⌘P</MenubarShortcut>\n\t\t\t\t\t</MenubarItem>\n\t\t\t\t\t<MenubarItem>Expand Tabs</MenubarItem>\n\t\t\t\t\t<MenubarSeparator />\n\t\t\t\t\t<MenubarItem>\n\t\t\t\t\t\tZoom In\n\t\t\t\t\t\t<MenubarShortcut>⌘+</MenubarShortcut>\n\t\t\t\t\t</MenubarItem>\n\t\t\t\t\t<MenubarItem>\n\t\t\t\t\t\tZoom Out\n\t\t\t\t\t\t<MenubarShortcut>⌘-</MenubarShortcut>\n\t\t\t\t\t</MenubarItem>\n\t\t\t\t\t<MenubarItem>\n\t\t\t\t\t\tReset Zoom\n\t\t\t\t\t\t<MenubarShortcut>⌘0</MenubarShortcut>\n\t\t\t\t\t</MenubarItem>\n\t\t\t\t\t<MenubarSeparator />\n\t\t\t\t\t<MenubarCheckboxItem>Show Toolbar</MenubarCheckboxItem>\n\t\t\t\t\t<MenubarCheckboxItem>Show Status Bar</MenubarCheckboxItem>\n\t\t\t\t</MenubarContent>\n\t\t\t</MenubarMenu>\n\t\t\t<MenubarMenu>\n\t\t\t\t<MenubarTrigger>Help</MenubarTrigger>\n\t\t\t\t<MenubarContent>\n\t\t\t\t\t<MenubarItem>Getting Started</MenubarItem>\n\t\t\t\t\t<MenubarItem>Report Issue</MenubarItem>\n\t\t\t\t\t<MenubarItem>Check for Updates</MenubarItem>\n\t\t\t\t\t<MenubarItem>Contact the Team</MenubarItem>\n\t\t\t\t</MenubarContent>\n\t\t\t</MenubarMenu>\n\t\t</Menubar>\n\t)\n}\n',
 		component: React.lazy(
 			() => import("@/components/demos/menubar/menubar-demo")
 		),
@@ -892,15 +939,18 @@ export const demoRegistry: DemoRegistry = {
 		category: "pagination",
 		path: "src/components/demos/pagination/pagination-demo.tsx",
 	},
-	"phone-input-default-country": {
+	"phone-input-default-country-demo": {
 		source:
-			'"use client"\n\nimport { useState } from "react"\n\nimport { PhoneInput } from "@/components/ui/phone-input"\n\nexport default function PhoneInputDefaultCountry() {\n\tconst [phoneNumber, setPhoneNumber] = useState<string>()\n\n\treturn (\n\t\t<div className="w-[300px]">\n\t\t\t<PhoneInput\n\t\t\t\tvalue={phoneNumber}\n\t\t\t\tonChange={setPhoneNumber}\n\t\t\t\tdefaultCountry="TR"\n\t\t\t\tplaceholder="Enter a phone number"\n\t\t\t/>\n\t\t</div>\n\t)\n}\n',
+			'"use client"\n\nimport { useState } from "react"\n\nimport { PhoneInput } from "@/components/ui/phone-input"\n\nexport default function PhoneInputDefaultCountryDemo() {\n\tconst [phoneNumber, setPhoneNumber] = useState<string>()\n\n\treturn (\n\t\t<div className="w-[300px]">\n\t\t\t<PhoneInput\n\t\t\t\tvalue={phoneNumber}\n\t\t\t\tonChange={setPhoneNumber}\n\t\t\t\tdefaultCountry="TR"\n\t\t\t\tplaceholder="Enter a phone number"\n\t\t\t/>\n\t\t</div>\n\t)\n}\n',
 		component: React.lazy(
-			() => import("@/components/demos/phone-input/phone-input-default-country")
+			() =>
+				import(
+					"@/components/demos/phone-input/phone-input-default-country-demo"
+				)
 		),
-		title: "phone-input-default-country",
+		title: "phone-input-default-country-demo",
 		category: "phone-input",
-		path: "src/components/demos/phone-input/phone-input-default-country.tsx",
+		path: "src/components/demos/phone-input/phone-input-default-country-demo.tsx",
 	},
 	"phone-input-demo": {
 		source:
@@ -912,82 +962,88 @@ export const demoRegistry: DemoRegistry = {
 		category: "phone-input",
 		path: "src/components/demos/phone-input/phone-input-demo.tsx",
 	},
-	"phone-input-form": {
+	"phone-input-form-demo": {
 		source:
-			'"use client"\n\nimport { zodResolver } from "@hookform/resolvers/zod"\nimport { useForm } from "react-hook-form"\nimport { isValidPhoneNumber } from "react-phone-number-input"\nimport { z } from "zod"\n\nimport { Button } from "@/components/ui/button"\nimport {\n\tForm,\n\tFormControl,\n\tFormField,\n\tFormItem,\n\tFormLabel,\n\tFormMessage,\n} from "@/components/ui/form"\nimport { PhoneInput } from "@/components/ui/phone-input"\n\nconst schema = z.object({\n\tphoneNumber: z.string().refine(isValidPhoneNumber, "Invalid phone number"),\n})\n\ntype FormValues = z.infer<typeof schema>\n\nexport default function PhoneInputForm() {\n\tconst form = useForm<FormValues>({\n\t\tresolver: zodResolver(schema),\n\t\tdefaultValues: {\n\t\t\tphoneNumber: "",\n\t\t},\n\t})\n\n\tconst onSubmit = (data: FormValues) => {\n\t\tconsole.log(data)\n\t}\n\n\treturn (\n\t\t<Form {...form}>\n\t\t\t<form\n\t\t\t\tonSubmit={form.handleSubmit(onSubmit)}\n\t\t\t\tclassName="flex w-[300px] flex-col gap-4"\n\t\t\t>\n\t\t\t\t<FormField\n\t\t\t\t\tname="phoneNumber"\n\t\t\t\t\tcontrol={form.control}\n\t\t\t\t\trender={({ field, fieldState }) => (\n\t\t\t\t\t\t<FormItem>\n\t\t\t\t\t\t\t<FormLabel>Phone Number</FormLabel>\n\t\t\t\t\t\t\t<FormControl>\n\t\t\t\t\t\t\t\t<PhoneInput\n\t\t\t\t\t\t\t\t\t{...field}\n\t\t\t\t\t\t\t\t\tplaceholder="Enter a phone number"\n\t\t\t\t\t\t\t\t\taria-invalid={!!fieldState.error}\n\t\t\t\t\t\t\t\t/>\n\t\t\t\t\t\t\t</FormControl>\n\t\t\t\t\t\t\t<FormMessage />\n\t\t\t\t\t\t</FormItem>\n\t\t\t\t\t)}\n\t\t\t\t/>\n\t\t\t\t<Button type="submit">Submit</Button>\n\t\t\t</form>\n\t\t</Form>\n\t)\n}\n',
+			'"use client"\n\nimport { zodResolver } from "@hookform/resolvers/zod"\nimport { useForm } from "react-hook-form"\nimport { isValidPhoneNumber } from "react-phone-number-input"\nimport { z } from "zod"\n\nimport { Button } from "@/components/ui/button"\nimport {\n\tForm,\n\tFormControl,\n\tFormField,\n\tFormItem,\n\tFormLabel,\n\tFormMessage,\n} from "@/components/ui/form"\nimport { PhoneInput } from "@/components/ui/phone-input"\n\nconst schema = z.object({\n\tphoneNumber: z.string().refine(isValidPhoneNumber, "Invalid phone number"),\n})\n\ntype FormValues = z.infer<typeof schema>\n\nexport default function PhoneInputFormDemo() {\n\tconst form = useForm<FormValues>({\n\t\tresolver: zodResolver(schema),\n\t\tdefaultValues: {\n\t\t\tphoneNumber: "",\n\t\t},\n\t})\n\n\tconst onSubmit = (data: FormValues) => {\n\t\tconsole.log(data)\n\t}\n\n\treturn (\n\t\t<Form {...form}>\n\t\t\t<form\n\t\t\t\tonSubmit={form.handleSubmit(onSubmit)}\n\t\t\t\tclassName="flex w-[300px] flex-col gap-4"\n\t\t\t>\n\t\t\t\t<FormField\n\t\t\t\t\tname="phoneNumber"\n\t\t\t\t\tcontrol={form.control}\n\t\t\t\t\trender={({ field, fieldState }) => (\n\t\t\t\t\t\t<FormItem>\n\t\t\t\t\t\t\t<FormLabel>Phone Number</FormLabel>\n\t\t\t\t\t\t\t<FormControl>\n\t\t\t\t\t\t\t\t<PhoneInput\n\t\t\t\t\t\t\t\t\t{...field}\n\t\t\t\t\t\t\t\t\tplaceholder="Enter a phone number"\n\t\t\t\t\t\t\t\t\taria-invalid={!!fieldState.error}\n\t\t\t\t\t\t\t\t/>\n\t\t\t\t\t\t\t</FormControl>\n\t\t\t\t\t\t\t<FormMessage />\n\t\t\t\t\t\t</FormItem>\n\t\t\t\t\t)}\n\t\t\t\t/>\n\t\t\t\t<Button type="submit">Submit</Button>\n\t\t\t</form>\n\t\t</Form>\n\t)\n}\n',
 		component: React.lazy(
-			() => import("@/components/demos/phone-input/phone-input-form")
+			() => import("@/components/demos/phone-input/phone-input-form-demo")
 		),
-		title: "phone-input-form",
+		title: "phone-input-form-demo",
 		category: "phone-input",
-		path: "src/components/demos/phone-input/phone-input-form.tsx",
+		path: "src/components/demos/phone-input/phone-input-form-demo.tsx",
 	},
-	"phone-input-formatting-value": {
+	"phone-input-formatting-value-demo": {
 		source:
-			'"use client"\n\nimport { useState } from "react"\nimport {\n\tCountry,\n\tformatPhoneNumber,\n\tformatPhoneNumberIntl,\n\tgetCountryCallingCode,\n} from "react-phone-number-input"\n\nimport { PhoneInput } from "@/components/ui/phone-input"\n\nexport default function PhoneInputFormattingValue() {\n\tconst [phoneNumber, setPhoneNumber] = useState<string>()\n\tconst [country, setCountry] = useState<Country>()\n\n\treturn (\n\t\t<div className="w-[300px] space-y-4">\n\t\t\t<PhoneInput\n\t\t\t\tvalue={phoneNumber}\n\t\t\t\tonChange={setPhoneNumber}\n\t\t\t\tonCountryChange={setCountry}\n\t\t\t\tplaceholder="Enter a phone number"\n\t\t\t/>\n\t\t\t<div className="space-y-2 text-sm">\n\t\t\t\t<div>\n\t\t\t\t\t<span className="font-semibold">National:</span>{" "}\n\t\t\t\t\t{phoneNumber ? (\n\t\t\t\t\t\tformatPhoneNumber(phoneNumber)\n\t\t\t\t\t) : (\n\t\t\t\t\t\t<span className="text-muted-foreground">Enter a phone number</span>\n\t\t\t\t\t)}\n\t\t\t\t</div>\n\t\t\t\t<div>\n\t\t\t\t\t<span className="font-semibold">International:</span>{" "}\n\t\t\t\t\t{phoneNumber ? (\n\t\t\t\t\t\tformatPhoneNumberIntl(phoneNumber)\n\t\t\t\t\t) : (\n\t\t\t\t\t\t<span className="text-muted-foreground">Enter a phone number</span>\n\t\t\t\t\t)}\n\t\t\t\t</div>\n\t\t\t\t<div>\n\t\t\t\t\t<span className="font-semibold">Country code:</span>{" "}\n\t\t\t\t\t{country && getCountryCallingCode(country)}\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t</div>\n\t)\n}\n',
-		component: React.lazy(
-			() =>
-				import("@/components/demos/phone-input/phone-input-formatting-value")
-		),
-		title: "phone-input-formatting-value",
-		category: "phone-input",
-		path: "src/components/demos/phone-input/phone-input-formatting-value.tsx",
-	},
-	"phone-input-initial-value-format": {
-		source:
-			'"use client"\n\nimport { useState } from "react"\n\nimport { PhoneInput } from "@/components/ui/phone-input"\n\nexport default function PhoneInputInitialValueFormat() {\n\tconst [phoneNumber, setPhoneNumber] = useState<string>()\n\n\treturn (\n\t\t<div className="w-[300px]">\n\t\t\t<PhoneInput\n\t\t\t\tvalue={phoneNumber}\n\t\t\t\tonChange={setPhoneNumber}\n\t\t\t\tinitialValueFormat="national"\n\t\t\t\tplaceholder="Enter a phone number"\n\t\t\t/>\n\t\t</div>\n\t)\n}\n',
+			'"use client"\n\nimport { useState } from "react"\nimport {\n\tCountry,\n\tformatPhoneNumber,\n\tformatPhoneNumberIntl,\n\tgetCountryCallingCode,\n} from "react-phone-number-input"\n\nimport { PhoneInput } from "@/components/ui/phone-input"\n\nexport default function PhoneInputFormattingValueDemo() {\n\tconst [phoneNumber, setPhoneNumber] = useState<string>()\n\tconst [country, setCountry] = useState<Country>()\n\n\treturn (\n\t\t<div className="w-[300px] space-y-4">\n\t\t\t<PhoneInput\n\t\t\t\tvalue={phoneNumber}\n\t\t\t\tonChange={setPhoneNumber}\n\t\t\t\tonCountryChange={setCountry}\n\t\t\t\tplaceholder="Enter a phone number"\n\t\t\t/>\n\t\t\t<div className="space-y-2 text-sm">\n\t\t\t\t<div>\n\t\t\t\t\t<span className="font-semibold">National:</span>{" "}\n\t\t\t\t\t{phoneNumber ? (\n\t\t\t\t\t\tformatPhoneNumber(phoneNumber)\n\t\t\t\t\t) : (\n\t\t\t\t\t\t<span className="text-muted-foreground">Enter a phone number</span>\n\t\t\t\t\t)}\n\t\t\t\t</div>\n\t\t\t\t<div>\n\t\t\t\t\t<span className="font-semibold">International:</span>{" "}\n\t\t\t\t\t{phoneNumber ? (\n\t\t\t\t\t\tformatPhoneNumberIntl(phoneNumber)\n\t\t\t\t\t) : (\n\t\t\t\t\t\t<span className="text-muted-foreground">Enter a phone number</span>\n\t\t\t\t\t)}\n\t\t\t\t</div>\n\t\t\t\t<div>\n\t\t\t\t\t<span className="font-semibold">Country code:</span>{" "}\n\t\t\t\t\t{country && getCountryCallingCode(country)}\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t</div>\n\t)\n}\n',
 		component: React.lazy(
 			() =>
 				import(
-					"@/components/demos/phone-input/phone-input-initial-value-format"
+					"@/components/demos/phone-input/phone-input-formatting-value-demo"
 				)
 		),
-		title: "phone-input-initial-value-format",
+		title: "phone-input-formatting-value-demo",
 		category: "phone-input",
-		path: "src/components/demos/phone-input/phone-input-initial-value-format.tsx",
+		path: "src/components/demos/phone-input/phone-input-formatting-value-demo.tsx",
 	},
-	"phone-input-international": {
+	"phone-input-initial-value-format-demo": {
 		source:
-			'"use client"\n\nimport { useState } from "react"\n\nimport { PhoneInput } from "@/components/ui/phone-input"\n\nexport default function PhoneInputInternational() {\n\tconst [phoneNumber, setPhoneNumber] = useState<string>()\n\n\treturn (\n\t\t<div className="w-[300px]">\n\t\t\t<PhoneInput\n\t\t\t\tvalue={phoneNumber}\n\t\t\t\tonChange={setPhoneNumber}\n\t\t\t\tinternational\n\t\t\t\tdefaultCountry="TR"\n\t\t\t\tplaceholder="Enter a phone number"\n\t\t\t/>\n\t\t</div>\n\t)\n}\n',
-		component: React.lazy(
-			() => import("@/components/demos/phone-input/phone-input-international")
-		),
-		title: "phone-input-international",
-		category: "phone-input",
-		path: "src/components/demos/phone-input/phone-input-international.tsx",
-	},
-	"phone-input-internationalization": {
-		source:
-			'"use client"\n\nimport { useState } from "react"\nimport tr from "react-phone-number-input/locale/tr"\n\nimport { PhoneInput } from "@/components/ui/phone-input"\n\nexport default function PhoneInputInternationalization() {\n\tconst [phoneNumber, setPhoneNumber] = useState<string>()\n\n\treturn (\n\t\t<div className="w-[300px]">\n\t\t\t<PhoneInput\n\t\t\t\tvalue={phoneNumber}\n\t\t\t\tonChange={setPhoneNumber}\n\t\t\t\tlabels={tr}\n\t\t\t\tdefaultCountry="TR"\n\t\t\t\tplaceholder="Telefon numarası"\n\t\t\t/>\n\t\t</div>\n\t)\n}\n',
+			'"use client"\n\nimport { useState } from "react"\n\nimport { PhoneInput } from "@/components/ui/phone-input"\n\nexport default function PhoneInputInitialValueFormatDemo() {\n\tconst [phoneNumber, setPhoneNumber] = useState<string>()\n\n\treturn (\n\t\t<div className="w-[300px]">\n\t\t\t<PhoneInput\n\t\t\t\tvalue={phoneNumber}\n\t\t\t\tonChange={setPhoneNumber}\n\t\t\t\tinitialValueFormat="national"\n\t\t\t\tplaceholder="Enter a phone number"\n\t\t\t/>\n\t\t</div>\n\t)\n}\n',
 		component: React.lazy(
 			() =>
 				import(
-					"@/components/demos/phone-input/phone-input-internationalization"
+					"@/components/demos/phone-input/phone-input-initial-value-format-demo"
 				)
 		),
-		title: "phone-input-internationalization",
+		title: "phone-input-initial-value-format-demo",
 		category: "phone-input",
-		path: "src/components/demos/phone-input/phone-input-internationalization.tsx",
+		path: "src/components/demos/phone-input/phone-input-initial-value-format-demo.tsx",
 	},
-	"phone-input-national": {
+	"phone-input-international-demo": {
 		source:
-			'"use client"\n\nimport { useState } from "react"\n\nimport { PhoneInput } from "@/components/ui/phone-input"\n\nexport default function PhoneInputNational() {\n\tconst [phoneNumber, setPhoneNumber] = useState<string>()\n\n\treturn (\n\t\t<div className="w-[300px]">\n\t\t\t<PhoneInput\n\t\t\t\tvalue={phoneNumber}\n\t\t\t\tonChange={setPhoneNumber}\n\t\t\t\tinternational={false}\n\t\t\t\tdefaultCountry="TR"\n\t\t\t\tplaceholder="Enter a phone number"\n\t\t\t/>\n\t\t</div>\n\t)\n}\n',
+			'"use client"\n\nimport { useState } from "react"\n\nimport { PhoneInput } from "@/components/ui/phone-input"\n\nexport default function PhoneInputInternationalDemo() {\n\tconst [phoneNumber, setPhoneNumber] = useState<string>()\n\n\treturn (\n\t\t<div className="w-[300px]">\n\t\t\t<PhoneInput\n\t\t\t\tvalue={phoneNumber}\n\t\t\t\tonChange={setPhoneNumber}\n\t\t\t\tinternational\n\t\t\t\tdefaultCountry="TR"\n\t\t\t\tplaceholder="Enter a phone number"\n\t\t\t/>\n\t\t</div>\n\t)\n}\n',
 		component: React.lazy(
-			() => import("@/components/demos/phone-input/phone-input-national")
+			() =>
+				import("@/components/demos/phone-input/phone-input-international-demo")
 		),
-		title: "phone-input-national",
+		title: "phone-input-international-demo",
 		category: "phone-input",
-		path: "src/components/demos/phone-input/phone-input-national.tsx",
+		path: "src/components/demos/phone-input/phone-input-international-demo.tsx",
 	},
-	"phone-input-with-validation": {
+	"phone-input-internationalization-demo": {
 		source:
-			'"use client"\n\nimport { useState } from "react"\nimport { isValidPhoneNumber } from "react-phone-number-input"\n\nimport { PhoneInput } from "@/components/ui/phone-input"\n\nexport default function PhoneInputWithValidation() {\n\tconst [phoneNumber, setPhoneNumber] = useState<string>()\n\tconst [error, setError] = useState<string>()\n\n\tconst handleChange = (value: string | undefined) => {\n\t\tsetPhoneNumber(value)\n\t\tif (value && !isValidPhoneNumber(value)) {\n\t\t\tsetError("Please enter a valid phone number")\n\t\t} else {\n\t\t\tsetError(undefined)\n\t\t}\n\t}\n\n\treturn (\n\t\t<div className="w-[300px] space-y-2">\n\t\t\t<PhoneInput\n\t\t\t\tvalue={phoneNumber}\n\t\t\t\tonChange={handleChange}\n\t\t\t\tplaceholder="Enter a phone number"\n\t\t\t\taria-invalid={!!error}\n\t\t\t/>\n\t\t\t{error && <p className="text-destructive text-sm">{error}</p>}\n\t\t\t{phoneNumber && !error && (\n\t\t\t\t<p className="text-muted-foreground text-sm">\n\t\t\t\t\tValid phone number entered\n\t\t\t\t</p>\n\t\t\t)}\n\t\t</div>\n\t)\n}\n',
+			'"use client"\n\nimport { useState } from "react"\nimport tr from "react-phone-number-input/locale/tr"\n\nimport { PhoneInput } from "@/components/ui/phone-input"\n\nexport default function PhoneInputInternationalizationDemo() {\n\tconst [phoneNumber, setPhoneNumber] = useState<string>()\n\n\treturn (\n\t\t<div className="w-[300px]">\n\t\t\t<PhoneInput\n\t\t\t\tvalue={phoneNumber}\n\t\t\t\tonChange={setPhoneNumber}\n\t\t\t\tlabels={tr}\n\t\t\t\tdefaultCountry="TR"\n\t\t\t\tplaceholder="Telefon numarası"\n\t\t\t/>\n\t\t</div>\n\t)\n}\n',
 		component: React.lazy(
-			() => import("@/components/demos/phone-input/phone-input-with-validation")
+			() =>
+				import(
+					"@/components/demos/phone-input/phone-input-internationalization-demo"
+				)
 		),
-		title: "phone-input-with-validation",
+		title: "phone-input-internationalization-demo",
 		category: "phone-input",
-		path: "src/components/demos/phone-input/phone-input-with-validation.tsx",
+		path: "src/components/demos/phone-input/phone-input-internationalization-demo.tsx",
+	},
+	"phone-input-national-demo": {
+		source:
+			'"use client"\n\nimport { useState } from "react"\n\nimport { PhoneInput } from "@/components/ui/phone-input"\n\nexport default function PhoneInputNationalDemo() {\n\tconst [phoneNumber, setPhoneNumber] = useState<string>()\n\n\treturn (\n\t\t<div className="w-[300px]">\n\t\t\t<PhoneInput\n\t\t\t\tvalue={phoneNumber}\n\t\t\t\tonChange={setPhoneNumber}\n\t\t\t\tinternational={false}\n\t\t\t\tdefaultCountry="TR"\n\t\t\t\tplaceholder="Enter a phone number"\n\t\t\t/>\n\t\t</div>\n\t)\n}\n',
+		component: React.lazy(
+			() => import("@/components/demos/phone-input/phone-input-national-demo")
+		),
+		title: "phone-input-national-demo",
+		category: "phone-input",
+		path: "src/components/demos/phone-input/phone-input-national-demo.tsx",
+	},
+	"phone-input-with-validation-demo": {
+		source:
+			'"use client"\n\nimport { useState } from "react"\nimport { isValidPhoneNumber } from "react-phone-number-input"\n\nimport { PhoneInput } from "@/components/ui/phone-input"\n\nexport default function PhoneInputWithValidationDemo() {\n\tconst [phoneNumber, setPhoneNumber] = useState<string>()\n\tconst [error, setError] = useState<string>()\n\n\tconst handleChange = (value: string | undefined) => {\n\t\tsetPhoneNumber(value)\n\t\tif (value && !isValidPhoneNumber(value)) {\n\t\t\tsetError("Please enter a valid phone number")\n\t\t} else {\n\t\t\tsetError(undefined)\n\t\t}\n\t}\n\n\treturn (\n\t\t<div className="w-[300px] space-y-2">\n\t\t\t<PhoneInput\n\t\t\t\tvalue={phoneNumber}\n\t\t\t\tonChange={handleChange}\n\t\t\t\tplaceholder="Enter a phone number"\n\t\t\t\taria-invalid={!!error}\n\t\t\t/>\n\t\t\t{error && <p className="text-destructive text-sm">{error}</p>}\n\t\t\t{phoneNumber && !error && (\n\t\t\t\t<p className="text-muted-foreground text-sm">\n\t\t\t\t\tValid phone number entered\n\t\t\t\t</p>\n\t\t\t)}\n\t\t</div>\n\t)\n}\n',
+		component: React.lazy(
+			() =>
+				import(
+					"@/components/demos/phone-input/phone-input-with-validation-demo"
+				)
+		),
+		title: "phone-input-with-validation-demo",
+		category: "phone-input",
+		path: "src/components/demos/phone-input/phone-input-with-validation-demo.tsx",
 	},
 	"popover-demo": {
 		source:
@@ -1019,19 +1075,19 @@ export const demoRegistry: DemoRegistry = {
 		category: "progress",
 		path: "src/components/demos/progress/progress-demo.tsx",
 	},
-	"progress-with-value": {
+	"progress-with-value-demo": {
 		source:
 			'import * as React from "react"\n\nimport { Progress, ProgressValue } from "@/components/ui/progress"\n\nexport default function ProgressWithValueDemo() {\n\tconst [value, setValue] = React.useState(0)\n\n\tReact.useEffect(() => {\n\t\tconst interval = setInterval(() => {\n\t\t\tsetValue((prev) => (prev === 100 ? 100 : prev + 2))\n\t\t}, 100)\n\t\treturn () => clearInterval(interval)\n\t}, [])\n\n\treturn (\n\t\t<div className="w-80">\n\t\t\t<Progress value={value}>\n\t\t\t\t<ProgressValue />\n\t\t\t</Progress>\n\t\t</div>\n\t)\n}\n',
 		component: React.lazy(
-			() => import("@/components/demos/progress/progress-with-value")
+			() => import("@/components/demos/progress/progress-with-value-demo")
 		),
-		title: "progress-with-value",
+		title: "progress-with-value-demo",
 		category: "progress",
-		path: "src/components/demos/progress/progress-with-value.tsx",
+		path: "src/components/demos/progress/progress-with-value-demo.tsx",
 	},
 	"radio-group-demo": {
 		source:
-			'import { Label } from "@/components/ui/label"\nimport { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"\n\nexport default function RadioGroupDemo() {\n\treturn (\n\t\t<RadioGroup aria-labelledby="radio-group-plan">\n\t\t\t<div id="radio-group-plan" className="text-foreground font-medium">\n\t\t\t\tSelect a plan\n\t\t\t</div>\n\t\t\t<div className="flex items-center gap-2">\n\t\t\t\t<RadioGroupItem id="basic" value="basic" />\n\t\t\t\t<Label htmlFor="basic">Basic</Label>\n\t\t\t</div>\n\n\t\t\t<div className="flex items-center gap-2">\n\t\t\t\t<RadioGroupItem id="standard" value="standard" />\n\t\t\t\t<Label htmlFor="standard">Standard</Label>\n\t\t\t</div>\n\t\t\t<div className="flex items-center gap-2">\n\t\t\t\t<RadioGroupItem id="premium" value="premium" />\n\t\t\t\t<Label htmlFor="premium">Premium</Label>\n\t\t\t</div>\n\t\t</RadioGroup>\n\t)\n}\n',
+			'import { Label } from "@/components/ui/label"\nimport { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"\n\nexport default function RadioGroupDemo() {\n\treturn (\n\t\t<RadioGroup aria-labelledby="radio-group-plan">\n\t\t\t<div id="radio-group-plan" className="text-foreground font-medium">\n\t\t\t\tSelect a plan\n\t\t\t</div>\n\t\t\t<Label className="flex items-center gap-2">\n\t\t\t\t<RadioGroupItem id="basic" value="basic" />\n\t\t\t\tBasic\n\t\t\t</Label>\n\t\t\t<Label className="flex items-center gap-2">\n\t\t\t\t<RadioGroupItem id="standard" value="standard" />\n\t\t\t\tStandard\n\t\t\t</Label>\n\t\t\t<Label className="flex items-center gap-2">\n\t\t\t\t<RadioGroupItem id="premium" value="premium" />\n\t\t\t\tPremium\n\t\t\t</Label>\n\t\t</RadioGroup>\n\t)\n}\n',
 		component: React.lazy(
 			() => import("@/components/demos/radio-group/radio-group-demo")
 		),
@@ -1039,15 +1095,15 @@ export const demoRegistry: DemoRegistry = {
 		category: "radio-group",
 		path: "src/components/demos/radio-group/radio-group-demo.tsx",
 	},
-	"radio-group-disabled": {
+	"radio-group-disabled-demo": {
 		source:
-			'import { Label } from "@/components/ui/label"\nimport { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"\n\nexport default function RadioGroupDisabled() {\n\treturn (\n\t\t<RadioGroup aria-labelledby="radio-group-notifications" disabled>\n\t\t\t<div\n\t\t\t\tid="radio-group-notifications"\n\t\t\t\tclassName="text-foreground font-medium"\n\t\t\t>\n\t\t\t\tNotifications\n\t\t\t</div>\n\t\t\t<div className="flex items-center gap-2">\n\t\t\t\t<RadioGroupItem id="email" value="email" />\n\t\t\t\t<Label htmlFor="email">Email</Label>\n\t\t\t</div>\n\t\t\t<div className="flex items-center gap-2">\n\t\t\t\t<RadioGroupItem id="sms" value="sms" />\n\t\t\t\t<Label htmlFor="sms">SMS</Label>\n\t\t\t</div>\n\t\t\t<div className="flex items-center gap-2">\n\t\t\t\t<RadioGroupItem id="email-and-sms" value="email-and-sms" />\n\t\t\t\t<Label htmlFor="email-and-sms">Email & SMS</Label>\n\t\t\t</div>\n\t\t</RadioGroup>\n\t)\n}\n',
+			'import { Label } from "@/components/ui/label"\nimport { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"\n\nexport default function RadioGroupDisabledDemo() {\n\treturn (\n\t\t<RadioGroup aria-labelledby="radio-group-notifications" disabled>\n\t\t\t<div\n\t\t\t\tid="radio-group-notifications"\n\t\t\t\tclassName="text-foreground font-medium"\n\t\t\t>\n\t\t\t\tNotifications\n\t\t\t</div>\n\t\t\t<div className="flex items-center gap-2">\n\t\t\t\t<RadioGroupItem id="email" value="email" />\n\t\t\t\t<Label htmlFor="email">Email</Label>\n\t\t\t</div>\n\t\t\t<div className="flex items-center gap-2">\n\t\t\t\t<RadioGroupItem id="sms" value="sms" />\n\t\t\t\t<Label htmlFor="sms">SMS</Label>\n\t\t\t</div>\n\t\t\t<div className="flex items-center gap-2">\n\t\t\t\t<RadioGroupItem id="email-and-sms" value="email-and-sms" />\n\t\t\t\t<Label htmlFor="email-and-sms">Email & SMS</Label>\n\t\t\t</div>\n\t\t</RadioGroup>\n\t)\n}\n',
 		component: React.lazy(
-			() => import("@/components/demos/radio-group/radio-group-disabled")
+			() => import("@/components/demos/radio-group/radio-group-disabled-demo")
 		),
-		title: "radio-group-disabled",
+		title: "radio-group-disabled-demo",
 		category: "radio-group",
-		path: "src/components/demos/radio-group/radio-group-disabled.tsx",
+		path: "src/components/demos/radio-group/radio-group-disabled-demo.tsx",
 	},
 	"resizable-demo": {
 		source:
@@ -1059,25 +1115,25 @@ export const demoRegistry: DemoRegistry = {
 		category: "resizable",
 		path: "src/components/demos/resizable/resizable-demo.tsx",
 	},
-	"resizable-vertical": {
+	"resizable-vertical-demo": {
 		source:
-			'import {\n\tResizableHandle,\n\tResizablePanel,\n\tResizablePanelGroup,\n} from "@/components/ui/resizable"\n\nexport default function ResizableVertical() {\n\treturn (\n\t\t<ResizablePanelGroup\n\t\t\tdirection="vertical"\n\t\t\tclassName="min-h-[200px] max-w-md rounded-lg border md:min-w-[450px]"\n\t\t>\n\t\t\t<ResizablePanel defaultSize={25}>\n\t\t\t\t<div className="flex h-full items-center justify-center p-6">\n\t\t\t\t\t<span className="font-semibold">Header</span>\n\t\t\t\t</div>\n\t\t\t</ResizablePanel>\n\t\t\t<ResizableHandle />\n\t\t\t<ResizablePanel defaultSize={75}>\n\t\t\t\t<div className="flex h-full items-center justify-center p-6">\n\t\t\t\t\t<span className="font-semibold">Content</span>\n\t\t\t\t</div>\n\t\t\t</ResizablePanel>\n\t\t</ResizablePanelGroup>\n\t)\n}\n',
+			'import {\n\tResizableHandle,\n\tResizablePanel,\n\tResizablePanelGroup,\n} from "@/components/ui/resizable"\n\nexport default function ResizableVerticalDemo() {\n\treturn (\n\t\t<ResizablePanelGroup\n\t\t\tdirection="vertical"\n\t\t\tclassName="min-h-[200px] max-w-md rounded-lg border md:min-w-[450px]"\n\t\t>\n\t\t\t<ResizablePanel defaultSize={25}>\n\t\t\t\t<div className="flex h-full items-center justify-center p-6">\n\t\t\t\t\t<span className="font-semibold">Header</span>\n\t\t\t\t</div>\n\t\t\t</ResizablePanel>\n\t\t\t<ResizableHandle />\n\t\t\t<ResizablePanel defaultSize={75}>\n\t\t\t\t<div className="flex h-full items-center justify-center p-6">\n\t\t\t\t\t<span className="font-semibold">Content</span>\n\t\t\t\t</div>\n\t\t\t</ResizablePanel>\n\t\t</ResizablePanelGroup>\n\t)\n}\n',
 		component: React.lazy(
-			() => import("@/components/demos/resizable/resizable-vertical")
+			() => import("@/components/demos/resizable/resizable-vertical-demo")
 		),
-		title: "resizable-vertical",
+		title: "resizable-vertical-demo",
 		category: "resizable",
-		path: "src/components/demos/resizable/resizable-vertical.tsx",
+		path: "src/components/demos/resizable/resizable-vertical-demo.tsx",
 	},
-	"resizable-with-handle": {
+	"resizable-with-handle-demo": {
 		source:
-			'import {\n\tResizableHandle,\n\tResizablePanel,\n\tResizablePanelGroup,\n} from "@/components/ui/resizable"\n\nexport default function ResizableWithHandle() {\n\treturn (\n\t\t<ResizablePanelGroup\n\t\t\tdirection="horizontal"\n\t\t\tclassName="min-h-[200px] max-w-md rounded-lg border md:min-w-[450px]"\n\t\t>\n\t\t\t<ResizablePanel defaultSize={25}>\n\t\t\t\t<div className="flex h-full items-center justify-center p-6">\n\t\t\t\t\t<span className="font-semibold">Sidebar</span>\n\t\t\t\t</div>\n\t\t\t</ResizablePanel>\n\t\t\t<ResizableHandle withHandle />\n\t\t\t<ResizablePanel defaultSize={75}>\n\t\t\t\t<div className="flex h-full items-center justify-center p-6">\n\t\t\t\t\t<span className="font-semibold">Content</span>\n\t\t\t\t</div>\n\t\t\t</ResizablePanel>\n\t\t</ResizablePanelGroup>\n\t)\n}\n',
+			'import {\n\tResizableHandle,\n\tResizablePanel,\n\tResizablePanelGroup,\n} from "@/components/ui/resizable"\n\nexport default function ResizableWithHandleDemo() {\n\treturn (\n\t\t<ResizablePanelGroup\n\t\t\tdirection="horizontal"\n\t\t\tclassName="min-h-[200px] max-w-md rounded-lg border md:min-w-[450px]"\n\t\t>\n\t\t\t<ResizablePanel defaultSize={25}>\n\t\t\t\t<div className="flex h-full items-center justify-center p-6">\n\t\t\t\t\t<span className="font-semibold">Sidebar</span>\n\t\t\t\t</div>\n\t\t\t</ResizablePanel>\n\t\t\t<ResizableHandle withHandle />\n\t\t\t<ResizablePanel defaultSize={75}>\n\t\t\t\t<div className="flex h-full items-center justify-center p-6">\n\t\t\t\t\t<span className="font-semibold">Content</span>\n\t\t\t\t</div>\n\t\t\t</ResizablePanel>\n\t\t</ResizablePanelGroup>\n\t)\n}\n',
 		component: React.lazy(
-			() => import("@/components/demos/resizable/resizable-with-handle")
+			() => import("@/components/demos/resizable/resizable-with-handle-demo")
 		),
-		title: "resizable-with-handle",
+		title: "resizable-with-handle-demo",
 		category: "resizable",
-		path: "src/components/demos/resizable/resizable-with-handle.tsx",
+		path: "src/components/demos/resizable/resizable-with-handle-demo.tsx",
 	},
 	"scroll-area-demo": {
 		source:
@@ -1089,15 +1145,15 @@ export const demoRegistry: DemoRegistry = {
 		category: "scroll-area",
 		path: "src/components/demos/scroll-area/scroll-area-demo.tsx",
 	},
-	"scroll-area-horizontal": {
+	"scroll-area-horizontal-demo": {
 		source:
-			'import { ScrollArea } from "@/components/ui/scroll-area"\n\nconst versions = Array.from({ length: 50 }, (_, i) => `v${i + 1}.0.0`).join(\n\t", "\n)\n\nexport default function ScrollAreaHorizontal() {\n\treturn (\n\t\t<ScrollArea className="w-full rounded-md border" orientation="horizontal">\n\t\t\t<div className="inline-block p-4 text-sm text-nowrap">{versions}</div>\n\t\t</ScrollArea>\n\t)\n}\n',
+			'import { ScrollArea } from "@/components/ui/scroll-area"\n\nconst versions = Array.from({ length: 50 }, (_, i) => `v${i + 1}.0.0`).join(\n\t", "\n)\n\nexport default function ScrollAreaHorizontalDemo() {\n\treturn (\n\t\t<ScrollArea className="w-full rounded-md border" orientation="horizontal">\n\t\t\t<div className="inline-block p-4 text-sm text-nowrap">{versions}</div>\n\t\t</ScrollArea>\n\t)\n}\n',
 		component: React.lazy(
-			() => import("@/components/demos/scroll-area/scroll-area-horizontal")
+			() => import("@/components/demos/scroll-area/scroll-area-horizontal-demo")
 		),
-		title: "scroll-area-horizontal",
+		title: "scroll-area-horizontal-demo",
 		category: "scroll-area",
-		path: "src/components/demos/scroll-area/scroll-area-horizontal.tsx",
+		path: "src/components/demos/scroll-area/scroll-area-horizontal-demo.tsx",
 	},
 	"select-demo": {
 		source:
@@ -1109,35 +1165,35 @@ export const demoRegistry: DemoRegistry = {
 		category: "select",
 		path: "src/components/demos/select/select-demo.tsx",
 	},
-	"select-multiple": {
+	"select-multiple-demo": {
 		source:
-			'import {\n\tSelect,\n\tSelectContent,\n\tSelectItem,\n\tSelectTrigger,\n\tSelectValue,\n} from "@/components/ui/select"\n\nconst languages = {\n\tjavascript: "JavaScript",\n\ttypescript: "TypeScript",\n\tpython: "Python",\n\tjava: "Java",\n\tcsharp: "C#",\n\tphp: "PHP",\n\tcpp: "C++",\n\trust: "Rust",\n\tgo: "Go",\n\tswift: "Swift",\n}\n\ntype Language = keyof typeof languages\n\nconst values = Object.keys(languages) as Language[]\n\nfunction renderValue(value: Language[]) {\n\tif (value.length === 0) {\n\t\treturn "Select languages..."\n\t}\n\n\tconst firstLanguage = languages[value[0]]\n\tconst additionalLanguages =\n\t\tvalue.length > 1 ? ` (+${value.length - 1} more)` : ""\n\treturn firstLanguage + additionalLanguages\n}\n\nexport default function SelectMultiple() {\n\treturn (\n\t\t<div className="w-80">\n\t\t\t<Select multiple>\n\t\t\t\t<SelectTrigger className="w-full">\n\t\t\t\t\t<SelectValue>{renderValue}</SelectValue>\n\t\t\t\t</SelectTrigger>\n\t\t\t\t<SelectContent>\n\t\t\t\t\t{values.map((value) => (\n\t\t\t\t\t\t<SelectItem key={value} value={value}>\n\t\t\t\t\t\t\t{languages[value]}\n\t\t\t\t\t\t</SelectItem>\n\t\t\t\t\t))}\n\t\t\t\t</SelectContent>\n\t\t\t</Select>\n\t\t</div>\n\t)\n}\n',
+			'import {\n\tSelect,\n\tSelectContent,\n\tSelectItem,\n\tSelectTrigger,\n\tSelectValue,\n} from "@/components/ui/select"\n\nconst languages = {\n\tjavascript: "JavaScript",\n\ttypescript: "TypeScript",\n\tpython: "Python",\n\tjava: "Java",\n\tcsharp: "C#",\n\tphp: "PHP",\n\tcpp: "C++",\n\trust: "Rust",\n\tgo: "Go",\n\tswift: "Swift",\n}\n\ntype Language = keyof typeof languages\n\nconst values = Object.keys(languages) as Language[]\n\nfunction renderValue(value: Language[]) {\n\tif (value.length === 0) {\n\t\treturn "Select languages..."\n\t}\n\n\tconst firstLanguage = languages[value[0]]\n\tconst additionalLanguages =\n\t\tvalue.length > 1 ? ` (+${value.length - 1} more)` : ""\n\treturn firstLanguage + additionalLanguages\n}\n\nexport default function SelectMultipleDemo() {\n\treturn (\n\t\t<div className="w-80">\n\t\t\t<Select multiple>\n\t\t\t\t<SelectTrigger className="w-full">\n\t\t\t\t\t<SelectValue>{renderValue}</SelectValue>\n\t\t\t\t</SelectTrigger>\n\t\t\t\t<SelectContent>\n\t\t\t\t\t{values.map((value) => (\n\t\t\t\t\t\t<SelectItem key={value} value={value}>\n\t\t\t\t\t\t\t{languages[value]}\n\t\t\t\t\t\t</SelectItem>\n\t\t\t\t\t))}\n\t\t\t\t</SelectContent>\n\t\t\t</Select>\n\t\t</div>\n\t)\n}\n',
 		component: React.lazy(
-			() => import("@/components/demos/select/select-multiple")
+			() => import("@/components/demos/select/select-multiple-demo")
 		),
-		title: "select-multiple",
+		title: "select-multiple-demo",
 		category: "select",
-		path: "src/components/demos/select/select-multiple.tsx",
+		path: "src/components/demos/select/select-multiple-demo.tsx",
 	},
-	"select-with-custom-value": {
+	"select-with-custom-value-demo": {
 		source:
-			'import { useState } from "react"\nimport Image from "next/image"\n\nimport {\n\tSelect,\n\tSelectContent,\n\tSelectItem,\n\tSelectTrigger,\n\tSelectValue,\n} from "@/components/ui/select"\n\nconst users = {\n\t"karen-smith": {\n\t\tname: "Karen Smith",\n\t\timage: "/avatars/memoji-1.png",\n\t},\n\t"chris-williams": {\n\t\tname: "Chris Williams",\n\t\timage: "/avatars/memoji-3.png",\n\t},\n\t"melissa-johnson": {\n\t\tname: "Melissa Johnson",\n\t\timage: "/avatars/memoji-2.png",\n\t},\n\t"frank-lee": {\n\t\tname: "Frank Lee",\n\t\timage: "/avatars/memoji-4.png",\n\t},\n}\n\nexport default function SelectWithCustomValue() {\n\tconst [selected, setSelected] = useState<keyof typeof users | null>(null)\n\n\treturn (\n\t\t<div className="w-80">\n\t\t\t<Select\n\t\t\t\tvalue={selected}\n\t\t\t\tonValueChange={(value) => setSelected(value as keyof typeof users)}\n\t\t\t>\n\t\t\t\t<SelectTrigger className="w-full">\n\t\t\t\t\t<SelectValue>\n\t\t\t\t\t\t{() =>\n\t\t\t\t\t\t\tselected ? (\n\t\t\t\t\t\t\t\t<div className="flex items-center gap-2">\n\t\t\t\t\t\t\t\t\t<Image\n\t\t\t\t\t\t\t\t\t\tsrc={users[selected].image}\n\t\t\t\t\t\t\t\t\t\talt={users[selected].name}\n\t\t\t\t\t\t\t\t\t\twidth={16}\n\t\t\t\t\t\t\t\t\t\theight={16}\n\t\t\t\t\t\t\t\t\t/>\n\t\t\t\t\t\t\t\t\t{users[selected].name}\n\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t) : (\n\t\t\t\t\t\t\t\t"Assign to"\n\t\t\t\t\t\t\t)\n\t\t\t\t\t\t}\n\t\t\t\t\t</SelectValue>\n\t\t\t\t</SelectTrigger>\n\t\t\t\t<SelectContent>\n\t\t\t\t\t{Object.entries(users).map(([id, user]) => (\n\t\t\t\t\t\t<SelectItem key={id} value={id}>\n\t\t\t\t\t\t\t<div className="flex items-center gap-2">\n\t\t\t\t\t\t\t\t<Image\n\t\t\t\t\t\t\t\t\tsrc={user.image}\n\t\t\t\t\t\t\t\t\talt={user.name}\n\t\t\t\t\t\t\t\t\twidth={16}\n\t\t\t\t\t\t\t\t\theight={16}\n\t\t\t\t\t\t\t\t/>\n\t\t\t\t\t\t\t\t{user.name}\n\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t</SelectItem>\n\t\t\t\t\t))}\n\t\t\t\t</SelectContent>\n\t\t\t</Select>\n\t\t</div>\n\t)\n}\n',
+			'import { useState } from "react"\nimport Image from "next/image"\n\nimport {\n\tSelect,\n\tSelectContent,\n\tSelectItem,\n\tSelectTrigger,\n\tSelectValue,\n} from "@/components/ui/select"\n\nconst users = {\n\t"karen-smith": {\n\t\tname: "Karen Smith",\n\t\timage: "/avatars/memoji-1.png",\n\t},\n\t"chris-williams": {\n\t\tname: "Chris Williams",\n\t\timage: "/avatars/memoji-3.png",\n\t},\n\t"melissa-johnson": {\n\t\tname: "Melissa Johnson",\n\t\timage: "/avatars/memoji-2.png",\n\t},\n\t"frank-lee": {\n\t\tname: "Frank Lee",\n\t\timage: "/avatars/memoji-4.png",\n\t},\n}\n\nexport default function SelectWithCustomValueDemo() {\n\tconst [selected, setSelected] = useState<keyof typeof users | null>(null)\n\n\treturn (\n\t\t<div className="w-80">\n\t\t\t<Select\n\t\t\t\tvalue={selected}\n\t\t\t\tonValueChange={(value) => setSelected(value as keyof typeof users)}\n\t\t\t>\n\t\t\t\t<SelectTrigger className="w-full">\n\t\t\t\t\t<SelectValue>\n\t\t\t\t\t\t{() =>\n\t\t\t\t\t\t\tselected ? (\n\t\t\t\t\t\t\t\t<div className="flex items-center gap-2">\n\t\t\t\t\t\t\t\t\t<Image\n\t\t\t\t\t\t\t\t\t\tsrc={users[selected].image}\n\t\t\t\t\t\t\t\t\t\talt={users[selected].name}\n\t\t\t\t\t\t\t\t\t\twidth={16}\n\t\t\t\t\t\t\t\t\t\theight={16}\n\t\t\t\t\t\t\t\t\t/>\n\t\t\t\t\t\t\t\t\t{users[selected].name}\n\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t) : (\n\t\t\t\t\t\t\t\t"Assign to"\n\t\t\t\t\t\t\t)\n\t\t\t\t\t\t}\n\t\t\t\t\t</SelectValue>\n\t\t\t\t</SelectTrigger>\n\t\t\t\t<SelectContent>\n\t\t\t\t\t{Object.entries(users).map(([id, user]) => (\n\t\t\t\t\t\t<SelectItem key={id} value={id}>\n\t\t\t\t\t\t\t<div className="flex items-center gap-2">\n\t\t\t\t\t\t\t\t<Image\n\t\t\t\t\t\t\t\t\tsrc={user.image}\n\t\t\t\t\t\t\t\t\talt={user.name}\n\t\t\t\t\t\t\t\t\twidth={16}\n\t\t\t\t\t\t\t\t\theight={16}\n\t\t\t\t\t\t\t\t/>\n\t\t\t\t\t\t\t\t{user.name}\n\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t</SelectItem>\n\t\t\t\t\t))}\n\t\t\t\t</SelectContent>\n\t\t\t</Select>\n\t\t</div>\n\t)\n}\n',
 		component: React.lazy(
-			() => import("@/components/demos/select/select-with-custom-value")
+			() => import("@/components/demos/select/select-with-custom-value-demo")
 		),
-		title: "select-with-custom-value",
+		title: "select-with-custom-value-demo",
 		category: "select",
-		path: "src/components/demos/select/select-with-custom-value.tsx",
+		path: "src/components/demos/select/select-with-custom-value-demo.tsx",
 	},
-	"select-with-groups": {
+	"select-with-groups-demo": {
 		source:
-			'import {\n\tSelect,\n\tSelectContent,\n\tSelectGroup,\n\tSelectItem,\n\tSelectLabel,\n\tSelectTrigger,\n\tSelectValue,\n} from "@/components/ui/select"\n\nconst items = [\n\t{\n\t\tlabel: "Select an option",\n\t\tvalue: null,\n\t},\n\t{\n\t\tlabel: "Apple",\n\t\tvalue: "apple",\n\t},\n\t{\n\t\tlabel: "Banana",\n\t\tvalue: "banana",\n\t},\n\t{\n\t\tlabel: "Cherry",\n\t\tvalue: "cherry",\n\t},\n\t{\n\t\tlabel: "Carrot",\n\t\tvalue: "carrot",\n\t},\n\t{\n\t\tlabel: "Potato",\n\t\tvalue: "potato",\n\t},\n\t{\n\t\tlabel: "Tomato",\n\t\tvalue: "tomato",\n\t},\n]\n\nexport default function SelectWithGroups() {\n\treturn (\n\t\t<div className="w-80">\n\t\t\t<Select items={items}>\n\t\t\t\t<SelectTrigger className="w-full">\n\t\t\t\t\t<SelectValue />\n\t\t\t\t</SelectTrigger>\n\t\t\t\t<SelectContent>\n\t\t\t\t\t<SelectGroup>\n\t\t\t\t\t\t<SelectLabel>Fruits</SelectLabel>\n\t\t\t\t\t\t<SelectItem value="apple">Apple</SelectItem>\n\t\t\t\t\t\t<SelectItem value="banana">Banana</SelectItem>\n\t\t\t\t\t\t<SelectItem value="cherry">Cherry</SelectItem>\n\t\t\t\t\t</SelectGroup>\n\t\t\t\t\t<SelectGroup>\n\t\t\t\t\t\t<SelectLabel>Vegetables</SelectLabel>\n\t\t\t\t\t\t<SelectItem value="carrot">Carrot</SelectItem>\n\t\t\t\t\t\t<SelectItem value="potato">Potato</SelectItem>\n\t\t\t\t\t\t<SelectItem value="tomato">Tomato</SelectItem>\n\t\t\t\t\t</SelectGroup>\n\t\t\t\t</SelectContent>\n\t\t\t</Select>\n\t\t</div>\n\t)\n}\n',
+			'import {\n\tSelect,\n\tSelectContent,\n\tSelectGroup,\n\tSelectItem,\n\tSelectLabel,\n\tSelectTrigger,\n\tSelectValue,\n} from "@/components/ui/select"\n\nconst items = [\n\t{\n\t\tlabel: "Select an option",\n\t\tvalue: null,\n\t},\n\t{\n\t\tlabel: "Apple",\n\t\tvalue: "apple",\n\t},\n\t{\n\t\tlabel: "Banana",\n\t\tvalue: "banana",\n\t},\n\t{\n\t\tlabel: "Cherry",\n\t\tvalue: "cherry",\n\t},\n\t{\n\t\tlabel: "Carrot",\n\t\tvalue: "carrot",\n\t},\n\t{\n\t\tlabel: "Potato",\n\t\tvalue: "potato",\n\t},\n\t{\n\t\tlabel: "Tomato",\n\t\tvalue: "tomato",\n\t},\n]\n\nexport default function SelectWithGroupsDemo() {\n\treturn (\n\t\t<div className="w-80">\n\t\t\t<Select items={items}>\n\t\t\t\t<SelectTrigger className="w-full">\n\t\t\t\t\t<SelectValue />\n\t\t\t\t</SelectTrigger>\n\t\t\t\t<SelectContent>\n\t\t\t\t\t<SelectGroup>\n\t\t\t\t\t\t<SelectLabel>Fruits</SelectLabel>\n\t\t\t\t\t\t<SelectItem value="apple">Apple</SelectItem>\n\t\t\t\t\t\t<SelectItem value="banana">Banana</SelectItem>\n\t\t\t\t\t\t<SelectItem value="cherry">Cherry</SelectItem>\n\t\t\t\t\t</SelectGroup>\n\t\t\t\t\t<SelectGroup>\n\t\t\t\t\t\t<SelectLabel>Vegetables</SelectLabel>\n\t\t\t\t\t\t<SelectItem value="carrot">Carrot</SelectItem>\n\t\t\t\t\t\t<SelectItem value="potato">Potato</SelectItem>\n\t\t\t\t\t\t<SelectItem value="tomato">Tomato</SelectItem>\n\t\t\t\t\t</SelectGroup>\n\t\t\t\t</SelectContent>\n\t\t\t</Select>\n\t\t</div>\n\t)\n}\n',
 		component: React.lazy(
-			() => import("@/components/demos/select/select-with-groups")
+			() => import("@/components/demos/select/select-with-groups-demo")
 		),
-		title: "select-with-groups",
+		title: "select-with-groups-demo",
 		category: "select",
-		path: "src/components/demos/select/select-with-groups.tsx",
+		path: "src/components/demos/select/select-with-groups-demo.tsx",
 	},
 	"separator-demo": {
 		source:
@@ -1157,13 +1213,15 @@ export const demoRegistry: DemoRegistry = {
 		category: "sheet",
 		path: "src/components/demos/sheet/sheet-demo.tsx",
 	},
-	"sheet-sides": {
+	"sheet-sides-demo": {
 		source:
-			'"use client"\n\nimport { Button } from "@/components/ui/button"\nimport { Label } from "@/components/ui/label"\nimport {\n\tSheet,\n\tSheetClose,\n\tSheetContent,\n\tSheetDescription,\n\tSheetFooter,\n\tSheetHeader,\n\tSheetTitle,\n\tSheetTrigger,\n} from "@/components/ui/sheet"\nimport { Textarea } from "@/components/ui/textarea"\n\nconst SHEET_SIDES = ["top", "right", "bottom", "left"] as const\n\nexport default function SheetSides() {\n\treturn (\n\t\t<div className="grid grid-cols-2 gap-2">\n\t\t\t{SHEET_SIDES.map((side) => (\n\t\t\t\t<Sheet key={side}>\n\t\t\t\t\t<SheetTrigger\n\t\t\t\t\t\trender={(props) => (\n\t\t\t\t\t\t\t<Button {...props} className="w-full">\n\t\t\t\t\t\t\t\t{side}\n\t\t\t\t\t\t\t</Button>\n\t\t\t\t\t\t)}\n\t\t\t\t\t/>\n\t\t\t\t\t<SheetContent side={side}>\n\t\t\t\t\t\t<SheetClose />\n\t\t\t\t\t\t<SheetHeader>\n\t\t\t\t\t\t\t<SheetTitle>Submit Feedback</SheetTitle>\n\t\t\t\t\t\t\t<SheetDescription>\n\t\t\t\t\t\t\t\tPlease share your feedback with us to help improve our service.\n\t\t\t\t\t\t\t</SheetDescription>\n\t\t\t\t\t\t</SheetHeader>\n\t\t\t\t\t\t<div className="space-y-2 px-4">\n\t\t\t\t\t\t\t<Label htmlFor="feedback">Your Feedback</Label>\n\t\t\t\t\t\t\t<Textarea id="feedback" placeholder="Type your feedback here." />\n\t\t\t\t\t\t</div>\n\t\t\t\t\t\t<SheetFooter>\n\t\t\t\t\t\t\t<Button size="sm">Submit</Button>\n\t\t\t\t\t\t\t<SheetClose\n\t\t\t\t\t\t\t\trender={(props) => (\n\t\t\t\t\t\t\t\t\t<Button {...props} size="sm" variant="ghost">\n\t\t\t\t\t\t\t\t\t\tClose\n\t\t\t\t\t\t\t\t\t</Button>\n\t\t\t\t\t\t\t\t)}\n\t\t\t\t\t\t\t/>\n\t\t\t\t\t\t</SheetFooter>\n\t\t\t\t\t</SheetContent>\n\t\t\t\t</Sheet>\n\t\t\t))}\n\t\t</div>\n\t)\n}\n',
-		component: React.lazy(() => import("@/components/demos/sheet/sheet-sides")),
-		title: "sheet-sides",
+			'"use client"\n\nimport { Button } from "@/components/ui/button"\nimport { Label } from "@/components/ui/label"\nimport {\n\tSheet,\n\tSheetClose,\n\tSheetContent,\n\tSheetDescription,\n\tSheetFooter,\n\tSheetHeader,\n\tSheetTitle,\n\tSheetTrigger,\n} from "@/components/ui/sheet"\nimport { Textarea } from "@/components/ui/textarea"\n\nconst SHEET_SIDES = ["top", "right", "bottom", "left"] as const\n\nexport default function SheetSidesDemo() {\n\treturn (\n\t\t<div className="grid grid-cols-2 gap-2">\n\t\t\t{SHEET_SIDES.map((side) => (\n\t\t\t\t<Sheet key={side}>\n\t\t\t\t\t<SheetTrigger\n\t\t\t\t\t\trender={(props) => (\n\t\t\t\t\t\t\t<Button {...props} className="w-full">\n\t\t\t\t\t\t\t\t{side}\n\t\t\t\t\t\t\t</Button>\n\t\t\t\t\t\t)}\n\t\t\t\t\t/>\n\t\t\t\t\t<SheetContent side={side}>\n\t\t\t\t\t\t<SheetClose />\n\t\t\t\t\t\t<SheetHeader>\n\t\t\t\t\t\t\t<SheetTitle>Submit Feedback</SheetTitle>\n\t\t\t\t\t\t\t<SheetDescription>\n\t\t\t\t\t\t\t\tPlease share your feedback with us to help improve our service.\n\t\t\t\t\t\t\t</SheetDescription>\n\t\t\t\t\t\t</SheetHeader>\n\t\t\t\t\t\t<div className="space-y-2 px-4">\n\t\t\t\t\t\t\t<Label htmlFor="feedback">Your Feedback</Label>\n\t\t\t\t\t\t\t<Textarea id="feedback" placeholder="Type your feedback here." />\n\t\t\t\t\t\t</div>\n\t\t\t\t\t\t<SheetFooter>\n\t\t\t\t\t\t\t<Button size="sm">Submit</Button>\n\t\t\t\t\t\t\t<SheetClose\n\t\t\t\t\t\t\t\trender={(props) => (\n\t\t\t\t\t\t\t\t\t<Button {...props} size="sm" variant="ghost">\n\t\t\t\t\t\t\t\t\t\tClose\n\t\t\t\t\t\t\t\t\t</Button>\n\t\t\t\t\t\t\t\t)}\n\t\t\t\t\t\t\t/>\n\t\t\t\t\t\t</SheetFooter>\n\t\t\t\t\t</SheetContent>\n\t\t\t\t</Sheet>\n\t\t\t))}\n\t\t</div>\n\t)\n}\n',
+		component: React.lazy(
+			() => import("@/components/demos/sheet/sheet-sides-demo")
+		),
+		title: "sheet-sides-demo",
 		category: "sheet",
-		path: "src/components/demos/sheet/sheet-sides.tsx",
+		path: "src/components/demos/sheet/sheet-sides-demo.tsx",
 	},
 	"skeleton-demo": {
 		source:
@@ -1185,45 +1243,45 @@ export const demoRegistry: DemoRegistry = {
 		category: "slider",
 		path: "src/components/demos/slider/slider-demo.tsx",
 	},
-	"slider-disabled": {
+	"slider-disabled-demo": {
 		source:
-			'import { Slider } from "@/components/ui/slider"\n\nexport default function SliderDisabled() {\n\treturn <Slider className="max-w-100" defaultValue={50} disabled />\n}\n',
+			'import { Slider } from "@/components/ui/slider"\n\nexport default function SliderDisabledDemo() {\n\treturn <Slider className="max-w-100" defaultValue={50} disabled />\n}\n',
 		component: React.lazy(
-			() => import("@/components/demos/slider/slider-disabled")
+			() => import("@/components/demos/slider/slider-disabled-demo")
 		),
-		title: "slider-disabled",
+		title: "slider-disabled-demo",
 		category: "slider",
-		path: "src/components/demos/slider/slider-disabled.tsx",
+		path: "src/components/demos/slider/slider-disabled-demo.tsx",
 	},
-	"slider-range": {
+	"slider-range-demo": {
 		source:
-			'import { Slider } from "@/components/ui/slider"\n\nexport default function SliderRange() {\n\treturn <Slider className="max-w-100" defaultValue={[20, 80]} />\n}\n',
+			'import { Slider } from "@/components/ui/slider"\n\nexport default function SliderRangeDemo() {\n\treturn <Slider className="max-w-100" defaultValue={[20, 80]} />\n}\n',
 		component: React.lazy(
-			() => import("@/components/demos/slider/slider-range")
+			() => import("@/components/demos/slider/slider-range-demo")
 		),
-		title: "slider-range",
+		title: "slider-range-demo",
 		category: "slider",
-		path: "src/components/demos/slider/slider-range.tsx",
+		path: "src/components/demos/slider/slider-range-demo.tsx",
 	},
-	"slider-with-value": {
+	"slider-with-value-demo": {
 		source:
-			'import { Slider, SliderValue } from "@/components/ui/slider"\n\nexport default function SliderWithValue() {\n\treturn (\n\t\t<Slider className="max-w-100" defaultValue={50}>\n\t\t\t<div className="flex justify-between">\n\t\t\t\t<span className="text-muted-foreground mt-3 text-xs font-medium">\n\t\t\t\t\tOpacity\n\t\t\t\t</span>\n\t\t\t\t<SliderValue />\n\t\t\t</div>\n\t\t</Slider>\n\t)\n}\n',
+			'import { Slider, SliderValue } from "@/components/ui/slider"\n\nexport default function SliderWithValueDemo() {\n\treturn (\n\t\t<Slider className="max-w-100" defaultValue={50}>\n\t\t\t<div className="flex justify-between">\n\t\t\t\t<span className="text-muted-foreground mt-3 text-xs font-medium">\n\t\t\t\t\tOpacity\n\t\t\t\t</span>\n\t\t\t\t<SliderValue />\n\t\t\t</div>\n\t\t</Slider>\n\t)\n}\n',
 		component: React.lazy(
-			() => import("@/components/demos/slider/slider-with-value")
+			() => import("@/components/demos/slider/slider-with-value-demo")
 		),
-		title: "slider-with-value",
+		title: "slider-with-value-demo",
 		category: "slider",
-		path: "src/components/demos/slider/slider-with-value.tsx",
+		path: "src/components/demos/slider/slider-with-value-demo.tsx",
 	},
-	"sonner-action": {
+	"sonner-action-demo": {
 		source:
 			'import { toast } from "sonner"\n\nimport { Button } from "@/components/ui/button"\n\nexport default function SonnerActionDemo() {\n\treturn (\n\t\t<Button\n\t\t\tonClick={() =>\n\t\t\t\ttoast("Your email has been sent", {\n\t\t\t\t\tdescription: "We\'ll get back to you as soon as possible",\n\t\t\t\t\taction: {\n\t\t\t\t\t\tlabel: "Unsend",\n\t\t\t\t\t\tonClick: () => toast.success("Email unsent"),\n\t\t\t\t\t},\n\t\t\t\t})\n\t\t\t}\n\t\t>\n\t\t\tShow Toast\n\t\t</Button>\n\t)\n}\n',
 		component: React.lazy(
-			() => import("@/components/demos/sonner/sonner-action")
+			() => import("@/components/demos/sonner/sonner-action-demo")
 		),
-		title: "sonner-action",
+		title: "sonner-action-demo",
 		category: "sonner",
-		path: "src/components/demos/sonner/sonner-action.tsx",
+		path: "src/components/demos/sonner/sonner-action-demo.tsx",
 	},
 	"sonner-demo": {
 		source:
@@ -1235,25 +1293,25 @@ export const demoRegistry: DemoRegistry = {
 		category: "sonner",
 		path: "src/components/demos/sonner/sonner-demo.tsx",
 	},
-	"sonner-promise": {
+	"sonner-promise-demo": {
 		source:
 			'import { toast } from "sonner"\n\nimport { Button } from "@/components/ui/button"\n\nexport default function SonnerPromiseDemo() {\n\treturn (\n\t\t<Button\n\t\t\tonClick={() =>\n\t\t\t\ttoast.promise(\n\t\t\t\t\tnew Promise((resolve) => {\n\t\t\t\t\t\tsetTimeout(() => {\n\t\t\t\t\t\t\tresolve("Request sent")\n\t\t\t\t\t\t}, 2000)\n\t\t\t\t\t}),\n\t\t\t\t\t{\n\t\t\t\t\t\tloading: "Sending request...",\n\t\t\t\t\t\tsuccess: "Request sent",\n\t\t\t\t\t}\n\t\t\t\t)\n\t\t\t}\n\t\t>\n\t\t\tShow Toast\n\t\t</Button>\n\t)\n}\n',
 		component: React.lazy(
-			() => import("@/components/demos/sonner/sonner-promise")
+			() => import("@/components/demos/sonner/sonner-promise-demo")
 		),
-		title: "sonner-promise",
+		title: "sonner-promise-demo",
 		category: "sonner",
-		path: "src/components/demos/sonner/sonner-promise.tsx",
+		path: "src/components/demos/sonner/sonner-promise-demo.tsx",
 	},
-	"sonner-rich-colors": {
+	"sonner-rich-colors-demo": {
 		source:
 			'import { toast } from "sonner"\n\nimport { Button } from "@/components/ui/button"\n\nexport default function SonnerRichColorsDemo() {\n\treturn (\n\t\t<div className="grid grid-cols-2 gap-2">\n\t\t\t<Button onClick={() => toast.success("Success", { richColors: true })}>\n\t\t\t\tsuccess\n\t\t\t</Button>\n\t\t\t<Button onClick={() => toast.error("Error", { richColors: true })}>\n\t\t\t\terror\n\t\t\t</Button>\n\t\t\t<Button onClick={() => toast.warning("Warning", { richColors: true })}>\n\t\t\t\twarning\n\t\t\t</Button>\n\t\t\t<Button onClick={() => toast.info("Info", { richColors: true })}>\n\t\t\t\tinfo\n\t\t\t</Button>\n\t\t</div>\n\t)\n}\n',
 		component: React.lazy(
-			() => import("@/components/demos/sonner/sonner-rich-colors")
+			() => import("@/components/demos/sonner/sonner-rich-colors-demo")
 		),
-		title: "sonner-rich-colors",
+		title: "sonner-rich-colors-demo",
 		category: "sonner",
-		path: "src/components/demos/sonner/sonner-rich-colors.tsx",
+		path: "src/components/demos/sonner/sonner-rich-colors-demo.tsx",
 	},
 	"switch-demo": {
 		source:
@@ -1265,25 +1323,25 @@ export const demoRegistry: DemoRegistry = {
 		category: "switch",
 		path: "src/components/demos/switch/switch-demo.tsx",
 	},
-	"switch-disabled": {
+	"switch-disabled-demo": {
 		source:
-			'import { Switch } from "@/components/ui/switch"\n\nexport default function SwitchDisabled() {\n\treturn <Switch disabled />\n}\n',
+			'import { Switch } from "@/components/ui/switch"\n\nexport default function SwitchDisabledDemo() {\n\treturn <Switch disabled />\n}\n',
 		component: React.lazy(
-			() => import("@/components/demos/switch/switch-disabled")
+			() => import("@/components/demos/switch/switch-disabled-demo")
 		),
-		title: "switch-disabled",
+		title: "switch-disabled-demo",
 		category: "switch",
-		path: "src/components/demos/switch/switch-disabled.tsx",
+		path: "src/components/demos/switch/switch-disabled-demo.tsx",
 	},
-	"switch-with-label": {
+	"switch-with-label-demo": {
 		source:
-			'import { Label } from "@/components/ui/label"\nimport { Switch } from "@/components/ui/switch"\n\nexport default function SwitchWithLabel() {\n\treturn (\n\t\t<Label className="flex items-center gap-2">\n\t\t\t<Switch />\n\t\t\tEnable notifications\n\t\t</Label>\n\t)\n}\n',
+			'import { Label } from "@/components/ui/label"\nimport { Switch } from "@/components/ui/switch"\n\nexport default function SwitchWithLabelDemo() {\n\treturn (\n\t\t<Label className="flex items-center gap-2">\n\t\t\t<Switch />\n\t\t\tEnable notifications\n\t\t</Label>\n\t)\n}\n',
 		component: React.lazy(
-			() => import("@/components/demos/switch/switch-with-label")
+			() => import("@/components/demos/switch/switch-with-label-demo")
 		),
-		title: "switch-with-label",
+		title: "switch-with-label-demo",
 		category: "switch",
-		path: "src/components/demos/switch/switch-with-label.tsx",
+		path: "src/components/demos/switch/switch-with-label-demo.tsx",
 	},
 	"table-demo": {
 		source:
@@ -1301,25 +1359,25 @@ export const demoRegistry: DemoRegistry = {
 		category: "tabs",
 		path: "src/components/demos/tabs/tabs-demo.tsx",
 	},
-	"tabs-disabled": {
+	"tabs-disabled-demo": {
 		source:
-			'import { Button } from "@/components/ui/button"\nimport {\n\tCard,\n\tCardContent,\n\tCardDescription,\n\tCardFooter,\n\tCardHeader,\n\tCardTitle,\n} from "@/components/ui/card"\nimport { Input } from "@/components/ui/input"\nimport { Label } from "@/components/ui/label"\nimport { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"\nimport {\n\tTooltip,\n\tTooltipContent,\n\tTooltipTrigger,\n} from "@/components/ui/tooltip"\n\nexport default function TabsUnderline() {\n\treturn (\n\t\t<Tabs className="w-full max-w-96" defaultValue="login">\n\t\t\t<TabsList>\n\t\t\t\t<TabsTrigger value="login">Login</TabsTrigger>\n\t\t\t\t<Tooltip>\n\t\t\t\t\t<TooltipTrigger\n\t\t\t\t\t\tclassName="w-full"\n\t\t\t\t\t\trender={(props) => (\n\t\t\t\t\t\t\t<div {...props}>\n\t\t\t\t\t\t\t\t<TabsTrigger disabled>Sign up</TabsTrigger>\n\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t)}\n\t\t\t\t\t/>\n\t\t\t\t\t<TooltipContent className="w-64">\n\t\t\t\t\t\t<span>\n\t\t\t\t\t\t\tSign ups are temporarily disabled. Please check back later.\n\t\t\t\t\t\t</span>\n\t\t\t\t\t</TooltipContent>\n\t\t\t\t</Tooltip>\n\t\t\t</TabsList>\n\t\t\t<TabsContent value="login">\n\t\t\t\t<Card>\n\t\t\t\t\t<CardHeader>\n\t\t\t\t\t\t<CardTitle>Login</CardTitle>\n\t\t\t\t\t\t<CardDescription>Login to your account to continue</CardDescription>\n\t\t\t\t\t</CardHeader>\n\t\t\t\t\t<CardContent className="space-y-4">\n\t\t\t\t\t\t<div className="flex flex-col gap-2">\n\t\t\t\t\t\t\t<Label htmlFor="email">Email</Label>\n\t\t\t\t\t\t\t<Input id="email" placeholder="Email" type="email" />\n\t\t\t\t\t\t</div>\n\t\t\t\t\t\t<div className="flex flex-col gap-2">\n\t\t\t\t\t\t\t<Label htmlFor="password">Password</Label>\n\t\t\t\t\t\t\t<Input id="password" placeholder="Password" type="password" />\n\t\t\t\t\t\t</div>\n\t\t\t\t\t</CardContent>\n\t\t\t\t\t<CardFooter>\n\t\t\t\t\t\t<Button className="w-full">Login</Button>\n\t\t\t\t\t</CardFooter>\n\t\t\t\t</Card>\n\t\t\t</TabsContent>\n\t\t</Tabs>\n\t)\n}\n',
+			'import { Button } from "@/components/ui/button"\nimport {\n\tCard,\n\tCardContent,\n\tCardDescription,\n\tCardFooter,\n\tCardHeader,\n\tCardTitle,\n} from "@/components/ui/card"\nimport { Input } from "@/components/ui/input"\nimport { Label } from "@/components/ui/label"\nimport { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"\nimport {\n\tTooltip,\n\tTooltipContent,\n\tTooltipTrigger,\n} from "@/components/ui/tooltip"\n\nexport default function TabsDisabledDemo() {\n\treturn (\n\t\t<Tabs className="w-full max-w-96" defaultValue="login">\n\t\t\t<TabsList>\n\t\t\t\t<TabsTrigger value="login">Login</TabsTrigger>\n\t\t\t\t<Tooltip>\n\t\t\t\t\t<TooltipTrigger\n\t\t\t\t\t\tclassName="w-full"\n\t\t\t\t\t\trender={(props) => (\n\t\t\t\t\t\t\t<div {...props}>\n\t\t\t\t\t\t\t\t<TabsTrigger disabled>Sign up</TabsTrigger>\n\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t)}\n\t\t\t\t\t/>\n\t\t\t\t\t<TooltipContent className="w-64">\n\t\t\t\t\t\t<span>\n\t\t\t\t\t\t\tSign ups are temporarily disabled. Please check back later.\n\t\t\t\t\t\t</span>\n\t\t\t\t\t</TooltipContent>\n\t\t\t\t</Tooltip>\n\t\t\t</TabsList>\n\t\t\t<TabsContent value="login">\n\t\t\t\t<Card>\n\t\t\t\t\t<CardHeader>\n\t\t\t\t\t\t<CardTitle>Login</CardTitle>\n\t\t\t\t\t\t<CardDescription>Login to your account to continue</CardDescription>\n\t\t\t\t\t</CardHeader>\n\t\t\t\t\t<CardContent className="space-y-4">\n\t\t\t\t\t\t<div className="flex flex-col gap-2">\n\t\t\t\t\t\t\t<Label htmlFor="email">Email</Label>\n\t\t\t\t\t\t\t<Input id="email" placeholder="Email" type="email" />\n\t\t\t\t\t\t</div>\n\t\t\t\t\t\t<div className="flex flex-col gap-2">\n\t\t\t\t\t\t\t<Label htmlFor="password">Password</Label>\n\t\t\t\t\t\t\t<Input id="password" placeholder="Password" type="password" />\n\t\t\t\t\t\t</div>\n\t\t\t\t\t</CardContent>\n\t\t\t\t\t<CardFooter>\n\t\t\t\t\t\t<Button className="w-full">Login</Button>\n\t\t\t\t\t</CardFooter>\n\t\t\t\t</Card>\n\t\t\t</TabsContent>\n\t\t</Tabs>\n\t)\n}\n',
 		component: React.lazy(
-			() => import("@/components/demos/tabs/tabs-disabled")
+			() => import("@/components/demos/tabs/tabs-disabled-demo")
 		),
-		title: "tabs-disabled",
+		title: "tabs-disabled-demo",
 		category: "tabs",
-		path: "src/components/demos/tabs/tabs-disabled.tsx",
+		path: "src/components/demos/tabs/tabs-disabled-demo.tsx",
 	},
-	"tabs-underline": {
+	"tabs-underline-demo": {
 		source:
-			'import { Button } from "@/components/ui/button"\nimport {\n\tCard,\n\tCardContent,\n\tCardDescription,\n\tCardFooter,\n\tCardHeader,\n\tCardTitle,\n} from "@/components/ui/card"\nimport { Input } from "@/components/ui/input"\nimport { Label } from "@/components/ui/label"\nimport { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"\n\nexport default function TabsUnderline() {\n\treturn (\n\t\t<Tabs className="w-full max-w-96" defaultValue="login" variant="underline">\n\t\t\t<TabsList>\n\t\t\t\t<TabsTrigger value="login">Login</TabsTrigger>\n\t\t\t\t<TabsTrigger value="signup">Sign up</TabsTrigger>\n\t\t\t</TabsList>\n\t\t\t<TabsContent value="login">\n\t\t\t\t<Card>\n\t\t\t\t\t<CardHeader>\n\t\t\t\t\t\t<CardTitle>Login</CardTitle>\n\t\t\t\t\t\t<CardDescription>Login to your account to continue</CardDescription>\n\t\t\t\t\t</CardHeader>\n\t\t\t\t\t<CardContent className="space-y-4">\n\t\t\t\t\t\t<div className="flex flex-col gap-2">\n\t\t\t\t\t\t\t<Label htmlFor="email">Email</Label>\n\t\t\t\t\t\t\t<Input id="email" placeholder="Email" type="email" />\n\t\t\t\t\t\t</div>\n\t\t\t\t\t\t<div className="flex flex-col gap-2">\n\t\t\t\t\t\t\t<Label htmlFor="password">Password</Label>\n\t\t\t\t\t\t\t<Input id="password" placeholder="Password" type="password" />\n\t\t\t\t\t\t</div>\n\t\t\t\t\t</CardContent>\n\t\t\t\t\t<CardFooter>\n\t\t\t\t\t\t<Button className="w-full">Login</Button>\n\t\t\t\t\t</CardFooter>\n\t\t\t\t</Card>\n\t\t\t</TabsContent>\n\t\t\t<TabsContent value="signup">\n\t\t\t\t<Card>\n\t\t\t\t\t<CardHeader>\n\t\t\t\t\t\t<CardTitle>Sign up</CardTitle>\n\t\t\t\t\t\t<CardDescription>Sign up to create an account</CardDescription>\n\t\t\t\t\t</CardHeader>\n\t\t\t\t\t<CardContent className="space-y-4">\n\t\t\t\t\t\t<div className="flex flex-col gap-2">\n\t\t\t\t\t\t\t<Label htmlFor="email">Email</Label>\n\t\t\t\t\t\t\t<Input id="email" placeholder="Email" type="email" />\n\t\t\t\t\t\t</div>\n\t\t\t\t\t\t<div className="flex flex-col gap-2">\n\t\t\t\t\t\t\t<Label htmlFor="password">Password</Label>\n\t\t\t\t\t\t\t<Input id="password" placeholder="Password" type="password" />\n\t\t\t\t\t\t</div>\n\t\t\t\t\t</CardContent>\n\t\t\t\t\t<CardFooter>\n\t\t\t\t\t\t<Button className="w-full">Sign up</Button>\n\t\t\t\t\t</CardFooter>\n\t\t\t\t</Card>\n\t\t\t</TabsContent>\n\t\t</Tabs>\n\t)\n}\n',
+			'import { Button } from "@/components/ui/button"\nimport {\n\tCard,\n\tCardContent,\n\tCardDescription,\n\tCardFooter,\n\tCardHeader,\n\tCardTitle,\n} from "@/components/ui/card"\nimport { Input } from "@/components/ui/input"\nimport { Label } from "@/components/ui/label"\nimport { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"\n\nexport default function TabsUnderlineDemo() {\n\treturn (\n\t\t<Tabs className="w-full max-w-96" defaultValue="login" variant="underline">\n\t\t\t<TabsList>\n\t\t\t\t<TabsTrigger value="login">Login</TabsTrigger>\n\t\t\t\t<TabsTrigger value="signup">Sign up</TabsTrigger>\n\t\t\t</TabsList>\n\t\t\t<TabsContent value="login">\n\t\t\t\t<Card>\n\t\t\t\t\t<CardHeader>\n\t\t\t\t\t\t<CardTitle>Login</CardTitle>\n\t\t\t\t\t\t<CardDescription>Login to your account to continue</CardDescription>\n\t\t\t\t\t</CardHeader>\n\t\t\t\t\t<CardContent className="space-y-4">\n\t\t\t\t\t\t<div className="flex flex-col gap-2">\n\t\t\t\t\t\t\t<Label htmlFor="email">Email</Label>\n\t\t\t\t\t\t\t<Input id="email" placeholder="Email" type="email" />\n\t\t\t\t\t\t</div>\n\t\t\t\t\t\t<div className="flex flex-col gap-2">\n\t\t\t\t\t\t\t<Label htmlFor="password">Password</Label>\n\t\t\t\t\t\t\t<Input id="password" placeholder="Password" type="password" />\n\t\t\t\t\t\t</div>\n\t\t\t\t\t</CardContent>\n\t\t\t\t\t<CardFooter>\n\t\t\t\t\t\t<Button className="w-full">Login</Button>\n\t\t\t\t\t</CardFooter>\n\t\t\t\t</Card>\n\t\t\t</TabsContent>\n\t\t\t<TabsContent value="signup">\n\t\t\t\t<Card>\n\t\t\t\t\t<CardHeader>\n\t\t\t\t\t\t<CardTitle>Sign up</CardTitle>\n\t\t\t\t\t\t<CardDescription>Sign up to create an account</CardDescription>\n\t\t\t\t\t</CardHeader>\n\t\t\t\t\t<CardContent className="space-y-4">\n\t\t\t\t\t\t<div className="flex flex-col gap-2">\n\t\t\t\t\t\t\t<Label htmlFor="email">Email</Label>\n\t\t\t\t\t\t\t<Input id="email" placeholder="Email" type="email" />\n\t\t\t\t\t\t</div>\n\t\t\t\t\t\t<div className="flex flex-col gap-2">\n\t\t\t\t\t\t\t<Label htmlFor="password">Password</Label>\n\t\t\t\t\t\t\t<Input id="password" placeholder="Password" type="password" />\n\t\t\t\t\t\t</div>\n\t\t\t\t\t</CardContent>\n\t\t\t\t\t<CardFooter>\n\t\t\t\t\t\t<Button className="w-full">Sign up</Button>\n\t\t\t\t\t</CardFooter>\n\t\t\t\t</Card>\n\t\t\t</TabsContent>\n\t\t</Tabs>\n\t)\n}\n',
 		component: React.lazy(
-			() => import("@/components/demos/tabs/tabs-underline")
+			() => import("@/components/demos/tabs/tabs-underline-demo")
 		),
-		title: "tabs-underline",
+		title: "tabs-underline-demo",
 		category: "tabs",
-		path: "src/components/demos/tabs/tabs-underline.tsx",
+		path: "src/components/demos/tabs/tabs-underline-demo.tsx",
 	},
 	"textarea-demo": {
 		source:
@@ -1331,25 +1389,25 @@ export const demoRegistry: DemoRegistry = {
 		category: "textarea",
 		path: "src/components/demos/textarea/textarea-demo.tsx",
 	},
-	"textarea-disabled": {
+	"textarea-disabled-demo": {
 		source:
-			'import { Textarea } from "@/components/ui/textarea"\n\nexport default function TextareaDisabled() {\n\treturn (\n\t\t<Textarea className="w-80" placeholder="Enter your message..." disabled />\n\t)\n}\n',
+			'import { Textarea } from "@/components/ui/textarea"\n\nexport default function TextareaDisabledDemo() {\n\treturn (\n\t\t<Textarea className="w-80" placeholder="Enter your message..." disabled />\n\t)\n}\n',
 		component: React.lazy(
-			() => import("@/components/demos/textarea/textarea-disabled")
+			() => import("@/components/demos/textarea/textarea-disabled-demo")
 		),
-		title: "textarea-disabled",
+		title: "textarea-disabled-demo",
 		category: "textarea",
-		path: "src/components/demos/textarea/textarea-disabled.tsx",
+		path: "src/components/demos/textarea/textarea-disabled-demo.tsx",
 	},
-	"textarea-error": {
+	"textarea-error-demo": {
 		source:
-			'import { Textarea } from "@/components/ui/textarea"\n\nexport default function TextareaError() {\n\treturn (\n\t\t<Textarea\n\t\t\tclassName="w-80"\n\t\t\tplaceholder="Enter your message..."\n\t\t\taria-invalid\n\t\t/>\n\t)\n}\n',
+			'import { Textarea } from "@/components/ui/textarea"\n\nexport default function TextareaErrorDemo() {\n\treturn (\n\t\t<Textarea\n\t\t\tclassName="w-80"\n\t\t\tplaceholder="Enter your message..."\n\t\t\taria-invalid\n\t\t/>\n\t)\n}\n',
 		component: React.lazy(
-			() => import("@/components/demos/textarea/textarea-error")
+			() => import("@/components/demos/textarea/textarea-error-demo")
 		),
-		title: "textarea-error",
+		title: "textarea-error-demo",
 		category: "textarea",
-		path: "src/components/demos/textarea/textarea-error.tsx",
+		path: "src/components/demos/textarea/textarea-error-demo.tsx",
 	},
 	"theme-toggle": {
 		source:
@@ -1361,15 +1419,15 @@ export const demoRegistry: DemoRegistry = {
 		category: "theme-toggle",
 		path: "src/components/demos/theme-toggle/theme-toggle.tsx",
 	},
-	"toast-action": {
+	"toast-action-demo": {
 		source:
 			'"use client"\n\nimport { useToast } from "@/hooks/use-toast"\n\nimport { Button } from "@/components/ui/button"\n\nexport default function ToastActionDemo() {\n\tconst toast = useToast()\n\n\treturn (\n\t\t<Button\n\t\t\tonClick={() => {\n\t\t\t\tconst id = toast.add({\n\t\t\t\t\ttitle: "Your email has been sent",\n\t\t\t\t\tdescription: "We\'ll get back to you as soon as possible",\n\t\t\t\t\tactionProps: {\n\t\t\t\t\t\tchildren: "Unsend",\n\t\t\t\t\t\tonClick: () => {\n\t\t\t\t\t\t\ttoast.close(id)\n\t\t\t\t\t\t\ttoast.add({\n\t\t\t\t\t\t\t\ttitle: "Email unsent",\n\t\t\t\t\t\t\t\ttype: "success",\n\t\t\t\t\t\t\t})\n\t\t\t\t\t\t},\n\t\t\t\t\t},\n\t\t\t\t})\n\t\t\t}}\n\t\t>\n\t\t\tShow Toast\n\t\t</Button>\n\t)\n}\n',
 		component: React.lazy(
-			() => import("@/components/demos/toast/toast-action")
+			() => import("@/components/demos/toast/toast-action-demo")
 		),
-		title: "toast-action",
+		title: "toast-action-demo",
 		category: "toast",
-		path: "src/components/demos/toast/toast-action.tsx",
+		path: "src/components/demos/toast/toast-action-demo.tsx",
 	},
 	"toast-demo": {
 		source:
@@ -1379,25 +1437,25 @@ export const demoRegistry: DemoRegistry = {
 		category: "toast",
 		path: "src/components/demos/toast/toast-demo.tsx",
 	},
-	"toast-promise": {
+	"toast-promise-demo": {
 		source:
 			'"use client"\n\nimport { useToast } from "@/hooks/use-toast"\n\nimport { Button } from "@/components/ui/button"\n\nexport default function ToastPromiseDemo() {\n\tconst toast = useToast()\n\n\treturn (\n\t\t<Button\n\t\t\tonClick={() =>\n\t\t\t\ttoast.promise(\n\t\t\t\t\tnew Promise<string>((resolve) => {\n\t\t\t\t\t\tsetTimeout(() => {\n\t\t\t\t\t\t\tresolve("Request sent")\n\t\t\t\t\t\t}, 2000)\n\t\t\t\t\t}),\n\t\t\t\t\t{\n\t\t\t\t\t\tloading: "Sending request...",\n\t\t\t\t\t\tsuccess: (data: string) => `Success: ${data}`,\n\t\t\t\t\t\terror: (err: Error) => `Error: ${err.message}`,\n\t\t\t\t\t}\n\t\t\t\t)\n\t\t\t}\n\t\t>\n\t\t\tShow Toast\n\t\t</Button>\n\t)\n}\n',
 		component: React.lazy(
-			() => import("@/components/demos/toast/toast-promise")
+			() => import("@/components/demos/toast/toast-promise-demo")
 		),
-		title: "toast-promise",
+		title: "toast-promise-demo",
 		category: "toast",
-		path: "src/components/demos/toast/toast-promise.tsx",
+		path: "src/components/demos/toast/toast-promise-demo.tsx",
 	},
-	"toast-rich-colors": {
+	"toast-rich-colors-demo": {
 		source:
 			'"use client"\n\nimport { useToast } from "@/hooks/use-toast"\n\nimport { Button } from "@/components/ui/button"\n\nexport default function ToastRichColorsDemo() {\n\tconst toast = useToast()\n\n\treturn (\n\t\t<div className="grid grid-cols-2 gap-2">\n\t\t\t<Button\n\t\t\t\tonClick={() =>\n\t\t\t\t\ttoast.add({\n\t\t\t\t\t\ttitle: "Success",\n\t\t\t\t\t\ttype: "success",\n\t\t\t\t\t})\n\t\t\t\t}\n\t\t\t>\n\t\t\t\tsuccess\n\t\t\t</Button>\n\t\t\t<Button\n\t\t\t\tonClick={() =>\n\t\t\t\t\ttoast.add({\n\t\t\t\t\t\ttitle: "Error",\n\t\t\t\t\t\ttype: "error",\n\t\t\t\t\t})\n\t\t\t\t}\n\t\t\t>\n\t\t\t\terror\n\t\t\t</Button>\n\t\t\t<Button\n\t\t\t\tonClick={() =>\n\t\t\t\t\ttoast.add({\n\t\t\t\t\t\ttitle: "Warning",\n\t\t\t\t\t\ttype: "warning",\n\t\t\t\t\t})\n\t\t\t\t}\n\t\t\t>\n\t\t\t\twarning\n\t\t\t</Button>\n\t\t\t<Button\n\t\t\t\tonClick={() =>\n\t\t\t\t\ttoast.add({\n\t\t\t\t\t\ttitle: "Info",\n\t\t\t\t\t\ttype: "info",\n\t\t\t\t\t})\n\t\t\t\t}\n\t\t\t>\n\t\t\t\tinfo\n\t\t\t</Button>\n\t\t</div>\n\t)\n}\n',
 		component: React.lazy(
-			() => import("@/components/demos/toast/toast-rich-colors")
+			() => import("@/components/demos/toast/toast-rich-colors-demo")
 		),
-		title: "toast-rich-colors",
+		title: "toast-rich-colors-demo",
 		category: "toast",
-		path: "src/components/demos/toast/toast-rich-colors.tsx",
+		path: "src/components/demos/toast/toast-rich-colors-demo.tsx",
 	},
 	"toggle-group-demo": {
 		source:
@@ -1409,25 +1467,25 @@ export const demoRegistry: DemoRegistry = {
 		category: "toggle-group",
 		path: "src/components/demos/toggle-group/toggle-group-demo.tsx",
 	},
-	"toggle-group-multiple": {
+	"toggle-group-multiple-demo": {
 		source:
-			'import { BoldIcon, ItalicIcon, UnderlineIcon } from "lucide-react"\n\nimport { Toggle } from "@/components/ui/toggle"\nimport { ToggleGroup } from "@/components/ui/toggle-group"\n\nexport default function ToggleGroupMultiple() {\n\treturn (\n\t\t<ToggleGroup multiple>\n\t\t\t<Toggle value="bold">\n\t\t\t\t<BoldIcon />\n\t\t\t</Toggle>\n\t\t\t<Toggle value="italic">\n\t\t\t\t<ItalicIcon />\n\t\t\t</Toggle>\n\t\t\t<Toggle value="underline">\n\t\t\t\t<UnderlineIcon />\n\t\t\t</Toggle>\n\t\t</ToggleGroup>\n\t)\n}\n',
+			'import { BoldIcon, ItalicIcon, UnderlineIcon } from "lucide-react"\n\nimport { Toggle } from "@/components/ui/toggle"\nimport { ToggleGroup } from "@/components/ui/toggle-group"\n\nexport default function ToggleGroupMultipleDemo() {\n\treturn (\n\t\t<ToggleGroup multiple>\n\t\t\t<Toggle value="bold">\n\t\t\t\t<BoldIcon />\n\t\t\t</Toggle>\n\t\t\t<Toggle value="italic">\n\t\t\t\t<ItalicIcon />\n\t\t\t</Toggle>\n\t\t\t<Toggle value="underline">\n\t\t\t\t<UnderlineIcon />\n\t\t\t</Toggle>\n\t\t</ToggleGroup>\n\t)\n}\n',
 		component: React.lazy(
-			() => import("@/components/demos/toggle-group/toggle-group-multiple")
+			() => import("@/components/demos/toggle-group/toggle-group-multiple-demo")
 		),
-		title: "toggle-group-multiple",
+		title: "toggle-group-multiple-demo",
 		category: "toggle-group",
-		path: "src/components/demos/toggle-group/toggle-group-multiple.tsx",
+		path: "src/components/demos/toggle-group/toggle-group-multiple-demo.tsx",
 	},
-	"toggle-custom-control": {
+	"toggle-custom-control-demo": {
 		source:
-			'"use client"\n\nimport { useState } from "react"\nimport { PinIcon, PinOffIcon } from "lucide-react"\n\nimport { Toggle } from "@/components/ui/toggle"\n\nexport default function ToggleCustomControl() {\n\tconst [isPinned, setIsPinned] = useState(false)\n\n\treturn (\n\t\t<Toggle aria-label="Pin" pressed={isPinned} onPressedChange={setIsPinned}>\n\t\t\t{isPinned ? <PinIcon /> : <PinOffIcon />}\n\t\t</Toggle>\n\t)\n}\n',
+			'"use client"\n\nimport { useState } from "react"\nimport { PinIcon, PinOffIcon } from "lucide-react"\n\nimport { Toggle } from "@/components/ui/toggle"\n\nexport default function ToggleCustomControlDemo() {\n\tconst [isPinned, setIsPinned] = useState(false)\n\n\treturn (\n\t\t<Toggle aria-label="Pin" pressed={isPinned} onPressedChange={setIsPinned}>\n\t\t\t{isPinned ? <PinIcon /> : <PinOffIcon />}\n\t\t</Toggle>\n\t)\n}\n',
 		component: React.lazy(
-			() => import("@/components/demos/toggle/toggle-custom-control")
+			() => import("@/components/demos/toggle/toggle-custom-control-demo")
 		),
-		title: "toggle-custom-control",
+		title: "toggle-custom-control-demo",
 		category: "toggle",
-		path: "src/components/demos/toggle/toggle-custom-control.tsx",
+		path: "src/components/demos/toggle/toggle-custom-control-demo.tsx",
 	},
 	"toggle-demo": {
 		source:
@@ -1439,35 +1497,35 @@ export const demoRegistry: DemoRegistry = {
 		category: "toggle",
 		path: "src/components/demos/toggle/toggle-demo.tsx",
 	},
-	"toggle-disabled": {
+	"toggle-disabled-demo": {
 		source:
-			'import { PinIcon } from "lucide-react"\n\nimport { Toggle } from "@/components/ui/toggle"\n\nexport default function ToggleDisabled() {\n\treturn (\n\t\t<Toggle aria-label="Pin" disabled>\n\t\t\t<PinIcon />\n\t\t</Toggle>\n\t)\n}\n',
+			'import { PinIcon } from "lucide-react"\n\nimport { Toggle } from "@/components/ui/toggle"\n\nexport default function ToggleDisabledDemo() {\n\treturn (\n\t\t<Toggle aria-label="Pin" disabled>\n\t\t\t<PinIcon />\n\t\t</Toggle>\n\t)\n}\n',
 		component: React.lazy(
-			() => import("@/components/demos/toggle/toggle-disabled")
+			() => import("@/components/demos/toggle/toggle-disabled-demo")
 		),
-		title: "toggle-disabled",
+		title: "toggle-disabled-demo",
 		category: "toggle",
-		path: "src/components/demos/toggle/toggle-disabled.tsx",
+		path: "src/components/demos/toggle/toggle-disabled-demo.tsx",
 	},
-	"toggle-outline": {
+	"toggle-outline-demo": {
 		source:
-			'import { PinIcon } from "lucide-react"\n\nimport { Toggle } from "@/components/ui/toggle"\n\nexport default function ToggleOutline() {\n\treturn (\n\t\t<Toggle aria-label="Pin" variant="outline">\n\t\t\t<PinIcon />\n\t\t</Toggle>\n\t)\n}\n',
+			'import { PinIcon } from "lucide-react"\n\nimport { Toggle } from "@/components/ui/toggle"\n\nexport default function ToggleOutlineDemo() {\n\treturn (\n\t\t<Toggle aria-label="Pin" variant="outline">\n\t\t\t<PinIcon />\n\t\t</Toggle>\n\t)\n}\n',
 		component: React.lazy(
-			() => import("@/components/demos/toggle/toggle-outline")
+			() => import("@/components/demos/toggle/toggle-outline-demo")
 		),
-		title: "toggle-outline",
+		title: "toggle-outline-demo",
 		category: "toggle",
-		path: "src/components/demos/toggle/toggle-outline.tsx",
+		path: "src/components/demos/toggle/toggle-outline-demo.tsx",
 	},
-	"toggle-sizes": {
+	"toggle-sizes-demo": {
 		source:
-			'import { PinIcon } from "lucide-react"\n\nimport { Toggle } from "@/components/ui/toggle"\n\nexport default function ToggleSizes() {\n\treturn (\n\t\t<div className="flex items-center gap-4">\n\t\t\t<Toggle aria-label="Pin" size="sm">\n\t\t\t\t<PinIcon />\n\t\t\t</Toggle>\n\t\t\t<Toggle aria-label="Pin" size="default">\n\t\t\t\t<PinIcon />\n\t\t\t</Toggle>\n\t\t\t<Toggle aria-label="Pin" size="lg">\n\t\t\t\t<PinIcon />\n\t\t\t</Toggle>\n\t\t</div>\n\t)\n}\n',
+			'import { PinIcon } from "lucide-react"\n\nimport { Toggle } from "@/components/ui/toggle"\n\nexport default function ToggleSizesDemo() {\n\treturn (\n\t\t<div className="flex items-center gap-4">\n\t\t\t<Toggle aria-label="Pin" size="sm">\n\t\t\t\t<PinIcon />\n\t\t\t</Toggle>\n\t\t\t<Toggle aria-label="Pin" size="default">\n\t\t\t\t<PinIcon />\n\t\t\t</Toggle>\n\t\t\t<Toggle aria-label="Pin" size="lg">\n\t\t\t\t<PinIcon />\n\t\t\t</Toggle>\n\t\t</div>\n\t)\n}\n',
 		component: React.lazy(
-			() => import("@/components/demos/toggle/toggle-sizes")
+			() => import("@/components/demos/toggle/toggle-sizes-demo")
 		),
-		title: "toggle-sizes",
+		title: "toggle-sizes-demo",
 		category: "toggle",
-		path: "src/components/demos/toggle/toggle-sizes.tsx",
+		path: "src/components/demos/toggle/toggle-sizes-demo.tsx",
 	},
 	"toolbar-demo": {
 		source:
@@ -1479,25 +1537,25 @@ export const demoRegistry: DemoRegistry = {
 		category: "toolbar",
 		path: "src/components/demos/toolbar/toolbar-demo.tsx",
 	},
-	"toolbar-file-explorer": {
+	"toolbar-file-explorer-demo": {
 		source:
 			'"use client"\n\nimport {\n\tLayoutGridIcon,\n\tLayoutListIcon,\n\tMoreHorizontalIcon,\n\tSearchIcon,\n\tShareIcon,\n} from "lucide-react"\n\nimport {\n\tDropdownMenu,\n\tDropdownMenuContent,\n\tDropdownMenuItem,\n\tDropdownMenuSeparator,\n\tDropdownMenuTrigger,\n} from "@/components/ui/dropdown-menu"\nimport { Input } from "@/components/ui/input"\nimport { Toggle } from "@/components/ui/toggle"\nimport { ToggleGroup } from "@/components/ui/toggle-group"\nimport {\n\tToolbar,\n\tToolbarButton,\n\tToolbarGroup,\n\tToolbarInput,\n\tToolbarSeparator,\n} from "@/components/ui/toolbar"\n\nexport default function ToolbarFileExplorerDemo() {\n\treturn (\n\t\t<Toolbar>\n\t\t\t<ToggleGroup className="border-none bg-transparent p-0">\n\t\t\t\t<ToolbarButton\n\t\t\t\t\tsize="icon"\n\t\t\t\t\trender={\n\t\t\t\t\t\t<Toggle aria-label="Grid view" value="grid-view">\n\t\t\t\t\t\t\t<LayoutGridIcon />\n\t\t\t\t\t\t</Toggle>\n\t\t\t\t\t}\n\t\t\t\t/>\n\t\t\t\t<ToolbarButton\n\t\t\t\t\tsize="icon"\n\t\t\t\t\trender={\n\t\t\t\t\t\t<Toggle aria-label="List view" value="list-view">\n\t\t\t\t\t\t\t<LayoutListIcon />\n\t\t\t\t\t\t</Toggle>\n\t\t\t\t\t}\n\t\t\t\t/>\n\t\t\t</ToggleGroup>\n\n\t\t\t<ToolbarSeparator />\n\n\t\t\t<ToolbarGroup>\n\t\t\t\t<ToolbarButton size="icon" variant="outline">\n\t\t\t\t\t<ShareIcon />\n\t\t\t\t</ToolbarButton>\n\t\t\t\t<DropdownMenu>\n\t\t\t\t\t<ToolbarButton\n\t\t\t\t\t\tsize="icon"\n\t\t\t\t\t\tvariant="outline"\n\t\t\t\t\t\trender={<DropdownMenuTrigger />}\n\t\t\t\t\t>\n\t\t\t\t\t\t<MoreHorizontalIcon />\n\t\t\t\t\t</ToolbarButton>\n\t\t\t\t\t<DropdownMenuContent>\n\t\t\t\t\t\t<DropdownMenuItem>New File</DropdownMenuItem>\n\t\t\t\t\t\t<DropdownMenuItem>New Folder</DropdownMenuItem>\n\t\t\t\t\t\t<DropdownMenuSeparator />\n\t\t\t\t\t\t<DropdownMenuItem>Open in New Tab</DropdownMenuItem>\n\t\t\t\t\t\t<DropdownMenuItem>Get Info</DropdownMenuItem>\n\t\t\t\t\t</DropdownMenuContent>\n\t\t\t\t</DropdownMenu>\n\t\t\t</ToolbarGroup>\n\t\t\t<ToolbarSeparator />\n\n\t\t\t<ToolbarInput\n\t\t\t\trender={<Input placeholder="Search" leadingIcon={<SearchIcon />} />}\n\t\t\t/>\n\t\t</Toolbar>\n\t)\n}\n',
 		component: React.lazy(
-			() => import("@/components/demos/toolbar/toolbar-file-explorer")
+			() => import("@/components/demos/toolbar/toolbar-file-explorer-demo")
 		),
-		title: "toolbar-file-explorer",
+		title: "toolbar-file-explorer-demo",
 		category: "toolbar",
-		path: "src/components/demos/toolbar/toolbar-file-explorer.tsx",
+		path: "src/components/demos/toolbar/toolbar-file-explorer-demo.tsx",
 	},
-	"tooltip-custom-position": {
+	"tooltip-custom-position-demo": {
 		source:
-			'import {\n\tTooltip,\n\tTooltipContent,\n\tTooltipProvider,\n\tTooltipTrigger,\n} from "@/components/ui/tooltip"\n\nconst positions = ["top", "right", "bottom", "left"] as const\n\nexport default function TooltipCustomPosition() {\n\treturn (\n\t\t<div className="grid grid-cols-2 gap-2">\n\t\t\t<TooltipProvider>\n\t\t\t\t{positions.map((position) => (\n\t\t\t\t\t<Tooltip key={position}>\n\t\t\t\t\t\t<TooltipTrigger className="w-full rounded-md border px-2 py-1.5 text-sm">\n\t\t\t\t\t\t\t{position}\n\t\t\t\t\t\t</TooltipTrigger>\n\t\t\t\t\t\t<TooltipContent className="max-w-56" side={position}>\n\t\t\t\t\t\t\t<span>This tooltip is positioned at the {position} side.</span>\n\t\t\t\t\t\t</TooltipContent>\n\t\t\t\t\t</Tooltip>\n\t\t\t\t))}\n\t\t\t</TooltipProvider>\n\t\t</div>\n\t)\n}\n',
+			'import {\n\tTooltip,\n\tTooltipContent,\n\tTooltipProvider,\n\tTooltipTrigger,\n} from "@/components/ui/tooltip"\n\nconst positions = ["top", "right", "bottom", "left"] as const\n\nexport default function TooltipCustomPositionDemo() {\n\treturn (\n\t\t<div className="grid grid-cols-2 gap-2">\n\t\t\t<TooltipProvider>\n\t\t\t\t{positions.map((position) => (\n\t\t\t\t\t<Tooltip key={position}>\n\t\t\t\t\t\t<TooltipTrigger className="w-full rounded-md border px-2 py-1.5 text-sm">\n\t\t\t\t\t\t\t{position}\n\t\t\t\t\t\t</TooltipTrigger>\n\t\t\t\t\t\t<TooltipContent className="max-w-56" side={position}>\n\t\t\t\t\t\t\t<span>This tooltip is positioned at the {position} side.</span>\n\t\t\t\t\t\t</TooltipContent>\n\t\t\t\t\t</Tooltip>\n\t\t\t\t))}\n\t\t\t</TooltipProvider>\n\t\t</div>\n\t)\n}\n',
 		component: React.lazy(
-			() => import("@/components/demos/tooltip/tooltip-custom-position")
+			() => import("@/components/demos/tooltip/tooltip-custom-position-demo")
 		),
-		title: "tooltip-custom-position",
+		title: "tooltip-custom-position-demo",
 		category: "tooltip",
-		path: "src/components/demos/tooltip/tooltip-custom-position.tsx",
+		path: "src/components/demos/tooltip/tooltip-custom-position-demo.tsx",
 	},
 	"tooltip-demo": {
 		source:

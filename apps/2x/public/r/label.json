@@ -6,7 +6,7 @@
 	"files": [
 		{
 			"path": "ui/label.tsx",
-			"content": "import * as React from \"react\"\n\nimport { cn } from \"@/lib/utils\"\n\nfunction Label({ className, ...props }: React.ComponentProps<\"label\">) {\n\treturn (\n\t\t<label\n\t\t\tdata-slot=\"label\"\n\t\t\tclassName={cn(\n\t\t\t\t\"flex items-center gap-2 text-sm leading-none font-medium select-none group-data-[disabled]:pointer-events-none group-data-[disabled]:opacity-50 peer-disabled:pointer-events-none peer-disabled:opacity-50\",\n\t\t\t\tclassName\n\t\t\t)}\n\t\t\t{...props}\n\t\t/>\n\t)\n}\n\nexport { Label }\n",
+			"content": "import * as React from \"react\"\n\nimport { cn } from \"@/lib/utils\"\n\nfunction Label({ className, ...props }: React.ComponentProps<\"label\">) {\n\treturn (\n\t\t<label\n\t\t\tdata-slot=\"label\"\n\t\t\tclassName={cn(\n\t\t\t\t\"flex items-center gap-2 text-sm leading-none font-medium select-none\",\n\t\t\t\tclassName\n\t\t\t)}\n\t\t\t{...props}\n\t\t/>\n\t)\n}\n\nexport { Label }\n",
 			"type": "registry:ui",
 			"target": ""
 		}

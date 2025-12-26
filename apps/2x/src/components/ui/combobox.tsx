@@ -1,4 +1,4 @@
-import { Combobox as BaseCombobox } from "@base-ui-components/react/combobox"
+import { Combobox as BaseCombobox } from "@base-ui/react/combobox"
 import { CheckIcon, ChevronDownIcon, XIcon } from "lucide-react"
 
 import { cn } from "@/lib/utils"
@@ -64,7 +64,7 @@ function ComboboxTrigger({
 			data-slot="combobox-trigger"
 			data-size={size}
 			className={cn(
-				"group [&_svg:not([class*='text-'])]:text-muted-foreground focus-visible:border-ring focus-visible:ring-ring/50 aria-invalid:ring-destructive/50 aria-invalid:border-destructive bg-input hover:border-ring/70 flex w-fit items-center justify-between gap-2 rounded-md border px-3 py-2 text-sm whitespace-nowrap shadow-xs transition-[color,box-shadow,border-color] outline-none select-none focus-visible:ring-[3px] data-[disabled]:pointer-events-none data-[disabled]:opacity-50 data-[size=default]:h-9 data-[size=sm]:h-8 *:data-[slot=combobox-value]:line-clamp-1 *:data-[slot=combobox-value]:flex *:data-[slot=combobox-value]:items-center *:data-[slot=combobox-value]:gap-2 data-[popup-open]:[&_*[data-slot=combobox-icon]]:rotate-180 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
+				"group [&_svg:not([class*='text-'])]:text-muted-foreground focus-visible:border-ring focus-visible:ring-ring/50 aria-invalid:ring-destructive/50 aria-invalid:border-destructive bg-input hover:border-ring/70 flex w-fit items-center justify-between gap-2 rounded-md border px-3 py-2 text-sm whitespace-nowrap shadow-xs transition-[color,box-shadow,border-color] outline-none select-none focus-visible:ring-[3px] data-disabled:pointer-events-none data-disabled:opacity-50 data-[size=default]:h-9 data-[size=sm]:h-8 *:data-[slot=combobox-value]:line-clamp-1 *:data-[slot=combobox-value]:flex *:data-[slot=combobox-value]:items-center *:data-[slot=combobox-value]:gap-2 data-popup-open:[&_*[data-slot=combobox-icon]]:rotate-180 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
 				className
 			)}
 			{...props}
@@ -84,7 +84,6 @@ function ComboboxInput({
 	className,
 	inputContainerClassName,
 	showClear = true,
-	disabled,
 	multiple,
 	...props
 }: React.ComponentProps<typeof BaseCombobox.Input> & {
@@ -95,21 +94,19 @@ function ComboboxInput({
 	return (
 		<div
 			className={cn(
-				"group relative w-full data-[disabled]:pointer-events-none",
+				"group relative w-full has-[[data-slot=combobox-input][data-disabled]]:pointer-events-none has-[[data-slot=combobox-input][data-disabled]]:opacity-50",
 				inputContainerClassName
 			)}
-			data-disabled={disabled}
 			data-slot="combobox-input-container"
 		>
 			<BaseCombobox.Input
 				data-slot="combobox-input"
 				className={cn(
-					"placeholder:text-muted-foreground selection:bg-primary group-hover:border-ring/70 selection:text-primary-foreground bg-input focus-visible:border-ring focus-visible:ring-ring/50 flex h-9 w-full min-w-0 rounded-md border px-3 py-1 text-base shadow-xs transition-[color,box-shadow,border-color] outline-none focus-visible:ring-[3px] disabled:pointer-events-none disabled:opacity-50 md:text-sm",
+					"placeholder:text-muted-foreground selection:bg-primary group-hover:border-ring/70 selection:text-primary-foreground bg-input focus-visible:border-ring focus-visible:ring-ring/50 aria-invalid:ring-destructive/50 aria-invalid:border-destructive flex h-9 w-full min-w-0 rounded-md border px-3 py-1 text-base shadow-xs transition-[color,box-shadow,border-color] outline-none focus-visible:ring-[3px] md:text-sm",
 					showClear && "pr-8",
 					multiple && "border-none bg-transparent focus-visible:ring-0",
 					className
 				)}
-				disabled={disabled}
 				{...props}
 			/>
 			{showClear && (
@@ -147,8 +144,7 @@ function ComboboxContent({
 				<BaseCombobox.Popup
 					data-slot="combobox-content"
 					className={cn(
-						"bg-popover text-popover-foreground relative z-50 max-h-[min(var(--available-height),20rem)] min-w-[var(--anchor-width)] origin-[var(--transform-origin)] overflow-x-hidden overflow-y-auto overscroll-contain rounded-md border p-1 shadow-md",
-						"[&_*[data-slot=combobox-input]]:rounded-sm",
+						"bg-popover text-popover-foreground relative z-50 max-h-[min(var(--available-height),20rem)] min-w-[var(--anchor-width)] origin-[var(--transform-origin)] overflow-x-hidden overflow-y-auto overscroll-contain rounded-md border p-1 shadow-md [&_*[data-slot=combobox-input]]:rounded-sm",
 						className
 					)}
 					{...props}
@@ -169,7 +165,7 @@ function ComboboxItem({
 		<BaseCombobox.Item
 			data-slot="combobox-item"
 			className={cn(
-				"data-highlighted:bg-accent data-highlighted:text-accent-foreground [&_svg:not([class*='text-'])]:text-muted-foreground relative flex w-full cursor-default items-center gap-2 rounded-sm py-1.5 pr-8 pl-2 text-sm outline-hidden select-none data-[disabled]:pointer-events-none data-[disabled]:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4 *:[span]:last:flex *:[span]:last:items-center *:[span]:last:gap-2",
+				"data-highlighted:bg-accent data-highlighted:text-accent-foreground [&_svg:not([class*='text-'])]:text-muted-foreground relative flex w-full cursor-default items-center gap-2 rounded-sm py-1.5 pr-8 pl-2 text-sm outline-hidden select-none data-disabled:pointer-events-none data-disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4 *:[span]:last:flex *:[span]:last:items-center *:[span]:last:gap-2",
 				className
 			)}
 			{...props}

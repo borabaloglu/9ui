@@ -1,7 +1,7 @@
 "use client"
 
 import * as React from "react"
-import { CheckboxGroup as BaseCheckboxGroup } from "@base-ui-components/react/checkbox-group"
+import { CheckboxGroup as BaseCheckboxGroup } from "@base-ui/react/checkbox-group"
 
 import { cn } from "@/lib/utils"
 

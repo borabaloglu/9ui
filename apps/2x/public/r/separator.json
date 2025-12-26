@@ -6,7 +6,7 @@
 	"files": [
 		{
 			"path": "ui/separator.tsx",
-			"content": "import * as React from \"react\"\nimport { Separator as BaseSeparator } from \"@base-ui-components/react/separator\"\n\nimport { cn } from \"@/lib/utils\"\n\nfunction Separator({\n\tclassName,\n\torientation = \"horizontal\",\n\t...props\n}: React.ComponentProps<typeof BaseSeparator>) {\n\treturn (\n\t\t<BaseSeparator\n\t\t\tdata-slot=\"separator\"\n\t\t\torientation={orientation}\n\t\t\tclassName={cn(\n\t\t\t\t\"bg-border shrink-0 data-[orientation=horizontal]:h-px data-[orientation=vertical]:w-px\",\n\t\t\t\tclassName\n\t\t\t)}\n\t\t\t{...props}\n\t\t/>\n\t)\n}\n\nexport { Separator }\n",
+			"content": "import * as React from \"react\"\nimport { Separator as BaseSeparator } from \"@base-ui/react/separator\"\n\nimport { cn } from \"@/lib/utils\"\n\nfunction Separator({\n\tclassName,\n\torientation = \"horizontal\",\n\t...props\n}: React.ComponentProps<typeof BaseSeparator>) {\n\treturn (\n\t\t<BaseSeparator\n\t\t\tdata-slot=\"separator\"\n\t\t\torientation={orientation}\n\t\t\tclassName={cn(\n\t\t\t\t\"bg-border shrink-0 data-[orientation=horizontal]:h-px data-[orientation=vertical]:w-px\",\n\t\t\t\tclassName\n\t\t\t)}\n\t\t\t{...props}\n\t\t/>\n\t)\n}\n\nexport { Separator }\n",
 			"type": "registry:ui",
 			"target": ""
 		}

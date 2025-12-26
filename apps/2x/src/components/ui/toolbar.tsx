@@ -1,7 +1,7 @@
 "use client"
 
 import * as React from "react"
-import { Toolbar as BaseToolbar } from "@base-ui-components/react/toolbar"
+import { Toolbar as BaseToolbar } from "@base-ui/react/toolbar"
 
 import { ButtonProps, buttonVariants } from "@/components/ui/button"
 

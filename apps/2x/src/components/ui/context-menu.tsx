@@ -1,7 +1,7 @@
 "use client"
 
 import * as React from "react"
-import { ContextMenu as BaseContextMenu } from "@base-ui-components/react/context-menu"
+import { ContextMenu as BaseContextMenu } from "@base-ui/react/context-menu"
 import { CheckIcon, ChevronRightIcon, CircleIcon } from "lucide-react"
 
 import { cn } from "@/lib/utils"
@@ -166,7 +166,7 @@ function ContextMenuLabel({
 			data-slot="context-menu-label"
 			data-inset={inset}
 			className={cn(
-				"px-2 py-1.5 text-xs font-medium data-[inset]:pl-8",
+				"px-2 py-1.5 text-xs font-medium data-inset:pl-8",
 				className
 			)}
 			{...props}
@@ -224,7 +224,7 @@ function ContextMenuSubTrigger({
 			data-slot="context-menu-sub-trigger"
 			data-inset={inset}
 			className={cn(
-				"focus:bg-accent focus:text-accent-foreground data-popup-open:bg-accent data-popup-open:text-accent-foreground flex cursor-default items-center rounded-sm px-2 py-1.5 text-sm outline-hidden select-none data-[inset]:pl-8",
+				"focus:bg-accent focus:text-accent-foreground data-popup-open:bg-accent data-popup-open:text-accent-foreground flex cursor-default items-center rounded-sm px-2 py-1.5 text-sm outline-hidden select-none data-disabled:pointer-events-none data-disabled:opacity-50 data-inset:pl-8",
 				className
 			)}
 			{...props}

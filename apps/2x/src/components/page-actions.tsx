@@ -3,7 +3,7 @@
 import * as React from "react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
-import { mergeProps } from "@base-ui-components/react"
+import { mergeProps } from "@base-ui/react"
 import {
 	CheckIcon,
 	ChevronDownIcon,

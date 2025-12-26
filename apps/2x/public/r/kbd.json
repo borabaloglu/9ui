@@ -6,7 +6,7 @@
 	"files": [
 		{
 			"path": "ui/kbd.tsx",
-			"content": "import * as React from \"react\"\n\nimport { cn } from \"@/lib/utils\"\n\nfunction Kbd({ className, ...props }: React.ComponentProps<\"div\">) {\n\treturn (\n\t\t<div\n\t\t\tdata-slot=\"kbd\"\n\t\t\tclassName={cn(\n\t\t\t\t\"bg-background flex h-5 w-5 items-center justify-center rounded-sm border text-center text-xs font-medium tracking-tight shadow-sm\",\n\t\t\t\tclassName\n\t\t\t)}\n\t\t\t{...props}\n\t\t/>\n\t)\n}\n\nexport { Kbd }\n",
+			"content": "import * as React from \"react\"\n\nimport { cn } from \"@/lib/utils\"\n\nfunction Kbd({ className, ...props }: React.ComponentProps<\"div\">) {\n\treturn (\n\t\t<div\n\t\t\tdata-slot=\"kbd\"\n\t\t\tclassName={cn(\n\t\t\t\t\"bg-muted text-muted-foreground flex h-5 w-5 items-center justify-center rounded-sm text-center text-xs font-medium tracking-tight shadow-sm\",\n\t\t\t\tclassName\n\t\t\t)}\n\t\t\t{...props}\n\t\t/>\n\t)\n}\n\nexport { Kbd }\n",
 			"type": "registry:ui",
 			"target": ""
 		}

@@ -1,5 +1,5 @@
 import * as React from "react"
-import { NumberField as BaseNumberField } from "@base-ui-components/react/number-field"
+import { NumberField as BaseNumberField } from "@base-ui/react/number-field"
 import { MinusIcon, MoveHorizontalIcon, PlusIcon } from "lucide-react"
 
 import { cn } from "@/lib/utils"
@@ -35,7 +35,7 @@ function NumberField({
 	}
 
 	const controllerClassName =
-		"hover:border-ring/70 bg-input flex size-9 items-center justify-center border transition-colors select-none disabled:opacity-50 disabled:pointer-events-none"
+		"hover:border-ring/70 bg-input flex size-9 items-center justify-center border transition-colors select-none data-disabled:opacity-50 data-disabled:pointer-events-none"
 
 	return (
 		<NumberFieldContext.Provider value={{ id: fieldId }}>
@@ -54,7 +54,7 @@ function NumberField({
 						<MinusIcon />
 					</BaseNumberField.Decrement>
 					<BaseNumberField.Input
-						className="hover:border-ring/70 h-9 w-20 border-y text-center text-sm tabular-nums transition-colors focus:z-1 focus:outline-[3px] focus:-outline-offset-1 disabled:pointer-events-none disabled:opacity-50"
+						className="hover:border-ring/70 h-9 w-20 border-y text-center text-sm tabular-nums transition-colors focus:z-1 focus:outline-[3px] focus:-outline-offset-1 data-disabled:pointer-events-none data-disabled:opacity-50"
 						data-slot="number-field-input"
 					/>
 					<BaseNumberField.Increment

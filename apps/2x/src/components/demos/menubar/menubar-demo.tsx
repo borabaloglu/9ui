@@ -1,5 +1,6 @@
 import {
 	Menubar,
+	MenubarCheckboxItem,
 	MenubarContent,
 	MenubarItem,
 	MenubarMenu,
@@ -124,6 +125,9 @@ export default function MenubarDemo() {
 						Reset Zoom
 						<MenubarShortcut>⌘0</MenubarShortcut>
 					</MenubarItem>
+					<MenubarSeparator />
+					<MenubarCheckboxItem>Show Toolbar</MenubarCheckboxItem>
+					<MenubarCheckboxItem>Show Status Bar</MenubarCheckboxItem>
 				</MenubarContent>
 			</MenubarMenu>
 			<MenubarMenu>

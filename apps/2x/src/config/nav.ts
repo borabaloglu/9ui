@@ -47,6 +47,7 @@ export const navConfig: NavConfig = {
 				{
 					title: "Changelog",
 					href: "/docs/getting-started/changelog",
+					label: "Updated",
 				},
 				{
 					title: "LLMs",
@@ -82,7 +83,6 @@ export const navConfig: NavConfig = {
 				{
 					title: "Autocomplete",
 					href: "/docs/components/autocomplete",
-					label: "New",
 				},
 				{
 					title: "Avatar",
@@ -131,7 +131,6 @@ export const navConfig: NavConfig = {
 				{
 					title: "Combobox",
 					href: "/docs/components/combobox",
-					label: "Updated",
 				},
 				{
 					title: "Command",
@@ -182,6 +181,10 @@ export const navConfig: NavConfig = {
 				{
 					title: "Kbd",
 					href: "/docs/components/kbd",
+				},
+				{
+					title: "Label",
+					href: "/docs/components/label",
 				},
 				{
 					title: "Menubar",

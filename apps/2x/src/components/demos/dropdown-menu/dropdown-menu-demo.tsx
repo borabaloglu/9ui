@@ -26,7 +26,7 @@ import {
 	DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 
-export default function DropdownDemo() {
+export default function DropdownMenuDemo() {
 	const [shuffle, setShuffle] = useState(false)
 	const [repeat, setRepeat] = useState(false)
 	const [sortBy, setSortBy] = useState("artist")

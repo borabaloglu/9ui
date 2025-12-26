@@ -21,6 +21,7 @@ function EmojiPicker({
 
 function EmojiPickerSearch({
 	className,
+	disabled,
 	wrapperClassName,
 	...props
 }: React.ComponentProps<typeof BaseEmojiPicker.Search> & {
@@ -33,11 +34,11 @@ function EmojiPickerSearch({
 		>
 			<BaseEmojiPicker.Search
 				className={cn(
-					"placeholder:text-muted-foreground selection:bg-primary selection:text-primary-foreground bg-input hover:border-ring/70 z-50 flex h-9 w-full min-w-0 rounded-md border px-3 py-1 text-base shadow-xs transition-[color,box-shadow,border-color] outline-none disabled:pointer-events-none disabled:opacity-50 md:text-sm",
-					"focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px]",
-					"aria-invalid:ring-destructive/50 aria-invalid:border-destructive",
+					"placeholder:text-muted-foreground selection:bg-primary selection:text-primary-foreground bg-input hover:border-ring/70 focus-visible:border-ring focus-visible:ring-ring/50 aria-invalid:ring-destructive/50 aria-invalid:border-destructive z-50 flex h-9 w-full min-w-0 rounded-md border px-3 py-1 text-base shadow-xs transition-[color,box-shadow,border-color] outline-none focus-visible:ring-[3px] data-disabled:pointer-events-none data-disabled:opacity-50 md:text-sm",
 					className
 				)}
+				data-disabled={disabled}
+				disabled={disabled}
 				{...props}
 			/>
 		</div>

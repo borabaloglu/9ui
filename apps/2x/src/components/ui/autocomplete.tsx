@@ -1,5 +1,6 @@
 import * as React from "react"
-import { Autocomplete as BaseAutocomplete } from "@base-ui-components/react/autocomplete"
+import { Autocomplete as BaseAutocomplete } from "@base-ui/react/autocomplete"
+import { XIcon } from "lucide-react"
 
 import { cn } from "@/lib/utils"
 
@@ -54,19 +55,39 @@ function AutocompleteClear({
 
 function AutocompleteInput({
 	className,
+	inputContainerClassName,
+	showClear = false,
 	...props
-}: React.ComponentProps<typeof BaseAutocomplete.Input>) {
+}: React.ComponentProps<typeof BaseAutocomplete.Input> & {
+	inputContainerClassName?: string
+	showClear?: boolean
+}) {
 	return (
-		<BaseAutocomplete.Input
-			data-slot="autocomplete-input"
+		<div
 			className={cn(
-				"placeholder:text-muted-foreground selection:bg-primary group-hover:border-ring/70 selection:text-primary-foreground bg-input flex h-9 w-full min-w-0 rounded-md border px-3 py-1 text-base shadow-xs transition-[color,box-shadow,border-color] outline-none disabled:pointer-events-none disabled:opacity-50 md:text-sm",
-				"focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px]",
-				"aria-invalid:ring-destructive/50 aria-invalid:border-destructive",
-				className
+				"group relative w-full has-[[data-slot=autocomplete-input][data-disabled]]:pointer-events-none has-[[data-slot=autocomplete-input][data-disabled]]:opacity-50",
+				inputContainerClassName
 			)}
-			{...props}
-		/>
+			data-slot="autocomplete-input-container"
+		>
+			<BaseAutocomplete.Input
+				data-slot="autocomplete-input"
+				className={cn(
+					"placeholder:text-muted-foreground selection:bg-primary group-hover:border-ring/70 selection:text-primary-foreground bg-input aria-invalid:ring-destructive/50 aria-invalid:border-destructive focus-visible:border-ring focus-visible:ring-ring/50 flex h-9 w-full min-w-0 rounded-md border px-3 py-1 text-base shadow-xs transition-[color,box-shadow,border-color] outline-none focus-visible:ring-[3px] md:text-sm",
+					showClear && "pr-8",
+					className
+				)}
+				{...props}
+			/>
+			{showClear && (
+				<AutocompleteClear
+					data-slot="autocomplete-clear"
+					className="text-muted-foreground absolute top-1/2 right-3 shrink-0 -translate-y-1/2 [&_svg]:shrink-0"
+				>
+					<XIcon className="size-4" />
+				</AutocompleteClear>
+			)}
+		</div>
 	)
 }
 
@@ -105,7 +126,7 @@ function AutocompleteItem({
 		<BaseAutocomplete.Item
 			data-slot="autocomplete-item"
 			className={cn(
-				"data-highlighted:bg-accent data-highlighted:text-accent-foreground [&_svg:not([class*='text-'])]:text-muted-foreground relative flex w-full cursor-default items-center gap-2 rounded-sm px-2 py-1.5 text-sm outline-hidden select-none data-[disabled]:pointer-events-none data-[disabled]:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
+				"data-highlighted:bg-accent data-highlighted:text-accent-foreground [&_svg:not([class*='text-'])]:text-muted-foreground relative flex w-full cursor-default items-center gap-2 rounded-sm px-2 py-1.5 text-sm outline-hidden select-none data-disabled:pointer-events-none data-disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
 				className
 			)}
 			{...props}
