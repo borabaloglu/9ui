@@ -80,7 +80,7 @@
 	},
 	"overrides": [
 		{
-			"includes": ["src/__registry__/**", "public/r/**"],
+			"includes": ["public/r/**"],
 			"linter": {
 				"enabled": false
 			}
@@ -175,6 +175,8 @@
 		{
 			"includes": [
 				"src/components/command-block.tsx",
+				"src/components/component-preview.tsx",
+				"src/components/component-source.tsx",
 				"src/components/theme-code.tsx",
 				"src/components/ui/chart.tsx"
 			],

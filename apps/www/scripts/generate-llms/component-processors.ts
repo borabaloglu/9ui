@@ -7,7 +7,7 @@
  * comprehensive documentation generation.
  */
 
-import { demoRegistry } from "../../src/__registry__/demos";
+import { getDemo } from "../../src/lib/demos";
 import * as mdx from "./mdx-node-helpers";
 
 /**
@@ -22,7 +22,7 @@ export function processComponentPreview(node: any) {
 	}
 
 	const demoName = nameAttr.value;
-	const demo = demoRegistry[demoName];
+	const demo = getDemo(demoName);
 
 	if (!demo) {
 		return [mdx.paragraph(`Demo "${demoName}" not found in registry`)];

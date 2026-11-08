@@ -8,16 +8,7 @@
 			"env": ["CLIENT_ID"]
 		},
 		"build:registry": {
-			"outputs": ["src/__registry__/**"]
-		},
-		"generate:demos": {
-			"outputs": ["src/__registry__/demos.tsx"]
-		},
-		"generate:contents": {
-			"outputs": ["src/__registry__/contents.tsx"]
-		},
-		"prebuild": {
-			"dependsOn": ["generate:contents", "generate:demos", "build:registry"]
+			"outputs": ["public/r/**"]
 		},
 		"dev": {
 			"cache": false,
