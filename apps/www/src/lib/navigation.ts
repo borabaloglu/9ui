@@ -1,6 +1,4 @@
-import { navConfig } from "@/config/nav"
-
-import { type NavItem } from "@/types/nav"
+import { type NavItem, type SidebarNavGroup } from "@/types/nav"
 
 export interface NavPageInfo {
 	title: string
@@ -15,10 +13,10 @@ export interface NavigationResult {
 /**
  * Get all navigation items in a flat array following the sidebar navigation order
  */
-function getAllNavItems(): NavItem[] {
+function getAllNavItems(sidebarNav: SidebarNavGroup[]): NavItem[] {
 	const allItems: NavItem[] = []
 
-	for (const group of navConfig.sidebarNav) {
+	for (const group of sidebarNav) {
 		for (const item of group.items) {
 			// Only include enabled items with valid hrefs
 			if (!item.disabled && item.href) {
@@ -33,8 +31,11 @@ function getAllNavItems(): NavItem[] {
 /**
  * Find the previous and next pages for a given pathname
  */
-export function getNavigationForPage(currentPath: string): NavigationResult {
-	const allItems = getAllNavItems()
+export function getNavigationForPage(
+	sidebarNav: SidebarNavGroup[],
+	currentPath: string
+): NavigationResult {
+	const allItems = getAllNavItems(sidebarNav)
 	const currentIndex = allItems.findIndex((item) => item.href === currentPath)
 
 	if (currentIndex === -1) {

@@ -1,6 +1,3 @@
-import { readFile } from "fs/promises"
-import { join } from "path"
-import * as React from "react"
 import { Metadata } from "next"
 import { notFound } from "next/navigation"
 
@@ -10,30 +7,31 @@ import { TableOfContents } from "@/components/toc"
 
 import { siteConfig } from "@/config/site"
 
-import { getTableOfContents } from "@/lib/toc"
+import { getNavigationForPage } from "@/lib/navigation"
+import { getSidebarNav, source } from "@/lib/source"
 import { absoluteUrl } from "@/lib/url"
 
-import { contentRegistry } from "@/registry/contents"
+import { getMDXComponents } from "@/mdx-components"
 
 export async function generateMetadata({
 	params,
 }: DocPageProps): Promise<Metadata> {
-	const doc = await getDocFromParams({ params })
+	const page = await getPageFromParams({ params })
 
-	if (!doc) {
+	if (!page) {
 		return {}
 	}
 
-	const { metadata } = doc
+	const { title, description } = page.data
 
 	return {
-		title: metadata.title,
-		description: metadata.description,
+		title,
+		description,
 		openGraph: {
-			title: metadata.title,
-			description: metadata.description,
+			title,
+			description,
 			type: "article",
-			url: absoluteUrl("docs", doc.slug),
+			url: absoluteUrl("docs", page.slugs.join("/")),
 			images: [
 				{
 					url: siteConfig.ogImage,
@@ -45,8 +43,8 @@ export async function generateMetadata({
 		},
 		twitter: {
 			card: "summary_large_image",
-			title: metadata.title,
-			description: metadata.description,
+			title,
+			description,
 			images: [siteConfig.ogImage],
 			creator: "@borabalogluu",
 		},
@@ -59,52 +57,40 @@ interface DocPageProps {
 	}>
 }
 
-async function getDocFromParams({ params }: DocPageProps) {
-	const { slug: slugs } = await params
-	const slug = slugs.join("/")
+async function getPageFromParams({ params }: DocPageProps) {
+	const { slug } = await params
+	const page = source.getPage(slug)
 
-	const entry = contentRegistry[slug]
-
-	if (!entry) {
+	if (!page || page.data.disabled) {
 		return null
 	}
 
-	try {
-		const doc = await import(`@/content/${entry.path}`)
-		const source = await readFile(
-			join(process.cwd(), "src/content", entry.path),
-			"utf-8"
-		)
-
-		return {
-			Doc: doc.default,
-			source,
-			slug,
-			metadata: entry.meta,
-			breadcrumbs: entry.breadcrumbs,
-		}
-	} catch {
-		return null
-	}
+	return page
 }
 
 const DocPage = async ({ params }: DocPageProps) => {
-	const doc = await getDocFromParams({ params })
+	const page = await getPageFromParams({ params })
 
-	if (!doc) {
+	if (!page) {
 		notFound()
 	}
 
-	const toc = await getTableOfContents(doc.source)
+	const { body: MDX, toc, title, description } = page.data
+	const navigation = getNavigationForPage(getSidebarNav(), page.url)
 
 	return (
 		<main className="relative grid xl:grid-cols-[1fr_240px] xl:gap-8">
 			<div className="min-h-screen min-w-0 py-4">
 				<div className="mb-4">
-					<PageActions />
+					<PageActions navigation={navigation} />
 				</div>
 
-				<doc.Doc />
+				<h1 className="text-3xl font-bold">{title}</h1>
+				{description && (
+					<p className="text-muted-foreground mt-2">{description}</p>
+				)}
+
+				<MDX components={getMDXComponents()} />
 			</div>
 
 			<div className="dark:border-border/40 h-full border-dashed xl:border-l">

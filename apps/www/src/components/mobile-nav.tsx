@@ -19,9 +19,13 @@ import { navConfig } from "@/config/nav"
 
 import { cn } from "@/lib/utils"
 
-import { type NavItem } from "@/types/nav"
+import { type NavItem, type SidebarNavGroup } from "@/types/nav"
 
-export function MobileNav() {
+interface MobileNavProps {
+	sidebarNav: SidebarNavGroup[]
+}
+
+export function MobileNav({ sidebarNav }: MobileNavProps) {
 	const [open, setOpen] = React.useState(false)
 
 	return (
@@ -51,7 +55,7 @@ export function MobileNav() {
 									/>
 								))}
 							</div>
-							{navConfig.sidebarNav.map((group) => (
+							{sidebarNav.map((group) => (
 								<div key={group.title} className="mt-4">
 									<h4 className="text-foreground mb-1 text-sm font-semibold">
 										{group.title}

@@ -4,6 +4,7 @@
 import fs from "fs/promises"
 import path from "path"
 import { glob } from "glob"
+import matter from "gray-matter"
 import * as prettier from "prettier"
 import remarkGfm from "remark-gfm"
 import remarkMdx from "remark-mdx"
@@ -447,16 +448,21 @@ async function generateLlmsFiles() {
 	for (const file of mdxFiles) {
 		const filePath = path.join(contentDir, file)
 		const rawContent = await fs.readFile(filePath, "utf-8")
+		const { data: matterData, content: mdxContent } = matter(rawContent)
+
+		if (matterData.disabled) {
+			continue
+		}
 
 		try {
 			const { markdown, title, description } = await mdxToMarkdown(
-				rawContent,
+				mdxContent,
 				filePath
 			)
 
 			const item: ContentItem = {
-				title: title || path.basename(file, ".mdx"),
-				description,
+				title: matterData.title || title || path.basename(file, ".mdx"),
+				description: matterData.description || description,
 				slug: getSlugFromFilePath(filePath),
 				filePath: file,
 				content: markdown,

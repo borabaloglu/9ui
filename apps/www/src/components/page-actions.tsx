@@ -23,7 +23,7 @@ import {
 
 import { siteConfig } from "@/config/site"
 
-import { getNavigationForPage } from "@/lib/navigation"
+import { type NavigationResult } from "@/lib/navigation"
 import { cn } from "@/lib/utils"
 
 const getOpenInUrl = (targetUrl: string, currentUrl: string) => {
@@ -48,11 +48,14 @@ Focus on practical, actionable guidance based on the 9ui documentation.`
 	return `${targetUrl}?q=${encodeURIComponent(prompt)}`
 }
 
-export function PageActions() {
+interface PageActionsProps {
+	navigation: NavigationResult
+}
+
+export function PageActions({ navigation }: PageActionsProps) {
 	const pathname = usePathname()
 	const currentUrl = `${siteConfig.url}${pathname}`
 	const [copied, setCopied] = React.useState(false)
-	const navigation = getNavigationForPage(pathname)
 
 	const getMarkdownUrl = () => {
 		const docPath = pathname.replace("/docs/", "")
