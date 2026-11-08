@@ -1,13 +1,13 @@
-"use client"
+"use client";
 
-import { Suspense, useState } from "react"
+import { Suspense, useState } from "react";
 
-import { CardsGrid } from "@/components/cards-grid"
-import { CustomizeToolbar } from "@/components/customize-toolbar"
+import { CardsGrid } from "@/components/cards-grid";
+import { CustomizeToolbar } from "@/components/customize-toolbar";
 
-import { ThemeSettings } from "@/config/theme"
+import type { ThemeSettings } from "@/config/theme";
 
-import { generateTheme } from "@/lib/generate-theme"
+import { generateTheme } from "@/lib/generate-theme";
 
 const ThemesPage = () => {
 	const [theme, setTheme] = useState<ThemeSettings>({
@@ -15,7 +15,7 @@ const ThemesPage = () => {
 		primaryColor: "neutral",
 		radius: 0.625,
 		flat: false,
-	})
+	});
 
 	return (
 		<main className="dark:border-border/40 container mx-auto border-dashed py-4 xl:border-x">
@@ -37,13 +37,13 @@ const ThemesPage = () => {
 							theme.primaryColor,
 							theme.radius,
 							theme.flat,
-							true
+							true,
 						)}
 					</style>
 				</Suspense>
 			</div>
 		</main>
-	)
-}
+	);
+};
 
-export default ThemesPage
+export default ThemesPage;

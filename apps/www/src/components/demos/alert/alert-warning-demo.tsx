@@ -1,6 +1,6 @@
-import { AlertTriangleIcon } from "lucide-react"
+import { AlertTriangleIcon } from "lucide-react";
 
-import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
+import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 
 export default function AlertWarningDemo() {
 	return (
@@ -12,5 +12,5 @@ export default function AlertWarningDemo() {
 				the page.
 			</AlertDescription>
 		</Alert>
-	)
+	);
 }

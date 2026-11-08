@@ -1,10 +1,10 @@
-import { Icons } from "@/components/icons"
-import { buttonVariants } from "@/components/ui/button"
+import { Icons } from "@/components/icons";
+import { buttonVariants } from "@/components/ui/button";
 import {
 	Tooltip,
 	TooltipContent,
 	TooltipTrigger,
-} from "@/components/ui/tooltip"
+} from "@/components/ui/tooltip";
 
 export default function TooltipDemo() {
 	return (
@@ -21,11 +21,12 @@ export default function TooltipDemo() {
 						className="font-medium"
 						href="https://x.com/borabalogluu"
 						target="_blank"
+						rel="noopener"
 					>
 						@borabalogluu
 					</a>
 				</span>
 			</TooltipContent>
 		</Tooltip>
-	)
+	);
 }

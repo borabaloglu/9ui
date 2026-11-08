@@ -1,33 +1,33 @@
-import * as React from "react"
-import Link from "next/link"
-import { AlertTriangleIcon } from "lucide-react"
-import type { MDXComponents as MDXProvidedComponents } from "mdx/types"
+import type * as React from "react";
+import Link from "next/link";
+import { AlertTriangleIcon } from "lucide-react";
+import type { MDXComponents as MDXProvidedComponents } from "mdx/types";
 
-import { CodeBlock } from "@/components/code-block"
-import { CommandBlock } from "@/components/command-block"
-import { ComponentAnatomy } from "@/components/component-anatomy"
-import { ComponentInstallation } from "@/components/component-installation"
-import { ComponentLinks } from "@/components/component-links"
-import { ComponentPreview } from "@/components/component-preview"
-import { ComponentSource } from "@/components/component-source"
-import { Icons } from "@/components/icons"
-import { InstallationTabs } from "@/components/installation-tabs"
-import { ThemeToggle } from "@/components/theme-toggle"
+import { CodeBlock } from "@/components/code-block";
+import { CommandBlock } from "@/components/command-block";
+import { ComponentAnatomy } from "@/components/component-anatomy";
+import { ComponentInstallation } from "@/components/component-installation";
+import { ComponentLinks } from "@/components/component-links";
+import { ComponentPreview } from "@/components/component-preview";
+import { ComponentSource } from "@/components/component-source";
+import { Icons } from "@/components/icons";
+import { InstallationTabs } from "@/components/installation-tabs";
+import { ThemeToggle } from "@/components/theme-toggle";
 import {
 	Accordion,
 	AccordionContent,
 	AccordionItem,
 	AccordionTrigger,
-} from "@/components/ui/accordion"
-import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
-import { Separator } from "@/components/ui/separator"
-import { Tabs, TabsContent, TabsList } from "@/components/ui/tabs"
+} from "@/components/ui/accordion";
+import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
+import { Separator } from "@/components/ui/separator";
+import { Tabs, TabsContent, TabsList } from "@/components/ui/tabs";
 
-import { cn } from "@/lib/utils"
+import { cn } from "@/lib/utils";
 
 interface MDXComponents {
 	// eslint-disable-next-line @typescript-eslint/no-explicit-any
-	[key: string]: React.FC<any> | MDXComponents
+	[key: string]: React.FC<any> | MDXComponents;
 }
 
 const components: MDXComponents = {
@@ -74,20 +74,20 @@ const components: MDXComponents = {
 		className,
 		...props
 	}: React.HTMLAttributes<HTMLElement> & {
-		"data-inline"?: string
+		"data-inline"?: string;
 	}) => {
-		const isInline = props["data-inline"] === ""
+		const isInline = props["data-inline"] === "";
 
 		return (
 			<code
 				className={cn(
 					isInline &&
 						"bg-muted text-accent-foreground relative rounded-sm px-[0.3rem] py-[0.2rem] font-mono text-sm font-normal",
-					className
+					className,
 				)}
 				{...props}
 			/>
-		)
+		);
 	},
 	blockquote: ({
 		className,
@@ -96,7 +96,7 @@ const components: MDXComponents = {
 		<blockquote
 			className={cn(
 				"text-muted-foreground mt-6 border-l-2 pl-6 italic",
-				className
+				className,
 			)}
 			{...props}
 		/>
@@ -153,20 +153,20 @@ const components: MDXComponents = {
 		__unwrapCode__,
 		...props
 	}: React.HTMLAttributes<HTMLPreElement> & {
-		__rawString__?: string
-		__npmCommand__?: string
-		__yarnCommand__?: string
-		__pnpmCommand__?: string
-		__bunCommand__?: string
-		__title__?: string
-		__lang__?: string
-		__unwrapCode__?: string
+		__rawString__?: string;
+		__npmCommand__?: string;
+		__yarnCommand__?: string;
+		__pnpmCommand__?: string;
+		__bunCommand__?: string;
+		__title__?: string;
+		__lang__?: string;
+		__unwrapCode__?: string;
 	}) => {
 		const isCommand =
 			!!__npmCommand__ &&
 			!!__yarnCommand__ &&
 			!!__pnpmCommand__ &&
-			!!__bunCommand__
+			!!__bunCommand__;
 
 		if (isCommand) {
 			return (
@@ -176,16 +176,16 @@ const components: MDXComponents = {
 					pnpmCommand={__pnpmCommand__}
 					bunCommand={__bunCommand__}
 				/>
-			)
+			);
 		}
 
-		const shouldUnwrap = __unwrapCode__ === "true"
+		const shouldUnwrap = __unwrapCode__ === "true";
 
 		if (shouldUnwrap) {
-			return <pre {...props} />
+			return <pre {...props} />;
 		}
 
-		const hasTitle = !!__title__
+		const hasTitle = !!__title__;
 
 		return (
 			<CodeBlock
@@ -194,7 +194,7 @@ const components: MDXComponents = {
 				lang={__lang__}
 				{...props}
 			/>
-		)
+		);
 	},
 	hr: ({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) => (
 		<Separator className={cn("my-8", className)} {...props} />
@@ -206,7 +206,7 @@ const components: MDXComponents = {
 		<a
 			className={cn(
 				"text-foreground font-medium underline underline-offset-4",
-				className
+				className,
 			)}
 			{...props}
 		/>
@@ -237,7 +237,7 @@ const components: MDXComponents = {
 		<Link
 			className={cn(
 				"bg-card text-card-foreground hover:bg-card/80 flex w-full flex-col items-center justify-center gap-3 rounded-lg border p-10 font-medium shadow transition-colors md:p-10",
-				className
+				className,
 			)}
 			{...props}
 		/>
@@ -261,8 +261,8 @@ const components: MDXComponents = {
 	ComponentAnatomy,
 	Icons,
 	ThemeToggle,
-}
+};
 
 export function getMDXComponents(): MDXProvidedComponents {
-	return components as MDXProvidedComponents
+	return components as MDXProvidedComponents;
 }

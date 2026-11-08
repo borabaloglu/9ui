@@ -480,7 +480,7 @@ export const colors = {
 			},
 		},
 	},
-}
+};
 
-export type Shade = keyof typeof colors.shades
-export type PrimaryColor = keyof typeof colors.primary | "neutral"
+export type Shade = keyof typeof colors.shades;
+export type PrimaryColor = keyof typeof colors.primary | "neutral";

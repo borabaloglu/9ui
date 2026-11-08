@@ -1,12 +1,10 @@
-import React from "react"
-
-import { CodeBar } from "@/components/code-bar"
+import { CodeBar } from "@/components/code-bar";
 
 interface CodeBlockProps {
-	content: string
+	content: string;
 	topBar?: {
-		label: string
-	}
+		label: string;
+	};
 }
 
 export const CodeBlock = ({ content, topBar, ...props }: CodeBlockProps) => {
@@ -22,5 +20,5 @@ export const CodeBlock = ({ content, topBar, ...props }: CodeBlockProps) => {
 			)}
 			<pre {...props} />
 		</div>
-	)
-}
+	);
+};

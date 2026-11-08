@@ -1,4 +1,4 @@
-import { SlashIcon } from "lucide-react"
+import { SlashIcon } from "lucide-react";
 
 import {
 	Breadcrumb,
@@ -8,13 +8,13 @@ import {
 	BreadcrumbList,
 	BreadcrumbPage,
 	BreadcrumbSeparator,
-} from "@/components/ui/breadcrumbs"
+} from "@/components/ui/breadcrumbs";
 import {
 	DropdownMenu,
 	DropdownMenuContent,
 	DropdownMenuItem,
 	DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu"
+} from "@/components/ui/dropdown-menu";
 
 export default function BreadcrumbsCustomSeparatorDemo() {
 	return (
@@ -53,5 +53,5 @@ export default function BreadcrumbsCustomSeparatorDemo() {
 				</BreadcrumbItem>
 			</BreadcrumbList>
 		</Breadcrumb>
-	)
+	);
 }

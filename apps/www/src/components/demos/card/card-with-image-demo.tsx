@@ -1,13 +1,13 @@
-import Image from "next/image"
+import Image from "next/image";
 
-import { Button } from "@/components/ui/button"
+import { Button } from "@/components/ui/button";
 import {
 	Card,
 	CardDescription,
 	CardFooter,
 	CardHeader,
 	CardTitle,
-} from "@/components/ui/card"
+} from "@/components/ui/card";
 
 export default function CardWithImageDemo() {
 	return (
@@ -31,5 +31,5 @@ export default function CardWithImageDemo() {
 				<Button className="w-full">Read more</Button>
 			</CardFooter>
 		</Card>
-	)
+	);
 }

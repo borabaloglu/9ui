@@ -1,11 +1,11 @@
-"use client"
+"use client";
 
-import { zodResolver } from "@hookform/resolvers/zod"
-import { useForm } from "react-hook-form"
-import { isValidPhoneNumber } from "react-phone-number-input"
-import { z } from "zod"
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useForm } from "react-hook-form";
+import { isValidPhoneNumber } from "react-phone-number-input";
+import { z } from "zod";
 
-import { Button } from "@/components/ui/button"
+import { Button } from "@/components/ui/button";
 import {
 	Form,
 	FormControl,
@@ -13,14 +13,14 @@ import {
 	FormItem,
 	FormLabel,
 	FormMessage,
-} from "@/components/ui/form"
-import { PhoneInput } from "@/components/ui/phone-input"
+} from "@/components/ui/form";
+import { PhoneInput } from "@/components/ui/phone-input";
 
 const schema = z.object({
 	phoneNumber: z.string().refine(isValidPhoneNumber, "Invalid phone number"),
-})
+});
 
-type FormValues = z.infer<typeof schema>
+type FormValues = z.infer<typeof schema>;
 
 export default function PhoneInputFormDemo() {
 	const form = useForm<FormValues>({
@@ -28,11 +28,11 @@ export default function PhoneInputFormDemo() {
 		defaultValues: {
 			phoneNumber: "",
 		},
-	})
+	});
 
 	const onSubmit = (data: FormValues) => {
-		console.log(data)
-	}
+		console.log(data);
+	};
 
 	return (
 		<Form {...form}>
@@ -60,5 +60,5 @@ export default function PhoneInputFormDemo() {
 				<Button type="submit">Submit</Button>
 			</form>
 		</Form>
-	)
+	);
 }

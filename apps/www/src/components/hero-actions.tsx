@@ -1,9 +1,9 @@
-"use client"
+"use client";
 
-import Link from "next/link"
-import { ArrowUpRightIcon, BookOpenIcon } from "lucide-react"
+import Link from "next/link";
+import { ArrowUpRightIcon, BookOpenIcon } from "lucide-react";
 
-import { Button } from "@/components/ui/button"
+import { Button } from "@/components/ui/button";
 
 export function HeroActions() {
 	return (
@@ -31,5 +31,5 @@ export function HeroActions() {
 				nativeButton={false}
 			/>
 		</div>
-	)
+	);
 }

@@ -1,34 +1,34 @@
-"use client"
+"use client";
 
-import * as React from "react"
-import { Tabs as BaseTabs } from "@base-ui/react/tabs"
+import * as React from "react";
+import { Tabs as BaseTabs } from "@base-ui/react/tabs";
 
-import { cn } from "@/lib/utils"
+import { cn } from "@/lib/utils";
 
-type TabsVariant = "capsule" | "underline"
+type TabsVariant = "capsule" | "underline";
 
 type TabsContext = {
-	variant: TabsVariant
-}
+	variant: TabsVariant;
+};
 
-const TabsContext = React.createContext<TabsContext | null>(null)
+const TabsContext = React.createContext<TabsContext | null>(null);
 
 const useTabs = () => {
-	const context = React.useContext(TabsContext)
+	const context = React.useContext(TabsContext);
 
 	if (!context) {
-		throw new Error("useTabs must be used within a Tabs")
+		throw new Error("useTabs must be used within a Tabs");
 	}
 
-	return context
-}
+	return context;
+};
 
 function Tabs({
 	variant = "capsule",
 	className,
 	...props
 }: React.ComponentProps<typeof BaseTabs.Root> & {
-	variant?: TabsVariant
+	variant?: TabsVariant;
 }) {
 	return (
 		<TabsContext.Provider value={{ variant }}>
@@ -38,7 +38,7 @@ function Tabs({
 				{...props}
 			/>
 		</TabsContext.Provider>
-	)
+	);
 }
 
 function TabsList({
@@ -46,7 +46,7 @@ function TabsList({
 	children,
 	...props
 }: React.ComponentProps<typeof BaseTabs.List>) {
-	const { variant } = useTabs()
+	const { variant } = useTabs();
 
 	return (
 		<BaseTabs.List
@@ -54,14 +54,14 @@ function TabsList({
 			className={cn(
 				"text-muted-foreground relative z-0 inline-flex h-9 w-fit items-center justify-center gap-x-1 p-1",
 				variant === "capsule" ? "bg-muted rounded-lg" : "",
-				className
+				className,
 			)}
 			{...props}
 		>
 			{children}
 			<TabIndicator />
 		</BaseTabs.List>
-	)
+	);
 }
 
 function TabsTrigger({
@@ -72,19 +72,19 @@ function TabsTrigger({
 		<BaseTabs.Tab
 			data-slot="tabs-trigger"
 			className={cn(
-				"text-muted-foreground data-active:text-foreground focus-visible:ring-ring/50 [&_svg:not([class*='size-'])] z-[1] flex-1 items-center justify-center gap-1.5 rounded-md px-2 py-1 text-sm text-nowrap whitespace-nowrap outline-none focus-visible:ring-[3px] data-disabled:pointer-events-none data-disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0",
-				className
+				"text-muted-foreground focus-visible:ring-ring/50 data-active:text-foreground z-[1] flex-1 items-center justify-center gap-1.5 rounded-md px-2 py-1 text-sm text-nowrap whitespace-nowrap outline-none focus-visible:ring-[3px] data-disabled:pointer-events-none data-disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0",
+				className,
 			)}
 			{...props}
 		/>
-	)
+	);
 }
 
 function TabIndicator({
 	className,
 	...props
 }: React.ComponentProps<typeof BaseTabs.Indicator>) {
-	const { variant } = useTabs()
+	const { variant } = useTabs();
 
 	return (
 		<BaseTabs.Indicator
@@ -93,12 +93,12 @@ function TabIndicator({
 				"absolute left-0 w-[var(--active-tab-width)] translate-x-[var(--active-tab-left)] -translate-y-1/2 transition-all duration-200 ease-in-out",
 				variant === "underline"
 					? "bg-primary top-full z-10 h-px"
-					: "bg-accent border-ring/70 top-1/2 -z-[1] h-[var(--active-tab-height)] rounded-md border shadow-sm",
-				className
+					: "border-ring/70 bg-accent top-1/2 -z-[1] h-[var(--active-tab-height)] rounded-md border shadow-sm",
+				className,
 			)}
 			{...props}
 		/>
-	)
+	);
 }
 
 function TabsContent({
@@ -111,7 +111,7 @@ function TabsContent({
 			className={cn("flex-1 outline-none", className)}
 			{...props}
 		/>
-	)
+	);
 }
 
-export { Tabs, TabsList, TabsTrigger, TabsContent }
+export { Tabs, TabsContent, TabsList, TabsTrigger };

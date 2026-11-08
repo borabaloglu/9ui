@@ -1,6 +1,6 @@
-import { CircleCheckIcon } from "lucide-react"
+import { CircleCheckIcon } from "lucide-react";
 
-import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
+import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 
 export default function AlertSuccessDemo() {
 	return (
@@ -11,5 +11,5 @@ export default function AlertSuccessDemo() {
 				You can now sign in with your new account credentials.
 			</AlertDescription>
 		</Alert>
-	)
+	);
 }

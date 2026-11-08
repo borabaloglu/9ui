@@ -1,5 +1,5 @@
-import { Label } from "@/components/ui/label"
-import { Switch } from "@/components/ui/switch"
+import { Label } from "@/components/ui/label";
+import { Switch } from "@/components/ui/switch";
 
 export default function SwitchWithLabelDemo() {
 	return (
@@ -7,5 +7,5 @@ export default function SwitchWithLabelDemo() {
 			<Switch />
 			Enable notifications
 		</Label>
-	)
+	);
 }

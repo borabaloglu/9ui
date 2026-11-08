@@ -1,5 +1,5 @@
-import * as React from "react"
-import { useVirtualizer } from "@tanstack/react-virtual"
+import * as React from "react";
+import { useVirtualizer } from "@tanstack/react-virtual";
 
 import {
 	Autocomplete,
@@ -9,20 +9,20 @@ import {
 	AutocompleteItem,
 	AutocompleteList,
 	useFilter,
-} from "@/components/ui/autocomplete"
-import { Label } from "@/components/ui/label"
+} from "@/components/ui/autocomplete";
+import { Label } from "@/components/ui/label";
 
 export default function AutocompleteVirtualizedDemo() {
-	const [open, setOpen] = React.useState(false)
-	const [searchValue, setSearchValue] = React.useState("")
+	const [open, setOpen] = React.useState(false);
+	const [searchValue, setSearchValue] = React.useState("");
 
-	const scrollElementRef = React.useRef<HTMLDivElement>(null)
+	const scrollElementRef = React.useRef<HTMLDivElement>(null);
 
-	const { contains } = useFilter({ sensitivity: "base" })
+	const { contains } = useFilter({ sensitivity: "base" });
 
 	const filteredItems = React.useMemo(() => {
-		return virtualItems.filter((item) => contains(item, searchValue))
-	}, [contains, searchValue])
+		return virtualItems.filter((item) => contains(item, searchValue));
+	}, [contains, searchValue]);
 
 	const virtualizer = useVirtualizer({
 		enabled: open,
@@ -32,20 +32,20 @@ export default function AutocompleteVirtualizedDemo() {
 		overscan: 20,
 		paddingStart: 4,
 		paddingEnd: 4,
-	})
+	});
 
 	const handleScrollElementRef = React.useCallback(
 		(element: HTMLDivElement) => {
-			scrollElementRef.current = element
+			scrollElementRef.current = element;
 			if (element) {
-				virtualizer.measure()
+				virtualizer.measure();
 			}
 		},
-		[virtualizer]
-	)
+		[virtualizer],
+	);
 
-	const totalSize = virtualizer.getTotalSize()
-	const totalSizePx = `${totalSize}px`
+	const totalSize = virtualizer.getTotalSize();
+	const totalSizePx = `${totalSize}px`;
 
 	return (
 		<Autocomplete
@@ -58,17 +58,19 @@ export default function AutocompleteVirtualizedDemo() {
 			openOnInputClick
 			onItemHighlighted={(item, { reason, index }) => {
 				if (!item) {
-					return
+					return;
 				}
 
-				const isStart = index === 0
-				const isEnd = index === filteredItems.length - 1
+				const isStart = index === 0;
+				const isEnd = index === filteredItems.length - 1;
 				const shouldScroll =
-					reason === "none" || (reason === "keyboard" && (isStart || isEnd))
+					reason === "none" || (reason === "keyboard" && (isStart || isEnd));
 				if (shouldScroll) {
 					queueMicrotask(() => {
-						virtualizer.scrollToIndex(index, { align: isEnd ? "start" : "end" })
-					})
+						virtualizer.scrollToIndex(index, {
+							align: isEnd ? "start" : "end",
+						});
+					});
 				}
 			}}
 		>
@@ -95,9 +97,9 @@ export default function AutocompleteVirtualizedDemo() {
 								style={{ height: totalSizePx }}
 							>
 								{virtualizer.getVirtualItems().map((virtualItem) => {
-									const item = filteredItems[virtualItem.index]
+									const item = filteredItems[virtualItem.index];
 									if (!item) {
-										return null
+										return null;
 									}
 
 									return (
@@ -118,7 +120,7 @@ export default function AutocompleteVirtualizedDemo() {
 										>
 											{item}
 										</AutocompleteItem>
-									)
+									);
 								})}
 							</div>
 						</div>
@@ -126,10 +128,10 @@ export default function AutocompleteVirtualizedDemo() {
 				</AutocompleteList>
 			</AutocompleteContent>
 		</Autocomplete>
-	)
+	);
 }
 
 const virtualItems = Array.from({ length: 10000 }, (_, i) => {
-	const indexLabel = String(i + 1).padStart(5, "0")
-	return `Item ${indexLabel}`
-})
+	const indexLabel = String(i + 1).padStart(5, "0");
+	return `Item ${indexLabel}`;
+});

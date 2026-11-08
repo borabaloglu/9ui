@@ -1,16 +1,16 @@
-import { useState } from "react"
-import { EyeIcon, EyeOffIcon, LockIcon } from "lucide-react"
+import { useState } from "react";
+import { EyeIcon, EyeOffIcon, LockIcon } from "lucide-react";
 
-import { Input } from "@/components/ui/input"
+import { Input } from "@/components/ui/input";
 
 export default function InputWithIconsDemo() {
-	const [isPasswordVisible, setIsPasswordVisible] = useState(false)
+	const [isPasswordVisible, setIsPasswordVisible] = useState(false);
 
 	const togglePasswordVisibility = () => {
-		setIsPasswordVisible(!isPasswordVisible)
-	}
+		setIsPasswordVisible(!isPasswordVisible);
+	};
 
-	const passwordType = isPasswordVisible ? "text" : "password"
+	const passwordType = isPasswordVisible ? "text" : "password";
 
 	return (
 		<Input
@@ -32,5 +32,5 @@ export default function InputWithIconsDemo() {
 				)
 			}
 		/>
-	)
+	);
 }

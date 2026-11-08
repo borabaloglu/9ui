@@ -1,7 +1,7 @@
-import * as React from "react"
-import { ScrollArea as BaseScrollArea } from "@base-ui/react/scroll-area"
+import type * as React from "react";
+import { ScrollArea as BaseScrollArea } from "@base-ui/react/scroll-area";
 
-import { cn } from "@/lib/utils"
+import { cn } from "@/lib/utils";
 
 function ScrollArea({
 	className,
@@ -9,7 +9,7 @@ function ScrollArea({
 	orientation,
 	...props
 }: React.ComponentProps<typeof BaseScrollArea.Root> & {
-	orientation?: "horizontal" | "vertical"
+	orientation?: "horizontal" | "vertical";
 }) {
 	return (
 		<BaseScrollArea.Root
@@ -26,7 +26,7 @@ function ScrollArea({
 			<ScrollBar orientation={orientation} />
 			<BaseScrollArea.Corner />
 		</BaseScrollArea.Root>
-	)
+	);
 }
 
 function ScrollBar({
@@ -43,7 +43,7 @@ function ScrollBar({
 				orientation === "vertical" && "w-2.5 border-l border-l-transparent",
 				orientation === "horizontal" &&
 					"h-2.5 flex-col border-t border-t-transparent",
-				className
+				className,
 			)}
 			{...props}
 		>
@@ -52,7 +52,7 @@ function ScrollBar({
 				className="bg-border relative flex-1 rounded-full"
 			/>
 		</BaseScrollArea.Scrollbar>
-	)
+	);
 }
 
-export { ScrollArea }
+export { ScrollArea };

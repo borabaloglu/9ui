@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import {
 	ContextMenu,
@@ -15,7 +15,7 @@ import {
 	ContextMenuSubContent,
 	ContextMenuSubTrigger,
 	ContextMenuTrigger,
-} from "@/components/ui/context-menu"
+} from "@/components/ui/context-menu";
 
 export default function ContextMenuDemo() {
 	return (
@@ -67,5 +67,5 @@ export default function ContextMenuDemo() {
 				</ContextMenuContent>
 			</ContextMenu>
 		</div>
-	)
+	);
 }

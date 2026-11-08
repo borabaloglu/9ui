@@ -1,13 +1,13 @@
-"use client"
+"use client";
 
-import React from "react"
+import React from "react";
 
-import { CodeBar } from "@/components/code-bar"
+import { CodeBar } from "@/components/code-bar";
 
-import { highlighter } from "@/lib/rehype/syntax-highlighting"
+import { highlighter } from "@/lib/rehype/syntax-highlighting";
 
 interface ThemeCodeProps {
-	css: string
+	css: string;
 }
 
 export const ThemeCode = ({ css }: ThemeCodeProps) => {
@@ -21,15 +21,15 @@ export const ThemeCode = ({ css }: ThemeCodeProps) => {
 			transformers: [
 				{
 					pre(node) {
-						node.properties.style = "tab-size: 2"
+						node.properties.style = "tab-size: 2";
 					},
 					code(node) {
-						node.properties.style = "tab-size: 2"
+						node.properties.style = "tab-size: 2";
 					},
 				},
 			],
-		})
-	}, [css])
+		});
+	}, [css]);
 
 	return (
 		<div className="w-full overflow-hidden rounded-md border">
@@ -45,5 +45,5 @@ export const ThemeCode = ({ css }: ThemeCodeProps) => {
 				dangerouslySetInnerHTML={{ __html: prettyCode }}
 			/>
 		</div>
-	)
-}
+	);
+};

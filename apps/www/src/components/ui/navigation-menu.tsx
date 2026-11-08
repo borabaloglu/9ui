@@ -1,9 +1,9 @@
-import * as React from "react"
-import { NavigationMenu as BaseNavigationMenu } from "@base-ui/react/navigation-menu"
-import { cva } from "class-variance-authority"
-import { ChevronDownIcon } from "lucide-react"
+import type * as React from "react";
+import { NavigationMenu as BaseNavigationMenu } from "@base-ui/react/navigation-menu";
+import { cva } from "class-variance-authority";
+import { ChevronDownIcon } from "lucide-react";
 
-import { cn } from "@/lib/utils"
+import { cn } from "@/lib/utils";
 
 function NavigationMenu({
 	className,
@@ -19,7 +19,7 @@ function NavigationMenu({
 			{children}
 			<NavigationMenuViewport />
 		</BaseNavigationMenu.Root>
-	)
+	);
 }
 
 function NavigationMenuList({
@@ -31,28 +31,32 @@ function NavigationMenuList({
 			data-slot="navigation-menu-list"
 			className={cn(
 				"relative flex items-center justify-center gap-1",
-				className
+				className,
 			)}
 			{...props}
 		/>
-	)
+	);
 }
 
 function NavigationMenuItem({
 	...props
 }: React.ComponentProps<typeof BaseNavigationMenu.Item>) {
-	return <BaseNavigationMenu.Item data-slot="navigation-menu-item" {...props} />
+	return (
+		<BaseNavigationMenu.Item data-slot="navigation-menu-item" {...props} />
+	);
 }
 
 function NavigationMenuIcon({
 	...props
 }: React.ComponentProps<typeof BaseNavigationMenu.Icon>) {
-	return <BaseNavigationMenu.Icon data-slot="navigation-menu-icon" {...props} />
+	return (
+		<BaseNavigationMenu.Icon data-slot="navigation-menu-icon" {...props} />
+	);
 }
 
 const navigationMenuTriggerStyle = cva(
-	"inline-flex w-max items-center justify-center gap-1.5 h-9 rounded-md bg-background px-4 py-2 text-sm font-medium hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground data-disabled:pointer-events-none data-disabled:opacity-50 data-popup-open:hover:bg-accent data-popup-open:text-accent-foreground data-popup-open:focus:bg-accent data-popup-open:bg-accent/50 focus-visible:ring-ring/50 outline-none transition-[color,box-shadow] focus-visible:ring-3 focus-visible:outline-1 select-none no-underline [&_svg:not([class*='size-'])]:size-3 shrink-0 [&_svg]:shrink-0"
-)
+	"bg-background hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus-visible:ring-ring/50 data-popup-open:bg-accent/50 data-popup-open:text-accent-foreground data-popup-open:hover:bg-accent data-popup-open:focus:bg-accent inline-flex h-9 w-max shrink-0 items-center justify-center gap-1.5 rounded-md px-4 py-2 text-sm font-medium no-underline transition-[color,box-shadow] outline-none select-none focus-visible:ring-3 focus-visible:outline-1 data-disabled:pointer-events-none data-disabled:opacity-50 [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-3",
+);
 
 function NavigationMenuTrigger({
 	className,
@@ -71,7 +75,7 @@ function NavigationMenuTrigger({
 				<ChevronDownIcon aria-hidden="true" />
 			</NavigationMenuIcon>
 		</BaseNavigationMenu.Trigger>
-	)
+	);
 }
 
 function NavigationMenuContent({
@@ -84,7 +88,7 @@ function NavigationMenuContent({
 			className={cn("w-full p-2 md:w-auto", className)}
 			{...props}
 		/>
-	)
+	);
 }
 
 function NavigationMenuLink({
@@ -96,11 +100,11 @@ function NavigationMenuLink({
 			data-slot="navigation-menu-link"
 			className={cn(
 				"hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus-visible:ring-ring/50 [&_svg:not([class*='text-'])]:text-muted-foreground flex flex-col gap-1 rounded-sm p-2 text-sm transition-all outline-none focus-visible:ring-3 focus-visible:outline-1 [&_svg:not([class*='size-'])]:size-4",
-				className
+				className,
 			)}
 			{...props}
 		/>
-	)
+	);
 }
 
 function NavigationMenuViewport({
@@ -118,7 +122,7 @@ function NavigationMenuViewport({
 				<BaseNavigationMenu.Popup
 					className={cn(
 						"bg-popover text-popover-foreground h-[var(--popup-height)] w-[var(--popup-width)] origin-[var(--transform-origin)] overflow-hidden rounded-md border shadow-md transition-all data-ending-style:scale-98 data-ending-style:opacity-0 data-starting-style:scale-98 data-starting-style:opacity-0",
-						className
+						className,
 					)}
 					data-slot="navigation-menu-popup"
 					{...props}
@@ -127,15 +131,15 @@ function NavigationMenuViewport({
 				</BaseNavigationMenu.Popup>
 			</BaseNavigationMenu.Positioner>
 		</BaseNavigationMenu.Portal>
-	)
+	);
 }
 
 export {
 	NavigationMenu,
-	NavigationMenuList,
-	NavigationMenuItem,
-	NavigationMenuTrigger,
 	NavigationMenuContent,
+	NavigationMenuItem,
 	NavigationMenuLink,
+	NavigationMenuList,
+	NavigationMenuTrigger,
 	navigationMenuTriggerStyle,
-}
+};

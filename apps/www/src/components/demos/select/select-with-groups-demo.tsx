@@ -6,7 +6,7 @@ import {
 	SelectLabel,
 	SelectTrigger,
 	SelectValue,
-} from "@/components/ui/select"
+} from "@/components/ui/select";
 
 const items = [
 	{
@@ -37,7 +37,7 @@ const items = [
 		label: "Tomato",
 		value: "tomato",
 	},
-]
+];
 
 export default function SelectWithGroupsDemo() {
 	return (
@@ -62,5 +62,5 @@ export default function SelectWithGroupsDemo() {
 				</SelectContent>
 			</Select>
 		</div>
-	)
+	);
 }

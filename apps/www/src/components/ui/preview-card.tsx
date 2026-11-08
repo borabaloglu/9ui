@@ -1,14 +1,14 @@
-"use client"
+"use client";
 
-import * as React from "react"
-import { PreviewCard as BasePreviewCard } from "@base-ui/react"
+import type * as React from "react";
+import { PreviewCard as BasePreviewCard } from "@base-ui/react";
 
-import { cn } from "@/lib/utils"
+import { cn } from "@/lib/utils";
 
 function PreviewCard({
 	...props
 }: React.ComponentProps<typeof BasePreviewCard.Root>) {
-	return <BasePreviewCard.Root data-slot="preview-card" {...props} />
+	return <BasePreviewCard.Root data-slot="preview-card" {...props} />;
 }
 
 function PreviewCardTrigger({
@@ -21,13 +21,13 @@ function PreviewCardTrigger({
 			data-slot="preview-card-trigger"
 			{...props}
 		/>
-	)
+	);
 }
 
 function PreviewCardPortal({
 	...props
 }: React.ComponentProps<typeof BasePreviewCard.Portal>) {
-	return <BasePreviewCard.Portal data-slot="preview-card-portal" {...props} />
+	return <BasePreviewCard.Portal data-slot="preview-card-portal" {...props} />;
 }
 
 function PreviewCardPositioner({
@@ -38,13 +38,13 @@ function PreviewCardPositioner({
 			data-slot="preview-card-positioner"
 			{...props}
 		/>
-	)
+	);
 }
 
 function PreviewCardArrow({
 	...props
 }: React.ComponentProps<typeof BasePreviewCard.Arrow>) {
-	return <BasePreviewCard.Arrow data-slot="preview-card-arrow" {...props} />
+	return <BasePreviewCard.Arrow data-slot="preview-card-arrow" {...props} />;
 }
 
 function PreviewCardContent({
@@ -55,9 +55,9 @@ function PreviewCardContent({
 	arrow = true,
 	...props
 }: React.ComponentProps<typeof BasePreviewCard.Popup> & {
-	align?: BasePreviewCard.Positioner.Props["align"]
-	sideOffset?: BasePreviewCard.Positioner.Props["sideOffset"]
-	arrow?: boolean
+	align?: BasePreviewCard.Positioner.Props["align"];
+	sideOffset?: BasePreviewCard.Positioner.Props["sideOffset"];
+	arrow?: boolean;
 }) {
 	return (
 		<PreviewCardPortal>
@@ -66,7 +66,7 @@ function PreviewCardContent({
 					data-slot="preview-card-content"
 					className={cn(
 						"bg-popover text-popover-foreground outline-border z-50 w-64 origin-(--transform-origin) rounded-md p-4 shadow-md outline -outline-offset-1 transition-[transform,scale,opacity] data-ending-style:scale-95 data-ending-style:opacity-0 data-starting-style:scale-95 data-starting-style:opacity-0",
-						className
+						className,
 					)}
 					{...props}
 				>
@@ -88,7 +88,7 @@ function PreviewCardContent({
 				</BasePreviewCard.Popup>
 			</PreviewCardPositioner>
 		</PreviewCardPortal>
-	)
+	);
 }
 
-export { PreviewCard, PreviewCardTrigger, PreviewCardContent }
+export { PreviewCard, PreviewCardContent, PreviewCardTrigger };

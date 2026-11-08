@@ -1,14 +1,14 @@
-import { CopyButton } from "@/components/copy-button"
+import { CopyButton } from "@/components/copy-button";
 
-import { cn } from "@/lib/utils"
+import { cn } from "@/lib/utils";
 
 interface CodeBarProps {
-	label?: string | React.ReactNode
-	type?: "demo" | "component" | "command" | "other"
-	content: string
-	className?: string
-	labelClassName?: string
-	copyButtonClassName?: string
+	label?: string | React.ReactNode;
+	type?: "demo" | "component" | "command" | "other";
+	content: string;
+	className?: string;
+	labelClassName?: string;
+	copyButtonClassName?: string;
 }
 
 export function CodeBar({
@@ -23,7 +23,7 @@ export function CodeBar({
 		<div
 			className={cn(
 				"bg-secondary flex h-8 items-center justify-between border-y px-2",
-				className
+				className,
 			)}
 		>
 			{typeof label === "string" ? (
@@ -41,5 +41,5 @@ export function CodeBar({
 				label={typeof label === "string" ? label : undefined}
 			/>
 		</div>
-	)
+	);
 }

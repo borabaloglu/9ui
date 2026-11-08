@@ -1,9 +1,9 @@
-import * as React from "react"
-import { ChevronsUpDown } from "lucide-react"
-import * as BasePhoneInput from "react-phone-number-input"
-import flags from "react-phone-number-input/flags"
+import type * as React from "react";
+import { ChevronsUpDown } from "lucide-react";
+import * as BasePhoneInput from "react-phone-number-input";
+import flags from "react-phone-number-input/flags";
 
-import { Button } from "@/components/ui/button"
+import { Button } from "@/components/ui/button";
 import {
 	Combobox,
 	ComboboxContent,
@@ -12,18 +12,18 @@ import {
 	ComboboxItem,
 	ComboboxList,
 	ComboboxTrigger,
-} from "@/components/ui/combobox"
-import { Input } from "@/components/ui/input"
+} from "@/components/ui/combobox";
+import { Input } from "@/components/ui/input";
 
-import { cn } from "@/lib/utils"
+import { cn } from "@/lib/utils";
 
 type PhoneInputProps = Omit<
 	React.ComponentProps<"input">,
 	"onChange" | "value" | "ref"
 > &
 	Omit<BasePhoneInput.Props<typeof BasePhoneInput.default>, "onChange"> & {
-		onChange?: (value: BasePhoneInput.Value) => void
-	}
+		onChange?: (value: BasePhoneInput.Value) => void;
+	};
 
 function PhoneInput({ className, onChange, value, ...props }: PhoneInputProps) {
 	return (
@@ -32,7 +32,7 @@ function PhoneInput({ className, onChange, value, ...props }: PhoneInputProps) {
 				"flex",
 				props["aria-invalid"] &&
 					"[&_*[data-slot=combobox-trigger]]:border-destructive [&_*[data-slot=combobox-trigger]]:ring-destructive/50",
-				className
+				className,
 			)}
 			flagComponent={FlagComponent}
 			countrySelectComponent={CountrySelect}
@@ -42,24 +42,27 @@ function PhoneInput({ className, onChange, value, ...props }: PhoneInputProps) {
 			onChange={(value) => onChange?.(value || ("" as BasePhoneInput.Value))}
 			{...props}
 		/>
-	)
+	);
 }
 
 function InputComponent({
 	className,
 	...props
 }: React.ComponentProps<typeof Input>) {
-	return <Input className={cn("rounded-s-none", className)} {...props} />
+	return <Input className={cn("rounded-s-none", className)} {...props} />;
 }
 
-type CountryEntry = { label: string; value: BasePhoneInput.Country | undefined }
+type CountryEntry = {
+	label: string;
+	value: BasePhoneInput.Country | undefined;
+};
 
 type CountrySelectProps = {
-	disabled?: boolean
-	value: BasePhoneInput.Country
-	options: CountryEntry[]
-	onChange: (country: BasePhoneInput.Country) => void
-}
+	disabled?: boolean;
+	value: BasePhoneInput.Country;
+	options: CountryEntry[];
+	onChange: (country: BasePhoneInput.Country) => void;
+};
 
 function CountrySelect({
 	disabled,
@@ -109,12 +112,12 @@ function CountrySelect({
 				</ComboboxList>
 			</ComboboxContent>
 		</Combobox>
-	)
+	);
 }
 
 interface CountrySelectOptionProps extends BasePhoneInput.FlagProps {
-	selectedCountry: BasePhoneInput.Country
-	onChange: (country: BasePhoneInput.Country) => void
+	selectedCountry: BasePhoneInput.Country;
+	onChange: (country: BasePhoneInput.Country) => void;
 }
 
 function CountrySelectOption({
@@ -123,8 +126,8 @@ function CountrySelectOption({
 	onChange,
 }: CountrySelectOptionProps) {
 	const handleSelect = () => {
-		onChange(country)
-	}
+		onChange(country);
+	};
 
 	return (
 		<ComboboxItem onClick={handleSelect} value={country}>
@@ -132,17 +135,17 @@ function CountrySelectOption({
 			<span className="flex-1 text-sm">{countryName}</span>
 			<span className="text-foreground/50 text-sm">{`+${BasePhoneInput.getCountryCallingCode(country)}`}</span>
 		</ComboboxItem>
-	)
+	);
 }
 
 function FlagComponent({ country, countryName }: BasePhoneInput.FlagProps) {
-	const Flag = flags[country]
+	const Flag = flags[country];
 
 	return (
 		<span className="bg-foreground/20 flex h-4 w-6 overflow-hidden rounded-sm [&_svg:not([class*='size-'])]:size-full">
 			{Flag && <Flag title={countryName} />}
 		</span>
-	)
+	);
 }
 
-export { PhoneInput }
+export { PhoneInput };

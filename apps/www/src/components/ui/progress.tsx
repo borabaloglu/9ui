@@ -1,7 +1,7 @@
-import * as React from "react"
-import { Progress as BaseProgress } from "@base-ui/react/progress"
+import type * as React from "react";
+import { Progress as BaseProgress } from "@base-ui/react/progress";
 
-import { cn } from "@/lib/utils"
+import { cn } from "@/lib/utils";
 
 function Progress({
 	className,
@@ -14,7 +14,7 @@ function Progress({
 				data-slot="progress-track"
 				className={cn(
 					"bg-primary/20 block h-2 w-full overflow-hidden rounded-full",
-					className
+					className,
 				)}
 			>
 				<BaseProgress.Indicator
@@ -24,7 +24,7 @@ function Progress({
 			</BaseProgress.Track>
 			{children}
 		</BaseProgress.Root>
-	)
+	);
 }
 
 function ProgressValue({
@@ -36,11 +36,11 @@ function ProgressValue({
 			data-slot="progress-value"
 			className={cn(
 				"text-foreground mt-2 flex justify-end text-sm font-medium",
-				className
+				className,
 			)}
 			{...props}
 		/>
-	)
+	);
 }
 
-export { Progress, ProgressValue }
+export { Progress, ProgressValue };

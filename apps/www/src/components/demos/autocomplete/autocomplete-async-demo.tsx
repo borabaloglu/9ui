@@ -1,7 +1,7 @@
-"use client"
+"use client";
 
-import * as React from "react"
-import { Loader2Icon } from "lucide-react"
+import * as React from "react";
+import { Loader2Icon } from "lucide-react";
 
 import {
 	Autocomplete,
@@ -11,72 +11,72 @@ import {
 	AutocompleteList,
 	AutocompleteStatus,
 	useFilter,
-} from "@/components/ui/autocomplete"
-import { Label } from "@/components/ui/label"
+} from "@/components/ui/autocomplete";
+import { Label } from "@/components/ui/label";
 
 export default function AutocompleteAsyncDemo() {
-	const [searchValue, setSearchValue] = React.useState("")
-	const [isLoading, setIsLoading] = React.useState(false)
-	const [searchResults, setSearchResults] = React.useState<Book[]>([])
-	const [error, setError] = React.useState<string | null>(null)
+	const [searchValue, setSearchValue] = React.useState("");
+	const [isLoading, setIsLoading] = React.useState(false);
+	const [searchResults, setSearchResults] = React.useState<Book[]>([]);
+	const [error, setError] = React.useState<string | null>(null);
 
-	const { contains } = useFilter({ sensitivity: "base" })
+	const { contains } = useFilter({ sensitivity: "base" });
 
 	React.useEffect(() => {
 		if (!searchValue) {
-			setSearchResults([])
-			setIsLoading(false)
-			return undefined
+			setSearchResults([]);
+			setIsLoading(false);
+			return undefined;
 		}
 
-		setIsLoading(true)
-		setError(null)
+		setIsLoading(true);
+		setError(null);
 
-		let ignore = false
+		let ignore = false;
 
 		async function fetchBooks() {
 			try {
-				const results = await searchBooks(searchValue, contains)
+				const results = await searchBooks(searchValue, contains);
 				if (!ignore) {
-					setSearchResults(results)
+					setSearchResults(results);
 				}
 			} catch {
 				if (!ignore) {
-					setError("Failed to find books. Please try again.")
-					setSearchResults([])
+					setError("Failed to find books. Please try again.");
+					setSearchResults([]);
 				}
 			} finally {
 				if (!ignore) {
-					setIsLoading(false)
+					setIsLoading(false);
 				}
 			}
 		}
 
-		const timeoutId = setTimeout(fetchBooks, 300)
+		const timeoutId = setTimeout(fetchBooks, 300);
 
 		return () => {
-			clearTimeout(timeoutId)
-			ignore = true
-		}
-	}, [searchValue, contains])
+			clearTimeout(timeoutId);
+			ignore = true;
+		};
+	}, [searchValue, contains]);
 
 	let status: React.ReactNode = `${searchResults.length} book${
 		searchResults.length === 1 ? "" : "s"
-	} found`
+	} found`;
 	if (isLoading) {
 		status = (
 			<React.Fragment>
 				<Loader2Icon className="size-4 animate-spin" />
 				Searching books...
 			</React.Fragment>
-		)
+		);
 	} else if (error) {
-		status = error
+		status = error;
 	} else if (searchResults.length === 0 && searchValue) {
-		status = `No books found for "${searchValue}"`
+		status = `No books found for "${searchValue}"`;
 	}
 
-	const shouldRenderPopup = searchValue !== ""
+	const shouldRenderPopup = searchValue !== "";
 
 	return (
 		<div className="w-80">
@@ -114,14 +114,14 @@ export default function AutocompleteAsyncDemo() {
 				)}
 			</Autocomplete>
 		</div>
-	)
+	);
 }
 
 interface Book {
-	id: string
-	title: string
-	author: string
-	publishedYear: number
+	id: string;
+	title: string;
+	author: string;
+	publishedYear: number;
 }
 
 const books: Book[] = [
@@ -350,26 +350,26 @@ const books: Book[] = [
 		author: "Franz Kafka",
 		publishedYear: 1915,
 	},
-]
+];
 
 async function searchBooks(
 	query: string,
-	filter: (item: string, query: string) => boolean
+	filter: (item: string, query: string) => boolean,
 ): Promise<Book[]> {
 	// Simulate network delay
 	await new Promise((resolve) => {
-		setTimeout(resolve, Math.random() * 400 + 200)
-	})
+		setTimeout(resolve, Math.random() * 400 + 200);
+	});
 
 	// Simulate occasional network errors (1% chance)
 	if (Math.random() < 0.01 || query === "will_error") {
-		throw new Error("Network error")
+		throw new Error("Network error");
 	}
 
 	return books.filter(
 		(book) =>
 			filter(book.title, query) ||
 			filter(book.author, query) ||
-			filter(book.publishedYear.toString(), query)
-	)
+			filter(book.publishedYear.toString(), query),
+	);
 }

@@ -1,26 +1,26 @@
-import * as React from "react"
-import { NumberField as BaseNumberField } from "@base-ui/react/number-field"
-import { MinusIcon, MoveHorizontalIcon, PlusIcon } from "lucide-react"
+import * as React from "react";
+import { NumberField as BaseNumberField } from "@base-ui/react/number-field";
+import { MinusIcon, MoveHorizontalIcon, PlusIcon } from "lucide-react";
 
-import { cn } from "@/lib/utils"
+import { cn } from "@/lib/utils";
 
 type NumberFieldContextType = {
-	id: string
-}
+	id: string;
+};
 
 const NumberFieldContext = React.createContext<NumberFieldContextType | null>(
-	null
-)
+	null,
+);
 
 const useNumberField = () => {
-	const context = React.useContext(NumberFieldContext)
+	const context = React.useContext(NumberFieldContext);
 
 	if (!context) {
-		throw new Error("useNumberField must be used within a NumberField")
+		throw new Error("useNumberField must be used within a NumberField");
 	}
 
-	return context
-}
+	return context;
+};
 
 function NumberField({
 	id,
@@ -28,14 +28,14 @@ function NumberField({
 	children,
 	...props
 }: React.ComponentProps<typeof BaseNumberField.Root>) {
-	let fieldId = React.useId()
+	let fieldId = React.useId();
 
 	if (id) {
-		fieldId = id
+		fieldId = id;
 	}
 
 	const controllerClassName =
-		"hover:border-ring/70 bg-input flex size-9 items-center justify-center border transition-colors select-none data-disabled:opacity-50 data-disabled:pointer-events-none"
+		"hover:border-ring/70 bg-input flex size-9 items-center justify-center border transition-colors select-none data-disabled:opacity-50 data-disabled:pointer-events-none";
 
 	return (
 		<NumberFieldContext.Provider value={{ id: fieldId }}>
@@ -66,14 +66,14 @@ function NumberField({
 				</BaseNumberField.Group>
 			</BaseNumberField.Root>
 		</NumberFieldContext.Provider>
-	)
+	);
 }
 
 function NumberFieldScrubArea({
 	className,
 	...props
 }: React.ComponentProps<typeof BaseNumberField.ScrubArea>) {
-	const { id: fieldId } = useNumberField()
+	const { id: fieldId } = useNumberField();
 
 	return (
 		<BaseNumberField.ScrubArea
@@ -95,7 +95,7 @@ function NumberFieldScrubArea({
 				<MoveHorizontalIcon className="size-4.5" />
 			</BaseNumberField.ScrubAreaCursor>
 		</BaseNumberField.ScrubArea>
-	)
+	);
 }
 
-export { NumberField, NumberFieldScrubArea }
+export { NumberField, NumberFieldScrubArea };

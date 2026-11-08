@@ -1,7 +1,7 @@
-"use client"
+"use client";
 
-import { Button } from "@/components/ui/button"
-import { Label } from "@/components/ui/label"
+import { Button } from "@/components/ui/button";
+import { Label } from "@/components/ui/label";
 import {
 	Sheet,
 	SheetClose,
@@ -11,8 +11,8 @@ import {
 	SheetHeader,
 	SheetTitle,
 	SheetTrigger,
-} from "@/components/ui/sheet"
-import { Textarea } from "@/components/ui/textarea"
+} from "@/components/ui/sheet";
+import { Textarea } from "@/components/ui/textarea";
 
 export default function SheetDemo() {
 	return (
@@ -44,5 +44,5 @@ export default function SheetDemo() {
 				</SheetFooter>
 			</SheetContent>
 		</Sheet>
-	)
+	);
 }

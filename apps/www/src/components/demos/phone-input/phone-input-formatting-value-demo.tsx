@@ -1,18 +1,18 @@
-"use client"
+"use client";
 
-import { useState } from "react"
+import { useState } from "react";
 import {
-	Country,
+	type Country,
 	formatPhoneNumber,
 	formatPhoneNumberIntl,
 	getCountryCallingCode,
-} from "react-phone-number-input"
+} from "react-phone-number-input";
 
-import { PhoneInput } from "@/components/ui/phone-input"
+import { PhoneInput } from "@/components/ui/phone-input";
 
 export default function PhoneInputFormattingValueDemo() {
-	const [phoneNumber, setPhoneNumber] = useState<string>()
-	const [country, setCountry] = useState<Country>()
+	const [phoneNumber, setPhoneNumber] = useState<string>();
+	const [country, setCountry] = useState<Country>();
 
 	return (
 		<div className="w-[300px] space-y-4">
@@ -45,5 +45,5 @@ export default function PhoneInputFormattingValueDemo() {
 				</div>
 			</div>
 		</div>
-	)
+	);
 }

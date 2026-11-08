@@ -1,7 +1,7 @@
-import { AlertTriangleIcon } from "lucide-react"
+import { AlertTriangleIcon } from "lucide-react";
 
-import { Alert, AlertTitle } from "@/components/ui/alert"
-import { Button } from "@/components/ui/button"
+import { Alert, AlertTitle } from "@/components/ui/alert";
+import { Button } from "@/components/ui/button";
 
 export default function AlertWithActionDemo() {
 	return (
@@ -18,5 +18,5 @@ export default function AlertWithActionDemo() {
 				Try Again
 			</Button>
 		</Alert>
-	)
+	);
 }

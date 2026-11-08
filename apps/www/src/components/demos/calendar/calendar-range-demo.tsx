@@ -1,12 +1,12 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import { DateRange } from "react-day-picker"
+import { useState } from "react";
+import type { DateRange } from "react-day-picker";
 
-import { Calendar } from "@/components/ui/calendar"
+import { Calendar } from "@/components/ui/calendar";
 
 export default function CalendarRangeDemo() {
-	const [range, setRange] = useState<DateRange | undefined>(undefined)
+	const [range, setRange] = useState<DateRange | undefined>(undefined);
 
 	return (
 		<Calendar
@@ -15,5 +15,5 @@ export default function CalendarRangeDemo() {
 			onSelect={setRange}
 			showOutsideDays
 		/>
-	)
+	);
 }

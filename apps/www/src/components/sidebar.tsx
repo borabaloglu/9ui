@@ -1,18 +1,18 @@
-"use client"
+"use client";
 
-import Link from "next/link"
-import { usePathname } from "next/navigation"
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 
-import { Badge } from "@/components/ui/badge"
+import { Badge } from "@/components/ui/badge";
 
-import { cn } from "@/lib/utils"
+import { cn } from "@/lib/utils";
 
-import { type SidebarNavGroup } from "@/types/nav"
+import type { SidebarNavGroup } from "@/types/nav";
 
 interface DocsSidebarNavItemsProps {
-	items: SidebarNavGroup["items"]
-	pathname: string | null
-	onNavItemClick?: () => void
+	items: SidebarNavGroup["items"];
+	pathname: string | null;
+	onNavItemClick?: () => void;
 }
 
 export const DocsSidebarNavItems = ({
@@ -21,17 +21,17 @@ export const DocsSidebarNavItems = ({
 	onNavItemClick,
 }: DocsSidebarNavItemsProps) => (
 	<div className="mt-1.5 text-sm">
-		{items.map((item, index) =>
+		{items.map((item) =>
 			!item.disabled && item.href ? (
 				<Link
-					key={index}
+					key={item.href ?? item.title}
 					href={item.href}
 					onClick={onNavItemClick}
 					className={cn(
 						"hover:text-foreground -ml-2 flex h-9 w-full items-center justify-between gap-2 rounded-md border px-2 transition-colors",
 						pathname === item.href
 							? "bg-accent/50 text-accent-foreground pl-2"
-							: "text-muted-foreground border-transparent"
+							: "text-muted-foreground border-transparent",
 					)}
 					target={item.external ? "_blank" : ""}
 					rel={item.external ? "noreferrer" : ""}
@@ -42,34 +42,34 @@ export const DocsSidebarNavItems = ({
 				</Link>
 			) : (
 				<span
-					key={index}
+					key={item.href ?? item.title}
 					className={cn(
-						"text-muted-foreground pointer-events-none -ml-2 flex w-full items-center justify-between gap-2 border border-transparent px-2 py-1.5 opacity-50"
+						"text-muted-foreground pointer-events-none -ml-2 flex w-full items-center justify-between gap-2 border border-transparent px-2 py-1.5 opacity-50",
 					)}
 				>
 					{item.title}
 					{item.label && <Badge variant="info">{item.label}</Badge>}
 				</span>
-			)
+			),
 		)}
 	</div>
-)
+);
 
 interface DocsSidebarNavProps {
-	sidebarNav: SidebarNavGroup[]
-	onNavItemClick?: () => void
+	sidebarNav: SidebarNavGroup[];
+	onNavItemClick?: () => void;
 }
 
 export const DocsSidebarNav = ({
 	sidebarNav,
 	onNavItemClick,
 }: DocsSidebarNavProps) => {
-	const pathname = usePathname()
+	const pathname = usePathname();
 
 	return (
 		<>
-			{sidebarNav.map((group, index) => (
-				<div key={index} className="pb-4 [&:last-child]:pb-0">
+			{sidebarNav.map((group) => (
+				<div key={group.title} className="pb-4 [&:last-child]:pb-0">
 					<h4 className="text-foreground mb-1 text-sm font-semibold">
 						{group.title}
 					</h4>
@@ -83,5 +83,5 @@ export const DocsSidebarNav = ({
 				</div>
 			))}
 		</>
-	)
-}
+	);
+};

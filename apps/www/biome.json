@@ -1,0 +1,237 @@
+{
+	"$schema": "../../node_modules/@biomejs/biome/configuration_schema.json",
+	"root": false,
+	"extends": "//",
+	"linter": {
+		"domains": {
+			"next": "recommended"
+		},
+		"rules": {
+			"a11y": {
+				"noLabelWithoutControl": {
+					"level": "error",
+					"options": {
+						"labelComponents": ["Label"],
+						"inputComponents": [
+							"Checkbox",
+							"Input",
+							"NumberField",
+							"RadioGroupItem",
+							"Select",
+							"SelectTrigger",
+							"Slider",
+							"Switch",
+							"Textarea"
+						]
+					}
+				}
+			},
+			"nursery": {
+				"useTailwindSortedClasses": {
+					"level": "warn",
+					"fix": "safe"
+				}
+			}
+		}
+	},
+	"css": {
+		"parser": {
+			"tailwindDirectives": true
+		}
+	},
+	"tailwind": {
+		"attributes": ["className", "classList"],
+		"mergeFunctions": ["clsx", "cva", "cn", "tw"],
+		"stylesheet": "./src/app/globals.css"
+	},
+	"assist": {
+		"actions": {
+			"source": {
+				"organizeImports": {
+					"level": "on",
+					"options": {
+						"groups": [
+							["react", "react/**"],
+							["next", "next/**"],
+							[":PACKAGE:", ":PACKAGE_WITH_PROTOCOL:"],
+							":BLANK_LINE:",
+							["@/components", "@/components/**"],
+							":BLANK_LINE:",
+							["@/config", "@/config/**"],
+							":BLANK_LINE:",
+							["@/hooks", "@/hooks/**"],
+							":BLANK_LINE:",
+							["@/lib", "@/lib/**"],
+							":BLANK_LINE:",
+							["@/providers", "@/providers/**"],
+							":BLANK_LINE:",
+							["@/registry", "@/registry/**"],
+							":BLANK_LINE:",
+							["@/types", "@/types/**"],
+							":BLANK_LINE:",
+							":ALIAS:",
+							":BLANK_LINE:",
+							":PATH:"
+						]
+					}
+				}
+			}
+		}
+	},
+	"overrides": [
+		{
+			"includes": ["src/__registry__/**", "public/r/**"],
+			"linter": {
+				"enabled": false
+			}
+		},
+		{
+			"includes": ["scripts/**"],
+			"linter": {
+				"rules": {
+					"security": {
+						"noGlobalEval": "off"
+					},
+					"suspicious": {
+						"noExplicitAny": "off",
+						"noAssignInExpressions": "off",
+						"noImplicitAnyLet": "off"
+					}
+				}
+			}
+		},
+		{
+			"includes": [
+				"src/components/icons.tsx",
+				"src/components/ui/popover.tsx",
+				"src/components/ui/preview-card.tsx",
+				"src/components/ui/tooltip.tsx"
+			],
+			"linter": {
+				"rules": {
+					"a11y": {
+						"noSvgWithoutTitle": "off"
+					}
+				}
+			}
+		},
+		{
+			"includes": ["src/components/ui/pagination.tsx"],
+			"linter": {
+				"rules": {
+					"a11y": {
+						"noRedundantRoles": "off",
+						"useAnchorContent": "off",
+						"useValidAnchor": "off"
+					}
+				}
+			}
+		},
+		{
+			"includes": [
+				"src/components/ui/breadcrumbs.tsx",
+				"src/components/ui/carousel.tsx",
+				"src/components/ui/input-otp.tsx"
+			],
+			"linter": {
+				"rules": {
+					"a11y": {
+						"useFocusableInteractive": "off",
+						"useSemanticElements": "off"
+					}
+				}
+			}
+		},
+		{
+			"includes": [
+				"src/components/customize-toolbar.tsx",
+				"src/components/ui/form.tsx",
+				"src/components/ui/label.tsx",
+				"src/components/ui/meter.tsx"
+			],
+			"linter": {
+				"rules": {
+					"a11y": {
+						"noLabelWithoutControl": {
+							"level": "off"
+						}
+					}
+				}
+			}
+		},
+		{
+			"includes": [
+				"src/components/ui/calendar.tsx",
+				"src/components/ui/emoji-picker.tsx"
+			],
+			"linter": {
+				"rules": {
+					"correctness": {
+						"noComponentHookFactories": "off"
+					}
+				}
+			}
+		},
+		{
+			"includes": [
+				"src/components/command-block.tsx",
+				"src/components/theme-code.tsx",
+				"src/components/ui/chart.tsx"
+			],
+			"linter": {
+				"rules": {
+					"security": {
+						"noDangerouslySetInnerHtml": "off"
+					}
+				}
+			}
+		},
+		{
+			"includes": ["src/components/demos/**", "src/components/examples/**"],
+			"linter": {
+				"rules": {
+					"a11y": {
+						"noStaticElementInteractions": "off",
+						"useKeyWithClickEvents": "off"
+					},
+					"suspicious": {
+						"noArrayIndexKey": "off"
+					}
+				}
+			}
+		},
+		{
+			"includes": ["src/mdx-components.tsx"],
+			"linter": {
+				"rules": {
+					"performance": {
+						"noImgElement": "off"
+					},
+					"suspicious": {
+						"noExplicitAny": "off"
+					}
+				}
+			}
+		},
+		{
+			"includes": ["src/components/ui/slider.tsx"],
+			"linter": {
+				"rules": {
+					"suspicious": {
+						"noArrayIndexKey": "off"
+					}
+				}
+			}
+		},
+		{
+			"includes": ["src/app/syntax.css"],
+			"linter": {
+				"rules": {
+					"complexity": {
+						"noImportantStyles": "off"
+					}
+				}
+			}
+		}
+	]
+}

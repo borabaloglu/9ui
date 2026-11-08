@@ -1,11 +1,11 @@
-"use client"
+"use client";
 
-import { useToast } from "@/hooks/use-toast"
+import { Button } from "@/components/ui/button";
 
-import { Button } from "@/components/ui/button"
+import { useToast } from "@/hooks/use-toast";
 
 export default function ToastActionDemo() {
-	const toast = useToast()
+	const toast = useToast();
 
 	return (
 		<Button
@@ -16,17 +16,17 @@ export default function ToastActionDemo() {
 					actionProps: {
 						children: "Unsend",
 						onClick: () => {
-							toast.close(id)
+							toast.close(id);
 							toast.add({
 								title: "Email unsent",
 								type: "success",
-							})
+							});
 						},
 					},
-				})
+				});
 			}}
 		>
 			Show Toast
 		</Button>
-	)
+	);
 }

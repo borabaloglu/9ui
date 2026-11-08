@@ -1,8 +1,8 @@
-import * as React from "react"
-import { Loader2 } from "lucide-react"
-import { toast } from "sonner"
+import * as React from "react";
+import { Loader2 } from "lucide-react";
+import { toast } from "sonner";
 
-import { Button } from "@/components/ui/button"
+import { Button } from "@/components/ui/button";
 import {
 	EmojiPicker,
 	EmojiPickerContent,
@@ -10,16 +10,16 @@ import {
 	EmojiPickerList,
 	EmojiPickerLoading,
 	EmojiPickerSearch,
-} from "@/components/ui/emoji-picker"
+} from "@/components/ui/emoji-picker";
 import {
 	Popover,
 	PopoverContent,
 	PopoverTrigger,
-} from "@/components/ui/popover"
+} from "@/components/ui/popover";
 
 export default function EmojiPickerPopoverDemo() {
-	const [open, setOpen] = React.useState(false)
-	const [emoji, setEmoji] = React.useState<string | undefined>(undefined)
+	const [open, setOpen] = React.useState(false);
+	const [emoji, setEmoji] = React.useState<string | undefined>(undefined);
 
 	return (
 		<Popover open={open} onOpenChange={setOpen}>
@@ -34,14 +34,14 @@ export default function EmojiPickerPopoverDemo() {
 				<EmojiPicker
 					className="border-none"
 					onEmojiSelect={({ emoji, label }) => {
-						setEmoji(emoji)
-						setOpen(false)
+						setEmoji(emoji);
+						setOpen(false);
 						toast(() => (
 							<p className="flex items-center gap-2 text-sm">
 								<span className="text-lg">{emoji}</span>
 								{label}
 							</p>
-						))
+						));
 					}}
 				>
 					<EmojiPickerSearch />
@@ -55,5 +55,5 @@ export default function EmojiPickerPopoverDemo() {
 				</EmojiPicker>
 			</PopoverContent>
 		</Popover>
-	)
+	);
 }

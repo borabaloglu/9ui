@@ -1,6 +1,6 @@
-"use client"
+"use client";
 
-import { Cell, Legend, Pie, PieChart } from "recharts"
+import { Cell, Legend, Pie, PieChart } from "recharts";
 
 import {
 	Card,
@@ -9,13 +9,13 @@ import {
 	CardFooter,
 	CardHeader,
 	CardTitle,
-} from "@/components/ui/card"
+} from "@/components/ui/card";
 import {
-	ChartConfig,
+	type ChartConfig,
 	ChartContainer,
 	ChartTooltip,
 	ChartTooltipContent,
-} from "@/components/ui/chart"
+} from "@/components/ui/chart";
 
 const chartData = [
 	{ category: "Sales", amount: 4000, fill: "var(--chart-1)" },
@@ -23,7 +23,7 @@ const chartData = [
 	{ category: "IT", amount: 2000, fill: "var(--chart-3)" },
 	{ category: "HR", amount: 1000, fill: "var(--chart-4)" },
 	{ category: "Operations", amount: 1000, fill: "var(--chart-5)" },
-]
+];
 
 const chartConfig = {
 	sales: {
@@ -46,14 +46,14 @@ const chartConfig = {
 		label: "Operations",
 		color: "var(--chart-5)",
 	},
-} satisfies ChartConfig
+} satisfies ChartConfig;
 
 export default function ChartPieDemo() {
-	const totalBudget = chartData.reduce((sum, item) => sum + item.amount, 0)
-	const highestBudget = Math.max(...chartData.map((item) => item.amount))
+	const totalBudget = chartData.reduce((sum, item) => sum + item.amount, 0);
+	const highestBudget = Math.max(...chartData.map((item) => item.amount));
 	const highestCategory = chartData.find(
-		(item) => item.amount === highestBudget
-	)?.category
+		(item) => item.amount === highestBudget,
+	)?.category;
 
 	return (
 		<Card className="flex w-full flex-col">
@@ -98,5 +98,5 @@ export default function ChartPieDemo() {
 				</div>
 			</CardFooter>
 		</Card>
-	)
+	);
 }

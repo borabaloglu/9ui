@@ -1,6 +1,6 @@
-import * as React from "react"
+import type * as React from "react";
 
-import { cn } from "@/lib/utils"
+import { cn } from "@/lib/utils";
 
 function AspectRatio({
 	children,
@@ -9,7 +9,7 @@ function AspectRatio({
 	style,
 	...props
 }: React.HTMLAttributes<HTMLDivElement> & {
-	ratio?: number
+	ratio?: number;
 }) {
 	return (
 		<div
@@ -23,7 +23,7 @@ function AspectRatio({
 		>
 			<div className="absolute inset-0 size-full">{children}</div>
 		</div>
-	)
+	);
 }
 
-export { AspectRatio }
+export { AspectRatio };

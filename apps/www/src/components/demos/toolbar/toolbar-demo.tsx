@@ -1,8 +1,8 @@
-"use client"
+"use client";
 
-import { GlobeIcon, LightbulbIcon, SparklesIcon } from "lucide-react"
+import { GlobeIcon, LightbulbIcon, SparklesIcon } from "lucide-react";
 
-import { Button } from "@/components/ui/button"
+import { Button } from "@/components/ui/button";
 import {
 	Popover,
 	PopoverClose,
@@ -12,22 +12,22 @@ import {
 	PopoverHeader,
 	PopoverTitle,
 	PopoverTrigger,
-} from "@/components/ui/popover"
+} from "@/components/ui/popover";
 import {
 	Select,
 	SelectContent,
 	SelectItem,
 	SelectTrigger,
 	SelectValue,
-} from "@/components/ui/select"
-import { Textarea } from "@/components/ui/textarea"
-import { Toggle } from "@/components/ui/toggle"
-import { ToggleGroup } from "@/components/ui/toggle-group"
+} from "@/components/ui/select";
+import { Textarea } from "@/components/ui/textarea";
+import { Toggle } from "@/components/ui/toggle";
+import { ToggleGroup } from "@/components/ui/toggle-group";
 import {
 	Toolbar,
 	ToolbarButton,
 	ToolbarSeparator,
-} from "@/components/ui/toolbar"
+} from "@/components/ui/toolbar";
 
 const models = [
 	{
@@ -51,7 +51,7 @@ const models = [
 		label: "04-mini",
 		value: "o4-mini",
 	},
-]
+];
 
 export default function ToolbarDemo() {
 	return (
@@ -128,5 +128,5 @@ export default function ToolbarDemo() {
 				</PopoverContent>
 			</Popover>
 		</Toolbar>
-	)
+	);
 }

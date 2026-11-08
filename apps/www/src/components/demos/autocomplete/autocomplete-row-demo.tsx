@@ -1,6 +1,6 @@
-"use client"
+"use client";
 
-import * as React from "react"
+import * as React from "react";
 
 import {
 	Autocomplete,
@@ -13,23 +13,23 @@ import {
 	AutocompleteList,
 	AutocompleteRow,
 	AutocompleteTrigger,
-} from "@/components/ui/autocomplete"
-import { Avatar, AvatarFallback } from "@/components/ui/avatar"
-import { Label } from "@/components/ui/label"
+} from "@/components/ui/autocomplete";
+import { Avatar, AvatarFallback } from "@/components/ui/avatar";
+import { Label } from "@/components/ui/label";
 
 export default function AutocompleteRowDemo() {
-	const [pickerOpen, setPickerOpen] = React.useState(false)
-	const [avatar, setAvatar] = React.useState<string | null>(null)
-	const [searchValue, setSearchValue] = React.useState("")
+	const [pickerOpen, setPickerOpen] = React.useState(false);
+	const [avatar, setAvatar] = React.useState<string | null>(null);
+	const [searchValue, setSearchValue] = React.useState("");
 
 	function handleSelectAvatar(value: string | null) {
 		if (!value) {
-			return
+			return;
 		}
 
-		setPickerOpen(false)
-		setAvatar(value)
-		setSearchValue("")
+		setPickerOpen(false);
+		setAvatar(value);
+		setSearchValue("");
 	}
 
 	return (
@@ -42,7 +42,7 @@ export default function AutocompleteRowDemo() {
 			value={searchValue}
 			onValueChange={(value, details) => {
 				if (details.reason !== "item-press") {
-					setSearchValue(value)
+					setSearchValue(value);
 				}
 			}}
 		>
@@ -92,20 +92,20 @@ export default function AutocompleteRowDemo() {
 				</AutocompleteList>
 			</AutocompleteContent>
 		</Autocomplete>
-	)
+	);
 }
 
-interface Avatar {
-	id: string
-	emoji: string
-	name: string
-	category: string
+interface AvatarItem {
+	id: string;
+	emoji: string;
+	name: string;
+	category: string;
 }
 
 interface AvatarGroup {
-	value: string
-	label: string
-	items: Avatar[]
+	value: string;
+	label: string;
+	items: AvatarItem[];
 }
 
 const avatarCategories = [
@@ -193,7 +193,7 @@ const avatarCategories = [
 			{ id: "64", emoji: "🎪", name: "circus" },
 		],
 	},
-]
+];
 
 const avatarGroups: AvatarGroup[] = avatarCategories.map((category) => ({
 	value: category.label,
@@ -203,14 +203,14 @@ const avatarGroups: AvatarGroup[] = avatarCategories.map((category) => ({
 		value: avatar.name.toLowerCase(),
 		category: category.label,
 	})),
-}))
+}));
 
-const COLUMNS = 6
+const COLUMNS = 6;
 
 function chunkArray<T>(array: T[], size: number): T[][] {
-	const result: T[][] = []
+	const result: T[][] = [];
 	for (let i = 0; i < array.length; i += size) {
-		result.push(array.slice(i, i + size))
+		result.push(array.slice(i, i + size));
 	}
-	return result
+	return result;
 }

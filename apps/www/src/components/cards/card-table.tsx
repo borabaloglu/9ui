@@ -1,8 +1,8 @@
-"use client"
+"use client";
 
-import dayjs from "dayjs"
+import dayjs from "dayjs";
 
-import { Button } from "@/components/ui/button"
+import { Button } from "@/components/ui/button";
 import {
 	Card,
 	CardContent,
@@ -10,7 +10,7 @@ import {
 	CardFooter,
 	CardHeader,
 	CardTitle,
-} from "@/components/ui/card"
+} from "@/components/ui/card";
 import {
 	Table,
 	TableBody,
@@ -19,7 +19,7 @@ import {
 	TableHead,
 	TableHeader,
 	TableRow,
-} from "@/components/ui/table"
+} from "@/components/ui/table";
 
 const transactions = [
 	{
@@ -57,13 +57,13 @@ const transactions = [
 		amount: -15.99,
 		category: "Entertainment",
 	},
-]
+];
 
 export function TableCard() {
 	const total = transactions.reduce(
 		(sum, transaction) => sum + transaction.amount,
-		0
-	)
+		0,
+	);
 
 	return (
 		<Card className="size-full">
@@ -122,5 +122,5 @@ export function TableCard() {
 				</Button>
 			</CardFooter>
 		</Card>
-	)
+	);
 }

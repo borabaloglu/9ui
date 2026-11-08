@@ -1,11 +1,11 @@
-"use client"
+"use client";
 
-import { useToast } from "@/hooks/use-toast"
+import { Button } from "@/components/ui/button";
 
-import { Button } from "@/components/ui/button"
+import { useToast } from "@/hooks/use-toast";
 
 export default function ToastDemo() {
-	const toast = useToast()
+	const toast = useToast();
 
 	return (
 		<Button
@@ -18,5 +18,5 @@ export default function ToastDemo() {
 		>
 			Show Toast
 		</Button>
-	)
+	);
 }

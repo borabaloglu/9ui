@@ -1,6 +1,6 @@
-"use client"
+"use client";
 
-import { Area, AreaChart, CartesianGrid, XAxis } from "recharts"
+import { Area, AreaChart, CartesianGrid, XAxis } from "recharts";
 
 import {
 	Card,
@@ -8,13 +8,13 @@ import {
 	CardDescription,
 	CardHeader,
 	CardTitle,
-} from "@/components/ui/card"
+} from "@/components/ui/card";
 import {
-	ChartConfig,
+	type ChartConfig,
 	ChartContainer,
 	ChartTooltip,
 	ChartTooltipContent,
-} from "@/components/ui/chart"
+} from "@/components/ui/chart";
 
 const chartData = [
 	{ month: "Jan", desktop: 2400, mobile: 1800 },
@@ -29,7 +29,7 @@ const chartData = [
 	{ month: "Oct", desktop: 3700, mobile: 4800 },
 	{ month: "Nov", desktop: 5300, mobile: 4600 },
 	{ month: "Dec", desktop: 4800, mobile: 5900 },
-]
+];
 
 const chartConfig = {
 	desktop: {
@@ -40,7 +40,7 @@ const chartConfig = {
 		label: "Mobile",
 		color: "var(--chart-2)",
 	},
-} satisfies ChartConfig
+} satisfies ChartConfig;
 
 export function VisitorsChartCard() {
 	return (
@@ -109,5 +109,5 @@ export function VisitorsChartCard() {
 				</ChartContainer>
 			</CardContent>
 		</Card>
-	)
+	);
 }

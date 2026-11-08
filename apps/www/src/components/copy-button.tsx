@@ -1,18 +1,18 @@
-"use client"
+"use client";
 
-import React from "react"
-import { useOpenPanel } from "@openpanel/nextjs"
-import { CheckIcon, CopyIcon } from "lucide-react"
+import React from "react";
+import { useOpenPanel } from "@openpanel/nextjs";
+import { CheckIcon, CopyIcon } from "lucide-react";
 
-import { Button, type ButtonProps } from "@/components/ui/button"
+import { Button, type ButtonProps } from "@/components/ui/button";
 
-import { cn } from "@/lib/utils"
+import { cn } from "@/lib/utils";
 
 type CopyButtonProps = ButtonProps & {
-	content: string
-	label?: string
-	eventType?: "demo" | "component" | "command" | "other"
-}
+	content: string;
+	label?: string;
+	eventType?: "demo" | "component" | "command" | "other";
+};
 
 export const CopyButton = ({
 	content,
@@ -21,20 +21,20 @@ export const CopyButton = ({
 	className,
 	...props
 }: CopyButtonProps) => {
-	const op = useOpenPanel()
+	const op = useOpenPanel();
 
-	const [copied, setCopied] = React.useState(false)
+	const [copied, setCopied] = React.useState(false);
 
 	const onCopy = async () => {
 		op.track("copy", {
 			type: eventType || "other",
 			content: eventType === "command" ? content : undefined,
 			label,
-		})
-		await navigator.clipboard.writeText(content!)
-		setCopied(true)
-		setTimeout(() => setCopied(false), 2000)
-	}
+		});
+		await navigator.clipboard.writeText(content);
+		setCopied(true);
+		setTimeout(() => setCopied(false), 2000);
+	};
 
 	return (
 		<Button
@@ -46,5 +46,5 @@ export const CopyButton = ({
 		>
 			{copied ? <CheckIcon size={14} /> : <CopyIcon size={14} />}
 		</Button>
-	)
-}
+	);
+};

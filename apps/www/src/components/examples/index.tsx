@@ -1,10 +1,10 @@
-"use client"
+"use client";
 
-import { CardsGrid } from "@/components/cards-grid"
-import { AIChatInterface } from "@/components/examples/ai-chat"
-import { CalendarInterface } from "@/components/examples/calendar"
-import { MailInterface } from "@/components/examples/mail"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import { CardsGrid } from "@/components/cards-grid";
+import { AIChatInterface } from "@/components/examples/ai-chat";
+import { CalendarInterface } from "@/components/examples/calendar";
+import { MailInterface } from "@/components/examples/mail";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 const Examples = () => {
 	return (
@@ -28,7 +28,7 @@ const Examples = () => {
 				<CalendarInterface />
 			</TabsContent>
 		</Tabs>
-	)
-}
+	);
+};
 
-export default Examples
+export default Examples;

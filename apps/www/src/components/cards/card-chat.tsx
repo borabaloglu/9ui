@@ -1,11 +1,16 @@
-"use client"
+"use client";
 
-import { PhoneIcon, SendIcon, VideoIcon } from "lucide-react"
+import { PhoneIcon, SendIcon, VideoIcon } from "lucide-react";
 
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card"
-import { Input } from "@/components/ui/input"
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Button } from "@/components/ui/button";
+import {
+	Card,
+	CardContent,
+	CardFooter,
+	CardHeader,
+} from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
 
 export function ChatCard() {
 	return (
@@ -52,5 +57,5 @@ export function ChatCard() {
 				</Button>
 			</CardFooter>
 		</Card>
-	)
+	);
 }

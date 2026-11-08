@@ -1,16 +1,16 @@
-import { type LazyExoticComponent } from "react"
+import type { LazyExoticComponent } from "react";
 
 export interface Demo {
 	/** Raw source code of the demo component */
-	source: string
+	source: string;
 	/** Lazily loaded demo component */
-	component: LazyExoticComponent<() => React.JSX.Element>
+	component: LazyExoticComponent<() => React.JSX.Element>;
 	/** Display title of the demo */
-	title: string
+	title: string;
 	/** Category of the demo (e.g., 'components', 'hooks') */
-	category: string
+	category: string;
 	/** Relative path to the demo file */
-	path: string
+	path: string;
 }
 
-export type DemoRegistry = Record<string, Demo>
+export type DemoRegistry = Record<string, Demo>;

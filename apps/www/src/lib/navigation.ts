@@ -1,31 +1,31 @@
-import { type NavItem, type SidebarNavGroup } from "@/types/nav"
+import type { NavItem, SidebarNavGroup } from "@/types/nav";
 
 export interface NavPageInfo {
-	title: string
-	href: string
+	title: string;
+	href: string;
 }
 
 export interface NavigationResult {
-	prev: NavPageInfo | null
-	next: NavPageInfo | null
+	prev: NavPageInfo | null;
+	next: NavPageInfo | null;
 }
 
 /**
  * Get all navigation items in a flat array following the sidebar navigation order
  */
 function getAllNavItems(sidebarNav: SidebarNavGroup[]): NavItem[] {
-	const allItems: NavItem[] = []
+	const allItems: NavItem[] = [];
 
 	for (const group of sidebarNav) {
 		for (const item of group.items) {
 			// Only include enabled items with valid hrefs
 			if (!item.disabled && item.href) {
-				allItems.push(item)
+				allItems.push(item);
 			}
 		}
 	}
 
-	return allItems
+	return allItems;
 }
 
 /**
@@ -33,13 +33,13 @@ function getAllNavItems(sidebarNav: SidebarNavGroup[]): NavItem[] {
  */
 export function getNavigationForPage(
 	sidebarNav: SidebarNavGroup[],
-	currentPath: string
+	currentPath: string,
 ): NavigationResult {
-	const allItems = getAllNavItems(sidebarNav)
-	const currentIndex = allItems.findIndex((item) => item.href === currentPath)
+	const allItems = getAllNavItems(sidebarNav);
+	const currentIndex = allItems.findIndex((item) => item.href === currentPath);
 
 	if (currentIndex === -1) {
-		return { prev: null, next: null }
+		return { prev: null, next: null };
 	}
 
 	const prev =
@@ -48,7 +48,7 @@ export function getNavigationForPage(
 					title: allItems[currentIndex - 1].title,
 					href: allItems[currentIndex - 1].href,
 				}
-			: null
+			: null;
 
 	const next =
 		currentIndex < allItems.length - 1
@@ -56,7 +56,7 @@ export function getNavigationForPage(
 					title: allItems[currentIndex + 1].title,
 					href: allItems[currentIndex + 1].href,
 				}
-			: null
+			: null;
 
-	return { prev, next }
+	return { prev, next };
 }

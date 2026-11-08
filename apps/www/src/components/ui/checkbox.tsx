@@ -1,10 +1,10 @@
-"use client"
+"use client";
 
-import * as React from "react"
-import { Checkbox as BaseCheckbox } from "@base-ui/react/checkbox"
-import { CheckIcon, MinusIcon } from "lucide-react"
+import type * as React from "react";
+import { Checkbox as BaseCheckbox } from "@base-ui/react/checkbox";
+import { CheckIcon, MinusIcon } from "lucide-react";
 
-import { cn } from "@/lib/utils"
+import { cn } from "@/lib/utils";
 
 function Checkbox({
 	className,
@@ -14,8 +14,8 @@ function Checkbox({
 		<BaseCheckbox.Root
 			data-slot="checkbox"
 			className={cn(
-				"bg-input focus-visible:ring-ring/50 aria-invalid:border-destructive aria-invalid:text-destructive aria-invalid:focus:ring-destructive/50 data-checked:border-primary data-checked:bg-primary data-checked:text-primary-foreground data-indeterminate:text-foreground hover:border-ring/70 flex size-4 items-center justify-center rounded-[4px] border transition-[color,box-shadow,border-color] outline-none focus-visible:ring-[3px] data-disabled:pointer-events-none data-disabled:opacity-50",
-				className
+				"bg-input hover:border-ring/70 focus-visible:ring-ring/50 aria-invalid:border-destructive aria-invalid:text-destructive aria-invalid:focus:ring-destructive/50 data-checked:border-primary data-checked:bg-primary data-checked:text-primary-foreground data-indeterminate:text-foreground flex size-4 items-center justify-center rounded-[4px] border transition-[color,box-shadow,border-color] outline-none focus-visible:ring-[3px] data-disabled:pointer-events-none data-disabled:opacity-50",
+				className,
 			)}
 			{...props}
 		>
@@ -30,7 +30,7 @@ function Checkbox({
 				)}
 			</BaseCheckbox.Indicator>
 		</BaseCheckbox.Root>
-	)
+	);
 }
 
-export { Checkbox }
+export { Checkbox };

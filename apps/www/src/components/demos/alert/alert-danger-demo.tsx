@@ -1,6 +1,6 @@
-import { XCircleIcon } from "lucide-react"
+import { XCircleIcon } from "lucide-react";
 
-import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
+import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 
 export default function AlertDangerDemo() {
 	return (
@@ -12,5 +12,5 @@ export default function AlertDangerDemo() {
 				your subscription anytime.
 			</AlertDescription>
 		</Alert>
-	)
+	);
 }

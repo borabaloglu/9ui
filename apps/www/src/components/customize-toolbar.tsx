@@ -1,39 +1,39 @@
-"use client"
+"use client";
 
-import { useMemo, useRef, useState } from "react"
-import { AnimatePresence, motion } from "framer-motion"
-import { capitalize } from "lodash"
-import { CopyIcon, RotateCcwIcon, Wand2Icon } from "lucide-react"
-import { useTheme } from "next-themes"
-import { useOnClickOutside } from "usehooks-ts"
+import { useMemo, useRef, useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
+import { capitalize } from "lodash";
+import { CopyIcon, RotateCcwIcon, Wand2Icon } from "lucide-react";
+import { useTheme } from "next-themes";
+import { useOnClickOutside } from "usehooks-ts";
 
-import { ThemeCode } from "@/components/theme-code"
-import { Button } from "@/components/ui/button"
+import { ThemeCode } from "@/components/theme-code";
+import { Button } from "@/components/ui/button";
 import {
 	Dialog,
 	DialogContent,
 	DialogDescription,
 	DialogHeader,
 	DialogTitle,
-} from "@/components/ui/dialog"
-import { Label } from "@/components/ui/label"
+} from "@/components/ui/dialog";
+import { Label } from "@/components/ui/label";
 import {
 	Select,
 	SelectContent,
 	SelectItem,
 	SelectTrigger,
 	SelectValue,
-} from "@/components/ui/select"
+} from "@/components/ui/select";
 
-import { colors, PrimaryColor, Shade } from "@/config/colors"
+import { colors, type PrimaryColor, type Shade } from "@/config/colors";
 import {
 	primaryColorOptions,
 	radiusOptions,
 	shadeOptions,
-	ThemeSettings,
-} from "@/config/theme"
+	type ThemeSettings,
+} from "@/config/theme";
 
-import { generateTheme } from "@/lib/generate-theme"
+import { generateTheme } from "@/lib/generate-theme";
 
 const ColorItem = ({ color, name }: { color: string; name: string }) => {
 	return (
@@ -46,53 +46,53 @@ const ColorItem = ({ color, name }: { color: string; name: string }) => {
 			/>
 			<span>{name}</span>
 		</div>
-	)
-}
+	);
+};
 type CustomizeToolbarProps = {
-	theme: ThemeSettings
-	setTheme: (theme: ThemeSettings) => void
-}
+	theme: ThemeSettings;
+	setTheme: (theme: ThemeSettings) => void;
+};
 
 export const CustomizeToolbar = ({
 	theme,
 	setTheme,
 }: CustomizeToolbarProps) => {
-	const { theme: currentTheme } = useTheme()
+	const { theme: currentTheme } = useTheme();
 
-	const ref = useRef(null)
-	const [open, setOpen] = useState(false)
-	const [copyDialogOpen, setCopyDialogOpen] = useState(false)
-	const [isSelectOpen, setIsSelectOpen] = useState(false)
+	const ref = useRef(null);
+	const [open, setOpen] = useState(false);
+	const [copyDialogOpen, setCopyDialogOpen] = useState(false);
+	const [isSelectOpen, setIsSelectOpen] = useState(false);
 
 	useOnClickOutside(ref as never, () => {
 		if (!isSelectOpen) {
-			setOpen(false)
+			setOpen(false);
 		}
-	})
+	});
 
 	const themeVariant = useMemo(() => {
-		return currentTheme === "light" ? "light" : "dark"
-	}, [currentTheme])
+		return currentTheme === "light" ? "light" : "dark";
+	}, [currentTheme]);
 
 	const handleSelectOpenChange = (open: boolean) => {
 		if (open) {
-			setIsSelectOpen(true)
+			setIsSelectOpen(true);
 		} else {
 			setTimeout(() => {
-				setIsSelectOpen(false)
-			}, 100)
+				setIsSelectOpen(false);
+			}, 100);
 		}
-	}
+	};
 
 	const handleValueChange = (
 		key: keyof ThemeSettings,
-		newValue: Shade | PrimaryColor | number | boolean
+		newValue: Shade | PrimaryColor | number | boolean,
 	) => {
 		setTheme({
 			...theme,
 			[key]: newValue,
-		})
-	}
+		});
+	};
 
 	const handleReset = () => {
 		setTheme({
@@ -100,13 +100,13 @@ export const CustomizeToolbar = ({
 			primaryColor: "neutral",
 			radius: 0.625,
 			flat: false,
-		})
-	}
+		});
+	};
 
 	const handleCopy = () => {
-		setOpen(false)
-		setCopyDialogOpen(true)
-	}
+		setOpen(false);
+		setCopyDialogOpen(true);
+	};
 
 	return (
 		<>
@@ -114,7 +114,7 @@ export const CustomizeToolbar = ({
 				<motion.button
 					layoutId="wrapper"
 					onClick={() => {
-						setOpen(true)
+						setOpen(true);
 					}}
 					key="button"
 					className="bg-background h-9 rounded-md border px-4 text-sm font-medium shadow-sm"
@@ -355,11 +355,11 @@ export const CustomizeToolbar = ({
 							theme.primaryColor,
 							theme.radius,
 							theme.flat,
-							false
+							false,
 						)}
 					/>
 				</DialogContent>
 			</Dialog>
 		</>
-	)
-}
+	);
+};

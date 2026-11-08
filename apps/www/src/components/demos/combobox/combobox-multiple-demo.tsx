@@ -1,4 +1,4 @@
-import * as React from "react"
+import * as React from "react";
 
 import {
 	Combobox,
@@ -10,11 +10,11 @@ import {
 	ComboboxItem,
 	ComboboxList,
 	ComboboxValue,
-} from "@/components/ui/combobox"
-import { Label } from "@/components/ui/label"
+} from "@/components/ui/combobox";
+import { Label } from "@/components/ui/label";
 
 export default function ComboboxMultipleDemo() {
-	const containerRef = React.useRef<HTMLDivElement | null>(null)
+	const containerRef = React.useRef<HTMLDivElement | null>(null);
 
 	return (
 		<Combobox items={langs} multiple>
@@ -59,12 +59,12 @@ export default function ComboboxMultipleDemo() {
 				</ComboboxList>
 			</ComboboxContent>
 		</Combobox>
-	)
+	);
 }
 
 interface ProgrammingLanguage {
-	id: string
-	value: string
+	id: string;
+	value: string;
 }
 
 const langs: ProgrammingLanguage[] = [
@@ -79,4 +79,4 @@ const langs: ProgrammingLanguage[] = [
 	{ id: "go", value: "Go" },
 	{ id: "rust", value: "Rust" },
 	{ id: "swift", value: "Swift" },
-]
+];

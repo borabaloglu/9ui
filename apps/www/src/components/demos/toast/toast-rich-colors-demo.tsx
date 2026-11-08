@@ -1,11 +1,11 @@
-"use client"
+"use client";
 
-import { useToast } from "@/hooks/use-toast"
+import { Button } from "@/components/ui/button";
 
-import { Button } from "@/components/ui/button"
+import { useToast } from "@/hooks/use-toast";
 
 export default function ToastRichColorsDemo() {
-	const toast = useToast()
+	const toast = useToast();
 
 	return (
 		<div className="grid grid-cols-2 gap-2">
@@ -50,5 +50,5 @@ export default function ToastRichColorsDemo() {
 				info
 			</Button>
 		</div>
-	)
+	);
 }

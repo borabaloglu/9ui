@@ -1,10 +1,8 @@
-import React from "react"
-
-import { CodeBar } from "@/components/code-bar"
-import { CodeBlock } from "@/components/code-block"
+import { CodeBar } from "@/components/code-bar";
+import { CodeBlock } from "@/components/code-block";
 
 interface ComponentAnatomyProps {
-	content: string
+	content: string;
 }
 
 export const ComponentAnatomy = ({ content }: ComponentAnatomyProps) => {
@@ -18,5 +16,5 @@ export const ComponentAnatomy = ({ content }: ComponentAnatomyProps) => {
 			/>
 			<CodeBlock content={content} />
 		</div>
-	)
-}
+	);
+};

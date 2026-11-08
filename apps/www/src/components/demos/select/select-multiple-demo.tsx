@@ -4,7 +4,7 @@ import {
 	SelectItem,
 	SelectTrigger,
 	SelectValue,
-} from "@/components/ui/select"
+} from "@/components/ui/select";
 
 const languages = {
 	javascript: "JavaScript",
@@ -17,21 +17,21 @@ const languages = {
 	rust: "Rust",
 	go: "Go",
 	swift: "Swift",
-}
+};
 
-type Language = keyof typeof languages
+type Language = keyof typeof languages;
 
-const values = Object.keys(languages) as Language[]
+const values = Object.keys(languages) as Language[];
 
 function renderValue(value: Language[]) {
 	if (value.length === 0) {
-		return "Select languages..."
+		return "Select languages...";
 	}
 
-	const firstLanguage = languages[value[0]]
+	const firstLanguage = languages[value[0]];
 	const additionalLanguages =
-		value.length > 1 ? ` (+${value.length - 1} more)` : ""
-	return firstLanguage + additionalLanguages
+		value.length > 1 ? ` (+${value.length - 1} more)` : "";
+	return firstLanguage + additionalLanguages;
 }
 
 export default function SelectMultipleDemo() {
@@ -50,5 +50,5 @@ export default function SelectMultipleDemo() {
 				</SelectContent>
 			</Select>
 		</div>
-	)
+	);
 }

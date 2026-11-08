@@ -1,12 +1,12 @@
-"use client"
+"use client";
 
-import { useState } from "react"
+import { useState } from "react";
 
-import { Calendar } from "@/components/ui/calendar"
-import { Card, CardContent } from "@/components/ui/card"
+import { Calendar } from "@/components/ui/calendar";
+import { Card, CardContent } from "@/components/ui/card";
 
 export function CalendarCard() {
-	const [selectedDate, setSelectedDate] = useState<Date | undefined>(undefined)
+	const [selectedDate, setSelectedDate] = useState<Date | undefined>(undefined);
 
 	return (
 		<Card className="p-0">
@@ -20,5 +20,5 @@ export function CalendarCard() {
 				/>
 			</CardContent>
 		</Card>
-	)
+	);
 }

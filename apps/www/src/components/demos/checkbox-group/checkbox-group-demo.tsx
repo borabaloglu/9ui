@@ -1,15 +1,15 @@
-"use client"
+"use client";
 
-import { useState } from "react"
+import { useState } from "react";
 
-import { Checkbox } from "@/components/ui/checkbox"
-import { CheckboxGroup } from "@/components/ui/checkbox-group"
-import { Label } from "@/components/ui/label"
+import { Checkbox } from "@/components/ui/checkbox";
+import { CheckboxGroup } from "@/components/ui/checkbox-group";
+import { Label } from "@/components/ui/label";
 
-const groceries = ["milk", "cheese", "bread", "apples"]
+const groceries = ["milk", "cheese", "bread", "apples"];
 
 export default function CheckboxGroupDemo() {
-	const [checkedItems, setCheckedItems] = useState<string[]>([])
+	const [checkedItems, setCheckedItems] = useState<string[]>([]);
 
 	return (
 		<CheckboxGroup
@@ -35,5 +35,5 @@ export default function CheckboxGroupDemo() {
 				</Label>
 			))}
 		</CheckboxGroup>
-	)
+	);
 }

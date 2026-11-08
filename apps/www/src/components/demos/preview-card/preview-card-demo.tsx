@@ -1,11 +1,11 @@
-"use client"
+"use client";
 
-import { Icons } from "@/components/icons"
+import { Icons } from "@/components/icons";
 import {
 	PreviewCard,
 	PreviewCardContent,
 	PreviewCardTrigger,
-} from "@/components/ui/preview-card"
+} from "@/components/ui/preview-card";
 
 export default function PreviewCardDemo() {
 	return (
@@ -25,6 +25,7 @@ export default function PreviewCardDemo() {
 						href="https://base-ui.com"
 						className="underline underline-offset-2"
 						target="_blank"
+						rel="noopener"
 					>
 						Base UI
 					</a>{" "}
@@ -33,6 +34,7 @@ export default function PreviewCardDemo() {
 						href="https://tailwindcss.com"
 						className="underline underline-offset-2"
 						target="_blank"
+						rel="noopener"
 					>
 						Tailwind CSS
 					</a>
@@ -45,6 +47,7 @@ export default function PreviewCardDemo() {
 							href="https://x.com/borabalogluu"
 							className="underline underline-offset-2"
 							target="_blank"
+							rel="noopener"
 						>
 							Bora Baloglu
 						</a>
@@ -55,6 +58,7 @@ export default function PreviewCardDemo() {
 							href="https://github.com/borabaloglu/9ui"
 							className="underline underline-offset-2"
 							target="_blank"
+							rel="noopener"
 						>
 							Github
 						</a>
@@ -65,6 +69,7 @@ export default function PreviewCardDemo() {
 							href="https://www.9ui.dev"
 							className="underline underline-offset-2"
 							target="_blank"
+							rel="noopener"
 						>
 							9ui.dev
 						</a>
@@ -72,5 +77,5 @@ export default function PreviewCardDemo() {
 				</div>
 			</PreviewCardContent>
 		</PreviewCard>
-	)
+	);
 }

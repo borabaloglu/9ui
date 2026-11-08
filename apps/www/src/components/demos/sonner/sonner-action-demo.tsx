@@ -1,6 +1,6 @@
-import { toast } from "sonner"
+import { toast } from "sonner";
 
-import { Button } from "@/components/ui/button"
+import { Button } from "@/components/ui/button";
 
 export default function SonnerActionDemo() {
 	return (
@@ -17,5 +17,5 @@ export default function SonnerActionDemo() {
 		>
 			Show Toast
 		</Button>
-	)
+	);
 }

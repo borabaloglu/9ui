@@ -1,9 +1,9 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import { StarIcon } from "lucide-react"
+import { useState } from "react";
+import { StarIcon } from "lucide-react";
 
-import { Button } from "@/components/ui/button"
+import { Button } from "@/components/ui/button";
 import {
 	Card,
 	CardContent,
@@ -11,21 +11,21 @@ import {
 	CardFooter,
 	CardHeader,
 	CardTitle,
-} from "@/components/ui/card"
-import { Textarea } from "@/components/ui/textarea"
+} from "@/components/ui/card";
+import { Textarea } from "@/components/ui/textarea";
 
-import { cn } from "@/lib/utils"
+import { cn } from "@/lib/utils";
 
 export function FeedbackCard() {
-	const [rating, setRating] = useState<number | undefined>(undefined)
+	const [rating, setRating] = useState<number | undefined>(undefined);
 
 	const handleChangeRating = (newRating: number) => {
 		if (newRating === rating) {
-			setRating(undefined)
+			setRating(undefined);
 		} else {
-			setRating(newRating)
+			setRating(newRating);
 		}
-	}
+	};
 
 	return (
 		<Card className="w-full">
@@ -44,7 +44,7 @@ export function FeedbackCard() {
 								"size-8 cursor-pointer transition-all",
 								rating && star <= rating
 									? "fill-amber-300 text-amber-300"
-									: "text-muted-foreground fill-none"
+									: "text-muted-foreground fill-none",
 							)}
 							onClick={() => handleChangeRating(star)}
 						/>
@@ -59,5 +59,5 @@ export function FeedbackCard() {
 				<Button className="w-full">Submit Feedback</Button>
 			</CardFooter>
 		</Card>
-	)
+	);
 }

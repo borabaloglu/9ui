@@ -1,10 +1,10 @@
-"use client"
+"use client";
 
-import { zodResolver } from "@hookform/resolvers/zod"
-import { useForm } from "react-hook-form"
-import { z } from "zod"
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useForm } from "react-hook-form";
+import { z } from "zod";
 
-import { Button } from "@/components/ui/button"
+import { Button } from "@/components/ui/button";
 import {
 	Form,
 	FormControl,
@@ -13,17 +13,17 @@ import {
 	FormItem,
 	FormLabel,
 	FormMessage,
-} from "@/components/ui/form"
-import { Input } from "@/components/ui/input"
+} from "@/components/ui/form";
+import { Input } from "@/components/ui/input";
 
 const schema = z.object({
 	displayName: z
 		.string()
 		.min(3, { message: "Please enter at least 3 characters." }),
 	email: z.string().email({ message: "Please enter a valid email address." }),
-})
+});
 
-type FormValues = z.infer<typeof schema>
+type FormValues = z.infer<typeof schema>;
 
 export default function FormDemo() {
 	const form = useForm<FormValues>({
@@ -32,11 +32,11 @@ export default function FormDemo() {
 			displayName: "",
 			email: "",
 		},
-	})
+	});
 
 	const onSubmit = (data: FormValues) => {
-		console.log(data)
-	}
+		console.log(data);
+	};
 
 	return (
 		<Form {...form}>
@@ -87,5 +87,5 @@ export default function FormDemo() {
 				<Button type="submit">Submit</Button>
 			</form>
 		</Form>
-	)
+	);
 }

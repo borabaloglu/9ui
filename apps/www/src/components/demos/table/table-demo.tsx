@@ -6,7 +6,7 @@ import {
 	TableHead,
 	TableHeader,
 	TableRow,
-} from "@/components/ui/table"
+} from "@/components/ui/table";
 
 const movies = [
 	{ title: "The Shawshank Redemption", year: 1994, rating: 9.3 },
@@ -27,7 +27,7 @@ const movies = [
 		rating: 8.8,
 	},
 	{ title: "Forrest Gump", year: 1994, rating: 8.8 },
-]
+];
 
 export default function TableDemo() {
 	return (
@@ -54,5 +54,5 @@ export default function TableDemo() {
 				</TableBody>
 			</Table>
 		</div>
-	)
+	);
 }

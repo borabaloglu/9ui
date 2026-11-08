@@ -1,4 +1,4 @@
-import { Textarea } from "@/components/ui/textarea"
+import { Textarea } from "@/components/ui/textarea";
 
 export default function TextareaErrorDemo() {
 	return (
@@ -7,5 +7,5 @@ export default function TextareaErrorDemo() {
 			placeholder="Enter your message..."
 			aria-invalid
 		/>
-	)
+	);
 }

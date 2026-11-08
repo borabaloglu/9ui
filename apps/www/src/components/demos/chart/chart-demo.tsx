@@ -1,6 +1,6 @@
-"use client"
+"use client";
 
-import { Bar, BarChart, CartesianGrid, XAxis } from "recharts"
+import { Bar, BarChart, CartesianGrid, XAxis } from "recharts";
 
 import {
 	Card,
@@ -9,13 +9,13 @@ import {
 	CardFooter,
 	CardHeader,
 	CardTitle,
-} from "@/components/ui/card"
+} from "@/components/ui/card";
 import {
-	ChartConfig,
+	type ChartConfig,
 	ChartContainer,
 	ChartTooltip,
 	ChartTooltipContent,
-} from "@/components/ui/chart"
+} from "@/components/ui/chart";
 
 const chartData = [
 	{ month: "Jan", revenue: 1500 },
@@ -30,7 +30,7 @@ const chartData = [
 	{ month: "Oct", revenue: 5200 },
 	{ month: "Nov", revenue: 6000 },
 	{ month: "Dec", revenue: 7200 },
-]
+];
 
 const chartConfig = {
 	revenue: {
@@ -41,12 +41,12 @@ const chartConfig = {
 		label: "Expenses",
 		color: "var(--chart-3)",
 	},
-} satisfies ChartConfig
+} satisfies ChartConfig;
 
 export default function ChartDemo() {
-	const totalRevenue = chartData.reduce((sum, item) => sum + item.revenue, 0)
-	const averageRevenue = totalRevenue / chartData.length
-	const highestRevenue = Math.max(...chartData.map((item) => item.revenue))
+	const totalRevenue = chartData.reduce((sum, item) => sum + item.revenue, 0);
+	const averageRevenue = totalRevenue / chartData.length;
+	const highestRevenue = Math.max(...chartData.map((item) => item.revenue));
 
 	return (
 		<Card className="flex w-full flex-col">
@@ -96,5 +96,5 @@ export default function ChartDemo() {
 				</div>
 			</CardFooter>
 		</Card>
-	)
+	);
 }

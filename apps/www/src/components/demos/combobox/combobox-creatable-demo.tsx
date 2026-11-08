@@ -1,7 +1,7 @@
-import * as React from "react"
-import { Plus } from "lucide-react"
+import * as React from "react";
+import { Plus } from "lucide-react";
 
-import { Button } from "@/components/ui/button"
+import { Button } from "@/components/ui/button";
 import {
 	Combobox,
 	ComboboxChip,
@@ -12,83 +12,83 @@ import {
 	ComboboxItem,
 	ComboboxList,
 	ComboboxValue,
-} from "@/components/ui/combobox"
+} from "@/components/ui/combobox";
 import {
 	Dialog,
 	DialogContent,
 	DialogDescription,
 	DialogFooter,
 	DialogTitle,
-} from "@/components/ui/dialog"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
+} from "@/components/ui/dialog";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 
 export default function ComboboxCreatableDemo() {
-	const id = React.useId()
+	const id = React.useId();
 
-	const [labels, setLabels] = React.useState<LabelItem[]>(initialLabels)
-	const [selected, setSelected] = React.useState<LabelItem[]>([])
-	const [query, setQuery] = React.useState("")
-	const [openDialog, setOpenDialog] = React.useState(false)
+	const [labels, setLabels] = React.useState<LabelItem[]>(initialLabels);
+	const [selected, setSelected] = React.useState<LabelItem[]>([]);
+	const [query, setQuery] = React.useState("");
+	const [openDialog, setOpenDialog] = React.useState(false);
 
-	const containerRef = React.useRef<HTMLDivElement | null>(null)
-	const createInputRef = React.useRef<HTMLInputElement | null>(null)
-	const pendingQueryRef = React.useRef("")
+	const containerRef = React.useRef<HTMLDivElement | null>(null);
+	const createInputRef = React.useRef<HTMLInputElement | null>(null);
+	const pendingQueryRef = React.useRef("");
 
 	function handleCreate() {
-		const input = createInputRef.current
-		const value = input ? input.value.trim() : ""
+		const input = createInputRef.current;
+		const value = input ? input.value.trim() : "";
 		if (!value) {
-			return
+			return;
 		}
 
-		const normalized = value.toLocaleLowerCase()
-		const baseId = normalized.replace(/\s+/g, "-")
+		const normalized = value.toLocaleLowerCase();
+		const baseId = normalized.replace(/\s+/g, "-");
 		const existing = labels.find(
-			(l) => l.value.trim().toLocaleLowerCase() === normalized
-		)
+			(l) => l.value.trim().toLocaleLowerCase() === normalized,
+		);
 
 		if (existing) {
 			setSelected((prev) =>
-				prev.some((i) => i.id === existing.id) ? prev : [...prev, existing]
-			)
-			setOpenDialog(false)
-			setQuery("")
-			return
+				prev.some((i) => i.id === existing.id) ? prev : [...prev, existing],
+			);
+			setOpenDialog(false);
+			setQuery("");
+			return;
 		}
 
 		// Ensure we don't collide with an existing id (e.g., value "docs" vs. existing id "docs")
-		const existingIds = new Set(labels.map((l) => l.id))
-		let uniqueId = baseId
+		const existingIds = new Set(labels.map((l) => l.id));
+		let uniqueId = baseId;
 		if (existingIds.has(uniqueId)) {
-			let i = 2
+			let i = 2;
 			while (existingIds.has(`${baseId}-${i}`)) {
-				i += 1
+				i += 1;
 			}
-			uniqueId = `${baseId}-${i}`
+			uniqueId = `${baseId}-${i}`;
 		}
 
-		const newItem: LabelItem = { id: uniqueId, value }
+		const newItem: LabelItem = { id: uniqueId, value };
 
 		if (!selected.find((item) => item.id === newItem.id)) {
-			setLabels((prev) => [...prev, newItem])
-			setSelected((prev) => [...prev, newItem])
+			setLabels((prev) => [...prev, newItem]);
+			setSelected((prev) => [...prev, newItem]);
 		}
 
-		setOpenDialog(false)
-		setQuery("")
+		setOpenDialog(false);
+		setQuery("");
 	}
 
 	function handleCreateSubmit(event: React.FormEvent<HTMLFormElement>) {
-		event.preventDefault()
-		handleCreate()
+		event.preventDefault();
+		handleCreate();
 	}
 
-	const trimmed = query.trim()
-	const lowered = trimmed.toLocaleLowerCase()
+	const trimmed = query.trim();
+	const lowered = trimmed.toLocaleLowerCase();
 	const exactExists = labels.some(
-		(l) => l.value.trim().toLocaleLowerCase() === lowered
-	)
+		(l) => l.value.trim().toLocaleLowerCase() === lowered,
+	);
 	// Show the creatable item alongside matches if there's no exact match
 	const itemsForView: Array<LabelItem> =
 		trimmed !== "" && !exactExists
@@ -100,7 +100,7 @@ export default function ComboboxCreatableDemo() {
 						value: `Create "${trimmed}"`,
 					},
 				]
-			: labels
+			: labels;
 
 	return (
 		<React.Fragment>
@@ -108,45 +108,45 @@ export default function ComboboxCreatableDemo() {
 				items={itemsForView}
 				multiple
 				onValueChange={(value) => {
-					const next = value as LabelItem[]
-					const last = next[next.length - 1]
-					if (last && last.creatable) {
-						pendingQueryRef.current = last.creatable
-						setOpenDialog(true)
-						return
+					const next = value as LabelItem[];
+					const last = next[next.length - 1];
+					if (last?.creatable) {
+						pendingQueryRef.current = last.creatable;
+						setOpenDialog(true);
+						return;
 					}
-					const clean = next.filter((i: LabelItem) => !i.creatable)
-					setSelected(clean)
-					setQuery("")
+					const clean = next.filter((i: LabelItem) => !i.creatable);
+					setSelected(clean);
+					setQuery("");
 				}}
 				value={selected}
 				inputValue={query}
 				onInputValueChange={setQuery}
-				onOpenChange={(open, details) => {
+				onOpenChange={(_open, details) => {
 					if ("key" in details.event && details.event.key === "Enter") {
 						// When pressing Enter:
 						// - If the typed value exactly matches an existing item, add that item to the selected chips
 						// - Otherwise, create a new item
 						if (trimmed === "") {
-							return
+							return;
 						}
 
 						const existing = labels.find(
-							(l) => l.value.trim().toLocaleLowerCase() === lowered
-						)
+							(l) => l.value.trim().toLocaleLowerCase() === lowered,
+						);
 
 						if (existing) {
 							setSelected((prev) =>
 								prev.some((i) => i.id === existing.id)
 									? prev
-									: [...prev, existing]
-							)
-							setQuery("")
-							return
+									: [...prev, existing],
+							);
+							setQuery("");
+							return;
 						}
 
-						pendingQueryRef.current = trimmed
-						setOpenDialog(true)
+						pendingQueryRef.current = trimmed;
+						setOpenDialog(true);
 					}
 				}}
 			>
@@ -220,13 +220,13 @@ export default function ComboboxCreatableDemo() {
 				</DialogContent>
 			</Dialog>
 		</React.Fragment>
-	)
+	);
 }
 
 interface LabelItem {
-	creatable?: string
-	id: string
-	value: string
+	creatable?: string;
+	id: string;
+	value: string;
 }
 
 const initialLabels: LabelItem[] = [
@@ -235,4 +235,4 @@ const initialLabels: LabelItem[] = [
 	{ id: "enhancement", value: "enhancement" },
 	{ id: "help-wanted", value: "help wanted" },
 	{ id: "good-first-issue", value: "good first issue" },
-]
+];

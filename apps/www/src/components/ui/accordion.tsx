@@ -1,13 +1,13 @@
-import * as React from "react"
-import { Accordion as BaseAccordion } from "@base-ui/react/accordion"
-import { ChevronDownIcon } from "lucide-react"
+import type * as React from "react";
+import { Accordion as BaseAccordion } from "@base-ui/react/accordion";
+import { ChevronDownIcon } from "lucide-react";
 
-import { cn } from "@/lib/utils"
+import { cn } from "@/lib/utils";
 
 function Accordion({
 	...props
 }: React.ComponentProps<typeof BaseAccordion.Root>) {
-	return <BaseAccordion.Root data-slot="accordion" {...props} />
+	return <BaseAccordion.Root data-slot="accordion" {...props} />;
 }
 
 function AccordionItem({
@@ -20,7 +20,7 @@ function AccordionItem({
 			className={cn("border-b last:border-b-0", className)}
 			{...props}
 		/>
-	)
+	);
 }
 
 function AccordionTrigger({
@@ -34,7 +34,7 @@ function AccordionTrigger({
 				data-slot="accordion-trigger"
 				className={cn(
 					"focus-visible:ring-ring/50 flex flex-1 items-center justify-between gap-4 rounded-md py-3 text-left text-sm font-medium underline-offset-2 outline-none hover:underline focus-visible:ring-[3px] data-disabled:pointer-events-none data-disabled:opacity-50 data-panel-open:[&_*[data-slot=accordion-icon]]:rotate-180",
-					className
+					className,
 				)}
 				{...props}
 			>
@@ -45,7 +45,7 @@ function AccordionTrigger({
 				/>
 			</BaseAccordion.Trigger>
 		</BaseAccordion.Header>
-	)
+	);
 }
 
 function AccordionContent({
@@ -61,7 +61,7 @@ function AccordionContent({
 		>
 			<div className={cn("pb-2.5", className)}>{children}</div>
 		</BaseAccordion.Panel>
-	)
+	);
 }
 
-export { Accordion, AccordionItem, AccordionTrigger, AccordionContent }
+export { Accordion, AccordionContent, AccordionItem, AccordionTrigger };

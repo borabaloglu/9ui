@@ -3,7 +3,7 @@ import {
 	LayoutGridIcon,
 	PlusIcon,
 	UsersIcon,
-} from "lucide-react"
+} from "lucide-react";
 
 import {
 	Command,
@@ -14,8 +14,8 @@ import {
 	CommandList,
 	CommandSeparator,
 	CommandShortcut,
-} from "@/components/ui/command"
-import { Kbd } from "@/components/ui/kbd"
+} from "@/components/ui/command";
+import { Kbd } from "@/components/ui/kbd";
 
 export default function CommandDemo() {
 	return (
@@ -74,5 +74,5 @@ export default function CommandDemo() {
 				</CommandGroup>
 			</CommandList>
 		</Command>
-	)
+	);
 }

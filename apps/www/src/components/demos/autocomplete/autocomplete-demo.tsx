@@ -1,5 +1,3 @@
-import * as React from "react"
-
 import {
 	Autocomplete,
 	AutocompleteContent,
@@ -7,8 +5,8 @@ import {
 	AutocompleteInput,
 	AutocompleteItem,
 	AutocompleteList,
-} from "@/components/ui/autocomplete"
-import { Label } from "@/components/ui/label"
+} from "@/components/ui/autocomplete";
+import { Label } from "@/components/ui/label";
 
 export default function AutocompleteDemo() {
 	return (
@@ -33,12 +31,12 @@ export default function AutocompleteDemo() {
 				</AutocompleteContent>
 			</Autocomplete>
 		</div>
-	)
+	);
 }
 
 interface Tag {
-	id: string
-	value: string
+	id: string;
+	value: string;
 }
 
 const tags: Tag[] = [
@@ -66,4 +64,4 @@ const tags: Tag[] = [
 	{ id: "c-switch", value: "component: switch" },
 	{ id: "c-tabs", value: "component: tabs" },
 	{ id: "c-tooltip", value: "component: tooltip" },
-]
+];

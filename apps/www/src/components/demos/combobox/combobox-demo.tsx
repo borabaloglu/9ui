@@ -1,5 +1,3 @@
-import * as React from "react"
-
 import {
 	Combobox,
 	ComboboxContent,
@@ -7,8 +5,8 @@ import {
 	ComboboxInput,
 	ComboboxItem,
 	ComboboxList,
-} from "@/components/ui/combobox"
-import { Label } from "@/components/ui/label"
+} from "@/components/ui/combobox";
+import { Label } from "@/components/ui/label";
 
 export default function ComboboxDemo() {
 	return (
@@ -33,7 +31,7 @@ export default function ComboboxDemo() {
 				</ComboboxList>
 			</ComboboxContent>
 		</Combobox>
-	)
+	);
 }
 
 const fruits = [
@@ -62,4 +60,4 @@ const fruits = [
 	"Apricot",
 	"Grapefruit",
 	"Passionfruit",
-]
+];

@@ -1,7 +1,7 @@
-"use client"
+"use client";
 
-import { TrendingUpIcon } from "lucide-react"
-import { Bar, BarChart, CartesianGrid, Legend, XAxis } from "recharts"
+import { TrendingUpIcon } from "lucide-react";
+import { Bar, BarChart, CartesianGrid, Legend, XAxis } from "recharts";
 
 import {
 	Card,
@@ -10,13 +10,13 @@ import {
 	CardFooter,
 	CardHeader,
 	CardTitle,
-} from "@/components/ui/card"
+} from "@/components/ui/card";
 import {
-	ChartConfig,
+	type ChartConfig,
 	ChartContainer,
 	ChartTooltip,
 	ChartTooltipContent,
-} from "@/components/ui/chart"
+} from "@/components/ui/chart";
 
 const chartData = [
 	{ month: "Jan", revenue: 1500, expenses: 1200 },
@@ -25,7 +25,7 @@ const chartData = [
 	{ month: "Apr", revenue: 2100, expenses: 1900 },
 	{ month: "May", revenue: 4000, expenses: 3500 },
 	{ month: "Jun", revenue: 3700, expenses: 3200 },
-]
+];
 
 const chartConfig = {
 	revenue: {
@@ -36,13 +36,13 @@ const chartConfig = {
 		label: "Expenses",
 		color: "var(--chart-3)",
 	},
-} satisfies ChartConfig
+} satisfies ChartConfig;
 
 export default function ChartBarDemo() {
-	const totalRevenue = chartData.reduce((sum, item) => sum + item.revenue, 0)
-	const totalExpenses = chartData.reduce((sum, item) => sum + item.expenses, 0)
-	const netProfit = totalRevenue - totalExpenses
-	const profitMargin = (netProfit / totalRevenue) * 100
+	const totalRevenue = chartData.reduce((sum, item) => sum + item.revenue, 0);
+	const totalExpenses = chartData.reduce((sum, item) => sum + item.expenses, 0);
+	const netProfit = totalRevenue - totalExpenses;
+	const profitMargin = (netProfit / totalRevenue) * 100;
 
 	return (
 		<Card className="flex w-full flex-col">
@@ -105,5 +105,5 @@ export default function ChartBarDemo() {
 				</div>
 			</CardFooter>
 		</Card>
-	)
+	);
 }

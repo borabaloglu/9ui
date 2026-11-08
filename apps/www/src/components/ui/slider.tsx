@@ -1,7 +1,7 @@
-import * as React from "react"
-import { Slider as BaseSlider } from "@base-ui/react/slider"
+import * as React from "react";
+import { Slider as BaseSlider } from "@base-ui/react/slider";
 
-import { cn } from "@/lib/utils"
+import { cn } from "@/lib/utils";
 
 function Slider({
 	className,
@@ -19,8 +19,8 @@ function Slider({
 				: Array.isArray(defaultValue)
 					? defaultValue
 					: [min, max],
-		[value, defaultValue, min, max]
-	)
+		[value, defaultValue, min, max],
+	);
 
 	return (
 		<BaseSlider.Root
@@ -31,7 +31,7 @@ function Slider({
 			max={max}
 			className={cn(
 				"relative w-full touch-none select-none data-disabled:pointer-events-none data-disabled:opacity-50 data-[orientation=vertical]:h-full data-[orientation=vertical]:min-h-44 data-[orientation=vertical]:w-auto data-[orientation=vertical]:flex-col",
-				className
+				className,
 			)}
 			{...props}
 		>
@@ -58,7 +58,7 @@ function Slider({
 			</BaseSlider.Control>
 			{children}
 		</BaseSlider.Root>
-	)
+	);
 }
 
 function SliderValue({
@@ -70,11 +70,11 @@ function SliderValue({
 			data-slot="slider-value"
 			className={cn(
 				"text-foreground mt-2 flex justify-end text-sm font-medium",
-				className
+				className,
 			)}
 			{...props}
 		/>
-	)
+	);
 }
 
-export { Slider, SliderValue }
+export { Slider, SliderValue };

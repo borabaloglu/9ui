@@ -1,28 +1,29 @@
-"use client"
+"use client";
 
-import { toastManager, useToast } from "@/hooks/use-toast"
-import { Toast } from "@base-ui/react/toast"
+import { Toast } from "@base-ui/react/toast";
 import {
 	CircleAlert,
 	CircleCheck,
 	Info,
 	Loader,
 	TriangleAlert,
-} from "lucide-react"
+} from "lucide-react";
 
-import { buttonVariants } from "@/components/ui/button"
+import { buttonVariants } from "@/components/ui/button";
 
-import { cn } from "@/lib/utils"
+import { toastManager, useToast } from "@/hooks/use-toast";
+
+import { cn } from "@/lib/utils";
 
 const TOAST_ICONS: {
-	[key: string]: React.ReactNode
+	[key: string]: React.ReactNode;
 } = {
 	loading: <Loader className="animate-spin" />,
 	success: <CircleCheck />,
 	error: <CircleAlert />,
 	info: <Info />,
 	warning: <TriangleAlert />,
-}
+};
 
 function ToastProvider({
 	children,
@@ -33,11 +34,11 @@ function ToastProvider({
 			{children}
 			<ToastList />
 		</Toast.Provider>
-	)
+	);
 }
 
 function ToastList() {
-	const { toasts } = useToast()
+	const { toasts } = useToast();
 
 	return (
 		<Toast.Portal data-slot="toast-portal">
@@ -74,13 +75,13 @@ function ToastList() {
 							"data-ending-style:data-[swipe-direction=down]:[transform:translateY(calc(var(--toast-swipe-movement-y)+150%))] data-expanded:data-ending-style:data-[swipe-direction=down]:[transform:translateY(calc(var(--toast-swipe-movement-y)+150%))]",
 							// Type-specific styles
 							toast.type === "success" &&
-								"bg-success border-success-border text-success-foreground",
+								"border-success-border bg-success text-success-foreground",
 							toast.type === "error" &&
-								"bg-danger border-danger-border text-danger-foreground",
+								"border-danger-border bg-danger text-danger-foreground",
 							toast.type === "info" &&
-								"bg-info border-info-border text-info-foreground",
+								"border-info-border bg-info text-info-foreground",
 							toast.type === "warning" &&
-								"bg-warning border-warning-border text-warning-foreground"
+								"border-warning-border bg-warning text-warning-foreground",
 						)}
 					>
 						<Toast.Content
@@ -112,7 +113,7 @@ function ToastList() {
 								<Toast.Action
 									className={cn(
 										buttonVariants({ size: "sm" }),
-										"h-6 px-2 text-xs font-medium"
+										"h-6 px-2 text-xs font-medium",
 									)}
 									data-slot="toast-action"
 								>
@@ -124,7 +125,7 @@ function ToastList() {
 				))}
 			</Toast.Viewport>
 		</Toast.Portal>
-	)
+	);
 }
 
-export { ToastProvider }
+export { ToastProvider };

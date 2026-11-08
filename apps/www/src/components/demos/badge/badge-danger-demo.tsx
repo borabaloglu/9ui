@@ -1,5 +1,5 @@
-import { Badge } from "@/components/ui/badge"
+import { Badge } from "@/components/ui/badge";
 
 export default function BadgeDangerDemo() {
-	return <Badge variant="danger">Danger</Badge>
+	return <Badge variant="danger">Danger</Badge>;
 }

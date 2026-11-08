@@ -1,6 +1,6 @@
-import { DocsSidebarNav } from "@/components/sidebar"
+import { DocsSidebarNav } from "@/components/sidebar";
 
-import { getSidebarNav } from "@/lib/source"
+import { getSidebarNav } from "@/lib/source";
 
 const DocsLayout = ({ children }: { children: React.ReactNode }) => (
 	<div className="container mx-auto gap-8 px-4 md:grid md:grid-cols-[220px_minmax(0,1fr)] xl:grid-cols-[240px_1fr] xl:px-0">
@@ -13,6 +13,6 @@ const DocsLayout = ({ children }: { children: React.ReactNode }) => (
 			{children}
 		</main>
 	</div>
-)
+);
 
-export default DocsLayout
+export default DocsLayout;

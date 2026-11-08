@@ -1,16 +1,16 @@
-import { useState } from "react"
-import { ChevronRightIcon } from "lucide-react"
+import { useState } from "react";
+import { ChevronRightIcon } from "lucide-react";
 
 import {
 	Collapsible,
 	CollapsibleContent,
 	CollapsibleTrigger,
-} from "@/components/ui/collapsible"
+} from "@/components/ui/collapsible";
 
-import { cn } from "@/lib/utils"
+import { cn } from "@/lib/utils";
 
 export default function CollapsibleDemo() {
-	const [open, setOpen] = useState(false)
+	const [open, setOpen] = useState(false);
 
 	return (
 		<Collapsible
@@ -32,5 +32,5 @@ export default function CollapsibleDemo() {
 				</ol>
 			</CollapsibleContent>
 		</Collapsible>
-	)
+	);
 }

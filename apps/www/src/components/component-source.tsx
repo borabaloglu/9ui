@@ -1,15 +1,15 @@
-"use client"
+"use client";
 
-import * as React from "react"
+import * as React from "react";
 
-import { CodeBar } from "@/components/code-bar"
-import { Button } from "@/components/ui/button"
+import { CodeBar } from "@/components/code-bar";
+import { Button } from "@/components/ui/button";
 
-import { cn } from "@/lib/utils"
+import { cn } from "@/lib/utils";
 
 interface ComponentSourceProps extends React.HTMLAttributes<HTMLDivElement> {
-	name: string
-	__source__: string
+	name: string;
+	__source__: string;
 }
 
 export const ComponentSource = ({
@@ -17,7 +17,7 @@ export const ComponentSource = ({
 	__source__,
 	children,
 }: ComponentSourceProps) => {
-	const [expanded, setExpanded] = React.useState(false)
+	const [expanded, setExpanded] = React.useState(false);
 
 	return (
 		<div className="mt-4 overflow-hidden rounded-lg border">
@@ -32,13 +32,13 @@ export const ComponentSource = ({
 				<div
 					className={cn(
 						"overflow-hidden transition-none",
-						!expanded && "max-h-32"
+						!expanded && "max-h-32",
 					)}
 				>
 					<div
 						className={cn(
 							"[&_pre]:max-h-[600px] [&_pre]:!pb-16",
-							expanded ? "[&>pre]:overflow-auto" : "[&>pre]:overflow-hidden"
+							expanded ? "[&>pre]:overflow-auto" : "[&>pre]:overflow-hidden",
 						)}
 					>
 						{children}
@@ -47,7 +47,7 @@ export const ComponentSource = ({
 				<div
 					className={cn(
 						"from-background/50 to-background/90 absolute flex items-center justify-center bg-gradient-to-b p-2",
-						expanded ? "inset-x-0 bottom-0 h-12" : "inset-0"
+						expanded ? "inset-x-0 bottom-0 h-12" : "inset-0",
 					)}
 				>
 					<Button
@@ -60,5 +60,5 @@ export const ComponentSource = ({
 				</div>
 			</div>
 		</div>
-	)
-}
+	);
+};
