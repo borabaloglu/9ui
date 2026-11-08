@@ -1,10 +1,7 @@
-import Link from "next/link"
-import { ArrowUpRightIcon, BookOpenIcon } from "lucide-react"
-
 import Examples from "@/components/examples"
 import { FlickeringGrid } from "@/components/flickering-background"
+import { HeroActions } from "@/components/hero-actions"
 import { Badge } from "@/components/ui/badge"
-import { Button } from "@/components/ui/button"
 
 const Home = () => (
 	<div className="dark:border-border/40 relative container mx-auto space-y-6 border-dashed py-4 xl:border-x">
@@ -42,30 +39,7 @@ const Home = () => (
 					</a>{" "}
 					. Easy to customize. Free and open source.
 				</p>
-				<div className="mt-4 flex items-center gap-4">
-					<Button
-						className="gap-2"
-						render={
-							<Link href="/docs">
-								<BookOpenIcon className="size-3.5" />
-								Get Started
-							</Link>
-						}
-						nativeButton={false}
-					/>
-
-					<Button
-						variant="outline"
-						className="group gap-2"
-						render={
-							<Link href="/docs/components">
-								Components
-								<ArrowUpRightIcon className="size-3.5 transition-transform duration-300 group-hover:rotate-45" />
-							</Link>
-						}
-						nativeButton={false}
-					/>
-				</div>
+				<HeroActions />
 			</div>
 		</div>
 

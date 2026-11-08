@@ -1,27 +1,26 @@
-import { FlatCompat } from "@eslint/eslintrc"
-
-const compat = new FlatCompat({
-	baseDirectory: import.meta.dir,
-})
+import nextCoreWebVitals from "eslint-config-next/core-web-vitals"
+import nextTypescript from "eslint-config-next/typescript"
+import prettier from "eslint-config-prettier"
 
 /** @type {import('eslint').Linter.Config[]} */
 const config = [
-	...compat.config({
-		$schema: "https://json.schemastore.org/eslintrc",
-		root: true,
-		extends: ["next/core-web-vitals", "next/typescript", "prettier"],
-		plugins: ["@typescript-eslint"],
-		ignorePatterns: ["node_modules/", ".next/", "dist/", "build/"],
+	{
+		ignores: ["node_modules/", ".next/", "dist/", "build/", "public/r/"],
+	},
+	...nextCoreWebVitals,
+	...nextTypescript,
+	prettier,
+	{
 		rules: {
 			"@next/next/no-html-link-for-pages": "off",
 			"react/jsx-key": "off",
 			"@next/next/no-img-element": "off",
 			"react-hooks/exhaustive-deps": "off",
 			"react/display-name": "off",
+			"react-hooks/set-state-in-effect": "warn",
+			"react-hooks/refs": "warn",
+			"react-hooks/incompatible-library": "warn",
 		},
-	}),
-	{
-		files: ["**/*.{js,mjs,cjs,ts,jsx,tsx}"],
 	},
 ]
 
