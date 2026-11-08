@@ -1,7 +1,7 @@
 "use client";
 
 import * as React from "react";
-import { Loader2Icon } from "lucide-react";
+import { LoaderCircleIcon } from "lucide-react";
 
 import {
 	Autocomplete,
@@ -66,7 +66,7 @@ export default function AutocompleteAsyncDemo() {
 	if (isLoading) {
 		status = (
 			<React.Fragment>
-				<Loader2Icon className="size-4 animate-spin" />
+				<LoaderCircleIcon className="size-4 animate-spin" />
 				Searching books...
 			</React.Fragment>
 		);

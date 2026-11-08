@@ -1,4 +1,8 @@
-import { AlignCenterIcon, AlignLeftIcon, AlignRightIcon } from "lucide-react";
+import {
+	TextAlignCenterIcon,
+	TextAlignEndIcon,
+	TextAlignStartIcon,
+} from "lucide-react";
 
 import { Toggle } from "@/components/ui/toggle";
 import { ToggleGroup } from "@/components/ui/toggle-group";
@@ -7,13 +11,13 @@ export default function ToggleGroupDemo() {
 	return (
 		<ToggleGroup>
 			<Toggle value="left">
-				<AlignLeftIcon />
+				<TextAlignStartIcon />
 			</Toggle>
 			<Toggle value="center">
-				<AlignCenterIcon />
+				<TextAlignCenterIcon />
 			</Toggle>
 			<Toggle value="right">
-				<AlignRightIcon />
+				<TextAlignEndIcon />
 			</Toggle>
 		</ToggleGroup>
 	);

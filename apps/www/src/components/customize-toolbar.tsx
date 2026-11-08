@@ -3,7 +3,7 @@
 import { useMemo, useRef, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { capitalize } from "lodash";
-import { CopyIcon, RotateCcwIcon, Wand2Icon } from "lucide-react";
+import { CopyIcon, RotateCcwIcon, WandSparklesIcon } from "lucide-react";
 import { useTheme } from "next-themes";
 import { useOnClickOutside } from "usehooks-ts";
 
@@ -126,7 +126,7 @@ export const CustomizeToolbar = ({
 					}}
 				>
 					<motion.span layoutId="title" className="flex items-center">
-						<Wand2Icon className="mr-2 size-4" />
+						<WandSparklesIcon className="mr-2 size-4" />
 						Customize
 					</motion.span>
 				</motion.button>
