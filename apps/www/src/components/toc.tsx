@@ -2,7 +2,7 @@
 
 import * as React from "react";
 import type { TOCItemType } from "fumadocs-core/toc";
-import { TextIcon } from "lucide-react";
+import { TextAlignStartIcon } from "lucide-react";
 
 import { cn } from "@/lib/utils";
 
@@ -49,7 +49,7 @@ export const TableOfContents = ({ items }: TableOfContentsProps) => {
 	return (
 		<div className="flex flex-col gap-2">
 			<h2 className="flex items-center gap-2 text-sm font-semibold">
-				<TextIcon className="size-4" />
+				<TextAlignStartIcon className="size-4" />
 				On this page
 			</h2>
 			<nav>

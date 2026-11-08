@@ -1,6 +1,6 @@
 "use client";
 
-import { Loader2 } from "lucide-react";
+import { LoaderCircle } from "lucide-react";
 import { toast } from "sonner";
 
 import {
@@ -27,7 +27,7 @@ export default function EmojiPickerDemo() {
 			<EmojiPickerSearch />
 			<EmojiPickerContent>
 				<EmojiPickerLoading>
-					<Loader2 className="size-4 animate-spin" />
+					<LoaderCircle className="size-4 animate-spin" />
 				</EmojiPickerLoading>
 				<EmojiPickerEmpty>No results</EmojiPickerEmpty>
 				<EmojiPickerList />

@@ -6,10 +6,10 @@ import {
 	ArchiveX,
 	ArrowLeftIcon,
 	Clock,
+	Ellipsis,
 	Forward,
 	Inbox,
 	MessageSquareXIcon,
-	MoreHorizontal,
 	PanelRightCloseIcon,
 	PanelRightOpenIcon,
 	Paperclip,
@@ -432,7 +432,7 @@ export const MailInterface = () => {
 								<DropdownMenuTrigger
 									render={(props) => (
 										<Button {...props} size="icon" variant="ghost">
-											<MoreHorizontal className="size-4" />
+											<Ellipsis className="size-4" />
 										</Button>
 									)}
 								/>

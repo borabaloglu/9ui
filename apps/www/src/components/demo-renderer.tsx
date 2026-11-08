@@ -1,7 +1,7 @@
 "use client";
 
 import * as React from "react";
-import { Loader2Icon, RefreshCwIcon } from "lucide-react";
+import { LoaderCircleIcon, RefreshCwIcon } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 
@@ -60,7 +60,7 @@ export const DemoRenderer = ({
 			<React.Suspense
 				fallback={
 					<div className="flex animate-spin items-center justify-center">
-						<Loader2Icon size={16} />
+						<LoaderCircleIcon size={16} />
 					</div>
 				}
 			>
