@@ -1,4 +1,4 @@
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
 export default function AvatarDemo() {
 	return (
@@ -6,5 +6,5 @@ export default function AvatarDemo() {
 			<AvatarImage src="/avatars/bora.png" alt="User" />
 			<AvatarFallback>BB</AvatarFallback>
 		</Avatar>
-	)
+	);
 }

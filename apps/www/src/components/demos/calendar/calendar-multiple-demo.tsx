@@ -1,13 +1,13 @@
-"use client"
+"use client";
 
-import { useState } from "react"
+import { useState } from "react";
 
-import { Calendar } from "@/components/ui/calendar"
+import { Calendar } from "@/components/ui/calendar";
 
 export default function CalendarMultipleDemo() {
 	const [selectedDates, setSelectedDates] = useState<Date[] | undefined>(
-		undefined
-	)
+		undefined,
+	);
 
 	return (
 		<Calendar
@@ -16,5 +16,5 @@ export default function CalendarMultipleDemo() {
 			onSelect={setSelectedDates}
 			showOutsideDays
 		/>
-	)
+	);
 }

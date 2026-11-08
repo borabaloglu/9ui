@@ -1,9 +1,9 @@
-"use client"
+"use client";
 
-import * as React from "react"
-import Link from "next/link"
+import type * as React from "react";
+import Link from "next/link";
 
-import { Icons } from "@/components/icons"
+import { Icons } from "@/components/icons";
 import {
 	NavigationMenu,
 	NavigationMenuContent,
@@ -12,9 +12,9 @@ import {
 	NavigationMenuList,
 	NavigationMenuTrigger,
 	navigationMenuTriggerStyle,
-} from "@/components/ui/navigation-menu"
+} from "@/components/ui/navigation-menu";
 
-import { cn } from "@/lib/utils"
+import { cn } from "@/lib/utils";
 
 const components: { title: string; href: string; description: string }[] = [
 	{
@@ -48,7 +48,7 @@ const components: { title: string; href: string; description: string }[] = [
 		href: "/docs/components/tooltip",
 		description: "Used to provide context or hints for elements.",
 	},
-]
+];
 
 const gettingStartedItems = [
 	{
@@ -66,7 +66,7 @@ const gettingStartedItems = [
 		href: "/docs/getting-started/roadmap",
 		description: "See what we are working on next.",
 	},
-]
+];
 
 export default function NavigationMenuDemo() {
 	return (
@@ -113,7 +113,7 @@ export default function NavigationMenuDemo() {
 				</NavigationMenuItem>
 			</NavigationMenuList>
 		</NavigationMenu>
-	)
+	);
 }
 
 function ListItem({
@@ -135,5 +135,5 @@ function ListItem({
 				)}
 			/>
 		</li>
-	)
+	);
 }

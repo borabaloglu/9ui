@@ -1,6 +1,6 @@
-import { PinIcon } from "lucide-react"
+import { PinIcon } from "lucide-react";
 
-import { Toggle } from "@/components/ui/toggle"
+import { Toggle } from "@/components/ui/toggle";
 
 export default function ToggleSizesDemo() {
 	return (
@@ -15,5 +15,5 @@ export default function ToggleSizesDemo() {
 				<PinIcon />
 			</Toggle>
 		</div>
-	)
+	);
 }

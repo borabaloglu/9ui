@@ -1,12 +1,12 @@
-import { AuthCard } from "@/components/cards/card-auth"
-import { CalendarCard } from "@/components/cards/card-calendar"
-import { ChatCard } from "@/components/cards/card-chat"
-import { FeedbackCard } from "@/components/cards/card-feedback"
-import { ManageMembersCard } from "@/components/cards/card-manage-members"
-import { OTPCard } from "@/components/cards/card-otp"
-import { PrivacySettingsCard } from "@/components/cards/card-privacy-settings"
-import { TableCard } from "@/components/cards/card-table"
-import { VisitorsChartCard } from "@/components/cards/card-visitors-chart"
+import { AuthCard } from "@/components/cards/card-auth";
+import { CalendarCard } from "@/components/cards/card-calendar";
+import { ChatCard } from "@/components/cards/card-chat";
+import { FeedbackCard } from "@/components/cards/card-feedback";
+import { ManageMembersCard } from "@/components/cards/card-manage-members";
+import { OTPCard } from "@/components/cards/card-otp";
+import { PrivacySettingsCard } from "@/components/cards/card-privacy-settings";
+import { TableCard } from "@/components/cards/card-table";
+import { VisitorsChartCard } from "@/components/cards/card-visitors-chart";
 
 export const CardsGrid = () => {
 	return (
@@ -40,5 +40,5 @@ export const CardsGrid = () => {
 				<PrivacySettingsCard />
 			</div>
 		</div>
-	)
-}
+	);
+};

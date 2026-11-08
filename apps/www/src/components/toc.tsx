@@ -1,48 +1,50 @@
-"use client"
+"use client";
 
-import * as React from "react"
-import type { TOCItemType } from "fumadocs-core/toc"
-import { TextIcon } from "lucide-react"
+import * as React from "react";
+import type { TOCItemType } from "fumadocs-core/toc";
+import { TextIcon } from "lucide-react";
 
-import { cn } from "@/lib/utils"
+import { cn } from "@/lib/utils";
 
 interface TableOfContentsProps {
-	items: TOCItemType[]
+	items: TOCItemType[];
 }
 
-const getIdFromUrl = (url: string) => decodeURIComponent(url.slice(1))
+const getIdFromUrl = (url: string) => decodeURIComponent(url.slice(1));
 
 export const TableOfContents = ({ items }: TableOfContentsProps) => {
-	const [activeId, setActiveId] = React.useState<string>("")
+	const [activeId, setActiveId] = React.useState<string>("");
 
 	React.useEffect(() => {
-		const observers = new Map()
+		const observers = new Map();
 
 		items.forEach((item) => {
-			const id = getIdFromUrl(item.url)
-			const element = document.getElementById(id)
+			const id = getIdFromUrl(item.url);
+			const element = document.getElementById(id);
 
 			if (element) {
 				const observer = new IntersectionObserver(
 					(entries) => {
 						entries.forEach((entry) => {
 							if (entry.isIntersecting) {
-								setActiveId(id)
+								setActiveId(id);
 							}
-						})
+						});
 					},
-					{ rootMargin: "-80px 0px -80% 0px" }
-				)
+					{ rootMargin: "-80px 0px -80% 0px" },
+				);
 
-				observer.observe(element)
-				observers.set(id, observer)
+				observer.observe(element);
+				observers.set(id, observer);
 			}
-		})
+		});
 
 		return () => {
-			observers.forEach((observer) => observer.disconnect())
-		}
-	}, [items])
+			observers.forEach((observer) => {
+				observer.disconnect();
+			});
+		};
+	}, [items]);
 
 	return (
 		<div className="flex flex-col gap-2">
@@ -61,7 +63,7 @@ export const TableOfContents = ({ items }: TableOfContentsProps) => {
 							item.depth === 4 && "pl-4",
 							item.depth === 5 && "pl-6",
 							item.depth === 6 && "pl-8",
-							activeId === getIdFromUrl(item.url) && "text-foreground"
+							activeId === getIdFromUrl(item.url) && "text-foreground",
 						)}
 					>
 						<span>{item.title}</span>
@@ -69,5 +71,5 @@ export const TableOfContents = ({ items }: TableOfContentsProps) => {
 				))}
 			</nav>
 		</div>
-	)
-}
+	);
+};

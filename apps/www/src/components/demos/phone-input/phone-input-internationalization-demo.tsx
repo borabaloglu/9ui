@@ -1,12 +1,12 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import tr from "react-phone-number-input/locale/tr"
+import { useState } from "react";
+import tr from "react-phone-number-input/locale/tr";
 
-import { PhoneInput } from "@/components/ui/phone-input"
+import { PhoneInput } from "@/components/ui/phone-input";
 
 export default function PhoneInputInternationalizationDemo() {
-	const [phoneNumber, setPhoneNumber] = useState<string>()
+	const [phoneNumber, setPhoneNumber] = useState<string>();
 
 	return (
 		<div className="w-[300px]">
@@ -18,5 +18,5 @@ export default function PhoneInputInternationalizationDemo() {
 				placeholder="Telefon numarası"
 			/>
 		</div>
-	)
+	);
 }

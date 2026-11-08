@@ -1,14 +1,14 @@
-"use client"
+"use client";
 
-import { useMemo, useState } from "react"
-import dayjs from "dayjs"
-import { CalendarIcon, ClockIcon, GlobeIcon, UserPlusIcon } from "lucide-react"
+import { useMemo, useState } from "react";
+import dayjs from "dayjs";
+import { CalendarIcon, ClockIcon, GlobeIcon, UserPlusIcon } from "lucide-react";
 
-import { Icons } from "@/components/icons"
-import { Avatar, AvatarFallback } from "@/components/ui/avatar"
-import { Badge } from "@/components/ui/badge"
-import { Button } from "@/components/ui/button"
-import { Calendar } from "@/components/ui/calendar"
+import { Icons } from "@/components/icons";
+import { Avatar, AvatarFallback } from "@/components/ui/avatar";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { Calendar } from "@/components/ui/calendar";
 import {
 	Dialog,
 	DialogClose,
@@ -17,9 +17,9 @@ import {
 	DialogHeader,
 	DialogTitle,
 	DialogTrigger,
-} from "@/components/ui/dialog"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
+} from "@/components/ui/dialog";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 import {
 	Select,
 	SelectContent,
@@ -28,35 +28,37 @@ import {
 	SelectLabel,
 	SelectTrigger,
 	SelectValue,
-} from "@/components/ui/select"
-import { Textarea } from "@/components/ui/textarea"
+} from "@/components/ui/select";
+import { Textarea } from "@/components/ui/textarea";
 
-import { cn } from "@/lib/utils"
+import { cn } from "@/lib/utils";
 
 const generateTimeSlots = () => {
-	const slots: string[] = []
+	const slots: string[] = [];
 
 	for (let hour = 9; hour <= 23; hour++) {
 		for (const minute of ["00", "30"]) {
-			const disabled = Math.random() < 0.2
+			const disabled = Math.random() < 0.2;
 			if (!disabled) {
-				slots.push(`${String(hour).padStart(2, "0")}:${minute}`)
+				slots.push(`${String(hour).padStart(2, "0")}:${minute}`);
 			}
 		}
 	}
 
-	return slots
-}
+	return slots;
+};
 
 const formatDate = (date: Date) => {
-	return dayjs(date).format("ddd DD")
-}
+	return dayjs(date).format("ddd DD");
+};
 
 export const CalendarInterface = () => {
-	const [selectedDate, setSelectedDate] = useState<Date | undefined>(new Date())
-	const [is24Hour, setIs24Hour] = useState(true)
+	const [selectedDate, setSelectedDate] = useState<Date | undefined>(
+		new Date(),
+	);
+	const [is24Hour, setIs24Hour] = useState(true);
 
-	const timeSlots = useMemo(() => generateTimeSlots(), [])
+	const timeSlots = useMemo(() => generateTimeSlots(), []);
 	return (
 		<div className="bg-background relative flex h-[600px] flex-col overflow-y-auto rounded-lg border md:overflow-hidden">
 			<div className="grid h-full md:grid-cols-3 lg:grid-cols-[300px_1fr_1fr] xl:grid-cols-[300px_1fr_400px]">
@@ -178,7 +180,7 @@ export const CalendarInterface = () => {
 						selected={selectedDate}
 						onSelect={setSelectedDate}
 						onDayClick={(date) => {
-							setSelectedDate(date)
+							setSelectedDate(date);
 						}}
 						disabled={(date) =>
 							date < new Date() || date.getDay() === 0 || date.getDay() === 6
@@ -215,7 +217,7 @@ export const CalendarInterface = () => {
 									size="sm"
 									className={cn(
 										"text-muted-foreground h-6 rounded-sm hover:bg-transparent",
-										is24Hour ? "bg-transparent" : "bg-muted hover:bg-muted"
+										is24Hour ? "bg-transparent" : "bg-muted hover:bg-muted",
 									)}
 									onClick={() => setIs24Hour(false)}
 								>
@@ -226,7 +228,7 @@ export const CalendarInterface = () => {
 									size="sm"
 									className={cn(
 										"text-muted-foreground h-6 rounded-sm hover:bg-transparent",
-										is24Hour ? "bg-muted hover:bg-muted" : "bg-transparent"
+										is24Hour ? "bg-muted hover:bg-muted" : "bg-transparent",
 									)}
 									onClick={() => setIs24Hour(true)}
 								>
@@ -236,12 +238,12 @@ export const CalendarInterface = () => {
 						</div>
 						<div className="flex flex-col gap-2 p-4">
 							{timeSlots.map((time) => {
-								const hour = parseInt(time.split(":")[0])
+								const hour = Number.parseInt(time.split(":")[0], 10);
 								const display = is24Hour
 									? time
 									: `${hour % 12 || 12}:${time.split(":")[1]} ${
 											hour < 12 ? "AM" : "PM"
-										}`
+										}`;
 
 								return (
 									<Dialog key={time}>
@@ -262,7 +264,8 @@ export const CalendarInterface = () => {
 												<div className="flex items-center gap-2">
 													<Badge className="text-fg border-border bg-secondary font-normal">
 														<CalendarIcon className="size-3" />
-														{display} on {formatDate(selectedDate!)}
+														{display} on{" "}
+														{selectedDate && formatDate(selectedDate)}
 													</Badge>
 													<Badge className="text-fg border-border bg-secondary font-normal">
 														<ClockIcon className="size-3" />
@@ -302,12 +305,12 @@ export const CalendarInterface = () => {
 											</DialogFooter>
 										</DialogContent>
 									</Dialog>
-								)
+								);
 							})}
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-	)
-}
+	);
+};

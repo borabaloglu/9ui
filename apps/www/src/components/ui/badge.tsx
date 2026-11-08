@@ -1,27 +1,27 @@
-import * as React from "react"
-import { cva, type VariantProps } from "class-variance-authority"
+import type * as React from "react";
+import { cva, type VariantProps } from "class-variance-authority";
 
-import { cn } from "@/lib/utils"
+import { cn } from "@/lib/utils";
 
 const badgeVariants = cva(
-	"inline-flex items-center justify-center rounded-md border px-2 py-0.5 text-xs font-medium w-fit whitespace-nowrap shrink-0 [&>svg]:size-3 gap-1 [&>svg]:pointer-events-none overflow-hidden shadow-xs",
+	"inline-flex w-fit shrink-0 items-center justify-center gap-1 overflow-hidden rounded-md border px-2 py-0.5 text-xs font-medium whitespace-nowrap shadow-xs [&>svg]:pointer-events-none [&>svg]:size-3",
 	{
 		variants: {
 			variant: {
-				default: "bg-primary border-transparent text-primary-foreground",
+				default: "bg-primary text-primary-foreground border-transparent",
 				outline: "text-foreground",
-				secondary: "bg-secondary border-border/50 text-secondary-foreground",
-				success: "bg-success border-success-border/50 text-success-foreground",
-				warning: "bg-warning border-warning-border/50 text-warning-foreground",
-				info: "bg-info border-info-border/50 text-info-foreground",
-				danger: "bg-danger border-danger-border/50 text-danger-foreground",
+				secondary: "border-border/50 bg-secondary text-secondary-foreground",
+				success: "border-success-border/50 bg-success text-success-foreground",
+				warning: "border-warning-border/50 bg-warning text-warning-foreground",
+				info: "border-info-border/50 bg-info text-info-foreground",
+				danger: "border-danger-border/50 bg-danger text-danger-foreground",
 			},
 		},
 		defaultVariants: {
 			variant: "default",
 		},
-	}
-)
+	},
+);
 
 function Badge({
 	className,
@@ -34,7 +34,7 @@ function Badge({
 			className={cn(badgeVariants({ variant }), className)}
 			{...props}
 		/>
-	)
+	);
 }
 
-export { Badge, badgeVariants }
+export { Badge, badgeVariants };

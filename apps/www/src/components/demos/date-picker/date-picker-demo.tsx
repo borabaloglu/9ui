@@ -1,18 +1,18 @@
-import * as React from "react"
-import dayjs from "dayjs"
-import { CalendarIcon, ChevronsUpDownIcon } from "lucide-react"
+import * as React from "react";
+import dayjs from "dayjs";
+import { CalendarIcon, ChevronsUpDownIcon } from "lucide-react";
 
-import { Button } from "@/components/ui/button"
-import { Calendar } from "@/components/ui/calendar"
+import { Button } from "@/components/ui/button";
+import { Calendar } from "@/components/ui/calendar";
 import {
 	Popover,
 	PopoverContent,
 	PopoverTrigger,
-} from "@/components/ui/popover"
+} from "@/components/ui/popover";
 
 export default function DatePickerDemo() {
-	const [open, setOpen] = React.useState(false)
-	const [value, setValue] = React.useState<Date | undefined>(undefined)
+	const [open, setOpen] = React.useState(false);
+	const [value, setValue] = React.useState<Date | undefined>(undefined);
 
 	return (
 		<Popover open={open} onOpenChange={setOpen}>
@@ -45,5 +45,5 @@ export default function DatePickerDemo() {
 				/>
 			</PopoverContent>
 		</Popover>
-	)
+	);
 }

@@ -36,6 +36,6 @@ const config = {
 			body: "Provide a longer description of the change:\n ",
 		},
 	},
-}
+};
 
-module.exports = config
+module.exports = config;

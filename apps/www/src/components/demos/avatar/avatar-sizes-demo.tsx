@@ -1,4 +1,4 @@
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
 export default function AvatarSizesDemo() {
 	return (
@@ -16,5 +16,5 @@ export default function AvatarSizesDemo() {
 				<AvatarFallback>BB</AvatarFallback>
 			</Avatar>
 		</div>
-	)
+	);
 }

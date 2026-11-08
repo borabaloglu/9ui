@@ -1,7 +1,7 @@
-"use client"
+"use client";
 
-import { Button } from "@/components/ui/button"
-import { Label } from "@/components/ui/label"
+import { Button } from "@/components/ui/button";
+import { Label } from "@/components/ui/label";
 import {
 	Sheet,
 	SheetClose,
@@ -11,10 +11,10 @@ import {
 	SheetHeader,
 	SheetTitle,
 	SheetTrigger,
-} from "@/components/ui/sheet"
-import { Textarea } from "@/components/ui/textarea"
+} from "@/components/ui/sheet";
+import { Textarea } from "@/components/ui/textarea";
 
-const SHEET_SIDES = ["top", "right", "bottom", "left"] as const
+const SHEET_SIDES = ["top", "right", "bottom", "left"] as const;
 
 export default function SheetSidesDemo() {
 	return (
@@ -54,5 +54,5 @@ export default function SheetSidesDemo() {
 				</Sheet>
 			))}
 		</div>
-	)
+	);
 }

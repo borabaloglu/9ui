@@ -1,13 +1,13 @@
-import { AspectRatio } from "@/components/ui/aspect-ratio"
+import { AspectRatio } from "@/components/ui/aspect-ratio";
 import {
 	Carousel,
 	CarouselContent,
 	CarouselItem,
 	CarouselNext,
 	CarouselPrevious,
-} from "@/components/ui/carousel"
+} from "@/components/ui/carousel";
 
-const slides = [1, 2, 3, 4, 5]
+const slides = [1, 2, 3, 4, 5];
 
 export default function CarouselMultipleDemo() {
 	return (
@@ -31,5 +31,5 @@ export default function CarouselMultipleDemo() {
 				<CarouselNext />
 			</Carousel>
 		</div>
-	)
+	);
 }

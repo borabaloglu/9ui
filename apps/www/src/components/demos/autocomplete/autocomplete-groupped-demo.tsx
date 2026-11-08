@@ -1,4 +1,4 @@
-import * as React from "react"
+import * as React from "react";
 
 import {
 	Autocomplete,
@@ -12,30 +12,30 @@ import {
 	AutocompleteList,
 	AutocompleteSeparator,
 	AutocompleteValue,
-} from "@/components/ui/autocomplete"
-import { Label } from "@/components/ui/label"
+} from "@/components/ui/autocomplete";
+import { Label } from "@/components/ui/label";
 
 export default function AutocompleteGrouppedDemo() {
 	// Filter and group items by category
 	const groupedItems = React.useMemo(() => {
 		const groups: { [key: string]: Item[] } = items.reduce(
 			(acc, item) => {
-				acc[item.category] = acc[item.category] || []
-				acc[item.category].push(item)
-				return acc
+				acc[item.category] = acc[item.category] || [];
+				acc[item.category].push(item);
+				return acc;
 			},
-			{} as { [key: string]: Item[] }
-		)
+			{} as { [key: string]: Item[] },
+		);
 
 		const order = [
 			"Frontend Frameworks",
 			"Backend Runtime",
 			"Backend Frameworks",
 			"Meta Frameworks",
-		]
+		];
 
-		return order.map((value) => ({ value, items: groups[value] ?? [] }))
-	}, [])
+		return order.map((value) => ({ value, items: groups[value] ?? [] }));
+	}, []);
 
 	return (
 		<div className="w-80">
@@ -73,18 +73,18 @@ export default function AutocompleteGrouppedDemo() {
 				</AutocompleteContent>
 			</Autocomplete>
 		</div>
-	)
+	);
 }
 
 interface Group {
-	value: string
-	items: Item[]
+	value: string;
+	items: Item[];
 }
 
 interface Item {
-	id: string
-	value: string
-	category: string
+	id: string;
+	value: string;
+	category: string;
 }
 
 const items: Item[] = [
@@ -101,4 +101,4 @@ const items: Item[] = [
 	{ id: "nextjs", value: "Next.js", category: "Meta Frameworks" },
 	{ id: "nuxt", value: "Nuxt.js", category: "Meta Frameworks" },
 	{ id: "remix", value: "Remix", category: "Meta Frameworks" },
-]
+];

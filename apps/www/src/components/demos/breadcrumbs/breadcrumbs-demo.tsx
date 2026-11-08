@@ -6,13 +6,13 @@ import {
 	BreadcrumbList,
 	BreadcrumbPage,
 	BreadcrumbSeparator,
-} from "@/components/ui/breadcrumbs"
+} from "@/components/ui/breadcrumbs";
 import {
 	DropdownMenu,
 	DropdownMenuContent,
 	DropdownMenuItem,
 	DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu"
+} from "@/components/ui/dropdown-menu";
 
 export default function BreadcrumbsDemo() {
 	return (
@@ -45,5 +45,5 @@ export default function BreadcrumbsDemo() {
 				</BreadcrumbItem>
 			</BreadcrumbList>
 		</Breadcrumb>
-	)
+	);
 }

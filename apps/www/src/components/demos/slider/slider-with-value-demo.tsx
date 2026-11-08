@@ -1,4 +1,4 @@
-import { Slider, SliderValue } from "@/components/ui/slider"
+import { Slider, SliderValue } from "@/components/ui/slider";
 
 export default function SliderWithValueDemo() {
 	return (
@@ -10,5 +10,5 @@ export default function SliderWithValueDemo() {
 				<SliderValue />
 			</div>
 		</Slider>
-	)
+	);
 }

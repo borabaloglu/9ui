@@ -1,11 +1,11 @@
-"use client"
+"use client";
 
-import * as React from "react"
-import { Toolbar as BaseToolbar } from "@base-ui/react/toolbar"
+import type * as React from "react";
+import { Toolbar as BaseToolbar } from "@base-ui/react/toolbar";
 
-import { ButtonProps, buttonVariants } from "@/components/ui/button"
+import { type ButtonProps, buttonVariants } from "@/components/ui/button";
 
-import { cn } from "@/lib/utils"
+import { cn } from "@/lib/utils";
 
 function Toolbar({
 	className,
@@ -15,11 +15,11 @@ function Toolbar({
 		<BaseToolbar.Root
 			className={cn(
 				"bg-popover outline-border flex items-center gap-1 rounded-md p-1 shadow-xs outline",
-				className
+				className,
 			)}
 			{...props}
 		/>
-	)
+	);
 }
 
 function ToolbarButton({
@@ -36,11 +36,11 @@ function ToolbarButton({
 					size: size ?? "default",
 				}),
 				"shrink-0",
-				className
+				className,
 			)}
 			{...props}
 		/>
-	)
+	);
 }
 
 function ToolbarSeparator({
@@ -52,13 +52,13 @@ function ToolbarSeparator({
 			className={cn("bg-border h-6 w-px shrink-0", className)}
 			{...props}
 		/>
-	)
+	);
 }
 
 function ToolbarInput({
 	...props
 }: React.ComponentProps<typeof BaseToolbar.Input>) {
-	return <BaseToolbar.Input {...props} />
+	return <BaseToolbar.Input {...props} />;
 }
 
 function ToolbarGroup({
@@ -70,7 +70,7 @@ function ToolbarGroup({
 			className={cn("flex items-center gap-1", className)}
 			{...props}
 		/>
-	)
+	);
 }
 
 function ToolbarLink({
@@ -81,18 +81,18 @@ function ToolbarLink({
 		<BaseToolbar.Link
 			className={cn(
 				"text-muted-foreground hover:text-foreground focus-visible:ring-ring/50 inline-flex h-9 shrink-0 items-center gap-2 rounded-md px-4 text-sm no-underline transition-colors focus-visible:ring-[3px] focus-visible:outline-none [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
-				className
+				className,
 			)}
 			{...props}
 		/>
-	)
+	);
 }
 
 export {
 	Toolbar,
 	ToolbarButton,
-	ToolbarSeparator,
-	ToolbarInput,
 	ToolbarGroup,
+	ToolbarInput,
 	ToolbarLink,
-}
+	ToolbarSeparator,
+};

@@ -1,4 +1,4 @@
-import * as React from "react"
+import * as React from "react";
 
 import {
 	Autocomplete,
@@ -9,25 +9,25 @@ import {
 	AutocompleteList,
 	AutocompleteStatus,
 	useFilter,
-} from "@/components/ui/autocomplete"
-import { Label } from "@/components/ui/label"
+} from "@/components/ui/autocomplete";
+import { Label } from "@/components/ui/label";
 
-const limit = 8
+const limit = 8;
 
 export default function AutocompleteLimitResultsDemo() {
-	const [value, setValue] = React.useState("")
+	const [value, setValue] = React.useState("");
 
-	const { contains } = useFilter({ sensitivity: "base" })
+	const { contains } = useFilter({ sensitivity: "base" });
 
 	const totalMatches = React.useMemo(() => {
-		const trimmed = value.trim()
+		const trimmed = value.trim();
 		if (!trimmed) {
-			return tags.length
+			return tags.length;
 		}
-		return tags.filter((t) => contains(t.value, trimmed)).length
-	}, [value, contains])
+		return tags.filter((t) => contains(t.value, trimmed)).length;
+	}, [value, contains]);
 
-	const moreCount = Math.max(0, totalMatches - limit)
+	const moreCount = Math.max(0, totalMatches - limit);
 
 	return (
 		<div className="w-80">
@@ -64,12 +64,12 @@ export default function AutocompleteLimitResultsDemo() {
 				</AutocompleteContent>
 			</Autocomplete>
 		</div>
-	)
+	);
 }
 
 interface Tag {
-	id: string
-	value: string
+	id: string;
+	value: string;
 }
 
 const tags: Tag[] = [
@@ -97,4 +97,4 @@ const tags: Tag[] = [
 	{ id: "c-switch", value: "component: switch" },
 	{ id: "c-tabs", value: "component: tabs" },
 	{ id: "c-tooltip", value: "component: tooltip" },
-]
+];

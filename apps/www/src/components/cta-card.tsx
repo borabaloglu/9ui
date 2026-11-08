@@ -1,15 +1,15 @@
-"use client"
+"use client";
 
-import Link from "next/link"
-import { usePathname } from "next/navigation"
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 
-import { Button } from "@/components/ui/button"
+import { Button } from "@/components/ui/button";
 
 export const CtaCard = () => {
-	const pathname = usePathname()
-	const isInstallation = pathname === "/docs/getting-started/installation"
+	const pathname = usePathname();
+	const isInstallation = pathname === "/docs/getting-started/installation";
 
-	if (isInstallation) return null
+	if (isInstallation) return null;
 
 	return (
 		<div className="bg-card space-y-2 rounded-md border p-4">
@@ -28,5 +28,5 @@ export const CtaCard = () => {
 				nativeButton={false}
 			/>
 		</div>
-	)
-}
+	);
+};

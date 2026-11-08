@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import {
 	Card,
@@ -6,9 +6,9 @@ import {
 	CardDescription,
 	CardHeader,
 	CardTitle,
-} from "@/components/ui/card"
-import { Label } from "@/components/ui/label"
-import { Switch } from "@/components/ui/switch"
+} from "@/components/ui/card";
+import { Label } from "@/components/ui/label";
+import { Switch } from "@/components/ui/switch";
 
 const settings = [
 	{
@@ -36,7 +36,7 @@ const settings = [
 		title: "Search Visibility",
 		description: "Allow others to find you in search results",
 	},
-]
+];
 
 export function PrivacySettingsCard() {
 	return (
@@ -68,5 +68,5 @@ export function PrivacySettingsCard() {
 				))}
 			</CardContent>
 		</Card>
-	)
+	);
 }

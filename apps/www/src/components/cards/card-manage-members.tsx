@@ -1,16 +1,16 @@
-"use client"
+"use client";
 
-import * as React from "react"
+import * as React from "react";
 
-import { Avatar, AvatarFallback } from "@/components/ui/avatar"
-import { Button } from "@/components/ui/button"
+import { Avatar, AvatarFallback } from "@/components/ui/avatar";
+import { Button } from "@/components/ui/button";
 import {
 	Card,
 	CardContent,
 	CardDescription,
 	CardHeader,
 	CardTitle,
-} from "@/components/ui/card"
+} from "@/components/ui/card";
 import {
 	Combobox,
 	ComboboxContent,
@@ -20,7 +20,7 @@ import {
 	ComboboxList,
 	ComboboxTrigger,
 	ComboboxValue,
-} from "@/components/ui/combobox"
+} from "@/components/ui/combobox";
 
 const roles = [
 	{
@@ -43,19 +43,19 @@ const roles = [
 		label: "Viewer",
 		description: "Has limited access to the team and can only view the team",
 	},
-]
+];
 
 interface RoleComboboxProps {
 	member: {
-		id: string
-		name: string
-		email: string
-		role: string
-	}
+		id: string;
+		name: string;
+		email: string;
+		role: string;
+	};
 }
 
 function RoleCombobox({ member }: RoleComboboxProps) {
-	const [open, setOpen] = React.useState(false)
+	const [open, setOpen] = React.useState(false);
 
 	return (
 		<Combobox
@@ -104,7 +104,7 @@ function RoleCombobox({ member }: RoleComboboxProps) {
 				</ComboboxList>
 			</ComboboxContent>
 		</Combobox>
-	)
+	);
 }
 
 const members = [
@@ -132,7 +132,7 @@ const members = [
 		email: "brendan@example.com",
 		role: "viewer",
 	},
-]
+];
 
 export function ManageMembersCard() {
 	return (
@@ -170,5 +170,5 @@ export function ManageMembersCard() {
 				))}
 			</CardContent>
 		</Card>
-	)
+	);
 }

@@ -1,7 +1,7 @@
-"use client"
+"use client";
 
-import * as React from "react"
-import { matchSorter } from "match-sorter"
+import * as React from "react";
+import { matchSorter } from "match-sorter";
 
 import {
 	Autocomplete,
@@ -11,26 +11,26 @@ import {
 	AutocompleteItem,
 	AutocompleteList,
 	AutocompleteValue,
-} from "@/components/ui/autocomplete"
-import { Label } from "@/components/ui/label"
+} from "@/components/ui/autocomplete";
+import { Label } from "@/components/ui/label";
 
 export default function AutocompleteFuzzyMatcherDemo() {
 	const fuzzyFilter = React.useCallback(
 		(item: unknown, query: string): boolean => {
-			const doc = item as DevDoc
+			const doc = item as DevDoc;
 			if (!query) {
-				return true
+				return true;
 			}
 
 			const results = matchSorter([doc], query, {
 				keys: ["title", "description"],
 				threshold: matchSorter.rankings.MATCHES,
-			})
+			});
 
-			return results.length > 0
+			return results.length > 0;
 		},
-		[]
-	)
+		[],
+	);
 
 	return (
 		<div className="w-80">
@@ -73,18 +73,18 @@ export default function AutocompleteFuzzyMatcherDemo() {
 				</AutocompleteContent>
 			</Autocomplete>
 		</div>
-	)
+	);
 }
 
 function highlightText(text: string, query: string): React.ReactNode {
-	const trimmed = query.trim()
+	const trimmed = query.trim();
 	if (!trimmed) {
-		return text
+		return text;
 	}
 
-	const limited = trimmed.slice(0, 100)
-	const escaped = limited.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")
-	const regex = new RegExp(`(${escaped})`, "gi")
+	const limited = trimmed.slice(0, 100);
+	const escaped = limited.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+	const regex = new RegExp(`(${escaped})`, "gi");
 
 	return text.split(regex).map((part, idx) =>
 		regex.test(part) ? (
@@ -93,14 +93,14 @@ function highlightText(text: string, query: string): React.ReactNode {
 			</mark>
 		) : (
 			part
-		)
-	)
+		),
+	);
 }
 
 interface DevDoc {
-	id: string
-	title: string
-	description: string
+	id: string;
+	title: string;
+	description: string;
 }
 
 const devDocs: DevDoc[] = [
@@ -194,4 +194,4 @@ const devDocs: DevDoc[] = [
 		description:
 			"Building efficient GraphQL APIs with type safety and flexible data fetching capabilities.",
 	},
-]
+];

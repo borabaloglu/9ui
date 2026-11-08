@@ -1,6 +1,6 @@
-"use client"
+"use client";
 
-import { CartesianGrid, Legend, Line, LineChart, XAxis } from "recharts"
+import { CartesianGrid, Legend, Line, LineChart, XAxis } from "recharts";
 
 import {
 	Card,
@@ -9,13 +9,13 @@ import {
 	CardFooter,
 	CardHeader,
 	CardTitle,
-} from "@/components/ui/card"
+} from "@/components/ui/card";
 import {
-	ChartConfig,
+	type ChartConfig,
 	ChartContainer,
 	ChartTooltip,
 	ChartTooltipContent,
-} from "@/components/ui/chart"
+} from "@/components/ui/chart";
 
 const chartData = [
 	{ month: "Jan", users: 100, activeUsers: 80, newUsers: 20 },
@@ -24,7 +24,7 @@ const chartData = [
 	{ month: "Apr", users: 200, activeUsers: 140, newUsers: 60 },
 	{ month: "May", users: 250, activeUsers: 180, newUsers: 70 },
 	{ month: "Jun", users: 300, activeUsers: 220, newUsers: 80 },
-]
+];
 
 const chartConfig = {
 	users: {
@@ -39,14 +39,14 @@ const chartConfig = {
 		label: "New Users",
 		color: "var(--chart-3)",
 	},
-} satisfies ChartConfig
+} satisfies ChartConfig;
 
 export default function ChartLineDemo() {
-	const totalUsers = chartData[chartData.length - 1].users
-	const totalActiveUsers = chartData[chartData.length - 1].activeUsers
+	const totalUsers = chartData[chartData.length - 1].users;
+	const totalActiveUsers = chartData[chartData.length - 1].activeUsers;
 	const userGrowth =
-		((chartData[5].users - chartData[0].users) / chartData[0].users) * 100
-	const activeUsersRate = (totalActiveUsers / totalUsers) * 100
+		((chartData[5].users - chartData[0].users) / chartData[0].users) * 100;
+	const activeUsersRate = (totalActiveUsers / totalUsers) * 100;
 
 	return (
 		<Card className="flex w-full flex-col">
@@ -112,5 +112,5 @@ export default function ChartLineDemo() {
 				</div>
 			</CardFooter>
 		</Card>
-	)
+	);
 }

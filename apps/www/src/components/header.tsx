@@ -1,19 +1,18 @@
-"use client"
+"use client";
 
-import * as React from "react"
-import Link from "next/link"
+import Link from "next/link";
 
-import { Icons } from "@/components/icons"
-import { MainNav } from "@/components/main-nav"
-import { MobileNav } from "@/components/mobile-nav"
-import { SearchDialog } from "@/components/search-dialog"
-import { ThemeToggle } from "@/components/theme-toggle"
-import { Button } from "@/components/ui/button"
+import { Icons } from "@/components/icons";
+import { MainNav } from "@/components/main-nav";
+import { MobileNav } from "@/components/mobile-nav";
+import { SearchDialog } from "@/components/search-dialog";
+import { ThemeToggle } from "@/components/theme-toggle";
+import { Button } from "@/components/ui/button";
 
-import { type SidebarNavGroup } from "@/types/nav"
+import type { SidebarNavGroup } from "@/types/nav";
 
 interface HeaderProps {
-	sidebarNav: SidebarNavGroup[]
+	sidebarNav: SidebarNavGroup[];
 }
 
 export const Header = ({ sidebarNav }: HeaderProps) => {
@@ -46,5 +45,5 @@ export const Header = ({ sidebarNav }: HeaderProps) => {
 				</div>
 			</div>
 		</header>
-	)
-}
+	);
+};

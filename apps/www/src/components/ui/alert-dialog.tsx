@@ -1,30 +1,32 @@
-import * as React from "react"
-import { AlertDialog as BaseAlertDialog } from "@base-ui/react/alert-dialog"
+import type * as React from "react";
+import { AlertDialog as BaseAlertDialog } from "@base-ui/react/alert-dialog";
 
-import { cn } from "@/lib/utils"
+import { cn } from "@/lib/utils";
 
 function AlertDialog({
 	...props
 }: React.ComponentProps<typeof BaseAlertDialog.Root>) {
-	return <BaseAlertDialog.Root data-slot="alert-dialog" {...props} />
+	return <BaseAlertDialog.Root data-slot="alert-dialog" {...props} />;
 }
 
 function AlertDialogTrigger({
 	...props
 }: React.ComponentProps<typeof BaseAlertDialog.Trigger>) {
-	return <BaseAlertDialog.Trigger data-slot="alert-dialog-trigger" {...props} />
+	return (
+		<BaseAlertDialog.Trigger data-slot="alert-dialog-trigger" {...props} />
+	);
 }
 
 function AlertDialogPortal({
 	...props
 }: React.ComponentProps<typeof BaseAlertDialog.Portal>) {
-	return <BaseAlertDialog.Portal data-slot="alert-dialog-portal" {...props} />
+	return <BaseAlertDialog.Portal data-slot="alert-dialog-portal" {...props} />;
 }
 
 function AlertDialogClose({
 	...props
 }: React.ComponentProps<typeof BaseAlertDialog.Close>) {
-	return <BaseAlertDialog.Close data-slot="alert-dialog-close" {...props} />
+	return <BaseAlertDialog.Close data-slot="alert-dialog-close" {...props} />;
 }
 
 function AlertDialogOverlay({
@@ -36,11 +38,11 @@ function AlertDialogOverlay({
 			data-slot="alert-dialog-overlay"
 			className={cn(
 				"fixed inset-0 bg-black/50 transition-all duration-200 ease-out data-ending-style:opacity-0 data-starting-style:opacity-0",
-				className
+				className,
 			)}
 			{...props}
 		/>
-	)
+	);
 }
 
 function AlertDialogContent({
@@ -55,14 +57,14 @@ function AlertDialogContent({
 				data-slot="alert-dialog-content"
 				className={cn(
 					"bg-popover text-popover-foreground fixed top-[100vh] left-1/2 z-50 grid w-full -translate-x-1/2 -translate-y-full gap-4 rounded-lg border p-6 shadow-lg transition-all duration-200 outline-none data-ending-style:translate-y-full data-ending-style:opacity-0 data-starting-style:translate-y-full data-starting-style:opacity-0 max-sm:rounded-b-none sm:top-[50%] sm:w-[32rem] sm:translate-x-[-50%] sm:translate-y-[-50%] sm:scale-[calc(1-0.1*var(--nested-dialogs))] data-ending-style:sm:translate-y-[-50%] data-ending-style:sm:scale-95 data-starting-style:sm:translate-y-[-50%] data-starting-style:sm:scale-95",
-					className
+					className,
 				)}
 				{...props}
 			>
 				{children}
 			</BaseAlertDialog.Popup>
 		</AlertDialogPortal>
-	)
+	);
 }
 
 function AlertDialogHeader({
@@ -75,7 +77,7 @@ function AlertDialogHeader({
 			className={cn("flex flex-col gap-2 text-center sm:text-left", className)}
 			{...props}
 		/>
-	)
+	);
 }
 
 function AlertDialogFooter({
@@ -87,11 +89,11 @@ function AlertDialogFooter({
 			data-slot="alert-dialog-footer"
 			className={cn(
 				"flex flex-col-reverse gap-2 sm:flex-row sm:justify-end",
-				className
+				className,
 			)}
 			{...props}
 		/>
-	)
+	);
 }
 
 function AlertDialogTitle({
@@ -104,7 +106,7 @@ function AlertDialogTitle({
 			className={cn("text-lg font-semibold", className)}
 			{...props}
 		/>
-	)
+	);
 }
 
 function AlertDialogDescription({
@@ -117,18 +119,18 @@ function AlertDialogDescription({
 			className={cn("text-muted-foreground text-sm", className)}
 			{...props}
 		/>
-	)
+	);
 }
 
 export {
 	AlertDialog,
-	AlertDialogPortal,
-	AlertDialogOverlay,
-	AlertDialogContent,
-	AlertDialogTrigger,
 	AlertDialogClose,
-	AlertDialogHeader,
-	AlertDialogFooter,
-	AlertDialogTitle,
+	AlertDialogContent,
 	AlertDialogDescription,
-}
+	AlertDialogFooter,
+	AlertDialogHeader,
+	AlertDialogOverlay,
+	AlertDialogPortal,
+	AlertDialogTitle,
+	AlertDialogTrigger,
+};

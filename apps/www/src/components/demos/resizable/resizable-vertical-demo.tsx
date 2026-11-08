@@ -2,7 +2,7 @@ import {
 	ResizableHandle,
 	ResizablePanel,
 	ResizablePanelGroup,
-} from "@/components/ui/resizable"
+} from "@/components/ui/resizable";
 
 export default function ResizableVerticalDemo() {
 	return (
@@ -22,5 +22,5 @@ export default function ResizableVerticalDemo() {
 				</div>
 			</ResizablePanel>
 		</ResizablePanelGroup>
-	)
+	);
 }

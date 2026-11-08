@@ -1,6 +1,3 @@
 {
-	"pages": [
-		"getting-started",
-		"components"
-	]
+	"pages": ["getting-started", "components"]
 }

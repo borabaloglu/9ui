@@ -1,7 +1,7 @@
-import * as React from "react"
-import { Tooltip as BaseTooltip } from "@base-ui/react/tooltip"
+import type * as React from "react";
+import { Tooltip as BaseTooltip } from "@base-ui/react/tooltip";
 
-import { cn } from "@/lib/utils"
+import { cn } from "@/lib/utils";
 
 function TooltipProvider({
 	delay = 0,
@@ -15,35 +15,35 @@ function TooltipProvider({
 			closeDelay={closeDelay}
 			{...props}
 		/>
-	)
+	);
 }
 
 function Tooltip({ ...props }: React.ComponentProps<typeof BaseTooltip.Root>) {
-	return <BaseTooltip.Root data-slot="tooltip" {...props} />
+	return <BaseTooltip.Root data-slot="tooltip" {...props} />;
 }
 
 function TooltipTrigger({
 	...props
 }: React.ComponentProps<typeof BaseTooltip.Trigger>) {
-	return <BaseTooltip.Trigger data-slot="tooltip-trigger" {...props} />
+	return <BaseTooltip.Trigger data-slot="tooltip-trigger" {...props} />;
 }
 
 function TooltipPortal({
 	...props
 }: React.ComponentProps<typeof BaseTooltip.Portal>) {
-	return <BaseTooltip.Portal data-slot="tooltip-portal" {...props} />
+	return <BaseTooltip.Portal data-slot="tooltip-portal" {...props} />;
 }
 
 function TooltipPositioner({
 	...props
 }: React.ComponentProps<typeof BaseTooltip.Positioner>) {
-	return <BaseTooltip.Positioner data-slot="tooltip-positioner" {...props} />
+	return <BaseTooltip.Positioner data-slot="tooltip-positioner" {...props} />;
 }
 
 function TooltipArrow({
 	...props
 }: React.ComponentProps<typeof BaseTooltip.Arrow>) {
-	return <BaseTooltip.Arrow data-slot="tooltip-arrow" {...props} />
+	return <BaseTooltip.Arrow data-slot="tooltip-arrow" {...props} />;
 }
 
 function TooltipContent({
@@ -54,9 +54,9 @@ function TooltipContent({
 	children,
 	...props
 }: React.ComponentProps<typeof BaseTooltip.Popup> & {
-	align?: BaseTooltip.Positioner.Props["align"]
-	side?: BaseTooltip.Positioner.Props["side"]
-	sideOffset?: BaseTooltip.Positioner.Props["sideOffset"]
+	align?: BaseTooltip.Positioner.Props["align"];
+	side?: BaseTooltip.Positioner.Props["side"];
+	sideOffset?: BaseTooltip.Positioner.Props["sideOffset"];
 }) {
 	return (
 		<TooltipPortal>
@@ -65,7 +65,7 @@ function TooltipContent({
 					data-slot="tooltip-content"
 					className={cn(
 						"bg-popover text-popover-foreground outline-border z-50 w-fit origin-(--transform-origin) rounded-md px-3 py-1.5 text-xs text-balance shadow-sm outline -outline-offset-1 transition-[transform,scale,opacity] data-ending-style:scale-95 data-ending-style:opacity-0 data-starting-style:scale-95 data-starting-style:opacity-0",
-						className
+						className,
 					)}
 					{...props}
 				>
@@ -85,15 +85,15 @@ function TooltipContent({
 				</BaseTooltip.Popup>
 			</TooltipPositioner>
 		</TooltipPortal>
-	)
+	);
 }
 
 export {
 	Tooltip,
-	TooltipTrigger,
+	TooltipArrow,
 	TooltipContent,
 	TooltipPortal,
 	TooltipPositioner,
-	TooltipArrow,
 	TooltipProvider,
-}
+	TooltipTrigger,
+};

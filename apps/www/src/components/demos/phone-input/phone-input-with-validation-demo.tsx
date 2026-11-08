@@ -1,22 +1,22 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import { isValidPhoneNumber } from "react-phone-number-input"
+import { useState } from "react";
+import { isValidPhoneNumber } from "react-phone-number-input";
 
-import { PhoneInput } from "@/components/ui/phone-input"
+import { PhoneInput } from "@/components/ui/phone-input";
 
 export default function PhoneInputWithValidationDemo() {
-	const [phoneNumber, setPhoneNumber] = useState<string>()
-	const [error, setError] = useState<string>()
+	const [phoneNumber, setPhoneNumber] = useState<string>();
+	const [error, setError] = useState<string>();
 
 	const handleChange = (value: string | undefined) => {
-		setPhoneNumber(value)
+		setPhoneNumber(value);
 		if (value && !isValidPhoneNumber(value)) {
-			setError("Please enter a valid phone number")
+			setError("Please enter a valid phone number");
 		} else {
-			setError(undefined)
+			setError(undefined);
 		}
-	}
+	};
 
 	return (
 		<div className="w-[300px] space-y-2">
@@ -33,5 +33,5 @@ export default function PhoneInputWithValidationDemo() {
 				</p>
 			)}
 		</div>
-	)
+	);
 }

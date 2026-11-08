@@ -4,7 +4,7 @@ import {
 	SelectItem,
 	SelectTrigger,
 	SelectValue,
-} from "@/components/ui/select"
+} from "@/components/ui/select";
 
 const items = [
 	{
@@ -23,7 +23,7 @@ const items = [
 		label: "Cherry",
 		value: "cherry",
 	},
-]
+];
 
 export default function SelectDemo() {
 	return (
@@ -41,5 +41,5 @@ export default function SelectDemo() {
 				</SelectContent>
 			</Select>
 		</div>
-	)
+	);
 }

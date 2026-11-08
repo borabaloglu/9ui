@@ -1,7 +1,7 @@
-import * as React from "react"
-import { EmojiPicker as BaseEmojiPicker } from "frimousse"
+import type * as React from "react";
+import { EmojiPicker as BaseEmojiPicker } from "frimousse";
 
-import { cn } from "@/lib/utils"
+import { cn } from "@/lib/utils";
 
 function EmojiPicker({
 	className,
@@ -12,11 +12,11 @@ function EmojiPicker({
 			data-slot="emoji-picker"
 			className={cn(
 				"bg-popover isolate flex h-80 w-fit flex-col rounded-md border shadow-md",
-				className
+				className,
 			)}
 			{...props}
 		/>
-	)
+	);
 }
 
 function EmojiPickerSearch({
@@ -25,7 +25,7 @@ function EmojiPickerSearch({
 	wrapperClassName,
 	...props
 }: React.ComponentProps<typeof BaseEmojiPicker.Search> & {
-	wrapperClassName?: string
+	wrapperClassName?: string;
 }) {
 	return (
 		<div
@@ -34,15 +34,15 @@ function EmojiPickerSearch({
 		>
 			<BaseEmojiPicker.Search
 				className={cn(
-					"placeholder:text-muted-foreground selection:bg-primary selection:text-primary-foreground bg-input hover:border-ring/70 focus-visible:border-ring focus-visible:ring-ring/50 aria-invalid:ring-destructive/50 aria-invalid:border-destructive z-50 flex h-9 w-full min-w-0 rounded-md border px-3 py-1 text-base shadow-xs transition-[color,box-shadow,border-color] outline-none focus-visible:ring-[3px] data-disabled:pointer-events-none data-disabled:opacity-50 md:text-sm",
-					className
+					"bg-input selection:bg-primary selection:text-primary-foreground placeholder:text-muted-foreground hover:border-ring/70 focus-visible:border-ring focus-visible:ring-ring/50 aria-invalid:border-destructive aria-invalid:ring-destructive/50 z-50 flex h-9 w-full min-w-0 rounded-md border px-3 py-1 text-base shadow-xs transition-[color,box-shadow,border-color] outline-none focus-visible:ring-[3px] data-disabled:pointer-events-none data-disabled:opacity-50 md:text-sm",
+					className,
 				)}
 				data-disabled={disabled}
 				disabled={disabled}
 				{...props}
 			/>
 		</div>
-	)
+	);
 }
 
 function EmojiPickerContent({
@@ -55,7 +55,7 @@ function EmojiPickerContent({
 			className={cn("relative flex-1 outline-hidden", className)}
 			{...props}
 		/>
-	)
+	);
 }
 
 function EmojiPickerLoading({
@@ -67,11 +67,11 @@ function EmojiPickerLoading({
 			data-slot="emoji-picker-loading"
 			className={cn(
 				"text-muted-foreground absolute inset-0 flex items-center justify-center text-sm",
-				className
+				className,
 			)}
 			{...props}
 		/>
-	)
+	);
 }
 
 function EmojiPickerEmpty({
@@ -83,11 +83,11 @@ function EmojiPickerEmpty({
 			data-slot="emoji-picker-empty"
 			className={cn(
 				"text-muted-foreground absolute inset-0 flex items-center justify-center text-sm",
-				className
+				className,
 			)}
 			{...props}
 		/>
-	)
+	);
 }
 
 function EmojiPickerList({
@@ -129,7 +129,7 @@ function EmojiPickerList({
 			}}
 			{...props}
 		/>
-	)
+	);
 }
 
 function EmojiPickerSkinToneSelector({
@@ -141,19 +141,19 @@ function EmojiPickerSkinToneSelector({
 			data-slot="emoji-picker-skin-tone-selector"
 			className={cn(
 				"bg-popover hover:bg-accent mx-2 mb-1.5 size-8 rounded-md text-lg",
-				className
+				className,
 			)}
 			{...props}
 		/>
-	)
+	);
 }
 
 export {
 	EmojiPicker,
-	EmojiPickerSearch,
 	EmojiPickerContent,
-	EmojiPickerLoading,
 	EmojiPickerEmpty,
 	EmojiPickerList,
+	EmojiPickerLoading,
+	EmojiPickerSearch,
 	EmojiPickerSkinToneSelector,
-}
+};

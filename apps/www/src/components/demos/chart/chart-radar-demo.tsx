@@ -1,6 +1,6 @@
-"use client"
+"use client";
 
-import { Legend, PolarAngleAxis, PolarGrid, Radar, RadarChart } from "recharts"
+import { Legend, PolarAngleAxis, PolarGrid, Radar, RadarChart } from "recharts";
 
 import {
 	Card,
@@ -9,13 +9,13 @@ import {
 	CardFooter,
 	CardHeader,
 	CardTitle,
-} from "@/components/ui/card"
+} from "@/components/ui/card";
 import {
-	ChartConfig,
+	type ChartConfig,
 	ChartContainer,
 	ChartTooltip,
 	ChartTooltipContent,
-} from "@/components/ui/chart"
+} from "@/components/ui/chart";
 
 const chartData = [
 	{ category: "Performance", a: 90, b: 60 },
@@ -23,7 +23,7 @@ const chartData = [
 	{ category: "Scalability", a: 95, b: 90 },
 	{ category: "Security", a: 88, b: 65 },
 	{ category: "Usability", a: 92, b: 88 },
-]
+];
 
 const chartConfig = {
 	a: {
@@ -34,15 +34,15 @@ const chartConfig = {
 		label: "Product B",
 		color: "var(--chart-2)",
 	},
-} satisfies ChartConfig
+} satisfies ChartConfig;
 
 export default function ChartRadarDemo() {
 	const productAAverage =
-		chartData.reduce((sum, item) => sum + item.a, 0) / chartData.length
+		chartData.reduce((sum, item) => sum + item.a, 0) / chartData.length;
 	const productBAverage =
-		chartData.reduce((sum, item) => sum + item.b, 0) / chartData.length
+		chartData.reduce((sum, item) => sum + item.b, 0) / chartData.length;
 	const bestPerformer =
-		productAAverage > productBAverage ? "Product A" : "Product B"
+		productAAverage > productBAverage ? "Product A" : "Product B";
 
 	return (
 		<Card className="flex w-full flex-col">
@@ -91,5 +91,5 @@ export default function ChartRadarDemo() {
 				</div>
 			</CardFooter>
 		</Card>
-	)
+	);
 }

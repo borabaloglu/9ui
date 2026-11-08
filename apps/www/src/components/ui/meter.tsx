@@ -1,7 +1,7 @@
-import * as React from "react"
-import { Meter as BaseMeter } from "@base-ui/react/meter"
+import type * as React from "react";
+import { Meter as BaseMeter } from "@base-ui/react/meter";
 
-import { cn } from "@/lib/utils"
+import { cn } from "@/lib/utils";
 
 function Meter({
 	className,
@@ -19,7 +19,7 @@ function Meter({
 				data-slot="meter-track"
 				className={cn(
 					"bg-primary/20 h-2 w-full overflow-hidden rounded-xs",
-					className
+					className,
 				)}
 				{...props}
 			>
@@ -29,7 +29,7 @@ function Meter({
 				/>
 			</BaseMeter.Track>
 		</BaseMeter.Root>
-	)
+	);
 }
 
 function MeterLabel({
@@ -42,7 +42,7 @@ function MeterLabel({
 			className={cn("text-sm font-medium", className)}
 			{...props}
 		/>
-	)
+	);
 }
 
 function MeterValue({
@@ -55,7 +55,7 @@ function MeterValue({
 			className={cn("text-sm", className)}
 			{...props}
 		/>
-	)
+	);
 }
 
-export { Meter, MeterLabel, MeterValue }
+export { Meter, MeterLabel, MeterValue };

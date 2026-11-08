@@ -1,7 +1,7 @@
-"use client"
+"use client";
 
-import { TrendingUpIcon } from "lucide-react"
-import { Area, AreaChart, CartesianGrid, XAxis } from "recharts"
+import { TrendingUpIcon } from "lucide-react";
+import { Area, AreaChart, CartesianGrid, XAxis } from "recharts";
 
 import {
 	Card,
@@ -10,13 +10,13 @@ import {
 	CardFooter,
 	CardHeader,
 	CardTitle,
-} from "@/components/ui/card"
+} from "@/components/ui/card";
 import {
-	ChartConfig,
+	type ChartConfig,
 	ChartContainer,
 	ChartTooltip,
 	ChartTooltipContent,
-} from "@/components/ui/chart"
+} from "@/components/ui/chart";
 
 const chartData = [
 	{ month: "Jan", revenue: 1500 },
@@ -31,21 +31,21 @@ const chartData = [
 	{ month: "Oct", revenue: 5200 },
 	{ month: "Nov", revenue: 6000 },
 	{ month: "Dec", revenue: 7200 },
-]
+];
 
 const chartConfig = {
 	revenue: {
 		label: "Revenue",
 		color: "var(--chart-1)",
 	},
-} satisfies ChartConfig
+} satisfies ChartConfig;
 
 export default function ChartAreaDemo() {
-	const totalRevenue = chartData.reduce((sum, item) => sum + item.revenue, 0)
-	const averageRevenue = totalRevenue / chartData.length
+	const totalRevenue = chartData.reduce((sum, item) => sum + item.revenue, 0);
+	const averageRevenue = totalRevenue / chartData.length;
 	const lastMonthGrowth =
 		((chartData[11].revenue - chartData[10].revenue) / chartData[10].revenue) *
-		100
+		100;
 
 	return (
 		<Card className="flex w-full flex-col">
@@ -108,5 +108,5 @@ export default function ChartAreaDemo() {
 				</div>
 			</CardFooter>
 		</Card>
-	)
+	);
 }

@@ -1,40 +1,40 @@
-import * as React from "react"
-import { Popover as BasePopover } from "@base-ui/react/popover"
+import type * as React from "react";
+import { Popover as BasePopover } from "@base-ui/react/popover";
 
-import { cn } from "@/lib/utils"
+import { cn } from "@/lib/utils";
 
 function Popover({ ...props }: React.ComponentProps<typeof BasePopover.Root>) {
-	return <BasePopover.Root data-slot="popover" {...props} />
+	return <BasePopover.Root data-slot="popover" {...props} />;
 }
 
 function PopoverPortal({
 	...props
 }: React.ComponentProps<typeof BasePopover.Portal>) {
-	return <BasePopover.Portal data-slot="popover-portal" {...props} />
+	return <BasePopover.Portal data-slot="popover-portal" {...props} />;
 }
 
 function PopoverTrigger({
 	...props
 }: React.ComponentProps<typeof BasePopover.Trigger>) {
-	return <BasePopover.Trigger data-slot="popover-trigger" {...props} />
+	return <BasePopover.Trigger data-slot="popover-trigger" {...props} />;
 }
 
 function PopoverClose({
 	...props
 }: React.ComponentProps<typeof BasePopover.Close>) {
-	return <BasePopover.Close data-slot="popover-close" {...props} />
+	return <BasePopover.Close data-slot="popover-close" {...props} />;
 }
 
 function PopoverArrow({
 	...props
 }: React.ComponentProps<typeof BasePopover.Arrow>) {
-	return <BasePopover.Arrow data-slot="popover-arrow" {...props} />
+	return <BasePopover.Arrow data-slot="popover-arrow" {...props} />;
 }
 
 function PopoverPositioner({
 	...props
 }: React.ComponentProps<typeof BasePopover.Positioner>) {
-	return <BasePopover.Positioner data-slot="popover-positioner" {...props} />
+	return <BasePopover.Positioner data-slot="popover-positioner" {...props} />;
 }
 
 function PopoverHeader({ className, ...props }: React.ComponentProps<"div">) {
@@ -44,7 +44,7 @@ function PopoverHeader({ className, ...props }: React.ComponentProps<"div">) {
 			className={cn("relative flex flex-col gap-y-1", className)}
 			{...props}
 		/>
-	)
+	);
 }
 
 function PopoverTitle({
@@ -57,7 +57,7 @@ function PopoverTitle({
 			className={cn("text-sm font-semibold", className)}
 			{...props}
 		/>
-	)
+	);
 }
 
 function PopoverDescription({
@@ -70,7 +70,7 @@ function PopoverDescription({
 			className={cn("text-muted-foreground text-sm", className)}
 			{...props}
 		/>
-	)
+	);
 }
 
 function PopoverContent({
@@ -81,9 +81,9 @@ function PopoverContent({
 	arrow = true,
 	...props
 }: React.ComponentProps<typeof BasePopover.Popup> & {
-	align?: BasePopover.Positioner.Props["align"]
-	sideOffset?: BasePopover.Positioner.Props["sideOffset"]
-	arrow?: boolean
+	align?: BasePopover.Positioner.Props["align"];
+	sideOffset?: BasePopover.Positioner.Props["sideOffset"];
+	arrow?: boolean;
 }) {
 	return (
 		<PopoverPortal>
@@ -92,7 +92,7 @@ function PopoverContent({
 					data-slot="popover-content"
 					className={cn(
 						"bg-popover text-popover-foreground outline-border z-50 w-72 origin-(--transform-origin) rounded-md p-4 shadow-md outline -outline-offset-1 transition-[transform,scale,opacity] data-ending-style:scale-95 data-ending-style:opacity-0 data-starting-style:scale-95 data-starting-style:opacity-0",
-						className
+						className,
 					)}
 					{...props}
 				>
@@ -114,7 +114,7 @@ function PopoverContent({
 				</BasePopover.Popup>
 			</PopoverPositioner>
 		</PopoverPortal>
-	)
+	);
 }
 
 function PopoverFooter({ className, ...props }: React.ComponentProps<"div">) {
@@ -123,23 +123,23 @@ function PopoverFooter({ className, ...props }: React.ComponentProps<"div">) {
 			data-slot="popover-footer"
 			className={cn(
 				"flex flex-col-reverse gap-2 sm:flex-row sm:justify-end",
-				className
+				className,
 			)}
 			{...props}
 		/>
-	)
+	);
 }
 
 export {
 	Popover,
-	PopoverTrigger,
-	PopoverHeader,
-	PopoverTitle,
-	PopoverDescription,
-	PopoverContent,
-	PopoverFooter,
-	PopoverClose,
 	PopoverArrow,
-	PopoverPositioner,
+	PopoverClose,
+	PopoverContent,
+	PopoverDescription,
+	PopoverFooter,
+	PopoverHeader,
 	PopoverPortal,
-}
+	PopoverPositioner,
+	PopoverTitle,
+	PopoverTrigger,
+};

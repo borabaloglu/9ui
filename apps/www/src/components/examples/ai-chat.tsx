@@ -1,6 +1,6 @@
-"use client"
+"use client";
 
-import { useState } from "react"
+import { useState } from "react";
 import {
 	BotIcon,
 	GlobeIcon,
@@ -15,30 +15,30 @@ import {
 	ShareIcon,
 	TrashIcon,
 	UserIcon,
-} from "lucide-react"
+} from "lucide-react";
 
-import { Avatar, AvatarFallback } from "@/components/ui/avatar"
-import { Button } from "@/components/ui/button"
+import { Avatar, AvatarFallback } from "@/components/ui/avatar";
+import { Button } from "@/components/ui/button";
 import {
 	DropdownMenu,
 	DropdownMenuContent,
 	DropdownMenuItem,
 	DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu"
-import { Textarea } from "@/components/ui/textarea"
+} from "@/components/ui/dropdown-menu";
+import { Textarea } from "@/components/ui/textarea";
 
-import { cn } from "@/lib/utils"
+import { cn } from "@/lib/utils";
 
 interface Message {
-	id: number
-	role: "user" | "assistant"
-	content: string
-	timestamp: string
+	id: number;
+	role: "user" | "assistant";
+	content: string;
+	timestamp: string;
 }
 
 interface Chat {
-	id: number
-	title: string
+	id: number;
+	title: string;
 }
 
 const initialMessages: Message[] = [
@@ -48,7 +48,7 @@ const initialMessages: Message[] = [
 		content: "Hello! How can I help you today?",
 		timestamp: "10:30 AM",
 	},
-]
+];
 
 const sampleChats: Chat[] = [
 	{
@@ -63,17 +63,17 @@ const sampleChats: Chat[] = [
 		id: 3,
 		title: "Code Review",
 	},
-]
+];
 
 export const AIChatInterface = () => {
-	const [messages, setMessages] = useState<Message[]>(initialMessages)
-	const [inputValue, setInputValue] = useState("")
-	const [isLoading, setIsLoading] = useState(false)
-	const [isSidebarOpen, setIsSidebarOpen] = useState(false)
+	const [messages, setMessages] = useState<Message[]>(initialMessages);
+	const [inputValue, setInputValue] = useState("");
+	const [isLoading, setIsLoading] = useState(false);
+	const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
 	const handleSubmit = async (e: React.FormEvent) => {
-		e.preventDefault()
-		if (!inputValue.trim()) return
+		e.preventDefault();
+		if (!inputValue.trim()) return;
 
 		// Add user message
 		const userMessage: Message = {
@@ -84,12 +84,12 @@ export const AIChatInterface = () => {
 				hour: "2-digit",
 				minute: "2-digit",
 			}),
-		}
-		setMessages((prev) => [...prev, userMessage])
-		setInputValue("")
+		};
+		setMessages((prev) => [...prev, userMessage]);
+		setInputValue("");
 
 		// Simulate AI response
-		setIsLoading(true)
+		setIsLoading(true);
 		setTimeout(() => {
 			const aiMessage: Message = {
 				id: messages.length + 2,
@@ -99,18 +99,18 @@ export const AIChatInterface = () => {
 					hour: "2-digit",
 					minute: "2-digit",
 				}),
-			}
-			setMessages((prev) => [...prev, aiMessage])
-			setIsLoading(false)
-		}, 1000)
-	}
+			};
+			setMessages((prev) => [...prev, aiMessage]);
+			setIsLoading(false);
+		}, 1000);
+	};
 
 	return (
 		<div className="relative grid h-[600px] grid-cols-1 gap-0 overflow-hidden rounded-lg border p-0 md:grid-cols-[240px_1fr]">
 			<div
 				className={cn(
 					"bg-background absolute inset-y-0 left-0 z-20 w-60 border-r transition-transform md:static md:translate-x-0",
-					isSidebarOpen ? "translate-x-0" : "-translate-x-full"
+					isSidebarOpen ? "translate-x-0" : "-translate-x-full",
 				)}
 			>
 				<div className="flex h-full flex-col gap-2">
@@ -145,7 +145,7 @@ export const AIChatInterface = () => {
 												<MoreHorizontalIcon {...props} className="size-4" />
 											</div>
 										)}
-									></DropdownMenuTrigger>
+									/>
 									<DropdownMenuContent>
 										<DropdownMenuItem>
 											<PencilIcon className="size-4" />
@@ -190,7 +190,7 @@ export const AIChatInterface = () => {
 								key={message.id}
 								className={cn(
 									"flex items-start gap-2",
-									message.role === "user" ? "flex-row-reverse" : ""
+									message.role === "user" ? "flex-row-reverse" : "",
 								)}
 							>
 								<Avatar>
@@ -205,7 +205,7 @@ export const AIChatInterface = () => {
 								<div
 									className={cn(
 										"flex max-w-[80%] flex-col",
-										message.role === "user" ? "items-end" : ""
+										message.role === "user" ? "items-end" : "",
 									)}
 								>
 									<div className="bg-muted rounded-lg px-4 py-2">
@@ -239,8 +239,8 @@ export const AIChatInterface = () => {
 							disabled={isLoading}
 							onKeyDown={(e) => {
 								if (e.key === "Enter" && !e.shiftKey) {
-									e.preventDefault()
-									handleSubmit(e)
+									e.preventDefault();
+									handleSubmit(e);
 								}
 							}}
 						/>
@@ -264,5 +264,5 @@ export const AIChatInterface = () => {
 				/>
 			)}
 		</div>
-	)
-}
+	);
+};

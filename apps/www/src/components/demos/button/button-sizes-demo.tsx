@@ -1,4 +1,4 @@
-import { Button } from "@/components/ui/button"
+import { Button } from "@/components/ui/button";
 
 export default function ButtonSizesDemo() {
 	return (
@@ -7,5 +7,5 @@ export default function ButtonSizesDemo() {
 			<Button>Default</Button>
 			<Button size="lg">Large</Button>
 		</div>
-	)
+	);
 }

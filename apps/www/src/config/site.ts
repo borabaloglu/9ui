@@ -9,8 +9,8 @@ export const siteConfig = {
 		twitter: "https://twitter.com/borabaloglu",
 		github: "https://github.com/borabaloglu/9ui",
 	},
-}
+};
 
-export type SiteConfig = typeof siteConfig
+export type SiteConfig = typeof siteConfig;
 
-export const META_THEME_COLOR = "#060606"
+export const META_THEME_COLOR = "#060606";

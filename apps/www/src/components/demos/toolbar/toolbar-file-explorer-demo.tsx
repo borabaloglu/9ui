@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import {
 	LayoutGridIcon,
@@ -6,7 +6,7 @@ import {
 	MoreHorizontalIcon,
 	SearchIcon,
 	ShareIcon,
-} from "lucide-react"
+} from "lucide-react";
 
 import {
 	DropdownMenu,
@@ -14,17 +14,17 @@ import {
 	DropdownMenuItem,
 	DropdownMenuSeparator,
 	DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu"
-import { Input } from "@/components/ui/input"
-import { Toggle } from "@/components/ui/toggle"
-import { ToggleGroup } from "@/components/ui/toggle-group"
+} from "@/components/ui/dropdown-menu";
+import { Input } from "@/components/ui/input";
+import { Toggle } from "@/components/ui/toggle";
+import { ToggleGroup } from "@/components/ui/toggle-group";
 import {
 	Toolbar,
 	ToolbarButton,
 	ToolbarGroup,
 	ToolbarInput,
 	ToolbarSeparator,
-} from "@/components/ui/toolbar"
+} from "@/components/ui/toolbar";
 
 export default function ToolbarFileExplorerDemo() {
 	return (
@@ -77,5 +77,5 @@ export default function ToolbarFileExplorerDemo() {
 				render={<Input placeholder="Search" leadingIcon={<SearchIcon />} />}
 			/>
 		</Toolbar>
-	)
+	);
 }

@@ -1,9 +1,9 @@
-"use client"
+"use client";
 
-import * as React from "react"
-import { CheckboxGroup as BaseCheckboxGroup } from "@base-ui/react/checkbox-group"
+import type * as React from "react";
+import { CheckboxGroup as BaseCheckboxGroup } from "@base-ui/react/checkbox-group";
 
-import { cn } from "@/lib/utils"
+import { cn } from "@/lib/utils";
 
 function CheckboxGroup({
 	className,
@@ -14,7 +14,7 @@ function CheckboxGroup({
 			className={cn("flex flex-col items-start gap-1", className)}
 			{...props}
 		/>
-	)
+	);
 }
 
-export { CheckboxGroup }
+export { CheckboxGroup };

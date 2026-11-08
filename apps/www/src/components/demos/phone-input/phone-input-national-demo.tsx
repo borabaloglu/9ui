@@ -1,11 +1,11 @@
-"use client"
+"use client";
 
-import { useState } from "react"
+import { useState } from "react";
 
-import { PhoneInput } from "@/components/ui/phone-input"
+import { PhoneInput } from "@/components/ui/phone-input";
 
 export default function PhoneInputNationalDemo() {
-	const [phoneNumber, setPhoneNumber] = useState<string>()
+	const [phoneNumber, setPhoneNumber] = useState<string>();
 
 	return (
 		<div className="w-[300px]">
@@ -17,5 +17,5 @@ export default function PhoneInputNationalDemo() {
 				placeholder="Enter a phone number"
 			/>
 		</div>
-	)
+	);
 }

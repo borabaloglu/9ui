@@ -1,6 +1,6 @@
-"use client"
+"use client";
 
-import { RadialBar, RadialBarChart } from "recharts"
+import { RadialBar, RadialBarChart } from "recharts";
 
 import {
 	Card,
@@ -9,13 +9,13 @@ import {
 	CardFooter,
 	CardHeader,
 	CardTitle,
-} from "@/components/ui/card"
+} from "@/components/ui/card";
 import {
-	ChartConfig,
+	type ChartConfig,
 	ChartContainer,
 	ChartTooltip,
 	ChartTooltipContent,
-} from "@/components/ui/chart"
+} from "@/components/ui/chart";
 
 const chartData = [
 	{ browser: "chrome", visitors: 540, fill: "var(--color-chrome)" },
@@ -23,7 +23,7 @@ const chartData = [
 	{ browser: "firefox", visitors: 262, fill: "var(--color-firefox)" },
 	{ browser: "edge", visitors: 160, fill: "var(--color-edge)" },
 	{ browser: "other", visitors: 100, fill: "var(--color-other)" },
-]
+];
 
 const chartConfig = {
 	visitors: {
@@ -49,14 +49,14 @@ const chartConfig = {
 		label: "Other",
 		color: "var(--chart-5)",
 	},
-} satisfies ChartConfig
+} satisfies ChartConfig;
 
 export default function ChartRadialBarDemo() {
-	const totalVisitors = chartData.reduce((sum, item) => sum + item.visitors, 0)
-	const highestVisitors = Math.max(...chartData.map((item) => item.visitors))
+	const totalVisitors = chartData.reduce((sum, item) => sum + item.visitors, 0);
+	const highestVisitors = Math.max(...chartData.map((item) => item.visitors));
 	const topBrowser = chartData.find(
-		(item) => item.visitors === highestVisitors
-	)?.browser
+		(item) => item.visitors === highestVisitors,
+	)?.browser;
 
 	return (
 		<Card className="flex w-full flex-col">
@@ -93,5 +93,5 @@ export default function ChartRadialBarDemo() {
 				</div>
 			</CardFooter>
 		</Card>
-	)
+	);
 }

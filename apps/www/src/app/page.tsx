@@ -1,7 +1,7 @@
-import Examples from "@/components/examples"
-import { FlickeringGrid } from "@/components/flickering-background"
-import { HeroActions } from "@/components/hero-actions"
-import { Badge } from "@/components/ui/badge"
+import Examples from "@/components/examples";
+import { FlickeringGrid } from "@/components/flickering-background";
+import { HeroActions } from "@/components/hero-actions";
+import { Badge } from "@/components/ui/badge";
 
 const Home = () => (
 	<div className="dark:border-border/40 relative container mx-auto space-y-6 border-dashed py-4 xl:border-x">
@@ -45,6 +45,6 @@ const Home = () => (
 
 		<Examples />
 	</div>
-)
+);
 
-export default Home
+export default Home;

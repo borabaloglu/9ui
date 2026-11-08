@@ -1,28 +1,28 @@
-import { Metadata } from "next"
-import { notFound } from "next/navigation"
+import type { Metadata } from "next";
+import { notFound } from "next/navigation";
 
-import { CtaCard } from "@/components/cta-card"
-import { PageActions } from "@/components/page-actions"
-import { TableOfContents } from "@/components/toc"
+import { CtaCard } from "@/components/cta-card";
+import { PageActions } from "@/components/page-actions";
+import { TableOfContents } from "@/components/toc";
 
-import { siteConfig } from "@/config/site"
+import { siteConfig } from "@/config/site";
 
-import { getNavigationForPage } from "@/lib/navigation"
-import { getSidebarNav, source } from "@/lib/source"
-import { absoluteUrl } from "@/lib/url"
+import { getNavigationForPage } from "@/lib/navigation";
+import { getSidebarNav, source } from "@/lib/source";
+import { absoluteUrl } from "@/lib/url";
 
-import { getMDXComponents } from "@/mdx-components"
+import { getMDXComponents } from "@/mdx-components";
 
 export async function generateMetadata({
 	params,
 }: DocPageProps): Promise<Metadata> {
-	const page = await getPageFromParams({ params })
+	const page = await getPageFromParams({ params });
 
 	if (!page) {
-		return {}
+		return {};
 	}
 
-	const { title, description } = page.data
+	const { title, description } = page.data;
 
 	return {
 		title,
@@ -48,35 +48,35 @@ export async function generateMetadata({
 			images: [siteConfig.ogImage],
 			creator: "@borabalogluu",
 		},
-	}
+	};
 }
 
 interface DocPageProps {
 	params: Promise<{
-		slug: string[]
-	}>
+		slug: string[];
+	}>;
 }
 
 async function getPageFromParams({ params }: DocPageProps) {
-	const { slug } = await params
-	const page = source.getPage(slug)
+	const { slug } = await params;
+	const page = source.getPage(slug);
 
 	if (!page || page.data.disabled) {
-		return null
+		return null;
 	}
 
-	return page
+	return page;
 }
 
 const DocPage = async ({ params }: DocPageProps) => {
-	const page = await getPageFromParams({ params })
+	const page = await getPageFromParams({ params });
 
 	if (!page) {
-		notFound()
+		notFound();
 	}
 
-	const { body: MDX, toc, title, description } = page.data
-	const navigation = getNavigationForPage(getSidebarNav(), page.url)
+	const { body: MDX, toc, title, description } = page.data;
+	const navigation = getNavigationForPage(getSidebarNav(), page.url);
 
 	return (
 		<main className="relative grid xl:grid-cols-[1fr_240px] xl:gap-8">
@@ -100,9 +100,9 @@ const DocPage = async ({ params }: DocPageProps) => {
 				</div>
 			</div>
 		</main>
-	)
-}
+	);
+};
 
-export const dynamicParams = false
+export const dynamicParams = false;
 
-export default DocPage
+export default DocPage;

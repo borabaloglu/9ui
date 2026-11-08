@@ -1,6 +1,6 @@
-import { Loader2Icon } from "lucide-react"
+import { Loader2Icon } from "lucide-react";
 
-import { Button } from "@/components/ui/button"
+import { Button } from "@/components/ui/button";
 
 export default function ButtonLoadingDemo() {
 	return (
@@ -10,5 +10,5 @@ export default function ButtonLoadingDemo() {
 			</div>
 			Loading
 		</Button>
-	)
+	);
 }

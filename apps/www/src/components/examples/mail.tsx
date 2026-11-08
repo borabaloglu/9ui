@@ -1,6 +1,6 @@
-"use client"
+"use client";
 
-import { useState } from "react"
+import { useState } from "react";
 import {
 	Archive,
 	ArchiveX,
@@ -20,10 +20,10 @@ import {
 	Star,
 	StarIcon,
 	Trash2,
-} from "lucide-react"
+} from "lucide-react";
 
-import { Avatar, AvatarFallback } from "@/components/ui/avatar"
-import { Button } from "@/components/ui/button"
+import { Avatar, AvatarFallback } from "@/components/ui/avatar";
+import { Button } from "@/components/ui/button";
 import {
 	DropdownMenu,
 	DropdownMenuCheckboxItem,
@@ -37,12 +37,12 @@ import {
 	DropdownMenuSubContent,
 	DropdownMenuSubTrigger,
 	DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu"
-import { Input } from "@/components/ui/input"
-import { Separator } from "@/components/ui/separator"
-import { Textarea } from "@/components/ui/textarea"
+} from "@/components/ui/dropdown-menu";
+import { Input } from "@/components/ui/input";
+import { Separator } from "@/components/ui/separator";
+import { Textarea } from "@/components/ui/textarea";
 
-import { cn } from "@/lib/utils"
+import { cn } from "@/lib/utils";
 
 const emails = [
 	{
@@ -253,22 +253,23 @@ Mark`,
 		unread: false,
 		hasAttachment: true,
 	},
-]
+];
 
 const MailItem = ({
 	email,
 	isSelected,
 	onClick,
 }: {
-	email: (typeof emails)[0]
-	isSelected?: boolean
-	onClick: () => void
+	email: (typeof emails)[0];
+	isSelected?: boolean;
+	onClick: () => void;
 }) => (
 	<button
+		type="button"
 		onClick={onClick}
 		className={cn(
 			"hover:border-primary w-full rounded-md border px-4 py-3 text-left transition-colors",
-			isSelected && "bg-secondary"
+			isSelected && "bg-secondary",
 		)}
 	>
 		<div className="space-y-1">
@@ -288,21 +289,22 @@ const MailItem = ({
 			</p>
 		</div>
 	</button>
-)
+);
 
 export const MailInterface = () => {
-	const [selectedEmailId, setSelectedEmailId] = useState(1)
-	const [isSidebarOpen, setIsSidebarOpen] = useState(false)
-	const [isContentOpen, setIsContentOpen] = useState(false)
+	const [selectedEmailId, setSelectedEmailId] = useState(1);
+	const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+	const [isContentOpen, setIsContentOpen] = useState(false);
 
-	const selectedEmail = emails.find((email) => email.id === selectedEmailId)!
+	const selectedEmail =
+		emails.find((email) => email.id === selectedEmailId) ?? emails[0];
 
 	return (
 		<div className="relative grid h-[600px] overflow-hidden rounded-lg border md:grid-cols-[400px_1fr] lg:grid-cols-[240px_400px_1fr]">
 			<div
 				className={cn(
 					"bg-background absolute inset-y-0 left-0 z-50 w-[240px] p-4 transition-transform lg:static lg:translate-x-0 lg:border-r",
-					isSidebarOpen ? "translate-x-0 border-r" : "-translate-x-full"
+					isSidebarOpen ? "translate-x-0 border-r" : "-translate-x-full",
 				)}
 			>
 				<div className="flex h-full flex-col gap-2">
@@ -383,8 +385,8 @@ export const MailInterface = () => {
 							email={email}
 							isSelected={email.id === selectedEmailId}
 							onClick={() => {
-								setIsContentOpen(true)
-								setSelectedEmailId(email.id)
+								setIsContentOpen(true);
+								setSelectedEmailId(email.id);
 							}}
 						/>
 					))}
@@ -394,7 +396,7 @@ export const MailInterface = () => {
 			<div
 				className={cn(
 					"bg-background absolute size-full flex-col overflow-hidden md:static md:flex",
-					isContentOpen ? "z-50 flex" : "hidden"
+					isContentOpen ? "z-50 flex" : "hidden",
 				)}
 			>
 				<header className="h-14">
@@ -524,5 +526,5 @@ export const MailInterface = () => {
 				/>
 			)}
 		</div>
-	)
-}
+	);
+};

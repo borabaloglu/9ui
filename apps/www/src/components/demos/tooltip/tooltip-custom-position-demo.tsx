@@ -3,9 +3,9 @@ import {
 	TooltipContent,
 	TooltipProvider,
 	TooltipTrigger,
-} from "@/components/ui/tooltip"
+} from "@/components/ui/tooltip";
 
-const positions = ["top", "right", "bottom", "left"] as const
+const positions = ["top", "right", "bottom", "left"] as const;
 
 export default function TooltipCustomPositionDemo() {
 	return (
@@ -23,5 +23,5 @@ export default function TooltipCustomPositionDemo() {
 				))}
 			</TooltipProvider>
 		</div>
-	)
+	);
 }

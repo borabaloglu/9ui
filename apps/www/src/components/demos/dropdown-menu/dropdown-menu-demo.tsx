@@ -1,14 +1,14 @@
-"use client"
+"use client";
 
-import { useState } from "react"
+import { useState } from "react";
 import {
 	PauseIcon,
 	PlayIcon,
 	SkipBackIcon,
 	SkipForwardIcon,
-} from "lucide-react"
+} from "lucide-react";
 
-import { Button } from "@/components/ui/button"
+import { Button } from "@/components/ui/button";
 import {
 	DropdownMenu,
 	DropdownMenuCheckboxItem,
@@ -24,12 +24,12 @@ import {
 	DropdownMenuSubContent,
 	DropdownMenuSubTrigger,
 	DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu"
+} from "@/components/ui/dropdown-menu";
 
 export default function DropdownMenuDemo() {
-	const [shuffle, setShuffle] = useState(false)
-	const [repeat, setRepeat] = useState(false)
-	const [sortBy, setSortBy] = useState("artist")
+	const [shuffle, setShuffle] = useState(false);
+	const [repeat, setRepeat] = useState(false);
+	const [sortBy, setSortBy] = useState("artist");
 
 	return (
 		<DropdownMenu>
@@ -93,5 +93,5 @@ export default function DropdownMenuDemo() {
 				</DropdownMenuSub>
 			</DropdownMenuContent>
 		</DropdownMenu>
-	)
+	);
 }

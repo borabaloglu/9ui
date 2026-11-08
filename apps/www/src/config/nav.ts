@@ -1,7 +1,7 @@
-import { type NavItem } from "@/types/nav"
+import type { NavItem } from "@/types/nav";
 
 export interface NavConfig {
-	mainNav: NavItem[]
+	mainNav: NavItem[];
 }
 
 export const navConfig: NavConfig = {
@@ -19,4 +19,4 @@ export const navConfig: NavConfig = {
 			href: "/themes",
 		},
 	],
-}
+};

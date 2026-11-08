@@ -1,34 +1,33 @@
-import type { Metadata } from "next"
-import { Geist_Mono, Inter } from "next/font/google"
+import type { Metadata } from "next";
+import { Geist_Mono, Inter } from "next/font/google";
 
-import "./globals.css"
-import "./syntax.css"
+import "./globals.css";
+import "./syntax.css";
 
-import { ThemeProvider } from "next-themes"
+import { ThemeProvider } from "next-themes";
 
-import { Footer } from "@/components/footer"
-import { Header } from "@/components/header"
-import { Openpanel } from "@/components/openpanel"
-import { Toaster } from "@/components/ui/sonner"
-import { ToastProvider } from "@/components/ui/toast"
+import { Footer } from "@/components/footer";
+import { Header } from "@/components/header";
+import { Openpanel } from "@/components/openpanel";
+import { Toaster } from "@/components/ui/sonner";
+import { ToastProvider } from "@/components/ui/toast";
 
-import { siteConfig } from "@/config/site"
+import { siteConfig } from "@/config/site";
 
-import { getSidebarNav } from "@/lib/source"
-
-import { cn } from "@/lib/utils"
+import { getSidebarNav } from "@/lib/source";
+import { cn } from "@/lib/utils";
 
 const inter = Inter({
 	subsets: ["latin"],
 	display: "swap",
 	variable: "--font-inter",
-})
+});
 
 const geistMono = Geist_Mono({
 	subsets: ["latin"],
 	display: "swap",
 	variable: "--font-geist-mono",
-})
+});
 
 export const metadata: Metadata = {
 	title: {
@@ -69,14 +68,14 @@ export const metadata: Metadata = {
 		apple: "/apple-touch-icon.png",
 	},
 	manifest: `${siteConfig.url}/site.webmanifest`,
-}
+};
 
 const RootLayout = ({ children }: { children: React.ReactNode }) => (
 	<html lang="en" suppressHydrationWarning>
 		<body
 			className={cn(
 				`${inter.variable} ${geistMono.variable}`,
-				"font-sans antialiased"
+				"font-sans antialiased",
 			)}
 		>
 			<Openpanel />
@@ -101,6 +100,6 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => (
 			</ThemeProvider>
 		</body>
 	</html>
-)
+);
 
-export default RootLayout
+export default RootLayout;

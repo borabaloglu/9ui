@@ -1,4 +1,4 @@
-import { Button } from "@/components/ui/button"
+import { Button } from "@/components/ui/button";
 import {
 	Dialog,
 	DialogClose,
@@ -8,7 +8,7 @@ import {
 	DialogHeader,
 	DialogTitle,
 	DialogTrigger,
-} from "@/components/ui/dialog"
+} from "@/components/ui/dialog";
 
 export default function DialogDemo() {
 	return (
@@ -75,5 +75,5 @@ export default function DialogDemo() {
 				</DialogFooter>
 			</DialogContent>
 		</Dialog>
-	)
+	);
 }

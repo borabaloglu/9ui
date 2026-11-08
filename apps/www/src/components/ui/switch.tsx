@@ -1,7 +1,7 @@
-import * as React from "react"
-import { Switch as BaseSwitch } from "@base-ui/react/switch"
+import type * as React from "react";
+import { Switch as BaseSwitch } from "@base-ui/react/switch";
 
-import { cn } from "@/lib/utils"
+import { cn } from "@/lib/utils";
 
 function Switch({
 	className,
@@ -11,19 +11,19 @@ function Switch({
 		<BaseSwitch.Root
 			data-slot="switch"
 			className={cn(
-				"data-checked:bg-primary focus-visible:border-ring focus-visible:ring-ring/50 data-unchecked:bg-input data-unchecked:hover:border-ring/70 data-checked:border-primary inline-flex h-5 w-8 shrink-0 items-center rounded-full border shadow-xs transition-all duration-200 outline-none focus-visible:ring-[3px] data-disabled:pointer-events-none data-disabled:opacity-50",
-				className
+				"focus-visible:border-ring focus-visible:ring-ring/50 data-checked:border-primary data-checked:bg-primary data-unchecked:bg-input data-unchecked:hover:border-ring/70 inline-flex h-5 w-8 shrink-0 items-center rounded-full border shadow-xs transition-all duration-200 outline-none focus-visible:ring-[3px] data-disabled:pointer-events-none data-disabled:opacity-50",
+				className,
 			)}
 			{...props}
 		>
 			<BaseSwitch.Thumb
 				data-slot="switch-thumb"
 				className={cn(
-					"bg-foreground data-checked:bg-background pointer-events-none block size-4 rounded-full ring-0 transition-transform duration-200 ease-in-out data-checked:translate-x-[calc(100%-3px)] data-unchecked:translate-x-px"
+					"bg-foreground data-checked:bg-background pointer-events-none block size-4 rounded-full ring-0 transition-transform duration-200 ease-in-out data-checked:translate-x-[calc(100%-3px)] data-unchecked:translate-x-px",
 				)}
 			/>
 		</BaseSwitch.Root>
-	)
+	);
 }
 
-export { Switch }
+export { Switch };

@@ -1,7 +1,7 @@
-import { BoldIcon, ItalicIcon, UnderlineIcon } from "lucide-react"
+import { BoldIcon, ItalicIcon, UnderlineIcon } from "lucide-react";
 
-import { Toggle } from "@/components/ui/toggle"
-import { ToggleGroup } from "@/components/ui/toggle-group"
+import { Toggle } from "@/components/ui/toggle";
+import { ToggleGroup } from "@/components/ui/toggle-group";
 
 export default function ToggleGroupMultipleDemo() {
 	return (
@@ -16,5 +16,5 @@ export default function ToggleGroupMultipleDemo() {
 				<UnderlineIcon />
 			</Toggle>
 		</ToggleGroup>
-	)
+	);
 }

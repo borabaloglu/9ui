@@ -1,6 +1,6 @@
-import { AlertTriangleIcon } from "lucide-react"
+import { AlertTriangleIcon } from "lucide-react";
 
-import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
+import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 
 export default function AlertDemo() {
 	return (
@@ -11,5 +11,5 @@ export default function AlertDemo() {
 				Please check your internet connection and try again.
 			</AlertDescription>
 		</Alert>
-	)
+	);
 }

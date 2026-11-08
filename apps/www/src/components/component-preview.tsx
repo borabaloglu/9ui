@@ -1,24 +1,24 @@
-"use client"
+"use client";
 
-import * as React from "react"
-import { Loader2Icon, RefreshCwIcon } from "lucide-react"
+import * as React from "react";
+import { Loader2Icon, RefreshCwIcon } from "lucide-react";
 
-import { CodeBar } from "@/components/code-bar"
-import { Button } from "@/components/ui/button"
+import { CodeBar } from "@/components/code-bar";
+import { Button } from "@/components/ui/button";
 
-import { cn } from "@/lib/utils"
+import { cn } from "@/lib/utils";
 
-import { demoRegistry } from "@/registry/demos"
+import { demoRegistry } from "@/registry/demos";
 
-import type { DemoRegistry } from "@/types/demo"
+import type { DemoRegistry } from "@/types/demo";
 
-type DemoName = keyof DemoRegistry
+type DemoName = keyof DemoRegistry;
 
 interface ComponentPreviewProps extends React.HTMLAttributes<HTMLDivElement> {
-	name: DemoName
-	showReload?: boolean
-	className?: string
-	__source__: string
+	name: DemoName;
+	showReload?: boolean;
+	className?: string;
+	__source__: string;
 }
 
 export const ComponentPreview = ({
@@ -28,10 +28,10 @@ export const ComponentPreview = ({
 	children,
 	__source__,
 }: ComponentPreviewProps) => {
-	const demo = demoRegistry[name]
-	const Component = demo.component
+	const demo = demoRegistry[name];
+	const Component = demo.component;
 
-	const [key, setKey] = React.useState(0)
+	const [key, setKey] = React.useState(0);
 
 	return (
 		<div className={cn("mt-8 overflow-hidden rounded-lg border", className)}>
@@ -61,5 +61,5 @@ export const ComponentPreview = ({
 
 			<div className="[&_pre]:!max-h-[300px]">{children}</div>
 		</div>
-	)
-}
+	);
+};

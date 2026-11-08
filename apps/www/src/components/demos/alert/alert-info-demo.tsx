@@ -1,6 +1,6 @@
-import { InfoIcon } from "lucide-react"
+import { InfoIcon } from "lucide-react";
 
-import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
+import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 
 export default function AlertInfoDemo() {
 	return (
@@ -12,5 +12,5 @@ export default function AlertInfoDemo() {
 				ensures better security and performance.
 			</AlertDescription>
 		</Alert>
-	)
+	);
 }

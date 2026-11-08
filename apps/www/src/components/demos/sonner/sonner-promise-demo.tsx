@@ -1,6 +1,6 @@
-import { toast } from "sonner"
+import { toast } from "sonner";
 
-import { Button } from "@/components/ui/button"
+import { Button } from "@/components/ui/button";
 
 export default function SonnerPromiseDemo() {
 	return (
@@ -9,17 +9,17 @@ export default function SonnerPromiseDemo() {
 				toast.promise(
 					new Promise((resolve) => {
 						setTimeout(() => {
-							resolve("Request sent")
-						}, 2000)
+							resolve("Request sent");
+						}, 2000);
 					}),
 					{
 						loading: "Sending request...",
 						success: "Request sent",
-					}
+					},
 				)
 			}
 		>
 			Show Toast
 		</Button>
-	)
+	);
 }

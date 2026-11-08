@@ -1,32 +1,32 @@
-"use client"
+"use client";
 
-import * as React from "react"
-import Link from "next/link"
-import { usePathname } from "next/navigation"
-import { EqualIcon } from "lucide-react"
+import * as React from "react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { EqualIcon } from "lucide-react";
 
-import { Icons } from "@/components/icons"
-import { Button } from "@/components/ui/button"
+import { Icons } from "@/components/icons";
+import { Button } from "@/components/ui/button";
 import {
 	Drawer,
 	DrawerContent,
 	DrawerPortal,
 	DrawerTrigger,
-} from "@/components/ui/drawer"
-import { Separator } from "@/components/ui/separator"
+} from "@/components/ui/drawer";
+import { Separator } from "@/components/ui/separator";
 
-import { navConfig } from "@/config/nav"
+import { navConfig } from "@/config/nav";
 
-import { cn } from "@/lib/utils"
+import { cn } from "@/lib/utils";
 
-import { type NavItem, type SidebarNavGroup } from "@/types/nav"
+import type { NavItem, SidebarNavGroup } from "@/types/nav";
 
 interface MobileNavProps {
-	sidebarNav: SidebarNavGroup[]
+	sidebarNav: SidebarNavGroup[];
 }
 
 export function MobileNav({ sidebarNav }: MobileNavProps) {
-	const [open, setOpen] = React.useState(false)
+	const [open, setOpen] = React.useState(false);
 
 	return (
 		<div className="flex items-center gap-2 md:hidden">
@@ -81,17 +81,17 @@ export function MobileNav({ sidebarNav }: MobileNavProps) {
 				<span className="ml-0.5 font-mono text-lg font-black">ui</span>
 			</Link>
 		</div>
-	)
+	);
 }
 
 function MobileNavItem({
 	item,
 	onNavItemClick,
 }: {
-	item: NavItem
-	onNavItemClick: () => void
+	item: NavItem;
+	onNavItemClick: () => void;
 }) {
-	const pathname = usePathname()
+	const pathname = usePathname();
 
 	return !item.disabled && item.href ? (
 		<Link
@@ -101,7 +101,7 @@ function MobileNavItem({
 				"hover:text-foreground -ml-2 flex w-full items-center justify-between gap-2 rounded-md border px-2 py-1.5 transition-colors",
 				pathname === item.href
 					? "bg-secondary/50 text-foreground pl-2"
-					: "text-muted-foreground border-transparent"
+					: "text-muted-foreground border-transparent",
 			)}
 			target={item.external ? "_blank" : ""}
 			rel={item.external ? "noreferrer" : ""}
@@ -117,7 +117,7 @@ function MobileNavItem({
 	) : (
 		<span
 			className={cn(
-				"text-muted-foreground pointer-events-none -ml-2 flex w-full items-center justify-between gap-2 border border-transparent px-2 py-1.5 opacity-60"
+				"text-muted-foreground pointer-events-none -ml-2 flex w-full items-center justify-between gap-2 border border-transparent px-2 py-1.5 opacity-60",
 			)}
 		>
 			{item.title}
@@ -127,5 +127,5 @@ function MobileNavItem({
 				</span>
 			)}
 		</span>
-	)
+	);
 }

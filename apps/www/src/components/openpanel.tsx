@@ -1,15 +1,16 @@
-import { OpenPanelComponent } from "@openpanel/nextjs"
+import { OpenPanelComponent } from "@openpanel/nextjs";
 
 export function Openpanel() {
-	if (process.env.NODE_ENV !== "production") return null
+	const clientId = process.env.CLIENT_ID;
+
+	if (process.env.NODE_ENV !== "production" || !clientId) return null;
 
 	return (
 		<OpenPanelComponent
-			clientId={process.env.CLIENT_ID!}
-			clientSecret={process.env.CLIENT_SECRET!}
+			clientId={clientId}
 			trackScreenViews
 			trackAttributes
 			trackOutgoingLinks
 		/>
-	)
+	);
 }

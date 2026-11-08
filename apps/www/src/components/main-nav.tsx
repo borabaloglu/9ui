@@ -1,14 +1,14 @@
-"use client"
+"use client";
 
-import Link from "next/link"
-import { usePathname } from "next/navigation"
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 
-import { Icons } from "@/components/icons"
+import { Icons } from "@/components/icons";
 
-import { cn } from "@/lib/utils"
+import { cn } from "@/lib/utils";
 
 export function MainNav() {
-	const pathname = usePathname()
+	const pathname = usePathname();
 
 	return (
 		<div className="mr-4 hidden md:flex">
@@ -23,7 +23,7 @@ export function MainNav() {
 						"hover:text-foreground transition-colors",
 						pathname.startsWith("/docs/getting-started")
 							? "text-foreground font-medium"
-							: "text-muted-foreground"
+							: "text-muted-foreground",
 					)}
 					prefetch
 				>
@@ -35,7 +35,7 @@ export function MainNav() {
 						"hover:text-foreground transition-colors",
 						pathname?.startsWith("/docs/components")
 							? "text-foreground font-medium"
-							: "text-muted-foreground"
+							: "text-muted-foreground",
 					)}
 					prefetch
 				>
@@ -47,7 +47,7 @@ export function MainNav() {
 						"hover:text-foreground transition-colors",
 						pathname?.startsWith("/themes")
 							? "text-foreground font-medium"
-							: "text-muted-foreground"
+							: "text-muted-foreground",
 					)}
 					prefetch
 				>
@@ -55,5 +55,5 @@ export function MainNav() {
 				</Link>
 			</nav>
 		</div>
-	)
+	);
 }

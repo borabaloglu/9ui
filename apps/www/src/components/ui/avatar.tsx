@@ -1,10 +1,10 @@
-"use client"
+"use client";
 
-import * as React from "react"
-import { Avatar as AvatarBase } from "@base-ui/react/avatar"
-import { cva, VariantProps } from "class-variance-authority"
+import type * as React from "react";
+import { Avatar as AvatarBase } from "@base-ui/react/avatar";
+import { cva, type VariantProps } from "class-variance-authority";
 
-import { cn } from "@/lib/utils"
+import { cn } from "@/lib/utils";
 
 const avatarVariants = cva(
 	"relative flex shrink-0 overflow-hidden rounded-full",
@@ -19,8 +19,8 @@ const avatarVariants = cva(
 		defaultVariants: {
 			size: "md",
 		},
-	}
-)
+	},
+);
 
 function Avatar({
 	className,
@@ -34,7 +34,7 @@ function Avatar({
 			className={cn(avatarVariants({ size }), className)}
 			{...props}
 		/>
-	)
+	);
 }
 
 function AvatarImage({
@@ -47,7 +47,7 @@ function AvatarImage({
 			className={cn("size-full object-cover", className)}
 			{...props}
 		/>
-	)
+	);
 }
 
 function AvatarFallback({
@@ -59,11 +59,11 @@ function AvatarFallback({
 			data-slot="avatar-fallback"
 			className={cn(
 				"bg-muted flex size-full items-center justify-center rounded-full select-none",
-				className
+				className,
 			)}
 			{...props}
 		/>
-	)
+	);
 }
 
-export { Avatar, AvatarImage, AvatarFallback }
+export { Avatar, AvatarFallback, AvatarImage };

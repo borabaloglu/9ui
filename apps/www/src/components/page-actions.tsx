@@ -1,33 +1,33 @@
-"use client"
+"use client";
 
-import * as React from "react"
-import Link from "next/link"
-import { usePathname } from "next/navigation"
-import { mergeProps } from "@base-ui/react"
+import * as React from "react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { mergeProps } from "@base-ui/react";
 import {
 	CheckIcon,
 	ChevronDownIcon,
 	ChevronLeftIcon,
 	ChevronRightIcon,
 	CopyIcon,
-} from "lucide-react"
+} from "lucide-react";
 
-import { Icons } from "@/components/icons"
-import { Button, buttonVariants } from "@/components/ui/button"
+import { Icons } from "@/components/icons";
+import { Button, buttonVariants } from "@/components/ui/button";
 import {
 	DropdownMenu,
 	DropdownMenuContent,
 	DropdownMenuItem,
 	DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu"
+} from "@/components/ui/dropdown-menu";
 
-import { siteConfig } from "@/config/site"
+import { siteConfig } from "@/config/site";
 
-import { type NavigationResult } from "@/lib/navigation"
-import { cn } from "@/lib/utils"
+import type { NavigationResult } from "@/lib/navigation";
+import { cn } from "@/lib/utils";
 
 const getOpenInUrl = (targetUrl: string, currentUrl: string) => {
-	const markdownUrl = `${currentUrl}.md`
+	const markdownUrl = `${currentUrl}.md`;
 
 	const prompt = `I need help with 9ui documentation.
 
@@ -43,68 +43,68 @@ Please be ready to:
 - Help debug issues and troubleshoot problems
 - Suggest best practices and alternatives
 
-Focus on practical, actionable guidance based on the 9ui documentation.`
+Focus on practical, actionable guidance based on the 9ui documentation.`;
 
-	return `${targetUrl}?q=${encodeURIComponent(prompt)}`
-}
+	return `${targetUrl}?q=${encodeURIComponent(prompt)}`;
+};
 
 interface PageActionsProps {
-	navigation: NavigationResult
+	navigation: NavigationResult;
 }
 
 export function PageActions({ navigation }: PageActionsProps) {
-	const pathname = usePathname()
-	const currentUrl = `${siteConfig.url}${pathname}`
-	const [copied, setCopied] = React.useState(false)
+	const pathname = usePathname();
+	const currentUrl = `${siteConfig.url}${pathname}`;
+	const [copied, setCopied] = React.useState(false);
 
 	const getMarkdownUrl = () => {
-		const docPath = pathname.replace("/docs/", "")
-		return `/docs/${docPath}.md`
-	}
+		const docPath = pathname.replace("/docs/", "");
+		return `/docs/${docPath}.md`;
+	};
 
 	const copyMarkdownContent = async () => {
 		try {
-			const markdownUrl = getMarkdownUrl()
-			const response = await fetch(markdownUrl)
+			const markdownUrl = getMarkdownUrl();
+			const response = await fetch(markdownUrl);
 			if (response.ok) {
-				const markdownContent = await response.text()
-				await navigator.clipboard.writeText(markdownContent)
+				const markdownContent = await response.text();
+				await navigator.clipboard.writeText(markdownContent);
 			} else {
-				await navigator.clipboard.writeText(currentUrl)
+				await navigator.clipboard.writeText(currentUrl);
 			}
 		} catch {
-			await navigator.clipboard.writeText(currentUrl)
+			await navigator.clipboard.writeText(currentUrl);
 		}
 
-		setCopied(true)
-		setTimeout(() => setCopied(false), 3000)
-	}
+		setCopied(true);
+		setTimeout(() => setCopied(false), 3000);
+	};
 
 	return (
-		<div className="page-actions max-sm:bg-background max-sm:border-border/40 z-10 flex w-full items-center justify-between max-sm:fixed max-sm:bottom-0 max-sm:left-0 max-sm:border-t max-sm:border-dashed max-sm:p-4">
+		<div className="page-actions max-sm:border-border/40 max-sm:bg-background z-10 flex w-full items-center justify-between max-sm:fixed max-sm:bottom-0 max-sm:left-0 max-sm:border-t max-sm:border-dashed max-sm:p-4">
 			<div className="flex items-center gap-1">
 				<Button
 					variant="secondary"
 					size="icon-sm"
 					disabled={!navigation.prev}
 					render={(props) => {
-						const Element = navigation.prev ? Link : "button"
+						const Element = navigation.prev ? Link : "button";
 
 						const p = navigation.prev
 							? mergeProps(props, {
 									href: navigation.prev.href,
 									prefetch: true,
 								})
-							: props
+							: props;
 
 						return (
 							// @ts-expect-error - Link props are not compatible with button props
 							<Element {...p}>
 								<ChevronLeftIcon className="size-3.5" />
 							</Element>
-						)
+						);
 					}}
-					nativeButton={!Boolean(navigation.prev)}
+					nativeButton={!navigation.prev}
 				/>
 
 				<Button
@@ -112,31 +112,32 @@ export function PageActions({ navigation }: PageActionsProps) {
 					size="icon-sm"
 					disabled={!navigation.next}
 					render={(props) => {
-						const Element = navigation.next ? Link : "button"
+						const Element = navigation.next ? Link : "button";
 
 						const p = navigation.next
 							? mergeProps(props, {
 									href: navigation.next.href,
 									prefetch: true,
 								})
-							: props
+							: props;
 
 						return (
 							// @ts-expect-error - Link props are not compatible with button props
 							<Element {...p}>
 								<ChevronRightIcon className="size-3.5" />
 							</Element>
-						)
+						);
 					}}
-					nativeButton={!Boolean(navigation.next)}
+					nativeButton={!navigation.next}
 				/>
 			</div>
 
 			<div className="flex items-center">
 				<button
+					type="button"
 					className={cn(
 						buttonVariants({ variant: "secondary", size: "sm" }),
-						"h-8 gap-2 rounded-r-none"
+						"h-8 gap-2 rounded-r-none",
 					)}
 					onClick={copyMarkdownContent}
 				>
@@ -153,7 +154,7 @@ export function PageActions({ navigation }: PageActionsProps) {
 							<button
 								className={cn(
 									buttonVariants({ variant: "secondary", size: "icon-sm" }),
-									"h-8 rounded-l-none border-l data-[popup-open]:[&_svg]:rotate-180 max-md:[&_svg]:rotate-180 max-md:data-[popup-open]:[&_svg]:rotate-0"
+									"h-8 rounded-l-none border-l data-[popup-open]:[&_svg]:rotate-180 max-md:[&_svg]:rotate-180 max-md:data-[popup-open]:[&_svg]:rotate-0",
 								)}
 								{...props}
 							>
@@ -227,5 +228,5 @@ export function PageActions({ navigation }: PageActionsProps) {
 				</DropdownMenu>
 			</div>
 		</div>
-	)
+	);
 }

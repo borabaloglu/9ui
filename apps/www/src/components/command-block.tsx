@@ -1,17 +1,17 @@
-"use client"
+"use client";
 
-import React from "react"
+import React from "react";
 
-import { CodeBar } from "@/components/code-bar"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import { CodeBar } from "@/components/code-bar";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
-import { highlighter } from "@/lib/rehype/syntax-highlighting"
+import { highlighter } from "@/lib/rehype/syntax-highlighting";
 
 interface CommandBlockProps {
-	npmCommand: string
-	yarnCommand: string
-	pnpmCommand: string
-	bunCommand: string
+	npmCommand: string;
+	yarnCommand: string;
+	pnpmCommand: string;
+	bunCommand: string;
 }
 
 export const CommandBlock = ({
@@ -20,7 +20,7 @@ export const CommandBlock = ({
 	pnpmCommand,
 	bunCommand,
 }: CommandBlockProps) => {
-	const [activeTab, setActiveTab] = React.useState("npm")
+	const [activeTab, setActiveTab] = React.useState("npm");
 
 	const [prettyCode, command] = React.useMemo(() => {
 		const command =
@@ -30,7 +30,7 @@ export const CommandBlock = ({
 					? yarnCommand
 					: activeTab === "pnpm"
 						? pnpmCommand
-						: bunCommand
+						: bunCommand;
 
 		return [
 			highlighter.codeToHtml(command, {
@@ -42,17 +42,17 @@ export const CommandBlock = ({
 				transformers: [
 					{
 						pre(node) {
-							node.properties.style = "tab-size: 2"
+							node.properties.style = "tab-size: 2";
 						},
 						code(node) {
-							node.properties.style = "tab-size: 2"
+							node.properties.style = "tab-size: 2";
 						},
 					},
 				],
 			}),
 			command,
-		]
-	}, [activeTab])
+		];
+	}, [activeTab, npmCommand, yarnCommand, pnpmCommand, bunCommand]);
 
 	return (
 		<Tabs
@@ -90,5 +90,5 @@ export const CommandBlock = ({
 				/>
 			</TabsContent>
 		</Tabs>
-	)
-}
+	);
+};

@@ -1,5 +1,5 @@
-import { useState } from "react"
-import Image from "next/image"
+import { useState } from "react";
+import Image from "next/image";
 
 import {
 	Select,
@@ -7,7 +7,7 @@ import {
 	SelectItem,
 	SelectTrigger,
 	SelectValue,
-} from "@/components/ui/select"
+} from "@/components/ui/select";
 
 const users = {
 	"karen-smith": {
@@ -26,10 +26,10 @@ const users = {
 		name: "Frank Lee",
 		image: "/avatars/memoji-4.png",
 	},
-}
+};
 
 export default function SelectWithCustomValueDemo() {
-	const [selected, setSelected] = useState<keyof typeof users | null>(null)
+	const [selected, setSelected] = useState<keyof typeof users | null>(null);
 
 	return (
 		<div className="w-80">
@@ -73,5 +73,5 @@ export default function SelectWithCustomValueDemo() {
 				</SelectContent>
 			</Select>
 		</div>
-	)
+	);
 }

@@ -1,16 +1,16 @@
-import cloneDeep from "lodash/cloneDeep"
-import template from "lodash/template"
+import cloneDeep from "lodash/cloneDeep";
+import template from "lodash/template";
 
-import { colors, PrimaryColor, Shade } from "@/config/colors"
+import { colors, type PrimaryColor, type Shade } from "@/config/colors";
 
 export const generateTheme = (
 	shade: Shade,
 	primaryColor: PrimaryColor,
-	radius: number = 0.5,
-	flat: boolean = false,
-	forceStyles = false
+	radius = 0.5,
+	flat = false,
+	forceStyles = false,
 ) => {
-	const shadeColors = cloneDeep(colors.shades[shade])
+	const shadeColors = cloneDeep(colors.shades[shade]);
 
 	if (flat) {
 		shadeColors.cssVars.light = {
@@ -18,17 +18,17 @@ export const generateTheme = (
 			card: shadeColors.cssVars.light.background,
 			popover: shadeColors.cssVars.light.background,
 			input: shadeColors.cssVars.light.background,
-		}
+		};
 		shadeColors.cssVars.dark = {
 			...shadeColors.cssVars.dark,
 			card: shadeColors.cssVars.dark.background,
 			popover: shadeColors.cssVars.dark.background,
 			input: shadeColors.cssVars.dark.background,
-		}
+		};
 	}
 
 	const primaryColors =
-		primaryColor === "neutral" ? shadeColors : colors.primary[primaryColor]
+		primaryColor === "neutral" ? shadeColors : colors.primary[primaryColor];
 
 	const styles = template(STYLES_TEMPLATE)({
 		colors: {
@@ -42,14 +42,14 @@ export const generateTheme = (
 			},
 		},
 		radius: radius,
-	})
+	});
 
 	if (forceStyles) {
-		return styles
+		return styles;
 	}
 
-	return styles.replaceAll(" !important", "")
-}
+	return styles.replaceAll(" !important", "");
+};
 
 const STYLES_TEMPLATE = `:root {
 	--background: <%- colors.shade.light["background"] %> !important;
@@ -128,4 +128,4 @@ const STYLES_TEMPLATE = `:root {
 	--chart-4: <%- colors.shade.dark["chart-4"] %> !important;
 	--chart-5: <%- colors.shade.dark["chart-5"] %> !important;
 }
-`
+`;

@@ -1,26 +1,26 @@
-import { PrimaryColor, Shade } from "@/config/colors"
+import type { PrimaryColor, Shade } from "@/config/colors";
 
 export type ThemeSettings = {
-	shade: Shade
-	primaryColor: PrimaryColor
-	radius: number
-	flat: boolean
-}
+	shade: Shade;
+	primaryColor: PrimaryColor;
+	radius: number;
+	flat: boolean;
+};
 
 export type ShadeOption = {
-	name: string
-	value: Shade
-}
+	name: string;
+	value: Shade;
+};
 
 export type PrimaryColorOption = {
-	name: string
-	value: PrimaryColor
-}
+	name: string;
+	value: PrimaryColor;
+};
 
 export type RadiusOption = {
-	name: string
-	value: number
-}
+	name: string;
+	value: number;
+};
 
 export const shadeOptions: ShadeOption[] = [
 	{
@@ -43,7 +43,7 @@ export const shadeOptions: ShadeOption[] = [
 		name: "Stone",
 		value: "stone",
 	},
-]
+];
 
 export const primaryColorOptions: PrimaryColorOption[] = [
 	{
@@ -74,7 +74,7 @@ export const primaryColorOptions: PrimaryColorOption[] = [
 		name: "Pink",
 		value: "pink",
 	},
-]
+];
 
 export const radiusOptions: RadiusOption[] = [
 	{
@@ -113,4 +113,4 @@ export const radiusOptions: RadiusOption[] = [
 		name: "1rem",
 		value: 1,
 	},
-]
+];

@@ -1,7 +1,7 @@
-import * as React from "react"
-import { Separator as BaseSeparator } from "@base-ui/react/separator"
+import type * as React from "react";
+import { Separator as BaseSeparator } from "@base-ui/react/separator";
 
-import { cn } from "@/lib/utils"
+import { cn } from "@/lib/utils";
 
 function Separator({
 	className,
@@ -14,11 +14,11 @@ function Separator({
 			orientation={orientation}
 			className={cn(
 				"bg-border shrink-0 data-[orientation=horizontal]:h-px data-[orientation=vertical]:w-px",
-				className
+				className,
 			)}
 			{...props}
 		/>
-	)
+	);
 }
 
-export { Separator }
+export { Separator };

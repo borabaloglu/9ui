@@ -1,5 +1,3 @@
-import * as React from "react"
-
 import {
 	Combobox,
 	ComboboxContent,
@@ -9,8 +7,8 @@ import {
 	ComboboxList,
 	ComboboxTrigger,
 	ComboboxValue,
-} from "@/components/ui/combobox"
-import { Label } from "@/components/ui/label"
+} from "@/components/ui/combobox";
+import { Label } from "@/components/ui/label";
 
 export default function ComboboxInputInsidePopupDemo() {
 	return (
@@ -38,14 +36,14 @@ export default function ComboboxInputInsidePopupDemo() {
 				</ComboboxList>
 			</ComboboxContent>
 		</Combobox>
-	)
+	);
 }
 
 interface Country {
-	code: string
-	value: string | null
-	continent: string
-	label: string
+	code: string;
+	value: string | null;
+	continent: string;
+	label: string;
 }
 
 const countries: Country[] = [
@@ -457,4 +455,4 @@ const countries: Country[] = [
 	{ code: "ye", value: "yemen", label: "Yemen", continent: "Asia" },
 	{ code: "zm", value: "zambia", label: "Zambia", continent: "Africa" },
 	{ code: "zw", value: "zimbabwe", label: "Zimbabwe", continent: "Africa" },
-]
+];

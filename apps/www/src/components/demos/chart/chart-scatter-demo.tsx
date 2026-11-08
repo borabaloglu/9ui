@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import {
 	CartesianGrid,
@@ -7,7 +7,7 @@ import {
 	XAxis,
 	YAxis,
 	ZAxis,
-} from "recharts"
+} from "recharts";
 
 import {
 	Card,
@@ -16,13 +16,13 @@ import {
 	CardFooter,
 	CardHeader,
 	CardTitle,
-} from "@/components/ui/card"
+} from "@/components/ui/card";
 import {
-	ChartConfig,
+	type ChartConfig,
 	ChartContainer,
 	ChartTooltip,
 	ChartTooltipContent,
-} from "@/components/ui/chart"
+} from "@/components/ui/chart";
 
 const chartData = [
 	{ population: 850000, price: 425000, city: "San Francisco" },
@@ -35,22 +35,22 @@ const chartData = [
 	{ population: 690000, price: 445000, city: "Boston" },
 	{ population: 710000, price: 320000, city: "Denver" },
 	{ population: 950000, price: 295000, city: "Austin" },
-]
+];
 
 const chartConfig = {
 	scatter: {
 		label: "Cities",
 		color: "var(--chart-1)",
 	},
-} satisfies ChartConfig
+} satisfies ChartConfig;
 
 export default function ChartScatterDemo() {
 	const averagePrice =
-		chartData.reduce((sum, item) => sum + item.price, 0) / chartData.length
-	const highestPrice = Math.max(...chartData.map((item) => item.price))
+		chartData.reduce((sum, item) => sum + item.price, 0) / chartData.length;
+	const highestPrice = Math.max(...chartData.map((item) => item.price));
 	const mostExpensiveCity = chartData.find(
-		(item) => item.price === highestPrice
-	)?.city
+		(item) => item.price === highestPrice,
+	)?.city;
 
 	return (
 		<Card className="flex w-full flex-col">
@@ -114,5 +114,5 @@ export default function ChartScatterDemo() {
 				</div>
 			</CardFooter>
 		</Card>
-	)
+	);
 }

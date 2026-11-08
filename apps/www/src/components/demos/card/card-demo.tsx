@@ -1,8 +1,8 @@
-import { LinkIcon, SendIcon } from "lucide-react"
-import { toast } from "sonner"
+import { LinkIcon, SendIcon } from "lucide-react";
+import { toast } from "sonner";
 
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
-import { Button } from "@/components/ui/button"
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Button } from "@/components/ui/button";
 import {
 	Card,
 	CardContent,
@@ -10,8 +10,8 @@ import {
 	CardFooter,
 	CardHeader,
 	CardTitle,
-} from "@/components/ui/card"
-import { Input } from "@/components/ui/input"
+} from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
 
 export default function CardDemo() {
 	return (
@@ -63,7 +63,7 @@ export default function CardDemo() {
 					className="w-full gap-x-2"
 					variant="link"
 					onClick={() => {
-						toast.success("Invite link copied to clipboard")
+						toast.success("Invite link copied to clipboard");
 					}}
 				>
 					<LinkIcon size={16} />
@@ -71,5 +71,5 @@ export default function CardDemo() {
 				</Button>
 			</CardFooter>
 		</Card>
-	)
+	);
 }

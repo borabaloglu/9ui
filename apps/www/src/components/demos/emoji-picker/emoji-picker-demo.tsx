@@ -1,7 +1,7 @@
-"use client"
+"use client";
 
-import { Loader2 } from "lucide-react"
-import { toast } from "sonner"
+import { Loader2 } from "lucide-react";
+import { toast } from "sonner";
 
 import {
 	EmojiPicker,
@@ -10,7 +10,7 @@ import {
 	EmojiPickerList,
 	EmojiPickerLoading,
 	EmojiPickerSearch,
-} from "@/components/ui/emoji-picker"
+} from "@/components/ui/emoji-picker";
 
 export default function EmojiPickerDemo() {
 	return (
@@ -21,7 +21,7 @@ export default function EmojiPickerDemo() {
 						<span className="text-lg">{emoji}</span>
 						{label}
 					</p>
-				))
+				));
 			}}
 		>
 			<EmojiPickerSearch />
@@ -33,5 +33,5 @@ export default function EmojiPickerDemo() {
 				<EmojiPickerList />
 			</EmojiPickerContent>
 		</EmojiPicker>
-	)
+	);
 }

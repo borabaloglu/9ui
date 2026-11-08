@@ -1,9 +1,9 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import { StarIcon } from "lucide-react"
+import { useState } from "react";
+import { StarIcon } from "lucide-react";
 
-import { Button } from "@/components/ui/button"
+import { Button } from "@/components/ui/button";
 import {
 	Drawer,
 	DrawerClose,
@@ -13,21 +13,21 @@ import {
 	DrawerHeader,
 	DrawerTitle,
 	DrawerTrigger,
-} from "@/components/ui/drawer"
-import { Textarea } from "@/components/ui/textarea"
+} from "@/components/ui/drawer";
+import { Textarea } from "@/components/ui/textarea";
 
-import { cn } from "@/lib/utils"
+import { cn } from "@/lib/utils";
 
 export default function DrawerDemo() {
-	const [rating, setRating] = useState<number | undefined>(undefined)
+	const [rating, setRating] = useState<number | undefined>(undefined);
 
 	const handleChangeRating = (newRating: number) => {
 		if (newRating === rating) {
-			setRating(undefined)
+			setRating(undefined);
 		} else {
-			setRating(newRating)
+			setRating(newRating);
 		}
-	}
+	};
 
 	return (
 		<Drawer shouldScaleBackground>
@@ -53,7 +53,7 @@ export default function DrawerDemo() {
 										"size-8 cursor-pointer transition-all",
 										rating && star <= rating
 											? "fill-yellow-300 text-yellow-300"
-											: "text-muted-foreground fill-none"
+											: "text-muted-foreground fill-none",
 									)}
 									onClick={() => handleChangeRating(star)}
 								/>
@@ -75,5 +75,5 @@ export default function DrawerDemo() {
 				</div>
 			</DrawerContent>
 		</Drawer>
-	)
+	);
 }
