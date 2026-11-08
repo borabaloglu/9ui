@@ -1,7 +1,3 @@
-import fs from "node:fs";
-import path from "node:path";
-import { glob } from "glob";
-import { u } from "unist-builder";
 import { visit } from "unist-util-visit";
 
 export function rehypeRawString() {
@@ -58,126 +54,6 @@ export function rehypeRawString() {
 	};
 }
 
-export function rehypeComponentSource() {
-	return async (tree) => {
-		visit(tree, async (node) => {
-			if (node.name === "ComponentSource") {
-				const name = getNodeAttributeByName(node, "name")?.value;
-
-				if (!name) {
-					return null;
-				}
-
-				const filePath = path.join(
-					process.cwd(),
-					"src/components/ui",
-					`${name}.tsx`,
-				);
-
-				try {
-					const source = fs.readFileSync(filePath, "utf8");
-
-					node.attributes?.push({
-						name: "__source__",
-						value: source,
-						type: "mdxJsxAttribute",
-					});
-
-					node.children?.push(
-						u("element", {
-							tagName: "pre",
-							properties: {
-								"data-rehype-pretty-code-figure": "",
-							},
-							children: [
-								u("element", {
-									tagName: "code",
-									properties: {
-										className: ["language-tsx"],
-									},
-									children: [
-										{
-											type: "text",
-											value: source,
-										},
-									],
-								}),
-							],
-						}),
-					);
-
-					node.children.at(-1).__unwrapCode__ = "true";
-				} catch (error) {
-					console.error(error);
-				}
-			}
-		});
-	};
-}
-
-export function rehypeComponentPreview() {
-	return async (tree) => {
-		visit(tree, async (node) => {
-			if (node.name === "ComponentPreview") {
-				const name = getNodeAttributeByName(node, "name")?.value;
-
-				if (!name) {
-					return null;
-				}
-
-				const files = glob.sync(`**/${name}.tsx`, {
-					cwd: path.join(process.cwd(), "src/components/demos"),
-					absolute: true,
-				});
-
-				if (files.length === 0) {
-					return null;
-				}
-
-				const filePath = files[0];
-
-				try {
-					let source = fs.readFileSync(filePath, "utf8");
-					source = source.replaceAll("export default", "export");
-
-					node.attributes?.push({
-						name: "__source__",
-						value: source,
-						type: "mdxJsxAttribute",
-					});
-
-					node.children?.push(
-						u("element", {
-							tagName: "pre",
-							properties: {
-								"data-rehype-pretty-code-figure": "",
-							},
-							children: [
-								u("element", {
-									tagName: "code",
-									properties: {
-										className: ["language-tsx"],
-									},
-									children: [
-										{
-											type: "text",
-											value: source,
-										},
-									],
-								}),
-							],
-						}),
-					);
-
-					node.children.at(-1).__unwrapCode__ = "true";
-				} catch (error) {
-					console.error(error);
-				}
-			}
-		});
-	};
-}
-
 export function rehypeCommandProperties() {
 	return (tree) => {
 		visit(tree, (node) => {
@@ -213,8 +89,4 @@ export function rehypeCommandProperties() {
 			}
 		});
 	};
-}
-
-function getNodeAttributeByName(node, name) {
-	return node.attributes?.find((attribute) => attribute.name === name);
 }

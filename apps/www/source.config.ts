@@ -5,8 +5,6 @@ import { z } from "zod";
 
 import {
 	rehypeCommandProperties,
-	rehypeComponentPreview,
-	rehypeComponentSource,
 	rehypeRawString,
 } from "./src/lib/rehype/component/index.mjs";
 import { rehypeSyntaxHighlighting } from "./src/lib/rehype/syntax-highlighting/index.mjs";
@@ -33,8 +31,6 @@ export default defineConfig({
 			...plugins,
 			rehypeAutolinkHeadings,
 			rehypeRawString,
-			rehypeComponentPreview,
-			rehypeComponentSource,
 			...rehypeSyntaxHighlighting,
 			rehypeCommandProperties,
 		],

@@ -1,65 +1,45 @@
-"use client";
-
-import * as React from "react";
-import { Loader2Icon, RefreshCwIcon } from "lucide-react";
+import type * as React from "react";
 
 import { CodeBar } from "@/components/code-bar";
-import { Button } from "@/components/ui/button";
+import { DemoRenderer } from "@/components/demo-renderer";
 
+import { getDemo } from "@/lib/demos";
+import { highlightCode } from "@/lib/highlight-code";
 import { cn } from "@/lib/utils";
 
-import { demoRegistry } from "@/registry/demos";
-
-import type { DemoRegistry } from "@/types/demo";
-
-type DemoName = keyof DemoRegistry;
-
 interface ComponentPreviewProps extends React.HTMLAttributes<HTMLDivElement> {
-	name: DemoName;
+	name: string;
 	showReload?: boolean;
 	className?: string;
-	__source__: string;
 }
 
 export const ComponentPreview = ({
 	name,
 	showReload = false,
 	className,
-	children,
-	__source__,
 }: ComponentPreviewProps) => {
-	const demo = demoRegistry[name];
-	const Component = demo.component;
+	const demo = getDemo(name);
 
-	const [key, setKey] = React.useState(0);
+	if (!demo) {
+		return (
+			<p className="text-muted-foreground mt-8 text-sm">
+				Demo <code data-inline="">{name}</code> not found.
+			</p>
+		);
+	}
 
 	return (
 		<div className={cn("mt-8 overflow-hidden rounded-lg border", className)}>
 			<div className="relative flex min-h-[200px] items-center justify-center p-10">
-				{showReload && (
-					<Button
-						variant="ghost"
-						size="icon-sm"
-						className="absolute top-2 right-2 size-6"
-						onClick={() => setKey((prev) => prev + 1)}
-					>
-						<RefreshCwIcon size={16} />
-					</Button>
-				)}
-				<React.Suspense
-					fallback={
-						<div className="flex animate-spin items-center justify-center">
-							<Loader2Icon size={16} />
-						</div>
-					}
-				>
-					<Component key={key} />
-				</React.Suspense>
+				<DemoRenderer path={demo.path} showReload={showReload} />
 			</div>
 
-			<CodeBar label={`${name}.tsx`} content={__source__} type="demo" />
+			<CodeBar label={`${name}.tsx`} content={demo.source} type="demo" />
 
-			<div className="[&_pre]:!max-h-[300px]">{children}</div>
+			<div
+				className="[&_pre]:!max-h-[300px]"
+				dangerouslySetInnerHTML={{ __html: highlightCode(demo.source) }}
+			/>
 		</div>
 	);
 };

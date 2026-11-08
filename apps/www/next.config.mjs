@@ -3,6 +3,12 @@ import { createMDX } from "fumadocs-mdx/next";
 /** @type {import('next').NextConfig} */
 const nextConfig = {
 	reactStrictMode: true,
+	outputFileTracingIncludes: {
+		"/docs/[...slug]": [
+			"./src/components/demos/**/*",
+			"./src/components/ui/**/*",
+		],
+	},
 	redirects() {
 		return [
 			{

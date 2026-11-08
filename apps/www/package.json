@@ -12,10 +12,9 @@
 		"check": "biome check",
 		"fix": "biome check --write",
 		"format": "biome format --write",
-		"generate:demos": "npx tsx --tsconfig ./tsconfig.scripts.json ./scripts/generate-demo-registry.ts && biome check --write src/__registry__/demos.tsx",
 		"generate:llms": "npx tsx --tsconfig ./tsconfig.scripts.json ./scripts/generate-llms/index.ts",
 		"generate:globals-css": "npx tsx --tsconfig ./tsconfig.scripts.json ./scripts/generate-globals-css.ts && biome format --write public/r/globals.css",
-		"prebuild": "pnpm generate:demos && pnpm generate:globals-css && pnpm generate:llms && pnpm build:registry"
+		"prebuild": "pnpm generate:globals-css && pnpm generate:llms && pnpm build:registry"
 	},
 	"engines": {
 		"node": ">=20"
