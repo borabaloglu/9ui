@@ -2,6 +2,7 @@
 
 # dependencies
 node_modules/
+.pnpm-store/
 /.pnp
 .pnp.*
 .yarn/*
@@ -54,6 +55,8 @@ Thumbs.db
 
 # Claude
 CLAUDE.md
+.claude/
+.opencode/
 
 # Generated LLM files
 apps/*/public/llms.txt
