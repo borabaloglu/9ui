@@ -4,7 +4,8 @@
 	"tasks": {
 		"build": {
 			"dependsOn": ["^build"],
-			"outputs": [".next/**", "!.next/cache/**"]
+			"outputs": [".next/**", "!.next/cache/**"],
+			"env": ["CLIENT_ID"]
 		},
 		"build:registry": {
 			"outputs": ["src/__registry__/**"]
@@ -27,14 +28,13 @@
 			"cache": false,
 			"persistent": true
 		},
-		"lint": {
-			"dependsOn": ["^build"]
-		},
+		"lint": {},
 		"fix": {
-			"dependsOn": ["^build"]
+			"cache": false
 		},
 		"format": {
-			"outputs": ["src/**/*.{js,ts,jsx,tsx,mdx}"]
-		}
+			"cache": false
+		},
+		"check": {}
 	}
 }
