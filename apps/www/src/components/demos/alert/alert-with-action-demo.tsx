@@ -1,4 +1,4 @@
-import { AlertTriangleIcon } from "lucide-react";
+import { TriangleAlertIcon } from "lucide-react";
 
 import { Alert, AlertTitle } from "@/components/ui/alert";
 import { Button } from "@/components/ui/button";
@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 export default function AlertWithActionDemo() {
 	return (
 		<Alert>
-			<AlertTriangleIcon />
+			<TriangleAlertIcon />
 			<AlertTitle className="line-clamp-1 max-w-[calc(100%-4rem)] overflow-ellipsis">
 				No Internet Connection
 			</AlertTitle>
