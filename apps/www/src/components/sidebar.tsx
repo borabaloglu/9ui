@@ -5,8 +5,6 @@ import { usePathname } from "next/navigation"
 
 import { Badge } from "@/components/ui/badge"
 
-import { navConfig } from "@/config/nav"
-
 import { cn } from "@/lib/utils"
 
 import { type SidebarNavGroup } from "@/types/nav"
@@ -58,15 +56,19 @@ export const DocsSidebarNavItems = ({
 )
 
 interface DocsSidebarNavProps {
+	sidebarNav: SidebarNavGroup[]
 	onNavItemClick?: () => void
 }
 
-export const DocsSidebarNav = ({ onNavItemClick }: DocsSidebarNavProps) => {
+export const DocsSidebarNav = ({
+	sidebarNav,
+	onNavItemClick,
+}: DocsSidebarNavProps) => {
 	const pathname = usePathname()
 
 	return (
 		<>
-			{navConfig.sidebarNav.map((group, index) => (
+			{sidebarNav.map((group, index) => (
 				<div key={index} className="pb-4 [&:last-child]:pb-0">
 					<h4 className="text-foreground mb-1 text-sm font-semibold">
 						{group.title}

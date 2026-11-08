@@ -1,6 +1,7 @@
 import * as React from "react"
 import Link from "next/link"
 import { AlertTriangleIcon } from "lucide-react"
+import type { MDXComponents as MDXProvidedComponents } from "mdx/types"
 
 import { CodeBlock } from "@/components/code-block"
 import { CommandBlock } from "@/components/command-block"
@@ -220,44 +221,6 @@ const components: MDXComponents = {
 	}: React.ImgHTMLAttributes<HTMLImageElement>) => (
 		<img className={cn("rounded-lg border", className)} alt={alt} {...props} />
 	),
-	Title: ({
-		className,
-		content,
-		...props
-	}: React.HTMLAttributes<HTMLHeadingElement>) => {
-		if (!content) {
-			throw new Error("Title must be provided")
-		}
-
-		return (
-			<React.Fragment>
-				<h1 className={cn("text-3xl font-bold", className)} {...props}>
-					{content}
-				</h1>
-				<title>{`${content} | 9ui`}</title>
-			</React.Fragment>
-		)
-	},
-	Description: ({
-		className,
-		content,
-		...props
-	}: React.HTMLAttributes<HTMLParagraphElement>) => {
-		if (!content || content.length > 160) {
-			throw new Error(
-				"Meta description must be provided and less than 160 characters"
-			)
-		}
-
-		return (
-			<React.Fragment>
-				<p className={cn("text-muted-foreground mt-2", className)} {...props}>
-					{content}
-				</p>
-				<meta name="description" content={content} />
-			</React.Fragment>
-		)
-	},
 	Step: ({ className, ...props }: React.ComponentProps<"h3">) => (
 		<h3
 			className={cn("step mt-8 font-semibold tracking-tight", className)}
@@ -300,6 +263,6 @@ const components: MDXComponents = {
 	ThemeToggle,
 }
 
-export function useMDXComponents(): MDXComponents {
-	return components
+export function getMDXComponents(): MDXProvidedComponents {
+	return components as MDXProvidedComponents
 }

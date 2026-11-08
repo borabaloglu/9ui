@@ -14,6 +14,8 @@ import { ToastProvider } from "@/components/ui/toast"
 
 import { siteConfig } from "@/config/site"
 
+import { getSidebarNav } from "@/lib/source"
+
 import { cn } from "@/lib/utils"
 
 const inter = Inter({
@@ -90,7 +92,7 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => (
 						className="root flex flex-1 flex-col"
 						data-vaul-drawer-wrapper=""
 					>
-						<Header />
+						<Header sidebarNav={getSidebarNav()} />
 						<main className="flex-1">{children}</main>
 						<Footer />
 					</div>

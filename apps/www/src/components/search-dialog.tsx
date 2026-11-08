@@ -17,7 +17,13 @@ import { Kbd } from "@/components/ui/kbd"
 
 import { navConfig } from "@/config/nav"
 
-export function SearchDialog() {
+import { type SidebarNavGroup } from "@/types/nav"
+
+interface SearchDialogProps {
+	sidebarNav: SidebarNavGroup[]
+}
+
+export function SearchDialog({ sidebarNav }: SearchDialogProps) {
 	const [open, setOpen] = React.useState(false)
 	const router = useRouter()
 
@@ -58,7 +64,7 @@ export function SearchDialog() {
 			})
 		})
 
-		navConfig.sidebarNav.forEach((group) => {
+		sidebarNav.forEach((group) => {
 			group.items.forEach((item) => {
 				if (!item.disabled) {
 					items.push({
@@ -71,7 +77,7 @@ export function SearchDialog() {
 		})
 
 		return items
-	}, [])
+	}, [sidebarNav])
 
 	return (
 		<>

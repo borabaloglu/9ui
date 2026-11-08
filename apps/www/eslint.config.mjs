@@ -5,7 +5,14 @@ import prettier from "eslint-config-prettier"
 /** @type {import('eslint').Linter.Config[]} */
 const config = [
 	{
-		ignores: ["node_modules/", ".next/", "dist/", "build/", "public/r/"],
+		ignores: [
+			"node_modules/",
+			".next/",
+			".source/",
+			"dist/",
+			"build/",
+			"public/r/",
+		],
 	},
 	...nextCoreWebVitals,
 	...nextTypescript,

@@ -1,0 +1,13 @@
+{
+	"title": "Getting Started",
+	"pages": [
+		"introduction",
+		"roadmap",
+		"installation",
+		"theming",
+		"dark-mode",
+		"changelog",
+		"llms",
+		"figma"
+	]
+}

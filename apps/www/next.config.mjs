@@ -1,20 +1,7 @@
-import createMDX from "@next/mdx"
-import rehypeExtractToc from "@stefanprobst/rehype-extract-toc"
-import rehypeAutolinkHeadings from "rehype-autolink-headings"
-import rehypeSlug from "rehype-slug"
-import remarkGfm from "remark-gfm"
-
-import {
-	rehypeCommandProperties,
-	rehypeComponentPreview,
-	rehypeComponentSource,
-	rehypeRawString,
-} from "./src/lib/rehype/component/index.mjs"
-import { rehypeSyntaxHighlighting } from "./src/lib/rehype/syntax-highlighting/index.mjs"
+import { createMDX } from "fumadocs-mdx/next"
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-	pageExtensions: ["mdx", "tsx", "ts", "js", "jsx"],
 	reactStrictMode: true,
 	redirects() {
 		return [
@@ -45,20 +32,6 @@ const nextConfig = {
 	},
 }
 
-const withMDX = createMDX({
-	options: {
-		remarkPlugins: [remarkGfm],
-		rehypePlugins: [
-			rehypeSlug,
-			rehypeAutolinkHeadings,
-			rehypeExtractToc,
-			rehypeRawString,
-			rehypeComponentPreview,
-			rehypeComponentSource,
-			...rehypeSyntaxHighlighting,
-			rehypeCommandProperties,
-		],
-	},
-})
+const withMDX = createMDX()
 
 export default withMDX(nextConfig)

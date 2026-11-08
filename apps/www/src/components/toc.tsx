@@ -1,18 +1,13 @@
 "use client"
 
 import * as React from "react"
+import type { TOCItemType } from "fumadocs-core/toc"
 import { TextIcon } from "lucide-react"
 
 import { cn } from "@/lib/utils"
 
-interface TocItem {
-	value: string
-	url: string
-	depth: number
-}
-
 interface TableOfContentsProps {
-	items: TocItem[]
+	items: TOCItemType[]
 }
 
 const getIdFromUrl = (url: string) => decodeURIComponent(url.slice(1))
@@ -69,7 +64,7 @@ export const TableOfContents = ({ items }: TableOfContentsProps) => {
 							activeId === getIdFromUrl(item.url) && "text-foreground"
 						)}
 					>
-						<span>{item.value}</span>
+						<span>{item.title}</span>
 					</a>
 				))}
 			</nav>
