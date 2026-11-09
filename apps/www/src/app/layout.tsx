@@ -80,7 +80,7 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => (
 			)}
 		>
 			<Openpanel />
-			{/* <DisableAutofill /> */}
+			<DisableAutofill />
 			<ThemeProvider
 				attribute="class"
 				defaultTheme="system"
