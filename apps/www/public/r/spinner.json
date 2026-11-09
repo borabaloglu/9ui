@@ -1,0 +1,15 @@
+{
+	"$schema": "https://ui.shadcn.com/schema/registry-item.json",
+	"name": "spinner",
+	"dependencies": [],
+	"registryDependencies": [],
+	"files": [
+		{
+			"path": "ui/spinner.tsx",
+			"content": "import type * as React from \"react\";\nimport { LoaderCircleIcon } from \"lucide-react\";\n\nimport { cn } from \"@/lib/utils\";\n\nfunction Spinner({\n\tclassName,\n\t...props\n}: Omit<React.ComponentProps<typeof LoaderCircleIcon>, \"size\">) {\n\treturn (\n\t\t<LoaderCircleIcon\n\t\t\tdata-slot=\"spinner\"\n\t\t\trole=\"status\"\n\t\t\taria-label=\"Loading\"\n\t\t\tclassName={cn(\"size-4 animate-[spin_800ms_linear_infinite]\", className)}\n\t\t\t{...props}\n\t\t/>\n\t);\n}\n\nexport { Spinner };\n",
+			"type": "registry:ui",
+			"target": ""
+		}
+	],
+	"type": "registry:ui"
+}
