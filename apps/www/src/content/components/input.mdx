@@ -1,12 +1,12 @@
 ---
 title: Input
-description: A component that allows users to input text.
+description: A single-line text field for forms.
 ---
 <ComponentLinks
 	links={[
 		{
-			label: "Docs",
-			href: "https://base-ui.com/react/components/input",
+			label: "API Reference",
+			href: "https://base-ui.com/react/components/input#api-reference",
 		},
 	]}
 />
@@ -41,20 +41,24 @@ import { Input } from "@/components/ui/input"
 <Input />
 ```
 
+Give every input a `<label>` or `aria-label`. A placeholder isn't a label.
+
 ## Examples
-
-### With Icons
-
-<ComponentPreview name="input-with-icons-demo" />
-
----
 
 ### Disabled
 
+Set `disabled` to prevent interaction.
+
 <ComponentPreview name="input-disabled-demo" />
 
----
+### Invalid
 
-### Error
+Set `aria-invalid` to show the error state.
 
-<ComponentPreview name="input-error-demo" />
+<ComponentPreview name="input-invalid-demo" />
+
+### File
+
+Set `type="file"` to accept files.
+
+<ComponentPreview name="input-file-demo" />

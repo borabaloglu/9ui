@@ -48,10 +48,7 @@ export function ChatCard() {
 				</div>
 			</CardContent>
 			<CardFooter className="gap-2 border-t">
-				<Input
-					inputContainerClassName="flex-1"
-					placeholder="Type a message..."
-				/>
+				<Input className="flex-1" placeholder="Type a message..." />
 				<Button size="icon" type="button">
 					<SendIcon />
 				</Button>

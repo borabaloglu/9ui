@@ -3,58 +3,23 @@ import { Input as BaseInput } from "@base-ui/react/input";
 
 import { cn } from "@/lib/utils";
 
-interface InputProps extends React.ComponentProps<typeof BaseInput> {
-	inputContainerClassName?: string;
-	leadingIcon?: React.ReactNode;
-	trailingIcon?: React.ReactNode;
-}
-
 function Input({
-	inputContainerClassName,
 	className,
 	type,
-	leadingIcon,
-	trailingIcon,
-	disabled,
 	...props
-}: InputProps) {
+}: Omit<React.ComponentProps<typeof BaseInput>, "className"> & {
+	className?: string;
+}) {
 	return (
-		<div
+		<BaseInput
+			type={type}
+			data-slot="input"
 			className={cn(
-				"group relative w-full has-[[data-slot=input][data-disabled]]:pointer-events-none has-[[data-slot=input][data-disabled]]:opacity-50",
-				inputContainerClassName,
+				"border-border bg-input file:text-foreground placeholder:text-muted-foreground focus-visible:border-ring focus-visible:ring-ring/50 aria-invalid:border-destructive/60 aria-invalid:ring-destructive/30 dark:aria-invalid:ring-destructive/40 h-8 w-full min-w-0 rounded-lg border px-2.5 py-1 text-sm transition-[color,border-color,box-shadow] duration-150 ease-out outline-none file:inline-flex file:h-6 file:border-0 file:bg-transparent file:text-sm file:font-medium focus-visible:ring-3 disabled:cursor-not-allowed disabled:opacity-50 aria-invalid:ring-3 any-pointer-coarse:h-9 any-pointer-coarse:text-base",
+				className,
 			)}
-			data-slot="input-container"
-		>
-			{leadingIcon && (
-				<span
-					data-slot="input-leading-icon"
-					className="text-muted-foreground absolute top-1/2 left-3 shrink-0 -translate-y-1/2 [&_svg]:shrink-0 [&_svg:not([class*='pointer-events-'])]:pointer-events-none [&_svg:not([class*='size-'])]:size-4"
-				>
-					{leadingIcon}
-				</span>
-			)}
-			<BaseInput
-				type={type}
-				data-slot="input"
-				className={cn(
-					"bg-input group-hover:border-ring/70 selection:bg-primary selection:text-primary-foreground file:text-foreground placeholder:text-muted-foreground focus-visible:border-ring focus-visible:ring-ring/50 aria-invalid:border-destructive aria-invalid:ring-destructive/50 flex h-9 w-full min-w-0 rounded-md border px-3 py-1 text-base shadow-xs transition-[color,box-shadow,border-color] outline-none file:inline-flex file:h-7 file:border-0 file:bg-transparent file:text-sm file:font-medium focus-visible:ring-[3px] md:text-sm",
-					leadingIcon && "pl-10",
-					trailingIcon && "pr-10",
-					className,
-				)}
-				disabled={disabled}
-				{...props}
-			/>
-			{trailingIcon && (
-				<span
-					data-slot="input-trailing-icon"
-					className="text-muted-foreground absolute top-1/2 right-3 shrink-0 -translate-y-1/2 [&_svg]:shrink-0 [&_svg:not([class*='pointer-events-'])]:pointer-events-none [&_svg:not([class*='size-'])]:size-4"
-				>
-					{trailingIcon}
-				</span>
-			)}
-		</div>
+			{...props}
+		/>
 	);
 }
 

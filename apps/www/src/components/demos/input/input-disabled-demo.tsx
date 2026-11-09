@@ -1,5 +1,7 @@
 import { Input } from "@/components/ui/input";
 
 export default function InputDisabledDemo() {
-	return <Input inputContainerClassName="w-80" placeholder="Name" disabled />;
+	return (
+		<Input aria-label="Name" className="max-w-sm" placeholder="Name" disabled />
+	);
 }

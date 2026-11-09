@@ -371,11 +371,10 @@ export const MailInterface = () => {
 							(12)
 						</span>
 					</div>
-					<Input
-						placeholder="Search"
-						inputContainerClassName="w-1/2"
-						leadingIcon={<Search />}
-					/>
+					<div className="relative w-1/2">
+						<Search className="text-muted-foreground pointer-events-none absolute top-1/2 left-2.5 size-4 -translate-y-1/2" />
+						<Input placeholder="Search" className="pl-8" />
+					</div>
 				</div>
 
 				<div className="h-full space-y-2 overflow-y-auto p-2">
