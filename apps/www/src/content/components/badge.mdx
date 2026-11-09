@@ -33,38 +33,84 @@ import { Badge } from "@/components/ui/badge"
 <Badge />
 ```
 
+A badge is a `span`. Give icon-only badges an `aria-label`.
+
 ## Examples
 
 ### Outline
 
-<ComponentPreview name="badge-outline-demo" />
+Set `variant` to `outline` for neutral metadata, like a version or a count.
 
----
+<ComponentPreview name="badge-outline-demo" />
 
 ### Secondary
 
-<ComponentPreview name="badge-secondary-demo" />
+Set `variant` to `secondary` for a label that shouldn't draw attention.
 
----
+<ComponentPreview name="badge-secondary-demo" />
 
 ### Success
 
-<ComponentPreview name="badge-success-demo" />
+Set `variant` to `success` for a positive or completed status.
 
----
+<ComponentPreview name="badge-success-demo" />
 
 ### Warning
 
-<ComponentPreview name="badge-warning-demo" />
+Set `variant` to `warning` for a status that needs attention.
 
----
+<ComponentPreview name="badge-warning-demo" />
 
 ### Info
 
-<ComponentPreview name="badge-info-demo" />
+Set `variant` to `info` for a neutral notice, like a new feature.
 
----
+<ComponentPreview name="badge-info-demo" />
 
 ### Danger
 
+Set `variant` to `danger` for an error or a failed status.
+
 <ComponentPreview name="badge-danger-demo" />
+
+### Small
+
+Set `size` to `sm`, or `icon-sm` for an icon-only badge.
+
+<ComponentPreview name="badge-size-sm-demo" />
+
+### Default Size
+
+Leave `size` unset, or set it to `icon` for an icon-only badge.
+
+<ComponentPreview name="badge-size-default-demo" />
+
+### Large
+
+Set `size` to `lg`, or `icon-lg` for an icon-only badge.
+
+<ComponentPreview name="badge-size-lg-demo" />
+
+### Icon Only
+
+Set `size` to `icon-sm`, `icon` or `icon-lg` for a round badge that holds a single icon.
+
+<ComponentPreview name="badge-icon-only-demo" />
+
+### With Icon
+
+Set `data-icon` to `inline-start` or `inline-end` on the icon to tighten the padding on that side.
+
+<ComponentPreview name="badge-with-icon-demo" />
+
+### Link
+
+Set `render` to an `<a>` to make the badge a link. It gains hover and focus styles.
+
+<ComponentPreview name="badge-link-demo" />
+
+### Button
+
+Set `render` to a `<button>` to make the badge clickable.
+
+<ComponentPreview name="badge-button-demo" />
