@@ -1,14 +1,20 @@
-import { LoaderCircleIcon } from "lucide-react";
+"use client";
+
+import { useState } from "react";
 
 import { Button } from "@/components/ui/button";
 
 export default function ButtonLoadingDemo() {
+	const [loading, setLoading] = useState(false);
+
+	const handleClick = () => {
+		setLoading(true);
+		setTimeout(() => setLoading(false), 2000);
+	};
+
 	return (
-		<Button className="gap-2" disabled>
-			<div className="animate-spin">
-				<LoaderCircleIcon />
-			</div>
-			Loading
+		<Button loading={loading} onClick={handleClick}>
+			Save changes
 		</Button>
 	);
 }

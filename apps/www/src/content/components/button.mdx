@@ -1,7 +1,15 @@
 ---
 title: Button
-description: Displays a button for user interaction.
+description: A control that triggers an action or submits a form.
 ---
+<ComponentLinks
+	links={[
+		{
+			label: "API Reference",
+			href: "https://base-ui.com/react/components/button#api-reference",
+		},
+	]}
+/>
 
 <ComponentPreview name="button-demo" />
 
@@ -33,50 +41,98 @@ import { Button } from "@/components/ui/button"
 <Button />
 ```
 
+Give icon-only buttons an `aria-label`. Set `type="submit"` to submit a form.
+
+A button isn't a link. For navigation, put `buttonVariants()` on an `<a>`.
+
 ## Examples
-
-### Sizes
-
-<ComponentPreview name="button-sizes-demo" />
-
----
-
-### With Icon
-
-<ComponentPreview name="button-icon-demo" />
-
----
-
-### Secondary
-
-<ComponentPreview name="button-secondary-demo" />
-
----
 
 ### Outline
 
+Set `variant` to `outline` for an action that sits beside a primary button.
+
 <ComponentPreview name="button-outline-demo" />
 
----
+### Secondary
+
+Set `variant` to `secondary` for a less prominent action.
+
+<ComponentPreview name="button-secondary-demo" />
 
 ### Ghost
 
+Set `variant` to `ghost` for low-emphasis actions, like toolbar buttons.
+
 <ComponentPreview name="button-ghost-demo" />
-
----
-
-### Link
-
-<ComponentPreview name="button-link-demo" />
-
----
 
 ### Destructive
 
+Set `variant` to `destructive` for actions that delete data or can't be undone.
+
 <ComponentPreview name="button-destructive-demo" />
 
----
+### Destructive Outline
+
+Set `variant` to `destructive-outline` for a destructive action that shouldn't dominate the screen.
+
+<ComponentPreview name="button-destructive-outline-demo" />
+
+### Link
+
+Set `variant` to `link` for an action that should read as inline text.
+
+<ComponentPreview name="button-link-demo" />
+
+### Extra Small
+
+Set `size` to `xs`, or `icon-xs` for an icon-only button.
+
+<ComponentPreview name="button-size-xs-demo" />
+
+### Small
+
+Set `size` to `sm`, or `icon-sm` for an icon-only button.
+
+<ComponentPreview name="button-size-sm-demo" />
+
+### Default Size
+
+Leave `size` unset, or set it to `icon` for an icon-only button.
+
+<ComponentPreview name="button-size-default-demo" />
+
+### Large
+
+Set `size` to `lg`, or `icon-lg` for an icon-only button.
+
+<ComponentPreview name="button-size-lg-demo" />
+
+### Extra Large
+
+Set `size` to `xl`, or `icon-xl` for an icon-only button.
+
+<ComponentPreview name="button-size-xl-demo" />
+
+### With Icon
+
+Set `data-icon` to `inline-start` or `inline-end` on the icon to tighten the padding on that side.
+
+<ComponentPreview name="button-with-icon-demo" />
+
+### Disabled
+
+Set `disabled` to prevent interaction.
+
+<ComponentPreview name="button-disabled-demo" />
 
 ### Loading
 
+Set `loading` to disable the button and show a spinner in place of the label. The button keeps its width and keyboard focus.
+
 <ComponentPreview name="button-loading-demo" />
+
+### Loading with Text
+
+Set `disabled` and render a `Spinner` next to the label to keep the text visible.
+
+<ComponentPreview name="button-loading-custom-demo" />

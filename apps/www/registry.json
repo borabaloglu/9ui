@@ -109,7 +109,7 @@
 			"name": "button",
 			"type": "registry:ui",
 			"dependencies": [],
-			"registryDependencies": [],
+			"registryDependencies": ["@9ui/spinner"],
 			"files": [
 				{
 					"path": "src/components/ui/button.tsx",
