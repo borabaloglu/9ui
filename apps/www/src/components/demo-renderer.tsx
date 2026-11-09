@@ -3,6 +3,7 @@
 import * as React from "react";
 import { LoaderCircleIcon, RefreshCwIcon } from "lucide-react";
 
+import { disableAutofillWithin } from "@/components/disable-autofill";
 import { Button } from "@/components/ui/button";
 
 // Load whole modules instead of using `{ import: "default" }`: in production
@@ -30,6 +31,14 @@ function getDemoComponent(path: string) {
 	return component;
 }
 
+function DemoHydrated({ onHydrated }: { onHydrated: () => void }) {
+	React.useEffect(() => {
+		onHydrated();
+	}, [onHydrated]);
+
+	return null;
+}
+
 interface DemoRendererProps {
 	path: string;
 	showReload?: boolean;
@@ -41,6 +50,14 @@ export const DemoRenderer = ({
 }: DemoRendererProps) => {
 	const Component = getDemoComponent(path);
 	const [key, setKey] = React.useState(0);
+	const scopeRef = React.useRef<HTMLDivElement>(null);
+
+	const handleHydrated = React.useCallback(() => {
+		const scope = scopeRef.current;
+		if (!scope) return;
+		scope.setAttribute("data-hydrated", "");
+		disableAutofillWithin(scope);
+	}, []);
 
 	if (!Component) {
 		return <p className="text-muted-foreground text-sm">Demo not found.</p>;
@@ -58,15 +75,18 @@ export const DemoRenderer = ({
 					<RefreshCwIcon size={16} />
 				</Button>
 			)}
-			<React.Suspense
-				fallback={
-					<div className="flex animate-spin items-center justify-center">
-						<LoaderCircleIcon size={16} />
-					</div>
-				}
-			>
-				<Component key={key} />
-			</React.Suspense>
+			<div ref={scopeRef} className="contents" data-autofill-scope="">
+				<React.Suspense
+					fallback={
+						<div className="flex animate-spin items-center justify-center">
+							<LoaderCircleIcon size={16} />
+						</div>
+					}
+				>
+					<Component key={key} />
+					<DemoHydrated onHydrated={handleHydrated} />
+				</React.Suspense>
+			</div>
 		</>
 	);
 };

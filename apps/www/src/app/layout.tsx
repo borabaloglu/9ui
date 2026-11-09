@@ -6,6 +6,7 @@ import "./syntax.css";
 
 import { ThemeProvider } from "next-themes";
 
+import { DisableAutofill } from "@/components/disable-autofill";
 import { Footer } from "@/components/footer";
 import { Header } from "@/components/header";
 import { Openpanel } from "@/components/openpanel";
@@ -79,6 +80,7 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => (
 			)}
 		>
 			<Openpanel />
+			<DisableAutofill />
 			<ThemeProvider
 				attribute="class"
 				defaultTheme="system"
