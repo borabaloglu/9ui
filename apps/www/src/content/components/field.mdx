@@ -1,0 +1,90 @@
+---
+title: Field
+description: A wrapper that gives a form control its label, description and error message.
+label: New
+---
+<ComponentLinks
+	links={[
+		{
+			label: "API Reference",
+			href: "https://base-ui.com/react/components/field#api-reference",
+		},
+	]}
+/>
+
+<ComponentPreview name="field-demo" />
+
+## Installation
+
+<ComponentInstallation>
+<div>
+```bash title="Terminal"
+npx shadcn@latest add @9ui/field
+```
+</div>
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="field" />
+
+</Steps>
+</ComponentInstallation>
+
+## Usage
+
+```tsx title="Imports"
+import {
+	Field,
+	FieldControl,
+	FieldDescription,
+	FieldError,
+	FieldItem,
+	FieldLabel,
+	FieldValidity,
+} from "@/components/ui/field"
+```
+
+```tsx title="Anatomy"
+<Field>
+	<FieldLabel />
+	<Input />
+	<FieldDescription />
+	<FieldError />
+</Field>
+```
+
+The label, description and error are linked to the control for you. Don't set `id`, `htmlFor` or `aria-describedby` by hand.
+
+## Examples
+
+### Description
+
+Add `FieldDescription` for help text that stays visible.
+
+<ComponentPreview name="field-description-demo" />
+
+### Error
+
+Set `invalid` on `Field` and `match` on `FieldError` to show an error from your own state or a form library.
+
+<ComponentPreview name="field-error-demo" />
+
+### Validation
+
+Set `validate` to run your own check. `validationMode` sets when it runs and `validationDebounceTime` delays it while typing.
+
+<ComponentPreview name="field-validation-demo" />
+
+### Disabled
+
+Set `disabled` on `Field` to disable the control and dim the label.
+
+<ComponentPreview name="field-disabled-demo" />
+
+### Horizontal
+
+Set `orientation` to `horizontal` to place the label beside a switch or checkbox.
+
+<ComponentPreview name="field-horizontal-demo" />
