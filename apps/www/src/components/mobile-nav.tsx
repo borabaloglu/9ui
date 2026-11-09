@@ -109,7 +109,7 @@ function MobileNavItem({
 		>
 			{item.title}
 			{item.label && (
-				<span className="bg-info text-info-foreground rounded px-1.5 py-0.5 text-xs font-medium">
+				<span className="bg-info/10 text-info dark:bg-info/20 rounded px-1.5 py-0.5 text-xs font-medium">
 					{item.label}
 				</span>
 			)}
@@ -122,7 +122,7 @@ function MobileNavItem({
 		>
 			{item.title}
 			{item.label && (
-				<span className="bg-info text-info-foreground rounded px-1.5 py-0.5 text-xs font-medium">
+				<span className="bg-info/10 text-info dark:bg-info/20 rounded px-1.5 py-0.5 text-xs font-medium">
 					{item.label}
 				</span>
 			)}
