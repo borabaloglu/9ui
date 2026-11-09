@@ -5,9 +5,10 @@ import { LoaderCircleIcon, RefreshCwIcon } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 
-const demos = import.meta.glob<React.ComponentType>(
+// Load whole modules instead of using `{ import: "default" }`: in production
+// builds Turbopack resolves that option to `undefined`, breaking every demo.
+const demos = import.meta.glob<{ default: React.ComponentType }>(
 	"/src/components/demos/**/*.tsx",
-	{ import: "default" },
 );
 
 const cache = new Map<string, React.LazyExoticComponent<React.ComponentType>>();
@@ -22,7 +23,7 @@ function getDemoComponent(path: string) {
 	let component = cache.get(path);
 
 	if (!component) {
-		component = React.lazy(async () => ({ default: await load() }));
+		component = React.lazy(load);
 		cache.set(path, component);
 	}
 
