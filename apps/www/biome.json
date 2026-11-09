@@ -116,6 +116,16 @@
 			}
 		},
 		{
+			"includes": ["src/components/ui/field.tsx"],
+			"linter": {
+				"rules": {
+					"a11y": {
+						"noLabelWithoutControl": "off"
+					}
+				}
+			}
+		},
+		{
 			"includes": ["src/components/ui/pagination.tsx"],
 			"linter": {
 				"rules": {

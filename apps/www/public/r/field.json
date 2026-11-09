@@ -1,0 +1,15 @@
+{
+	"$schema": "https://ui.shadcn.com/schema/registry-item.json",
+	"name": "field",
+	"dependencies": [],
+	"registryDependencies": [],
+	"files": [
+		{
+			"path": "ui/field.tsx",
+			"content": "import { Field as BaseField } from \"@base-ui/react/field\";\nimport { cva, type VariantProps } from \"class-variance-authority\";\n\nimport { cn } from \"@/lib/utils\";\n\nconst fieldVariants = cva(\"flex gap-2\", {\n\tvariants: {\n\t\torientation: {\n\t\t\tvertical: \"w-full flex-col\",\n\t\t\thorizontal: \"flex-row items-center\",\n\t\t},\n\t},\n\tdefaultVariants: {\n\t\torientation: \"vertical\",\n\t},\n});\n\nfunction Field({\n\tclassName,\n\torientation = \"vertical\",\n\t...props\n}: Omit<BaseField.Root.Props, \"className\"> &\n\tVariantProps<typeof fieldVariants> & {\n\t\tclassName?: string;\n\t}) {\n\treturn (\n\t\t<BaseField.Root\n\t\t\tdata-slot=\"field\"\n\t\t\tdata-orientation={orientation}\n\t\t\tclassName={cn(fieldVariants({ orientation }), className)}\n\t\t\t{...props}\n\t\t/>\n\t);\n}\n\nfunction FieldLabel({\n\tclassName,\n\t...props\n}: Omit<BaseField.Label.Props, \"className\"> & {\n\tclassName?: string;\n}) {\n\treturn (\n\t\t<BaseField.Label\n\t\t\tdata-slot=\"field-label\"\n\t\t\tclassName={cn(\n\t\t\t\t\"data-invalid:text-destructive flex w-fit items-center gap-2 text-sm leading-snug font-medium select-none data-disabled:opacity-50\",\n\t\t\t\tclassName,\n\t\t\t)}\n\t\t\t{...props}\n\t\t/>\n\t);\n}\n\nfunction FieldControl(props: BaseField.Control.Props) {\n\treturn <BaseField.Control data-slot=\"field-control\" {...props} />;\n}\n\nfunction FieldItem(props: BaseField.Item.Props) {\n\treturn <BaseField.Item data-slot=\"field-item\" {...props} />;\n}\n\nfunction FieldDescription({\n\tclassName,\n\t...props\n}: Omit<BaseField.Description.Props, \"className\"> & {\n\tclassName?: string;\n}) {\n\treturn (\n\t\t<BaseField.Description\n\t\t\tdata-slot=\"field-description\"\n\t\t\tclassName={cn(\n\t\t\t\t\"text-muted-foreground [&>a:hover]:text-foreground text-sm leading-normal [&>a]:underline [&>a]:underline-offset-4\",\n\t\t\t\tclassName,\n\t\t\t)}\n\t\t\t{...props}\n\t\t/>\n\t);\n}\n\nfunction FieldError({\n\tclassName,\n\t...props\n}: Omit<BaseField.Error.Props, \"className\"> & {\n\tclassName?: string;\n}) {\n\treturn (\n\t\t<BaseField.Error\n\t\t\tdata-slot=\"field-error\"\n\t\t\tclassName={cn(\"text-destructive text-sm leading-normal\", className)}\n\t\t\t{...props}\n\t\t/>\n\t);\n}\n\nfunction FieldValidity(props: BaseField.Validity.Props) {\n\treturn <BaseField.Validity {...props} />;\n}\n\nexport {\n\tField,\n\tFieldControl,\n\tFieldDescription,\n\tFieldError,\n\tFieldItem,\n\tFieldLabel,\n\tFieldValidity,\n};\n",
+			"type": "registry:ui",
+			"target": ""
+		}
+	],
+	"type": "registry:ui"
+}
