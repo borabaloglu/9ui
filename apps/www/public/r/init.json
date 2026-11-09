@@ -22,6 +22,7 @@
 			"radius-md": "calc(var(--radius) - 2px)",
 			"radius-lg": "var(--radius)",
 			"radius-xl": "calc(var(--radius) + 2px)",
+			"ease-out-quint": "cubic-bezier(0.23, 1, 0.32, 1)",
 			"color-background": "var(--background)",
 			"color-foreground": "var(--foreground)",
 			"color-card": "var(--card)",

@@ -9,12 +9,7 @@ import {
 	BreadcrumbPage,
 	BreadcrumbSeparator,
 } from "@/components/ui/breadcrumbs";
-import {
-	DropdownMenu,
-	DropdownMenuContent,
-	DropdownMenuItem,
-	DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
+import { Menu, MenuItem, MenuPopup, MenuTrigger } from "@/components/ui/menu";
 
 export default function BreadcrumbsCustomSeparatorDemo() {
 	return (
@@ -27,17 +22,17 @@ export default function BreadcrumbsCustomSeparatorDemo() {
 					<SlashIcon className="h-4 w-4" />
 				</BreadcrumbSeparator>
 				<BreadcrumbItem>
-					<DropdownMenu>
-						<DropdownMenuTrigger className="flex items-center gap-1">
+					<Menu>
+						<MenuTrigger className="flex items-center gap-1">
 							<BreadcrumbEllipsis className="h-4 w-4" />
 							<span className="sr-only">Toggle menu</span>
-						</DropdownMenuTrigger>
-						<DropdownMenuContent align="start">
-							<DropdownMenuItem>Documentation</DropdownMenuItem>
-							<DropdownMenuItem>Themes</DropdownMenuItem>
-							<DropdownMenuItem>GitHub</DropdownMenuItem>
-						</DropdownMenuContent>
-					</DropdownMenu>
+						</MenuTrigger>
+						<MenuPopup align="start">
+							<MenuItem>Documentation</MenuItem>
+							<MenuItem>Themes</MenuItem>
+							<MenuItem>GitHub</MenuItem>
+						</MenuPopup>
+					</Menu>
 				</BreadcrumbItem>
 				<BreadcrumbSeparator>
 					<SlashIcon className="h-4 w-4" />

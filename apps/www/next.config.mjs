@@ -26,6 +26,11 @@ const nextConfig = {
 				destination: "/docs/components/accordion",
 				permanent: true,
 			},
+			{
+				source: "/docs/components/dropdown-menu",
+				destination: "/docs/components/menu",
+				permanent: true,
+			},
 		];
 	},
 	images: {
