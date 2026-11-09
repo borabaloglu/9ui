@@ -1,6 +1,6 @@
 ---
 title: Textarea
-description: A component that allows users to input long text.
+description: A multi-line text field that grows with its content.
 ---
 
 <ComponentPreview name="textarea-demo" />
@@ -33,14 +33,30 @@ import { Textarea } from "@/components/ui/textarea"
 <Textarea />
 ```
 
+Give every textarea a `<label>` or `aria-label`. A placeholder isn't a label.
+
 ## Examples
 
 ### Disabled
 
+Set `disabled` to prevent interaction.
+
 <ComponentPreview name="textarea-disabled-demo" />
 
----
+### Invalid
 
-### Error
+Set `aria-invalid` to show the error state.
 
-<ComponentPreview name="textarea-error-demo" />
+<ComponentPreview name="textarea-invalid-demo" />
+
+### Max height
+
+Set a `max-h-*` class to stop growing and scroll instead.
+
+<ComponentPreview name="textarea-max-height-demo" />
+
+### Field
+
+Place it inside [`Field`](/components/field) to link the label, description and error. No `FieldControl` needed.
+
+<ComponentPreview name="textarea-field-demo" />
