@@ -1,6 +1,6 @@
 ---
 title: Kbd
-description: Displays keyboard shortcuts or keypresses.
+description: A key or key combination shown as a keyboard shortcut.
 ---
 
 <ComponentPreview name="kbd-demo" />
@@ -26,9 +26,39 @@ npx shadcn@latest add @9ui/kbd
 ## Usage
 
 ```tsx title="Imports"
-import { Kbd } from "@/components/ui/kbd"
+import { Kbd, KbdGroup } from "@/components/ui/kbd"
 ```
 
 ```tsx title="Anatomy"
-<Kbd />
+<KbdGroup>
+	<Kbd />
+</KbdGroup>
 ```
+
+Screen readers read the text inside `Kbd`. Add visually hidden text when the key is an icon.
+
+## Examples
+
+### Group
+
+Wrap the keys of one shortcut in `KbdGroup`.
+
+<ComponentPreview name="kbd-group-demo" />
+
+### Icon
+
+Pass an icon as the key. It is sized to fit.
+
+<ComponentPreview name="kbd-icon-demo" />
+
+### Within Button
+
+Place a `Kbd` inside a `Button` to show the shortcut that triggers it.
+
+<ComponentPreview name="kbd-within-button-demo" />
+
+### Within Tooltip
+
+Place a `KbdGroup` inside a `TooltipContent` to show the shortcut next to the label.
+
+<ComponentPreview name="kbd-within-tooltip-demo" />
