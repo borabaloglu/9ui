@@ -75,13 +75,13 @@ function ToastList() {
 							"data-ending-style:data-[swipe-direction=down]:[transform:translateY(calc(var(--toast-swipe-movement-y)+150%))] data-expanded:data-ending-style:data-[swipe-direction=down]:[transform:translateY(calc(var(--toast-swipe-movement-y)+150%))]",
 							// Type-specific styles
 							toast.type === "success" &&
-								"border-success-border bg-success text-success-foreground",
+								"border-success/20 text-success bg-[color-mix(in_oklab,var(--color-success)_8%,var(--color-popover))]",
 							toast.type === "error" &&
-								"border-danger-border bg-danger text-danger-foreground",
+								"border-destructive/20 text-destructive bg-[color-mix(in_oklab,var(--color-destructive)_8%,var(--color-popover))]",
 							toast.type === "info" &&
-								"border-info-border bg-info text-info-foreground",
+								"border-info/20 text-info bg-[color-mix(in_oklab,var(--color-info)_8%,var(--color-popover))]",
 							toast.type === "warning" &&
-								"border-warning-border bg-warning text-warning-foreground",
+								"border-warning/20 text-warning bg-[color-mix(in_oklab,var(--color-warning)_8%,var(--color-popover))]",
 						)}
 					>
 						<Toast.Content
