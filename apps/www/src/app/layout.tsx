@@ -12,6 +12,7 @@ import { Header } from "@/components/header";
 import { Openpanel } from "@/components/openpanel";
 import { Toaster } from "@/components/ui/sonner";
 import { ToastProvider } from "@/components/ui/toast";
+import { TooltipProvider } from "@/components/ui/tooltip";
 
 import { siteConfig } from "@/config/site";
 
@@ -89,14 +90,16 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => (
 				enableColorScheme
 			>
 				<ToastProvider>
-					<div
-						className="root flex flex-1 flex-col"
-						data-vaul-drawer-wrapper=""
-					>
-						<Header sidebarNav={getSidebarNav()} />
-						<main className="flex-1">{children}</main>
-						<Footer />
-					</div>
+					<TooltipProvider>
+						<div
+							className="root flex flex-1 flex-col"
+							data-vaul-drawer-wrapper=""
+						>
+							<Header sidebarNav={getSidebarNav()} />
+							<main className="flex-1">{children}</main>
+							<Footer />
+						</div>
+					</TooltipProvider>
 				</ToastProvider>
 				<Toaster />
 			</ThemeProvider>

@@ -10,34 +10,15 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import {
-	Tooltip,
-	TooltipContent,
-	TooltipTrigger,
-} from "@/components/ui/tooltip";
 
 export default function TabsDisabledDemo() {
 	return (
 		<Tabs className="w-full max-w-96" defaultValue="login">
 			<TabsList>
 				<TabsTrigger value="login">Login</TabsTrigger>
-				<Tooltip>
-					<TooltipTrigger
-						className="w-full"
-						render={(props) => (
-							<div {...props}>
-								<TabsTrigger value="signup" disabled>
-									Sign up
-								</TabsTrigger>
-							</div>
-						)}
-					/>
-					<TooltipContent className="w-64">
-						<span>
-							Sign ups are temporarily disabled. Please check back later.
-						</span>
-					</TooltipContent>
-				</Tooltip>
+				<TabsTrigger value="signup" disabled>
+					Sign up
+				</TabsTrigger>
 			</TabsList>
 			<TabsContent value="login">
 				<Card>
