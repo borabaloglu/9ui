@@ -1,0 +1,51 @@
+---
+title: Spinner
+description: A spinning indicator for loading states.
+label: New
+---
+
+<ComponentPreview name="spinner-demo" />
+
+## Installation
+
+<ComponentInstallation>
+<div>
+```bash title="Terminal"
+npx shadcn@latest add @9ui/spinner
+```
+</div>
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="spinner" />
+
+</Steps>
+</ComponentInstallation>
+
+## Usage
+
+```tsx title="Imports"
+import { Spinner } from "@/components/ui/spinner"
+```
+
+```tsx title="Anatomy"
+<Spinner />
+```
+
+Screen readers announce the spinner as "Loading". Set `aria-hidden` when it sits next to loading text.
+
+## Examples
+
+### Size
+
+Set a `size-*` class to change the size. Lower `strokeWidth` to thin out larger spinners.
+
+<ComponentPreview name="spinner-size-demo" />
+
+### Color
+
+Set a `text-*` class to change the color.
+
+<ComponentPreview name="spinner-color-demo" />
