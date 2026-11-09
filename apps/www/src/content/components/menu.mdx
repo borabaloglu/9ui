@@ -1,0 +1,149 @@
+---
+title: Menu
+description: A list of actions or options that opens from a button.
+label: New
+---
+<ComponentLinks
+	links={[
+		{
+			label: "API Reference",
+			href: "https://base-ui.com/react/components/menu",
+		},
+	]}
+/>
+
+<ComponentPreview name="menu-demo" />
+
+## Installation
+
+<ComponentInstallation>
+<div>
+```bash title="Terminal"
+npx shadcn@latest add @9ui/menu
+```
+</div>
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="menu" />
+
+</Steps>
+</ComponentInstallation>
+
+## Usage
+
+```tsx title="Imports"
+import {
+	Menu,
+	MenuCheckboxItem,
+	MenuGroup,
+	MenuGroupLabel,
+	MenuItem,
+	MenuLinkItem,
+	MenuPopup,
+	MenuRadioGroup,
+	MenuRadioItem,
+	MenuSeparator,
+	MenuShortcut,
+	MenuSub,
+	MenuSubPopup,
+	MenuSubTrigger,
+	MenuTrigger,
+} from "@/components/ui/menu"
+```
+
+```tsx title="Anatomy"
+<Menu>
+	<MenuTrigger />
+	<MenuPopup>
+		<MenuGroup>
+			<MenuGroupLabel />
+			<MenuItem>
+				<MenuShortcut />
+			</MenuItem>
+			<MenuLinkItem />
+		</MenuGroup>
+		<MenuSeparator />
+		<MenuCheckboxItem />
+		<MenuRadioGroup>
+			<MenuRadioItem />
+		</MenuRadioGroup>
+		<MenuSub>
+			<MenuSubTrigger />
+			<MenuSubPopup>
+				<MenuItem />
+			</MenuSubPopup>
+		</MenuSub>
+	</MenuPopup>
+</Menu>
+```
+
+Set `render` on `MenuTrigger` to use your own button. Give icon-only triggers an `aria-label`.
+
+`MenuPopup` takes `side`, `align`, `sideOffset` and `alignOffset` to change where the menu opens.
+
+## Examples
+
+### Group
+
+Wrap related items in `MenuGroup` and name them with `MenuGroupLabel`.
+
+<ComponentPreview name="menu-group-demo" />
+
+### Shortcut
+
+Add `MenuShortcut` inside an item to show its keyboard shortcut. It is a hint only, so bind the keys yourself.
+
+<ComponentPreview name="menu-shortcut-demo" />
+
+### With Icons
+
+Place an icon before the item text.
+
+<ComponentPreview name="menu-icons-demo" />
+
+### Checkbox
+
+Use `MenuCheckboxItem` for options that turn on and off. The menu stays open when one is toggled.
+
+<ComponentPreview name="menu-checkbox-demo" />
+
+### Checkbox with Icons
+
+<ComponentPreview name="menu-checkbox-icon-demo" />
+
+### Radio Group
+
+Use `MenuRadioGroup` and `MenuRadioItem` to pick one option from a set.
+
+<ComponentPreview name="menu-radio-demo" />
+
+### Radio Group with Icons
+
+<ComponentPreview name="menu-radio-icon-demo" />
+
+### Destructive
+
+Set `variant` to `destructive` for an action that deletes or can't be undone.
+
+<ComponentPreview name="menu-destructive-demo" />
+
+### Link
+
+Use `MenuLinkItem` for items that go to another page. It renders an `<a>`.
+
+<ComponentPreview name="menu-link-demo" />
+
+### Submenu
+
+Nest `MenuSub`, `MenuSubTrigger` and `MenuSubPopup` to open a second level.
+
+<ComponentPreview name="menu-submenu-demo" />
+
+### Complex
+
+Groups, shortcuts, checkboxes, a submenu and a destructive action in one menu.
+
+<ComponentPreview name="menu-complex-demo" />

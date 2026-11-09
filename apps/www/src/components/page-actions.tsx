@@ -14,12 +14,7 @@ import {
 
 import { Icons } from "@/components/icons";
 import { Button, buttonVariants } from "@/components/ui/button";
-import {
-	DropdownMenu,
-	DropdownMenuContent,
-	DropdownMenuItem,
-	DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
+import { Menu, MenuItem, MenuPopup, MenuTrigger } from "@/components/ui/menu";
 
 import { siteConfig } from "@/config/site";
 
@@ -148,8 +143,8 @@ export function PageActions({ navigation }: PageActionsProps) {
 					)}
 					<span>Page</span>
 				</button>
-				<DropdownMenu>
-					<DropdownMenuTrigger
+				<Menu>
+					<MenuTrigger
 						render={(props) => (
 							<button
 								className={cn(
@@ -162,8 +157,8 @@ export function PageActions({ navigation }: PageActionsProps) {
 							</button>
 						)}
 					/>
-					<DropdownMenuContent align="end" className="w-56">
-						<DropdownMenuItem
+					<MenuPopup align="end" className="w-56">
+						<MenuItem
 							render={(props) => (
 								<a href={getMarkdownUrl()} target="_blank" {...props}>
 									<Icons.markdown className="size-4" />
@@ -172,7 +167,7 @@ export function PageActions({ navigation }: PageActionsProps) {
 							)}
 							nativeButton={false}
 						/>
-						<DropdownMenuItem
+						<MenuItem
 							render={(props) => (
 								<a
 									href={getOpenInUrl("https://v0.dev", currentUrl)}
@@ -185,7 +180,7 @@ export function PageActions({ navigation }: PageActionsProps) {
 							)}
 							nativeButton={false}
 						/>
-						<DropdownMenuItem
+						<MenuItem
 							render={(props) => (
 								<a
 									href={getOpenInUrl("https://chatgpt.com", currentUrl)}
@@ -198,7 +193,7 @@ export function PageActions({ navigation }: PageActionsProps) {
 							)}
 							nativeButton={false}
 						/>
-						<DropdownMenuItem
+						<MenuItem
 							render={(props) => (
 								<a
 									href={getOpenInUrl("https://claude.ai/new", currentUrl)}
@@ -211,7 +206,7 @@ export function PageActions({ navigation }: PageActionsProps) {
 							)}
 							nativeButton={false}
 						/>
-						<DropdownMenuItem
+						<MenuItem
 							render={(props) => (
 								<a
 									href={getOpenInUrl("https://scira.ai", currentUrl)}
@@ -224,8 +219,8 @@ export function PageActions({ navigation }: PageActionsProps) {
 							)}
 							nativeButton={false}
 						/>
-					</DropdownMenuContent>
-				</DropdownMenu>
+					</MenuPopup>
+				</Menu>
 			</div>
 		</div>
 	);

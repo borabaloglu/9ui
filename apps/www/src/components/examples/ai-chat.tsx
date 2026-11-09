@@ -19,12 +19,7 @@ import {
 
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
-import {
-	DropdownMenu,
-	DropdownMenuContent,
-	DropdownMenuItem,
-	DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
+import { Menu, MenuItem, MenuPopup, MenuTrigger } from "@/components/ui/menu";
 import { Textarea } from "@/components/ui/textarea";
 
 import { cn } from "@/lib/utils";
@@ -134,8 +129,8 @@ export const AIChatInterface = () => {
 								className="first:bg-muted justify-between gap-2"
 							>
 								{chat.title}
-								<DropdownMenu>
-									<DropdownMenuTrigger
+								<Menu>
+									<MenuTrigger
 										nativeButton={false}
 										render={(props) => (
 											<div
@@ -146,21 +141,21 @@ export const AIChatInterface = () => {
 											</div>
 										)}
 									/>
-									<DropdownMenuContent>
-										<DropdownMenuItem>
+									<MenuPopup>
+										<MenuItem>
 											<PencilIcon className="size-4" />
 											Rename
-										</DropdownMenuItem>
-										<DropdownMenuItem>
+										</MenuItem>
+										<MenuItem>
 											<ShareIcon className="size-4" />
 											Share
-										</DropdownMenuItem>
-										<DropdownMenuItem variant="destructive">
+										</MenuItem>
+										<MenuItem variant="destructive">
 											<TrashIcon className="size-4" />
 											Delete
-										</DropdownMenuItem>
-									</DropdownMenuContent>
-								</DropdownMenu>
+										</MenuItem>
+									</MenuPopup>
+								</Menu>
 							</Button>
 						))}
 					</nav>

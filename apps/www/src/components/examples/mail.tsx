@@ -24,21 +24,21 @@ import {
 
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
-import {
-	DropdownMenu,
-	DropdownMenuCheckboxItem,
-	DropdownMenuContent,
-	DropdownMenuGroup,
-	DropdownMenuItem,
-	DropdownMenuLabel,
-	DropdownMenuSeparator,
-	DropdownMenuShortcut,
-	DropdownMenuSub,
-	DropdownMenuSubContent,
-	DropdownMenuSubTrigger,
-	DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
 import { Input } from "@/components/ui/input";
+import {
+	Menu,
+	MenuCheckboxItem,
+	MenuGroup,
+	MenuGroupLabel,
+	MenuItem,
+	MenuPopup,
+	MenuSeparator,
+	MenuShortcut,
+	MenuSub,
+	MenuSubPopup,
+	MenuSubTrigger,
+	MenuTrigger,
+} from "@/components/ui/menu";
 import { Separator } from "@/components/ui/separator";
 import { Textarea } from "@/components/ui/textarea";
 
@@ -427,62 +427,58 @@ export const MailInterface = () => {
 								<Forward className="size-4" />
 							</Button>
 							<Separator orientation="vertical" className="mx-1 h-4" />
-							<DropdownMenu>
-								<DropdownMenuTrigger
+							<Menu>
+								<MenuTrigger
 									render={(props) => (
 										<Button {...props} size="icon" variant="ghost">
 											<Ellipsis className="size-4" />
 										</Button>
 									)}
 								/>
-								<DropdownMenuContent>
-									<DropdownMenuGroup>
-										<DropdownMenuLabel>Actions</DropdownMenuLabel>
-										<DropdownMenuItem>Mark as Read</DropdownMenuItem>
-										<DropdownMenuItem>Mark as Unread</DropdownMenuItem>
-										<DropdownMenuItem>
+								<MenuPopup>
+									<MenuGroup>
+										<MenuGroupLabel>Actions</MenuGroupLabel>
+										<MenuItem>Mark as Read</MenuItem>
+										<MenuItem>Mark as Unread</MenuItem>
+										<MenuItem>
 											<StarIcon className="size-4" />
 											Star
-										</DropdownMenuItem>
-										<DropdownMenuItem>
+										</MenuItem>
+										<MenuItem>
 											<Clock className="size-4" />
 											Snooze
-										</DropdownMenuItem>
-									</DropdownMenuGroup>
-									<DropdownMenuSeparator />
-									<DropdownMenuGroup>
-										<DropdownMenuLabel>Move to</DropdownMenuLabel>
-										<DropdownMenuItem>Archive</DropdownMenuItem>
-										<DropdownMenuItem>Spam</DropdownMenuItem>
-										<DropdownMenuItem>
+										</MenuItem>
+									</MenuGroup>
+									<MenuSeparator />
+									<MenuGroup>
+										<MenuGroupLabel>Move to</MenuGroupLabel>
+										<MenuItem>Archive</MenuItem>
+										<MenuItem>Spam</MenuItem>
+										<MenuItem>
 											Trash
-											<DropdownMenuShortcut>⌘⌫</DropdownMenuShortcut>
-										</DropdownMenuItem>
-									</DropdownMenuGroup>
-									<DropdownMenuSeparator />
-									<DropdownMenuGroup>
-										<DropdownMenuLabel>Categories</DropdownMenuLabel>
-										<DropdownMenuItem>Social</DropdownMenuItem>
-										<DropdownMenuItem>Updates</DropdownMenuItem>
-										<DropdownMenuItem>Forums</DropdownMenuItem>
-										<DropdownMenuItem>Promotions</DropdownMenuItem>
-									</DropdownMenuGroup>
-									<DropdownMenuSeparator />
-									<DropdownMenuSub>
-										<DropdownMenuSubTrigger>Labels</DropdownMenuSubTrigger>
-										<DropdownMenuSubContent>
-											<DropdownMenuCheckboxItem>
-												Important
-											</DropdownMenuCheckboxItem>
-											<DropdownMenuCheckboxItem>Work</DropdownMenuCheckboxItem>
-											<DropdownMenuCheckboxItem>
-												Personal
-											</DropdownMenuCheckboxItem>
-											<DropdownMenuCheckboxItem>To-do</DropdownMenuCheckboxItem>
-										</DropdownMenuSubContent>
-									</DropdownMenuSub>
-								</DropdownMenuContent>
-							</DropdownMenu>
+											<MenuShortcut>⌘⌫</MenuShortcut>
+										</MenuItem>
+									</MenuGroup>
+									<MenuSeparator />
+									<MenuGroup>
+										<MenuGroupLabel>Categories</MenuGroupLabel>
+										<MenuItem>Social</MenuItem>
+										<MenuItem>Updates</MenuItem>
+										<MenuItem>Forums</MenuItem>
+										<MenuItem>Promotions</MenuItem>
+									</MenuGroup>
+									<MenuSeparator />
+									<MenuSub>
+										<MenuSubTrigger>Labels</MenuSubTrigger>
+										<MenuSubPopup>
+											<MenuCheckboxItem>Important</MenuCheckboxItem>
+											<MenuCheckboxItem>Work</MenuCheckboxItem>
+											<MenuCheckboxItem>Personal</MenuCheckboxItem>
+											<MenuCheckboxItem>To-do</MenuCheckboxItem>
+										</MenuSubPopup>
+									</MenuSub>
+								</MenuPopup>
+							</Menu>
 						</div>
 					</div>
 				</header>
