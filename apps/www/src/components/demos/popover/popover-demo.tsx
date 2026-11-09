@@ -33,12 +33,7 @@ export default function PopoverDemo() {
 					<PopoverDescription>Share this component.</PopoverDescription>
 				</PopoverHeader>
 				<div className="mt-2 flex w-full gap-2">
-					<Input
-						inputContainerClassName="w-full"
-						value={window.location.href}
-						autoFocus={false}
-						readOnly
-					/>
+					<Input value={window.location.href} autoFocus={false} readOnly />
 					<Button className="shrink-0" size="icon" onClick={copyToClipboard}>
 						<CopyIcon />
 					</Button>
