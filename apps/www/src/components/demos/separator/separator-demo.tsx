@@ -2,15 +2,17 @@ import { Separator } from "@/components/ui/separator";
 
 export default function SeparatorDemo() {
 	return (
-		<div>
-			<p>9ui is a component library for building modern web applications.</p>
-			<Separator className="my-2.5" />
-			<div className="flex gap-2.5">
-				<p>Website</p>
-				<Separator orientation="vertical" />
-				<p>Documentation</p>
-				<Separator orientation="vertical" />
-				<p>Community</p>
+		<div className="flex max-w-sm flex-col gap-3 text-sm">
+			<div className="flex flex-col gap-1.5">
+				<div className="leading-none font-medium">9ui</div>
+				<div className="text-muted-foreground">
+					Copy-Paste Components That Adapt to Your Design
+				</div>
+			</div>
+			<Separator />
+			<div>
+				Built with Base UI and Tailwind CSS. Easy to customize. Free and open
+				source.
 			</div>
 		</div>
 	);

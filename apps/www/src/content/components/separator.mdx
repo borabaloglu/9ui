@@ -40,3 +40,19 @@ import { Separator } from "@/components/ui/separator"
 ```tsx title="Anatomy"
 <Separator />
 ```
+
+Screen readers announce the separator. Set `aria-hidden` when it is only decorative.
+
+## Examples
+
+### Vertical
+
+Set `orientation` to `vertical` to divide items in a row. The separator stretches to the height of a flex row. Set an `h-*` class for a fixed height.
+
+<ComponentPreview name="separator-vertical-demo" />
+
+### List
+
+Use horizontal separators between rows in a list.
+
+<ComponentPreview name="separator-list-demo" />
