@@ -1,11 +1,11 @@
 ---
 title: Tooltip
-description: Used to provide context or hints for elements.
+description: A short label that appears when an element is hovered or focused.
 ---
 <ComponentLinks
 	links={[
 		{
-			label: "Docs",
+			label: "API Reference",
 			href: "https://base-ui.com/react/components/tooltip",
 		},
 	]}
@@ -36,20 +36,49 @@ npx shadcn@latest add @9ui/tooltip
 ```tsx title="Imports"
 import {
 	Tooltip,
-	TooltipContent,
+	TooltipPopup,
+	TooltipProvider,
 	TooltipTrigger,
 } from "@/components/ui/tooltip"
 ```
 
 ```tsx title="Anatomy"
-<Tooltip>
-	<TooltipTrigger />
-	<TooltipContent />
-</Tooltip>
+<TooltipProvider>
+	<Tooltip>
+		<TooltipTrigger />
+		<TooltipPopup />
+	</Tooltip>
+</TooltipProvider>
 ```
+
+Set `render` on `TooltipTrigger` to use your own button. A tooltip is a visual hint only, so give icon-only triggers an `aria-label` that matches its text.
+
+Tooltips don't open on touch devices. Use a [Popover](/docs/components/popover) for content people need to read.
+
+`TooltipPopup` takes `side`, `align`, `sideOffset` and `alignOffset` to change where the tooltip opens.
 
 ## Examples
 
-### Custom Position
+### Side
 
-<ComponentPreview name="tooltip-custom-position-demo" />
+Set `side` on `TooltipPopup` to choose where the tooltip opens.
+
+<ComponentPreview name="tooltip-side-demo" />
+
+### With Arrow
+
+Set `arrow` on `TooltipPopup` to point at the trigger. The tooltip moves away to make room for it.
+
+<ComponentPreview name="tooltip-with-arrow-demo" />
+
+### Grouped
+
+Wrap related tooltips in `TooltipProvider`. After the first one opens, the others open without a delay.
+
+<ComponentPreview name="tooltip-grouped-demo" />
+
+### Delay
+
+Tooltips inside a `TooltipProvider` open after 300ms. Without one they open after 600ms. Set `delay` on `TooltipProvider` to change it for a group, or on `TooltipTrigger` for a single tooltip.
+
+<ComponentPreview name="tooltip-delay-demo" />

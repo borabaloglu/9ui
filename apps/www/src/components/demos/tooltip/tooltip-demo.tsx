@@ -1,32 +1,17 @@
-import { Icons } from "@/components/icons";
-import { buttonVariants } from "@/components/ui/button";
-import {
-	Tooltip,
-	TooltipContent,
-	TooltipTrigger,
-} from "@/components/ui/tooltip";
+import { CopyIcon } from "lucide-react";
+
+import { Button } from "@/components/ui/button";
+import { Tooltip, TooltipPopup, TooltipTrigger } from "@/components/ui/tooltip";
 
 export default function TooltipDemo() {
 	return (
 		<Tooltip>
 			<TooltipTrigger
-				className={buttonVariants({ variant: "outline", size: "icon" })}
+				render={<Button variant="outline" size="icon" aria-label="Copy link" />}
 			>
-				<Icons.twitter />
+				<CopyIcon />
 			</TooltipTrigger>
-			<TooltipContent>
-				<span>
-					Follow me{" "}
-					<a
-						className="font-medium"
-						href="https://x.com/borabalogluu"
-						target="_blank"
-						rel="noopener"
-					>
-						@borabalogluu
-					</a>
-				</span>
-			</TooltipContent>
+			<TooltipPopup>Copy link</TooltipPopup>
 		</Tooltip>
 	);
 }

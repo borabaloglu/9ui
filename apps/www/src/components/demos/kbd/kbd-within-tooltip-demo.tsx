@@ -2,11 +2,7 @@ import { SaveIcon } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { Kbd, KbdGroup } from "@/components/ui/kbd";
-import {
-	Tooltip,
-	TooltipContent,
-	TooltipTrigger,
-} from "@/components/ui/tooltip";
+import { Tooltip, TooltipPopup, TooltipTrigger } from "@/components/ui/tooltip";
 
 export default function KbdWithinTooltipDemo() {
 	return (
@@ -16,13 +12,13 @@ export default function KbdWithinTooltipDemo() {
 			>
 				<SaveIcon />
 			</TooltipTrigger>
-			<TooltipContent className="flex items-center gap-2">
+			<TooltipPopup className="flex items-center gap-2 pr-1">
 				Save file
 				<KbdGroup>
 					<Kbd>⌘</Kbd>
 					<Kbd>S</Kbd>
 				</KbdGroup>
-			</TooltipContent>
+			</TooltipPopup>
 		</Tooltip>
 	);
 }
