@@ -6,6 +6,7 @@ import {
 	ArrowRightIcon,
 	ComponentIcon,
 	CornerDownLeftIcon,
+	SearchIcon,
 } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
@@ -25,9 +26,13 @@ import type { SidebarNavGroup } from "@/types/nav";
 
 interface SearchDialogProps {
 	sidebarNav: SidebarNavGroup[];
+	variant?: "header" | "sidebar";
 }
 
-export function SearchDialog({ sidebarNav }: SearchDialogProps) {
+export function SearchDialog({
+	sidebarNav,
+	variant = "header",
+}: SearchDialogProps) {
 	const [open, setOpen] = React.useState(false);
 	const router = useRouter();
 
@@ -85,21 +90,36 @@ export function SearchDialog({ sidebarNav }: SearchDialogProps) {
 
 	return (
 		<>
-			<Button
-				variant="outline"
-				className="bg-accent/50 text-accent-foreground hover:bg-accent dark:hover:bg-accent relative w-full justify-start overflow-hidden border-0 pr-12 text-xs font-normal shadow-xs md:w-40 lg:w-64"
-				size="sm"
-				onClick={() => setOpen(true)}
-			>
-				<span className="hidden max-w-[calc(100%-32px)] overflow-hidden lg:inline-flex">
-					Search documentation...
-				</span>
-				<span className="inline-flex lg:hidden">Search...</span>
-				<div className="pointer-events-none absolute right-3 flex gap-x-1">
-					<Kbd className="border-0 text-[10px]">⌘</Kbd>
-					<Kbd className="border-0 text-[10px]">K</Kbd>
-				</div>
-			</Button>
+			{variant === "sidebar" ? (
+				<button
+					type="button"
+					className="bg-background/60 text-muted-foreground hover:bg-accent/50 hover:text-accent-foreground focus-visible:ring-ring/50 flex h-9 w-full cursor-pointer items-center gap-2 rounded-lg border px-2.5 text-sm transition-colors outline-none focus-visible:ring-3"
+					onClick={() => setOpen(true)}
+				>
+					<SearchIcon className="size-4 shrink-0" />
+					<span className="flex-1 text-start">Search</span>
+					<span className="pointer-events-none flex gap-x-1">
+						<Kbd className="text-[10px]">⌘</Kbd>
+						<Kbd className="text-[10px]">K</Kbd>
+					</span>
+				</button>
+			) : (
+				<Button
+					variant="outline"
+					className="bg-accent/50 text-accent-foreground hover:bg-accent dark:hover:bg-accent relative w-full justify-start overflow-hidden border-0 pr-12 text-xs font-normal shadow-xs md:w-40 lg:w-64"
+					size="sm"
+					onClick={() => setOpen(true)}
+				>
+					<span className="hidden max-w-[calc(100%-32px)] overflow-hidden lg:inline-flex">
+						Search documentation...
+					</span>
+					<span className="inline-flex lg:hidden">Search...</span>
+					<div className="pointer-events-none absolute right-3 flex gap-x-1">
+						<Kbd className="border-0 text-[10px]">⌘</Kbd>
+						<Kbd className="border-0 text-[10px]">K</Kbd>
+					</div>
+				</Button>
+			)}
 			<CommandDialog
 				open={open}
 				onOpenChange={setOpen}

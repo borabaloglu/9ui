@@ -47,7 +47,7 @@ function getLinkComponent(link: ComponentLink) {
 
 export function ComponentLinks({ links }: ComponentLinksProps) {
 	return (
-		<div className="mt-4 flex gap-2">
+		<div data-slot="component-links" className="mt-4 flex gap-2">
 			{links.map((link) => getLinkComponent(link))}
 		</div>
 	);
