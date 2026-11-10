@@ -29,7 +29,7 @@ export const ComponentPreview = ({
 	}
 
 	return (
-		<div className={cn("mt-8 overflow-hidden rounded-lg border", className)}>
+		<div className={cn("mt-4 overflow-hidden rounded-lg border", className)}>
 			<div className="relative flex min-h-[200px] items-center justify-center p-10">
 				<DemoRenderer path={demo.path} showReload={showReload} />
 			</div>

@@ -14,9 +14,5 @@ export const navConfig: NavConfig = {
 			title: "Components",
 			href: "/docs/components",
 		},
-		{
-			title: "Themes",
-			href: "/themes",
-		},
 	],
 };

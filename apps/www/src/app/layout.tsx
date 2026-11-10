@@ -7,8 +7,6 @@ import "./syntax.css";
 import { ThemeProvider } from "next-themes";
 
 import { DisableAutofill } from "@/components/disable-autofill";
-import { Footer } from "@/components/footer";
-import { Header } from "@/components/header";
 import { Openpanel } from "@/components/openpanel";
 import { Toaster } from "@/components/ui/sonner";
 import { ToastProvider } from "@/components/ui/toast";
@@ -16,7 +14,6 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 
 import { siteConfig } from "@/config/site";
 
-import { getSidebarNav } from "@/lib/source";
 import { cn } from "@/lib/utils";
 
 const inter = Inter({
@@ -95,9 +92,7 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => (
 							className="root flex flex-1 flex-col"
 							data-vaul-drawer-wrapper=""
 						>
-							<Header sidebarNav={getSidebarNav()} />
-							<main className="flex-1">{children}</main>
-							<Footer />
+							{children}
 						</div>
 					</TooltipProvider>
 				</ToastProvider>

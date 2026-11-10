@@ -1,18 +1,52 @@
+import Link from "next/link";
+
+import {
+	DocsShell,
+	DocsSidebar,
+	DocsSidebarToggle,
+} from "@/components/docs-shell";
+import { GitHubLink } from "@/components/header";
+import { Icons } from "@/components/icons";
+import { MobileNav } from "@/components/mobile-nav";
+import { SearchDialog } from "@/components/search-dialog";
 import { DocsSidebarNav } from "@/components/sidebar";
+import { ThemeToggle } from "@/components/theme-toggle";
 
 import { getSidebarNav } from "@/lib/source";
 
-const DocsLayout = ({ children }: { children: React.ReactNode }) => (
-	<div className="container mx-auto gap-8 px-4 md:grid md:grid-cols-[220px_minmax(0,1fr)] xl:grid-cols-[240px_1fr] xl:px-0">
-		<aside className="dark:border-border/40 fixed top-14 hidden h-[calc(100vh-3.5rem)] w-full shrink-0 border-dashed md:sticky md:block xl:border-x">
-			<div className="scrollbar-hidden h-full overflow-y-auto py-4 pr-2 pl-6">
-				<DocsSidebarNav sidebarNav={getSidebarNav()} />
-			</div>
-		</aside>
-		<main className="dark:border-border/40 min-h-screen border-dashed xl:border-r">
-			{children}
-		</main>
-	</div>
-);
+const DocsLayout = ({ children }: { children: React.ReactNode }) => {
+	const sidebarNav = getSidebarNav();
+
+	return (
+		<DocsShell className="bg-card flex min-h-dvh flex-col md:h-dvh md:overflow-clip">
+			<header className="bg-card sticky top-0 z-30 flex h-14 shrink-0 items-center px-4 md:hidden">
+				<MobileNav sidebarNav={sidebarNav} />
+				<div className="flex-1" />
+				<div className="flex items-center gap-1">
+					<GitHubLink />
+					<ThemeToggle />
+				</div>
+			</header>
+			<DocsSidebar>
+				<div className="-mb-1.5 flex h-14 shrink-0 items-center ps-5.5 pe-3">
+					<Link href="/" className="flex items-center" prefetch>
+						<Icons.logo className="size-3" />
+						<span className="ml-0.5 font-mono text-lg font-black">ui</span>
+					</Link>
+					<DocsSidebarToggle className="ms-auto" />
+				</div>
+				<div className="px-3">
+					<SearchDialog sidebarNav={sidebarNav} variant="sidebar" />
+				</div>
+				<div className="mt-2 min-h-0 flex-1 [scrollbar-width:none] overflow-y-auto mask-[linear-gradient(to_bottom,transparent,white_12px,white_calc(100%-12px),transparent)] px-3 py-3">
+					<DocsSidebarNav sidebarNav={sidebarNav} />
+				</div>
+			</DocsSidebar>
+			<main className="bg-background @container relative flex min-w-0 flex-1 flex-col motion-reduce:transition-none md:my-2 md:mr-2 md:min-h-0 md:overflow-clip md:rounded-2xl md:border md:shadow-sm md:transition-[margin] md:duration-300 md:ease-[cubic-bezier(0.22,1,0.36,1)] md:group-data-[sidebar-collapsed=true]/docs:ml-2">
+				{children}
+			</main>
+		</DocsShell>
+	);
+};
 
 export default DocsLayout;

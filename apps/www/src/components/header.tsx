@@ -15,32 +15,36 @@ interface HeaderProps {
 	sidebarNav: SidebarNavGroup[];
 }
 
+export const GitHubLink = () => (
+	<Button
+		variant="ghost"
+		size="icon-sm"
+		render={
+			<Link
+				href="https://github.com/borabaloglu/9ui"
+				target="_blank"
+				rel="noreferrer"
+			>
+				<Icons.gitHub className="size-4" />
+				<span className="sr-only">GitHub</span>
+			</Link>
+		}
+		nativeButton={false}
+	/>
+);
+
 export const Header = ({ sidebarNav }: HeaderProps) => {
 	return (
-		<header className="bg-background supports-[backdrop-filter]:bg-background/80 dark:border-border/40 sticky top-0 z-50 mx-auto w-full border-b border-dashed backdrop-blur">
-			<div className="dark:border-border/40 container flex h-14 items-center border-dashed xl:border-x">
+		<header className="bg-card sticky top-0 z-50 w-full shrink-0 md:static">
+			<div className="flex h-14 items-center px-4 md:ps-5.5">
 				<MainNav />
 				<MobileNav sidebarNav={sidebarNav} />
 				<div className="flex-1" />
 				<div className="flex items-center gap-1">
-					<div className="hidden md:block">
-						<SearchDialog sidebarNav={sidebarNav} />
+					<div className="hidden w-64 md:block">
+						<SearchDialog sidebarNav={sidebarNav} variant="sidebar" />
 					</div>
-					<Button
-						variant="ghost"
-						size="icon-sm"
-						render={
-							<Link
-								href="https://github.com/borabaloglu/9ui"
-								target="_blank"
-								rel="noreferrer"
-							>
-								<Icons.gitHub className="size-4" />
-								<span className="sr-only">GitHub</span>
-							</Link>
-						}
-						nativeButton={false}
-					/>
+					<GitHubLink />
 					<ThemeToggle />
 				</div>
 			</div>

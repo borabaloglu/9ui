@@ -1,0 +1,93 @@
+.root {
+	--blueprint: color-mix(in oklab, var(--muted-foreground) 70%, transparent);
+	--ease-out-quart: cubic-bezier(0.165, 0.84, 0.44, 1);
+	--ease-out-cubic: cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+
+.exiting {
+	opacity: 0;
+	filter: blur(4px);
+	transition:
+		opacity var(--exit-duration) var(--ease-out-cubic),
+		filter var(--exit-duration) var(--ease-out-cubic);
+}
+
+.piece {
+	--draw-delay: calc(var(--draw-start) + var(--i) * var(--draw-stagger));
+	--morph-delay: calc(var(--morph-start) + var(--i) * var(--morph-stagger));
+	position: relative;
+}
+
+.outline {
+	position: absolute;
+	inset: 0;
+	width: 100%;
+	height: 100%;
+	overflow: visible;
+	pointer-events: none;
+	fill: none;
+	stroke: var(--blueprint);
+	stroke-width: 1;
+	stroke-dasharray: 1;
+	stroke-dashoffset: 0;
+	opacity: 0;
+	animation:
+		draw var(--draw-duration) var(--ease-out-quart) var(--draw-delay) backwards,
+		fade var(--morph-duration) var(--ease-out-cubic) var(--morph-delay)
+		backwards;
+}
+
+.bar {
+	top: 50%;
+	height: 0.7em;
+	translate: 0 -50%;
+}
+
+.reveal {
+	display: flex;
+	flex-direction: column;
+	animation: reveal var(--morph-duration) var(--ease-out-cubic)
+		var(--morph-delay) backwards;
+}
+
+.surface {
+	animation: surface var(--morph-duration) var(--ease-out-cubic)
+		var(--morph-delay) backwards;
+}
+
+@keyframes draw {
+	from {
+		stroke-dashoffset: 1;
+	}
+}
+
+@keyframes fade {
+	from {
+		opacity: 1;
+	}
+}
+
+@keyframes reveal {
+	from {
+		opacity: 0;
+		filter: blur(4px);
+	}
+}
+
+@keyframes surface {
+	from {
+		opacity: 0;
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.outline,
+	.reveal,
+	.surface {
+		animation: none;
+	}
+
+	.exiting {
+		transition: none;
+	}
+}

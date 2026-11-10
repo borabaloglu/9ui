@@ -18,7 +18,7 @@ const ThemesPage = () => {
 	});
 
 	return (
-		<main className="dark:border-border/40 container mx-auto border-dashed py-4 xl:border-x">
+		<div className="container mx-auto py-4 md:py-8">
 			<div className="flex flex-col gap-4">
 				<div className="flex flex-col gap-2">
 					<h1 className="text-2xl font-bold">Themes</h1>
@@ -42,7 +42,7 @@ const ThemesPage = () => {
 					</style>
 				</Suspense>
 			</div>
-		</main>
+		</div>
 	);
 };
 
