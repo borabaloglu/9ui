@@ -1,14 +1,11 @@
 "use client";
 
 import * as React from "react";
-import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { mergeProps } from "@base-ui/react";
 import {
+	ArrowUpRightIcon,
 	CheckIcon,
 	ChevronDownIcon,
-	ChevronLeftIcon,
-	ChevronRightIcon,
 	CopyIcon,
 } from "lucide-react";
 
@@ -18,7 +15,7 @@ import { Menu, MenuItem, MenuPopup, MenuTrigger } from "@/components/ui/menu";
 
 import { siteConfig } from "@/config/site";
 
-import type { NavigationResult } from "@/lib/navigation";
+import type { ComponentLink } from "@/lib/component-links";
 import { cn } from "@/lib/utils";
 
 const getOpenInUrl = (targetUrl: string, currentUrl: string) => {
@@ -44,10 +41,10 @@ Focus on practical, actionable guidance based on the 9ui documentation.`;
 };
 
 interface PageActionsProps {
-	navigation: NavigationResult;
+	links?: ComponentLink[];
 }
 
-export function PageActions({ navigation }: PageActionsProps) {
+export function PageActions({ links = [] }: PageActionsProps) {
 	const pathname = usePathname();
 	const currentUrl = `${siteConfig.url}${pathname}`;
 	const [copied, setCopied] = React.useState(false);
@@ -76,152 +73,114 @@ export function PageActions({ navigation }: PageActionsProps) {
 	};
 
 	return (
-		<div className="page-actions max-sm:border-border/40 max-sm:bg-background z-10 flex w-full items-center justify-between max-sm:fixed max-sm:bottom-0 max-sm:left-0 max-sm:border-t max-sm:border-dashed max-sm:p-4">
-			<div className="flex items-center gap-1">
-				<Button
-					variant="secondary"
-					size="icon-sm"
-					disabled={!navigation.prev}
-					render={(props) => {
-						const Element = navigation.prev ? Link : "button";
-
-						const p = navigation.prev
-							? mergeProps(props, {
-									href: navigation.prev.href,
-									prefetch: true,
-								})
-							: props;
-
-						return (
-							// @ts-expect-error - Link props are not compatible with button props
-							<Element {...p}>
-								<ChevronLeftIcon className="size-3.5" />
-							</Element>
-						);
-					}}
-					nativeButton={!navigation.prev}
-				/>
-
-				<Button
-					variant="secondary"
-					size="icon-sm"
-					disabled={!navigation.next}
-					render={(props) => {
-						const Element = navigation.next ? Link : "button";
-
-						const p = navigation.next
-							? mergeProps(props, {
-									href: navigation.next.href,
-									prefetch: true,
-								})
-							: props;
-
-						return (
-							// @ts-expect-error - Link props are not compatible with button props
-							<Element {...p}>
-								<ChevronRightIcon className="size-3.5" />
-							</Element>
-						);
-					}}
-					nativeButton={!navigation.next}
-				/>
-			</div>
-
-			<div className="flex items-center">
-				<button
-					type="button"
-					className={cn(
-						buttonVariants({ variant: "secondary", size: "sm" }),
-						"h-8 gap-2 rounded-r-none",
+		<div className="mb-2 flex flex-wrap items-center gap-2 border-b pb-6">
+			<Button
+				variant="secondary"
+				size="sm"
+				className="border-border gap-2 text-xs"
+				onClick={copyMarkdownContent}
+			>
+				{copied ? (
+					<CheckIcon className="text-muted-foreground size-3.5" />
+				) : (
+					<CopyIcon className="text-muted-foreground size-3.5" />
+				)}
+				Copy Markdown
+			</Button>
+			<Menu>
+				<MenuTrigger
+					render={(props) => (
+						<button
+							className={cn(
+								buttonVariants({ variant: "secondary", size: "sm" }),
+								"border-border gap-2 text-xs data-[popup-open]:[&_svg]:rotate-180",
+							)}
+							{...props}
+						>
+							Open
+							<ChevronDownIcon className="text-muted-foreground size-3.5 transition-transform" />
+						</button>
 					)}
-					onClick={copyMarkdownContent}
-				>
-					{copied ? (
-						<CheckIcon className="size-3.5" />
-					) : (
-						<CopyIcon className="size-3.5" />
-					)}
-					<span>Page</span>
-				</button>
-				<Menu>
-					<MenuTrigger
+				/>
+				<MenuPopup align="start" className="w-56">
+					<MenuItem
 						render={(props) => (
-							<button
-								className={cn(
-									buttonVariants({ variant: "secondary", size: "icon-sm" }),
-									"h-8 rounded-l-none border-l data-[popup-open]:[&_svg]:rotate-180 max-md:[&_svg]:rotate-180 max-md:data-[popup-open]:[&_svg]:rotate-0",
-								)}
+							<a href={getMarkdownUrl()} target="_blank" {...props}>
+								<Icons.markdown className="size-4" />
+								<span>View as Markdown</span>
+							</a>
+						)}
+						nativeButton={false}
+					/>
+					<MenuItem
+						render={(props) => (
+							<a
+								href={getOpenInUrl("https://v0.dev", currentUrl)}
+								target="_blank"
 								{...props}
 							>
-								<ChevronDownIcon className="size-3.5 transition-transform" />
-							</button>
+								<Icons.v0 className="size-4" />
+								<span>Open in v0</span>
+							</a>
 						)}
+						nativeButton={false}
 					/>
-					<MenuPopup align="end" className="w-56">
-						<MenuItem
-							render={(props) => (
-								<a href={getMarkdownUrl()} target="_blank" {...props}>
-									<Icons.markdown className="size-4" />
-									<span>View as Markdown</span>
-								</a>
-							)}
-							nativeButton={false}
-						/>
-						<MenuItem
-							render={(props) => (
-								<a
-									href={getOpenInUrl("https://v0.dev", currentUrl)}
-									target="_blank"
-									{...props}
-								>
-									<Icons.v0 className="size-4" />
-									<span>Open in v0</span>
-								</a>
-							)}
-							nativeButton={false}
-						/>
-						<MenuItem
-							render={(props) => (
-								<a
-									href={getOpenInUrl("https://chatgpt.com", currentUrl)}
-									target="_blank"
-									{...props}
-								>
-									<Icons.chatgpt className="size-4" />
-									<span>Open in ChatGPT</span>
-								</a>
-							)}
-							nativeButton={false}
-						/>
-						<MenuItem
-							render={(props) => (
-								<a
-									href={getOpenInUrl("https://claude.ai/new", currentUrl)}
-									target="_blank"
-									{...props}
-								>
-									<Icons.claude className="size-4" />
-									<span>Open in Claude</span>
-								</a>
-							)}
-							nativeButton={false}
-						/>
-						<MenuItem
-							render={(props) => (
-								<a
-									href={getOpenInUrl("https://scira.ai", currentUrl)}
-									target="_blank"
-									{...props}
-								>
-									<Icons.scira className="size-4" />
-									<span>Open in Scira</span>
-								</a>
-							)}
-							nativeButton={false}
-						/>
-					</MenuPopup>
-				</Menu>
-			</div>
+					<MenuItem
+						render={(props) => (
+							<a
+								href={getOpenInUrl("https://chatgpt.com", currentUrl)}
+								target="_blank"
+								{...props}
+							>
+								<Icons.chatgpt className="size-4" />
+								<span>Open in ChatGPT</span>
+							</a>
+						)}
+						nativeButton={false}
+					/>
+					<MenuItem
+						render={(props) => (
+							<a
+								href={getOpenInUrl("https://claude.ai/new", currentUrl)}
+								target="_blank"
+								{...props}
+							>
+								<Icons.claude className="size-4" />
+								<span>Open in Claude</span>
+							</a>
+						)}
+						nativeButton={false}
+					/>
+					<MenuItem
+						render={(props) => (
+							<a
+								href={getOpenInUrl("https://scira.ai", currentUrl)}
+								target="_blank"
+								{...props}
+							>
+								<Icons.scira className="size-4" />
+								<span>Open in Scira</span>
+							</a>
+						)}
+						nativeButton={false}
+					/>
+				</MenuPopup>
+			</Menu>
+			{links.map((link) => (
+				<a
+					key={link.href}
+					href={link.href}
+					target="_blank"
+					rel="noopener noreferrer"
+					className={cn(
+						buttonVariants({ variant: "secondary", size: "sm" }),
+						"border-border gap-2 text-xs",
+					)}
+				>
+					{link.label}
+					<ArrowUpRightIcon className="text-muted-foreground size-3.5" />
+				</a>
+			))}
 		</div>
 	);
 }

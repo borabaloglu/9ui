@@ -39,19 +39,28 @@ const components: MDXComponents = {
 	),
 	h2: ({ className, ...props }: React.HTMLAttributes<HTMLHeadingElement>) => (
 		<h2
-			className={cn("mt-10 scroll-m-20 text-2xl font-semibold", className)}
+			className={cn(
+				"mt-14 scroll-mt-20 text-[1.375rem] font-semibold tracking-tight md:scroll-mt-14",
+				className,
+			)}
 			{...props}
 		/>
 	),
 	h3: ({ className, ...props }: React.HTMLAttributes<HTMLHeadingElement>) => (
 		<h3
-			className={cn("mt-8 scroll-m-20 text-xl font-semibold", className)}
+			className={cn(
+				"mt-10 scroll-mt-20 text-lg font-semibold md:scroll-mt-14 [h2+&]:mt-5",
+				className,
+			)}
 			{...props}
 		/>
 	),
 	h4: ({ className, ...props }: React.HTMLAttributes<HTMLHeadingElement>) => (
 		<h4
-			className={cn("mt-4 scroll-m-20 text-lg font-semibold", className)}
+			className={cn(
+				"mt-6 scroll-mt-20 text-base font-semibold md:scroll-mt-14",
+				className,
+			)}
 			{...props}
 		/>
 	),

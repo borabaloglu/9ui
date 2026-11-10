@@ -1,5 +1,6 @@
 "use client";
 
+import * as React from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
@@ -20,18 +21,19 @@ export const DocsSidebarNavItems = ({
 	pathname,
 	onNavItemClick,
 }: DocsSidebarNavItemsProps) => (
-	<div className="mt-1.5 text-sm">
+	<div className="flex flex-col gap-px">
 		{items.map((item) =>
 			!item.disabled && item.href ? (
 				<Link
 					key={item.href ?? item.title}
 					href={item.href}
 					onClick={onNavItemClick}
+					data-active={pathname === item.href}
 					className={cn(
-						"hover:text-foreground -ml-2 flex h-9 w-full items-center justify-between gap-2 rounded-md border px-2 transition-colors",
+						"focus-visible:ring-ring/50 flex min-h-9 w-full scroll-my-6 items-center justify-between gap-2 rounded-lg px-2.5 py-1.5 transition-colors outline-none focus-visible:ring-3",
 						pathname === item.href
-							? "bg-accent/50 text-accent-foreground pl-2"
-							: "text-muted-foreground border-transparent",
+							? "bg-primary/10 text-primary font-medium"
+							: "text-muted-foreground hover:bg-accent/50 hover:text-accent-foreground",
 					)}
 					target={item.external ? "_blank" : ""}
 					rel={item.external ? "noreferrer" : ""}
@@ -43,9 +45,7 @@ export const DocsSidebarNavItems = ({
 			) : (
 				<span
 					key={item.href ?? item.title}
-					className={cn(
-						"text-muted-foreground pointer-events-none -ml-2 flex w-full items-center justify-between gap-2 border border-transparent px-2 py-1.5 opacity-50",
-					)}
+					className="text-muted-foreground pointer-events-none flex min-h-9 w-full items-center justify-between gap-2 px-2.5 py-1.5 opacity-50"
 				>
 					{item.title}
 					{item.label && <Badge variant="info">{item.label}</Badge>}
@@ -65,15 +65,23 @@ export const DocsSidebarNav = ({
 	onNavItemClick,
 }: DocsSidebarNavProps) => {
 	const pathname = usePathname();
+	const ref = React.useRef<HTMLDivElement>(null);
+	React.useEffect(() => {
+		if (!pathname) return;
+
+		ref.current
+			?.querySelector("[data-active=true]")
+			?.scrollIntoView({ block: "nearest" });
+	}, [pathname]);
 
 	return (
-		<>
+		<div ref={ref} className="text-sm">
 			{sidebarNav.map((group) => (
-				<div key={group.title} className="pb-4 [&:last-child]:pb-0">
-					<h4 className="text-foreground mb-1 text-sm font-semibold">
+				<div key={group.title} className="mt-6 first:mt-0">
+					<h4 className="text-muted-foreground mb-1.5 px-2.5 text-xs font-medium">
 						{group.title}
 					</h4>
-					{group.items.length && (
+					{group.items.length > 0 && (
 						<DocsSidebarNavItems
 							items={group.items}
 							pathname={pathname}
@@ -82,6 +90,6 @@ export const DocsSidebarNav = ({
 					)}
 				</div>
 			))}
-		</>
+		</div>
 	);
 };
