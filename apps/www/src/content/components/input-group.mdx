@@ -1,0 +1,112 @@
+---
+title: Input Group
+description: Wraps an input or textarea with addons such as icons, text, buttons, and keyboard shortcuts.
+label: New
+---
+
+<ComponentPreview name="input-group-demo" />
+
+## Installation
+
+<ComponentInstallation>
+<div>
+```bash title="Terminal"
+npx shadcn@latest add @9ui/input-group
+```
+</div>
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="input-group" />
+
+</Steps>
+</ComponentInstallation>
+
+## Usage
+
+```tsx title="Imports"
+import {
+  InputGroup,
+  InputGroupAddon,
+  InputGroupButton,
+  InputGroupInput,
+  InputGroupText,
+  InputGroupTextarea,
+} from "@/components/ui/input-group"
+```
+
+```tsx title="Anatomy"
+<InputGroup>
+  <InputGroupAddon align="inline-start">
+    <InputGroupText />
+  </InputGroupAddon>
+  <InputGroupInput />
+  <InputGroupAddon align="inline-end">
+    <InputGroupButton />
+  </InputGroupAddon>
+</InputGroup>
+```
+
+Give the control a `<label>` or `aria-label`, and give icon-only buttons an accessible name.
+
+## Examples
+
+### Align
+
+Set `align` on `InputGroupAddon` to place it at `inline-start`, `inline-end`, `block-start`, or `block-end`.
+
+<ComponentPreview name="input-group-align-demo" />
+
+### Icon
+
+<ComponentPreview name="input-group-icon-demo" />
+
+### Text
+
+<ComponentPreview name="input-group-text-demo" />
+
+### Button
+
+<ComponentPreview name="input-group-button-demo" />
+
+### Keyboard Shortcut
+
+<ComponentPreview name="input-group-kbd-demo" />
+
+### Menu
+
+<ComponentPreview name="input-group-menu-demo" />
+
+### Dynamic Addons
+
+Render addons conditionally, such as a spinner while searching.
+
+<ComponentPreview name="input-group-dynamic-addons-demo" />
+
+### Badge
+
+<ComponentPreview name="input-group-badge-demo" />
+
+### Disabled
+
+Set `disabled` on the control to dim the whole group. Buttons in the group stay active, so disable them too.
+
+<ComponentPreview name="input-group-disabled-demo" />
+
+### Invalid
+
+Set `aria-invalid` on the control to show the error state on the group.
+
+<ComponentPreview name="input-group-invalid-demo" />
+
+### Textarea
+
+<ComponentPreview name="input-group-textarea-demo" />
+
+### Field
+
+Place it inside [`Field`](/docs/components/field) to link the label, description and error to the control.
+
+<ComponentPreview name="input-group-field-demo" />
