@@ -1,11 +1,11 @@
-import { Checkbox } from "@/components/ui/checkbox";
+import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 
 export default function LabelDemo() {
 	return (
-		<Label className="flex items-center gap-2">
-			<Checkbox id="accept" />
-			Accept terms and conditions
-		</Label>
+		<div className="flex w-full max-w-64 flex-col gap-2">
+			<Label htmlFor="label-email">Email</Label>
+			<Input id="label-email" type="email" placeholder="you@example.com" />
+		</div>
 	);
 }

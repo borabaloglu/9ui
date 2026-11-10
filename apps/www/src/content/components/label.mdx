@@ -1,6 +1,6 @@
 ---
 title: Label
-description: Displays a label associated with controls.
+description: Text that names a form control.
 ---
 
 <ComponentPreview name="label-demo" />
@@ -32,3 +32,27 @@ import { Label } from "@/components/ui/label"
 ```tsx title="Anatomy"
 <Label />
 ```
+
+Clicking a label focuses or toggles its control. Link the two with `htmlFor` and the control's `id`, or place the control inside the label.
+
+Use [Field](/docs/components/field) when the control also needs a description or an error message.
+
+## Examples
+
+### Wrapping
+
+Place a checkbox, radio or switch inside `Label`. No `id` is needed.
+
+<ComponentPreview name="label-wrapping-demo" />
+
+### Disabled
+
+The label dims when the control inside it or right next to it is disabled.
+
+<ComponentPreview name="label-disabled-demo" />
+
+### Invalid
+
+The label turns red when the control inside it or right next to it has `aria-invalid`. Use [Field](/docs/components/field) to show an error message.
+
+<ComponentPreview name="label-invalid-demo" />

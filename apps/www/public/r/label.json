@@ -6,7 +6,7 @@
 	"files": [
 		{
 			"path": "ui/label.tsx",
-			"content": "import type * as React from \"react\";\n\nimport { cn } from \"@/lib/utils\";\n\nfunction Label({ className, ...props }: React.ComponentProps<\"label\">) {\n\treturn (\n\t\t<label\n\t\t\tdata-slot=\"label\"\n\t\t\tclassName={cn(\n\t\t\t\t\"flex items-center gap-2 text-sm leading-none font-medium select-none\",\n\t\t\t\tclassName,\n\t\t\t)}\n\t\t\t{...props}\n\t\t/>\n\t);\n}\n\nexport { Label };\n",
+			"content": "import type * as React from \"react\";\n\nimport { cn } from \"@/lib/utils\";\n\nfunction Label({ className, ...props }: React.ComponentProps<\"label\">) {\n\treturn (\n\t\t<label\n\t\t\tdata-slot=\"label\"\n\t\t\tclassName={cn(\n\t\t\t\t\"has-[:disabled,[data-disabled]]:text-foreground/50 has-[+:disabled,+[data-disabled]]:text-foreground/50 [:is(:disabled,[data-disabled])+&]:text-foreground/50 has-aria-invalid:text-destructive has-[+[aria-invalid=true]]:text-destructive [[aria-invalid=true]+&]:text-destructive flex w-fit items-center gap-2 text-sm leading-snug font-medium select-none has-[+:disabled,+[data-disabled]]:cursor-not-allowed has-[:disabled,[data-disabled]]:cursor-not-allowed [:is(:disabled,[data-disabled])+&]:cursor-not-allowed\",\n\t\t\t\tclassName,\n\t\t\t)}\n\t\t\t{...props}\n\t\t/>\n\t);\n}\n\nexport { Label };\n",
 			"type": "registry:ui",
 			"target": ""
 		}
