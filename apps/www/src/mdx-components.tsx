@@ -198,7 +198,7 @@ const components: MDXComponents = {
 
 		return (
 			<CodeBlock
-				content={__rawString__ ?? ""}
+				content={__rawString__?.trimEnd() ?? ""}
 				topBar={hasTitle ? { label: __title__ } : undefined}
 				lang={__lang__}
 				{...props}
@@ -232,13 +232,13 @@ const components: MDXComponents = {
 	),
 	Step: ({ className, ...props }: React.ComponentProps<"h3">) => (
 		<h3
-			className={cn("step mt-8 font-semibold tracking-tight", className)}
+			className={cn("step mt-10 font-medium first:mt-0 [&+p]:!mt-2", className)}
 			{...props}
 		/>
 	),
 	Steps: ({ ...props }) => (
 		<div
-			className="steps mb-12 ml-4 border-l pl-8 [counter-reset:step]"
+			className="steps before:from-border relative mt-6 mb-4 ml-3.5 pl-8 [counter-reset:step] before:absolute before:inset-y-0 before:left-0 before:w-px before:bg-linear-to-b before:from-[calc(100%-4rem)] before:to-transparent"
 			{...props}
 		/>
 	),

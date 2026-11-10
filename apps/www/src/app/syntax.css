@@ -1,5 +1,9 @@
 @reference "./globals.css";
 
+:root {
+	--code-surface: color-mix(in oklab, var(--muted) 30%, var(--background));
+}
+
 html.dark code[data-theme],
 html.dark .shiki,
 html.dark .shiki span,
@@ -12,28 +16,44 @@ html.light code[data-theme] span {
 	color: var(--shiki-light) !important;
 }
 
-.command-block pre {
-	@apply bg-background !p-0;
-}
-
-.command-block code {
-	@apply !py-0.5 !text-xs !font-medium;
-}
-
 [data-rehype-pretty-code-figure] pre {
-	@apply !bg-background max-h-[600px] overflow-auto py-4;
+	@apply max-h-[600px] overflow-auto !bg-transparent py-3.5 outline-none;
 }
 
 [data-rehype-pretty-code-figure] code {
-	@apply bg-background text-xs font-medium;
+	@apply font-mono text-[0.8125rem] leading-5.5 font-normal;
 	tab-size: 2;
 	-moz-tab-size: 2;
 }
 
 [data-rehype-pretty-code-figure] [data-line] {
-	@apply inline-block min-h-[1rem] w-full px-4 py-0.5;
+	@apply inline-block min-h-5.5 w-full px-4;
 }
 
 [data-rehype-pretty-code-figure] code > [data-highlighted-line] {
-	@apply bg-muted w-full;
+	@apply bg-foreground/6 w-full shadow-[inset_2px_0_0_var(--color-foreground)];
+}
+
+[data-rehype-pretty-code-figure] code:not([data-language="bash"]) {
+	counter-reset: line;
+	--line-number-width: 1ch;
+}
+
+[data-rehype-pretty-code-figure]
+	code:not([data-language="bash"]):has(> [data-line]:nth-child(10)) {
+	--line-number-width: 2ch;
+}
+
+[data-rehype-pretty-code-figure]
+	code:not([data-language="bash"]):has(> [data-line]:nth-child(100)) {
+	--line-number-width: 3ch;
+}
+
+[data-rehype-pretty-code-figure]
+	code:not([data-language="bash"])
+	> [data-line]::before {
+	@apply text-muted-foreground/60 mr-4 inline-block text-right tabular-nums select-none;
+	counter-increment: line;
+	content: counter(line);
+	width: var(--line-number-width);
 }

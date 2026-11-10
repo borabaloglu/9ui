@@ -1,3 +1,4 @@
+import { CodeBar, CodeFrame } from "@/components/code-bar";
 import { CodeCollapsible } from "@/components/code-collapsible";
 
 import { getComponentSource } from "@/lib/demos";
@@ -15,8 +16,11 @@ export const ComponentSource = ({ name }: ComponentSourceProps) => {
 	}
 
 	return (
-		<CodeCollapsible label={`${name}.tsx`} content={source}>
-			<div dangerouslySetInnerHTML={{ __html: highlightCode(source) }} />
-		</CodeCollapsible>
+		<CodeFrame>
+			<CodeBar label={`${name}.tsx`} content={source} type="component" />
+			<CodeCollapsible>
+				<div dangerouslySetInnerHTML={{ __html: highlightCode(source) }} />
+			</CodeCollapsible>
+		</CodeFrame>
 	);
 };

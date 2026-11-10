@@ -14,6 +14,9 @@ type CopyButtonProps = ButtonProps & {
 	eventType?: "demo" | "component" | "command" | "other";
 };
 
+const iconClassName =
+	"transition-[opacity,scale,filter] duration-150 ease-out motion-reduce:transition-none";
+
 export const CopyButton = ({
 	content,
 	eventType,
@@ -24,6 +27,11 @@ export const CopyButton = ({
 	const op = useOpenPanel();
 
 	const [copied, setCopied] = React.useState(false);
+	const timeoutRef = React.useRef<ReturnType<typeof setTimeout>>(undefined);
+
+	React.useEffect(() => {
+		return () => clearTimeout(timeoutRef.current);
+	}, []);
 
 	const onCopy = async () => {
 		op.track("copy", {
@@ -31,9 +39,14 @@ export const CopyButton = ({
 			content: eventType === "command" ? content : undefined,
 			label,
 		});
-		await navigator.clipboard.writeText(content);
+		try {
+			await navigator.clipboard.writeText(content);
+		} catch {
+			return;
+		}
 		setCopied(true);
-		setTimeout(() => setCopied(false), 2000);
+		clearTimeout(timeoutRef.current);
+		timeoutRef.current = setTimeout(() => setCopied(false), 2000);
 	};
 
 	return (
@@ -41,10 +54,23 @@ export const CopyButton = ({
 			onClick={onCopy}
 			variant="ghost"
 			size="icon-sm"
-			className={cn("size-6", className)}
+			aria-label={copied ? "Copied" : "Copy code"}
+			className={cn(
+				"text-muted-foreground hover:text-foreground shrink-0",
+				className,
+			)}
 			{...props}
 		>
-			{copied ? <CheckIcon size={14} /> : <CopyIcon size={14} />}
+			<CopyIcon
+				className={cn(iconClassName, copied && "scale-50 opacity-0 blur-[2px]")}
+			/>
+			<CheckIcon
+				className={cn(
+					iconClassName,
+					"absolute",
+					!copied && "scale-50 opacity-0 blur-[2px]",
+				)}
+			/>
 		</Button>
 	);
 };

@@ -1,16 +1,10 @@
 import Link from "next/link";
 
-import {
-	DocsShell,
-	DocsSidebar,
-	DocsSidebarToggle,
-} from "@/components/docs-shell";
-import { GitHubLink } from "@/components/header";
+import { DocsMobileSidebar } from "@/components/docs-mobile-sidebar";
+import { DocsShell, DocsSidebar } from "@/components/docs-shell";
 import { Icons } from "@/components/icons";
-import { MobileNav } from "@/components/mobile-nav";
 import { SearchDialog } from "@/components/search-dialog";
 import { DocsSidebarNav } from "@/components/sidebar";
-import { ThemeToggle } from "@/components/theme-toggle";
 
 import { getSidebarNav } from "@/lib/source";
 
@@ -18,22 +12,26 @@ const DocsLayout = ({ children }: { children: React.ReactNode }) => {
 	const sidebarNav = getSidebarNav();
 
 	return (
-		<DocsShell className="bg-card flex min-h-dvh flex-col md:h-dvh md:overflow-clip">
-			<header className="bg-card sticky top-0 z-30 flex h-14 shrink-0 items-center px-4 md:hidden">
-				<MobileNav sidebarNav={sidebarNav} />
+		<DocsShell className="bg-card flex h-dvh flex-col overflow-clip">
+			<header className="flex h-14 shrink-0 items-center gap-0.5 ps-5.5 pe-3 pt-1 md:hidden">
+				<Link href="/" className="flex items-center" prefetch>
+					<Icons.logo className="size-3" />
+					<span className="ml-0.5 font-mono text-lg font-black">ui</span>
+				</Link>
 				<div className="flex-1" />
-				<div className="flex items-center gap-1">
-					<GitHubLink />
-					<ThemeToggle />
-				</div>
+				<SearchDialog sidebarNav={sidebarNav} variant="icon" />
+				<DocsMobileSidebar sidebarNav={sidebarNav} />
 			</header>
+			<div
+				id="docs-mobile-toc"
+				className="relative z-20 h-10 shrink-0 empty:hidden md:hidden"
+			/>
 			<DocsSidebar>
-				<div className="-mb-1.5 flex h-14 shrink-0 items-center ps-5.5 pe-3">
+				<div className="-mb-1.5 flex h-14 shrink-0 items-center ps-5.5 pe-3 pt-1">
 					<Link href="/" className="flex items-center" prefetch>
 						<Icons.logo className="size-3" />
 						<span className="ml-0.5 font-mono text-lg font-black">ui</span>
 					</Link>
-					<DocsSidebarToggle className="ms-auto" />
 				</div>
 				<div className="px-3">
 					<SearchDialog sidebarNav={sidebarNav} variant="sidebar" />
@@ -42,7 +40,7 @@ const DocsLayout = ({ children }: { children: React.ReactNode }) => {
 					<DocsSidebarNav sidebarNav={sidebarNav} />
 				</div>
 			</DocsSidebar>
-			<main className="bg-background @container relative flex min-w-0 flex-1 flex-col motion-reduce:transition-none md:my-2 md:mr-2 md:min-h-0 md:overflow-clip md:rounded-2xl md:border md:shadow-sm md:transition-[margin] md:duration-300 md:ease-[cubic-bezier(0.22,1,0.36,1)] md:group-data-[sidebar-collapsed=true]/docs:ml-2">
+			<main className="bg-background @container relative mx-2 mb-2 flex min-h-0 min-w-0 flex-1 flex-col overflow-clip rounded-2xl border shadow-sm motion-reduce:transition-none md:my-2 md:ml-0 md:transition-[margin] md:duration-300 md:ease-[cubic-bezier(0.22,1,0.36,1)] md:group-data-[sidebar-collapsed=true]/docs:ml-2">
 				{children}
 			</main>
 		</DocsShell>

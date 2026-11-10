@@ -26,7 +26,7 @@ import type { SidebarNavGroup } from "@/types/nav";
 
 interface SearchDialogProps {
 	sidebarNav: SidebarNavGroup[];
-	variant?: "header" | "sidebar";
+	variant?: "header" | "sidebar" | "icon";
 }
 
 export function SearchDialog({
@@ -37,6 +37,10 @@ export function SearchDialog({
 	const router = useRouter();
 
 	React.useEffect(() => {
+		if (variant === "icon") {
+			return;
+		}
+
 		const down = (e: KeyboardEvent) => {
 			if ((e.key === "k" && (e.metaKey || e.ctrlKey)) || e.key === "/") {
 				if (
@@ -55,7 +59,7 @@ export function SearchDialog({
 
 		document.addEventListener("keydown", down);
 		return () => document.removeEventListener("keydown", down);
-	}, []);
+	}, [variant]);
 
 	const runCommand = React.useCallback((command: () => void) => {
 		setOpen(false);
@@ -103,6 +107,11 @@ export function SearchDialog({
 						<Kbd className="text-[10px]">K</Kbd>
 					</span>
 				</button>
+			) : variant === "icon" ? (
+				<Button variant="ghost" size="icon-sm" onClick={() => setOpen(true)}>
+					<SearchIcon className="size-4" />
+					<span className="sr-only">Search</span>
+				</Button>
 			) : (
 				<Button
 					variant="outline"
