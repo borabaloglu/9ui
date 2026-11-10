@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ChevronLeftIcon, ChevronRightIcon } from "lucide-react";
+import { ChevronLeftIcon, ChevronRightIcon, SlashIcon } from "lucide-react";
 
 import { DocsSidebarToggle } from "@/components/docs-shell";
-import { GitHubLink } from "@/components/header";
+import { GitHubLink } from "@/components/github-link";
+import { MobileToc } from "@/components/mobile-toc";
 import { PageActions } from "@/components/page-actions";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { TableOfContents } from "@/components/toc";
@@ -13,8 +14,9 @@ import { siteConfig } from "@/config/site";
 
 import { getLeadingComponentLinks } from "@/lib/component-links";
 import { getNavigationForPage } from "@/lib/navigation";
-import { getSidebarNav, source } from "@/lib/source";
+import { getBreadcrumb, getSidebarNav, source } from "@/lib/source";
 import { absoluteUrl } from "@/lib/url";
+import { cn } from "@/lib/utils";
 
 import { getMDXComponents } from "@/mdx-components";
 
@@ -83,34 +85,67 @@ const DocPage = async ({ params }: DocPageProps) => {
 	const { body: MDX, toc, title, description } = page.data;
 	const sidebarNav = getSidebarNav();
 	const navigation = getNavigationForPage(sidebarNav, page.url);
-	const group = sidebarNav.find((group) =>
-		group.items.some((item) => item.href === page.url),
-	);
+	const breadcrumb = getBreadcrumb(page.url);
 
 	return (
 		<>
-			<header className="from-background pointer-events-none absolute inset-x-0 top-0 z-10 hidden h-10 items-center gap-1.5 bg-linear-to-b from-50% to-transparent ps-6 pe-4 *:pointer-events-auto md:flex">
-				<DocsSidebarToggle className="-ms-2 hidden group-data-[sidebar-collapsed=true]/docs:inline-flex" />
-				{group && (
-					<span className="text-muted-foreground truncate text-sm">
-						{group.title}
-					</span>
+			<header className="before:from-background pointer-events-none absolute inset-x-0 top-0 z-10 hidden h-10.5 items-center gap-1.5 px-1.75 *:pointer-events-auto before:absolute before:inset-x-0 before:top-0 before:-z-10 before:h-16 before:bg-linear-to-b before:from-65% before:to-transparent md:flex">
+				<DocsSidebarToggle />
+				{breadcrumb.length > 0 && (
+					<nav
+						aria-label="Breadcrumb"
+						className="min-w-0 -translate-y-px overflow-hidden"
+					>
+						<ol className="text-muted-foreground flex items-center gap-1.5 text-sm">
+							{breadcrumb.map((item, index) => {
+								const isCurrent = index === breadcrumb.length - 1;
+
+								return (
+									<li
+										key={item.title}
+										className={cn(
+											"flex items-center gap-1.5",
+											isCurrent ? "text-foreground min-w-0" : "shrink-0",
+										)}
+									>
+										{index > 0 && (
+											<SlashIcon
+												aria-hidden="true"
+												className="text-muted-foreground/60 size-3 shrink-0 -rotate-12"
+											/>
+										)}
+										{item.href && !isCurrent ? (
+											<Link
+												href={item.href}
+												className="hover:text-foreground transition-colors"
+											>
+												{item.title}
+											</Link>
+										) : (
+											<span
+												aria-current={isCurrent ? "page" : undefined}
+												className="truncate"
+											>
+												{item.title}
+											</span>
+										)}
+									</li>
+								);
+							})}
+						</ol>
+					</nav>
 				)}
 				<div className="bg-background ms-auto flex items-center gap-0.5 rounded-lg">
 					<GitHubLink />
 					<ThemeToggle />
 				</div>
 			</header>
+			<MobileToc key={`toc-${page.url}`} items={toc} />
 			<div
 				key={page.url}
-				className="flex flex-1 items-start px-4 [--toc-width:0px] md:min-h-0 md:[scrollbar-gutter:stable] md:overflow-y-auto md:overscroll-y-contain md:scroll-smooth md:px-[max(1.5rem,calc((100%-760px-var(--toc-width))/2))] md:pt-10 @5xl:[--toc-width:19rem]"
+				className="flex min-h-0 flex-1 [scrollbar-gutter:stable] items-start overflow-y-auto overscroll-y-contain px-4 [--toc-width:0px] md:scroll-smooth md:px-[max(1.5rem,calc((100%-760px-var(--toc-width))/2))] md:pt-10 @5xl:[--toc-width:19rem]"
 			>
 				<article className="flex w-full max-w-[760px] min-w-0 flex-col gap-4 pt-6 pb-16">
-					{group && (
-						<span className="text-muted-foreground text-sm md:hidden">
-							{group.title}
-						</span>
-					)}
 					<h1 className="text-[1.75rem] font-semibold">{title}</h1>
 					{description && (
 						<p className="text-muted-foreground mb-2 text-lg">{description}</p>

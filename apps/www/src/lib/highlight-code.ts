@@ -2,8 +2,14 @@ import { highlighter } from "@/lib/rehype/syntax-highlighting";
 
 const theme = "github-light-default github-dark-default";
 
+const longCodeLineCount = 16;
+
+export function isLongCode(code: string) {
+	return code.trimEnd().split("\n").length > longCodeLineCount;
+}
+
 export function highlightCode(code: string, lang = "tsx") {
-	const html = highlighter.codeToHtml(code, {
+	const html = highlighter.codeToHtml(code.trimEnd(), {
 		lang,
 		themes: {
 			light: "github-light-default",

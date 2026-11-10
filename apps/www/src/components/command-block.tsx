@@ -1,11 +1,12 @@
 "use client";
 
 import React from "react";
+import { TerminalIcon } from "lucide-react";
 
-import { CodeBar } from "@/components/code-bar";
+import { CodeBar, CodeFrame } from "@/components/code-bar";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
-import { highlighter } from "@/lib/rehype/syntax-highlighting";
+import { highlightCode } from "@/lib/highlight-code";
 
 interface CommandBlockProps {
 	npmCommand: string;
@@ -14,81 +15,58 @@ interface CommandBlockProps {
 	bunCommand: string;
 }
 
+const packageManagers = ["npm", "yarn", "pnpm", "bun"] as const;
+
+type PackageManager = (typeof packageManagers)[number];
+
 export const CommandBlock = ({
 	npmCommand,
 	yarnCommand,
 	pnpmCommand,
 	bunCommand,
 }: CommandBlockProps) => {
-	const [activeTab, setActiveTab] = React.useState("npm");
+	const [activeTab, setActiveTab] = React.useState<PackageManager>("npm");
 
 	const [prettyCode, command] = React.useMemo(() => {
-		const command =
-			activeTab === "npm"
-				? npmCommand
-				: activeTab === "yarn"
-					? yarnCommand
-					: activeTab === "pnpm"
-						? pnpmCommand
-						: bunCommand;
+		const commands: Record<PackageManager, string> = {
+			npm: npmCommand,
+			yarn: yarnCommand,
+			pnpm: pnpmCommand,
+			bun: bunCommand,
+		};
+		const command = commands[activeTab].trimEnd();
 
-		return [
-			highlighter.codeToHtml(command, {
-				lang: "bash",
-				themes: {
-					dark: "github-dark-default",
-					light: "github-light-default",
-				},
-				transformers: [
-					{
-						pre(node) {
-							node.properties.style = "tab-size: 2";
-						},
-						code(node) {
-							node.properties.style = "tab-size: 2";
-						},
-					},
-				],
-			}),
-			command,
-		];
+		return [highlightCode(command, "bash"), command];
 	}, [activeTab, npmCommand, yarnCommand, pnpmCommand, bunCommand]);
 
 	return (
-		<Tabs
-			className="mt-4 w-full gap-0 overflow-hidden rounded-md border"
-			variant="underline"
-			value={activeTab}
-			onValueChange={setActiveTab}
-		>
-			<CodeBar
-				className="h-9 border-t-0"
-				type="command"
-				label={
-					<TabsList>
-						<TabsTrigger className="px-4" value="npm">
-							npm
-						</TabsTrigger>
-						<TabsTrigger className="px-4" value="yarn">
-							yarn
-						</TabsTrigger>
-						<TabsTrigger className="px-4" value="pnpm">
-							pnpm
-						</TabsTrigger>
-						<TabsTrigger className="px-4" value="bun">
-							bun
-						</TabsTrigger>
-					</TabsList>
-				}
-				content={command}
-			/>
-
-			<TabsContent className="mt-0 border-none p-4" value={activeTab}>
-				<div
-					className="command-block"
-					dangerouslySetInnerHTML={{ __html: prettyCode }}
+		<CodeFrame>
+			<Tabs className="gap-0" value={activeTab} onValueChange={setActiveTab}>
+				<CodeBar
+					type="command"
+					label={
+						<>
+							<TerminalIcon className="text-muted-foreground size-3.5 shrink-0" />
+							<TabsList className="[&_[data-slot=tab-indicator]]:bg-foreground/8 h-7 gap-x-0.5 rounded-none bg-transparent p-0 [&_[data-slot=tab-indicator]]:rounded-md [&_[data-slot=tab-indicator]]:border-transparent [&_[data-slot=tab-indicator]]:shadow-none">
+								{packageManagers.map((packageManager) => (
+									<TabsTrigger
+										key={packageManager}
+										className="h-7 px-2.5 text-[0.8125rem] font-medium"
+										value={packageManager}
+									>
+										{packageManager}
+									</TabsTrigger>
+								))}
+							</TabsList>
+						</>
+					}
+					content={command}
 				/>
-			</TabsContent>
-		</Tabs>
+
+				<TabsContent value={activeTab}>
+					<div dangerouslySetInnerHTML={{ __html: prettyCode }} />
+				</TabsContent>
+			</Tabs>
+		</CodeFrame>
 	);
 };

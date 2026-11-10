@@ -170,7 +170,7 @@
 	counter-increment: step;
 
 	&:before {
-		@apply bg-muted border-background absolute mt-[-8px] ml-[-52px] inline-flex size-10 items-center justify-center rounded-full border-4 text-center -indent-px font-mono text-sm font-medium tracking-tighter;
+		@apply bg-background text-muted-foreground absolute -mt-0.5 -ml-[45.5px] inline-flex size-7 items-center justify-center rounded-full border font-mono text-xs font-medium tabular-nums shadow-[0_0_0_4px_var(--color-background)];
 		content: counter(step);
 	}
 }

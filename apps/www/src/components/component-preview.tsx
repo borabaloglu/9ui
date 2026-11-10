@@ -1,7 +1,7 @@
 import type * as React from "react";
 
-import { CodeBar } from "@/components/code-bar";
 import { DemoRenderer } from "@/components/demo-renderer";
+import { PreviewCode } from "@/components/preview-code";
 
 import { getDemo } from "@/lib/demos";
 import { highlightCode } from "@/lib/highlight-code";
@@ -29,17 +29,14 @@ export const ComponentPreview = ({
 	}
 
 	return (
-		<div className={cn("mt-4 overflow-hidden rounded-lg border", className)}>
+		<div className={cn("mt-4 overflow-hidden rounded-xl border", className)}>
 			<div className="relative flex min-h-[200px] items-center justify-center p-10">
 				<DemoRenderer path={demo.path} showReload={showReload} />
 			</div>
 
-			<CodeBar label={`${name}.tsx`} content={demo.source} type="demo" />
-
-			<div
-				className="[&_pre]:!max-h-[300px]"
-				dangerouslySetInnerHTML={{ __html: highlightCode(demo.source) }}
-			/>
+			<PreviewCode label={`${name}.tsx`} content={demo.source}>
+				<div dangerouslySetInnerHTML={{ __html: highlightCode(demo.source) }} />
+			</PreviewCode>
 		</div>
 	);
 };

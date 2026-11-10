@@ -7,12 +7,16 @@ export interface NavConfig {
 export const navConfig: NavConfig = {
 	mainNav: [
 		{
-			title: "Docs",
+			title: "Getting Started",
 			href: "/docs/getting-started",
 		},
 		{
 			title: "Components",
 			href: "/docs/components",
+		},
+		{
+			title: "Changelog",
+			href: "/docs/getting-started/changelog",
 		},
 	],
 };
