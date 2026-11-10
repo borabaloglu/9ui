@@ -353,6 +353,19 @@
 			]
 		},
 		{
+			"name": "input-group",
+			"type": "registry:ui",
+			"dependencies": [],
+			"registryDependencies": ["@9ui/button", "@9ui/input", "@9ui/textarea"],
+			"files": [
+				{
+					"path": "src/components/ui/input-group.tsx",
+					"type": "registry:ui",
+					"target": ""
+				}
+			]
+		},
+		{
 			"name": "kbd",
 			"type": "registry:ui",
 			"dependencies": [],
