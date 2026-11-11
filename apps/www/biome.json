@@ -140,8 +140,7 @@
 		{
 			"includes": [
 				"src/components/ui/breadcrumbs.tsx",
-				"src/components/ui/carousel.tsx",
-				"src/components/ui/input-otp.tsx"
+				"src/components/ui/carousel.tsx"
 			],
 			"linter": {
 				"rules": {

@@ -10,11 +10,10 @@ import {
 	CardTitle,
 } from "@/components/ui/card";
 import {
-	InputOTP,
-	InputOTPGroup,
-	InputOTPSeparator,
-	InputOTPSlot,
-} from "@/components/ui/input-otp";
+	OTPField,
+	OTPFieldInput,
+	OTPFieldSeparator,
+} from "@/components/ui/otp-field";
 
 export function OTPCard() {
 	return (
@@ -27,22 +26,20 @@ export function OTPCard() {
 				</CardDescription>
 			</CardHeader>
 			<CardContent>
-				<InputOTP
-					containerClassName="w-fit mx-auto [&_*[data-slot=input-otp-slot]]:h-12 [&_*[data-slot=input-otp-slot]]:w-10 [&_*[data-slot=input-otp-slot]]:text-lg"
-					maxLength={6}
+				<OTPField
+					length={6}
+					size="lg"
+					aria-label="Verification code"
+					className="mx-auto w-fit"
 				>
-					<InputOTPGroup>
-						<InputOTPSlot index={0} />
-						<InputOTPSlot index={1} />
-						<InputOTPSlot index={2} />
-					</InputOTPGroup>
-					<InputOTPSeparator />
-					<InputOTPGroup>
-						<InputOTPSlot index={3} />
-						<InputOTPSlot index={4} />
-						<InputOTPSlot index={5} />
-					</InputOTPGroup>
-				</InputOTP>
+					<OTPFieldInput />
+					<OTPFieldInput aria-label="Character 2 of 6" />
+					<OTPFieldInput aria-label="Character 3 of 6" />
+					<OTPFieldSeparator />
+					<OTPFieldInput aria-label="Character 4 of 6" />
+					<OTPFieldInput aria-label="Character 5 of 6" />
+					<OTPFieldInput aria-label="Character 6 of 6" />
+				</OTPField>
 			</CardContent>
 			<CardFooter className="flex-col gap-2">
 				<Button className="w-full">Verify Email</Button>

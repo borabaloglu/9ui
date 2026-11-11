@@ -31,6 +31,11 @@ const nextConfig = {
 				destination: "/docs/components/menu",
 				permanent: true,
 			},
+			{
+				source: "/docs/components/input-otp",
+				destination: "/docs/components/otp-field",
+				permanent: true,
+			},
 		];
 	},
 	images: {

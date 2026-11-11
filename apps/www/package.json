@@ -56,7 +56,6 @@
 		"fumadocs-mdx": "15.5.2",
 		"glob": "^11.0.1",
 		"gray-matter": "^4.0.3",
-		"input-otp": "^1.4.2",
 		"lodash": "^4.17.21",
 		"lucide-react": "^1.61.0",
 		"match-sorter": "^8.1.0",
