@@ -5,8 +5,8 @@ description: A toggle control for switching between two states.
 <ComponentLinks
 	links={[
 		{
-			label: "Docs",
-			href: "https://base-ui.com/react/components/switch",
+			label: "API Reference",
+			href: "https://base-ui.com/react/components/switch#api-reference",
 		},
 	]}
 />
@@ -41,14 +41,30 @@ import { Switch } from "@/components/ui/switch"
 <Switch />
 ```
 
+Give every switch a visible label. Place it inside [Label](/docs/components/label), or use [Field](/docs/components/field) when it also needs a description or an error message. For a sibling `label` with `htmlFor` outside a `Field`, render the switch as a button with `nativeButton` and `render={<button />}`.
+
 ## Examples
 
-### With Label
+### Sizes
 
-<ComponentPreview name="switch-with-label-demo" />
+Set `size="sm"` for a smaller switch.
 
----
+<ComponentPreview name="switch-sm-demo" />
 
 ### Disabled
 
+Set `disabled` to prevent interaction. A `Label` around the switch dims with it.
+
 <ComponentPreview name="switch-disabled-demo" />
+
+### Invalid
+
+Set `invalid` on `Field` to show the error state, and clear it once the switch is on. Outside a `Field`, set `aria-invalid` on the switch.
+
+<ComponentPreview name="switch-invalid-demo" />
+
+### Choice Card
+
+Wrap the switch and its text in `FieldLabel` to make the whole card clickable. Style the checked card with `data-filled`.
+
+<ComponentPreview name="switch-choice-card-demo" />
