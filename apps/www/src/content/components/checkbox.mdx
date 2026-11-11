@@ -1,12 +1,12 @@
 ---
 title: Checkbox
-description: Displays a box that can be checked or unchecked by the user.
+description: A box that turns an option on or off.
 ---
 <ComponentLinks
 	links={[
 		{
-			label: "Docs",
-			href: "https://base-ui.com/react/components/checkbox",
+			label: "API Reference",
+			href: "https://base-ui.com/react/components/checkbox#api-reference",
 		},
 	]}
 />
@@ -41,20 +41,36 @@ import { Checkbox } from "@/components/ui/checkbox"
 <Checkbox />
 ```
 
+Give every checkbox a visible label. Place it inside [Label](/docs/components/label), or use [Field](/docs/components/field) when it also needs a description or an error message.
+
 ## Examples
 
-### With Label
+### Indeterminate
 
-<ComponentPreview name="checkbox-with-label-demo" />
+Set `indeterminate` to show a mixed state, such as a "select all" box when only some items are checked. Use [Checkbox Group](/docs/components/checkbox-group) to manage it for you.
 
----
+<ComponentPreview name="checkbox-indeterminate-demo" />
+
+### Description
+
+Use `Field` with `FieldDescription` to add help text under the label.
+
+<ComponentPreview name="checkbox-description-demo" />
 
 ### Disabled
 
+Set `disabled` to prevent interaction. A `Label` around the checkbox dims with it.
+
 <ComponentPreview name="checkbox-disabled-demo" />
 
----
+### Invalid
 
-### Error
+Set `invalid` on `Field` to show the error state, and clear it once the box is checked. Outside a `Field`, set `aria-invalid` on the checkbox.
 
-<ComponentPreview name="checkbox-error-demo" />
+<ComponentPreview name="checkbox-invalid-demo" />
+
+### Choice Card
+
+Wrap the checkbox and its text in `FieldLabel` to make the whole card clickable. Style the checked card with `data-filled`.
+
+<ComponentPreview name="checkbox-choice-card-demo" />

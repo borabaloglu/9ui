@@ -43,7 +43,7 @@ function FieldLabel({
 		<BaseField.Label
 			data-slot="field-label"
 			className={cn(
-				"data-invalid:text-destructive flex w-fit items-center gap-2 text-sm leading-snug font-medium select-none data-disabled:opacity-50",
+				"data-invalid:text-destructive data-disabled:text-foreground/50 flex w-fit items-center gap-2 text-sm leading-snug font-medium select-none",
 				className,
 			)}
 			{...props}
