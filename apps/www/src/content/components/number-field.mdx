@@ -2,12 +2,11 @@
 title: Number Field
 description: A numeric input with increment, decrement, and scrub controls.
 ---
-
 <ComponentLinks
 	links={[
 		{
-			label: "Docs",
-			href: "https://base-ui.com/react/components/number-field",
+			label: "API Reference",
+			href: "https://base-ui.com/react/components/number-field#api-reference",
 		},
 	]}
 />
@@ -35,11 +34,75 @@ npx shadcn@latest add @9ui/number-field
 ## Usage
 
 ```tsx title="Imports"
-import { NumberField, NumberFieldScrubArea } from "@/components/ui/number-field"
+import {
+	NumberField,
+	NumberFieldDecrement,
+	NumberFieldGroup,
+	NumberFieldIncrement,
+	NumberFieldInput,
+	NumberFieldScrubArea,
+} from "@/components/ui/number-field"
 ```
 
 ```tsx title="Anatomy"
 <NumberField>
 	<NumberFieldScrubArea />
+	<NumberFieldGroup>
+		<NumberFieldDecrement />
+		<NumberFieldInput />
+		<NumberFieldIncrement />
+	</NumberFieldGroup>
 </NumberField>
 ```
+
+Give every number field a name: wrap it in [Field](/docs/components/field) with a `FieldLabel`, or set `aria-label` on `NumberFieldInput` when there is no visible label.
+
+## Examples
+
+### Small
+
+Set `size="sm"` on `NumberField` for a smaller field.
+
+<ComponentPreview name="number-field-sm-demo" />
+
+### Step
+
+Set `step` to change how much each press adds or removes. Hold Shift for `largeStep` and Alt for `smallStep`.
+
+<ComponentPreview name="number-field-step-demo" />
+
+### Format
+
+Set `format` to show the value as a currency, percentage or unit. It takes the same options as `Intl.NumberFormat`.
+
+<ComponentPreview name="number-field-format-demo" />
+
+### Scrub
+
+Wrap the label in `NumberFieldScrubArea` to change the value by dragging it.
+
+<ComponentPreview name="number-field-scrub-demo" />
+
+### Wheel Scrub
+
+Set `allowWheelScrub` to change the value with the mouse wheel while the input is focused and hovered.
+
+<ComponentPreview name="number-field-wheel-scrub-demo" />
+
+### Read-only
+
+Set `readOnly` to show a value that cannot be changed. The steppers dim and the input stays focusable.
+
+<ComponentPreview name="number-field-read-only-demo" />
+
+### Disabled
+
+Set `disabled` to prevent interaction.
+
+<ComponentPreview name="number-field-disabled-demo" />
+
+### Invalid
+
+Set `invalid` on `Field` to show the error state, and clear it once the value is valid.
+
+<ComponentPreview name="number-field-invalid-demo" showReload={true} />
