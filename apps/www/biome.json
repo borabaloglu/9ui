@@ -168,7 +168,6 @@
 		{
 			"includes": [
 				"src/components/customize-toolbar.tsx",
-				"src/components/ui/form.tsx",
 				"src/components/ui/label.tsx",
 				"src/components/ui/meter.tsx"
 			],
