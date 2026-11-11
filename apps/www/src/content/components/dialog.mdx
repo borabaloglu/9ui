@@ -5,8 +5,8 @@ description: A modal window for displaying content.
 <ComponentLinks
 	links={[
 		{
-			label: "Docs",
-			href: "https://base-ui.com/react/components/dialog",
+			label: "API Reference",
+			href: "https://base-ui.com/react/components/dialog#api-reference",
 		},
 	]}
 />
@@ -37,10 +37,10 @@ npx shadcn@latest add @9ui/dialog
 import {
 	Dialog,
 	DialogClose,
-	DialogContent,
 	DialogDescription,
 	DialogFooter,
 	DialogHeader,
+	DialogPopup,
 	DialogTitle,
 	DialogTrigger,
 } from "@/components/ui/dialog"
@@ -49,7 +49,7 @@ import {
 ```tsx title="Anatomy"
 <Dialog>
 	<DialogTrigger />
-	<DialogContent>
+	<DialogPopup>
 		<DialogHeader>
 			<DialogTitle />
 			<DialogDescription />
@@ -57,12 +57,52 @@ import {
 		<DialogFooter>
 			<DialogClose />
 		</DialogFooter>
-	</DialogContent>
+	</DialogPopup>
 </Dialog>
 ```
 
 ## Examples
 
-### Nested Dialogs
+### Sizes
+
+Set `size="sm"` on `DialogPopup` for a narrower dialog with tighter padding and equal-width footer buttons.
+
+<ComponentPreview name="dialog-sm-demo" />
+
+### Close Button
+
+Set `showCloseButton={false}` on `DialogPopup` to remove the close button from the corner. The dialog still closes on Escape and on an outside press.
+
+<ComponentPreview name="dialog-no-close-button-demo" />
+
+### Custom Close
+
+Render any control through `DialogClose` to close the dialog.
+
+<ComponentPreview name="dialog-custom-close-button-demo" />
+
+### Mobile Position
+
+On small screens the dialog sits at the bottom edge. Set `showAtBottomOnMobile={false}` on `DialogPopup` to keep it centered.
+
+The bottom padding grows by `env(safe-area-inset-bottom)`, so actions clear the home indicator when the page uses `viewport-fit=cover`.
+
+<ComponentPreview name="dialog-mobile-bottom-off-demo" />
+
+### Bare Footer
+
+Set `variant="bare"` on `DialogFooter` to drop its border and background.
+
+<ComponentPreview name="dialog-footer-bare-demo" />
+
+### Scrollable Content
+
+Give the content a `max-height` and `overflow-y-auto` to scroll it while the header and footer stay in place.
+
+<ComponentPreview name="dialog-scrollable-content-demo" />
+
+### Nested
+
+Open a dialog from inside another. The parent scales down behind the nested one.
 
 <ComponentPreview name="dialog-nested-demo" />

@@ -11,9 +11,9 @@ import { ThemeCode } from "@/components/theme-code";
 import { Button } from "@/components/ui/button";
 import {
 	Dialog,
-	DialogContent,
 	DialogDescription,
 	DialogHeader,
+	DialogPopup,
 	DialogTitle,
 } from "@/components/ui/dialog";
 import { Label } from "@/components/ui/label";
@@ -342,7 +342,7 @@ export const CustomizeToolbar = ({
 				</AnimatePresence>
 			</div>
 			<Dialog open={copyDialogOpen} onOpenChange={setCopyDialogOpen}>
-				<DialogContent className="w-[90%] max-w-3xl!">
+				<DialogPopup className="max-w-3xl">
 					<DialogHeader>
 						<DialogTitle>Your Theme</DialogTitle>
 						<DialogDescription>
@@ -358,7 +358,7 @@ export const CustomizeToolbar = ({
 							false,
 						)}
 					/>
-				</DialogContent>
+				</DialogPopup>
 			</Dialog>
 		</>
 	);
