@@ -9,7 +9,7 @@ import {
 	CardTitle,
 } from "@/components/ui/card";
 
-export default function CardWithImageDemo() {
+export default function CardImageDemo() {
 	return (
 		<Card className="w-full max-w-sm">
 			<Image
