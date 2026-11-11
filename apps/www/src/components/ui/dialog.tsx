@@ -1,19 +1,13 @@
-"use client";
-
 import type * as React from "react";
-import { Dialog as BaseDialog } from "@base-ui/react";
+import { Dialog as BaseDialog } from "@base-ui/react/dialog";
 import { XIcon } from "lucide-react";
+
+import { Button } from "@/components/ui/button";
 
 import { cn } from "@/lib/utils";
 
 function Dialog({ ...props }: React.ComponentProps<typeof BaseDialog.Root>) {
-	return <BaseDialog.Root data-slot="dialog" {...props} />;
-}
-
-function DialogPortal({
-	...props
-}: React.ComponentProps<typeof BaseDialog.Portal>) {
-	return <BaseDialog.Portal data-slot="dialog-portal" {...props} />;
+	return <BaseDialog.Root {...props} />;
 }
 
 function DialogTrigger({
@@ -28,15 +22,15 @@ function DialogClose({
 	return <BaseDialog.Close data-slot="dialog-close" {...props} />;
 }
 
-function DialogOverlay({
+function DialogBackdrop({
 	className,
 	...props
 }: React.ComponentProps<typeof BaseDialog.Backdrop>) {
 	return (
 		<BaseDialog.Backdrop
-			data-slot="dialog-overlay"
+			data-slot="dialog-backdrop"
 			className={cn(
-				"fixed inset-0 bg-black/50 transition-all duration-200 [&[data-ending-style]]:opacity-0 [&[data-starting-style]]:opacity-0",
+				"fixed inset-0 z-50 min-h-dvh bg-black/30 transition-opacity duration-200 data-ending-style:opacity-0 data-ending-style:duration-150 data-starting-style:opacity-0 supports-backdrop-filter:backdrop-blur-xs supports-[-webkit-touch-callout:none]:absolute",
 				className,
 			)}
 			{...props}
@@ -44,34 +38,59 @@ function DialogOverlay({
 	);
 }
 
-function DialogContent({
+function DialogPopup({
 	className,
 	children,
+	size = "default",
+	showAtBottomOnMobile = true,
 	showCloseButton = true,
 	...props
 }: React.ComponentProps<typeof BaseDialog.Popup> & {
+	size?: "default" | "sm";
+	showAtBottomOnMobile?: boolean;
 	showCloseButton?: boolean;
 }) {
 	return (
-		<DialogPortal data-slot="dialog-portal">
-			<DialogOverlay />
-			<BaseDialog.Popup
-				data-slot="dialog-content"
+		<BaseDialog.Portal data-slot="dialog-portal">
+			<DialogBackdrop />
+			<BaseDialog.Viewport
+				data-slot="dialog-viewport"
 				className={cn(
-					"bg-popover text-popover-foreground fixed top-[100vh] left-1/2 z-50 grid w-full -translate-x-1/2 -translate-y-full gap-4 rounded-lg border p-6 shadow-lg transition-all duration-200 outline-none data-ending-style:translate-y-full data-ending-style:opacity-0 data-starting-style:translate-y-full data-starting-style:opacity-0 max-sm:rounded-b-none sm:top-[50%] sm:w-[32rem] sm:translate-x-[-50%] sm:translate-y-[-50%] sm:scale-[calc(1-0.1*var(--nested-dialogs))] data-ending-style:sm:translate-y-[-50%] data-ending-style:sm:scale-95 data-starting-style:sm:translate-y-[-50%] data-starting-style:sm:scale-95",
-					className,
+					"fixed inset-0 z-50 flex items-center justify-center p-4",
+					showAtBottomOnMobile && "max-sm:items-end max-sm:p-0 max-sm:pt-12",
 				)}
-				{...props}
 			>
-				{children}
-				{showCloseButton && (
-					<DialogClose className="text-muted-foreground ring-offset-popover focus:ring-ring absolute top-4 right-4 rounded-xs opacity-50 transition-opacity hover:opacity-100 focus:ring-[3px] focus:ring-offset-2 focus:outline-hidden [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4">
-						<XIcon />
-						<span className="sr-only">Close</span>
-					</DialogClose>
-				)}
-			</BaseDialog.Popup>
-		</DialogPortal>
+				<BaseDialog.Popup
+					data-slot="dialog-popup"
+					data-size={size}
+					className={cn(
+						"group/dialog-popup bg-popover text-popover-foreground ease-out-quint relative grid max-h-full w-full scale-[calc(1-0.1*var(--nested-dialogs))] gap-(--dialog-spacing) overflow-y-auto overscroll-contain rounded-xl border p-(--dialog-spacing) pb-(--dialog-bottom) text-sm shadow-lg transition-[scale,opacity,translate,filter] duration-200 outline-none [--dialog-bottom:var(--dialog-spacing)] [--dialog-spacing:--spacing(4)] not-dark:border-b-[color-mix(in_oklab,var(--border),black_6%)] data-ending-style:scale-96 data-ending-style:opacity-0 data-ending-style:duration-150 data-nested-dialog-open:brightness-90 data-starting-style:scale-96 data-starting-style:opacity-0 data-[size=sm]:[--dialog-spacing:--spacing(3)] motion-reduce:transition-opacity motion-reduce:data-ending-style:scale-100 motion-reduce:data-starting-style:scale-100 dark:border-t-[color-mix(in_oklab,var(--border),white_8%)] dark:data-nested-dialog-open:brightness-75",
+						size === "sm" ? "max-w-xs" : "max-w-sm",
+						showAtBottomOnMobile &&
+							"max-sm:max-w-none max-sm:scale-100 max-sm:rounded-b-none max-sm:border-x-0 max-sm:border-b-0 max-sm:duration-300 max-sm:[--dialog-bottom:calc(var(--dialog-spacing)+env(safe-area-inset-bottom))] max-sm:data-ending-style:scale-100 max-sm:data-ending-style:duration-200 max-sm:data-nested-dialog-open:opacity-0 max-sm:data-starting-style:scale-100 motion-safe:max-sm:data-ending-style:translate-y-full motion-safe:max-sm:data-ending-style:opacity-100 motion-safe:max-sm:data-starting-style:translate-y-full motion-safe:max-sm:data-starting-style:opacity-100",
+						className,
+					)}
+					{...props}
+				>
+					{children}
+					{showCloseButton && (
+						<BaseDialog.Close
+							data-slot="dialog-close"
+							aria-label="Close"
+							render={
+								<Button
+									variant="ghost"
+									size="icon-sm"
+									className="absolute end-2 top-2"
+								/>
+							}
+						>
+							<XIcon />
+						</BaseDialog.Close>
+					)}
+				</BaseDialog.Popup>
+			</BaseDialog.Viewport>
+		</BaseDialog.Portal>
 	);
 }
 
@@ -79,18 +98,30 @@ function DialogHeader({ className, ...props }: React.ComponentProps<"div">) {
 	return (
 		<div
 			data-slot="dialog-header"
-			className={cn("flex flex-col gap-2 text-center sm:text-left", className)}
+			className={cn(
+				"flex flex-col gap-1.5 group-has-[>[data-slot=dialog-close]]/dialog-popup:pe-8",
+				className,
+			)}
 			{...props}
 		/>
 	);
 }
 
-function DialogFooter({ className, ...props }: React.ComponentProps<"div">) {
+function DialogFooter({
+	className,
+	variant = "default",
+	...props
+}: React.ComponentProps<"div"> & {
+	variant?: "default" | "bare";
+}) {
 	return (
 		<div
 			data-slot="dialog-footer"
+			data-variant={variant}
 			className={cn(
-				"flex flex-col-reverse gap-2 sm:flex-row sm:justify-end",
+				"flex flex-col-reverse gap-2 group-data-[size=sm]/dialog-popup:grid group-data-[size=sm]/dialog-popup:grid-cols-2 sm:flex-row sm:justify-end",
+				variant === "default" &&
+					"bg-muted/50 -mx-(--dialog-spacing) -mb-(--dialog-bottom) border-t p-(--dialog-spacing) pb-(--dialog-bottom)",
 				className,
 			)}
 			{...props}
@@ -105,7 +136,7 @@ function DialogTitle({
 	return (
 		<BaseDialog.Title
 			data-slot="dialog-title"
-			className={cn("text-lg leading-none font-semibold", className)}
+			className={cn("text-base leading-snug font-medium", className)}
 			{...props}
 		/>
 	);
@@ -118,7 +149,10 @@ function DialogDescription({
 	return (
 		<BaseDialog.Description
 			data-slot="dialog-description"
-			className={cn("text-muted-foreground text-sm", className)}
+			className={cn(
+				"text-muted-foreground *:[a]:hover:text-foreground text-sm text-pretty *:[a]:underline *:[a]:underline-offset-3",
+				className,
+			)}
 			{...props}
 		/>
 	);
@@ -126,13 +160,12 @@ function DialogDescription({
 
 export {
 	Dialog,
+	DialogBackdrop,
 	DialogClose,
-	DialogContent,
 	DialogDescription,
 	DialogFooter,
 	DialogHeader,
-	DialogOverlay,
-	DialogPortal,
+	DialogPopup,
 	DialogTitle,
 	DialogTrigger,
 };
