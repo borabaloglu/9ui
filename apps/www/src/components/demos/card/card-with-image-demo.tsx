@@ -11,17 +11,16 @@ import {
 
 export default function CardWithImageDemo() {
 	return (
-		<Card className="w-full max-w-80">
+		<Card className="w-full max-w-sm">
+			<Image
+				src="/cover.png"
+				alt=""
+				width={1600}
+				height={1200}
+				className="aspect-video w-full object-cover"
+			/>
 			<CardHeader>
-				<div className="relative aspect-video rounded-lg">
-					<Image
-						src="https://images.pexels.com/photos/1616403/pexels-photo-1616403.jpeg?auto=compress&cs=tinysrgb&w=450&h=800&dpr=2"
-						alt="Blog Image"
-						fill
-						className="rounded-lg"
-					/>
-				</div>
-				<CardTitle className="mt-2">What is 9ui?</CardTitle>
+				<CardTitle>What is 9ui?</CardTitle>
 				<CardDescription>
 					Deep dive into the 9ui components and learn how to use them in your
 					own projects.

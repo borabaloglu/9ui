@@ -1,6 +1,6 @@
 ---
 title: Card
-description: Used to group and present information in a structured box.
+description: A container that groups related content and actions.
 ---
 
 <ComponentPreview name="card-demo" />
@@ -44,13 +44,27 @@ import {
 		<CardDescription />
 		<CardAction />
 	</CardHeader>
-	<CardContent>
+	<CardContent />
 	<CardFooter />
 </Card>
 ```
 
+`CardTitle` renders a `div`. Pass `render` to make it a heading that fits your page outline.
+
+```tsx
+<CardTitle render={<h2 />}>Create project</CardTitle>
+```
+
 ## Examples
 
-### With image
+### Sizes
+
+Set `size="sm"` for a compact card with tighter padding and a smaller title.
+
+<ComponentPreview name="card-size-demo" />
+
+### With Image
+
+Place an image as the first child and it sits flush with the top of the card.
 
 <ComponentPreview name="card-with-image-demo" />
