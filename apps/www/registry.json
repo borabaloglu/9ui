@@ -329,8 +329,8 @@
 		{
 			"name": "form",
 			"type": "registry:ui",
-			"dependencies": ["react-hook-form", "zod", "@hookform/resolvers"],
-			"registryDependencies": ["@9ui/label"],
+			"dependencies": [],
+			"registryDependencies": [],
 			"files": [
 				{
 					"path": "src/components/ui/form.tsx",

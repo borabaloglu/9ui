@@ -1,64 +1,42 @@
 "use client";
 
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm } from "react-hook-form";
+import { useState } from "react";
 import { isValidPhoneNumber } from "react-phone-number-input";
-import { z } from "zod";
 
 import { Button } from "@/components/ui/button";
-import {
-	Form,
-	FormControl,
-	FormField,
-	FormItem,
-	FormLabel,
-	FormMessage,
-} from "@/components/ui/form";
+import { Field, FieldError, FieldLabel } from "@/components/ui/field";
+import { Form } from "@/components/ui/form";
 import { PhoneInput } from "@/components/ui/phone-input";
 
-const schema = z.object({
-	phoneNumber: z.string().refine(isValidPhoneNumber, "Invalid phone number"),
-});
-
-type FormValues = z.infer<typeof schema>;
-
 export default function PhoneInputFormDemo() {
-	const form = useForm<FormValues>({
-		resolver: zodResolver(schema),
-		defaultValues: {
-			phoneNumber: "",
-		},
-	});
+	const [phoneNumber, setPhoneNumber] = useState("");
+	const [invalid, setInvalid] = useState(false);
 
-	const onSubmit = (data: FormValues) => {
-		console.log(data);
+	const handleSubmit = () => {
+		if (!phoneNumber || !isValidPhoneNumber(phoneNumber)) {
+			setInvalid(true);
+			return;
+		}
+
+		console.log("Submitted:", phoneNumber);
 	};
 
 	return (
-		<Form {...form}>
-			<form
-				onSubmit={form.handleSubmit(onSubmit)}
-				className="flex w-[300px] flex-col gap-4"
-			>
-				<FormField
-					name="phoneNumber"
-					control={form.control}
-					render={({ field, fieldState }) => (
-						<FormItem>
-							<FormLabel>Phone Number</FormLabel>
-							<FormControl>
-								<PhoneInput
-									{...field}
-									placeholder="Enter a phone number"
-									aria-invalid={!!fieldState.error}
-								/>
-							</FormControl>
-							<FormMessage />
-						</FormItem>
-					)}
+		<Form className="w-[300px]" onFormSubmit={handleSubmit}>
+			<Field name="phoneNumber" invalid={invalid}>
+				<FieldLabel>Phone Number</FieldLabel>
+				<PhoneInput
+					value={phoneNumber}
+					onChange={(value) => {
+						setPhoneNumber(value ?? "");
+						setInvalid(false);
+					}}
+					placeholder="Enter a phone number"
+					aria-invalid={invalid}
 				/>
-				<Button type="submit">Submit</Button>
-			</form>
+				<FieldError match={invalid}>Invalid phone number</FieldError>
+			</Field>
+			<Button type="submit">Submit</Button>
 		</Form>
 	);
 }
