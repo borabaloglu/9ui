@@ -1,12 +1,12 @@
 ---
 title: Checkbox Group
-description: Manages selection state across multiple checkboxes.
+description: A set of checkboxes that share one value.
 ---
 <ComponentLinks
 	links={[
 		{
-			label: "Docs",
-			href: "https://base-ui.com/react/components/checkbox-group",
+			label: "API Reference",
+			href: "https://base-ui.com/react/components/checkbox-group#api-reference",
 		},
 	]}
 />
@@ -34,9 +34,44 @@ npx shadcn@latest add @9ui/checkbox-group
 ## Usage
 
 ```tsx title="Imports"
-import { CheckboxGroup } from "@/components/ui/checkbox-group"
+import { Checkbox } from "@/components/ui/checkbox"
+import {
+	CheckboxGroup,
+	CheckboxGroupLabel,
+} from "@/components/ui/checkbox-group"
 ```
 
 ```tsx title="Anatomy"
-<CheckboxGroup />
+<CheckboxGroup>
+	<CheckboxGroupLabel />
+	<Checkbox />
+</CheckboxGroup>
 ```
+
+Give each [Checkbox](/docs/components/checkbox) a `value`. The group's value is the list of checked values. Name the group by giving `CheckboxGroupLabel` an `id` and passing it to `aria-labelledby`.
+
+## Examples
+
+### Disabled
+
+Set `disabled` on the group to prevent interaction with every checkbox in it.
+
+<ComponentPreview name="checkbox-group-disabled-demo" />
+
+### Disabled Item
+
+Set `disabled` on a `Checkbox` to turn off a single option.
+
+<ComponentPreview name="checkbox-group-disabled-item-demo" />
+
+### Parent Checkbox
+
+Set `parent` on a `Checkbox` to check or clear every option at once. Control the group and pass every option's value to `allValues`. The parent shows the indeterminate state when only some options are checked.
+
+<ComponentPreview name="checkbox-group-parent-demo" />
+
+### Nested
+
+Place a `CheckboxGroup` inside another to build a tree, and keep the two values in sync in `onValueChange`.
+
+<ComponentPreview name="checkbox-group-nested-demo" />

@@ -2,11 +2,11 @@
 	"$schema": "https://ui.shadcn.com/schema/registry-item.json",
 	"name": "checkbox-group",
 	"dependencies": [],
-	"registryDependencies": [],
+	"registryDependencies": ["@9ui/checkbox"],
 	"files": [
 		{
 			"path": "ui/checkbox-group.tsx",
-			"content": "\"use client\";\n\nimport type * as React from \"react\";\nimport { CheckboxGroup as BaseCheckboxGroup } from \"@base-ui/react/checkbox-group\";\n\nimport { cn } from \"@/lib/utils\";\n\nfunction CheckboxGroup({\n\tclassName,\n\t...props\n}: React.ComponentProps<typeof BaseCheckboxGroup>) {\n\treturn (\n\t\t<BaseCheckboxGroup\n\t\t\tclassName={cn(\"flex flex-col items-start gap-1\", className)}\n\t\t\t{...props}\n\t\t/>\n\t);\n}\n\nexport { CheckboxGroup };\n",
+			"content": "import type * as React from \"react\";\nimport { CheckboxGroup as BaseCheckboxGroup } from \"@base-ui/react/checkbox-group\";\n\nimport { cn } from \"@/lib/utils\";\n\nfunction CheckboxGroup({\n\tclassName,\n\t...props\n}: Omit<BaseCheckboxGroup.Props, \"className\"> & {\n\tclassName?: string;\n}) {\n\treturn (\n\t\t<BaseCheckboxGroup\n\t\t\tdata-slot=\"checkbox-group\"\n\t\t\tclassName={cn(\n\t\t\t\t\"flex flex-col items-start gap-3 any-pointer-coarse:gap-6\",\n\t\t\t\tclassName,\n\t\t\t)}\n\t\t\t{...props}\n\t\t/>\n\t);\n}\n\nfunction CheckboxGroupLabel({\n\tclassName,\n\t...props\n}: React.ComponentProps<\"div\">) {\n\treturn (\n\t\t<div\n\t\t\tdata-slot=\"checkbox-group-label\"\n\t\t\tclassName={cn(\n\t\t\t\t\"in-data-disabled:text-foreground/50 text-sm leading-snug font-medium\",\n\t\t\t\tclassName,\n\t\t\t)}\n\t\t\t{...props}\n\t\t/>\n\t);\n}\n\nexport { CheckboxGroup, CheckboxGroupLabel };\n",
 			"type": "registry:ui",
 			"target": ""
 		}
