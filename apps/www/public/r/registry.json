@@ -314,6 +314,19 @@
 			]
 		},
 		{
+			"name": "fieldset",
+			"type": "registry:ui",
+			"dependencies": [],
+			"registryDependencies": [],
+			"files": [
+				{
+					"path": "src/components/ui/fieldset.tsx",
+					"type": "registry:ui",
+					"target": ""
+				}
+			]
+		},
+		{
 			"name": "form",
 			"type": "registry:ui",
 			"dependencies": ["react-hook-form", "zod", "@hookform/resolvers"],
