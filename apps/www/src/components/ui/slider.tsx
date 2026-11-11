@@ -1,75 +1,73 @@
-import * as React from "react";
 import { Slider as BaseSlider } from "@base-ui/react/slider";
 
 import { cn } from "@/lib/utils";
 
-function Slider({
+function Slider<Value extends number | readonly number[]>({
 	className,
 	children,
 	defaultValue,
 	value,
-	min = 0,
-	max = 100,
+	"aria-label": ariaLabel,
+	thumbLabels,
 	...props
-}: React.ComponentProps<typeof BaseSlider.Root>) {
-	const _values = React.useMemo(
-		() =>
-			Array.isArray(value)
-				? value
-				: Array.isArray(defaultValue)
-					? defaultValue
-					: [min, max],
-		[value, defaultValue, min, max],
-	);
+}: Omit<BaseSlider.Root.Props<Value>, "className"> & {
+	className?: string;
+	thumbLabels?: readonly string[];
+}) {
+	const values = value ?? defaultValue;
+	const thumbCount = Array.isArray(values) ? values.length : 1;
 
 	return (
 		<BaseSlider.Root
 			data-slot="slider"
 			defaultValue={defaultValue}
 			value={value}
-			min={min}
-			max={max}
+			thumbAlignment="edge"
 			className={cn(
-				"relative w-full touch-none select-none data-disabled:pointer-events-none data-disabled:opacity-50 data-[orientation=vertical]:h-full data-[orientation=vertical]:min-h-44 data-[orientation=vertical]:w-auto data-[orientation=vertical]:flex-col",
+				"grid grid-cols-[1fr_auto] gap-x-3 gap-y-2 data-[orientation=horizontal]:w-full data-[orientation=vertical]:flex data-[orientation=vertical]:h-full data-[orientation=vertical]:w-fit data-[orientation=vertical]:flex-col data-[orientation=vertical]:items-center",
 				className,
 			)}
 			{...props}
 		>
+			{children}
 			<BaseSlider.Control
 				data-slot="slider-control"
-				className="flex w-full items-center"
+				className="relative flex touch-none items-center select-none before:absolute before:-inset-1.5 data-disabled:cursor-not-allowed data-disabled:opacity-50 data-[orientation=horizontal]:col-span-2 data-[orientation=horizontal]:h-4 data-[orientation=vertical]:order-2 data-[orientation=vertical]:min-h-40 data-[orientation=vertical]:w-4 data-[orientation=vertical]:flex-1 data-[orientation=vertical]:flex-col any-pointer-coarse:before:-inset-3 any-pointer-coarse:data-[orientation=horizontal]:h-5 any-pointer-coarse:data-[orientation=vertical]:w-5"
 			>
 				<BaseSlider.Track
 					data-slot="slider-track"
-					className="bg-muted relative grow rounded-full data-[orientation=horizontal]:h-1.5 data-[orientation=horizontal]:w-full data-[orientation=vertical]:h-full data-[orientation=vertical]:w-1.5"
+					className="bg-muted relative grow rounded-full data-[orientation=horizontal]:h-1 data-[orientation=vertical]:h-full data-[orientation=vertical]:w-1"
 				>
 					<BaseSlider.Indicator
 						data-slot="slider-indicator"
-						className="bg-primary absolute rounded-full data-[orientation=horizontal]:h-full data-[orientation=vertical]:w-full"
+						className="bg-primary rounded-full data-[orientation=horizontal]:h-full data-[orientation=vertical]:w-full"
 					/>
-					{Array.from({ length: _values.length }, (_, index) => (
+					{Array.from({ length: thumbCount }, (_, index) => (
 						<BaseSlider.Thumb
 							data-slot="slider-thumb"
 							key={index}
-							className="border-primary bg-background ring-ring/50 block size-4 shrink-0 rounded-full border shadow-sm transition-[color,box-shadow] hover:ring-4 focus-visible:ring-4 focus-visible:outline-hidden"
+							index={index}
+							aria-label={thumbLabels?.[index] ?? ariaLabel}
+							className="border-border has-focus-visible:border-ring has-focus-visible:ring-ring/50 data-invalid:border-destructive/60 data-invalid:ring-destructive/30 dark:border-background dark:data-invalid:border-destructive/60 dark:data-invalid:ring-destructive/40 ease-out-quint block size-4 shrink-0 rounded-full border bg-white shadow-xs transition-[border-color,box-shadow,scale] duration-150 outline-none select-none before:absolute before:inset-0 before:rounded-full before:shadow-[0_1px_--theme(--color-black/6%)] has-focus-visible:ring-3 data-invalid:ring-3 motion-safe:data-dragging:scale-110 dark:before:shadow-none any-pointer-coarse:size-5"
 						/>
 					))}
 				</BaseSlider.Track>
 			</BaseSlider.Control>
-			{children}
 		</BaseSlider.Root>
 	);
 }
 
-function SliderValue({
+function SliderLabel({
 	className,
 	...props
-}: React.ComponentProps<typeof BaseSlider.Value>) {
+}: Omit<BaseSlider.Label.Props, "className"> & {
+	className?: string;
+}) {
 	return (
-		<BaseSlider.Value
-			data-slot="slider-value"
+		<BaseSlider.Label
+			data-slot="slider-label"
 			className={cn(
-				"text-foreground mt-2 flex justify-end text-sm font-medium",
+				"data-disabled:text-foreground/50 data-invalid:text-destructive w-fit cursor-default text-sm leading-snug font-medium select-none data-[orientation=vertical]:order-3",
 				className,
 			)}
 			{...props}
@@ -77,4 +75,22 @@ function SliderValue({
 	);
 }
 
-export { Slider, SliderValue };
+function SliderValue({
+	className,
+	...props
+}: Omit<BaseSlider.Value.Props, "className"> & {
+	className?: string;
+}) {
+	return (
+		<BaseSlider.Value
+			data-slot="slider-value"
+			className={cn(
+				"text-muted-foreground col-start-2 justify-self-end text-sm leading-snug tabular-nums data-disabled:opacity-50 data-[orientation=vertical]:order-1",
+				className,
+			)}
+			{...props}
+		/>
+	);
+}
+
+export { Slider, SliderLabel, SliderValue };

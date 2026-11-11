@@ -5,8 +5,8 @@ description: A control for selecting a value within a range.
 <ComponentLinks
 	links={[
 		{
-			label: "Docs",
-			href: "https://base-ui.com/react/components/slider",
+			label: "API Reference",
+			href: "https://base-ui.com/react/components/slider#api-reference",
 		},
 	]}
 />
@@ -34,29 +34,70 @@ npx shadcn@latest add @9ui/slider
 ## Usage
 
 ```tsx title="Imports"
-import { Slider, SliderValue } from "@/components/ui/slider"
+import { Slider, SliderLabel, SliderValue } from "@/components/ui/slider"
 ```
 
 ```tsx title="Anatomy"
 <Slider>
+	<SliderLabel />
 	<SliderValue />
 </Slider>
 ```
 
+Give every slider a name: add a `SliderLabel`, or set `aria-label` on `Slider` when there is no visible label. On a range slider, set `thumbLabels` to name each thumb.
+
 ## Examples
-
-### Disabled
-
-<ComponentPreview name="slider-disabled-demo" />
-
----
 
 ### Range
 
+Pass an array to `defaultValue` or `value` to get one thumb per value.
+
 <ComponentPreview name="slider-range-demo" />
 
----
+### Label and Value
 
-### With Value
+Add `SliderLabel` to name the slider and `SliderValue` to show the current value.
 
-<ComponentPreview name="slider-with-value-demo" />
+<ComponentPreview name="slider-label-value-demo" />
+
+### Steps
+
+Set `step` to snap the value to an increment, and `largeStep` for Page Up, Page Down and Shift with the arrow keys.
+
+<ComponentPreview name="slider-step-demo" />
+
+### Marks
+
+Render marks as children and position each one as a percentage of the range. Inset the row by half the thumb so the marks line up with it.
+
+<ComponentPreview name="slider-marks-demo" />
+
+### Format
+
+Set `format` to show the value as a currency, percentage or unit. It takes the same options as `Intl.NumberFormat`.
+
+<ComponentPreview name="slider-format-demo" />
+
+### Field
+
+Wrap the slider in [Field](/docs/components/field) to add a description.
+
+<ComponentPreview name="slider-field-demo" />
+
+### Disabled
+
+Set `disabled` to prevent interaction. The label and value dim with the slider.
+
+<ComponentPreview name="slider-disabled-demo" />
+
+### Invalid
+
+Set `invalid` on `Field` to show the error state, and clear it once the value is valid.
+
+<ComponentPreview name="slider-invalid-demo" showReload={true} />
+
+### Vertical
+
+Set `orientation="vertical"` for a vertical slider.
+
+<ComponentPreview name="slider-vertical-demo" />

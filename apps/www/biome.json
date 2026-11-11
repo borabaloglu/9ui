@@ -118,7 +118,8 @@
 		{
 			"includes": [
 				"src/components/ui/field.tsx",
-				"src/components/ui/select.tsx"
+				"src/components/ui/select.tsx",
+				"src/components/ui/slider.tsx"
 			],
 			"linter": {
 				"rules": {
