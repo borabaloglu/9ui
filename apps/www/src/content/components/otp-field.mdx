@@ -1,0 +1,101 @@
+---
+title: OTP Field
+description: A one-time code input split into single-character slots.
+---
+<ComponentLinks
+	links={[
+		{
+			label: "API Reference",
+			href: "https://base-ui.com/react/components/otp-field#api-reference",
+		},
+	]}
+/>
+
+<ComponentPreview name="otp-field-demo" />
+
+## Installation
+
+<ComponentInstallation>
+<div>
+```bash title="Terminal"
+npx shadcn@latest add @9ui/otp-field
+```
+</div>
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="otp-field" />
+
+</Steps>
+</ComponentInstallation>
+
+## Usage
+
+```tsx title="Imports"
+import {
+	OTPField,
+	OTPFieldInput,
+	OTPFieldSeparator,
+} from "@/components/ui/otp-field"
+```
+
+```tsx title="Anatomy"
+<OTPField>
+	<OTPFieldInput />
+	<OTPFieldSeparator />
+</OTPField>
+```
+
+Set `length` to the number of slots and render one `OTPFieldInput` for each. Give every field a visible label: pass an `id` and point a [Label](/docs/components/label) at it with `htmlFor`, or use [Field](/docs/components/field). The label names the first slot, so set `aria-label` on the others to announce their position.
+
+## Examples
+
+### Sizes
+
+Set `size="lg"` for larger slots.
+
+<ComponentPreview name="otp-field-lg-demo" />
+
+### Separator
+
+Place `OTPFieldSeparator` between slots to split the code into smaller chunks.
+
+<ComponentPreview name="otp-field-separator-demo" />
+
+### Field
+
+Use `Field` to add a label and a description.
+
+<ComponentPreview name="otp-field-field-demo" />
+
+### Invalid
+
+Set `invalid` on `Field` to show the error state.
+
+<ComponentPreview name="otp-field-invalid-demo" />
+
+### Disabled
+
+Set `disabled` to prevent interaction.
+
+<ComponentPreview name="otp-field-disabled-demo" />
+
+### Length
+
+Set `length` to change the number of slots.
+
+<ComponentPreview name="otp-field-length-demo" />
+
+### Alphanumeric
+
+Set `validationType` to `alphanumeric` to accept letters and numbers.
+
+<ComponentPreview name="otp-field-alphanumeric-demo" />
+
+### Auto Validation
+
+Check the code once every slot is filled. Compare the value in `onValueChange`, or use `onValueComplete`.
+
+<ComponentPreview name="otp-field-auto-validation-demo" showReload={true} />

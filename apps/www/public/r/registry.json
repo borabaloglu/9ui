@@ -340,19 +340,6 @@
 			]
 		},
 		{
-			"name": "input-otp",
-			"type": "registry:ui",
-			"dependencies": ["input-otp"],
-			"registryDependencies": [],
-			"files": [
-				{
-					"path": "src/components/ui/input-otp.tsx",
-					"type": "registry:ui",
-					"target": ""
-				}
-			]
-		},
-		{
 			"name": "input",
 			"type": "registry:ui",
 			"dependencies": [],
@@ -464,6 +451,19 @@
 			"files": [
 				{
 					"path": "src/components/ui/number-field.tsx",
+					"type": "registry:ui",
+					"target": ""
+				}
+			]
+		},
+		{
+			"name": "otp-field",
+			"type": "registry:ui",
+			"dependencies": [],
+			"registryDependencies": [],
+			"files": [
+				{
+					"path": "src/components/ui/otp-field.tsx",
 					"type": "registry:ui",
 					"target": ""
 				}

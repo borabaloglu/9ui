@@ -65,9 +65,6 @@ importers:
       gray-matter:
         specifier: ^4.0.3
         version: 4.0.3
-      input-otp:
-        specifier: ^1.4.2
-        version: 1.4.2(react-dom@19.3.1(react@19.3.1))(react@19.3.1)
       lodash:
         specifier: ^4.17.21
         version: 4.17.21
@@ -1651,12 +1648,6 @@ packages:
         optional: true
       react-dom:
         optional: true
-
-  input-otp@1.4.2:
-    resolution: {integrity: sha512-l3jWwYNvrEa6NTCt7BECfCm48GvwuZzkoeG3gBL2w4CHeOXW3eKFmf9UNYkNfYc3mxMrthMnxjIE07MT0zLBQA==}
-    peerDependencies:
-      react: ^16.8 || ^17.0 || ^18.0 || ^19.0.0 || ^19.0.0-rc
-      react-dom: ^16.8 || ^17.0 || ^18.0 || ^19.0.0 || ^19.0.0-rc
 
   internmap@2.0.3:
     resolution: {integrity: sha512-5Hh7Y1wQbvY5ooGgPbDaL5iYLAPzMTUrjMulskHLH6wnv/A+1q5rgEaiuqEjB+oxGXIVZs1FF+R/KPN3ZSQYYg==}
@@ -3789,11 +3780,6 @@ snapshots:
     dependencies:
       prop-types: 15.8.1
     optionalDependencies:
-      react: 19.3.1
-      react-dom: 19.3.1(react@19.3.1)
-
-  input-otp@1.4.2(react-dom@19.3.1(react@19.3.1))(react@19.3.1):
-    dependencies:
       react: 19.3.1
       react-dom: 19.3.1(react@19.3.1)
 
