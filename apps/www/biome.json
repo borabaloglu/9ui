@@ -16,7 +16,7 @@
 							"Checkbox",
 							"Input",
 							"NumberField",
-							"RadioGroupItem",
+							"Radio",
 							"Select",
 							"SelectTrigger",
 							"Slider",
