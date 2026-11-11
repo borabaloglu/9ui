@@ -14,7 +14,9 @@ export default function CheckboxInvalidDemo() {
 				<Checkbox checked={checked} onCheckedChange={setChecked} />
 				Accept terms and conditions
 			</FieldLabel>
-			<FieldError match={!checked}>Accept the terms to continue.</FieldError>
+			<div className="min-h-lh text-sm leading-normal text-nowrap contain-inline-size">
+				<FieldError match={!checked}>Accept the terms to continue.</FieldError>
+			</div>
 		</Field>
 	);
 }
