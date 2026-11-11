@@ -200,7 +200,7 @@
 			"name": "checkbox-group",
 			"type": "registry:ui",
 			"dependencies": [],
-			"registryDependencies": [],
+			"registryDependencies": ["@9ui/checkbox"],
 			"files": [
 				{
 					"path": "src/components/ui/checkbox-group.tsx",
