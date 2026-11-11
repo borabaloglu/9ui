@@ -1,27 +1,30 @@
+import { useId } from "react";
+
 import { Label } from "@/components/ui/label";
-import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
+import {
+	Radio,
+	RadioGroup,
+	RadioGroupLabel,
+} from "@/components/ui/radio-group";
+
+const methods = [
+	{ value: "email", label: "Email" },
+	{ value: "phone", label: "Phone call" },
+	{ value: "sms", label: "Text message" },
+];
 
 export default function RadioGroupDisabledDemo() {
+	const id = useId();
+
 	return (
-		<RadioGroup aria-labelledby="radio-group-notifications" disabled>
-			<div
-				id="radio-group-notifications"
-				className="text-foreground font-medium"
-			>
-				Notifications
-			</div>
-			<div className="flex items-center gap-2">
-				<RadioGroupItem id="email" value="email" />
-				<Label htmlFor="email">Email</Label>
-			</div>
-			<div className="flex items-center gap-2">
-				<RadioGroupItem id="sms" value="sms" />
-				<Label htmlFor="sms">SMS</Label>
-			</div>
-			<div className="flex items-center gap-2">
-				<RadioGroupItem id="email-and-sms" value="email-and-sms" />
-				<Label htmlFor="email-and-sms">Email & SMS</Label>
-			</div>
+		<RadioGroup aria-labelledby={id} defaultValue="email" disabled>
+			<RadioGroupLabel id={id}>Contact me by</RadioGroupLabel>
+			{methods.map((method) => (
+				<Label key={method.value} className="font-normal">
+					<Radio value={method.value} />
+					{method.label}
+				</Label>
+			))}
 		</RadioGroup>
 	);
 }

@@ -1,12 +1,12 @@
 ---
 title: Radio Group
-description: A set of radio buttons for selecting one option from a group.
+description: A set of radio buttons for picking one option from a list.
 ---
 <ComponentLinks
 	links={[
 		{
-			label: "Docs",
-			href: "https://base-ui.com/react/components/radio",
+			label: "API Reference",
+			href: "https://base-ui.com/react/components/radio-group#api-reference",
 		},
 	]}
 />
@@ -34,17 +34,46 @@ npx shadcn@latest add @9ui/radio-group
 ## Usage
 
 ```tsx title="Imports"
-import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
+import { Radio, RadioGroup, RadioGroupLabel } from "@/components/ui/radio-group"
 ```
 
 ```tsx title="Anatomy"
 <RadioGroup>
-	<RadioGroupItem />
+	<RadioGroupLabel />
+	<Radio />
 </RadioGroup>
 ```
 
+Give each `Radio` a `value` and a visible label. Place it inside [Label](/docs/components/label), or use [Field](/docs/components/field) when it also needs a description or an error message. Name the group by giving `RadioGroupLabel` an `id` and passing it to `aria-labelledby`.
+
 ## Examples
+
+### Description
+
+Wrap each option in `FieldItem` to give it a `FieldLabel` and a `FieldDescription` of its own.
+
+<ComponentPreview name="radio-group-description-demo" />
 
 ### Disabled
 
+Set `disabled` on the group to prevent interaction with every radio in it.
+
 <ComponentPreview name="radio-group-disabled-demo" />
+
+### Disabled Item
+
+Set `disabled` on a `Radio` to turn off a single option.
+
+<ComponentPreview name="radio-group-disabled-item-demo" />
+
+### Invalid
+
+Set `invalid` on `Field` to show the error state, and clear it once an option is picked. Outside a `Field`, set `aria-invalid` on each radio.
+
+<ComponentPreview name="radio-group-invalid-demo" showReload={true} />
+
+### Choice Card
+
+Wrap the radio and its text in `FieldLabel` to make the whole card clickable. Style the selected card with `has-data-checked`.
+
+<ComponentPreview name="radio-group-choice-card-demo" />
