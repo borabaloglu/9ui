@@ -1,0 +1,67 @@
+---
+title: Fieldset
+description: A group of related fields with a shared legend.
+label: New
+---
+<ComponentLinks
+	links={[
+		{
+			label: "API Reference",
+			href: "https://base-ui.com/react/components/fieldset#api-reference",
+		},
+	]}
+/>
+
+<ComponentPreview name="fieldset-demo" />
+
+## Installation
+
+<ComponentInstallation>
+<div>
+```bash title="Terminal"
+npx shadcn@latest add @9ui/fieldset
+```
+</div>
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="fieldset" />
+
+</Steps>
+</ComponentInstallation>
+
+## Usage
+
+```tsx title="Imports"
+import {
+	Fieldset,
+	FieldsetDescription,
+	FieldsetLegend,
+} from "@/components/ui/fieldset"
+```
+
+```tsx title="Anatomy"
+<Fieldset>
+	<FieldsetLegend />
+	<FieldsetDescription />
+	<Field />
+</Fieldset>
+```
+
+The legend names the group and the description is linked to it for you. Don't set `aria-labelledby` or `aria-describedby` by hand.
+
+## Examples
+
+### Description
+
+Add `FieldsetDescription` after the legend for help text that applies to the whole group.
+
+<ComponentPreview name="fieldset-description-demo" />
+
+### Disabled
+
+Set `disabled` on `Fieldset` to disable every [Field](/docs/components/field) in it and dim the legend.
+
+<ComponentPreview name="fieldset-disabled-demo" />

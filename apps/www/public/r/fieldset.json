@@ -1,0 +1,15 @@
+{
+	"$schema": "https://ui.shadcn.com/schema/registry-item.json",
+	"name": "fieldset",
+	"dependencies": [],
+	"registryDependencies": [],
+	"files": [
+		{
+			"path": "ui/fieldset.tsx",
+			"content": "\"use client\";\n\nimport * as React from \"react\";\nimport { Fieldset as BaseFieldset } from \"@base-ui/react/fieldset\";\n\nimport { cn } from \"@/lib/utils\";\n\nconst FieldsetDescriptionContext = React.createContext<\n\t((id: string | undefined) => void) | null\n>(null);\n\nfunction Fieldset({\n\tclassName,\n\t...props\n}: Omit<BaseFieldset.Root.Props, \"className\"> & {\n\tclassName?: string;\n}) {\n\tconst [descriptionId, setDescriptionId] = React.useState<string>();\n\n\treturn (\n\t\t<FieldsetDescriptionContext.Provider value={setDescriptionId}>\n\t\t\t<BaseFieldset.Root\n\t\t\t\tdata-slot=\"fieldset\"\n\t\t\t\taria-describedby={descriptionId}\n\t\t\t\tclassName={cn(\"flex w-full min-w-0 flex-col gap-4\", className)}\n\t\t\t\t{...props}\n\t\t\t/>\n\t\t</FieldsetDescriptionContext.Provider>\n\t);\n}\n\nfunction FieldsetLegend({\n\tclassName,\n\t...props\n}: Omit<BaseFieldset.Legend.Props, \"className\"> & {\n\tclassName?: string;\n}) {\n\treturn (\n\t\t<BaseFieldset.Legend\n\t\t\tdata-slot=\"fieldset-legend\"\n\t\t\tclassName={cn(\n\t\t\t\t\"data-disabled:text-foreground/50 text-base leading-snug font-medium\",\n\t\t\t\tclassName,\n\t\t\t)}\n\t\t\t{...props}\n\t\t/>\n\t);\n}\n\nfunction FieldsetDescription({\n\tclassName,\n\tid: idProp,\n\t...props\n}: React.ComponentProps<\"p\">) {\n\tconst generatedId = React.useId();\n\tconst id = idProp ?? generatedId;\n\tconst setDescriptionId = React.useContext(FieldsetDescriptionContext);\n\n\tReact.useEffect(() => {\n\t\tsetDescriptionId?.(id);\n\t\treturn () => setDescriptionId?.(undefined);\n\t}, [id, setDescriptionId]);\n\n\treturn (\n\t\t<p\n\t\t\tid={id}\n\t\t\tdata-slot=\"fieldset-description\"\n\t\t\tclassName={cn(\n\t\t\t\t\"text-muted-foreground [&>a:hover]:text-foreground -mt-3 text-sm leading-normal [&>a]:underline [&>a]:underline-offset-4\",\n\t\t\t\tclassName,\n\t\t\t)}\n\t\t\t{...props}\n\t\t/>\n\t);\n}\n\nexport { Fieldset, FieldsetDescription, FieldsetLegend };\n",
+			"type": "registry:ui",
+			"target": ""
+		}
+	],
+	"type": "registry:ui"
+}
