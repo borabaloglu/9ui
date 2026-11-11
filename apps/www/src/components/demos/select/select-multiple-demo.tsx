@@ -1,54 +1,47 @@
+"use client";
+
 import {
 	Select,
-	SelectContent,
 	SelectItem,
+	SelectPopup,
 	SelectTrigger,
 	SelectValue,
 } from "@/components/ui/select";
 
-const languages = {
-	javascript: "JavaScript",
-	typescript: "TypeScript",
-	python: "Python",
-	java: "Java",
-	csharp: "C#",
-	php: "PHP",
-	cpp: "C++",
-	rust: "Rust",
-	go: "Go",
-	swift: "Swift",
-};
+const items = [
+	{ label: "Apple", value: "apple" },
+	{ label: "Banana", value: "banana" },
+	{ label: "Blueberry", value: "blueberry" },
+	{ label: "Grape", value: "grape" },
+	{ label: "Mango", value: "mango" },
+	{ label: "Orange", value: "orange" },
+	{ label: "Peach", value: "peach" },
+	{ label: "Strawberry", value: "strawberry" },
+];
 
-type Language = keyof typeof languages;
-
-const values = Object.keys(languages) as Language[];
-
-function renderValue(value: Language[]) {
+function renderValue(value: string[]) {
 	if (value.length === 0) {
-		return "Select languages...";
+		return "Select fruits";
 	}
 
-	const firstLanguage = languages[value[0]];
-	const additionalLanguages =
+	const firstItem = items.find((item) => item.value === value[0]);
+	const additionalItems =
 		value.length > 1 ? ` (+${value.length - 1} more)` : "";
-	return firstLanguage + additionalLanguages;
+	return firstItem?.label + additionalItems;
 }
-
 export default function SelectMultipleDemo() {
 	return (
-		<div className="w-80">
-			<Select multiple>
-				<SelectTrigger className="w-full">
-					<SelectValue>{renderValue}</SelectValue>
-				</SelectTrigger>
-				<SelectContent>
-					{values.map((value) => (
-						<SelectItem key={value} value={value}>
-							{languages[value]}
-						</SelectItem>
-					))}
-				</SelectContent>
-			</Select>
-		</div>
+		<Select multiple items={items}>
+			<SelectTrigger aria-label="Fruit" className="w-44">
+				<SelectValue>{renderValue}</SelectValue>
+			</SelectTrigger>
+			<SelectPopup>
+				{items.map(({ label, value }) => (
+					<SelectItem key={value} value={value}>
+						{label}
+					</SelectItem>
+				))}
+			</SelectPopup>
+		</Select>
 	);
 }

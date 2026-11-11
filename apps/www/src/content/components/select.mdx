@@ -1,12 +1,12 @@
 ---
 title: Select
-description: A dropdown menu for choosing one option from a list..
+description: A control for choosing one or more options from a list.
 ---
 <ComponentLinks
 	links={[
 		{
-			label: "Docs",
-			href: "https://base-ui.com/react/components/select",
+			label: "API Reference",
+			href: "https://base-ui.com/react/components/select#api-reference",
 		},
 	]}
 />
@@ -36,9 +36,12 @@ npx shadcn@latest add @9ui/select
 ```tsx title="Imports"
 import {
 	Select,
-	SelectContent,
 	SelectGroup,
+	SelectGroupLabel,
 	SelectItem,
+	SelectLabel,
+	SelectPopup,
+	SelectSeparator,
 	SelectTrigger,
 	SelectValue,
 } from "@/components/ui/select"
@@ -46,32 +49,81 @@ import {
 
 ```tsx title="Anatomy"
 <Select>
+	<SelectLabel />
 	<SelectTrigger>
 		<SelectValue />
 	</SelectTrigger>
-	<SelectContent>
+	<SelectPopup>
 		<SelectGroup>
 			<SelectGroupLabel />
 			<SelectItem />
 		</SelectGroup>
-	</SelectContent>
+		<SelectSeparator />
+		<SelectItem />
+	</SelectPopup>
 </Select>
 ```
 
+Pass `items` to `Select` so `SelectValue` shows the label of the selected value instead of the raw value. Give every select a name: add a `SelectLabel`, use [Field](/docs/components/field) with a `FieldLabel`, or set `aria-label` on `SelectTrigger`. For long lists that need filtering, use [Combobox](/docs/components/combobox).
+
 ## Examples
 
-### Custom value
+### Sizes
 
-<ComponentPreview name="select-with-custom-value-demo" />
+Set `size="sm"` on `SelectTrigger` for a smaller trigger.
 
----
+<ComponentPreview name="select-sm-demo" />
 
-### With groups
+### Placeholder
 
-<ComponentPreview name="select-with-groups-demo" />
+Set `placeholder` on `SelectValue` to show a hint while nothing is selected. To let people clear the value from the list, add an item with a `null` value instead.
 
----
+<ComponentPreview name="select-placeholder-demo" />
 
-### Multiple
+### Align Item with Trigger
+
+The popup opens over the trigger, with the selected item on top of the value. On touch devices and when there is not enough room, it opens below the trigger instead. Set `alignItemWithTrigger={false}` on `SelectPopup` to always open it beside the trigger.
+
+<ComponentPreview name="select-align-item-with-trigger-demo" />
+
+### Groups
+
+Use `SelectGroup`, `SelectGroupLabel` and `SelectSeparator` to split options into labeled sections.
+
+<ComponentPreview name="select-groups-demo" />
+
+### Disabled
+
+Set `disabled` on `Field` to disable the select and dim its label. Outside a `Field`, set `disabled` on `Select`.
+
+<ComponentPreview name="select-disabled-demo" />
+
+### Invalid
+
+Set `invalid` on `Field` to show the error state, and clear it once an option is selected. Outside a `Field`, set `aria-invalid` on `SelectTrigger`.
+
+<ComponentPreview name="select-invalid-demo" showReload={true} />
+
+### Scrollable
+
+A list taller than the available space scrolls, with arrows at the top and bottom edges.
+
+<ComponentPreview name="select-scrollable-demo" />
+
+### Multiple Selection
+
+Set `multiple` on `Select` to allow more than one option. Pass a function to `SelectValue` to format the selected values.
 
 <ComponentPreview name="select-multiple-demo" />
+
+### Item with Description
+
+Stack a label and a description inside `SelectItem`. With `items` set, the trigger shows only the label.
+
+<ComponentPreview name="select-item-description-demo" />
+
+### With Icon
+
+Place an icon inside `SelectItem`. Pass a function to `SelectValue` to show the icon in the trigger.
+
+<ComponentPreview name="select-icon-demo" />
