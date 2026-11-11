@@ -116,7 +116,10 @@
 			}
 		},
 		{
-			"includes": ["src/components/ui/field.tsx"],
+			"includes": [
+				"src/components/ui/field.tsx",
+				"src/components/ui/select.tsx"
+			],
 			"linter": {
 				"rules": {
 					"a11y": {

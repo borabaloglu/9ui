@@ -15,8 +15,8 @@ import {
 } from "@/components/ui/popover";
 import {
 	Select,
-	SelectContent,
 	SelectItem,
+	SelectPopup,
 	SelectTrigger,
 	SelectValue,
 } from "@/components/ui/select";
@@ -89,13 +89,13 @@ export default function ToolbarDemo() {
 				<SelectTrigger className="w-40 md:w-52">
 					<SelectValue className="truncate" />
 				</SelectTrigger>
-				<SelectContent className="w-52">
+				<SelectPopup className="w-52">
 					{models.map((model) => (
 						<SelectItem key={model.value} value={model.value}>
 							{model.label}
 						</SelectItem>
 					))}
-				</SelectContent>
+				</SelectPopup>
 			</Select>
 
 			<ToolbarSeparator />

@@ -19,8 +19,8 @@ import {
 import { Label } from "@/components/ui/label";
 import {
 	Select,
-	SelectContent,
 	SelectItem,
+	SelectPopup,
 	SelectTrigger,
 	SelectValue,
 } from "@/components/ui/select";
@@ -196,7 +196,7 @@ export const CustomizeToolbar = ({
 												}
 											</SelectValue>
 										</SelectTrigger>
-										<SelectContent>
+										<SelectPopup>
 											{shadeOptions.map((option) => (
 												<SelectItem key={option.value} value={option.value}>
 													<ColorItem
@@ -208,7 +208,7 @@ export const CustomizeToolbar = ({
 													/>
 												</SelectItem>
 											))}
-										</SelectContent>
+										</SelectPopup>
 									</Select>
 								</div>
 								<div className="flex flex-col gap-2">
@@ -225,7 +225,7 @@ export const CustomizeToolbar = ({
 												{() => (theme.flat ? "Flat" : "Faded")}
 											</SelectValue>
 										</SelectTrigger>
-										<SelectContent>
+										<SelectPopup>
 											{[
 												{ value: false, name: "Faded" },
 												{ value: true, name: "Flat" },
@@ -237,7 +237,7 @@ export const CustomizeToolbar = ({
 													{option.name}
 												</SelectItem>
 											))}
-										</SelectContent>
+										</SelectPopup>
 									</Select>
 								</div>
 								<div className="flex flex-col gap-2">
@@ -271,7 +271,7 @@ export const CustomizeToolbar = ({
 												}
 											</SelectValue>
 										</SelectTrigger>
-										<SelectContent>
+										<SelectPopup>
 											{primaryColorOptions.map((option) => (
 												<SelectItem key={option.value} value={option.value}>
 													<ColorItem
@@ -288,7 +288,7 @@ export const CustomizeToolbar = ({
 													/>
 												</SelectItem>
 											))}
-										</SelectContent>
+										</SelectPopup>
 									</Select>
 								</div>
 								<div className="flex flex-col gap-2">
@@ -319,7 +319,7 @@ export const CustomizeToolbar = ({
 												}
 											</SelectValue>
 										</SelectTrigger>
-										<SelectContent>
+										<SelectPopup>
 											{radiusOptions.map((option) => (
 												<SelectItem key={option.value} value={option.value}>
 													<div className="flex items-center gap-2">
@@ -333,7 +333,7 @@ export const CustomizeToolbar = ({
 													</div>
 												</SelectItem>
 											))}
-										</SelectContent>
+										</SelectPopup>
 									</Select>
 								</div>
 							</div>

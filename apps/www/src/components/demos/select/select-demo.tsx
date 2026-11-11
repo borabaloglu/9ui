@@ -1,45 +1,36 @@
 import {
 	Select,
-	SelectContent,
 	SelectItem,
+	SelectPopup,
 	SelectTrigger,
 	SelectValue,
 } from "@/components/ui/select";
 
 const items = [
-	{
-		label: "Select a fruit",
-		value: null,
-	},
-	{
-		label: "Apple",
-		value: "apple",
-	},
-	{
-		label: "Banana",
-		value: "banana",
-	},
-	{
-		label: "Cherry",
-		value: "cherry",
-	},
+	{ label: "Select a fruit", value: null },
+	{ label: "Apple", value: "apple" },
+	{ label: "Banana", value: "banana" },
+	{ label: "Blueberry", value: "blueberry" },
+	{ label: "Grape", value: "grape" },
+	{ label: "Mango", value: "mango" },
+	{ label: "Orange", value: "orange" },
+	{ label: "Peach", value: "peach" },
+	{ label: "Strawberry", value: "strawberry" },
 ];
 
 export default function SelectDemo() {
 	return (
-		<div className="w-80">
-			<Select items={items}>
-				<SelectTrigger className="w-full">
-					<SelectValue />
-				</SelectTrigger>
-				<SelectContent>
-					{items.map((item) => (
-						<SelectItem key={item.value} value={item.value}>
-							{item.label}
-						</SelectItem>
-					))}
-				</SelectContent>
-			</Select>
-		</div>
+		<Select items={items}>
+			<SelectTrigger aria-label="Fruit" className="w-44">
+				<SelectValue />
+			</SelectTrigger>
+			<SelectPopup>
+				{items.map(({ label, value }) => (
+					<SelectItem key={value} value={value}>
+						{label}
+					</SelectItem>
+				))}
+			</SelectPopup>
+		</Select>
 	);
 }
