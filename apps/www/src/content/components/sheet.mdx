@@ -5,8 +5,8 @@ description: A sliding panel for displaying content.
 <ComponentLinks
 	links={[
 		{
-			label: "Docs",
-			href: "https://base-ui.com/react/components/dialog",
+			label: "API Reference",
+			href: "https://base-ui.com/react/components/dialog#api-reference",
 		},
 	]}
 />
@@ -37,10 +37,11 @@ npx shadcn@latest add @9ui/sheet
 import {
 	Sheet,
 	SheetClose,
-	SheetContent,
 	SheetDescription,
 	SheetFooter,
 	SheetHeader,
+	SheetPanel,
+	SheetPopup,
 	SheetTitle,
 	SheetTrigger,
 } from "@/components/ui/sheet"
@@ -49,21 +50,43 @@ import {
 ```tsx title="Anatomy"
 <Sheet>
 	<SheetTrigger />
-	<SheetContent>
-		<SheetClose />
+	<SheetPopup>
 		<SheetHeader>
 			<SheetTitle />
 			<SheetDescription />
 		</SheetHeader>
+		<SheetPanel />
 		<SheetFooter>
 			<SheetClose />
 		</SheetFooter>
-	</SheetContent>
+	</SheetPopup>
 </Sheet>
 ```
 
+Put the body in `SheetPanel`. It scrolls when the content is taller than the sheet, while the header and footer stay in place.
+
+The sheet pads its top and bottom by `env(safe-area-inset-top)` and `env(safe-area-inset-bottom)`, so content clears the status bar and home indicator when the page uses `viewport-fit=cover`.
+
 ## Examples
 
-### Sides
+### Side
 
-<ComponentPreview name="sheet-sides-demo" />
+Set `side` on `SheetPopup` to choose the edge the sheet slides in from.
+
+<ComponentPreview name="sheet-side-demo" />
+
+### Inset
+
+Set `variant="inset"` on `SheetPopup` to float the sheet inside the viewport with rounded corners. On small screens it stays attached to the edge.
+
+<ComponentPreview name="sheet-inset-demo" />
+
+### Close Button
+
+Set `showCloseButton={false}` on `SheetPopup` to remove the close button from the corner. The sheet still closes on Escape and on an outside press.
+
+### Bare Footer
+
+Set `variant="bare"` on `SheetFooter` to drop its border and background.
+
+<ComponentPreview name="sheet-footer-bare-demo" />

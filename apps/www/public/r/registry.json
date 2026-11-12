@@ -609,7 +609,7 @@
 			"name": "sheet",
 			"type": "registry:ui",
 			"dependencies": [],
-			"registryDependencies": [],
+			"registryDependencies": ["@9ui/button"],
 			"files": [
 				{
 					"path": "src/components/ui/sheet.tsx",

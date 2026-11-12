@@ -1,13 +1,13 @@
-"use client";
-
 import type * as React from "react";
 import { Dialog as BaseSheet } from "@base-ui/react/dialog";
 import { XIcon } from "lucide-react";
 
+import { Button } from "@/components/ui/button";
+
 import { cn } from "@/lib/utils";
 
 function Sheet({ ...props }: React.ComponentProps<typeof BaseSheet.Root>) {
-	return <BaseSheet.Root data-slot="sheet" {...props} />;
+	return <BaseSheet.Root {...props} />;
 }
 
 function SheetTrigger({
@@ -22,21 +22,15 @@ function SheetClose({
 	return <BaseSheet.Close data-slot="sheet-close" {...props} />;
 }
 
-function SheetPortal({
-	...props
-}: React.ComponentProps<typeof BaseSheet.Portal>) {
-	return <BaseSheet.Portal data-slot="sheet-portal" {...props} />;
-}
-
-function SheetOverlay({
+function SheetBackdrop({
 	className,
 	...props
 }: React.ComponentProps<typeof BaseSheet.Backdrop>) {
 	return (
 		<BaseSheet.Backdrop
-			data-slot="sheet-overlay"
+			data-slot="sheet-backdrop"
 			className={cn(
-				"fixed inset-0 bg-black/50 transition-all duration-200 [&[data-ending-style]]:opacity-0 [&[data-starting-style]]:opacity-0",
+				"fixed inset-0 z-50 min-h-dvh bg-black/30 transition-opacity duration-400 data-ending-style:opacity-0 data-ending-style:duration-250 data-starting-style:opacity-0 supports-backdrop-filter:backdrop-blur-xs supports-[-webkit-touch-callout:none]:absolute",
 				className,
 			)}
 			{...props}
@@ -44,40 +38,71 @@ function SheetOverlay({
 	);
 }
 
-function SheetContent({
+function SheetPopup({
 	className,
 	children,
 	side = "right",
+	variant = "default",
+	showCloseButton = true,
 	...props
 }: React.ComponentProps<typeof BaseSheet.Popup> & {
 	side?: "top" | "right" | "bottom" | "left";
+	variant?: "default" | "inset";
+	showCloseButton?: boolean;
 }) {
 	return (
-		<SheetPortal>
-			<SheetOverlay />
-			<BaseSheet.Popup
-				data-slot="sheet-content"
+		<BaseSheet.Portal data-slot="sheet-portal">
+			<SheetBackdrop />
+			<BaseSheet.Viewport
+				data-slot="sheet-viewport"
 				className={cn(
-					"bg-popover text-popover-foreground fixed z-50 flex max-h-[calc(100vh-2rem)] flex-col gap-4 rounded-lg shadow-lg outline-hidden transition ease-in-out data-closed:duration-200 data-open:duration-500",
-					side === "right" &&
-						"inset-y-0 top-4 right-0 h-full w-3/4 origin-right -translate-x-4 border sm:max-w-sm [&[data-ending-style]]:translate-x-full [&[data-starting-style]]:translate-x-full",
-					side === "left" &&
-						"inset-y-0 top-4 left-0 h-full w-3/4 origin-left translate-x-4 border sm:max-w-sm [&[data-ending-style]]:-translate-x-full [&[data-starting-style]]:-translate-x-full",
-					side === "top" &&
-						"inset-x-0 top-0 mx-auto h-auto w-[calc(100vw-2rem)] origin-top translate-y-4 border [&[data-ending-style]]:-translate-y-full [&[data-starting-style]]:-translate-y-full",
-					side === "bottom" &&
-						"inset-x-0 bottom-0 mx-auto h-auto w-[calc(100vw-2rem)] origin-bottom -translate-y-4 border [&[data-ending-style]]:translate-y-full [&[data-starting-style]]:translate-y-full",
-					className,
+					"fixed inset-0 z-50 flex",
+					side === "top" && "flex-col justify-start pb-12",
+					side === "right" && "justify-end",
+					side === "bottom" && "flex-col justify-end pt-12",
+					side === "left" && "justify-start",
+					variant === "inset" && "sm:p-4",
 				)}
-				{...props}
 			>
-				{children}
-				<SheetClose className="text-muted-foreground ring-offset-popover focus:ring-ring absolute top-4 right-4 rounded-xs opacity-50 transition-opacity hover:opacity-100 focus:ring-[3px] focus:ring-offset-2 focus:outline-hidden [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4">
-					<XIcon className="size-4" />
-					<span className="sr-only">Close</span>
-				</SheetClose>
-			</BaseSheet.Popup>
-		</SheetPortal>
+				<BaseSheet.Popup
+					data-slot="sheet-popup"
+					data-side={side}
+					data-variant={variant}
+					className={cn(
+						"group/sheet-popup bg-popover text-popover-foreground relative flex flex-col gap-4 overflow-y-auto overscroll-contain pt-(--sheet-top) pb-(--sheet-bottom) text-sm shadow-lg transition-[translate,opacity,filter] duration-400 ease-[cubic-bezier(0.32,0.72,0,1)] outline-none [--sheet-offset:0px] data-ending-style:duration-250 data-nested-dialog-open:brightness-90 motion-reduce:data-ending-style:opacity-0 motion-reduce:data-starting-style:opacity-0 dark:data-nested-dialog-open:brightness-75",
+						side === "top" &&
+							"max-h-full w-full border-b [--sheet-bottom:0px] [--sheet-top:env(safe-area-inset-top,0px)] motion-safe:data-ending-style:-translate-y-[calc(100%+var(--sheet-offset))] motion-safe:data-starting-style:-translate-y-[calc(100%+var(--sheet-offset))]",
+						side === "right" &&
+							"h-full w-[calc(100%-(--spacing(12)))] max-w-sm border-l [--sheet-bottom:env(safe-area-inset-bottom,0px)] [--sheet-top:env(safe-area-inset-top,0px)] motion-safe:data-ending-style:translate-x-[calc(100%+var(--sheet-offset))] motion-safe:data-starting-style:translate-x-[calc(100%+var(--sheet-offset))]",
+						side === "bottom" &&
+							"max-h-full w-full border-t [--sheet-bottom:env(safe-area-inset-bottom,0px)] [--sheet-top:0px] motion-safe:data-ending-style:translate-y-[calc(100%+var(--sheet-offset))] motion-safe:data-starting-style:translate-y-[calc(100%+var(--sheet-offset))]",
+						side === "left" &&
+							"h-full w-[calc(100%-(--spacing(12)))] max-w-sm border-r [--sheet-bottom:env(safe-area-inset-bottom,0px)] [--sheet-top:env(safe-area-inset-top,0px)] motion-safe:data-ending-style:-translate-x-[calc(100%+var(--sheet-offset))] motion-safe:data-starting-style:-translate-x-[calc(100%+var(--sheet-offset))]",
+						variant === "inset" &&
+							"sm:rounded-2xl sm:border sm:[--sheet-bottom:0px] sm:[--sheet-offset:--spacing(4)] sm:[--sheet-top:0px] sm:not-dark:border-b-[color-mix(in_oklab,var(--border),black_6%)] sm:dark:border-t-[color-mix(in_oklab,var(--border),white_8%)]",
+						className,
+					)}
+					{...props}
+				>
+					{children}
+					{showCloseButton && (
+						<BaseSheet.Close
+							data-slot="sheet-close"
+							aria-label="Close"
+							render={
+								<Button
+									variant="ghost"
+									size="icon-sm"
+									className="absolute end-2 top-[calc(--spacing(2)+var(--sheet-top))]"
+								/>
+							}
+						>
+							<XIcon />
+						</BaseSheet.Close>
+					)}
+				</BaseSheet.Popup>
+			</BaseSheet.Viewport>
+		</BaseSheet.Portal>
 	);
 }
 
@@ -85,7 +110,45 @@ function SheetHeader({ className, ...props }: React.ComponentProps<"div">) {
 	return (
 		<div
 			data-slot="sheet-header"
-			className={cn("flex flex-col gap-1.5 p-4", className)}
+			className={cn(
+				"flex flex-col gap-1.5 p-4 group-has-[>[data-slot=sheet-close]]/sheet-popup:pe-12",
+				className,
+			)}
+			{...props}
+		/>
+	);
+}
+
+function SheetPanel({ className, ...props }: React.ComponentProps<"div">) {
+	return (
+		<div
+			data-slot="sheet-panel"
+			className={cn(
+				"-my-1 min-h-0 flex-1 overflow-y-auto overscroll-contain px-4 py-1",
+				className,
+			)}
+			{...props}
+		/>
+	);
+}
+
+function SheetFooter({
+	className,
+	variant = "default",
+	...props
+}: React.ComponentProps<"div"> & {
+	variant?: "default" | "bare";
+}) {
+	return (
+		<div
+			data-slot="sheet-footer"
+			data-variant={variant}
+			className={cn(
+				"mt-auto flex flex-col-reverse gap-2 p-4 sm:flex-row sm:justify-end",
+				variant === "default" &&
+					"bg-muted/50 -mb-(--sheet-bottom) border-t pb-[calc(--spacing(4)+var(--sheet-bottom))]",
+				className,
+			)}
 			{...props}
 		/>
 	);
@@ -98,7 +161,7 @@ function SheetTitle({
 	return (
 		<BaseSheet.Title
 			data-slot="sheet-title"
-			className={cn("text-foreground font-semibold", className)}
+			className={cn("text-base leading-snug font-medium", className)}
 			{...props}
 		/>
 	);
@@ -111,17 +174,10 @@ function SheetDescription({
 	return (
 		<BaseSheet.Description
 			data-slot="sheet-description"
-			className={cn("text-muted-foreground text-sm", className)}
-			{...props}
-		/>
-	);
-}
-
-function SheetFooter({ className, ...props }: React.ComponentProps<"div">) {
-	return (
-		<div
-			data-slot="sheet-footer"
-			className={cn("mt-auto flex flex-col gap-2 p-4", className)}
+			className={cn(
+				"text-muted-foreground *:[a]:hover:text-foreground text-sm text-pretty *:[a]:underline *:[a]:underline-offset-3",
+				className,
+			)}
 			{...props}
 		/>
 	);
@@ -129,12 +185,13 @@ function SheetFooter({ className, ...props }: React.ComponentProps<"div">) {
 
 export {
 	Sheet,
+	SheetBackdrop,
 	SheetClose,
-	SheetContent,
 	SheetDescription,
 	SheetFooter,
 	SheetHeader,
-	SheetOverlay,
+	SheetPanel,
+	SheetPopup,
 	SheetTitle,
 	SheetTrigger,
 };
