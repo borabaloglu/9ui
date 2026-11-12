@@ -5,8 +5,8 @@ description: A modal dialog for critical messages or confirmation actions.
 <ComponentLinks
 	links={[
 		{
-			label: "Docs",
-			href: "https://base-ui.com/react/components/alert-dialog",
+			label: "API Reference",
+			href: "https://base-ui.com/react/components/alert-dialog#api-reference",
 		},
 	]}
 />
@@ -36,10 +36,11 @@ npx shadcn@latest add @9ui/alert-dialog
 ```tsx title="Imports"
 import {
 	AlertDialog,
-	AlertDialogContent,
+	AlertDialogClose,
 	AlertDialogDescription,
 	AlertDialogFooter,
 	AlertDialogHeader,
+	AlertDialogPopup,
 	AlertDialogTitle,
 	AlertDialogTrigger,
 } from "@/components/ui/alert-dialog"
@@ -48,7 +49,7 @@ import {
 ```tsx title="Anatomy"
 <AlertDialog>
 	<AlertDialogTrigger />
-	<AlertDialogContent>
+	<AlertDialogPopup>
 		<AlertDialogHeader>
 			<AlertDialogTitle />
 			<AlertDialogDescription />
@@ -56,6 +57,40 @@ import {
 		<AlertDialogFooter>
 			<AlertDialogClose />
 		</AlertDialogFooter>
-	</AlertDialogContent>
+	</AlertDialogPopup>
 </AlertDialog>
 ```
+
+## Examples
+
+### Sizes
+
+Set `size="sm"` on `AlertDialogPopup` for a narrower dialog with tighter padding, a centered header and equal-width footer buttons.
+
+<ComponentPreview name="alert-dialog-sm-demo" />
+
+### Icon
+
+Place an icon in `AlertDialogMedia` at the top of `AlertDialogHeader` to signal the kind of action.
+
+<ComponentPreview name="alert-dialog-icon-demo" />
+
+### Mobile Position
+
+On small screens the alert dialog sits at the bottom edge. Set `showAtBottomOnMobile={false}` on `AlertDialogPopup` to keep it centered.
+
+The bottom padding grows by `env(safe-area-inset-bottom)`, so actions clear the home indicator when the page uses `viewport-fit=cover`.
+
+<ComponentPreview name="alert-dialog-mobile-bottom-off-demo" />
+
+### Bare Footer
+
+Set `variant="bare"` on `AlertDialogFooter` to drop its border and background.
+
+<ComponentPreview name="alert-dialog-footer-bare-demo" />
+
+### Close Confirmation
+
+Open an alert dialog from a dialog to confirm before unsaved changes are discarded.
+
+<ComponentPreview name="alert-dialog-close-confirmation-demo" />
