@@ -5,11 +5,11 @@ const versions = Array.from({ length: 50 }, (_, i) => `v${i + 1}.0.0`);
 
 export default function ScrollAreaDemo() {
 	return (
-		<ScrollArea className="h-60 w-full max-w-60 rounded-md border">
-			<div className="p-4">
-				<h4 className="text-sm font-medium">Versions</h4>
-				<Separator className="my-2" />
-				<div className="mt-2 flex flex-col gap-2 text-sm">
+		<ScrollArea className="h-80 w-40 rounded-lg border">
+			<div className="flex flex-col gap-1.5 p-3 text-sm">
+				<h4 className="font-medium">Versions</h4>
+				<Separator />
+				<div className="flex flex-col gap-1.5">
 					{versions.map((version) => (
 						<div key={version}>{version}</div>
 					))}

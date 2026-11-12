@@ -5,8 +5,8 @@ description: A component for creating scrollable regions.
 <ComponentLinks
 	links={[
 		{
-			label: "Docs",
-			href: "https://base-ui.com/react/components/scroll-area",
+			label: "API Reference",
+			href: "https://base-ui.com/react/components/scroll-area#api-reference",
 		},
 	]}
 />
@@ -41,8 +41,18 @@ import { ScrollArea } from "@/components/ui/scroll-area"
 <ScrollArea />
 ```
 
+Give `ScrollArea` a height or a max height. Scrollbars appear on hover and while scrolling, only on the axes that overflow.
+
 ## Examples
 
 ### Horizontal
 
+Content wider than the scroll area scrolls sideways.
+
 <ComponentPreview name="scroll-area-horizontal-demo" />
+
+### Fade
+
+Set `scrollFade` to fade the content at the edges that have more to scroll.
+
+<ComponentPreview name="scroll-area-fade-demo" />

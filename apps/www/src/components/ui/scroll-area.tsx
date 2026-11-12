@@ -1,4 +1,3 @@
-import type * as React from "react";
 import { ScrollArea as BaseScrollArea } from "@base-ui/react/scroll-area";
 
 import { cn } from "@/lib/utils";
@@ -6,25 +5,31 @@ import { cn } from "@/lib/utils";
 function ScrollArea({
 	className,
 	children,
-	orientation,
+	scrollFade = false,
 	...props
-}: React.ComponentProps<typeof BaseScrollArea.Root> & {
-	orientation?: "horizontal" | "vertical";
+}: Omit<BaseScrollArea.Root.Props, "className"> & {
+	className?: string;
+	scrollFade?: boolean;
 }) {
 	return (
 		<BaseScrollArea.Root
 			data-slot="scroll-area"
-			className={cn("relative", className)}
+			className={cn("relative flex flex-col", className)}
 			{...props}
 		>
 			<BaseScrollArea.Viewport
 				data-slot="scroll-area-viewport"
-				className="focus-visible:ring-ring/50 size-full overscroll-contain rounded-[inherit] transition-[color,box-shadow] outline-none [--scroll-area-thumb-bg:inherit] [--scroll-area-thumb-hover-bg:inherit] focus-visible:ring-[3px] focus-visible:outline"
+				className={cn(
+					"focus-visible:ring-ring/50 min-h-0 flex-1 rounded-[inherit] outline-none focus-visible:ring-[3px] data-has-overflow-x:overscroll-x-contain data-has-overflow-y:overscroll-y-contain",
+					scrollFade &&
+						"mask-t-from-[calc(100%-min(var(--fade-size),var(--scroll-area-overflow-y-start)))] mask-r-from-[calc(100%-min(var(--fade-size),var(--scroll-area-overflow-x-end)))] mask-b-from-[calc(100%-min(var(--fade-size),var(--scroll-area-overflow-y-end)))] mask-l-from-[calc(100%-min(var(--fade-size),var(--scroll-area-overflow-x-start)))] [--fade-size:--spacing(6)] rtl:mask-r-from-[calc(100%-min(var(--fade-size),var(--scroll-area-overflow-x-start)))] rtl:mask-l-from-[calc(100%-min(var(--fade-size),var(--scroll-area-overflow-x-end)))]",
+				)}
 			>
 				{children}
 			</BaseScrollArea.Viewport>
-			<ScrollBar orientation={orientation} />
-			<BaseScrollArea.Corner />
+			<ScrollBar orientation="vertical" />
+			<ScrollBar orientation="horizontal" />
+			<BaseScrollArea.Corner data-slot="scroll-area-corner" />
 		</BaseScrollArea.Root>
 	);
 }
@@ -33,23 +38,23 @@ function ScrollBar({
 	className,
 	orientation = "vertical",
 	...props
-}: React.ComponentProps<typeof BaseScrollArea.Scrollbar>) {
+}: Omit<BaseScrollArea.Scrollbar.Props, "className"> & {
+	className?: string;
+}) {
 	return (
 		<BaseScrollArea.Scrollbar
 			data-slot="scroll-area-scrollbar"
 			orientation={orientation}
 			className={cn(
-				"m-1 flex touch-none p-px opacity-0 transition-[border-color,opacity] delay-200 select-none data-hovering:opacity-100 data-hovering:delay-0 data-hovering:duration-100 data-scrolling:opacity-100 data-scrolling:delay-0 data-scrolling:duration-100",
-				orientation === "vertical" && "w-2.5 border-l border-l-transparent",
-				orientation === "horizontal" &&
-					"h-2.5 flex-col border-t border-t-transparent",
+				"pointer-events-none m-0.5 flex touch-none p-0.5 opacity-0 transition-opacity delay-300 select-none data-hovering:pointer-events-auto data-hovering:opacity-100 data-hovering:delay-0 data-hovering:duration-100 data-scrolling:pointer-events-auto data-scrolling:opacity-100 data-scrolling:delay-0 data-scrolling:duration-100",
+				orientation === "vertical" ? "w-2.5" : "h-2.5 flex-col",
 				className,
 			)}
 			{...props}
 		>
 			<BaseScrollArea.Thumb
 				data-slot="scroll-area-thumb"
-				className="bg-border relative flex-1 rounded-full"
+				className="bg-foreground/20 hover:bg-foreground/30 active:bg-foreground/40 relative flex-1 rounded-full transition-colors"
 			/>
 		</BaseScrollArea.Scrollbar>
 	);
