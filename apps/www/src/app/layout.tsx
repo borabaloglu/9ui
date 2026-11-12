@@ -88,12 +88,7 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => (
 			>
 				<ToastProvider>
 					<TooltipProvider>
-						<div
-							className="root flex flex-1 flex-col"
-							data-vaul-drawer-wrapper=""
-						>
-							{children}
-						</div>
+						<div className="root flex flex-1 flex-col">{children}</div>
 					</TooltipProvider>
 				</ToastProvider>
 				<Toaster />

@@ -1,0 +1,133 @@
+---
+title: Vaul
+description: A drawer with drag gestures and snap points, built on vaul-base.
+---
+<ComponentLinks
+	links={[
+		{
+			label: "Docs",
+			href: "https://vaul.emilkowal.ski/getting-started",
+		},
+	]}
+/>
+
+<ComponentPreview name="vaul-demo" />
+
+## About
+
+Vaul is built on top of [`vaul-base`](https://vaul-base.vercel.app), a port of [`vaul`](https://vaul.emilkowal.ski) to Base UI. `vaul` was originally created by [@emilkowalski\_](https://x.com/emilkowalski_).
+
+## Installation
+
+<ComponentInstallation>
+<div>
+```bash title="Terminal"
+npx shadcn@latest add @9ui/vaul
+```
+</div>
+
+<Steps>
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install vaul-base
+```
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="vaul" />
+
+</Steps>
+</ComponentInstallation>
+
+## Usage
+
+```tsx title="Imports"
+import {
+	Vaul,
+	VaulClose,
+	VaulContent,
+	VaulDescription,
+	VaulFooter,
+	VaulHeader,
+	VaulPanel,
+	VaulTitle,
+	VaulTrigger,
+} from "@/components/ui/vaul"
+```
+
+```tsx title="Anatomy"
+<Vaul>
+	<VaulTrigger />
+	<VaulContent>
+		<VaulHeader>
+			<VaulTitle />
+			<VaulDescription />
+		</VaulHeader>
+		<VaulPanel />
+		<VaulFooter>
+			<VaulClose />
+		</VaulFooter>
+	</VaulContent>
+</Vaul>
+```
+
+Put the body in `VaulPanel`. It scrolls when the content is taller than the drawer, while the header and footer stay in place.
+
+On top and bottom drawers the header, panel and footer keep their content in a centered column, so it stays readable on wide screens.
+
+The drawer pads its edges by `env(safe-area-inset-top)` and `env(safe-area-inset-bottom)`, so content clears the status bar and home indicator when the page uses `viewport-fit=cover`.
+
+## Examples
+
+### Direction
+
+Set `direction` on `Vaul` to choose the edge the drawer slides in from.
+
+<ComponentPreview name="vaul-direction-demo" />
+
+### Inset
+
+Set `variant="inset"` on `VaulContent` to float the drawer inside the viewport with rounded corners on every side. Inset drawers are not meant to be combined with snap points.
+
+<ComponentPreview name="vaul-inset-demo" />
+
+### Scrollable Content
+
+`VaulPanel` scrolls on its own. Dragging the drawer down closes it once the panel is scrolled to the top.
+
+<ComponentPreview name="vaul-scrollable-content-demo" />
+
+### Snap Points
+
+Pass `snapPoints` to let the drawer rest at fixed heights. Use pixel strings or a fraction of the screen height, and control the current one with `activeSnapPoint` and `setActiveSnapPoint`.
+
+<ComponentPreview name="vaul-snap-points-demo" />
+
+### Nested
+
+Use `VaulNested` as the root of a drawer opened from inside another. The parent scales down behind the nested one.
+
+<ComponentPreview name="vaul-nested-demo" />
+
+### Bare Footer
+
+Set `variant="bare"` on `VaulFooter` to drop its border and background.
+
+<ComponentPreview name="vaul-footer-bare-demo" />
+
+### Handle
+
+The handle shows on top and bottom drawers. Set `showHandle={false}` on `VaulContent` to remove it, or render `VaulHandle` yourself to place it elsewhere. Set `handleOnly` on `Vaul` to make the handle the only area that drags.
+
+### Scale Background
+
+Set `shouldScaleBackground` on `Vaul` to scale the page down while the drawer is open. Add `data-vaul-drawer-wrapper` to the element that wraps your app.
+
+```tsx
+<div data-vaul-drawer-wrapper="">{children}</div>
+```
+
+The example below runs in a sandbox: the drawer is rendered into the frame with `container`, and the frame is the scaled wrapper. In your app the wrapper is the page itself.
+
+<ComponentPreview name="vaul-scale-background-demo" />

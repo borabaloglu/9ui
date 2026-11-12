@@ -23,7 +23,6 @@
 		"data-table",
 		"date-picker",
 		"dialog",
-		"drawer",
 		"emoji-picker",
 		"field",
 		"fieldset",
@@ -60,6 +59,7 @@
 		"toggle",
 		"toggle-group",
 		"toolbar",
-		"tooltip"
+		"tooltip",
+		"vaul"
 	]
 }

@@ -275,19 +275,6 @@
 			]
 		},
 		{
-			"name": "drawer",
-			"type": "registry:ui",
-			"dependencies": ["vaul-base"],
-			"registryDependencies": [],
-			"files": [
-				{
-					"path": "src/components/ui/drawer.tsx",
-					"type": "registry:ui",
-					"target": ""
-				}
-			]
-		},
-		{
 			"name": "emoji-picker",
 			"type": "registry:ui",
 			"dependencies": [],
@@ -786,6 +773,19 @@
 			"files": [
 				{
 					"path": "src/components/ui/tooltip.tsx",
+					"type": "registry:ui",
+					"target": ""
+				}
+			]
+		},
+		{
+			"name": "vaul",
+			"type": "registry:ui",
+			"dependencies": ["vaul-base"],
+			"registryDependencies": [],
+			"files": [
+				{
+					"path": "src/components/ui/vaul.tsx",
 					"type": "registry:ui",
 					"target": ""
 				}
