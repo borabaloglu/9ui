@@ -11,7 +11,7 @@ import { Button } from "@/components/ui/button";
 import {
 	Sheet,
 	SheetClose,
-	SheetContent,
+	SheetPopup,
 	SheetTitle,
 	SheetTrigger,
 } from "@/components/ui/sheet";
@@ -44,9 +44,10 @@ export function DocsMobileSidebar({ sidebarNav }: DocsMobileSidebarProps) {
 					</Button>
 				}
 			/>
-			<SheetContent
+			<SheetPopup
 				side="right"
-				className="bg-card top-0 h-dvh max-h-dvh w-[85%] translate-x-0 gap-0 rounded-none border-y-0 border-e-0 [&>[data-slot=sheet-close]]:hidden"
+				showCloseButton={false}
+				className="bg-card w-[85%] gap-0"
 			>
 				<SheetTitle className="sr-only">Navigation</SheetTitle>
 				<div className="flex h-14 shrink-0 items-center gap-0.5 px-3 pt-1">
@@ -68,7 +69,7 @@ export function DocsMobileSidebar({ sidebarNav }: DocsMobileSidebarProps) {
 						onNavItemClick={() => setOpen(false)}
 					/>
 				</div>
-			</SheetContent>
+			</SheetPopup>
 		</Sheet>
 	);
 }

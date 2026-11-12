@@ -1,48 +1,46 @@
-"use client";
-
 import { Button } from "@/components/ui/button";
-import { Label } from "@/components/ui/label";
+import { Field, FieldLabel } from "@/components/ui/field";
+import { Input } from "@/components/ui/input";
 import {
 	Sheet,
 	SheetClose,
-	SheetContent,
 	SheetDescription,
 	SheetFooter,
 	SheetHeader,
+	SheetPanel,
+	SheetPopup,
 	SheetTitle,
 	SheetTrigger,
 } from "@/components/ui/sheet";
-import { Textarea } from "@/components/ui/textarea";
 
 export default function SheetDemo() {
 	return (
 		<Sheet>
-			<SheetTrigger
-				render={(props) => <Button {...props}>Open Sheet</Button>}
-			/>
-			<SheetContent>
-				<SheetClose />
+			<SheetTrigger render={<Button variant="outline" />}>
+				Edit profile
+			</SheetTrigger>
+			<SheetPopup>
 				<SheetHeader>
-					<SheetTitle>Submit Feedback</SheetTitle>
+					<SheetTitle>Edit profile</SheetTitle>
 					<SheetDescription>
-						Please share your feedback with us to help improve our service.
+						Update your profile information. You can always change this later.
 					</SheetDescription>
 				</SheetHeader>
-				<div className="space-y-2 px-4">
-					<Label htmlFor="feedback">Your Feedback</Label>
-					<Textarea id="feedback" placeholder="Type your feedback here." />
-				</div>
+				<SheetPanel className="flex flex-col gap-4">
+					<Field name="name">
+						<FieldLabel>Name</FieldLabel>
+						<Input defaultValue="Bora Baloglu" />
+					</Field>
+					<Field name="email">
+						<FieldLabel>Email</FieldLabel>
+						<Input type="email" defaultValue="bora@example.com" />
+					</Field>
+				</SheetPanel>
 				<SheetFooter>
-					<Button size="sm">Submit</Button>
-					<SheetClose
-						render={(props) => (
-							<Button {...props} size="sm" variant="ghost">
-								Close
-							</Button>
-						)}
-					/>
+					<SheetClose render={<Button variant="outline" />}>Cancel</SheetClose>
+					<Button>Save</Button>
 				</SheetFooter>
-			</SheetContent>
+			</SheetPopup>
 		</Sheet>
 	);
 }
