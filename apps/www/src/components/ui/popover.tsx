@@ -29,7 +29,7 @@ function PopoverArrow({
 		<BasePopover.Arrow
 			data-slot="popover-arrow"
 			className={cn(
-				"text-border flex data-[side=bottom]:-top-2 data-[side=inline-end]:-start-3 data-[side=inline-end]:-rotate-90 data-[side=inline-start]:-end-3 data-[side=inline-start]:rotate-90 data-[side=left]:-right-3 data-[side=left]:rotate-90 data-[side=right]:-left-3 data-[side=right]:-rotate-90 data-[side=top]:-bottom-2 data-[side=top]:rotate-180 not-dark:data-[side=top]:text-(--popover-edge) rtl:data-[side=inline-end]:rotate-90 rtl:data-[side=inline-start]:-rotate-90 dark:data-[side=bottom]:text-(--popover-edge)",
+				"text-border flex data-[side=bottom]:-top-2.25 data-[side=inline-end]:-start-3.25 data-[side=inline-end]:-rotate-90 data-[side=inline-start]:-end-3.25 data-[side=inline-start]:rotate-90 data-[side=left]:-right-3.25 data-[side=left]:rotate-90 data-[side=right]:-left-3.25 data-[side=right]:-rotate-90 data-[side=top]:-bottom-2.25 data-[side=top]:rotate-180 not-dark:data-[side=top]:text-(--popover-edge) rtl:data-[side=inline-end]:rotate-90 rtl:data-[side=inline-start]:-rotate-90 dark:data-[side=bottom]:text-(--popover-edge)",
 				className,
 			)}
 			{...props}
@@ -85,7 +85,8 @@ function PopoverPopup({
 				<BasePopover.Popup
 					data-slot="popover-popup"
 					className={cn(
-						"bg-popover text-popover-foreground ease-out-quint flex h-(--popup-height,auto) max-h-(--available-height) w-72 max-w-(--available-width) origin-(--transform-origin) flex-col gap-4 overflow-y-auto overscroll-contain rounded-lg border p-(--popover-padding) text-sm shadow-md transition-[width,height,scale,opacity] duration-150 outline-none [--popover-padding:--spacing(4)] not-dark:border-b-(--popover-edge) not-dark:[--popover-edge:color-mix(in_oklab,var(--border),black_6%)] has-data-[slot=popover-viewport]:overflow-visible data-ending-style:scale-98 data-ending-style:opacity-0 data-ending-style:duration-100 data-instant:transition-none data-starting-style:scale-98 data-starting-style:opacity-0 motion-reduce:transition-opacity motion-reduce:data-ending-style:scale-100 motion-reduce:data-starting-style:scale-100 dark:border-t-(--popover-edge) dark:[--popover-edge:color-mix(in_oklab,var(--border),white_8%)]",
+						"bg-popover text-popover-foreground ease-out-quint relative flex h-(--popup-height,auto) max-h-(--available-height) w-72 max-w-(--available-width) origin-(--transform-origin) flex-col gap-4 overflow-y-auto overscroll-contain rounded-lg border p-(--popover-padding) text-sm shadow-md transition-[width,height,scale,opacity] duration-150 outline-none [--popover-padding:--spacing(4)] not-dark:border-b-(--popover-edge) not-dark:[--popover-edge:color-mix(in_oklab,var(--border),black_6%)] has-data-[slot=popover-panel]:overflow-visible has-data-[slot=popover-viewport]:overflow-visible data-ending-style:scale-98 data-ending-style:opacity-0 data-ending-style:duration-100 data-instant:transition-none data-starting-style:scale-98 data-starting-style:opacity-0 motion-reduce:transition-opacity motion-reduce:data-ending-style:scale-100 motion-reduce:data-starting-style:scale-100 dark:border-t-(--popover-edge) dark:[--popover-edge:color-mix(in_oklab,var(--border),white_8%)]",
+						arrow && "overflow-visible",
 						className,
 					)}
 					{...props}
@@ -95,6 +96,19 @@ function PopoverPopup({
 				</BasePopover.Popup>
 			</BasePopover.Positioner>
 		</BasePopover.Portal>
+	);
+}
+
+function PopoverPanel({ className, ...props }: React.ComponentProps<"div">) {
+	return (
+		<div
+			data-slot="popover-panel"
+			className={cn(
+				"-m-(--popover-padding) flex min-h-0 flex-1 flex-col gap-4 overflow-y-auto overscroll-contain rounded-[calc(var(--radius-lg)-1px)] p-(--popover-padding)",
+				className,
+			)}
+			{...props}
+		/>
 	);
 }
 
@@ -156,6 +170,7 @@ export {
 	PopoverClose,
 	PopoverDescription,
 	PopoverHeader,
+	PopoverPanel,
 	PopoverPopup,
 	PopoverTitle,
 	PopoverTrigger,
