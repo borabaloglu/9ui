@@ -497,11 +497,9 @@
 			"type": "registry:ui",
 			"dependencies": ["react-phone-number-input"],
 			"registryDependencies": [
-				"@9ui/button",
-				"@9ui/command",
+				"@9ui/combobox",
 				"@9ui/input",
-				"@9ui/popover",
-				"@9ui/scroll-area"
+				"@9ui/input-group"
 			],
 			"files": [
 				{

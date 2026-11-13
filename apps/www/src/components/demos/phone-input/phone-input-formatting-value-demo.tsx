@@ -15,12 +15,13 @@ export default function PhoneInputFormattingValueDemo() {
 	const [country, setCountry] = useState<Country>();
 
 	return (
-		<div className="w-[300px] space-y-4">
+		<div className="w-full max-w-xs space-y-4">
 			<PhoneInput
+				aria-label="Phone number"
+				placeholder="Enter a phone number"
 				value={phoneNumber}
 				onChange={setPhoneNumber}
 				onCountryChange={setCountry}
-				placeholder="Enter a phone number"
 			/>
 			<div className="space-y-2 text-sm">
 				<div>
@@ -41,7 +42,7 @@ export default function PhoneInputFormattingValueDemo() {
 				</div>
 				<div>
 					<span className="font-semibold">Country code:</span>{" "}
-					{country && getCountryCallingCode(country)}
+					{country && `+${getCountryCallingCode(country)}`}
 				</div>
 			</div>
 		</div>

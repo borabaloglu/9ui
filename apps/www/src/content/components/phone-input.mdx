@@ -1,6 +1,6 @@
 ---
 title: Phone Input
-description: A phone number input with country selection, formatting, and validation.
+description: A phone number input with a country picker and automatic formatting.
 ---
 
 <ComponentLinks
@@ -35,32 +35,7 @@ npx shadcn@latest add @9ui/phone-input
 npm install react-phone-number-input
 ```
 
-<Step>Install internal dependencies.</Step>
-
-<ComponentLinks
-	links={[
-		{
-			label: "Button",
-			href: "https://9ui.dev/docs/components/button",
-		},
-		{
-			label: "Command",
-			href: "https://9ui.dev/docs/components/command",
-		},
-		{
-			label: "Input",
-			href: "https://9ui.dev/docs/components/input",
-		},
-		{
-			label: "Popover",
-			href: "https://9ui.dev/docs/components/popover",
-		},
-		{
-			label: "Scroll Area",
-			href: "https://9ui.dev/docs/components/scroll-area",
-		},
-	]}
-/>
+<Step>Add the [Combobox](/docs/components/combobox), [Input](/docs/components/input) and [Input Group](/docs/components/input-group) components.</Step>
 
 <Step>Copy and paste the following code into your project.</Step>
 
@@ -79,36 +54,66 @@ import { PhoneInput } from "@/components/ui/phone-input"
 <PhoneInput />
 ```
 
+`value` and `onChange` use the E.164 format, for example `+905321234567`. Give every phone input a name: use [Field](/docs/components/field) with a `FieldLabel`, or set `aria-label`.
+
 ## Examples
 
 ### Default Country
 
+Set `defaultCountry` to select a country before the user types.
+
 <ComponentPreview name="phone-input-default-country-demo" />
 
-### Internationalization Format
+### Countries
 
-<ComponentPreview name="phone-input-internationalization-demo" />
+Set `countries` to limit the list to the countries you support.
 
-### Force International Format
+<ComponentPreview name="phone-input-countries-demo" />
+
+### Labels
+
+Set `labels` to translate the country names. To translate the search field and the empty message, set `searchPlaceholder` and `emptyMessage`.
+
+<ComponentPreview name="phone-input-labels-demo" />
+
+### International Format
+
+Set `international` to always show the number with its calling code.
 
 <ComponentPreview name="phone-input-international-demo" />
 
-### Force National Format
+### National Format
+
+Set `international={false}` to show the number without its calling code.
 
 <ComponentPreview name="phone-input-national-demo" />
 
 ### Initial Value Format
 
+Set `initialValueFormat="national"` to show an initial `value` in the national format.
+
 <ComponentPreview name="phone-input-initial-value-format-demo" />
 
 ### Formatting Value
 
+Use `formatPhoneNumber` and `formatPhoneNumberIntl` to display a stored value.
+
 <ComponentPreview name="phone-input-formatting-value-demo" />
 
-### With Validation
+### Disabled
 
-<ComponentPreview name="phone-input-with-validation-demo" />
+Set `disabled` on `PhoneInput` to prevent interaction. `disabled` on `Field` does not reach the country button.
+
+<ComponentPreview name="phone-input-disabled-demo" />
+
+### Invalid
+
+Set `invalid` on `Field` to show the error state. Outside a `Field`, set `aria-invalid`.
+
+<ComponentPreview name="phone-input-invalid-demo" showReload={true} />
 
 ### Form
+
+Use `isValidPhoneNumber` to check the value when the form is submitted.
 
 <ComponentPreview name="phone-input-form-demo" />

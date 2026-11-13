@@ -8,13 +8,13 @@ export default function PhoneInputDefaultCountryDemo() {
 	const [phoneNumber, setPhoneNumber] = useState<string>();
 
 	return (
-		<div className="w-[300px]">
-			<PhoneInput
-				value={phoneNumber}
-				onChange={setPhoneNumber}
-				defaultCountry="TR"
-				placeholder="Enter a phone number"
-			/>
-		</div>
+		<PhoneInput
+			aria-label="Phone number"
+			className="max-w-xs"
+			placeholder="Enter a phone number"
+			defaultCountry="TR"
+			value={phoneNumber}
+			onChange={setPhoneNumber}
+		/>
 	);
 }
