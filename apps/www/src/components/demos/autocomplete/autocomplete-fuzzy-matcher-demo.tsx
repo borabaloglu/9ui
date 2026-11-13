@@ -5,48 +5,45 @@ import { matchSorter } from "match-sorter";
 
 import {
 	Autocomplete,
-	AutocompleteContent,
 	AutocompleteEmpty,
 	AutocompleteInput,
 	AutocompleteItem,
 	AutocompleteList,
+	AutocompletePopup,
 	AutocompleteValue,
 } from "@/components/ui/autocomplete";
-import { Label } from "@/components/ui/label";
+import { Field, FieldLabel } from "@/components/ui/field";
+import { Input } from "@/components/ui/input";
 
 export default function AutocompleteFuzzyMatcherDemo() {
-	const fuzzyFilter = React.useCallback(
-		(item: unknown, query: string): boolean => {
-			const doc = item as DevDoc;
-			if (!query) {
-				return true;
-			}
+	const [query, setQuery] = React.useState("");
 
-			const results = matchSorter([doc], query, {
-				keys: ["title", "description"],
-				threshold: matchSorter.rankings.MATCHES,
-			});
-
-			return results.length > 0;
-		},
-		[],
-	);
+	const items = React.useMemo(() => {
+		const trimmed = query.trim();
+		if (!trimmed) {
+			return devDocs;
+		}
+		return matchSorter(devDocs, trimmed, {
+			keys: ["title", "description"],
+			threshold: matchSorter.rankings.MATCHES,
+		});
+	}, [query]);
 
 	return (
-		<div className="w-80">
+		<Field className="max-w-sm">
+			<FieldLabel>Search docs</FieldLabel>
 			<Autocomplete
-				items={devDocs}
-				filter={fuzzyFilter}
-				itemToStringValue={(item: unknown) => (item as DevDoc).title}
+				items={items}
+				value={query}
+				onValueChange={setQuery}
+				filter={null}
+				itemToStringValue={(item) => (item as DevDoc).title}
 			>
-				<div className="flex flex-col gap-2">
-					<Label htmlFor="search-docs">Search developer docs</Label>
-					<AutocompleteInput
-						id="search-docs"
-						placeholder="e.g. react hooks, api"
-					/>
-				</div>
-				<AutocompleteContent className="w-80">
+				<AutocompleteInput
+					placeholder="e.g. react hooks, api"
+					render={<Input />}
+				/>
+				<AutocompletePopup className="w-(--anchor-width)">
 					<AutocompleteEmpty>
 						No docs found for &quot;
 						<AutocompleteValue />
@@ -55,46 +52,61 @@ export default function AutocompleteFuzzyMatcherDemo() {
 					<AutocompleteList>
 						{(doc: DevDoc) => (
 							<AutocompleteItem key={doc.id} value={doc}>
-								<AutocompleteValue>
-									{(value) => (
-										<div className="flex w-full flex-col gap-1">
-											<div className="text-sm font-medium">
-												{highlightText(doc.title, value)}
-											</div>
-											<div className="text-muted-foreground text-xs leading-relaxed">
-												{highlightText(doc.description, value)}
-											</div>
-										</div>
-									)}
-								</AutocompleteValue>
+								<div className="flex w-full flex-col gap-1">
+									<div className="text-sm font-medium">
+										{highlightText(doc.title, query)}
+									</div>
+									<div className="text-muted-foreground text-xs leading-relaxed">
+										{highlightText(doc.description, query)}
+									</div>
+								</div>
 							</AutocompleteItem>
 						)}
 					</AutocompleteList>
-				</AutocompleteContent>
+				</AutocompletePopup>
 			</Autocomplete>
-		</div>
+		</Field>
 	);
 }
 
 function highlightText(text: string, query: string): React.ReactNode {
-	const trimmed = query.trim();
-	if (!trimmed) {
+	const tokens = query
+		.trim()
+		.slice(0, 100)
+		.split(/\s+/)
+		.filter(Boolean)
+		.map((token) => token.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"));
+
+	if (tokens.length === 0) {
 		return text;
 	}
 
-	const limited = trimmed.slice(0, 100);
-	const escaped = limited.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
-	const regex = new RegExp(`(${escaped})`, "gi");
+	const regex = new RegExp(tokens.join("|"), "gi");
 
-	return text.split(regex).map((part, idx) =>
-		regex.test(part) ? (
-			<mark key={idx} className="bg-transparent font-medium text-yellow-300">
-				{part}
-			</mark>
-		) : (
-			part
-		),
-	);
+	const nodes: React.ReactNode[] = [];
+	let cursor = 0;
+
+	for (const match of text.matchAll(regex)) {
+		const start = match.index;
+		if (start > cursor) {
+			nodes.push(text.slice(cursor, start));
+		}
+		nodes.push(
+			<mark
+				key={`m-${start}`}
+				className="text-foreground bg-green-200 dark:bg-green-700"
+			>
+				{match[0]}
+			</mark>,
+		);
+		cursor = start + match[0].length;
+	}
+
+	if (cursor < text.length) {
+		nodes.push(text.slice(cursor));
+	}
+
+	return nodes;
 }
 
 interface DevDoc {

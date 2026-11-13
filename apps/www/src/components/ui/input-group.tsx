@@ -16,6 +16,7 @@ function InputGroup({ className, ...props }: React.ComponentProps<"div">) {
 			role="group"
 			className={cn(
 				"group/input-group border-border bg-input relative flex h-8 w-full min-w-0 items-center rounded-lg border transition-[color,border-color,box-shadow] duration-150 ease-out outline-none any-pointer-coarse:h-9",
+				"shadow-xs not-dark:bg-clip-padding before:pointer-events-none before:absolute before:inset-0 before:rounded-[calc(var(--radius-lg)-1px)] before:shadow-[0_1px_--theme(--color-black/6%)] has-[[data-slot=input-group-control]:is(:disabled,[aria-invalid=true])]:shadow-none has-[[data-slot=input-group-control]:is(:focus-visible,:disabled,[aria-invalid=true])]:before:shadow-none dark:bg-clip-border dark:before:shadow-[0_-1px_--theme(--color-white/8%)]",
 				"has-[>[data-align=block-end]]:h-auto has-[>[data-align=block-end]]:flex-col has-[>[data-align=block-start]]:h-auto has-[>[data-align=block-start]]:flex-col has-[>textarea]:h-auto",
 				"any-pointer-coarse:has-[>[data-align=block-end]]:h-auto any-pointer-coarse:has-[>[data-align=block-start]]:h-auto any-pointer-coarse:has-[>textarea]:h-auto",
 				"has-[[data-slot=input-group-control]:disabled]:opacity-50",
@@ -136,7 +137,7 @@ function InputGroupInput({
 		<Input
 			data-slot="input-group-control"
 			className={cn(
-				"h-full min-w-12 flex-1 rounded-none border-0 bg-transparent ring-0 focus-visible:ring-0 disabled:opacity-100 aria-invalid:ring-0 any-pointer-coarse:h-full",
+				"h-full min-w-12 flex-1 rounded-none bg-transparent px-2.5 shadow-none ring-0 inset-ring-0 not-dark:inset-shadow-none focus-visible:ring-0 disabled:opacity-100 aria-invalid:ring-0 dark:inset-shadow-none any-pointer-coarse:h-full",
 				className,
 			)}
 			{...props}
@@ -152,7 +153,7 @@ function InputGroupTextarea({
 		<Textarea
 			data-slot="input-group-control"
 			className={cn(
-				"flex-1 resize-none rounded-none border-0 bg-transparent py-2 ring-0 focus-visible:ring-0 disabled:opacity-100 aria-invalid:ring-0",
+				"flex-1 resize-none rounded-none bg-transparent px-2.5 py-2 shadow-none ring-0 inset-ring-0 not-dark:inset-shadow-none focus-visible:ring-0 disabled:opacity-100 aria-invalid:ring-0 dark:inset-shadow-none",
 				className,
 			)}
 			{...props}

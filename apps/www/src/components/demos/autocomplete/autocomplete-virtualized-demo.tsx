@@ -1,41 +1,92 @@
+"use client";
+
 import * as React from "react";
 import { useVirtualizer } from "@tanstack/react-virtual";
 
 import {
 	Autocomplete,
-	AutocompleteContent,
 	AutocompleteEmpty,
 	AutocompleteInput,
 	AutocompleteItem,
 	AutocompleteList,
-	useFilter,
+	AutocompletePopup,
+	useFilteredItems,
 } from "@/components/ui/autocomplete";
-import { Label } from "@/components/ui/label";
+import { Field, FieldLabel } from "@/components/ui/field";
+import { Input } from "@/components/ui/input";
+
+type Virtualizer = ReturnType<typeof useVirtualizer<HTMLDivElement, Element>>;
+
+const items = Array.from({ length: 10000 }, (_, index) => {
+	return `Item ${String(index + 1).padStart(5, "0")}`;
+});
 
 export default function AutocompleteVirtualizedDemo() {
-	const [open, setOpen] = React.useState(false);
-	const [searchValue, setSearchValue] = React.useState("");
+	const virtualizerRef = React.useRef<Virtualizer | null>(null);
 
-	const scrollElementRef = React.useRef<HTMLDivElement>(null);
+	return (
+		<Field className="max-w-sm">
+			<FieldLabel>Search 10,000 items</FieldLabel>
+			<Autocomplete
+				virtualized
+				items={items}
+				openOnInputClick
+				onItemHighlighted={(item, { reason, index }) => {
+					const virtualizer = virtualizerRef.current;
 
-	const { contains } = useFilter({ sensitivity: "base" });
+					if (!item || !virtualizer) {
+						return;
+					}
 
-	const filteredItems = React.useMemo(() => {
-		return virtualItems.filter((item) => contains(item, searchValue));
-	}, [contains, searchValue]);
+					const isStart = index === 0;
+					const isEnd = index === virtualizer.options.count - 1;
+					const shouldScroll =
+						reason === "none" || (reason === "keyboard" && (isStart || isEnd));
+
+					if (shouldScroll) {
+						queueMicrotask(() => {
+							virtualizer.scrollToIndex(index, {
+								align: isEnd ? "start" : "end",
+							});
+						});
+					}
+				}}
+			>
+				<AutocompleteInput placeholder="e.g. Item 00042" render={<Input />} />
+				<AutocompletePopup>
+					<AutocompleteEmpty>No items found.</AutocompleteEmpty>
+					<AutocompleteList className="not-empty:p-0">
+						<VirtualizedList virtualizerRef={virtualizerRef} />
+					</AutocompleteList>
+				</AutocompletePopup>
+			</Autocomplete>
+		</Field>
+	);
+}
+
+function VirtualizedList({
+	virtualizerRef,
+}: {
+	virtualizerRef: React.RefObject<Virtualizer | null>;
+}) {
+	const filteredItems = useFilteredItems<string>();
+	const scrollElementRef = React.useRef<HTMLDivElement | null>(null);
 
 	const virtualizer = useVirtualizer({
-		enabled: open,
 		count: filteredItems.length,
 		getScrollElement: () => scrollElementRef.current,
-		estimateSize: () => 32,
+		estimateSize: () => 28,
 		overscan: 20,
 		paddingStart: 4,
 		paddingEnd: 4,
+		scrollPaddingStart: 4,
+		scrollPaddingEnd: 4,
 	});
 
+	React.useImperativeHandle(virtualizerRef, () => virtualizer);
+
 	const handleScrollElementRef = React.useCallback(
-		(element: HTMLDivElement) => {
+		(element: HTMLDivElement | null) => {
 			scrollElementRef.current = element;
 			if (element) {
 				virtualizer.measure();
@@ -45,93 +96,46 @@ export default function AutocompleteVirtualizedDemo() {
 	);
 
 	const totalSize = virtualizer.getTotalSize();
-	const totalSizePx = `${totalSize}px`;
+
+	if (!filteredItems.length) {
+		return null;
+	}
 
 	return (
-		<Autocomplete
-			virtualized
-			items={virtualItems}
-			open={open}
-			onOpenChange={setOpen}
-			value={searchValue}
-			onValueChange={setSearchValue}
-			openOnInputClick
-			onItemHighlighted={(item, { reason, index }) => {
-				if (!item) {
-					return;
-				}
-
-				const isStart = index === 0;
-				const isEnd = index === filteredItems.length - 1;
-				const shouldScroll =
-					reason === "none" || (reason === "keyboard" && (isStart || isEnd));
-				if (shouldScroll) {
-					queueMicrotask(() => {
-						virtualizer.scrollToIndex(index, {
-							align: isEnd ? "start" : "end",
-						});
-					});
-				}
-			}}
+		<div
+			role="presentation"
+			ref={handleScrollElementRef}
+			className="h-[min(var(--total-size),18rem)] scroll-py-1 overflow-y-auto overscroll-contain px-1"
+			style={{ "--total-size": `${totalSize}px` } as React.CSSProperties}
 		>
-			<div className="flex flex-col gap-2">
-				<Label htmlFor="search-items-virtualized">
-					Search 10,000 items (virtualized)
-				</Label>
-				<AutocompleteInput className="w-80" id="search-items-virtualized" />
-			</div>
+			<div
+				role="presentation"
+				className="relative w-full"
+				style={{ height: totalSize }}
+			>
+				{virtualizer.getVirtualItems().map((virtualItem) => {
+					const item = filteredItems[virtualItem.index];
+					if (!item) {
+						return null;
+					}
 
-			<AutocompleteContent className="w-80 py-0 pr-0">
-				<AutocompleteEmpty>No items found.</AutocompleteEmpty>
-				<AutocompleteList>
-					{filteredItems.length > 0 && (
-						<div
-							role="presentation"
-							ref={handleScrollElementRef}
-							className="h-[min(var(--total-size),18rem)] max-h-[calc(var(--available-height)-2rem)] overflow-y-scroll overscroll-contain"
-							style={{ "--total-size": totalSizePx } as React.CSSProperties}
+					return (
+						<AutocompleteItem
+							key={virtualItem.key}
+							index={virtualItem.index}
+							data-index={virtualItem.index}
+							ref={virtualizer.measureElement}
+							value={item}
+							aria-setsize={filteredItems.length}
+							aria-posinset={virtualItem.index + 1}
+							className="absolute top-0 left-0"
+							style={{ transform: `translateY(${virtualItem.start}px)` }}
 						>
-							<div
-								role="presentation"
-								className="relative w-full"
-								style={{ height: totalSizePx }}
-							>
-								{virtualizer.getVirtualItems().map((virtualItem) => {
-									const item = filteredItems[virtualItem.index];
-									if (!item) {
-										return null;
-									}
-
-									return (
-										<AutocompleteItem
-											key={virtualItem.key}
-											index={virtualItem.index}
-											value={item}
-											aria-setsize={filteredItems.length}
-											aria-posinset={virtualItem.index + 1}
-											style={{
-												position: "absolute",
-												top: 0,
-												left: 0,
-												width: "100%",
-												height: `${virtualItem.size}px`,
-												transform: `translateY(${virtualItem.start}px)`,
-											}}
-										>
-											{item}
-										</AutocompleteItem>
-									);
-								})}
-							</div>
-						</div>
-					)}
-				</AutocompleteList>
-			</AutocompleteContent>
-		</Autocomplete>
+							{item}
+						</AutocompleteItem>
+					);
+				})}
+			</div>
+		</div>
 	);
 }
-
-const virtualItems = Array.from({ length: 10000 }, (_, i) => {
-	const indexLabel = String(i + 1).padStart(5, "0");
-	return `Item ${indexLabel}`;
-});

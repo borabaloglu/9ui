@@ -20,7 +20,7 @@ function Textarea({
 				<textarea
 					data-slot="textarea"
 					className={cn(
-						"border-border bg-input placeholder:text-muted-foreground focus-visible:border-ring focus-visible:ring-ring/50 aria-invalid:border-destructive/60 aria-invalid:ring-destructive/30 dark:aria-invalid:ring-destructive/40 block field-sizing-content min-h-16 w-full min-w-0 rounded-lg border px-2.5 py-1.5 text-sm transition-[color,border-color,box-shadow] duration-150 ease-out outline-none focus-visible:ring-3 disabled:cursor-not-allowed disabled:opacity-50 aria-invalid:ring-3 any-pointer-coarse:text-base",
+						"bg-input placeholder:text-muted-foreground focus-visible:ring-ring/50 aria-invalid:ring-destructive/30 dark:aria-invalid:ring-destructive/40 inset-ring-border focus-visible:inset-ring-ring aria-invalid:inset-ring-destructive/60 block field-sizing-content min-h-16 w-full min-w-0 rounded-lg px-2.75 py-1.75 text-sm shadow-xs inset-ring-1 transition-[color,box-shadow] duration-150 ease-out outline-none not-dark:inset-shadow-[0_-1px_--theme(--color-black/6%)] focus-visible:ring-3 disabled:cursor-not-allowed disabled:opacity-50 aria-invalid:ring-3 dark:inset-shadow-[0_1px_--theme(--color-white/8%)] any-pointer-coarse:text-base [&:is(:disabled,[aria-invalid])]:shadow-none [&:is(:focus-visible,:disabled,[aria-invalid])]:inset-shadow-none",
 						className,
 					)}
 					{...props}

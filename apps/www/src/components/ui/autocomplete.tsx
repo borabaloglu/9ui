@@ -1,36 +1,27 @@
 import type * as React from "react";
 import { Autocomplete as BaseAutocomplete } from "@base-ui/react/autocomplete";
-import { XIcon } from "lucide-react";
 
 import { cn } from "@/lib/utils";
 
-function Autocomplete({
-	...props
-}: React.ComponentProps<typeof BaseAutocomplete.Root>) {
-	return <BaseAutocomplete.Root data-slot="autocomplete" {...props} />;
-}
+const Autocomplete = BaseAutocomplete.Root;
+const useFilter = BaseAutocomplete.useFilter;
+const useFilteredItems = BaseAutocomplete.useFilteredItems;
 
-function AutocompletePortal({
+function AutocompleteInputGroup({
 	...props
-}: React.ComponentProps<typeof BaseAutocomplete.Portal>) {
-	return <BaseAutocomplete.Portal data-slot="autocomplete-portal" {...props} />;
-}
-
-function AutocompletePositioner({
-	...props
-}: React.ComponentProps<typeof BaseAutocomplete.Positioner>) {
+}: React.ComponentProps<typeof BaseAutocomplete.InputGroup>) {
 	return (
-		<BaseAutocomplete.Positioner
-			data-slot="autocomplete-positioner"
+		<BaseAutocomplete.InputGroup
+			data-slot="autocomplete-input-group"
 			{...props}
 		/>
 	);
 }
 
-function AutocompleteValue({
+function AutocompleteInput({
 	...props
-}: React.ComponentProps<typeof BaseAutocomplete.Value>) {
-	return <BaseAutocomplete.Value data-slot="autocomplete-value" {...props} />;
+}: React.ComponentProps<typeof BaseAutocomplete.Input>) {
+	return <BaseAutocomplete.Input data-slot="autocomplete-input" {...props} />;
 }
 
 function AutocompleteTrigger({
@@ -41,98 +32,84 @@ function AutocompleteTrigger({
 	);
 }
 
-function AutocompleteIcon({
-	...props
-}: React.ComponentProps<typeof BaseAutocomplete.Icon>) {
-	return <BaseAutocomplete.Icon data-slot="autocomplete-icon" {...props} />;
-}
-
 function AutocompleteClear({
 	...props
 }: React.ComponentProps<typeof BaseAutocomplete.Clear>) {
 	return <BaseAutocomplete.Clear data-slot="autocomplete-clear" {...props} />;
 }
 
-function AutocompleteInput({
-	className,
-	inputContainerClassName,
-	showClear = false,
+function AutocompleteValue({
 	...props
-}: React.ComponentProps<typeof BaseAutocomplete.Input> & {
-	inputContainerClassName?: string;
-	showClear?: boolean;
-}) {
-	return (
-		<div
-			className={cn(
-				"group relative w-full has-[[data-slot=autocomplete-input][data-disabled]]:pointer-events-none has-[[data-slot=autocomplete-input][data-disabled]]:opacity-50",
-				inputContainerClassName,
-			)}
-			data-slot="autocomplete-input-container"
-		>
-			<BaseAutocomplete.Input
-				data-slot="autocomplete-input"
-				className={cn(
-					"bg-input group-hover:border-ring/70 selection:bg-primary selection:text-primary-foreground placeholder:text-muted-foreground focus-visible:border-ring focus-visible:ring-ring/50 aria-invalid:border-destructive aria-invalid:ring-destructive/50 flex h-9 w-full min-w-0 rounded-md border px-3 py-1 text-base shadow-xs transition-[color,box-shadow,border-color] outline-none focus-visible:ring-[3px] md:text-sm",
-					showClear && "pr-8",
-					className,
-				)}
-				{...props}
-			/>
-			{showClear && (
-				<AutocompleteClear
-					data-slot="autocomplete-clear"
-					className="text-muted-foreground absolute top-1/2 right-3 shrink-0 -translate-y-1/2 [&_svg]:shrink-0"
-				>
-					<XIcon className="size-4" />
-				</AutocompleteClear>
-			)}
-		</div>
-	);
+}: React.ComponentProps<typeof BaseAutocomplete.Value>) {
+	return <BaseAutocomplete.Value {...props} />;
 }
 
-function AutocompleteContent({
+function AutocompletePopup({
 	className,
-	children,
+	align = "start",
+	alignOffset = 0,
+	side = "bottom",
 	sideOffset = 4,
+	anchor,
 	...props
-}: React.ComponentProps<typeof BaseAutocomplete.Popup> & {
-	sideOffset?: BaseAutocomplete.Positioner.Props["sideOffset"];
-}) {
+}: React.ComponentProps<typeof BaseAutocomplete.Popup> &
+	Pick<
+		BaseAutocomplete.Positioner.Props,
+		"align" | "alignOffset" | "side" | "sideOffset" | "anchor"
+	>) {
 	return (
-		<AutocompletePortal>
-			<AutocompletePositioner className="outline-none" sideOffset={sideOffset}>
+		<BaseAutocomplete.Portal data-slot="autocomplete-portal">
+			<BaseAutocomplete.Positioner
+				data-slot="autocomplete-positioner"
+				className="z-50 outline-none"
+				align={align}
+				alignOffset={alignOffset}
+				side={side}
+				sideOffset={sideOffset}
+				anchor={anchor}
+			>
 				<BaseAutocomplete.Popup
-					data-slot="autocomplete-content"
+					data-slot="autocomplete-popup"
 					className={cn(
-						"bg-popover text-popover-foreground relative z-50 max-h-[min(var(--available-height),20rem)] min-w-[var(--anchor-width)] origin-[var(--transform-origin)] overflow-x-hidden overflow-y-auto overscroll-contain rounded-md border p-1 shadow-md transition-all data-ending-style:duration-0 data-starting-style:scale-98 data-starting-style:opacity-0",
+						"bg-popover text-popover-foreground flex max-h-[min(var(--available-height),20rem)] max-w-(--available-width) min-w-(--anchor-width) flex-col rounded-lg border shadow-md outline-none",
 						className,
 					)}
 					{...props}
-				>
-					{children}
-				</BaseAutocomplete.Popup>
-			</AutocompletePositioner>
-		</AutocompletePortal>
+				/>
+			</BaseAutocomplete.Positioner>
+		</BaseAutocomplete.Portal>
+	);
+}
+
+function AutocompleteList({
+	className,
+	...props
+}: React.ComponentProps<typeof BaseAutocomplete.List>) {
+	return (
+		<BaseAutocomplete.List
+			data-slot="autocomplete-list"
+			className={cn(
+				"min-h-0 flex-1 scroll-py-1 overflow-y-auto overscroll-contain outline-none not-empty:p-1",
+				className,
+			)}
+			{...props}
+		/>
 	);
 }
 
 function AutocompleteItem({
 	className,
-	children,
 	...props
 }: React.ComponentProps<typeof BaseAutocomplete.Item>) {
 	return (
 		<BaseAutocomplete.Item
 			data-slot="autocomplete-item"
 			className={cn(
-				"data-highlighted:bg-accent data-highlighted:text-accent-foreground [&_svg:not([class*='text-'])]:text-muted-foreground relative flex w-full cursor-default items-center gap-2 rounded-sm px-2 py-1.5 text-sm outline-hidden select-none data-disabled:pointer-events-none data-disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
+				"data-highlighted:bg-accent data-highlighted:text-accent-foreground relative flex min-h-7 w-full cursor-default items-center gap-2 rounded-sm px-2 py-1 text-sm outline-none select-none data-disabled:pointer-events-none data-disabled:opacity-50 any-pointer-coarse:min-h-9 any-pointer-coarse:text-base [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
 				className,
 			)}
 			{...props}
-		>
-			{children}
-		</BaseAutocomplete.Item>
+		/>
 	);
 }
 
@@ -143,7 +120,10 @@ function AutocompleteEmpty({
 	return (
 		<BaseAutocomplete.Empty
 			data-slot="autocomplete-empty"
-			className={cn("py-6 text-center text-sm empty:m-0 empty:p-0", className)}
+			className={cn(
+				"text-muted-foreground text-center text-sm wrap-break-word not-empty:p-2 any-pointer-coarse:text-base",
+				className,
+			)}
 			{...props}
 		/>
 	);
@@ -157,7 +137,7 @@ function AutocompleteStatus({
 		<BaseAutocomplete.Status
 			data-slot="autocomplete-status"
 			className={cn(
-				"text-muted-foreground flex items-center gap-2 px-2 py-1.5 text-sm",
+				"text-muted-foreground text-sm wrap-break-word not-empty:px-3 not-empty:py-2 any-pointer-coarse:text-base",
 				className,
 			)}
 			{...props}
@@ -200,21 +180,10 @@ function AutocompleteSeparator({
 	);
 }
 
-function AutocompleteList(
-	props: React.ComponentProps<typeof BaseAutocomplete.List>,
-) {
-	return <BaseAutocomplete.List data-slot="autocomplete-list" {...props} />;
-}
-
-function AutocompleteCollection(
-	props: React.ComponentProps<typeof BaseAutocomplete.Collection>,
-) {
-	return (
-		<BaseAutocomplete.Collection
-			data-slot="autocomplete-collection"
-			{...props}
-		/>
-	);
+function AutocompleteCollection({
+	...props
+}: React.ComponentProps<typeof BaseAutocomplete.Collection>) {
+	return <BaseAutocomplete.Collection {...props} />;
 }
 
 function AutocompleteRow({
@@ -224,7 +193,7 @@ function AutocompleteRow({
 	return (
 		<BaseAutocomplete.Row
 			data-slot="autocomplete-row"
-			className={cn("grid w-full scroll-my-1.5", className)}
+			className={cn("grid w-full scroll-my-1 gap-1", className)}
 			{...props}
 		/>
 	);
@@ -234,21 +203,19 @@ export {
 	Autocomplete,
 	AutocompleteClear,
 	AutocompleteCollection,
-	AutocompleteContent,
 	AutocompleteEmpty,
 	AutocompleteGroup,
 	AutocompleteGroupLabel,
-	AutocompleteIcon,
 	AutocompleteInput,
+	AutocompleteInputGroup,
 	AutocompleteItem,
 	AutocompleteList,
-	AutocompletePortal,
-	AutocompletePositioner,
+	AutocompletePopup,
 	AutocompleteRow,
 	AutocompleteSeparator,
 	AutocompleteStatus,
 	AutocompleteTrigger,
 	AutocompleteValue,
+	useFilter,
+	useFilteredItems,
 };
-
-export const useFilter = BaseAutocomplete.useFilter;
