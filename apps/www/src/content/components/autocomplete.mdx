@@ -6,8 +6,8 @@ description: A component that suggests options as the user types.
 <ComponentLinks
 	links={[
 		{
-			label: "Docs",
-			href: "https://base-ui.com/react/components/autocomplete",
+			label: "API Reference",
+			href: "https://base-ui.com/react/components/autocomplete#api-reference",
 		},
 	]}
 />
@@ -36,64 +36,115 @@ npx shadcn@latest add @9ui/autocomplete
 
 ```tsx title="Imports"
 import {
-	Accordion,
-	AccordionContent,
-	AccordionItem,
-	AccordionTrigger,
+	Autocomplete,
+	AutocompleteClear,
+	AutocompleteCollection,
+	AutocompleteEmpty,
+	AutocompleteGroup,
+	AutocompleteGroupLabel,
+	AutocompleteInput,
+	AutocompleteInputGroup,
+	AutocompleteItem,
+	AutocompleteList,
+	AutocompletePopup,
+	AutocompleteRow,
+	AutocompleteSeparator,
+	AutocompleteStatus,
+	AutocompleteTrigger,
+	AutocompleteValue,
 } from "@/components/ui/autocomplete"
 ```
 
 ```tsx title="Anatomy"
 <Autocomplete>
-	<AutocompleteItem>
-		<AccordionTrigger />
-		<AccordionContent />
-	</AutocompleteItem>
+	<AutocompleteInputGroup>
+		<AutocompleteInput />
+		<AutocompleteTrigger />
+		<AutocompleteClear />
+	</AutocompleteInputGroup>
+	<AutocompletePopup>
+		<AutocompleteStatus />
+		<AutocompleteEmpty>
+			<AutocompleteValue />
+		</AutocompleteEmpty>
+		<AutocompleteList>
+			<AutocompleteGroup>
+				<AutocompleteGroupLabel />
+				<AutocompleteCollection />
+			</AutocompleteGroup>
+			<AutocompleteSeparator />
+			<AutocompleteRow>
+				<AutocompleteItem />
+			</AutocompleteRow>
+		</AutocompleteList>
+	</AutocompletePopup>
 </Autocomplete>
 ```
 
+Set `render={<Input />}` on `AutocompleteInput` to style it as an [Input](/docs/components/input). Give every autocomplete a name: use [Field](/docs/components/field) with a `FieldLabel`, or set `aria-label` on `AutocompleteInput`.
+
+`AutocompletePopup` takes `side`, `align`, `sideOffset` and `alignOffset` to change where the popup opens.
+
+To remember the selected item, use [Combobox](/docs/components/combobox).
+
 ## Examples
 
-### Groupped
+### Groups
 
-<ComponentPreview name="autocomplete-groupped-demo" />
+Use `AutocompleteGroup`, `AutocompleteGroupLabel` and `AutocompleteSeparator` to split items into labeled sections.
 
----
+<ComponentPreview name="autocomplete-groups-demo" />
 
-### Async
+### Async Search
 
-<ComponentPreview name="autocomplete-async-demo" />
+Set `filter={null}` and pass the fetched results as `items`. Use `AutocompleteStatus` to announce loading and result counts.
 
-### Inline Autocomplete
+<ComponentPreview name="autocomplete-async-search-demo" />
+
+### Input Group
+
+Set `render={<InputGroup />}` on `AutocompleteInputGroup` to add icons, text or buttons around the input.
+
+<ComponentPreview name="autocomplete-input-group-demo" />
+
+### Clear
+
+Set `render={<AutocompleteClear />}` on `InputGroupButton` to add a clear button.
+
+<ComponentPreview name="autocomplete-clear-demo" />
+
+### Inline
+
+Set `mode="both"` to fill the input with the highlighted item.
 
 <ComponentPreview name="autocomplete-inline-demo" />
 
----
-
-### Fuzzy Matcher
-
-<ComponentPreview name="autocomplete-fuzzy-matcher-demo" />
-
----
-
 ### Auto Highlight
+
+Set `autoHighlight` to highlight the first match while typing.
 
 <ComponentPreview name="autocomplete-autohighlight-demo" />
 
----
-
 ### Limit Results
+
+Set `limit` to cap the number of items shown. Use `AutocompleteStatus` to say how many more there are.
 
 <ComponentPreview name="autocomplete-limit-results-demo" />
 
----
+### Fuzzy Matcher
 
-### With Rows
+Set `filter={null}` and pass `items` ranked by a fuzzy matcher like `match-sorter`.
 
-<ComponentPreview name="autocomplete-row-demo" />
-
----
+<ComponentPreview name="autocomplete-fuzzy-matcher-demo" />
 
 ### Virtualized
 
+Set `virtualized` and render the items with `@tanstack/react-virtual` to handle thousands of items.
+
 <ComponentPreview name="autocomplete-virtualized-demo" />
+
+### Grid
+
+Set `grid` and wrap each line of items in `AutocompleteRow` to lay items out in a grid.
+
+<ComponentPreview name="autocomplete-grid-demo" />
