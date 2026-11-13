@@ -1,53 +1,65 @@
+import { ChevronsUpDownIcon } from "lucide-react";
+
+import { Button } from "@/components/ui/button";
 import {
 	Combobox,
-	ComboboxContent,
 	ComboboxEmpty,
 	ComboboxInput,
 	ComboboxItem,
 	ComboboxList,
+	ComboboxPopup,
 	ComboboxTrigger,
 	ComboboxValue,
 } from "@/components/ui/combobox";
-import { Label } from "@/components/ui/label";
+import { Field, FieldLabel } from "@/components/ui/field";
+import { Input } from "@/components/ui/input";
 
-export default function ComboboxInputInsidePopupDemo() {
+export default function ComboboxPopupDemo() {
 	return (
-		<Combobox items={countries} defaultValue={countries[0]}>
-			<div className="relative flex flex-col gap-2">
-				<Label htmlFor="select-country">Select country</Label>
-				<ComboboxTrigger id="select-country" className="w-80">
-					<ComboboxValue />
+		<Field className="max-w-sm">
+			<FieldLabel>Country</FieldLabel>
+			<Combobox items={countries}>
+				<ComboboxTrigger
+					render={
+						<Button
+							variant="outline"
+							className="data-placeholder:text-muted-foreground w-full justify-between font-normal"
+						/>
+					}
+				>
+					<ComboboxValue placeholder="Select a country" />
+					<ChevronsUpDownIcon className="text-muted-foreground" />
 				</ComboboxTrigger>
-			</div>
-			<ComboboxContent className="max-h-[20rem] [--input-container-height:4rem]">
-				<ComboboxInput
-					className="focus-visible:ring-0"
-					inputContainerClassName="mb-2"
-					placeholder="e.g. United Kingdom"
-					showClear={false}
-				/>
-				<ComboboxEmpty>No countries found.</ComboboxEmpty>
-				<ComboboxList className="max-h-[min(calc(20rem-var(--input-container-height)),calc(var(--available-height)-var(--input-container-height)))] scroll-py-2 overflow-y-auto overscroll-contain">
-					{(country: Country) => (
-						<ComboboxItem key={country.code} value={country}>
-							{country.label ?? country.value}
-						</ComboboxItem>
-					)}
-				</ComboboxList>
-			</ComboboxContent>
-		</Combobox>
+				<ComboboxPopup aria-label="Select a country">
+					<div className="p-1 pb-0">
+						<ComboboxInput
+							placeholder="e.g. United Kingdom"
+							aria-label="Search countries"
+							render={<Input className="rounded-md shadow-none" />}
+						/>
+					</div>
+					<ComboboxEmpty>No countries found.</ComboboxEmpty>
+					<ComboboxList>
+						{(country: Country) => (
+							<ComboboxItem key={country.code} value={country}>
+								{country.label}
+							</ComboboxItem>
+						)}
+					</ComboboxList>
+				</ComboboxPopup>
+			</Combobox>
+		</Field>
 	);
 }
 
 interface Country {
 	code: string;
-	value: string | null;
+	value: string;
 	continent: string;
 	label: string;
 }
 
 const countries: Country[] = [
-	{ code: "", value: null, continent: "", label: "Select country" },
 	{ code: "af", value: "afghanistan", label: "Afghanistan", continent: "Asia" },
 	{ code: "al", value: "albania", label: "Albania", continent: "Europe" },
 	{ code: "dz", value: "algeria", label: "Algeria", continent: "Africa" },

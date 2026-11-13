@@ -4,79 +4,69 @@ import {
 	Combobox,
 	ComboboxChip,
 	ComboboxChips,
-	ComboboxContent,
+	ComboboxChipsInput,
 	ComboboxEmpty,
-	ComboboxInput,
 	ComboboxItem,
 	ComboboxList,
+	ComboboxPopup,
 	ComboboxValue,
 } from "@/components/ui/combobox";
-import { Label } from "@/components/ui/label";
+import { Field, FieldLabel } from "@/components/ui/field";
 
 export default function ComboboxMultipleDemo() {
-	const containerRef = React.useRef<HTMLDivElement | null>(null);
-
 	return (
-		<Combobox items={langs} multiple>
-			<div className="flex w-80 flex-col gap-2">
-				<Label htmlFor="select-language">Select a language</Label>
-				<ComboboxChips ref={containerRef}>
+		<Field className="max-w-sm">
+			<FieldLabel>Frameworks</FieldLabel>
+			<Combobox items={frameworks} multiple>
+				<ComboboxChips>
 					<ComboboxValue>
-						{(value: ProgrammingLanguage[]) => (
+						{(value: Framework[]) => (
 							<React.Fragment>
-								{value.length > 0 && (
-									<div className="flex flex-wrap gap-1 p-1">
-										{value.map((language) => (
-											<ComboboxChip
-												key={language.id}
-												aria-label={language.value}
-											>
-												{language.value}
-											</ComboboxChip>
-										))}
-									</div>
-								)}
-								<ComboboxInput
-									id="select-language"
-									placeholder="e.g. TypeScript"
-									showClear={false}
-									multiple
+								{value.map((framework) => (
+									<ComboboxChip
+										key={framework.value}
+										aria-label={framework.label}
+									>
+										{framework.label}
+									</ComboboxChip>
+								))}
+								<ComboboxChipsInput
+									placeholder={value.length > 0 ? "" : "e.g. React"}
 								/>
 							</React.Fragment>
 						)}
 					</ComboboxValue>
 				</ComboboxChips>
-			</div>
 
-			<ComboboxContent anchor={containerRef}>
-				<ComboboxEmpty>No languages found.</ComboboxEmpty>
-				<ComboboxList>
-					{(language: ProgrammingLanguage) => (
-						<ComboboxItem key={language.id} value={language}>
-							{language.value}
-						</ComboboxItem>
-					)}
-				</ComboboxList>
-			</ComboboxContent>
-		</Combobox>
+				<ComboboxPopup>
+					<ComboboxEmpty>No frameworks found.</ComboboxEmpty>
+					<ComboboxList>
+						{(framework: Framework) => (
+							<ComboboxItem key={framework.value} value={framework}>
+								{framework.label}
+							</ComboboxItem>
+						)}
+					</ComboboxList>
+				</ComboboxPopup>
+			</Combobox>
+		</Field>
 	);
 }
 
-interface ProgrammingLanguage {
-	id: string;
+interface Framework {
+	label: string;
 	value: string;
 }
 
-const langs: ProgrammingLanguage[] = [
-	{ id: "js", value: "JavaScript" },
-	{ id: "ts", value: "TypeScript" },
-	{ id: "py", value: "Python" },
-	{ id: "java", value: "Java" },
-	{ id: "cpp", value: "C++" },
-	{ id: "cs", value: "C#" },
-	{ id: "php", value: "PHP" },
-	{ id: "ruby", value: "Ruby" },
-	{ id: "go", value: "Go" },
-	{ id: "rust", value: "Rust" },
-	{ id: "swift", value: "Swift" },
+const frameworks: Framework[] = [
+	{ label: "React", value: "react" },
+	{ label: "Next.js", value: "nextjs" },
+	{ label: "Remix", value: "remix" },
+	{ label: "Svelte", value: "svelte" },
+	{ label: "Astro", value: "astro" },
+	{ label: "Vue", value: "vue" },
+	{ label: "Nuxt", value: "nuxt" },
+	{ label: "Angular", value: "angular" },
+	{ label: "Solid", value: "solid" },
+	{ label: "Qwik", value: "qwik" },
 ];

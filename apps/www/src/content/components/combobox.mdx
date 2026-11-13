@@ -1,13 +1,13 @@
 ---
 title: Combobox
-description: Autocomplete component for selecting items from a list.
+description: An input that filters a list of options and remembers the selected one.
 ---
 
 <ComponentLinks
 	links={[
 		{
-			label: "Docs",
-			href: "https://base-ui.com/react/components/combobox",
+			label: "API Reference",
+			href: "https://base-ui.com/react/components/combobox#api-reference",
 		},
 	]}
 />
@@ -39,11 +39,21 @@ import {
 	Combobox,
 	ComboboxChip,
 	ComboboxChips,
-	ComboboxContent,
+	ComboboxChipsInput,
+	ComboboxClear,
+	ComboboxCollection,
 	ComboboxEmpty,
+	ComboboxGroup,
+	ComboboxGroupLabel,
 	ComboboxInput,
+	ComboboxInputGroup,
 	ComboboxItem,
+	ComboboxLabel,
 	ComboboxList,
+	ComboboxPopup,
+	ComboboxRow,
+	ComboboxSeparator,
+	ComboboxStatus,
 	ComboboxTrigger,
 	ComboboxValue,
 } from "@/components/ui/combobox"
@@ -51,35 +61,99 @@ import {
 
 ```tsx title="Anatomy"
 <Combobox>
-	<ComboboxInput />
-	<ComboboxTrigger />
-	<ComboboxValue />
+	<ComboboxLabel />
+	<ComboboxInputGroup>
+		<ComboboxInput />
+		<ComboboxTrigger />
+		<ComboboxClear />
+	</ComboboxInputGroup>
 	<ComboboxChips>
-		<ComboboxChip />
+		<ComboboxValue>
+			<ComboboxChip />
+			<ComboboxChipsInput />
+		</ComboboxValue>
 	</ComboboxChips>
-	<ComboboxContent>
+	<ComboboxPopup>
+		<ComboboxStatus />
 		<ComboboxEmpty />
 		<ComboboxList>
-			<ComboboxItem />
+			<ComboboxGroup>
+				<ComboboxGroupLabel />
+				<ComboboxCollection />
+			</ComboboxGroup>
+			<ComboboxSeparator />
+			<ComboboxRow>
+				<ComboboxItem />
+			</ComboboxRow>
 		</ComboboxList>
-	</ComboboxContent>
+	</ComboboxPopup>
 </Combobox>
 ```
 
+Set `render={<Input />}` on `ComboboxInput` to style it as an [Input](/docs/components/input). Give every combobox a name: use [Field](/docs/components/field) with a `FieldLabel`, or set `aria-label` on `ComboboxInput`.
+
+`ComboboxPopup` takes `side`, `align`, `sideOffset` and `alignOffset` to change where the popup opens.
+
+To store IDs instead of item objects, pass `createComboboxItems(data, { getValue, getLabel })` as `items`.
+
+To let users type any text, use [Autocomplete](/docs/components/autocomplete). To pick from a short list without filtering, use [Select](/docs/components/select).
+
 ## Examples
 
-### Input inside popup
+### Trigger
 
-<ComponentPreview name="combobox-input-inside-popup-demo" />
+Set `render={<ComboboxTrigger />}` on `InputGroupButton` to add a button that opens the list.
 
----
+<ComponentPreview name="combobox-trigger-demo" />
+
+### Input Group
+
+Set `render={<InputGroup />}` on `ComboboxInputGroup` to add icons, text or buttons around the input.
+
+<ComponentPreview name="combobox-input-group-demo" />
+
+### Clear
+
+Set `render={<ComboboxClear />}` on `InputGroupButton` to add a clear button.
+
+<ComponentPreview name="combobox-clear-demo" />
+
+### Groups
+
+Use `ComboboxGroup`, `ComboboxGroupLabel` and `ComboboxSeparator` to split items into labeled sections.
+
+<ComponentPreview name="combobox-groups-demo" />
 
 ### Multiple
 
+Set `multiple` to select more than one item. Use `ComboboxChips`, `ComboboxChip` and `ComboboxChipsInput` to show the selected items inside the input.
+
 <ComponentPreview name="combobox-multiple-demo" />
 
----
+To hide the remove button of a chip, set `showRemove={false}` on `ComboboxChip`.
 
-### Creatable
+### Auto Highlight
 
-<ComponentPreview name="combobox-creatable-demo" />
+Set `autoHighlight` to highlight the first match while typing.
+
+<ComponentPreview name="combobox-autohighlight-demo" />
+
+### Invalid
+
+Set `invalid` on `Field` to show the invalid state. Outside a `Field`, set `aria-invalid` on `ComboboxInput`.
+
+<ComponentPreview name="combobox-invalid-demo" showReload={true} />
+
+### Disabled
+
+Set `disabled` on `Field` or `Combobox` to disable the combobox.
+
+<ComponentPreview name="combobox-disabled-demo" />
+
+### Popup
+
+Put `ComboboxInput` inside `ComboboxPopup` and open it with `ComboboxTrigger` to build a searchable select.
+
+<ComponentPreview name="combobox-popup-demo" />
+
+Outside a `Field`, use `ComboboxLabel` to name the trigger.
