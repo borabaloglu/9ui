@@ -69,7 +69,7 @@ function SheetPopup({
 					data-side={side}
 					data-variant={variant}
 					className={cn(
-						"group/sheet-popup bg-popover text-popover-foreground relative flex flex-col gap-4 overflow-y-auto overscroll-contain pt-(--sheet-top) pb-(--sheet-bottom) text-sm shadow-lg transition-[translate,opacity,filter] duration-400 ease-[cubic-bezier(0.32,0.72,0,1)] outline-none [--sheet-offset:0px] data-ending-style:duration-250 data-nested-dialog-open:brightness-90 motion-reduce:data-ending-style:opacity-0 motion-reduce:data-starting-style:opacity-0 dark:data-nested-dialog-open:brightness-75",
+						"group/sheet-popup bg-popover text-popover-foreground ease-drawer relative flex flex-col gap-4 overflow-y-auto overscroll-contain pt-(--sheet-top) pb-(--sheet-bottom) text-sm shadow-lg transition-[translate,opacity,filter] duration-400 outline-none [--sheet-offset:0px] data-ending-style:duration-250 data-nested-dialog-open:brightness-90 motion-reduce:data-ending-style:opacity-0 motion-reduce:data-starting-style:opacity-0 dark:data-nested-dialog-open:brightness-75",
 						side === "top" &&
 							"max-h-full w-full border-b [--sheet-bottom:0px] [--sheet-top:env(safe-area-inset-top,0px)] motion-safe:data-ending-style:-translate-y-[calc(100%+var(--sheet-offset))] motion-safe:data-starting-style:-translate-y-[calc(100%+var(--sheet-offset))]",
 						side === "right" &&
