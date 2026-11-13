@@ -5,16 +5,16 @@ import { useState } from "react";
 import { PhoneInput } from "@/components/ui/phone-input";
 
 export default function PhoneInputInitialValueFormatDemo() {
-	const [phoneNumber, setPhoneNumber] = useState<string>();
+	const [phoneNumber, setPhoneNumber] = useState<string>("+12133734253");
 
 	return (
-		<div className="w-[300px]">
-			<PhoneInput
-				value={phoneNumber}
-				onChange={setPhoneNumber}
-				initialValueFormat="national"
-				placeholder="Enter a phone number"
-			/>
-		</div>
+		<PhoneInput
+			aria-label="Phone number"
+			className="max-w-xs"
+			placeholder="Enter a phone number"
+			initialValueFormat="national"
+			value={phoneNumber}
+			onChange={setPhoneNumber}
+		/>
 	);
 }

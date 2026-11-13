@@ -13,7 +13,7 @@ export default function PhoneInputFormDemo() {
 	const [invalid, setInvalid] = useState(false);
 
 	const handleSubmit = () => {
-		if (!phoneNumber || !isValidPhoneNumber(phoneNumber)) {
+		if (!isValidPhoneNumber(phoneNumber)) {
 			setInvalid(true);
 			return;
 		}
@@ -22,21 +22,22 @@ export default function PhoneInputFormDemo() {
 	};
 
 	return (
-		<Form className="w-[300px]" onFormSubmit={handleSubmit}>
+		<Form className="max-w-xs" onFormSubmit={handleSubmit}>
 			<Field name="phoneNumber" invalid={invalid}>
-				<FieldLabel>Phone Number</FieldLabel>
+				<FieldLabel>Phone number</FieldLabel>
 				<PhoneInput
+					placeholder="Enter a phone number"
 					value={phoneNumber}
 					onChange={(value) => {
-						setPhoneNumber(value ?? "");
+						setPhoneNumber(value);
 						setInvalid(false);
 					}}
-					placeholder="Enter a phone number"
-					aria-invalid={invalid}
 				/>
-				<FieldError match={invalid}>Invalid phone number</FieldError>
+				<FieldError match={invalid}>Enter a valid phone number.</FieldError>
 			</Field>
-			<Button type="submit">Submit</Button>
+			<Button type="submit" className="self-start">
+				Submit
+			</Button>
 		</Form>
 	);
 }
