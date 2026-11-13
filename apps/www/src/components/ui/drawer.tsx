@@ -41,6 +41,42 @@ function Drawer<Payload>({
 	);
 }
 
+function DrawerProvider({ ...props }: BaseDrawer.Provider.Props) {
+	return <BaseDrawer.Provider {...props} />;
+}
+
+function DrawerIndentBackground({
+	className,
+	...props
+}: React.ComponentProps<typeof BaseDrawer.IndentBackground>) {
+	return (
+		<BaseDrawer.IndentBackground
+			data-slot="drawer-indent-background"
+			className={cn(
+				"invisible fixed inset-0 bg-black transition-[visibility] duration-450 data-active:visible",
+				className,
+			)}
+			{...props}
+		/>
+	);
+}
+
+function DrawerIndent({
+	className,
+	...props
+}: React.ComponentProps<typeof BaseDrawer.Indent>) {
+	return (
+		<BaseDrawer.Indent
+			data-slot="drawer-indent"
+			className={cn(
+				"bg-background ease-drawer relative origin-top overflow-clip transition-[transform,border-radius] duration-[calc(450ms*(1-clamp(0,var(--drawer-swipe-progress)*100000,1)*clamp(0,(1-var(--drawer-swipe-progress))*100000,1)))] data-active:will-change-transform motion-safe:data-active:[transform:translateY(calc((--spacing(3.5)+env(safe-area-inset-top,0px))*(1-var(--drawer-swipe-progress))))_scale(calc(0.96+0.04*var(--drawer-swipe-progress)))] motion-safe:data-active:rounded-[calc(var(--radius-2xl)*(1-var(--drawer-swipe-progress)))]",
+				className,
+			)}
+			{...props}
+		/>
+	);
+}
+
 function DrawerTrigger({
 	...props
 }: React.ComponentProps<typeof BaseDrawer.Trigger>) {
@@ -83,7 +119,7 @@ function DrawerBackdrop({
 		<BaseDrawer.Backdrop
 			data-slot="drawer-backdrop"
 			className={cn(
-				"fixed inset-0 z-50 min-h-dvh bg-black/30 opacity-[max(var(--drawer-backdrop-floor,0),calc(1-var(--drawer-swipe-progress)))] transition-opacity duration-450 ease-[cubic-bezier(0.32,0.72,0,1)] data-ending-style:opacity-0 data-ending-style:duration-[calc(var(--drawer-swipe-strength)*400ms)] data-starting-style:opacity-0 data-swiping:duration-0 supports-backdrop-filter:backdrop-blur-xs supports-[-webkit-touch-callout:none]:absolute",
+				"ease-drawer fixed inset-0 z-50 min-h-dvh bg-black/30 opacity-[max(var(--drawer-backdrop-floor,0),calc(1-var(--drawer-swipe-progress)))] transition-opacity duration-450 data-ending-style:opacity-0 data-ending-style:duration-[calc(var(--drawer-swipe-strength)*400ms)] data-starting-style:opacity-0 data-swiping:duration-0 supports-backdrop-filter:backdrop-blur-xs supports-[-webkit-touch-callout:none]:absolute",
 				className,
 			)}
 			{...props}
@@ -150,7 +186,7 @@ function DrawerPopup({
 						"group/drawer-popup bg-popover text-popover-foreground pointer-events-auto relative flex touch-none flex-col gap-4 pt-(--drawer-top) pb-(--drawer-bottom) text-sm shadow-lg outline-none [--drawer-bottom:0px] [--drawer-inset:max(--spacing(4),calc((100%-var(--container-md))/2+--spacing(4)))] [--drawer-offset:0px] [--drawer-top:0px]",
 						"after:pointer-events-none after:absolute after:[inset:var(--drawer-bleed,auto)] after:bg-inherit",
 						"[--drawer-stack-shift:calc((var(--drawer-height,var(--drawer-frontmost-height,0px))-var(--drawer-frontmost-height,0px))*min(1,var(--drawer-stack)))] [--drawer-stack:max(0,calc(var(--nested-drawers)-clamp(0,var(--drawer-swipe-progress),1)))] data-nested-drawer-open:brightness-90 dark:data-nested-drawer-open:brightness-75",
-						"transition-[transform,opacity,filter] duration-450 ease-[cubic-bezier(0.32,0.72,0,1)] will-change-transform data-ending-style:duration-[calc(var(--drawer-swipe-strength)*400ms)] data-nested-drawer-swiping:duration-0 data-ending-style:data-nested-drawer-swiping:duration-[calc(var(--drawer-swipe-strength)*400ms)] data-swipe-dismiss:[transform:var(--drawer-closed)] data-swiping:cursor-grabbing data-swiping:select-none motion-safe:data-ending-style:[transform:var(--drawer-closed)] motion-safe:data-starting-style:[transform:var(--drawer-closed)] motion-reduce:data-ending-style:opacity-0 motion-reduce:data-starting-style:opacity-0",
+						"ease-drawer transition-[transform,opacity,filter] duration-450 will-change-transform data-ending-style:duration-[calc(var(--drawer-swipe-strength)*400ms)] data-nested-drawer-swiping:duration-0 data-ending-style:data-nested-drawer-swiping:duration-[calc(var(--drawer-swipe-strength)*400ms)] data-swipe-dismiss:[transform:var(--drawer-closed)] data-swiping:cursor-grabbing data-swiping:select-none motion-safe:data-ending-style:[transform:var(--drawer-closed)] motion-safe:data-starting-style:[transform:var(--drawer-closed)] motion-reduce:data-ending-style:opacity-0 motion-reduce:data-starting-style:opacity-0",
 						(swipeDirection === "up" || swipeDirection === "down") &&
 							"max-h-[80dvh] w-full",
 						(swipeDirection === "left" || swipeDirection === "right") &&
@@ -290,8 +326,11 @@ export {
 	DrawerDescription,
 	DrawerFooter,
 	DrawerHeader,
+	DrawerIndent,
+	DrawerIndentBackground,
 	DrawerPanel,
 	DrawerPopup,
+	DrawerProvider,
 	DrawerSwipeArea,
 	DrawerTitle,
 	DrawerTrigger,

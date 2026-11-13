@@ -130,3 +130,20 @@ Create a handle with `createDrawerHandle` and pass it to `Drawer` and to any `Dr
 ### Handle
 
 The handle shows on top and bottom drawers. Set `showHandle={false}` on `DrawerPopup` to remove it.
+
+### Scale Background
+
+Wrap your app in `DrawerProvider` and put `DrawerIndentBackground` and `DrawerIndent` at the top of the tree to scale the page down while a drawer is open. Every `Drawer` inside the provider triggers it, and the page follows the drawer as it is swiped away.
+
+```tsx
+<DrawerProvider>
+	<DrawerIndentBackground />
+	<DrawerIndent>{children}</DrawerIndent>
+</DrawerProvider>
+```
+
+`DrawerIndent` is the page: it carries the page background and clips its content to the rounded corners. While a drawer is open, `position: fixed` elements inside it are positioned against it instead of the viewport. With reduced motion the page stays in place.
+
+The example below runs in a sandbox: the drawer is rendered into the frame with `container`, and the frame holds the indent. In your app the indent is the page itself.
+
+<ComponentPreview name="drawer-scale-background-demo" />
