@@ -1,7 +1,5 @@
 "use client";
 
-import * as React from "react";
-
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import {
@@ -13,14 +11,16 @@ import {
 } from "@/components/ui/card";
 import {
 	Combobox,
-	ComboboxContent,
 	ComboboxEmpty,
 	ComboboxInput,
 	ComboboxItem,
 	ComboboxList,
+	ComboboxPopup,
 	ComboboxTrigger,
 	ComboboxValue,
+	createComboboxItems,
 } from "@/components/ui/combobox";
+import { Input } from "@/components/ui/input";
 
 const roles = [
 	{
@@ -45,6 +45,11 @@ const roles = [
 	},
 ];
 
+const roleItems = createComboboxItems(roles, {
+	getValue: (role) => role.value,
+	getLabel: (role) => role.label,
+});
+
 interface RoleComboboxProps {
 	member: {
 		id: string;
@@ -55,54 +60,38 @@ interface RoleComboboxProps {
 }
 
 function RoleCombobox({ member }: RoleComboboxProps) {
-	const [open, setOpen] = React.useState(false);
-
 	return (
-		<Combobox
-			items={roles}
-			value={member.role}
-			onOpenChange={setOpen}
-			open={open}
-		>
-			<div className="relative flex flex-col gap-2">
-				<Button
-					variant="outline"
-					role="combobox"
-					aria-expanded={open}
-					className="justify-between"
-					render={
-						<ComboboxTrigger id="select-country">
-							<ComboboxValue />
-						</ComboboxTrigger>
-					}
-				/>
-			</div>
-			<ComboboxContent
-				className="max-h-[20rem] w-80 [--input-container-height:4rem]"
-				align="end"
+		<Combobox items={roleItems} defaultValue={member.role}>
+			<ComboboxTrigger
+				aria-label={`Role of ${member.name}`}
+				render={<Button variant="outline" className="justify-between" />}
 			>
-				<ComboboxInput
-					className="focus-visible:ring-0"
-					inputContainerClassName="mb-2"
-					placeholder="Select role..."
-					showClear={false}
-				/>
+				<ComboboxValue />
+			</ComboboxTrigger>
+			<ComboboxPopup className="w-80" align="end">
+				<div className="p-1 pb-0">
+					<ComboboxInput
+						placeholder="Select role..."
+						aria-label="Search roles"
+						render={<Input className="rounded-md shadow-none" />}
+					/>
+				</div>
 				<ComboboxEmpty>No roles found.</ComboboxEmpty>
-				<ComboboxList className="max-h-[min(calc(20rem-var(--input-container-height)),calc(var(--available-height)-var(--input-container-height)))] scroll-py-2 overflow-y-auto overscroll-contain">
+				<ComboboxList>
 					{(role: (typeof roles)[number]) => (
 						<ComboboxItem
-							className="flex flex-col items-start gap-1 font-medium [&>span]:top-2.5"
+							className="flex-col items-start gap-0.5 font-medium"
 							key={role.value}
 							value={role.value}
 						>
-							{role.label ?? role.value}
+							{role.label}
 							<p className="text-muted-foreground text-sm font-normal">
 								{role.description}
 							</p>
 						</ComboboxItem>
 					)}
 				</ComboboxList>
-			</ComboboxContent>
+			</ComboboxPopup>
 		</Combobox>
 	);
 }

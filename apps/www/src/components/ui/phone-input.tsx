@@ -6,11 +6,11 @@ import flags from "react-phone-number-input/flags";
 import { Button } from "@/components/ui/button";
 import {
 	Combobox,
-	ComboboxContent,
 	ComboboxEmpty,
 	ComboboxInput,
 	ComboboxItem,
 	ComboboxList,
+	ComboboxPopup,
 	ComboboxTrigger,
 } from "@/components/ui/combobox";
 import { Input } from "@/components/ui/input";
@@ -89,15 +89,16 @@ function CountrySelect({
 					</Button>
 				)}
 			/>
-			<ComboboxContent className="max-h-[20rem] w-[300px] [--input-container-height:4rem]">
-				<ComboboxInput
-					className="focus-visible:ring-0"
-					inputContainerClassName="mb-2"
-					placeholder="Search country..."
-					showClear={false}
-				/>
+			<ComboboxPopup className="w-[300px]">
+				<div className="p-1 pb-0">
+					<ComboboxInput
+						placeholder="Search country..."
+						aria-label="Search country"
+						render={<Input className="rounded-md shadow-none" />}
+					/>
+				</div>
 				<ComboboxEmpty>No countries found.</ComboboxEmpty>
-				<ComboboxList className="max-h-[min(calc(20rem-var(--input-container-height)),calc(var(--available-height)-var(--input-container-height)))] scroll-py-2 overflow-y-auto overscroll-contain">
+				<ComboboxList>
 					{(country: CountryEntry) =>
 						country.value ? (
 							<CountrySelectOption
@@ -110,7 +111,7 @@ function CountrySelect({
 						) : null
 					}
 				</ComboboxList>
-			</ComboboxContent>
+			</ComboboxPopup>
 		</Combobox>
 	);
 }
