@@ -77,9 +77,7 @@ function InputGroupAddon({
 
 				event.preventDefault();
 				event.currentTarget.parentElement
-					?.querySelector<HTMLInputElement | HTMLTextAreaElement>(
-						"input, textarea",
-					)
+					?.querySelector<HTMLElement>("[data-slot=input-group-control]")
 					?.focus();
 			}}
 			{...props}
