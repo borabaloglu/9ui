@@ -15,7 +15,7 @@ import {
 const PLANS = [
 	{
 		name: "Starter",
-		description: "One project and community support.",
+		description: "For side projects.",
 	},
 	{
 		name: "Team",
@@ -45,7 +45,7 @@ export default function PopoverDetachedTriggersDemo() {
 			))}
 			<Popover handle={planPopover}>
 				{({ payload }) => (
-					<PopoverPopup>
+					<PopoverPopup className="w-(--popup-width,auto) max-w-72">
 						<PopoverViewport>
 							<PopoverHeader>
 								<PopoverTitle>{payload?.name}</PopoverTitle>
