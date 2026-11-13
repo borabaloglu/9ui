@@ -9,21 +9,43 @@ type VaulDirection = NonNullable<
 	React.ComponentProps<typeof BaseVaul.Root>["direction"]
 >;
 
-const VaulDirectionContext = React.createContext<VaulDirection>("bottom");
+const VaulContext = React.createContext<{
+	direction: VaulDirection;
+	hasSnapPoints: boolean;
+}>({ direction: "bottom", hasSnapPoints: false });
+
+function useVaulContextValue({
+	direction = "bottom",
+	snapPoints,
+}: Pick<
+	React.ComponentProps<typeof BaseVaul.Root>,
+	"direction" | "snapPoints"
+>) {
+	const hasSnapPoints = snapPoints != null && snapPoints.length > 0;
+
+	return React.useMemo(
+		() => ({ direction, hasSnapPoints }),
+		[direction, hasSnapPoints],
+	);
+}
 
 function Vaul(props: React.ComponentProps<typeof BaseVaul.Root>) {
+	const context = useVaulContextValue(props);
+
 	return (
-		<VaulDirectionContext value={props.direction ?? "bottom"}>
+		<VaulContext value={context}>
 			<BaseVaul.Root {...props} />
-		</VaulDirectionContext>
+		</VaulContext>
 	);
 }
 
 function VaulNested(props: React.ComponentProps<typeof BaseVaul.NestedRoot>) {
+	const context = useVaulContextValue(props);
+
 	return (
-		<VaulDirectionContext value={props.direction ?? "bottom"}>
+		<VaulContext value={context}>
 			<BaseVaul.NestedRoot {...props} />
-		</VaulDirectionContext>
+		</VaulContext>
 	);
 }
 
@@ -61,7 +83,7 @@ function VaulHandle({
 		<BaseVaul.Handle
 			data-slot="vaul-handle"
 			className={cn(
-				"bg-foreground/15! h-1! w-10! shrink-0 opacity-100!",
+				"bg-foreground/15! z-1 h-1.5! w-25! shrink-0 cursor-grab opacity-100! *:min-h-6.5 active:cursor-grabbing",
 				className,
 			)}
 			{...props}
@@ -79,12 +101,18 @@ function VaulContent({
 	variant?: "default" | "inset";
 	showHandle?: boolean;
 }) {
-	const direction = React.use(VaulDirectionContext);
+	const { direction, hasSnapPoints } = React.use(VaulContext);
 	const inset = variant === "inset";
 
 	return (
 		<BaseVaul.Portal data-slot="vaul-portal">
-			<VaulOverlay />
+			<VaulOverlay
+				className={
+					hasSnapPoints
+						? "opacity-100! not-data-[vaul-snap-points-overlay=true]:opacity-50! data-closed:data-vaul-overlay:animate-none! data-closed:data-vaul-overlay:opacity-0! starting:data-open:data-vaul-overlay:opacity-0!"
+						: undefined
+				}
+			/>
 			<BaseVaul.Content
 				data-slot="vaul-content"
 				data-variant={variant}
@@ -168,7 +196,7 @@ function VaulFooter({
 			className={cn(
 				"mt-auto flex flex-col-reverse gap-2 px-(--vaul-inset) py-4 sm:flex-row sm:justify-end",
 				variant === "default" &&
-					"bg-muted/50 relative -mb-(--vaul-bottom) rounded-b-[inherit] border-t pb-[calc(--spacing(4)+var(--vaul-bottom))] after:absolute after:[inset:var(--vaul-overdrag,auto)] after:z-1 after:bg-inherit",
+					"bg-muted/50 relative -mb-(--vaul-bottom) rounded-b-[inherit] border-t pb-[calc(--spacing(4)+var(--vaul-bottom))] after:pointer-events-none after:absolute after:[inset:var(--vaul-overdrag,auto)] after:z-1 after:bg-inherit",
 				className,
 			)}
 			{...props}

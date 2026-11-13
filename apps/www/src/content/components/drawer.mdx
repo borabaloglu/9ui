@@ -1,0 +1,132 @@
+---
+title: Drawer
+description: A panel that slides in from the edge of the screen and can be swiped away.
+---
+<ComponentLinks
+	links={[
+		{
+			label: "API Reference",
+			href: "https://base-ui.com/react/components/drawer",
+		},
+	]}
+/>
+
+<ComponentPreview name="drawer-demo" />
+
+## About
+
+Drawer is built on the Base UI drawer. The `vaul-base` drawer that used to be installed as `drawer` now lives at [Vaul](/docs/components/vaul), with the same parts under `Vaul*` names.
+
+## Installation
+
+<ComponentInstallation>
+<div>
+```bash title="Terminal"
+npx shadcn@latest add @9ui/drawer
+```
+</div>
+
+<ComponentSource name="drawer" />
+</ComponentInstallation>
+
+## Usage
+
+```tsx title="Imports"
+import {
+	Drawer,
+	DrawerClose,
+	DrawerDescription,
+	DrawerFooter,
+	DrawerHeader,
+	DrawerPanel,
+	DrawerPopup,
+	DrawerTitle,
+	DrawerTrigger,
+} from "@/components/ui/drawer"
+```
+
+```tsx title="Anatomy"
+<Drawer>
+	<DrawerTrigger />
+	<DrawerPopup>
+		<DrawerHeader>
+			<DrawerTitle />
+			<DrawerDescription />
+		</DrawerHeader>
+		<DrawerPanel />
+		<DrawerFooter>
+			<DrawerClose />
+		</DrawerFooter>
+	</DrawerPopup>
+</Drawer>
+```
+
+Put the body in `DrawerPanel`. It scrolls when the content is taller than the drawer, while the header and footer stay in place. With a mouse, text inside the panel can be selected, and the drawer is dragged by its header, footer or handle.
+
+On top and bottom drawers the header, panel and footer keep their content in a centered column, so it stays readable on wide screens.
+
+The drawer pads its edges by `env(safe-area-inset-top)` and `env(safe-area-inset-bottom)`, so content clears the status bar and home indicator when the page uses `viewport-fit=cover`.
+
+If you do not need swipe gestures or snap points, use [Sheet](/docs/components/sheet).
+
+## Examples
+
+### Swipe Direction
+
+Set `swipeDirection` on `Drawer` to choose the direction that dismisses the drawer. The drawer sits on that edge: `down` is a bottom drawer, `up` a top drawer, `left` and `right` are side drawers.
+
+<ComponentPreview name="drawer-swipe-direction-demo" />
+
+### Inset
+
+Set `variant="inset"` on `DrawerPopup` to float the drawer inside the viewport with rounded corners on every side. Inset drawers are not meant to be combined with snap points.
+
+<ComponentPreview name="drawer-inset-demo" />
+
+### Scrollable Content
+
+`DrawerPanel` scrolls on its own. Swiping down closes the drawer once the panel is scrolled to the top.
+
+<ComponentPreview name="drawer-scrollable-content-demo" />
+
+### Snap Points
+
+Pass `snapPoints` to let a bottom drawer rest at fixed heights. Use pixel or rem strings, or a fraction of the viewport height, and control the current one with `snapPoint` and `onSnapPointChange`. The backdrop stays half visible at the lower snap points and fades in fully as the drawer expands.
+
+<ComponentPreview name="drawer-snap-points-demo" />
+
+### Nested
+
+Render a `Drawer` inside another to stack them. The parent scales down behind the nested one and follows it while it is swiped away.
+
+<ComponentPreview name="drawer-nested-demo" />
+
+### Bare Footer
+
+Set `variant="bare"` on `DrawerFooter` to drop its border and background.
+
+<ComponentPreview name="drawer-footer-bare-demo" />
+
+### Non-modal
+
+Set `modal={false}` on `Drawer` to leave the page behind usable: there is no backdrop, focus is not trapped and the page still scrolls. Add `disablePointerDismissal` to keep the drawer open when something outside is pressed.
+
+<ComponentPreview name="drawer-non-modal-demo" />
+
+### Swipe to Open
+
+Place `DrawerSwipeArea` inside `Drawer` to open the drawer by swiping in from its edge. The area is an invisible strip along that edge of the screen.
+
+The example below runs in a sandbox: the drawer is rendered into the frame with `container`, and the strip is tinted so you can see it. In your app the strip sits on the edge of the screen.
+
+<ComponentPreview name="drawer-swipe-area-demo" />
+
+### Detached Triggers
+
+Create a handle with `createDrawerHandle` and pass it to `Drawer` and to any `DrawerTrigger` outside it. Give each trigger a `payload` and read it from the function passed as the child of `Drawer`.
+
+<ComponentPreview name="drawer-detached-triggers-demo" />
+
+### Handle
+
+The handle shows on top and bottom drawers. Set `showHandle={false}` on `DrawerPopup` to remove it.
