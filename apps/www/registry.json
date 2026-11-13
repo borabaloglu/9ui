@@ -285,7 +285,13 @@
 					"type": "registry:ui",
 					"target": ""
 				}
-			]
+			],
+			"css": {
+				"@property --drawer-height": {
+					"syntax": "\"*\"",
+					"inherits": "false"
+				}
+			}
 		},
 		{
 			"name": "emoji-picker",

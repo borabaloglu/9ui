@@ -3,6 +3,11 @@
 
 @custom-variant dark (&:is(.dark *));
 
+@property --drawer-height {
+	syntax: "*";
+	inherits: false;
+}
+
 @layer base {
 	* {
 		@apply border-border outline-ring/50 selection:bg-primary selection:text-primary-foreground;
