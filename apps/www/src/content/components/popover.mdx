@@ -5,7 +5,7 @@ description: A popup for displaying content.
 <ComponentLinks
 	links={[
 		{
-			label: "Docs",
+			label: "API Reference",
 			href: "https://base-ui.com/react/components/popover",
 		},
 	]}
@@ -35,28 +35,59 @@ npx shadcn@latest add @9ui/popover
 
 ```tsx title="Imports"
 import {
+	createPopoverHandle,
 	Popover,
 	PopoverClose,
-	PopoverContent,
 	PopoverDescription,
-	PopoverFooter,
 	PopoverHeader,
+	PopoverPopup,
 	PopoverTitle,
 	PopoverTrigger,
+	PopoverViewport,
 } from "@/components/ui/popover"
 ```
 
 ```tsx title="Anatomy"
 <Popover>
 	<PopoverTrigger />
-	<PopoverContent>
+	<PopoverPopup>
 		<PopoverHeader>
 			<PopoverTitle />
 			<PopoverDescription />
 		</PopoverHeader>
-		<PopoverFooter>
-			<PopoverClose />
-		</PopoverFooter>
-	</PopoverContent>
+		<PopoverClose />
+	</PopoverPopup>
 </Popover>
 ```
+
+Set `render` on `PopoverTrigger` to use your own button. Give icon-only triggers an `aria-label`.
+
+`PopoverPopup` takes `side`, `align`, `sideOffset` and `alignOffset` to change where the popover opens.
+
+Set `openOnHover` on `PopoverTrigger` to open the popover on hover as well as on click.
+
+Set `modal` on `Popover` to block the rest of the page while the popover is open. Add a `PopoverClose` inside the popup so focus stays trapped and screen reader users can leave.
+
+A popover that is taller than the space around its trigger scrolls.
+
+## Examples
+
+### Close Button
+
+Use `PopoverClose` to add a close button. Give it an `aria-label` when it only has an icon.
+
+<ComponentPreview name="popover-close-button-demo" />
+
+### Arrow
+
+Set `arrow` on `PopoverPopup` to point at the trigger. The popover moves away to make room for it.
+
+<ComponentPreview name="popover-arrow-demo" />
+
+### Detached Triggers
+
+Create a handle with `createPopoverHandle` and pass it to `Popover` and to any `PopoverTrigger` outside it. Give each trigger a `payload` and read it from the function passed as the child of `Popover`.
+
+Wrap the content in `PopoverViewport` so the popover moves and resizes between triggers instead of jumping.
+
+<ComponentPreview name="popover-detached-triggers-demo" />

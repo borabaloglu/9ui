@@ -6,10 +6,9 @@ import { Button } from "@/components/ui/button";
 import {
 	Popover,
 	PopoverClose,
-	PopoverContent,
 	PopoverDescription,
-	PopoverFooter,
 	PopoverHeader,
+	PopoverPopup,
 	PopoverTitle,
 	PopoverTrigger,
 } from "@/components/ui/popover";
@@ -109,7 +108,7 @@ export default function ToolbarDemo() {
 				>
 					<SparklesIcon />
 				</ToolbarButton>
-				<PopoverContent className="w-80 space-y-2">
+				<PopoverPopup className="w-80">
 					<PopoverHeader>
 						<PopoverTitle>Edit Prompt Template</PopoverTitle>
 						<PopoverDescription>
@@ -120,12 +119,12 @@ export default function ToolbarDemo() {
 						className="resize-none"
 						defaultValue="You are a helpful AI assistant. Your task is to help the user with their writing needs. Be concise, accurate, and helpful."
 					/>
-					<PopoverFooter>
-						<PopoverClose
-							render={<Button variant="outline">Save Prompt</Button>}
-						/>
-					</PopoverFooter>
-				</PopoverContent>
+					<PopoverClose
+						render={<Button variant="outline" className="self-end" />}
+					>
+						Save Prompt
+					</PopoverClose>
+				</PopoverPopup>
 			</Popover>
 		</Toolbar>
 	);
