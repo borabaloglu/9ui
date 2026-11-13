@@ -36,7 +36,7 @@ const DocsLayout = ({ children }: { children: React.ReactNode }) => {
 				<div className="px-3">
 					<SearchDialog sidebarNav={sidebarNav} variant="sidebar" />
 				</div>
-				<div className="mt-2 min-h-0 flex-1 [scrollbar-width:none] overflow-y-auto mask-[linear-gradient(to_bottom,transparent,white_12px,white_calc(100%-12px),transparent)] px-3 py-3">
+				<div className="mt-2 min-h-0 flex-1 [scrollbar-width:none] overflow-y-auto overscroll-contain mask-[linear-gradient(to_bottom,transparent,white_12px,white_calc(100%-12px),transparent)] px-3 py-3">
 					<DocsSidebarNav sidebarNav={sidebarNav} />
 				</div>
 			</DocsSidebar>

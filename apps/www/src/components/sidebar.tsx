@@ -74,7 +74,7 @@ export const DocsSidebarNav = ({
 		<div
 			ref={ref}
 			data-spacious={spacious}
-			className="group/nav text-sm data-[spacious=true]:text-[0.9375rem]"
+			className="group/nav relative text-sm data-[spacious=true]:text-[0.9375rem]"
 		>
 			{sidebarNav.map((group) => (
 				<div
