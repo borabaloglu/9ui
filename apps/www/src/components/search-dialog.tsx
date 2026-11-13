@@ -22,12 +22,6 @@ import {
 	CommandItem,
 	CommandList,
 } from "@/components/ui/command";
-import {
-	InputGroup,
-	InputGroupAddon,
-	InputGroupInput,
-	InputGroupText,
-} from "@/components/ui/input-group";
 import { Kbd } from "@/components/ui/kbd";
 
 import { navConfig } from "@/config/nav";
@@ -153,46 +147,42 @@ export function SearchDialog({
 				description="Search for a page or a component..."
 			>
 				<Command items={groups}>
-					<div className="p-1 pb-0">
-						<InputGroup>
-							<InputGroupAddon align="inline-start">
-								<InputGroupText>
-									<SearchIcon />
-								</InputGroupText>
-							</InputGroupAddon>
-							<InputGroupInput
-								placeholder="Search documentation..."
-								aria-label="Search documentation"
-								render={<CommandInput />}
-							/>
-						</InputGroup>
+					<div className="flex items-center gap-2 px-3">
+						<SearchIcon className="text-muted-foreground size-4 shrink-0" />
+						<CommandInput
+							placeholder="Search documentation..."
+							aria-label="Search documentation"
+							className="placeholder:text-muted-foreground h-10 min-w-0 flex-1 bg-transparent text-sm outline-none any-pointer-coarse:text-base"
+						/>
 					</div>
-					<CommandEmpty>No results found.</CommandEmpty>
-					<CommandList>
-						{(group: SearchGroup) => (
-							<CommandGroup key={group.value} items={group.items}>
-								<CommandGroupLabel>{group.value}</CommandGroupLabel>
-								<CommandCollection>
-									{(item: SearchItem) => (
-										<CommandItem
-											key={item.value}
-											value={item}
-											onClick={() => {
-												runCommand(() => router.push(item.value));
-											}}
-										>
-											{group.value === "Components" ? (
-												<ComponentIcon />
-											) : (
-												<ArrowRightIcon />
-											)}
-											{item.label}
-										</CommandItem>
-									)}
-								</CommandCollection>
-							</CommandGroup>
-						)}
-					</CommandList>
+					<div className="bg-background/50 flex min-h-0 flex-col rounded-t-lg border-t">
+						<CommandEmpty>No results found.</CommandEmpty>
+						<CommandList>
+							{(group: SearchGroup) => (
+								<CommandGroup key={group.value} items={group.items}>
+									<CommandGroupLabel>{group.value}</CommandGroupLabel>
+									<CommandCollection>
+										{(item: SearchItem) => (
+											<CommandItem
+												key={item.value}
+												value={item}
+												onClick={() => {
+													runCommand(() => router.push(item.value));
+												}}
+											>
+												{group.value === "Components" ? (
+													<ComponentIcon />
+												) : (
+													<ArrowRightIcon />
+												)}
+												{item.label}
+											</CommandItem>
+										)}
+									</CommandCollection>
+								</CommandGroup>
+							)}
+						</CommandList>
+					</div>
 					<CommandFooter>
 						<Kbd>
 							<CornerDownLeftIcon />
