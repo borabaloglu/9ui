@@ -11,9 +11,13 @@ import {
 
 import { Button } from "@/components/ui/button";
 import {
+	Command,
+	CommandCollection,
 	CommandDialog,
 	CommandEmpty,
+	CommandFooter,
 	CommandGroup,
+	CommandGroupLabel,
 	CommandInput,
 	CommandItem,
 	CommandList,
@@ -23,6 +27,16 @@ import { Kbd } from "@/components/ui/kbd";
 import { navConfig } from "@/config/nav";
 
 import type { SidebarNavGroup } from "@/types/nav";
+
+interface SearchItem {
+	value: string;
+	label: string;
+}
+
+interface SearchGroup {
+	value: string;
+	items: SearchItem[];
+}
 
 interface SearchDialogProps {
 	sidebarNav: SidebarNavGroup[];
@@ -66,30 +80,27 @@ export function SearchDialog({
 		command();
 	}, []);
 
-	const allNavItems = React.useMemo(() => {
-		const items: Array<{ title: string; href: string; group: string }> = [];
-
-		navConfig.mainNav.forEach((item) => {
-			items.push({
-				title: item.title,
-				href: item.href,
-				group: "Pages",
-			});
-		});
+	const groups = React.useMemo(() => {
+		const groups: SearchGroup[] = [
+			{
+				value: "Pages",
+				items: navConfig.mainNav.map((item) => ({
+					value: item.href,
+					label: item.title,
+				})),
+			},
+		];
 
 		sidebarNav.forEach((group) => {
-			group.items.forEach((item) => {
-				if (!item.disabled) {
-					items.push({
-						title: item.title,
-						href: item.href,
-						group: group.title,
-					});
-				}
+			groups.push({
+				value: group.title,
+				items: group.items
+					.filter((item) => !item.disabled)
+					.map((item) => ({ value: item.href, label: item.title })),
 			});
 		});
 
-		return items;
+		return groups.filter((group) => group.items.length > 0);
 	}, [sidebarNav]);
 
 	return (
@@ -132,56 +143,53 @@ export function SearchDialog({
 			<CommandDialog
 				open={open}
 				onOpenChange={setOpen}
-				className="border-2 shadow-lg"
+				title="Search documentation"
+				description="Search for a page or a component..."
 			>
-				<div className="[&_[data-slot=command-input-wrapper]]:bg-accent flex h-96 flex-col [&_[data-slot=command-input-wrapper]]:absolute [&_[data-slot=command-input-wrapper]]:top-2.5 [&_[data-slot=command-input-wrapper]]:left-[10px] [&_[data-slot=command-input-wrapper]]:z-10 [&_[data-slot=command-input-wrapper]]:mx-auto [&_[data-slot=command-input-wrapper]]:w-[calc(100%-20px)] [&_[data-slot=command-input-wrapper]]:rounded-md [&_[data-slot=command-input-wrapper]]:border-0">
-					<CommandInput placeholder="Search documentation..." />
-					<CommandList className="mt-12.5 max-h-none flex-1 border-0 px-1.5 py-0 [&_[cmdk-group-heading]]:!pt-1">
-						<CommandEmpty className="text-muted-foreground py-8 text-center text-sm">
-							No results found.
-						</CommandEmpty>
-						{Object.entries(
-							allNavItems.reduce(
-								(acc, item) => {
-									if (!acc[item.group]) {
-										acc[item.group] = [];
-									}
-									acc[item.group].push(item);
-									return acc;
-								},
-								{} as Record<string, typeof allNavItems>,
-							),
-						).map(([group, items]) => (
-							<CommandGroup key={group} heading={group}>
-								{items.map((item) => (
-									<CommandItem
-										className="rounded-md px-3 py-2"
-										key={item.href}
-										value={item.title}
-										onSelect={() => {
-											runCommand(() => router.push(item.href));
-										}}
-									>
-										{group === "Components" ? (
-											<ComponentIcon className="h-4 w-4" />
-										) : (
-											<ArrowRightIcon className="h-4 w-4" />
-										)}
-										{item.title}
-									</CommandItem>
-								))}
-							</CommandGroup>
-						))}
-					</CommandList>
-					<div className="border-t-background bg-border text-foreground/60 border-t-2 px-2.5 py-2 text-xs">
-						<div className="flex items-center gap-1">
-							<Kbd className="w-6 border-0 text-[10px]">
-								<CornerDownLeftIcon className="h-3 w-3" />
-							</Kbd>
-							<span>Go to page</span>
-						</div>
+				<Command items={groups}>
+					<div className="flex items-center gap-2 px-3">
+						<SearchIcon className="text-muted-foreground size-4 shrink-0" />
+						<CommandInput
+							placeholder="Search documentation..."
+							aria-label="Search documentation"
+							className="placeholder:text-muted-foreground h-10 min-w-0 flex-1 bg-transparent text-sm outline-none any-pointer-coarse:text-base"
+						/>
 					</div>
-				</div>
+					<div className="bg-background/50 flex min-h-0 flex-col rounded-t-lg border-t">
+						<CommandEmpty>No results found.</CommandEmpty>
+						<CommandList>
+							{(group: SearchGroup) => (
+								<CommandGroup key={group.value} items={group.items}>
+									<CommandGroupLabel>{group.value}</CommandGroupLabel>
+									<CommandCollection>
+										{(item: SearchItem) => (
+											<CommandItem
+												key={item.value}
+												value={item}
+												onClick={() => {
+													runCommand(() => router.push(item.value));
+												}}
+											>
+												{group.value === "Components" ? (
+													<ComponentIcon />
+												) : (
+													<ArrowRightIcon />
+												)}
+												{item.label}
+											</CommandItem>
+										)}
+									</CommandCollection>
+								</CommandGroup>
+							)}
+						</CommandList>
+					</div>
+					<CommandFooter>
+						<Kbd>
+							<CornerDownLeftIcon />
+						</Kbd>
+						Go to page
+					</CommandFooter>
+				</Command>
 			</CommandDialog>
 		</>
 	);

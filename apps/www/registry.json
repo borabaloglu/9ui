@@ -225,8 +225,12 @@
 		{
 			"name": "command",
 			"type": "registry:ui",
-			"dependencies": ["cmdk-base"],
-			"registryDependencies": ["@9ui/dialog"],
+			"dependencies": [],
+			"registryDependencies": [
+				"@9ui/autocomplete",
+				"@9ui/dialog",
+				"@9ui/scroll-area"
+			],
 			"files": [
 				{
 					"path": "src/components/ui/command.tsx",
