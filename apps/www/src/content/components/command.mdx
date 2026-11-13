@@ -1,21 +1,18 @@
 ---
 title: Command
-description: A searchable interface for quickly executing commands or actions.
+description: A searchable list of commands and actions.
 ---
+
 <ComponentLinks
 	links={[
 		{
-			label: "Docs",
-			href: "https://github.com/pacocoursey/cmdk",
+			label: "API Reference",
+			href: "https://base-ui.com/react/components/autocomplete#api-reference",
 		},
 	]}
 />
 
 <ComponentPreview name="command-demo" />
-
-## About
-
-The Command is built on top of [`cmdk-base`](https://cmdk-base.vercel.app), which is ported from [`cmdk`](https://github.com/pacocoursey/cmdk), originally created by [@pacocoursey](https://x.com/pacocoursey).
 
 ## Installation
 
@@ -28,11 +25,7 @@ npx shadcn@latest add @9ui/command
 
 <Steps>
 
-<Step>Install dependencies</Step>
-
-```bash title="Terminal"
-npm install cmdk-base
-```
+<Step>Add the [Autocomplete](/docs/components/autocomplete), [Dialog](/docs/components/dialog) and [Scroll Area](/docs/components/scroll-area) components.</Step>
 
 <Step>Copy and paste the following code into your project.</Step>
 
@@ -46,8 +39,12 @@ npm install cmdk-base
 ```tsx title="Imports"
 import {
 	Command,
+	CommandCollection,
+	CommandDialog,
 	CommandEmpty,
+	CommandFooter,
 	CommandGroup,
+	CommandGroupLabel,
 	CommandInput,
 	CommandItem,
 	CommandList,
@@ -57,22 +54,43 @@ import {
 ```
 
 ```tsx title="Anatomy"
-<Command>
-	<CommandInput />
-	<CommandList>
+<CommandDialog>
+	<Command>
+		<CommandInput />
 		<CommandEmpty />
-		<CommandGroup>
+		<CommandList>
+			<CommandGroup>
+				<CommandGroupLabel />
+				<CommandCollection />
+			</CommandGroup>
+			<CommandSeparator />
 			<CommandItem>
 				<CommandShortcut />
 			</CommandItem>
-		</CommandGroup>
-		<CommandSeparator />
-	</CommandList>
-</Command>
+		</CommandList>
+		<CommandFooter />
+	</Command>
+</CommandDialog>
 ```
+
+`Command` is an [Autocomplete](/docs/components/autocomplete) whose list is always open, so it takes the same props, like `items` and `filter`.
+
+`CommandInput` has no styles. Set it as the `render` of `InputGroupInput` to style it as an [Input Group](/docs/components/input-group), and give it an `aria-label`.
+
+To keep items clear of the scrollbar, set `scrollbarGutter` on `CommandList`.
+
+To run a command, set `onClick` on `CommandItem`. It also runs when the item is chosen with the keyboard.
 
 ## Examples
 
 ### Dialog
 
+Wrap `Command` in `CommandDialog` to open it in a dialog. Set `title` and `description` to name the dialog for screen readers.
+
 <ComponentPreview name="command-dialog-demo" />
+
+### Panel
+
+Pass your own classes to `CommandInput` and wrap `CommandList` to change the layout.
+
+<ComponentPreview name="command-panel-demo" />
