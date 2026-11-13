@@ -213,7 +213,7 @@ function DrawerPopup({
 								"rounded-r-2xl border-r [--drawer-bleed:0_100%_0_-100vw] [--drawer-bottom:env(safe-area-inset-bottom,0px)] [--drawer-footer-bleed:var(--drawer-bleed)] [--drawer-top:env(safe-area-inset-top,0px)]",
 						],
 						inset && [
-							"rounded-2xl border not-dark:border-b-[color-mix(in_oklab,var(--border),black_6%)] dark:border-t-[color-mix(in_oklab,var(--border),white_8%)]",
+							"rounded-2xl border bg-size-[var(--radius-2xl)_var(--radius-2xl),var(--radius-2xl)_var(--radius-2xl),calc(100%-2*var(--radius-2xl))_1px] bg-position-[0_0,100%_0,50%_0] bg-no-repeat bg-origin-border not-dark:shadow-[0_1px_--theme(--color-black/6%),var(--shadow-lg)] dark:bg-[radial-gradient(circle_at_var(--radius-2xl)_calc(var(--radius-2xl)+1px),transparent_calc(var(--radius-2xl)-0.5px),--theme(--color-white/8%)_calc(var(--radius-2xl)+0.5px)),radial-gradient(circle_at_0_calc(var(--radius-2xl)+1px),transparent_calc(var(--radius-2xl)-0.5px),--theme(--color-white/8%)_calc(var(--radius-2xl)+0.5px)),linear-gradient(--theme(--color-white/8%),--theme(--color-white/8%))]",
 							swipeDirection === "up" &&
 								"[--drawer-offset:calc(--spacing(4)+env(safe-area-inset-top,0px))]",
 							swipeDirection === "down" &&
