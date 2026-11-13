@@ -117,23 +117,23 @@ function VaulContent({
 				data-slot="vaul-content"
 				data-variant={variant}
 				className={cn(
-					"bg-popover text-popover-foreground fixed z-50 flex flex-col gap-4 pb-(--vaul-bottom) text-sm shadow-lg outline-none [--vaul-bottom:0px] [--vaul-inset:max(--spacing(4),calc((100%-var(--container-md))/2+--spacing(4)))]",
+					"bg-popover text-popover-foreground fixed z-50 flex flex-col gap-4 pb-(--vaul-bottom) text-sm shadow-lg outline-none [--vaul-bottom:0px] [--vaul-inset:max(--spacing(4),calc((100%-var(--container-md))/2+--spacing(4)))] [--vaul-radius:var(--radius-2xl)]",
 					(direction === "top" || direction === "bottom") && "max-h-[80dvh]",
 					(direction === "left" || direction === "right") &&
 						"w-[calc(100%-(--spacing(12)))] max-w-sm",
 					direction === "top" && showHandle && "[--vaul-bottom:--spacing(5)]",
 					!inset && [
 						direction === "top" &&
-							"inset-x-0 top-0 rounded-b-2xl border-b pt-[env(safe-area-inset-top,0px)] not-dark:border-b-[color-mix(in_oklab,var(--border),black_6%)]",
+							"inset-x-0 top-0 rounded-b-(--vaul-radius) border-b pt-[env(safe-area-inset-top,0px)] not-dark:border-b-[color-mix(in_oklab,var(--border),black_6%)]",
 						direction === "bottom" &&
-							"inset-x-0 bottom-0 rounded-t-2xl border-t [--vaul-bottom:env(safe-area-inset-bottom,0px)] [--vaul-overdrag:100%_0_-100vh_0] data-[vaul-custom-container=true]:[--vaul-overdrag:auto] dark:border-t-[color-mix(in_oklab,var(--border),white_8%)]",
+							"inset-x-0 bottom-0 rounded-t-(--vaul-radius) border-t [--vaul-bottom:env(safe-area-inset-bottom,0px)] [--vaul-overdrag:100%_0_-100vh_0] data-[vaul-custom-container=true]:[--vaul-overdrag:auto] dark:border-t-[color-mix(in_oklab,var(--border),white_8%)]",
 						direction === "right" &&
-							"inset-y-0 right-0 rounded-l-2xl border-l pt-[env(safe-area-inset-top,0px)] [--vaul-bottom:env(safe-area-inset-bottom,0px)] [--vaul-overdrag:0_-100vw_0_100%] data-[vaul-custom-container=true]:[--vaul-overdrag:auto]",
+							"inset-y-0 right-0 rounded-l-(--vaul-radius) border-l pt-[env(safe-area-inset-top,0px)] [--vaul-bottom:env(safe-area-inset-bottom,0px)] [--vaul-overdrag:0_-100vw_0_100%] data-[vaul-custom-container=true]:[--vaul-overdrag:auto]",
 						direction === "left" &&
-							"inset-y-0 left-0 rounded-r-2xl border-r pt-[env(safe-area-inset-top,0px)] [--vaul-bottom:env(safe-area-inset-bottom,0px)] [--vaul-overdrag:0_100%_0_-100vw] data-[vaul-custom-container=true]:[--vaul-overdrag:auto]",
+							"inset-y-0 left-0 rounded-r-(--vaul-radius) border-r pt-[env(safe-area-inset-top,0px)] [--vaul-bottom:env(safe-area-inset-bottom,0px)] [--vaul-overdrag:0_100%_0_-100vw] data-[vaul-custom-container=true]:[--vaul-overdrag:auto]",
 					],
 					inset && [
-						"rounded-2xl border bg-size-[var(--radius-2xl)_var(--radius-2xl),var(--radius-2xl)_var(--radius-2xl),calc(100%-2*var(--radius-2xl))_1px] bg-position-[0_0,100%_0,50%_0] bg-no-repeat bg-origin-border [--initial-transform:calc(100%+--spacing(4))] not-dark:shadow-[0_1px_--theme(--color-black/6%),var(--shadow-lg)] after:hidden! dark:bg-[radial-gradient(circle_at_var(--radius-2xl)_calc(var(--radius-2xl)+1px),transparent_calc(var(--radius-2xl)-0.5px),--theme(--color-white/8%)_calc(var(--radius-2xl)+0.5px)),radial-gradient(circle_at_0_calc(var(--radius-2xl)+1px),transparent_calc(var(--radius-2xl)-0.5px),--theme(--color-white/8%)_calc(var(--radius-2xl)+0.5px)),linear-gradient(--theme(--color-white/8%),--theme(--color-white/8%))]",
+						"rounded-(--vaul-radius) border bg-size-[var(--vaul-radius)_var(--vaul-radius),var(--vaul-radius)_var(--vaul-radius),calc(100%-2*var(--vaul-radius))_1px] bg-position-[0_0,100%_0,50%_0] bg-no-repeat bg-origin-border [--initial-transform:calc(100%+--spacing(4))] not-dark:shadow-[0_1px_--theme(--color-black/6%),var(--shadow-lg)] after:hidden! dark:bg-[radial-gradient(circle_at_var(--vaul-radius)_calc(var(--vaul-radius)+1px),transparent_calc(var(--vaul-radius)-0.5px),--theme(--color-white/8%)_calc(var(--vaul-radius)+0.5px)),radial-gradient(circle_at_0_calc(var(--vaul-radius)+1px),transparent_calc(var(--vaul-radius)-0.5px),--theme(--color-white/8%)_calc(var(--vaul-radius)+0.5px)),linear-gradient(--theme(--color-white/8%),--theme(--color-white/8%))]",
 						direction === "top" &&
 							"inset-x-4 top-[calc(--spacing(4)+env(safe-area-inset-top,0px))]",
 						direction === "bottom" &&

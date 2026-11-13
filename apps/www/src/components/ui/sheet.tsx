@@ -69,7 +69,7 @@ function SheetPopup({
 					data-side={side}
 					data-variant={variant}
 					className={cn(
-						"group/sheet-popup bg-popover text-popover-foreground ease-drawer relative flex flex-col gap-4 overflow-y-auto overscroll-contain pt-(--sheet-top) pb-(--sheet-bottom) text-sm shadow-lg transition-[translate,opacity,filter] duration-400 outline-none [--sheet-offset:0px] data-ending-style:duration-250 data-nested-dialog-open:brightness-90 motion-reduce:data-ending-style:opacity-0 motion-reduce:data-starting-style:opacity-0 dark:data-nested-dialog-open:brightness-75",
+						"group/sheet-popup bg-popover text-popover-foreground ease-drawer relative flex flex-col gap-4 overflow-y-auto overscroll-contain pt-(--sheet-top) pb-(--sheet-bottom) text-sm shadow-lg transition-[translate,opacity,filter] duration-400 outline-none [--sheet-offset:0px] [--sheet-radius:var(--radius-2xl)] data-ending-style:duration-250 data-nested-dialog-open:brightness-90 motion-reduce:data-ending-style:opacity-0 motion-reduce:data-starting-style:opacity-0 dark:data-nested-dialog-open:brightness-75",
 						side === "top" &&
 							"max-h-full w-full border-b [--sheet-bottom:0px] [--sheet-top:env(safe-area-inset-top,0px)] motion-safe:data-ending-style:-translate-y-[calc(100%+var(--sheet-offset))] motion-safe:data-starting-style:-translate-y-[calc(100%+var(--sheet-offset))]",
 						side === "right" &&
@@ -79,7 +79,7 @@ function SheetPopup({
 						side === "left" &&
 							"h-full w-[calc(100%-(--spacing(12)))] max-w-sm border-r [--sheet-bottom:env(safe-area-inset-bottom,0px)] [--sheet-top:env(safe-area-inset-top,0px)] motion-safe:data-ending-style:-translate-x-[calc(100%+var(--sheet-offset))] motion-safe:data-starting-style:-translate-x-[calc(100%+var(--sheet-offset))]",
 						variant === "inset" &&
-							"bg-size-[var(--radius-2xl)_var(--radius-2xl),var(--radius-2xl)_var(--radius-2xl),calc(100%-2*var(--radius-2xl))_1px] bg-position-[0_0,100%_0,50%_0] bg-no-repeat bg-origin-border sm:rounded-2xl sm:border sm:[--sheet-bottom:0px] sm:[--sheet-offset:--spacing(4)] sm:[--sheet-top:0px] sm:not-dark:shadow-[0_1px_--theme(--color-black/6%),var(--shadow-lg)] sm:dark:bg-[radial-gradient(circle_at_var(--radius-2xl)_calc(var(--radius-2xl)+1px),transparent_calc(var(--radius-2xl)-0.5px),--theme(--color-white/8%)_calc(var(--radius-2xl)+0.5px)),radial-gradient(circle_at_0_calc(var(--radius-2xl)+1px),transparent_calc(var(--radius-2xl)-0.5px),--theme(--color-white/8%)_calc(var(--radius-2xl)+0.5px)),linear-gradient(--theme(--color-white/8%),--theme(--color-white/8%))]",
+							"bg-size-[var(--sheet-radius)_var(--sheet-radius),var(--sheet-radius)_var(--sheet-radius),calc(100%-2*var(--sheet-radius))_1px] bg-position-[0_0,100%_0,50%_0] bg-no-repeat bg-origin-border sm:rounded-(--sheet-radius) sm:border sm:[--sheet-bottom:0px] sm:[--sheet-offset:--spacing(4)] sm:[--sheet-top:0px] sm:not-dark:shadow-[0_1px_--theme(--color-black/6%),var(--shadow-lg)] sm:dark:bg-[radial-gradient(circle_at_var(--sheet-radius)_calc(var(--sheet-radius)+1px),transparent_calc(var(--sheet-radius)-0.5px),--theme(--color-white/8%)_calc(var(--sheet-radius)+0.5px)),radial-gradient(circle_at_0_calc(var(--sheet-radius)+1px),transparent_calc(var(--sheet-radius)-0.5px),--theme(--color-white/8%)_calc(var(--sheet-radius)+0.5px)),linear-gradient(--theme(--color-white/8%),--theme(--color-white/8%))]",
 						className,
 					)}
 					{...props}

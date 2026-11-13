@@ -183,7 +183,7 @@ function DrawerPopup({
 					data-slot="drawer-popup"
 					data-variant={variant}
 					className={cn(
-						"group/drawer-popup bg-popover text-popover-foreground pointer-events-auto relative flex touch-none flex-col gap-4 pt-(--drawer-top) pb-(--drawer-bottom) text-sm shadow-lg outline-none [--drawer-bottom:0px] [--drawer-inset:max(--spacing(4),calc((100%-var(--container-md))/2+--spacing(4)))] [--drawer-offset:0px] [--drawer-top:0px]",
+						"group/drawer-popup bg-popover text-popover-foreground pointer-events-auto relative flex touch-none flex-col gap-4 pt-(--drawer-top) pb-(--drawer-bottom) text-sm shadow-lg outline-none [--drawer-bottom:0px] [--drawer-inset:max(--spacing(4),calc((100%-var(--container-md))/2+--spacing(4)))] [--drawer-offset:0px] [--drawer-radius:var(--radius-2xl)] [--drawer-top:0px]",
 						"after:pointer-events-none after:absolute after:[inset:var(--drawer-bleed,auto)] after:bg-inherit",
 						"[--drawer-stack-shift:calc((var(--drawer-height,var(--drawer-frontmost-height,0px))-var(--drawer-frontmost-height,0px))*min(1,var(--drawer-stack)))] [--drawer-stack:max(0,calc(var(--nested-drawers)-clamp(0,var(--drawer-swipe-progress),1)))] data-nested-drawer-open:brightness-90 dark:data-nested-drawer-open:brightness-75",
 						"ease-drawer transition-[transform,opacity,filter] duration-450 will-change-transform data-ending-style:duration-[calc(var(--drawer-swipe-strength)*400ms)] data-nested-drawer-swiping:duration-0 data-ending-style:data-nested-drawer-swiping:duration-[calc(var(--drawer-swipe-strength)*400ms)] data-swipe-dismiss:[transform:var(--drawer-closed)] data-swiping:cursor-grabbing data-swiping:select-none motion-safe:data-ending-style:[transform:var(--drawer-closed)] motion-safe:data-starting-style:[transform:var(--drawer-closed)] motion-reduce:data-ending-style:opacity-0 motion-reduce:data-starting-style:opacity-0",
@@ -204,16 +204,16 @@ function DrawerPopup({
 							"[--drawer-bottom:--spacing(5)]",
 						!inset && [
 							swipeDirection === "up" &&
-								"rounded-b-2xl border-b [--drawer-bleed:-100vh_0_100%_0] [--drawer-top:env(safe-area-inset-top,0px)] not-dark:border-b-[color-mix(in_oklab,var(--border),black_6%)]",
+								"rounded-b-(--drawer-radius) border-b [--drawer-bleed:-100vh_0_100%_0] [--drawer-top:env(safe-area-inset-top,0px)] not-dark:border-b-[color-mix(in_oklab,var(--border),black_6%)]",
 							swipeDirection === "down" &&
-								"rounded-t-2xl border-t [--drawer-bleed:100%_0_-100vh_0] [--drawer-bottom:env(safe-area-inset-bottom,0px)] [--drawer-footer-bleed:var(--drawer-bleed)] dark:border-t-[color-mix(in_oklab,var(--border),white_8%)]",
+								"rounded-t-(--drawer-radius) border-t [--drawer-bleed:100%_0_-100vh_0] [--drawer-bottom:env(safe-area-inset-bottom,0px)] [--drawer-footer-bleed:var(--drawer-bleed)] dark:border-t-[color-mix(in_oklab,var(--border),white_8%)]",
 							swipeDirection === "right" &&
-								"rounded-l-2xl border-l [--drawer-bleed:0_-100vw_0_100%] [--drawer-bottom:env(safe-area-inset-bottom,0px)] [--drawer-footer-bleed:var(--drawer-bleed)] [--drawer-top:env(safe-area-inset-top,0px)]",
+								"rounded-l-(--drawer-radius) border-l [--drawer-bleed:0_-100vw_0_100%] [--drawer-bottom:env(safe-area-inset-bottom,0px)] [--drawer-footer-bleed:var(--drawer-bleed)] [--drawer-top:env(safe-area-inset-top,0px)]",
 							swipeDirection === "left" &&
-								"rounded-r-2xl border-r [--drawer-bleed:0_100%_0_-100vw] [--drawer-bottom:env(safe-area-inset-bottom,0px)] [--drawer-footer-bleed:var(--drawer-bleed)] [--drawer-top:env(safe-area-inset-top,0px)]",
+								"rounded-r-(--drawer-radius) border-r [--drawer-bleed:0_100%_0_-100vw] [--drawer-bottom:env(safe-area-inset-bottom,0px)] [--drawer-footer-bleed:var(--drawer-bleed)] [--drawer-top:env(safe-area-inset-top,0px)]",
 						],
 						inset && [
-							"rounded-2xl border bg-size-[var(--radius-2xl)_var(--radius-2xl),var(--radius-2xl)_var(--radius-2xl),calc(100%-2*var(--radius-2xl))_1px] bg-position-[0_0,100%_0,50%_0] bg-no-repeat bg-origin-border not-dark:shadow-[0_1px_--theme(--color-black/6%),var(--shadow-lg)] dark:bg-[radial-gradient(circle_at_var(--radius-2xl)_calc(var(--radius-2xl)+1px),transparent_calc(var(--radius-2xl)-0.5px),--theme(--color-white/8%)_calc(var(--radius-2xl)+0.5px)),radial-gradient(circle_at_0_calc(var(--radius-2xl)+1px),transparent_calc(var(--radius-2xl)-0.5px),--theme(--color-white/8%)_calc(var(--radius-2xl)+0.5px)),linear-gradient(--theme(--color-white/8%),--theme(--color-white/8%))]",
+							"rounded-(--drawer-radius) border bg-size-[var(--drawer-radius)_var(--drawer-radius),var(--drawer-radius)_var(--drawer-radius),calc(100%-2*var(--drawer-radius))_1px] bg-position-[0_0,100%_0,50%_0] bg-no-repeat bg-origin-border not-dark:shadow-[0_1px_--theme(--color-black/6%),var(--shadow-lg)] dark:bg-[radial-gradient(circle_at_var(--drawer-radius)_calc(var(--drawer-radius)+1px),transparent_calc(var(--drawer-radius)-0.5px),--theme(--color-white/8%)_calc(var(--drawer-radius)+0.5px)),radial-gradient(circle_at_0_calc(var(--drawer-radius)+1px),transparent_calc(var(--drawer-radius)-0.5px),--theme(--color-white/8%)_calc(var(--drawer-radius)+0.5px)),linear-gradient(--theme(--color-white/8%),--theme(--color-white/8%))]",
 							swipeDirection === "up" &&
 								"[--drawer-offset:calc(--spacing(4)+env(safe-area-inset-top,0px))]",
 							swipeDirection === "down" &&
