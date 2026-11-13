@@ -183,10 +183,7 @@
 			}
 		},
 		{
-			"includes": [
-				"src/components/ui/calendar.tsx",
-				"src/components/ui/emoji-picker.tsx"
-			],
+			"includes": ["src/components/ui/emoji-picker.tsx"],
 			"linter": {
 				"rules": {
 					"correctness": {

@@ -31,14 +31,8 @@ export default function DatePickerDemo() {
 					</Button>
 				)}
 			/>
-			<PopoverPopup className="w-[250px] p-0">
-				<Calendar
-					className="border-0"
-					mode="single"
-					showOutsideDays
-					selected={value}
-					onSelect={setValue}
-				/>
+			<PopoverPopup className="w-auto p-0">
+				<Calendar mode="single" selected={value} onSelect={setValue} />
 			</PopoverPopup>
 		</Popover>
 	);

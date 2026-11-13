@@ -51,11 +51,15 @@ import { Calendar } from "@/components/ui/calendar"
 
 ### Single Date
 
+To select one date, set `mode="single"`.
+
 <ComponentPreview name="calendar-single-demo" />
 
 ---
 
 ### Multiple Dates
+
+To select several dates, set `mode="multiple"`.
 
 <ComponentPreview name="calendar-multiple-demo" />
 
@@ -63,10 +67,54 @@ import { Calendar } from "@/components/ui/calendar"
 
 ### Date Range
 
+To select a range, set `mode="range"`. To show two months, set `numberOfMonths={2}`.
+
 <ComponentPreview name="calendar-range-demo" />
+
+---
+
+### Month and Year Selector
+
+To pick the month and year from dropdowns, set `captionLayout="dropdown"`.
+
+<ComponentPreview name="calendar-month-and-year-selector-demo" />
+
+---
+
+### Custom Month and Year Selector
+
+To replace the dropdowns, pass your own `Dropdown` to `components`. This example uses `Select`.
+
+<ComponentPreview name="calendar-custom-month-and-year-selector-demo" />
+
+---
+
+### Week Numbers
+
+To show week numbers, set `showWeekNumber`.
+
+<ComponentPreview name="calendar-week-numbers-demo" />
 
 ---
 
 ### Disabled
 
+To disable dates, pass them to `disabled`.
+
 <ComponentPreview name="calendar-disabled-demo" />
+
+---
+
+### Presets
+
+To jump to a date from outside the calendar, control `selected` and `month`.
+
+<ComponentPreview name="calendar-presets-demo" />
+
+---
+
+### Custom Cell
+
+To add content to a day, wrap `CalendarDayButton` and pass it as `DayButton` to `components`. To change the cell size, set `--cell-size`.
+
+<ComponentPreview name="calendar-custom-cell-demo" />
