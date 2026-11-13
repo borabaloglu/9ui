@@ -66,9 +66,7 @@ Set `render` on `PopoverTrigger` to use your own button. Give icon-only triggers
 
 Set `openOnHover` on `PopoverTrigger` to open the popover on hover as well as on click.
 
-Set `modal` on `Popover` to block the rest of the page while the popover is open. Add a `PopoverClose` inside the popup so focus stays trapped and screen reader users can leave.
-
-A popover that is taller than the space around its trigger scrolls.
+Set `modal` on `Popover` to block the rest of the page while the popover is open. Add a `PopoverClose` inside it so focus stays in the popover.
 
 ## Examples
 
@@ -80,7 +78,7 @@ Use `PopoverClose` to add a close button. Give it an `aria-label` when it only h
 
 ### Arrow
 
-Set `arrow` on `PopoverPopup` to point at the trigger. The popover moves away to make room for it.
+Set `arrow` on `PopoverPopup` to point at the trigger.
 
 <ComponentPreview name="popover-arrow-demo" />
 
@@ -88,8 +86,8 @@ Set `arrow` on `PopoverPopup` to point at the trigger. The popover moves away to
 
 Create a handle with `createPopoverHandle` and pass it to `Popover` and to any `PopoverTrigger` outside it. Give each trigger a `payload` and read it from the function passed as the child of `Popover`.
 
-Wrap the content in `PopoverViewport` so the popover moves and resizes between triggers instead of jumping. The content slides in from the side of the new trigger.
+Wrap the content in `PopoverViewport` to animate the popover between triggers.
 
-The popover is 288px wide by default, so only its height changes. Set `className="w-(--popup-width,auto)"` on `PopoverPopup` to size it to its content and animate the width too.
+To give each trigger a different width, set `className="w-(--popup-width,auto)"` on `PopoverPopup`.
 
 <ComponentPreview name="popover-detached-triggers-demo" />
