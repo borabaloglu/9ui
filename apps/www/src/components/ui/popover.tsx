@@ -75,7 +75,7 @@ function PopoverPopup({
 		<BasePopover.Portal data-slot="popover-portal">
 			<BasePopover.Positioner
 				data-slot="popover-positioner"
-				className="ease-out-quint z-50 h-(--positioner-height) w-(--positioner-width) max-w-(--available-width) has-data-transitioning:transition-[top,left,right,bottom,transform] has-data-transitioning:duration-150"
+				className="ease-out-quint z-50 h-(--positioner-height) w-(--positioner-width) max-w-(--available-width) motion-safe:has-data-transitioning:transition-[top,left,right,bottom,transform] motion-safe:has-data-transitioning:duration-150"
 				align={align}
 				alignOffset={alignOffset}
 				side={side}
@@ -106,7 +106,7 @@ function PopoverViewport({
 		<BasePopover.Viewport
 			data-slot="popover-viewport"
 			className={cn(
-				"relative -m-(--popover-padding) min-h-0 flex-1 overflow-clip p-(--popover-padding) *:flex *:w-[calc(var(--popup-width)-2*var(--popover-padding)-2px)] *:flex-col *:gap-4 *:transition-opacity *:duration-150 not-data-transitioning:overflow-y-auto *:data-ending-style:opacity-0 *:data-starting-style:opacity-0",
+				"relative -m-(--popover-padding) min-h-0 flex-1 overflow-clip p-(--popover-padding) [--popover-slide:--spacing(6)] *:flex *:w-[calc(var(--popup-width)-2*var(--popover-padding)-2px)] *:flex-col *:gap-4 *:transition-[translate,opacity] *:duration-150 not-data-transitioning:overflow-y-auto *:data-ending-style:opacity-0 *:data-starting-style:opacity-0 data-[activation-direction~=down]:*:data-ending-style:-translate-y-(--popover-slide) data-[activation-direction~=down]:*:data-starting-style:translate-y-(--popover-slide) data-[activation-direction~=left]:*:data-ending-style:translate-x-(--popover-slide) data-[activation-direction~=left]:*:data-starting-style:-translate-x-(--popover-slide) data-[activation-direction~=right]:*:data-ending-style:-translate-x-(--popover-slide) data-[activation-direction~=right]:*:data-starting-style:translate-x-(--popover-slide) data-[activation-direction~=up]:*:data-ending-style:translate-y-(--popover-slide) data-[activation-direction~=up]:*:data-starting-style:-translate-y-(--popover-slide) motion-reduce:[--popover-slide:0px]",
 				className,
 			)}
 			{...props}
