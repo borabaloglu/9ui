@@ -1,11 +1,11 @@
 ---
 title: Preview Card
-description: Used to display a preview of content when hovered.
+description: A popup that previews a link when it is hovered.
 ---
 <ComponentLinks
 	links={[
 		{
-			label: "Docs",
+			label: "API Reference",
 			href: "https://base-ui.com/react/components/preview-card",
 		},
 	]}
@@ -35,15 +35,48 @@ npx shadcn@latest add @9ui/preview-card
 
 ```tsx title="Imports"
 import {
+	createPreviewCardHandle,
 	PreviewCard,
-	PreviewCardContent,
+	PreviewCardPanel,
+	PreviewCardPopup,
 	PreviewCardTrigger,
+	PreviewCardViewport,
 } from "@/components/ui/preview-card"
 ```
 
 ```tsx title="Anatomy"
 <PreviewCard>
 	<PreviewCardTrigger />
-	<PreviewCardContent />
+	<PreviewCardPopup />
 </PreviewCard>
 ```
+
+`PreviewCardTrigger` is a link. Set `href` on it.
+
+Set `delay` and `closeDelay` on `PreviewCardTrigger` to change how fast the preview card opens and closes.
+
+The preview card does not open on touch or for screen readers. Keep everything it shows available on the linked page.
+
+## Examples
+
+### Side
+
+Set `side` on `PreviewCardPopup` to change where the preview card opens. It also takes `align`, `sideOffset` and `alignOffset`.
+
+<ComponentPreview name="preview-card-side-demo" />
+
+### Arrow
+
+Set `arrow` on `PreviewCardPopup` to point at the trigger.
+
+Wrap the content in `PreviewCardPanel` to scroll it when the preview card has an arrow.
+
+<ComponentPreview name="preview-card-arrow-demo" />
+
+### Detached Triggers
+
+Create a handle with `createPreviewCardHandle` and pass it to `PreviewCard` and to any `PreviewCardTrigger` outside it. Give each trigger a `payload` and read it from the function passed as the child of `PreviewCard`.
+
+Wrap the content in `PreviewCardViewport` to animate the preview card between triggers.
+
+<ComponentPreview name="preview-card-detached-triggers-demo" />

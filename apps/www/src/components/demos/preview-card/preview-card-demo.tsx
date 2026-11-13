@@ -1,81 +1,34 @@
-"use client";
-
-import { Icons } from "@/components/icons";
+import { Badge } from "@/components/ui/badge";
 import {
 	PreviewCard,
-	PreviewCardContent,
+	PreviewCardPopup,
 	PreviewCardTrigger,
 } from "@/components/ui/preview-card";
 
 export default function PreviewCardDemo() {
 	return (
 		<PreviewCard>
-			<p>
-				This is a preview card component from{" "}
-				<PreviewCardTrigger className="cursor-pointer underline underline-offset-2">
+			<p className="text-sm">
+				Preview Card component from{" "}
+				<PreviewCardTrigger
+					href="https://www.9ui.dev"
+					className="decoration-foreground/40 hover:decoration-foreground focus-visible:ring-ring/50 data-popup-open:decoration-foreground rounded-xs underline underline-offset-4 outline-none focus-visible:ring-[3px]"
+				>
 					9ui
 				</PreviewCardTrigger>
 				.
 			</p>
-			<PreviewCardContent>
-				<Icons.logo className="mx-auto w-10" />
-				<p className="mt-4 text-sm">
-					Beautiful, customizable components built with{" "}
-					<a
-						href="https://base-ui.com"
-						className="underline underline-offset-2"
-						target="_blank"
-						rel="noopener"
-					>
-						Base UI
-					</a>{" "}
-					and{" "}
-					<a
-						href="https://tailwindcss.com"
-						className="underline underline-offset-2"
-						target="_blank"
-						rel="noopener"
-					>
-						Tailwind CSS
-					</a>
-					.
+			<PreviewCardPopup>
+				<span className="font-medium">9ui.dev</span>
+				<p className="text-muted-foreground text-pretty">
+					Beautiful, customizable components that you can copy and paste into
+					your projects.
 				</p>
-				<div className="mt-4 flex flex-col gap-1 text-sm">
-					<div className="flex items-center gap-2">
-						<span className="text-muted-foreground">Creator:</span>
-						<a
-							href="https://x.com/borabalogluu"
-							className="underline underline-offset-2"
-							target="_blank"
-							rel="noopener"
-						>
-							Bora Baloglu
-						</a>
-					</div>
-					<div className="flex items-center gap-2">
-						<span className="text-muted-foreground">Source code:</span>
-						<a
-							href="https://github.com/borabaloglu/9ui"
-							className="underline underline-offset-2"
-							target="_blank"
-							rel="noopener"
-						>
-							Github
-						</a>
-					</div>
-					<div className="flex items-center gap-2">
-						<span className="text-muted-foreground">Website</span>
-						<a
-							href="https://www.9ui.dev"
-							className="underline underline-offset-2"
-							target="_blank"
-							rel="noopener"
-						>
-							9ui.dev
-						</a>
-					</div>
-				</div>
-			</PreviewCardContent>
+				<Badge variant="success" className="mt-1">
+					<span className="size-1.5 rounded-full bg-current" />
+					Active
+				</Badge>
+			</PreviewCardPopup>
 		</PreviewCard>
 	);
 }
