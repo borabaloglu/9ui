@@ -17,7 +17,7 @@ export default function VaulScrollableContentDemo() {
 			<VaulTrigger render={<Button variant="outline" />}>
 				Terms & Conditions
 			</VaulTrigger>
-			<VaulContent>
+			<VaulContent className="max-h-[min(80dvh,--spacing(120))]">
 				<VaulHeader>
 					<VaulTitle>Terms & Conditions</VaulTitle>
 					<VaulDescription>

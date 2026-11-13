@@ -17,6 +17,8 @@ description: A drawer with drag gestures and snap points, built on vaul-base.
 
 Vaul is built on top of [`vaul-base`](https://vaul-base.vercel.app), a port of [`vaul`](https://vaul.emilkowal.ski) to Base UI. `vaul` was originally created by [@emilkowalski\_](https://x.com/emilkowalski_).
 
+For a drawer built on Base UI alone, see [Drawer](/docs/components/drawer).
+
 ## Installation
 
 <ComponentInstallation>
@@ -100,7 +102,7 @@ Set `variant="inset"` on `VaulContent` to float the drawer inside the viewport w
 
 ### Snap Points
 
-Pass `snapPoints` to let the drawer rest at fixed heights. Use pixel strings or a fraction of the screen height, and control the current one with `activeSnapPoint` and `setActiveSnapPoint`.
+Pass `snapPoints` to let the drawer rest at fixed heights. Use pixel strings or a fraction of the screen height, and control the current one with `activeSnapPoint` and `setActiveSnapPoint`. The overlay stays half visible at the lower snap points and fades in fully at the last one.
 
 <ComponentPreview name="vaul-snap-points-demo" />
 
