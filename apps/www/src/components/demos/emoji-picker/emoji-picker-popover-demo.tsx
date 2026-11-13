@@ -11,11 +11,7 @@ import {
 	EmojiPickerLoading,
 	EmojiPickerSearch,
 } from "@/components/ui/emoji-picker";
-import {
-	Popover,
-	PopoverContent,
-	PopoverTrigger,
-} from "@/components/ui/popover";
+import { Popover, PopoverPopup, PopoverTrigger } from "@/components/ui/popover";
 
 export default function EmojiPickerPopoverDemo() {
 	const [open, setOpen] = React.useState(false);
@@ -30,7 +26,7 @@ export default function EmojiPickerPopoverDemo() {
 					</Button>
 				)}
 			/>
-			<PopoverContent className="w-full rounded-md p-0 outline-offset-0">
+			<PopoverPopup className="w-full rounded-md p-0">
 				<EmojiPicker
 					className="border-none"
 					onEmojiSelect={({ emoji, label }) => {
@@ -53,7 +49,7 @@ export default function EmojiPickerPopoverDemo() {
 						<EmojiPickerList />
 					</EmojiPickerContent>
 				</EmojiPicker>
-			</PopoverContent>
+			</PopoverPopup>
 		</Popover>
 	);
 }

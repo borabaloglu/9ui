@@ -4,11 +4,7 @@ import { CalendarIcon, ChevronsUpDownIcon } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { Calendar } from "@/components/ui/calendar";
-import {
-	Popover,
-	PopoverContent,
-	PopoverTrigger,
-} from "@/components/ui/popover";
+import { Popover, PopoverPopup, PopoverTrigger } from "@/components/ui/popover";
 
 export default function DatePickerDemo() {
 	const [open, setOpen] = React.useState(false);
@@ -35,7 +31,7 @@ export default function DatePickerDemo() {
 					</Button>
 				)}
 			/>
-			<PopoverContent className="w-[250px] p-0" sideOffset={4} arrow={false}>
+			<PopoverPopup className="w-[250px] p-0">
 				<Calendar
 					className="border-0"
 					mode="single"
@@ -43,7 +39,7 @@ export default function DatePickerDemo() {
 					selected={value}
 					onSelect={setValue}
 				/>
-			</PopoverContent>
+			</PopoverPopup>
 		</Popover>
 	);
 }

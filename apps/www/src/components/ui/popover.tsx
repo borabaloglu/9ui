@@ -3,19 +3,15 @@ import { Popover as BasePopover } from "@base-ui/react/popover";
 
 import { cn } from "@/lib/utils";
 
-function Popover({ ...props }: React.ComponentProps<typeof BasePopover.Root>) {
-	return <BasePopover.Root data-slot="popover" {...props} />;
+const createPopoverHandle = BasePopover.createHandle;
+
+function Popover<Payload>({ ...props }: BasePopover.Root.Props<Payload>) {
+	return <BasePopover.Root {...props} />;
 }
 
-function PopoverPortal({
+function PopoverTrigger<Payload>({
 	...props
-}: React.ComponentProps<typeof BasePopover.Portal>) {
-	return <BasePopover.Portal data-slot="popover-portal" {...props} />;
-}
-
-function PopoverTrigger({
-	...props
-}: React.ComponentProps<typeof BasePopover.Trigger>) {
+}: BasePopover.Trigger.Props<Payload>) {
 	return <BasePopover.Trigger data-slot="popover-trigger" {...props} />;
 }
 
@@ -26,22 +22,103 @@ function PopoverClose({
 }
 
 function PopoverArrow({
+	className,
 	...props
 }: React.ComponentProps<typeof BasePopover.Arrow>) {
-	return <BasePopover.Arrow data-slot="popover-arrow" {...props} />;
+	return (
+		<BasePopover.Arrow
+			data-slot="popover-arrow"
+			className={cn(
+				"text-border flex data-[side=bottom]:-top-2 data-[side=inline-end]:-start-3 data-[side=inline-end]:-rotate-90 data-[side=inline-start]:-end-3 data-[side=inline-start]:rotate-90 data-[side=left]:-right-3 data-[side=left]:rotate-90 data-[side=right]:-left-3 data-[side=right]:-rotate-90 data-[side=top]:-bottom-2 data-[side=top]:rotate-180 not-dark:data-[side=top]:text-(--popover-edge) rtl:data-[side=inline-end]:rotate-90 rtl:data-[side=inline-start]:-rotate-90 dark:data-[side=bottom]:text-(--popover-edge)",
+				className,
+			)}
+			{...props}
+		>
+			<svg
+				width="18"
+				height="10"
+				viewBox="0 0 18 10"
+				fill="none"
+				aria-hidden="true"
+			>
+				<path
+					d="M8.69793 2.60192L4.32682 6.97303C3.66577 7.63408 2.8079 7.99985 1.91855 7.99985H0V9.99985H18V7.99985H16.6814C15.7921 7.99985 14.9342 7.63408 14.2732 6.97303L9.90207 2.60192C9.5598 2.25965 9.04023 2.25964 8.69793 2.60192Z"
+					className="fill-popover"
+				/>
+				<path
+					d="M9.29997 3.34524L4.92889 7.71633C4.10258 8.54264 3.03024 8.99985 1.91855 8.99985H0V7.99985H1.91855C2.8079 7.99985 3.66577 7.63408 4.32682 6.97303L8.69793 2.60192C9.04023 2.25964 9.5598 2.25965 9.90207 2.60192L14.2732 6.97303C14.9342 7.63408 15.7921 7.99985 16.6814 7.99985H18V8.99985H16.6814C15.5698 8.99985 14.4975 8.54263 13.6711 7.71633L9.29997 3.34524Z"
+					className="fill-current"
+				/>
+			</svg>
+		</BasePopover.Arrow>
+	);
 }
 
-function PopoverPositioner({
+function PopoverPopup({
+	className,
+	children,
+	arrow = false,
+	align = "center",
+	alignOffset = 0,
+	side = "bottom",
+	sideOffset = arrow ? 10 : 4,
+	anchor,
 	...props
-}: React.ComponentProps<typeof BasePopover.Positioner>) {
-	return <BasePopover.Positioner data-slot="popover-positioner" {...props} />;
+}: React.ComponentProps<typeof BasePopover.Popup> &
+	Pick<
+		BasePopover.Positioner.Props,
+		"align" | "alignOffset" | "side" | "sideOffset" | "anchor"
+	> & {
+		arrow?: boolean;
+	}) {
+	return (
+		<BasePopover.Portal data-slot="popover-portal">
+			<BasePopover.Positioner
+				data-slot="popover-positioner"
+				className="ease-out-quint z-50 h-(--positioner-height) w-(--positioner-width) max-w-(--available-width) has-data-transitioning:transition-[top,left,right,bottom,transform] has-data-transitioning:duration-150"
+				align={align}
+				alignOffset={alignOffset}
+				side={side}
+				sideOffset={sideOffset}
+				anchor={anchor}
+			>
+				<BasePopover.Popup
+					data-slot="popover-popup"
+					className={cn(
+						"bg-popover text-popover-foreground ease-out-quint flex h-(--popup-height,auto) max-h-(--available-height) w-72 max-w-(--available-width) origin-(--transform-origin) flex-col gap-4 overflow-y-auto overscroll-contain rounded-lg border p-(--popover-padding) text-sm shadow-md transition-[width,height,scale,opacity] duration-150 outline-none [--popover-padding:--spacing(4)] not-dark:border-b-(--popover-edge) not-dark:[--popover-edge:color-mix(in_oklab,var(--border),black_6%)] has-data-[slot=popover-viewport]:overflow-visible data-ending-style:scale-98 data-ending-style:opacity-0 data-ending-style:duration-100 data-instant:transition-none data-starting-style:scale-98 data-starting-style:opacity-0 motion-reduce:transition-opacity motion-reduce:data-ending-style:scale-100 motion-reduce:data-starting-style:scale-100 dark:border-t-(--popover-edge) dark:[--popover-edge:color-mix(in_oklab,var(--border),white_8%)]",
+						className,
+					)}
+					{...props}
+				>
+					{children}
+					{arrow && <PopoverArrow />}
+				</BasePopover.Popup>
+			</BasePopover.Positioner>
+		</BasePopover.Portal>
+	);
+}
+
+function PopoverViewport({
+	className,
+	...props
+}: React.ComponentProps<typeof BasePopover.Viewport>) {
+	return (
+		<BasePopover.Viewport
+			data-slot="popover-viewport"
+			className={cn(
+				"relative -m-(--popover-padding) min-h-0 flex-1 overflow-clip p-(--popover-padding) *:flex *:w-[calc(var(--popup-width)-2*var(--popover-padding)-2px)] *:flex-col *:gap-4 *:transition-opacity *:duration-150 not-data-transitioning:overflow-y-auto *:data-ending-style:opacity-0 *:data-starting-style:opacity-0",
+				className,
+			)}
+			{...props}
+		/>
+	);
 }
 
 function PopoverHeader({ className, ...props }: React.ComponentProps<"div">) {
 	return (
 		<div
 			data-slot="popover-header"
-			className={cn("relative flex flex-col gap-y-1", className)}
+			className={cn("flex flex-col gap-1", className)}
 			{...props}
 		/>
 	);
@@ -54,7 +131,7 @@ function PopoverTitle({
 	return (
 		<BasePopover.Title
 			data-slot="popover-title"
-			className={cn("text-sm font-semibold", className)}
+			className={cn("leading-snug font-medium", className)}
 			{...props}
 		/>
 	);
@@ -67,79 +144,20 @@ function PopoverDescription({
 	return (
 		<BasePopover.Description
 			data-slot="popover-description"
-			className={cn("text-muted-foreground text-sm", className)}
-			{...props}
-		/>
-	);
-}
-
-function PopoverContent({
-	children,
-	className,
-	align = "center",
-	sideOffset = 8,
-	arrow = true,
-	...props
-}: React.ComponentProps<typeof BasePopover.Popup> & {
-	align?: BasePopover.Positioner.Props["align"];
-	sideOffset?: BasePopover.Positioner.Props["sideOffset"];
-	arrow?: boolean;
-}) {
-	return (
-		<PopoverPortal>
-			<PopoverPositioner sideOffset={sideOffset} align={align}>
-				<BasePopover.Popup
-					data-slot="popover-content"
-					className={cn(
-						"bg-popover text-popover-foreground outline-border z-50 w-72 origin-(--transform-origin) rounded-md p-4 shadow-md outline -outline-offset-1 transition-[transform,scale,opacity] data-ending-style:scale-95 data-ending-style:opacity-0 data-starting-style:scale-95 data-starting-style:opacity-0",
-						className,
-					)}
-					{...props}
-				>
-					{arrow && (
-						<PopoverArrow className="data-[side=bottom]:-top-2 data-[side=left]:right-[-13px] data-[side=left]:rotate-90 data-[side=right]:left-[-13px] data-[side=right]:-rotate-90 data-[side=top]:-bottom-2 data-[side=top]:rotate-180">
-							<svg width="20" height="10" viewBox="0 0 20 10" fill="none">
-								<path
-									d="M9.66437 2.60207L4.80758 6.97318C4.07308 7.63423 3.11989 8 2.13172 8H0V9H20V8H18.5349C17.5468 8 16.5936 7.63423 15.8591 6.97318L11.0023 2.60207C10.622 2.2598 10.0447 2.25979 9.66437 2.60207Z"
-									className="fill-popover"
-								/>
-								<path
-									d="M10.3333 3.34539L5.47654 7.71648C4.55842 8.54279 3.36693 9 2.13172 9H0V8H2.13172C3.11989 8 4.07308 7.63423 4.80758 6.97318L9.66437 2.60207C10.0447 2.25979 10.622 2.2598 11.0023 2.60207L15.8591 6.97318C16.5936 7.63423 17.5468 8 18.5349 8H20V9H18.5349C17.2998 9 16.1083 8.54278 15.1901 7.71648L10.3333 3.34539Z"
-									className="fill-border"
-								/>
-							</svg>
-						</PopoverArrow>
-					)}
-					{children}
-				</BasePopover.Popup>
-			</PopoverPositioner>
-		</PopoverPortal>
-	);
-}
-
-function PopoverFooter({ className, ...props }: React.ComponentProps<"div">) {
-	return (
-		<div
-			data-slot="popover-footer"
-			className={cn(
-				"flex flex-col-reverse gap-2 sm:flex-row sm:justify-end",
-				className,
-			)}
+			className={cn("text-muted-foreground text-pretty", className)}
 			{...props}
 		/>
 	);
 }
 
 export {
+	createPopoverHandle,
 	Popover,
-	PopoverArrow,
 	PopoverClose,
-	PopoverContent,
 	PopoverDescription,
-	PopoverFooter,
 	PopoverHeader,
-	PopoverPortal,
-	PopoverPositioner,
+	PopoverPopup,
 	PopoverTitle,
 	PopoverTrigger,
+	PopoverViewport,
 };

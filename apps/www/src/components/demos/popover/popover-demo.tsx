@@ -1,44 +1,34 @@
-import { CopyIcon, Share2Icon } from "lucide-react";
-import { toast } from "sonner";
-
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
 import {
 	Popover,
-	PopoverContent,
 	PopoverDescription,
 	PopoverHeader,
+	PopoverPopup,
 	PopoverTitle,
 	PopoverTrigger,
 } from "@/components/ui/popover";
+import { Textarea } from "@/components/ui/textarea";
 
 export default function PopoverDemo() {
-	const copyToClipboard = () => {
-		toast.success("Copied to clipboard");
-		navigator.clipboard.writeText(window.location.href);
-	};
-
 	return (
 		<Popover>
-			<PopoverTrigger
-				render={(props) => (
-					<Button {...props} variant="outline" size="icon">
-						<Share2Icon />
-					</Button>
-				)}
-			/>
-			<PopoverContent className="w-[calc(100vw-4rem)] sm:w-[500px]">
+			<PopoverTrigger render={<Button variant="outline" />}>
+				Feedback
+			</PopoverTrigger>
+			<PopoverPopup>
 				<PopoverHeader>
-					<PopoverTitle>Share</PopoverTitle>
-					<PopoverDescription>Share this component.</PopoverDescription>
+					<PopoverTitle>Send feedback</PopoverTitle>
+					<PopoverDescription>
+						Tell us what works and what we could do better.
+					</PopoverDescription>
 				</PopoverHeader>
-				<div className="mt-2 flex w-full gap-2">
-					<Input value={window.location.href} autoFocus={false} readOnly />
-					<Button className="shrink-0" size="icon" onClick={copyToClipboard}>
-						<CopyIcon />
-					</Button>
-				</div>
-			</PopoverContent>
+				<Textarea
+					aria-label="Feedback"
+					placeholder="Type your feedback here."
+					rows={4}
+				/>
+				<Button>Send feedback</Button>
+			</PopoverPopup>
 		</Popover>
 	);
 }
