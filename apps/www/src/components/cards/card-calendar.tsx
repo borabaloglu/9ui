@@ -12,8 +12,7 @@ export function CalendarCard() {
 		<Card className="p-0">
 			<CardContent className="flex flex-col items-center justify-center p-1">
 				<Calendar
-					className="mx-auto border-none"
-					showOutsideDays
+					className="mx-auto"
 					mode="single"
 					selected={selectedDate}
 					onSelect={setSelectedDate}

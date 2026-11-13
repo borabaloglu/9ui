@@ -135,7 +135,7 @@
 			"name": "calendar",
 			"type": "registry:ui",
 			"dependencies": ["react-day-picker"],
-			"registryDependencies": [],
+			"registryDependencies": ["@9ui/button"],
 			"files": [
 				{
 					"path": "src/components/ui/calendar.tsx",

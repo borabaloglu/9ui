@@ -46,6 +46,7 @@
 		"@vercel/analytics": "^1.4.1",
 		"class-variance-authority": "^0.7.1",
 		"clsx": "^2.1.1",
+		"date-fns": "^4.1.0",
 		"dayjs": "^1.11.13",
 		"embla-carousel-react": "^8.5.2",
 		"fast-glob": "^3.3.3",

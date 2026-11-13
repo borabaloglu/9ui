@@ -12,7 +12,7 @@ export default function CalendarSingleDemo() {
 			mode="single"
 			selected={selectedDate}
 			onSelect={setSelectedDate}
-			showOutsideDays
+			className="rounded-xl border"
 		/>
 	);
 }
