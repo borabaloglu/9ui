@@ -86,6 +86,10 @@ function Carousel({
 		(event: React.KeyboardEvent<HTMLDivElement>) => {
 			const target = event.target as HTMLElement;
 			if (
+				event.altKey ||
+				event.ctrlKey ||
+				event.metaKey ||
+				event.shiftKey ||
 				target.isContentEditable ||
 				target.closest("input, textarea, select")
 			) {
