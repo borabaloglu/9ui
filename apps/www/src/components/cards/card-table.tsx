@@ -77,19 +77,17 @@ export function TableCard() {
 				<Table>
 					<TableHeader>
 						<TableRow>
-							<TableHead className="pl-6">Id</TableHead>
-							<TableHead className="min-w-[120px]">Date</TableHead>
-							<TableHead className="min-w-[200px]">Description</TableHead>
+							<TableHead>Id</TableHead>
+							<TableHead>Date</TableHead>
+							<TableHead>Description</TableHead>
 							<TableHead>Amount</TableHead>
-							<TableHead className="pr-6">Category</TableHead>
+							<TableHead>Category</TableHead>
 						</TableRow>
 					</TableHeader>
 					<TableBody>
 						{transactions.map((transaction) => (
 							<TableRow key={transaction.id}>
-								<TableCell className="pl-6 font-mono">
-									{transaction.id}
-								</TableCell>
+								<TableCell className="font-mono">{transaction.id}</TableCell>
 								<TableCell>
 									{dayjs(transaction.date).format("MMM D, YYYY")}
 								</TableCell>
@@ -98,7 +96,7 @@ export function TableCard() {
 									{transaction.amount > 0 ? "+" : "-"}$
 									{Math.abs(transaction.amount).toFixed(2)}
 								</TableCell>
-								<TableCell className="text-muted-foreground pr-6">
+								<TableCell className="text-muted-foreground">
 									{transaction.category}
 								</TableCell>
 							</TableRow>
@@ -106,10 +104,8 @@ export function TableCard() {
 					</TableBody>
 					<TableFooter>
 						<TableRow>
-							<TableCell colSpan={3} className="pl-6">
-								Total
-							</TableCell>
-							<TableCell colSpan={2} className="pr-6">
+							<TableCell colSpan={3}>Total</TableCell>
+							<TableCell colSpan={2}>
 								{total > 0 ? "+" : "-"}${Math.abs(total).toFixed(2)}
 							</TableCell>
 						</TableRow>

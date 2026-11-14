@@ -717,7 +717,7 @@
 			"name": "table",
 			"type": "registry:ui",
 			"dependencies": [],
-			"registryDependencies": [],
+			"registryDependencies": ["@9ui/scroll-area"],
 			"files": [
 				{
 					"path": "src/components/ui/table.tsx",
