@@ -48,7 +48,7 @@ function ProgressIndicator({
 		<BaseProgress.Indicator
 			data-slot="progress-indicator"
 			className={cn(
-				"bg-primary h-full rounded-full transition-[width] duration-500 ease-out data-indeterminate:w-2/5 motion-safe:data-indeterminate:animate-[progress-indeterminate_1.5s_ease-in-out_infinite] motion-reduce:data-indeterminate:w-full motion-reduce:data-indeterminate:animate-pulse rtl:[--progress-direction:-1]",
+				"bg-primary h-full rounded-full transition-[width] duration-300 ease-out data-indeterminate:w-2/5 motion-safe:data-indeterminate:animate-[progress-indeterminate_1.5s_ease-in-out_infinite] motion-reduce:transition-none motion-reduce:data-indeterminate:w-full motion-reduce:data-indeterminate:animate-pulse rtl:[--progress-direction:-1]",
 				className,
 			)}
 			{...props}
