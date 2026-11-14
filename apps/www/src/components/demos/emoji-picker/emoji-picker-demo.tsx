@@ -1,14 +1,15 @@
 "use client";
 
-import { LoaderCircle } from "lucide-react";
 import { toast } from "sonner";
 
 import {
 	EmojiPicker,
 	EmojiPickerContent,
 	EmojiPickerEmpty,
+	EmojiPickerFooter,
 	EmojiPickerList,
 	EmojiPickerLoading,
+	EmojiPickerPreview,
 	EmojiPickerSearch,
 } from "@/components/ui/emoji-picker";
 
@@ -16,22 +17,18 @@ export default function EmojiPickerDemo() {
 	return (
 		<EmojiPicker
 			onEmojiSelect={({ emoji, label }) => {
-				toast(() => (
-					<p className="flex items-center gap-2 text-sm">
-						<span className="text-lg">{emoji}</span>
-						{label}
-					</p>
-				));
+				toast(`${emoji} ${label}`);
 			}}
 		>
 			<EmojiPickerSearch />
 			<EmojiPickerContent>
-				<EmojiPickerLoading>
-					<LoaderCircle className="size-4 animate-spin" />
-				</EmojiPickerLoading>
-				<EmojiPickerEmpty>No results</EmojiPickerEmpty>
+				<EmojiPickerLoading />
+				<EmojiPickerEmpty />
 				<EmojiPickerList />
 			</EmojiPickerContent>
+			<EmojiPickerFooter>
+				<EmojiPickerPreview />
+			</EmojiPickerFooter>
 		</EmojiPicker>
 	);
 }

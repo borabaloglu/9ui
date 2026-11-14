@@ -54,8 +54,8 @@ importers:
         specifier: ^12.4.10
         version: 12.19.4(react-dom@19.3.1(react@19.3.1))(react@19.3.1)
       frimousse:
-        specifier: ^0.1.0
-        version: 0.1.1(react@19.3.1)
+        specifier: ^0.4.0
+        version: 0.4.0(react@19.3.1)(typescript@5.5.4)
       fumadocs-core:
         specifier: 16.18.3
         version: 16.18.3(@mdx-js/mdx@3.1.1)(@types/estree-jsx@1.0.5)(@types/hast@3.0.5)(@types/mdast@4.0.4)(@types/react@19.3.0)(lucide-react@1.61.0(@types/react@19.3.0)(react@19.3.1))(next@16.4.5(@types/node@20.19.2)(react-dom@19.3.1(react@19.3.1))(react@19.3.1))(react-dom@19.3.1(react@19.3.1))(react@19.3.1)(zod@4.6.7)
@@ -1444,10 +1444,14 @@ packages:
       react-dom:
         optional: true
 
-  frimousse@0.1.1:
-    resolution: {integrity: sha512-BVkxB8QxLL7HRGzPnB7FwCb4PgmS3ZN9cXKl5YOxvWgu8g9VQmyF1T3GQVlb88+cophlx31kRSqpSQQ4ORLUDA==}
+  frimousse@0.4.0:
+    resolution: {integrity: sha512-wA/1Xt9UTk51wYNpy+EvHKPUA4jdm4NuEFzSNNZxqT0Nxrj4RFwYByjRMuaq4qSLOco/ikDCpLKesB8W1w2q+Q==}
     peerDependencies:
       react: ^18 || ^19
+      typescript: '>=5.1.0'
+    peerDependenciesMeta:
+      typescript:
+        optional: true
 
   fumadocs-core@16.18.3:
     resolution: {integrity: sha512-N8t+fW5XjtijM8vthi7ahAqDQ0RIMXa3/CrAIQRvb7H7r4Z8YKP9BxgTH4pW05SfPtSwmt5oy3WQG9VrPR1Vmw==}
@@ -3505,9 +3509,11 @@ snapshots:
       react: 19.3.1
       react-dom: 19.3.1(react@19.3.1)
 
-  frimousse@0.1.1(react@19.3.1):
+  frimousse@0.4.0(react@19.3.1)(typescript@5.5.4):
     dependencies:
       react: 19.3.1
+    optionalDependencies:
+      typescript: 5.5.4
 
   fumadocs-core@16.18.3(@mdx-js/mdx@3.1.1)(@types/estree-jsx@1.0.5)(@types/hast@3.0.5)(@types/mdast@4.0.4)(@types/react@19.3.0)(lucide-react@1.61.0(@types/react@19.3.0)(react@19.3.1))(next@16.4.5(@types/node@20.19.2)(react-dom@19.3.1(react@19.3.1))(react@19.3.1))(react-dom@19.3.1(react@19.3.1))(react@19.3.1)(zod@4.6.7):
     dependencies:

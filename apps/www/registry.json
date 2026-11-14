@@ -300,8 +300,8 @@
 		{
 			"name": "emoji-picker",
 			"type": "registry:ui",
-			"dependencies": [],
-			"registryDependencies": [],
+			"dependencies": ["frimousse"],
+			"registryDependencies": ["@9ui/input-group", "@9ui/spinner"],
 			"files": [
 				{
 					"path": "src/components/ui/emoji-picker.tsx",
