@@ -426,6 +426,9 @@ function getSection(filePath: string): string {
 	if (parts[0] === "getting-started") {
 		return "Getting Started";
 	}
+	if (parts[0] === "forms") {
+		return "Forms";
+	}
 	if (parts[0] === "components") {
 		return "Components";
 	}
@@ -522,6 +525,8 @@ async function generateLlmsFiles() {
 		if (a.section !== b.section) {
 			if (a.section === "Getting Started") return -1;
 			if (b.section === "Getting Started") return 1;
+			if (a.section === "Forms") return -1;
+			if (b.section === "Forms") return 1;
 			if (a.section === "Components") return -1;
 			if (b.section === "Components") return 1;
 		}

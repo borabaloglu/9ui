@@ -1,0 +1,644 @@
+---
+title: TanStack Form
+description: Build forms with TanStack Form and Zod.
+---
+<ComponentLinks
+	links={[
+		{
+			label: "Docs",
+			href: "https://tanstack.com/form",
+		},
+	]}
+/>
+
+This guide shows how to connect [TanStack Form](https://tanstack.com/form) to `Field`, validate with Zod and show errors.
+
+## Demo
+
+Submit the form with invalid data to see the errors.
+
+<ComponentPreview name="form-tanstack-form-demo" />
+
+## Setup
+
+<Steps>
+
+<Step>Install TanStack Form and Zod.</Step>
+
+```bash title="Terminal"
+npm install @tanstack/react-form zod
+```
+
+<Step>Install the Field and Fieldset components.</Step>
+
+```bash title="Terminal"
+npx shadcn@latest add @9ui/field @9ui/fieldset
+```
+
+</Steps>
+
+## Anatomy
+
+Render each `Field` inside a `form.Field` and pass the field state to it.
+
+```tsx {3-4,6,13}
+<form.Field name="username">
+	{(field) => {
+		const isInvalid = field.state.meta.isTouched && !field.state.meta.isValid
+		const errorMessage = field.state.meta.errors[0]?.message
+		return (
+			<Field name={field.name} invalid={isInvalid}>
+				<FieldLabel>Username</FieldLabel>
+				<Input
+					value={field.state.value}
+					onChange={(e) => field.handleChange(e.target.value)}
+					onBlur={field.handleBlur}
+				/>
+				{isInvalid && <FieldError match>{errorMessage}</FieldError>}
+			</Field>
+		)
+	}}
+</form.Field>
+```
+
+- `form.Field` connects the control to TanStack Form.
+- `invalid` on `Field` is true once the field is touched and not valid.
+- `match` on `FieldError` shows the message from TanStack Form.
+
+## Form
+
+### Create a schema
+
+Define the form values with Zod, or any Standard Schema library.
+
+```tsx title="form.tsx"
+import { z } from "zod"
+
+const schema = z.object({
+	name: z.string().min(1, "Name is required."),
+	message: z
+		.string()
+		.min(10, "Message must be at least 10 characters.")
+		.max(200, "Message must be 200 characters or less."),
+})
+```
+
+### Set up the form
+
+Pass the schema to `onDynamic` in `validators` and set `validationLogic` to `revalidateLogic()`. The form then validates on submit, and on every change after that.
+
+```tsx {6-18,22-25} title="form.tsx"
+import { revalidateLogic, useForm } from "@tanstack/react-form"
+
+// ...
+
+export default function ExampleForm() {
+	const form = useForm({
+		defaultValues: {
+			name: "",
+			message: "",
+		},
+		validationLogic: revalidateLogic(),
+		validators: {
+			onDynamic: schema,
+		},
+		onSubmit: async ({ value }) => {
+			console.log(value)
+		},
+	})
+
+	return (
+		<form
+			onSubmit={(e) => {
+				e.preventDefault()
+				form.handleSubmit()
+			}}
+		>
+			{/* ... */}
+		</form>
+	)
+}
+```
+
+### Build the form
+
+Add a `form.Field` with a `Field` for each value. The demo at the top of this page has the full code.
+
+## Submitting
+
+To show progress while the form submits, read `isSubmitting` from the form store and pass it to `loading` on the submit button.
+
+```tsx {1,9}
+const isSubmitting = useStore(form.store, (state) => state.isSubmitting)
+
+<form
+	onSubmit={(e) => {
+		e.preventDefault()
+		form.handleSubmit()
+	}}
+>
+	<Button type="submit" loading={isSubmitting}>
+		Send
+	</Button>
+</form>
+```
+
+### Focus the first invalid field
+
+To move focus to the first invalid field when a submit fails, focus it in `onSubmitInvalid`.
+
+```tsx {1,5-11,15} title="form.tsx"
+const formRef = useRef<HTMLFormElement>(null)
+
+const form = useForm({
+	// ...
+	onSubmitInvalid: () => {
+		formRef.current
+			?.querySelector<HTMLElement>(
+				':is(input, textarea, button, [tabindex])[aria-invalid="true"]',
+			)
+			?.focus()
+	},
+})
+
+<form
+	ref={formRef}
+	onSubmit={(e) => {
+		e.preventDefault()
+		form.handleSubmit()
+	}}
+>
+	{/* ... */}
+</form>
+```
+
+## Validation
+
+### Field validators
+
+To validate a single field, set `validators` on `form.Field`.
+
+```tsx {3-5} title="form.tsx"
+<form.Field
+	name="username"
+	validators={{
+		onDynamic: z.string().min(3, "Username must be at least 3 characters."),
+	}}
+>
+	{(field) => (/* ... */)}
+</form.Field>
+```
+
+### Validation modes
+
+To choose when validation runs, set `mode` and `modeAfterSubmission` on `revalidateLogic`.
+
+```tsx {2-5} title="form.tsx"
+const form = useForm({
+	validationLogic: revalidateLogic({
+		mode: "blur",
+		modeAfterSubmission: "change",
+	}),
+	validators: {
+		onDynamic: schema,
+	},
+})
+```
+
+| Option                | Values                           | Description                                              |
+| --------------------- | -------------------------------- | -------------------------------------------------------- |
+| `mode`                | `"submit"`, `"blur"`, `"change"` | When to validate before the first submit. Default `"submit"`. |
+| `modeAfterSubmission` | `"change"`, `"blur"`, `"submit"` | When to validate after the first submit. Default `"change"`.  |
+
+## Displaying Errors
+
+To show an error, set `invalid` on `Field` and render `FieldError` with `match`.
+
+```tsx {3-4,6,14} title="form.tsx"
+<form.Field name="email">
+	{(field) => {
+		const isInvalid = field.state.meta.isTouched && !field.state.meta.isValid
+		const errorMessage = field.state.meta.errors[0]?.message
+		return (
+			<Field name={field.name} invalid={isInvalid}>
+				<FieldLabel>Email</FieldLabel>
+				<Input
+					type="email"
+					value={field.state.value}
+					onChange={(e) => field.handleChange(e.target.value)}
+					onBlur={field.handleBlur}
+				/>
+				{isInvalid && <FieldError match>{errorMessage}</FieldError>}
+			</Field>
+		)
+	}}
+</form.Field>
+```
+
+## Server-side Errors
+
+To show an error returned by the server, set it with `formApi.setFieldMeta`. Submit the form to see one.
+
+<ComponentPreview name="form-tanstack-form-server-errors-demo" />
+
+```tsx {8-17} title="form.tsx"
+const form = useForm({
+	defaultValues: { username: "" },
+	validationLogic: revalidateLogic(),
+	validators: { onDynamic: schema },
+	onSubmit: async ({ value, formApi }) => {
+		const res = await createUser(value)
+
+		if (!res.success) {
+			formApi.setFieldMeta("username", (prev) => ({
+				...prev,
+				errorMap: {
+					...prev.errorMap,
+					onDynamic: { message: res.message },
+				},
+			}))
+			return
+		}
+	},
+})
+```
+
+## Field Types
+
+The snippets below go inside `form.Field` and use `isInvalid` and `errorMessage` from [Anatomy](#anatomy).
+
+### Input
+
+Pass `field.state.value`, `field.handleChange` and `field.handleBlur` to `Input`.
+
+<ComponentPreview name="form-tanstack-form-input-demo" />
+
+```tsx {4-6}
+<Field name={field.name} invalid={isInvalid}>
+	<FieldLabel>Username</FieldLabel>
+	<Input
+		value={field.state.value}
+		onChange={(e) => field.handleChange(e.target.value)}
+		onBlur={field.handleBlur}
+	/>
+	{isInvalid && <FieldError match>{errorMessage}</FieldError>}
+</Field>
+```
+
+### Textarea
+
+Pass `field.state.value`, `field.handleChange` and `field.handleBlur` to `Textarea`.
+
+<ComponentPreview name="form-tanstack-form-textarea-demo" />
+
+```tsx {4-6}
+<Field name={field.name} invalid={isInvalid}>
+	<FieldLabel>Bio</FieldLabel>
+	<Textarea
+		value={field.state.value}
+		onChange={(e) => field.handleChange(e.target.value)}
+		onBlur={field.handleBlur}
+	/>
+	{isInvalid && <FieldError match>{errorMessage}</FieldError>}
+</Field>
+```
+
+### Number Field
+
+Pass `field.state.value` to `value` and `field.handleChange` to `onValueChange`. Use `null` as the empty value in `defaultValues`.
+
+<ComponentPreview name="form-tanstack-form-number-field-demo" />
+
+```tsx {6-7}
+<Field name={field.name} invalid={isInvalid}>
+	<FieldLabel>Seats</FieldLabel>
+	<NumberField
+		min={1}
+		max={20}
+		value={field.state.value}
+		onValueChange={(value) => field.handleChange(value)}
+	>
+		<NumberFieldGroup>
+			<NumberFieldDecrement />
+			<NumberFieldInput />
+			<NumberFieldIncrement />
+		</NumberFieldGroup>
+	</NumberField>
+	{isInvalid && <FieldError match>{errorMessage}</FieldError>}
+</Field>
+```
+
+### Phone Input
+
+Pass `field.state.value`, `field.handleChange` and `field.handleBlur` to `PhoneInput`, and check the number with `isValidPhoneNumber` in the schema.
+
+<ComponentPreview name="form-tanstack-form-phone-input-demo" />
+
+```tsx {4-6}
+<Field name={field.name} invalid={isInvalid}>
+	<FieldLabel>Phone number</FieldLabel>
+	<PhoneInput
+		value={field.state.value}
+		onChange={(value) => field.handleChange(value)}
+		onBlur={field.handleBlur}
+	/>
+	{isInvalid && <FieldError match>{errorMessage}</FieldError>}
+</Field>
+```
+
+### Select
+
+Pass `field.state.value` to `value` and `field.handleChange` to `onValueChange`. Set `onBlur` on `SelectTrigger`.
+
+<ComponentPreview name="form-tanstack-form-select-demo" />
+
+```tsx {4-5,8}
+<Field name={field.name} invalid={isInvalid}>
+	<FieldLabel>Currency</FieldLabel>
+	<Select
+		value={field.state.value}
+		onValueChange={(value) => field.handleChange(value ?? "")}
+		items={currencies}
+	>
+		<SelectTrigger className="w-full" onBlur={field.handleBlur}>
+			<SelectValue placeholder="Select a currency" />
+		</SelectTrigger>
+		<SelectPopup>
+			<SelectItem value="usd">USD - US Dollar</SelectItem>
+			<SelectItem value="eur">EUR - Euro</SelectItem>
+		</SelectPopup>
+	</Select>
+	{isInvalid && <FieldError match>{errorMessage}</FieldError>}
+</Field>
+```
+
+### Combobox
+
+Pass `field.state.value` to `value` and `field.handleChange` to `onValueChange`. With `multiple`, the value is an array.
+
+<ComponentPreview name="form-tanstack-form-combobox-demo" />
+
+```tsx {5-7}
+<Field name={field.name} invalid={isInvalid}>
+	<FieldLabel>Tags</FieldLabel>
+	<Combobox
+		items={tags}
+		multiple
+		value={field.state.value}
+		onValueChange={(value) => field.handleChange(value)}
+	>
+		<ComboboxChips>
+			<ComboboxValue>
+				{(value: string[]) => (
+					<>
+						{value.map((tag) => (
+							<ComboboxChip key={tag} aria-label={tag}>
+								{tag}
+							</ComboboxChip>
+						))}
+						<ComboboxChipsInput onBlur={field.handleBlur} />
+					</>
+				)}
+			</ComboboxValue>
+		</ComboboxChips>
+		<ComboboxPopup>
+			<ComboboxEmpty>No tags found.</ComboboxEmpty>
+			<ComboboxList>
+				{(tag: string) => (
+					<ComboboxItem key={tag} value={tag}>
+						{tag}
+					</ComboboxItem>
+				)}
+			</ComboboxList>
+		</ComboboxPopup>
+	</Combobox>
+	{isInvalid && <FieldError match>{errorMessage}</FieldError>}
+</Field>
+```
+
+### Checkbox
+
+Pass `field.state.value` to `checked` and `field.handleChange` to `onCheckedChange`.
+
+<ComponentPreview name="form-tanstack-form-checkbox-demo" />
+
+```tsx {4-5}
+<Field name={field.name} invalid={isInvalid}>
+	<FieldLabel>
+		<Checkbox
+			checked={field.state.value}
+			onCheckedChange={(checked) => field.handleChange(checked)}
+		/>
+		I accept the terms and conditions
+	</FieldLabel>
+	{isInvalid && <FieldError match>{errorMessage}</FieldError>}
+</Field>
+```
+
+### Checkbox Group
+
+Pass `field.state.value` to `value` and `field.handleChange` to `onValueChange` on `CheckboxGroup`. Wrap each checkbox in `FieldItem` with its own `FieldLabel`. The value is an array.
+
+<ComponentPreview name="form-tanstack-form-checkbox-group-demo" />
+
+```tsx {4-5}
+<Field name={field.name} invalid={isInvalid}>
+	<CheckboxGroup
+		aria-labelledby={labelId}
+		value={field.state.value}
+		onValueChange={(value) => field.handleChange(value)}
+	>
+		<CheckboxGroupLabel id={labelId}>Notify me by</CheckboxGroupLabel>
+		<FieldItem>
+			<FieldLabel className="font-normal">
+				<Checkbox value="email" />
+				Email
+			</FieldLabel>
+		</FieldItem>
+		<FieldItem>
+			<FieldLabel className="font-normal">
+				<Checkbox value="sms" />
+				Text messages
+			</FieldLabel>
+		</FieldItem>
+	</CheckboxGroup>
+	{isInvalid && <FieldError match>{errorMessage}</FieldError>}
+</Field>
+```
+
+### Radio Group
+
+Pass `field.state.value` to `value` and `field.handleChange` to `onValueChange` on `RadioGroup`. Wrap each radio in `FieldItem` with its own `FieldLabel`.
+
+<ComponentPreview name="form-tanstack-form-radio-group-demo" />
+
+```tsx {4-6}
+<Field name={field.name} invalid={isInvalid}>
+	<RadioGroup
+		aria-label="Experience level"
+		value={field.state.value}
+		onValueChange={(value) => field.handleChange(value)}
+		onBlur={field.handleBlur}
+	>
+		<FieldItem>
+			<FieldLabel>
+				<Radio value="beginner" />
+				Beginner
+			</FieldLabel>
+		</FieldItem>
+		<FieldItem>
+			<FieldLabel>
+				<Radio value="intermediate" />
+				Intermediate
+			</FieldLabel>
+		</FieldItem>
+	</RadioGroup>
+	{isInvalid && <FieldError match>{errorMessage}</FieldError>}
+</Field>
+```
+
+### Switch
+
+Pass `field.state.value` to `checked` and `field.handleChange` to `onCheckedChange`.
+
+<ComponentPreview name="form-tanstack-form-switch-demo" />
+
+```tsx {5-7}
+<Field name={field.name} invalid={isInvalid}>
+	<FieldLabel className="w-full justify-between">
+		Two-factor authentication
+		<Switch
+			checked={field.state.value}
+			onCheckedChange={(checked) => field.handleChange(checked)}
+			onBlur={field.handleBlur}
+		/>
+	</FieldLabel>
+	{isInvalid && <FieldError match>{errorMessage}</FieldError>}
+</Field>
+```
+
+### OTP Field
+
+Pass `field.state.value` to `value` and `field.handleChange` to `onValueChange`.
+
+<ComponentPreview name="form-tanstack-form-otp-field-demo" />
+
+```tsx {5-7}
+<Field name={field.name} invalid={isInvalid}>
+	<FieldLabel>One-time password</FieldLabel>
+	<OTPField
+		length={6}
+		value={field.state.value}
+		onValueChange={(value) => field.handleChange(value)}
+		onBlur={field.handleBlur}
+	>
+		{Array.from({ length: 6 }, (_, index) => (
+			<OTPFieldInput
+				key={index}
+				aria-label={`Character ${index + 1} of 6`}
+			/>
+		))}
+	</OTPField>
+	{isInvalid && <FieldError match>{errorMessage}</FieldError>}
+</Field>
+```
+
+### Date Picker
+
+Pass `field.state.value` to `selected` and `field.handleChange` to `onSelect` on `Calendar`, and set `aria-invalid` on the trigger. Use `null` as the empty value in `defaultValues`. Give `FieldError` an `id` and pass it to `aria-describedby` on the trigger so the error is announced.
+
+<ComponentPreview name="form-tanstack-form-date-picker-demo" />
+
+```tsx {5,12-14}
+<Field name={field.name} invalid={isInvalid}>
+	<FieldLabel>Start date</FieldLabel>
+	<Popover open={open} onOpenChange={setOpen}>
+		<PopoverTrigger
+			render={<Button variant="outline" aria-describedby={errorId} aria-invalid={isInvalid || undefined} onBlur={field.handleBlur} />}
+		>
+			{field.state.value ? format(field.state.value, "MMM d, yyyy") : "Select a date"}
+		</PopoverTrigger>
+		<PopoverPopup className="w-auto p-0" align="start">
+			<Calendar
+				mode="single"
+				selected={field.state.value ?? undefined}
+				onSelect={(next) => {
+					field.handleChange(next ?? null)
+					setOpen(false)
+				}}
+			/>
+		</PopoverPopup>
+	</Popover>
+	{isInvalid && <FieldError id={errorId} match>{errorMessage}</FieldError>}
+</Field>
+```
+
+## Grouping Fields
+
+To group related fields, wrap their `form.Field` in `Fieldset` with a `FieldsetLegend`.
+
+<ComponentPreview name="form-tanstack-form-fieldset-demo" />
+
+```tsx {1-5,7} title="form.tsx"
+<Fieldset>
+	<FieldsetLegend>Billing Details</FieldsetLegend>
+	<FieldsetDescription>
+		This information will be used in your invoice.
+	</FieldsetDescription>
+	<form.Field name="company">{(field) => (/* ... */)}</form.Field>
+</Fieldset>
+```
+
+## Array Fields
+
+To let people add and remove fields, set `mode="array"` on `form.Field`. Render a `form.Field` for each item, and call `pushValue` and `removeValue` to change the list.
+
+<ComponentPreview name="form-tanstack-form-array-demo" />
+
+```tsx {1,4-5,20,33}
+<form.Field name="emails" mode="array">
+	{(arrayField) => (
+		<>
+			{arrayField.state.value.map((_, index) => (
+				<form.Field key={index} name={`emails[${index}].address`}>
+					{(field) => (
+						<Field name={field.name} invalid={isInvalid}>
+							<div className="flex gap-2">
+								<Input
+									value={field.state.value}
+									onChange={(e) => field.handleChange(e.target.value)}
+									onBlur={field.handleBlur}
+									aria-label={`Email ${index + 1}`}
+								/>
+								<Button
+									type="button"
+									variant="ghost"
+									size="icon"
+									aria-label={`Remove email ${index + 1}`}
+									onClick={() => arrayField.removeValue(index)}
+								>
+									<XIcon />
+								</Button>
+							</div>
+							{isInvalid && <FieldError match>{errorMessage}</FieldError>}
+						</Field>
+					)}
+				</form.Field>
+			))}
+			<Button
+				type="button"
+				variant="outline"
+				onClick={() => arrayField.pushValue({ address: "" })}
+			>
+				Add email
+			</Button>
+		</>
+	)}
+</form.Field>
+```
+
+## Complex Forms
+
+A longer form that combines an input, a radio group, a select, a checkbox and a switch.
+
+<ComponentPreview name="form-tanstack-form-complex-demo" />

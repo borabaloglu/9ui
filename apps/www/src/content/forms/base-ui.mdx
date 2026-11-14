@@ -1,0 +1,665 @@
+---
+title: Base UI Form
+description: Build forms with the Form component and native validation.
+---
+<ComponentLinks
+	links={[
+		{
+			label: "Forms Handbook",
+			href: "https://base-ui.com/react/handbook/forms",
+		},
+		{
+			label: "API Reference",
+			href: "https://base-ui.com/react/components/form#api-reference",
+		},
+	]}
+/>
+
+This guide shows how to build a form with `Form` and `Field`, validate it with native constraints, show errors from the server and validate with Zod.
+
+## Demo
+
+Submit the form with invalid data to see the errors.
+
+<ComponentPreview name="form-base-ui-demo" />
+
+## Setup
+
+<Steps>
+
+<Step>Install the Form, Field and Fieldset components.</Step>
+
+```bash title="Terminal"
+npx shadcn@latest add @9ui/form @9ui/field @9ui/fieldset
+```
+
+</Steps>
+
+## Anatomy
+
+Put each control in a `Field` with a `name`, and add a `FieldError` for each message.
+
+```tsx {1,4-11}
+<Form onFormSubmit={(values) => console.log(values)}>
+	<Field name="name">
+		<FieldLabel>Name</FieldLabel>
+		<Input required minLength={3} pattern="^[a-zA-Z]+$" />
+		<FieldError match="valueMissing">Name is required.</FieldError>
+		<FieldError match="tooShort">
+			Name must be at least 3 characters.
+		</FieldError>
+		<FieldError match="patternMismatch">
+			Name must only contain letters.
+		</FieldError>
+	</Field>
+
+	<Button type="submit">Send</Button>
+</Form>
+```
+
+- `Form` handles the submission and passes server errors to the fields.
+- `Input` takes native constraints such as `required`, `minLength` and `pattern`.
+- `FieldError` shows a message for a native constraint, your own validation or a server error.
+
+## Form
+
+### Submit values as an object
+
+To get the field values as an object, use `onFormSubmit`.
+
+```tsx {2-4}
+<Form
+	onFormSubmit={(values) => {
+		// values: Record<string, unknown>
+	}}
+/>
+```
+
+### Submit with the native event
+
+To read the submit event or `FormData`, use `onSubmit`.
+
+```tsx {2-6}
+<Form
+	onSubmit={(event) => {
+		event.preventDefault()
+		const formData = new FormData(event.currentTarget)
+	}}
+/>
+```
+
+## Submitting
+
+### Pending state
+
+To show progress while the form submits, set `loading` on the submit button.
+
+```tsx {1,5-7,10}
+const [loading, setLoading] = useState(false)
+
+<Form
+	onFormSubmit={async (values) => {
+		setLoading(true)
+		await submit(values)
+		setLoading(false)
+	}}
+>
+	<Button type="submit" loading={loading}>
+		Send
+	</Button>
+</Form>
+```
+
+### Server actions
+
+To submit to a server action, call it in `onFormSubmit` inside a transition and pass the errors it returns to `errors`.
+
+```tsx {8-9,14-19} title="form.tsx"
+"use client"
+
+import { useState, useTransition } from "react"
+
+import { createUser } from "./actions"
+
+export default function ExampleForm() {
+	const [errors, setErrors] = useState({})
+	const [pending, startTransition] = useTransition()
+
+	return (
+		<Form
+			errors={errors}
+			onFormSubmit={(values) => {
+				startTransition(async () => {
+					const result = await createUser(values)
+					setErrors(result.errors)
+				})
+			}}
+		>
+			<Field name="username">
+				<FieldLabel>Username</FieldLabel>
+				<Input required />
+				<FieldError />
+			</Field>
+			<Button type="submit" loading={pending}>
+				Save
+			</Button>
+		</Form>
+	)
+}
+```
+
+```ts title="actions.ts"
+"use server"
+
+export async function createUser(values: { username: string }) {
+	if (values.username === "admin") {
+		return { errors: { username: "'admin' is reserved for system use" } }
+	}
+
+	return { errors: {} }
+}
+```
+
+## Validation
+
+### Client-side validation
+
+Set native constraints on the control and add a `FieldError` with `match` for each message.
+
+```tsx {2-7}
+<Field name="username">
+	<Input required minLength={3} pattern="^[a-zA-Z0-9_]+$" />
+	<FieldError match="valueMissing">Username is required.</FieldError>
+	<FieldError match="tooShort">At least 3 characters.</FieldError>
+	<FieldError match="patternMismatch">
+		Use letters, numbers or underscores.
+	</FieldError>
+</Field>
+```
+
+### Validation modes
+
+To choose when validation runs, set `validationMode` on `Form` or `Field`.
+
+```tsx {1}
+<Form validationMode="onBlur">{/* ... */}</Form>
+```
+
+| Mode         | Description                                                           |
+| ------------ | --------------------------------------------------------------------- |
+| `"onSubmit"` | Validates on submit, then again on change. This is the default.       |
+| `"onBlur"`   | Validates when a field loses focus.                                   |
+| `"onChange"` | Validates on every change.                                            |
+
+### Custom validation
+
+To run your own check, set `validate` on `Field`. It can be async. Use `FieldError` with `match="customError"` to show the message it returns.
+
+<ComponentPreview name="form-base-ui-custom-validation-demo" />
+
+```tsx {3-9,12}
+<Field
+	name="username"
+	validate={async (value) => {
+		const username = String(value ?? "").trim()
+		if (username === "admin") {
+			return "Username cannot be 'admin'."
+		}
+		return null
+	}}
+>
+	<Input />
+	<FieldError match="customError" />
+</Field>
+```
+
+To delay validation while typing, set `validationDebounceTime`.
+
+```tsx {3}
+<Field
+	name="username"
+	validationDebounceTime={300}
+	validate={checkUsername}
+>
+	<Input />
+	<FieldError match="customError" />
+</Field>
+```
+
+## Server-side Errors
+
+To show errors returned by the server, pass them to `errors` on `Form` and add a `FieldError` without `match`. Submit the form to see one.
+
+<ComponentPreview name="form-base-ui-server-errors-demo" />
+
+```tsx {1,4-8,12}
+const [errors, setErrors] = useState({})
+
+<Form
+	errors={errors}
+	onFormSubmit={async (values) => {
+		const response = await submit(values)
+		setErrors(response.errors ?? {})
+	}}
+>
+	<Field name="username">
+		<Input />
+		<FieldError />
+	</Field>
+</Form>
+```
+
+## Using with Zod
+
+To validate with a schema, parse the values in `onFormSubmit` and pass the field errors to `errors`.
+
+<ComponentPreview name="form-base-ui-zod-demo" />
+
+<Steps>
+
+<Step>Install Zod.</Step>
+
+```bash title="Terminal"
+npm install zod
+```
+
+<Step>Parse the values and set the errors.</Step>
+
+```tsx {4-7,10,13-17,21}
+import type { Form as FormPrimitive } from "@base-ui/react/form"
+import { z } from "zod"
+
+const schema = z.object({
+	name: z.string().min(1, "Name is required."),
+	message: z.string().min(10, "Message must be at least 10 characters."),
+})
+
+export default function ExampleForm() {
+	const [errors, setErrors] = useState<FormPrimitive.Props["errors"]>({})
+
+	const handleSubmit = (values: FormPrimitive.Values) => {
+		const result = schema.safeParse(values)
+		if (!result.success) {
+			setErrors(z.flattenError(result.error).fieldErrors)
+			return
+		}
+	}
+
+	return (
+		<Form errors={errors} onFormSubmit={handleSubmit}>
+			{/* ... */}
+		</Form>
+	)
+}
+```
+
+</Steps>
+
+## Field Types
+
+### Input
+
+Set the constraints on `Input`.
+
+<ComponentPreview name="form-base-ui-input-demo" />
+
+```tsx {3}
+<Field name="username">
+	<FieldLabel>Username</FieldLabel>
+	<Input required minLength={3} maxLength={20} pattern="^[a-zA-Z0-9_]+$" />
+	<FieldError match="valueMissing">Username is required.</FieldError>
+</Field>
+```
+
+### Textarea
+
+Set the constraints on `Textarea`.
+
+<ComponentPreview name="form-base-ui-textarea-demo" />
+
+```tsx {3}
+<Field name="bio">
+	<FieldLabel>Bio</FieldLabel>
+	<Textarea required minLength={20} maxLength={280} />
+	<FieldError match="valueMissing">Bio is required.</FieldError>
+</Field>
+```
+
+### Number Field
+
+Set `required` on `NumberField`.
+
+<ComponentPreview name="form-base-ui-number-field-demo" />
+
+```tsx {3}
+<Field name="seats">
+	<FieldLabel>Seats</FieldLabel>
+	<NumberField min={1} max={20} required>
+		<NumberFieldGroup>
+			<NumberFieldDecrement />
+			<NumberFieldInput />
+			<NumberFieldIncrement />
+		</NumberFieldGroup>
+	</NumberField>
+	<FieldError match="valueMissing">Seats is required.</FieldError>
+</Field>
+```
+
+### Phone Input
+
+Keep the number in state, check it on submit and set `invalid` on `Field`.
+
+<ComponentPreview name="form-base-ui-phone-input-demo" />
+
+```tsx {6-9,12,21}
+const [phoneNumber, setPhoneNumber] = useState("")
+const [invalid, setInvalid] = useState(false)
+
+<Form
+	onFormSubmit={() => {
+		if (!isValidPhoneNumber(phoneNumber)) {
+			setInvalid(true)
+			return
+		}
+	}}
+>
+	<Field name="phoneNumber" invalid={invalid}>
+		<FieldLabel>Phone number</FieldLabel>
+		<PhoneInput
+			value={phoneNumber}
+			onChange={(value) => {
+				setPhoneNumber(value)
+				setInvalid(false)
+			}}
+		/>
+		<FieldError match={invalid}>Enter a valid phone number.</FieldError>
+	</Field>
+</Form>
+```
+
+### Select
+
+Set `required` on `Select`.
+
+<ComponentPreview name="form-base-ui-select-demo" />
+
+```tsx {3}
+<Field name="currency">
+	<FieldLabel>Currency</FieldLabel>
+	<Select items={currencies} required>
+		<SelectTrigger className="w-full">
+			<SelectValue placeholder="Select a currency" />
+		</SelectTrigger>
+		<SelectPopup>
+			<SelectItem value="usd">USD - US Dollar</SelectItem>
+			<SelectItem value="eur">EUR - Euro</SelectItem>
+		</SelectPopup>
+	</Select>
+	<FieldError match="valueMissing">Please select a currency.</FieldError>
+</Field>
+```
+
+### Combobox
+
+Set `required` on `Combobox`. With `multiple`, the value is an array.
+
+<ComponentPreview name="form-base-ui-combobox-demo" />
+
+```tsx {3}
+<Field name="tags">
+	<FieldLabel>Tags</FieldLabel>
+	<Combobox items={tags} multiple required>
+		<ComboboxChips>
+			<ComboboxValue>
+				{(value: string[]) => (
+					<>
+						{value.map((tag) => (
+							<ComboboxChip key={tag} aria-label={tag}>
+								{tag}
+							</ComboboxChip>
+						))}
+						<ComboboxChipsInput />
+					</>
+				)}
+			</ComboboxValue>
+		</ComboboxChips>
+		<ComboboxPopup>
+			<ComboboxEmpty>No tags found.</ComboboxEmpty>
+			<ComboboxList>
+				{(tag: string) => (
+					<ComboboxItem key={tag} value={tag}>
+						{tag}
+					</ComboboxItem>
+				)}
+			</ComboboxList>
+		</ComboboxPopup>
+	</Combobox>
+	<FieldError match="valueMissing">Select at least one tag.</FieldError>
+</Field>
+```
+
+### Checkbox
+
+Set `required` on `Checkbox` and place it inside `FieldLabel`.
+
+<ComponentPreview name="form-base-ui-checkbox-demo" />
+
+```tsx {3}
+<Field name="terms">
+	<FieldLabel>
+		<Checkbox required />
+		I accept the terms and conditions
+	</FieldLabel>
+	<FieldError match="valueMissing">You must accept the terms.</FieldError>
+</Field>
+```
+
+### Checkbox Group
+
+Set `validate` on `Field` to require a selection, and wrap each checkbox in `FieldItem` with its own `FieldLabel`. The value is an array.
+
+<ComponentPreview name="form-base-ui-checkbox-group-demo" />
+
+```tsx {3-5,22}
+<Field
+	name="channels"
+	validate={(value) =>
+		(value as string[]).length > 0 ? null : "Select at least one channel."
+	}
+>
+	<CheckboxGroup aria-labelledby={labelId} defaultValue={[]}>
+		<CheckboxGroupLabel id={labelId}>Notify me by</CheckboxGroupLabel>
+		<FieldItem>
+			<FieldLabel className="font-normal">
+				<Checkbox value="email" />
+				Email
+			</FieldLabel>
+		</FieldItem>
+		<FieldItem>
+			<FieldLabel className="font-normal">
+				<Checkbox value="sms" />
+				Text messages
+			</FieldLabel>
+		</FieldItem>
+	</CheckboxGroup>
+	<FieldError match="customError" />
+</Field>
+```
+
+### Radio Group
+
+Set `required` on `RadioGroup` and wrap each radio in `FieldItem` with its own `FieldLabel`.
+
+<ComponentPreview name="form-base-ui-radio-group-demo" />
+
+```tsx {2}
+<Field name="experience">
+	<RadioGroup aria-label="Experience level" required>
+		<FieldItem>
+			<FieldLabel>
+				<Radio value="beginner" />
+				Beginner
+			</FieldLabel>
+		</FieldItem>
+		<FieldItem>
+			<FieldLabel>
+				<Radio value="intermediate" />
+				Intermediate
+			</FieldLabel>
+		</FieldItem>
+	</RadioGroup>
+	<FieldError match="valueMissing">
+		You must select an experience level.
+	</FieldError>
+</Field>
+```
+
+### Switch
+
+Set `required` on `Switch` and place it inside `FieldLabel`.
+
+<ComponentPreview name="form-base-ui-switch-demo" />
+
+```tsx {4}
+<Field name="twoFactor">
+	<FieldLabel className="w-full justify-between">
+		Two-factor authentication
+		<Switch required />
+	</FieldLabel>
+	<FieldError match="valueMissing">
+		Turn on two-factor authentication to continue.
+	</FieldError>
+</Field>
+```
+
+### OTP Field
+
+Set `required` on `OTPField`. An incomplete code matches `patternMismatch`.
+
+<ComponentPreview name="form-base-ui-otp-field-demo" />
+
+```tsx {3}
+<Field name="otp">
+	<FieldLabel>One-time password</FieldLabel>
+	<OTPField length={6} required>
+		{Array.from({ length: 6 }, (_, index) => (
+			<OTPFieldInput
+				key={index}
+				aria-label={`Character ${index + 1} of 6`}
+			/>
+		))}
+	</OTPField>
+	<FieldError match="valueMissing">Code is required.</FieldError>
+	<FieldError match="patternMismatch">Code must be 6 digits.</FieldError>
+</Field>
+```
+
+### Date Picker
+
+Keep the date in state, check it on submit and set `invalid` on `Field`. Give `FieldError` an `id` and pass it to `aria-describedby` on the trigger so the error is announced.
+
+<ComponentPreview name="form-base-ui-date-picker-demo" />
+
+```tsx {6-9,12,32}
+const [date, setDate] = useState<Date | null>(null)
+const [invalid, setInvalid] = useState(false)
+
+<Form
+	onFormSubmit={() => {
+		if (!date) {
+			setInvalid(true)
+			return
+		}
+	}}
+>
+	<Field name="startDate" invalid={invalid}>
+		<FieldLabel>Start date</FieldLabel>
+		<Popover open={open} onOpenChange={setOpen}>
+			<PopoverTrigger
+				render={<Button variant="outline" aria-describedby={errorId} aria-invalid={invalid || undefined} />}
+			>
+				{date ? format(date, "MMM d, yyyy") : "Select a date"}
+			</PopoverTrigger>
+			<PopoverPopup className="w-auto p-0" align="start">
+				<Calendar
+					mode="single"
+					selected={date ?? undefined}
+					onSelect={(next) => {
+						setDate(next ?? null)
+						setInvalid(false)
+						setOpen(false)
+					}}
+				/>
+			</PopoverPopup>
+		</Popover>
+		<FieldError id={errorId} match={invalid}>Start date is required.</FieldError>
+	</Field>
+</Form>
+```
+
+## Grouping Fields
+
+To group related fields, wrap them in `Fieldset` with a `FieldsetLegend`.
+
+<ComponentPreview name="form-base-ui-fieldset-demo" />
+
+```tsx {1,2,13}
+<Fieldset>
+	<FieldsetLegend>Billing Details</FieldsetLegend>
+	<Field name="company">
+		<FieldLabel>Company</FieldLabel>
+		<Input required />
+		<FieldError match="valueMissing">Company name is required.</FieldError>
+	</Field>
+	<Field name="taxId">
+		<FieldLabel>Tax ID</FieldLabel>
+		<Input required pattern="^\d{2}-\d{7}$" />
+		<FieldError match="valueMissing">Tax ID is required.</FieldError>
+	</Field>
+</Fieldset>
+```
+
+## Array Fields
+
+To let people add and remove fields, keep a list of row ids in state and render a `Field` with its own `name` for each row.
+
+<ComponentPreview name="form-base-ui-array-demo" />
+
+```tsx {1-2,5-6,14,26}
+const [rows, setRows] = useState([0])
+const nextRow = useRef(1)
+
+<Form onFormSubmit={(values) => console.log(values)}>
+	{rows.map((row, index) => (
+		<Field key={row} name={`email-${row}`}>
+			<div className="flex gap-2">
+				<Input type="email" aria-label={`Email ${index + 1}`} required />
+				<Button
+					type="button"
+					variant="ghost"
+					size="icon"
+					aria-label={`Remove email ${index + 1}`}
+					onClick={() => setRows((prev) => prev.filter((item) => item !== row))}
+				>
+					<XIcon />
+				</Button>
+			</div>
+			<FieldError match="valueMissing">Email is required.</FieldError>
+			<FieldError match="typeMismatch">Enter a valid email address.</FieldError>
+		</Field>
+	))}
+	<Button
+		type="button"
+		variant="outline"
+		onClick={() => setRows((prev) => [...prev, nextRow.current++])}
+	>
+		Add email
+	</Button>
+</Form>
+```
+
+## Complex Forms
+
+A longer form that combines an input, a radio group, a select, a checkbox and a switch.
+
+<ComponentPreview name="form-base-ui-complex-demo" />

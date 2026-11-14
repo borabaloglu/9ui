@@ -1,0 +1,670 @@
+---
+title: React Hook Form
+description: Build forms with React Hook Form and Zod.
+---
+<ComponentLinks
+	links={[
+		{
+			label: "Docs",
+			href: "https://react-hook-form.com",
+		},
+	]}
+/>
+
+This guide shows how to connect [React Hook Form](https://react-hook-form.com) to `Field`, validate with Zod and show errors.
+
+## Demo
+
+Submit the form with invalid data to see the errors.
+
+<ComponentPreview name="form-react-hook-form-demo" />
+
+## Setup
+
+<Steps>
+
+<Step>Install React Hook Form and Zod.</Step>
+
+```bash title="Terminal"
+npm install react-hook-form @hookform/resolvers zod
+```
+
+<Step>Install the Field and Fieldset components.</Step>
+
+```bash title="Terminal"
+npx shadcn@latest add @9ui/field @9ui/fieldset
+```
+
+</Steps>
+
+## Anatomy
+
+Wrap each `Field` in a `Controller` and pass the field state to it.
+
+```tsx {5-12}
+<Controller
+	name="username"
+	control={control}
+	render={({ field, fieldState }) => (
+		<Field name={field.name} invalid={fieldState.invalid}>
+			<FieldLabel>Username</FieldLabel>
+			<Input {...field} />
+			<FieldDescription>This is your public display name.</FieldDescription>
+			{fieldState.invalid && (
+				<FieldError match>{fieldState.error?.message}</FieldError>
+			)}
+		</Field>
+	)}
+/>
+```
+
+- `Controller` connects the control to React Hook Form.
+- `invalid` on `Field` takes `fieldState.invalid`.
+- `match` on `FieldError` shows the message from React Hook Form.
+
+## Form
+
+### Create a schema
+
+Define the form values with Zod, or any validation library that has a resolver.
+
+```tsx title="form.tsx"
+import { z } from "zod"
+
+const schema = z.object({
+	name: z.string().min(1, "Name is required."),
+	message: z
+		.string()
+		.min(10, "Message must be at least 10 characters.")
+		.max(200, "Message must be 200 characters or less."),
+})
+
+type FormValues = z.infer<typeof schema>
+```
+
+### Set up the form
+
+Pass the schema to `useForm` with `zodResolver`.
+
+```tsx {7-13,20} title="form.tsx"
+import { zodResolver } from "@hookform/resolvers/zod"
+import { useForm } from "react-hook-form"
+
+// ...
+
+export default function ExampleForm() {
+	const { control, handleSubmit } = useForm<FormValues>({
+		resolver: zodResolver(schema),
+		defaultValues: {
+			name: "",
+			message: "",
+		},
+	})
+
+	function onSubmit(data: FormValues) {
+		console.log(data)
+	}
+
+	return (
+		<form onSubmit={handleSubmit(onSubmit)}>{/* ... */}</form>
+	)
+}
+```
+
+### Build the form
+
+Add a `Controller` with a `Field` for each value. The demo at the top of this page has the full code.
+
+## Submitting
+
+To show progress while the form submits, pass `formState.isSubmitting` to `loading` on the submit button.
+
+```tsx {3,9}
+const {
+	handleSubmit,
+	formState: { isSubmitting },
+} = useForm<FormValues>({
+	resolver: zodResolver(schema),
+})
+
+<form onSubmit={handleSubmit(onSubmit)}>
+	<Button type="submit" loading={isSubmitting}>
+		Send
+	</Button>
+</form>
+```
+
+## Validation
+
+### Validation modes
+
+To choose when validation runs, set `mode` on `useForm`.
+
+```tsx {3} title="form.tsx"
+const form = useForm<FormValues>({
+	resolver: zodResolver(schema),
+	mode: "onChange",
+})
+```
+
+| Mode          | Description                                           |
+| ------------- | ----------------------------------------------------- |
+| `"onSubmit"`  | Validates on submit. This is the default.             |
+| `"onChange"`  | Validates on every change.                            |
+| `"onBlur"`    | Validates when a field loses focus.                   |
+| `"onTouched"` | Validates on the first blur, then on every change.    |
+| `"all"`       | Validates on blur and on change.                      |
+
+## Displaying Errors
+
+To show an error, set `invalid` on `Field` and render `FieldError` with `match`.
+
+```tsx {5,8-10} title="form.tsx"
+<Controller
+	name="email"
+	control={control}
+	render={({ field, fieldState }) => (
+		<Field name={field.name} invalid={fieldState.invalid}>
+			<FieldLabel>Email</FieldLabel>
+			<Input {...field} type="email" />
+			{fieldState.invalid && (
+				<FieldError match>{fieldState.error?.message}</FieldError>
+			)}
+		</Field>
+	)}
+/>
+```
+
+## Server-side Errors
+
+To show an error returned by the server, call `setError`. Submit the form to see one.
+
+<ComponentPreview name="form-react-hook-form-server-errors-demo" />
+
+```tsx {1,11-14} title="form.tsx"
+const { control, handleSubmit, setError } = useForm<FormValues>({
+	resolver: zodResolver(schema),
+	defaultValues: {
+		username: "",
+	},
+})
+
+async function onSubmit(data: FormValues) {
+	const res = await createUser(data)
+
+	if (!res.success) {
+		setError("username", { message: res.message })
+		return
+	}
+}
+```
+
+## Field Types
+
+### Input
+
+Spread `field` on `Input`.
+
+<ComponentPreview name="form-react-hook-form-input-demo" />
+
+```tsx {7}
+<Controller
+	name="username"
+	control={control}
+	render={({ field, fieldState }) => (
+		<Field name={field.name} invalid={fieldState.invalid}>
+			<FieldLabel>Username</FieldLabel>
+			<Input {...field} />
+			{fieldState.invalid && (
+				<FieldError match>{fieldState.error?.message}</FieldError>
+			)}
+		</Field>
+	)}
+/>
+```
+
+### Textarea
+
+Spread `field` on `Textarea`.
+
+<ComponentPreview name="form-react-hook-form-textarea-demo" />
+
+```tsx {7}
+<Controller
+	name="bio"
+	control={control}
+	render={({ field, fieldState }) => (
+		<Field name={field.name} invalid={fieldState.invalid}>
+			<FieldLabel>Bio</FieldLabel>
+			<Textarea {...field} />
+			{fieldState.invalid && (
+				<FieldError match>{fieldState.error?.message}</FieldError>
+			)}
+		</Field>
+	)}
+/>
+```
+
+### Number Field
+
+Pass `field.value` to `value` and `field.onChange` to `onValueChange`. Use `null` as the empty value in `defaultValues`.
+
+<ComponentPreview name="form-react-hook-form-number-field-demo" />
+
+```tsx {10-11}
+<Controller
+	name="seats"
+	control={control}
+	render={({ field, fieldState }) => (
+		<Field name={field.name} invalid={fieldState.invalid}>
+			<FieldLabel>Seats</FieldLabel>
+			<NumberField
+				min={1}
+				max={20}
+				value={field.value}
+				onValueChange={field.onChange}
+			>
+				<NumberFieldGroup>
+					<NumberFieldDecrement />
+					<NumberFieldInput />
+					<NumberFieldIncrement />
+				</NumberFieldGroup>
+			</NumberField>
+			{fieldState.invalid && (
+				<FieldError match>{fieldState.error?.message}</FieldError>
+			)}
+		</Field>
+	)}
+/>
+```
+
+### Phone Input
+
+Pass `field.value`, `field.onChange` and `field.onBlur` to `PhoneInput`, and check the number with `isValidPhoneNumber` in the schema.
+
+<ComponentPreview name="form-react-hook-form-phone-input-demo" />
+
+```tsx {8-10}
+<Controller
+	name="phoneNumber"
+	control={control}
+	render={({ field, fieldState }) => (
+		<Field name={field.name} invalid={fieldState.invalid}>
+			<FieldLabel>Phone number</FieldLabel>
+			<PhoneInput
+				value={field.value}
+				onChange={field.onChange}
+				onBlur={field.onBlur}
+			/>
+			{fieldState.invalid && (
+				<FieldError match>{fieldState.error?.message}</FieldError>
+			)}
+		</Field>
+	)}
+/>
+```
+
+### Select
+
+Pass `field.value` to `value` and `field.onChange` to `onValueChange`.
+
+<ComponentPreview name="form-react-hook-form-select-demo" />
+
+```tsx {8-9}
+<Controller
+	name="currency"
+	control={control}
+	render={({ field, fieldState }) => (
+		<Field name={field.name} invalid={fieldState.invalid}>
+			<FieldLabel>Currency</FieldLabel>
+			<Select
+				value={field.value}
+				onValueChange={field.onChange}
+				items={currencies}
+			>
+				<SelectTrigger className="w-full">
+					<SelectValue placeholder="Select a currency" />
+				</SelectTrigger>
+				<SelectPopup>
+					<SelectItem value="usd">USD - US Dollar</SelectItem>
+					<SelectItem value="eur">EUR - Euro</SelectItem>
+				</SelectPopup>
+			</Select>
+			{fieldState.invalid && (
+				<FieldError match>{fieldState.error?.message}</FieldError>
+			)}
+		</Field>
+	)}
+/>
+```
+
+### Combobox
+
+Pass `field.value` to `value` and `field.onChange` to `onValueChange`. With `multiple`, the value is an array.
+
+<ComponentPreview name="form-react-hook-form-combobox-demo" />
+
+```tsx {9-11}
+<Controller
+	name="tags"
+	control={control}
+	render={({ field, fieldState }) => (
+		<Field name={field.name} invalid={fieldState.invalid}>
+			<FieldLabel>Tags</FieldLabel>
+			<Combobox
+				items={tags}
+				multiple
+				value={field.value}
+				onValueChange={field.onChange}
+			>
+				<ComboboxChips>
+					<ComboboxValue>
+						{(value: string[]) => (
+							<>
+								{value.map((tag) => (
+									<ComboboxChip key={tag} aria-label={tag}>
+										{tag}
+									</ComboboxChip>
+								))}
+								<ComboboxChipsInput />
+							</>
+						)}
+					</ComboboxValue>
+				</ComboboxChips>
+				<ComboboxPopup>
+					<ComboboxEmpty>No tags found.</ComboboxEmpty>
+					<ComboboxList>
+						{(tag: string) => (
+							<ComboboxItem key={tag} value={tag}>
+								{tag}
+							</ComboboxItem>
+						)}
+					</ComboboxList>
+				</ComboboxPopup>
+			</Combobox>
+			{fieldState.invalid && (
+				<FieldError match>{fieldState.error?.message}</FieldError>
+			)}
+		</Field>
+	)}
+/>
+```
+
+### Checkbox
+
+Pass `value` to `checked` and `onChange` to `onCheckedChange`, then spread the rest of `field`.
+
+<ComponentPreview name="form-react-hook-form-checkbox-demo" />
+
+```tsx {4,7}
+<Controller
+	name="terms"
+	control={control}
+	render={({ field: { value, onChange, ...field }, fieldState }) => (
+		<Field name={field.name} invalid={fieldState.invalid}>
+			<FieldLabel>
+				<Checkbox checked={value} onCheckedChange={onChange} {...field} />
+				I accept the terms and conditions
+			</FieldLabel>
+			{fieldState.invalid && (
+				<FieldError match>{fieldState.error?.message}</FieldError>
+			)}
+		</Field>
+	)}
+/>
+```
+
+### Checkbox Group
+
+Pass `field.value` to `value` and `field.onChange` to `onValueChange` on `CheckboxGroup`. Wrap each checkbox in `FieldItem` with its own `FieldLabel`. The value is an array.
+
+<ComponentPreview name="form-react-hook-form-checkbox-group-demo" />
+
+```tsx {8-9}
+<Controller
+	name="channels"
+	control={control}
+	render={({ field, fieldState }) => (
+		<Field name={field.name} invalid={fieldState.invalid}>
+			<CheckboxGroup
+				aria-labelledby={labelId}
+				value={field.value}
+				onValueChange={field.onChange}
+			>
+				<CheckboxGroupLabel id={labelId}>Notify me by</CheckboxGroupLabel>
+				<FieldItem>
+					<FieldLabel className="font-normal">
+						<Checkbox value="email" />
+						Email
+					</FieldLabel>
+				</FieldItem>
+				<FieldItem>
+					<FieldLabel className="font-normal">
+						<Checkbox value="sms" />
+						Text messages
+					</FieldLabel>
+				</FieldItem>
+			</CheckboxGroup>
+			{fieldState.invalid && (
+				<FieldError match>{fieldState.error?.message}</FieldError>
+			)}
+		</Field>
+	)}
+/>
+```
+
+### Radio Group
+
+Pass `field.value` to `value` and `field.onChange` to `onValueChange` on `RadioGroup`. Wrap each radio in `FieldItem` with its own `FieldLabel`.
+
+<ComponentPreview name="form-react-hook-form-radio-group-demo" />
+
+```tsx {7-9}
+<Controller
+	name="experience"
+	control={control}
+	render={({ field, fieldState }) => (
+		<Field name={field.name} invalid={fieldState.invalid}>
+			<RadioGroup
+				aria-label="Experience level"
+				value={field.value}
+				onValueChange={field.onChange}
+			>
+				<FieldItem>
+					<FieldLabel>
+						<Radio value="beginner" />
+						Beginner
+					</FieldLabel>
+				</FieldItem>
+				<FieldItem>
+					<FieldLabel>
+						<Radio value="intermediate" />
+						Intermediate
+					</FieldLabel>
+				</FieldItem>
+			</RadioGroup>
+			{fieldState.invalid && (
+				<FieldError match>{fieldState.error?.message}</FieldError>
+			)}
+		</Field>
+	)}
+/>
+```
+
+### Switch
+
+Pass `value` to `checked` and `onChange` to `onCheckedChange`, then spread the rest of `field`.
+
+<ComponentPreview name="form-react-hook-form-switch-demo" />
+
+```tsx {4,8}
+<Controller
+	name="twoFactor"
+	control={control}
+	render={({ field: { value, onChange, ...field }, fieldState }) => (
+		<Field name={field.name} invalid={fieldState.invalid}>
+			<FieldLabel className="w-full justify-between">
+				Two-factor authentication
+				<Switch checked={value} onCheckedChange={onChange} {...field} />
+			</FieldLabel>
+			{fieldState.invalid && (
+				<FieldError match>{fieldState.error?.message}</FieldError>
+			)}
+		</Field>
+	)}
+/>
+```
+
+### OTP Field
+
+Pass `field.value` to `value` and `field.onChange` to `onValueChange`.
+
+<ComponentPreview name="form-react-hook-form-otp-field-demo" />
+
+```tsx {9-10}
+<Controller
+	name="otp"
+	control={control}
+	render={({ field, fieldState }) => (
+		<Field name={field.name} invalid={fieldState.invalid}>
+			<FieldLabel>One-time password</FieldLabel>
+			<OTPField
+				length={6}
+				value={field.value}
+				onValueChange={field.onChange}
+			>
+				{Array.from({ length: 6 }, (_, index) => (
+					<OTPFieldInput
+						key={index}
+						aria-label={`Character ${index + 1} of 6`}
+					/>
+				))}
+			</OTPField>
+			{fieldState.invalid && (
+				<FieldError match>{fieldState.error?.message}</FieldError>
+			)}
+		</Field>
+	)}
+/>
+```
+
+### Date Picker
+
+Pass `field.value` to `selected` and `field.onChange` to `onSelect` on `Calendar`, and set `aria-invalid` on the trigger. Use `null` as the empty value in `defaultValues`. Give `FieldError` an `id` and pass it to `aria-describedby` on the trigger so the error is announced.
+
+<ComponentPreview name="form-react-hook-form-date-picker-demo" />
+
+```tsx {9,16-18}
+<Controller
+	name="startDate"
+	control={control}
+	render={({ field, fieldState }) => (
+		<Field name={field.name} invalid={fieldState.invalid}>
+			<FieldLabel>Start date</FieldLabel>
+			<Popover open={open} onOpenChange={setOpen}>
+				<PopoverTrigger
+					render={<Button variant="outline" aria-describedby={errorId} aria-invalid={fieldState.invalid || undefined} onBlur={field.onBlur} />}
+				>
+					{field.value ? format(field.value, "MMM d, yyyy") : "Select a date"}
+				</PopoverTrigger>
+				<PopoverPopup className="w-auto p-0" align="start">
+					<Calendar
+						mode="single"
+						selected={field.value ?? undefined}
+						onSelect={(next) => {
+							field.onChange(next ?? null)
+							setOpen(false)
+						}}
+					/>
+				</PopoverPopup>
+			</Popover>
+			{fieldState.invalid && (
+				<FieldError id={errorId} match>{fieldState.error?.message}</FieldError>
+			)}
+		</Field>
+	)}
+/>
+```
+
+## Grouping Fields
+
+To group related fields, wrap their controllers in `Fieldset` with a `FieldsetLegend`.
+
+<ComponentPreview name="form-react-hook-form-fieldset-demo" />
+
+```tsx {1-5,19} title="form.tsx"
+<Fieldset>
+	<FieldsetLegend>Billing Details</FieldsetLegend>
+	<FieldsetDescription>
+		This information will be used in your invoice.
+	</FieldsetDescription>
+	<Controller
+		name="company"
+		control={control}
+		render={({ field, fieldState }) => (
+			<Field name={field.name} invalid={fieldState.invalid}>
+				<FieldLabel>Company</FieldLabel>
+				<Input {...field} />
+				{fieldState.invalid && (
+					<FieldError match>{fieldState.error?.message}</FieldError>
+				)}
+			</Field>
+		)}
+	/>
+</Fieldset>
+```
+
+## Array Fields
+
+To let people add and remove fields, use `useFieldArray`. Render a `Controller` for each item, keyed by its `id`, and call `append` and `remove` to change the list.
+
+<ComponentPreview name="form-react-hook-form-array-demo" />
+
+```tsx {1-4,7-10,21,36}
+const { fields, append, remove } = useFieldArray({
+	control,
+	name: "emails",
+})
+
+<form onSubmit={handleSubmit(onSubmit)}>
+	{fields.map((item, index) => (
+		<Controller
+			key={item.id}
+			name={`emails.${index}.address`}
+			control={control}
+			render={({ field, fieldState }) => (
+				<Field name={field.name} invalid={fieldState.invalid}>
+					<div className="flex gap-2">
+						<Input {...field} aria-label={`Email ${index + 1}`} />
+						<Button
+							type="button"
+							variant="ghost"
+							size="icon"
+							aria-label={`Remove email ${index + 1}`}
+							onClick={() => remove(index)}
+						>
+							<XIcon />
+						</Button>
+					</div>
+					{fieldState.invalid && (
+						<FieldError match>{fieldState.error?.message}</FieldError>
+					)}
+				</Field>
+			)}
+		/>
+	))}
+	<Button
+		type="button"
+		variant="outline"
+		onClick={() => append({ address: "" })}
+	>
+		Add email
+	</Button>
+</form>
+```
+
+## Complex Forms
+
+A longer form that combines an input, a radio group, a select, a checkbox and a switch.
+
+<ComponentPreview name="form-react-hook-form-complex-demo" />

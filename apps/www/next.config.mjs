@@ -37,6 +37,16 @@ const nextConfig = {
 				permanent: true,
 			},
 			{
+				source: "/docs/components/form",
+				destination: "/docs/forms/base-ui",
+				permanent: true,
+			},
+			{
+				source: "/docs/forms",
+				destination: "/docs/forms/base-ui",
+				permanent: true,
+			},
+			{
 				source: "/docs/components/input-otp",
 				destination: "/docs/components/otp-field",
 				permanent: true,

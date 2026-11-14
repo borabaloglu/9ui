@@ -1,0 +1,125 @@
+"use client";
+
+import { useState } from "react";
+import type { Form as FormPrimitive } from "@base-ui/react/form";
+import { toast } from "sonner";
+import { z } from "zod";
+
+import { Button } from "@/components/ui/button";
+import {
+	Card,
+	CardContent,
+	CardDescription,
+	CardHeader,
+	CardTitle,
+} from "@/components/ui/card";
+import {
+	Field,
+	FieldDescription,
+	FieldError,
+	FieldLabel,
+} from "@/components/ui/field";
+import { Form } from "@/components/ui/form";
+import { Input } from "@/components/ui/input";
+import {
+	InputGroup,
+	InputGroupAddon,
+	InputGroupText,
+	InputGroupTextarea,
+} from "@/components/ui/input-group";
+
+const schema = z.object({
+	name: z.string().min(1, "Name is required."),
+	message: z
+		.string()
+		.min(10, "Message must be at least 10 characters.")
+		.max(200, "Message must be 200 characters or less."),
+});
+
+export default function FormBaseUiZodDemo() {
+	const [loading, setLoading] = useState(false);
+	const [errors, setErrors] = useState<FormPrimitive.Props["errors"]>({});
+	const [messageLength, setMessageLength] = useState(0);
+	const [formKey, setFormKey] = useState(0);
+
+	const handleSubmit = async (values: FormPrimitive.Values) => {
+		setLoading(true);
+		await new Promise((resolve) => setTimeout(resolve, 500));
+
+		const result = schema.safeParse(values);
+		if (!result.success) {
+			setErrors(z.flattenError(result.error).fieldErrors);
+			setLoading(false);
+			return;
+		}
+
+		setErrors({});
+		setLoading(false);
+		toast("You submitted the following values:", {
+			description: (
+				<pre className="bg-muted text-foreground mt-2 overflow-x-auto rounded-md p-3">
+					<code>{JSON.stringify(result.data, null, 2)}</code>
+				</pre>
+			),
+		});
+	};
+
+	return (
+		<Card className="w-full max-w-sm">
+			<CardHeader>
+				<CardTitle>Feedback</CardTitle>
+				<CardDescription>
+					We would love to hear from you. Send us your feedback.
+				</CardDescription>
+			</CardHeader>
+			<CardContent>
+				<Form
+					errors={errors}
+					onFormSubmit={handleSubmit}
+					key={formKey}
+					onReset={(event) => {
+						event.preventDefault();
+						setMessageLength(0);
+						setErrors({});
+						setFormKey((k) => k + 1);
+					}}
+				>
+					<Field name="name">
+						<FieldLabel>Name</FieldLabel>
+						<Input autoComplete="off" placeholder="Your name" />
+						<FieldDescription>
+							Your name will not be displayed publicly.
+						</FieldDescription>
+						<FieldError />
+					</Field>
+					<Field name="message">
+						<FieldLabel>Message</FieldLabel>
+						<InputGroup>
+							<InputGroupTextarea
+								placeholder="Your feedback..."
+								rows={6}
+								onChange={(event) =>
+									setMessageLength(event.target.value.length)
+								}
+							/>
+							<InputGroupAddon align="block-end">
+								<InputGroupText className="text-xs">
+									{messageLength}/200 characters
+								</InputGroupText>
+							</InputGroupAddon>
+						</InputGroup>
+						<FieldError />
+					</Field>
+					<div className="flex gap-2">
+						<Button disabled={loading} type="reset" variant="outline">
+							Reset
+						</Button>
+						<Button loading={loading} type="submit">
+							Send
+						</Button>
+					</div>
+				</Form>
+			</CardContent>
+		</Card>
+	);
+}
