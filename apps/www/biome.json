@@ -155,7 +155,10 @@
 			}
 		},
 		{
-			"includes": ["src/components/ui/input-group.tsx"],
+			"includes": [
+				"src/components/ui/button-group.tsx",
+				"src/components/ui/input-group.tsx"
+			],
 			"linter": {
 				"rules": {
 					"a11y": {

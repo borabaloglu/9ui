@@ -1,0 +1,97 @@
+---
+title: Button Group
+description: A set of related buttons and controls joined into one unit.
+label: New
+---
+<ComponentPreview name="button-group-demo" />
+
+## Installation
+
+<ComponentInstallation>
+<div>
+```bash title="Terminal"
+npx shadcn@latest add @9ui/button-group
+```
+</div>
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="button-group" />
+
+</Steps>
+</ComponentInstallation>
+
+## Usage
+
+```tsx title="Imports"
+import {
+	ButtonGroup,
+	ButtonGroupSeparator,
+	ButtonGroupText,
+} from "@/components/ui/button-group"
+```
+
+```tsx title="Anatomy"
+<ButtonGroup>
+	<Button />
+	<ButtonGroupSeparator />
+	<Button />
+	<ButtonGroupText />
+</ButtonGroup>
+```
+
+Give the group an `aria-label` when its purpose isn't clear from the buttons alone.
+
+For buttons that stay pressed, use [Toggle Group](/docs/components/toggle-group) instead.
+
+## Examples
+
+### Vertical
+
+Set `orientation="vertical"` to stack the buttons.
+
+<ComponentPreview name="button-group-vertical-demo" />
+
+### Size
+
+Set `size` on each [Button](/docs/components/button) to change the size of the group.
+
+<ComponentPreview name="button-group-size-demo" />
+
+### Nested
+
+To space sets of buttons apart, nest `ButtonGroup` inside another `ButtonGroup`.
+
+<ComponentPreview name="button-group-nested-demo" />
+
+### Separator
+
+To divide buttons that have no border, add `ButtonGroupSeparator` between them.
+
+<ComponentPreview name="button-group-separator-demo" />
+
+### Menu
+
+To build a split button, add a [Menu](/docs/components/menu) trigger next to the main button.
+
+<ComponentPreview name="button-group-menu-demo" />
+
+### Input
+
+Add an [Input](/docs/components/input) to join it with a button.
+
+<ComponentPreview name="button-group-input-demo" />
+
+### Select
+
+Add a [Select](/docs/components/select) to pair a choice with an input.
+
+<ComponentPreview name="button-group-select-demo" />
+
+### Text
+
+To show text next to a control, add `ButtonGroupText`.
+
+<ComponentPreview name="button-group-text-demo" />
