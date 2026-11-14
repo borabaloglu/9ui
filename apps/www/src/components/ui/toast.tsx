@@ -1,131 +1,241 @@
 "use client";
 
-import { Toast } from "@base-ui/react/toast";
+import type * as React from "react";
+import { Toast as BaseToast } from "@base-ui/react/toast";
 import {
-	CircleAlert,
-	CircleCheck,
-	Info,
-	Loader,
-	TriangleAlert,
+	CircleAlertIcon,
+	CircleCheckIcon,
+	InfoIcon,
+	TriangleAlertIcon,
+	XIcon,
 } from "lucide-react";
 
-import { buttonVariants } from "@/components/ui/button";
+import { Button, type ButtonProps } from "@/components/ui/button";
+import { Spinner } from "@/components/ui/spinner";
 
-import { toastManager, useToast } from "@/hooks/use-toast";
+import { anchoredToastManager, toastManager } from "@/hooks/use-toast";
 
 import { cn } from "@/lib/utils";
 
-const TOAST_ICONS: {
-	[key: string]: React.ReactNode;
-} = {
-	loading: <Loader className="animate-spin" />,
-	success: <CircleCheck />,
-	error: <CircleAlert />,
-	info: <Info />,
-	warning: <TriangleAlert />,
+type ToastPosition =
+	| "top-left"
+	| "top-center"
+	| "top-right"
+	| "bottom-left"
+	| "bottom-center"
+	| "bottom-right";
+
+type ToastSwipeDirection = "up" | "down" | "left" | "right";
+
+type ToastObject = ReturnType<
+	typeof BaseToast.useToastManager
+>["toasts"][number];
+
+const TOAST_ICONS: Record<string, React.ComponentType> = {
+	success: CircleCheckIcon,
+	error: CircleAlertIcon,
+	info: InfoIcon,
+	warning: TriangleAlertIcon,
+	loading: Spinner,
 };
+
+function getSwipeDirection(position: ToastPosition): ToastSwipeDirection[] {
+	const vertical = position.startsWith("top") ? "up" : "down";
+
+	if (position.endsWith("center")) {
+		return [vertical];
+	}
+
+	return [position.endsWith("left") ? "left" : "right", vertical];
+}
+
+function ToastContent({
+	toast,
+	className,
+}: {
+	toast: ToastObject;
+	className?: string;
+}) {
+	const Icon = toast.type ? TOAST_ICONS[toast.type] : undefined;
+
+	return (
+		<BaseToast.Content
+			data-slot="toast-content"
+			className={cn(
+				"flex items-center gap-2 overflow-hidden px-3.5 py-3",
+				className,
+			)}
+		>
+			{Icon && (
+				<div
+					data-slot="toast-icon"
+					className="in-data-[type=error]:text-destructive in-data-[type=info]:text-info in-data-[type=success]:text-success in-data-[type=warning]:text-warning flex h-lh w-4 shrink-0 items-center self-start in-data-[type=loading]:opacity-80 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4"
+				>
+					<Icon />
+				</div>
+			)}
+			<div className="flex min-w-0 flex-1 flex-col gap-0.5">
+				<BaseToast.Title data-slot="toast-title" className="font-medium" />
+				<BaseToast.Description
+					data-slot="toast-description"
+					className="text-muted-foreground"
+				/>
+			</div>
+			{toast.actionProps && (
+				<BaseToast.Action
+					data-slot="toast-action"
+					render={(props) => <Button size="xs" {...(props as ButtonProps)} />}
+				/>
+			)}
+		</BaseToast.Content>
+	);
+}
+
+function ToastViewport({
+	position,
+	closeButton,
+	portalProps,
+}: {
+	position: ToastPosition;
+	closeButton: boolean;
+	portalProps?: BaseToast.Portal.Props;
+}) {
+	const { toasts } = BaseToast.useToastManager();
+	const swipeDirection = getSwipeDirection(position);
+
+	return (
+		<BaseToast.Portal data-slot="toast-portal" {...portalProps}>
+			<BaseToast.Viewport
+				data-slot="toast-viewport"
+				data-position={position}
+				className="fixed z-60 mx-auto flex w-[calc(100%-var(--toast-inset)*2)] max-w-90 [--toast-inset:--spacing(4)] data-[position*=bottom]:bottom-(--toast-inset) data-[position*=center]:left-1/2 data-[position*=center]:-translate-x-1/2 data-[position*=left]:left-(--toast-inset) data-[position*=right]:right-(--toast-inset) data-[position*=top]:top-(--toast-inset) sm:[--toast-inset:--spacing(8)]"
+			>
+				{toasts.map((toast) => (
+					<BaseToast.Root
+						key={toast.id}
+						toast={toast}
+						swipeDirection={swipeDirection}
+						data-slot="toast"
+						data-position={position}
+						className={cn(
+							"data-expanded:bg-popover dark:data-expanded:bg-popover text-popover-foreground absolute z-[calc(9999-var(--toast-index))] h-(--toast-calc-height) w-full rounded-lg border bg-[color-mix(in_srgb,var(--popover),black_calc(1%*var(--toast-index,0)))] bg-clip-padding text-sm shadow-lg select-none not-dark:shadow-[0_1px_--theme(--color-black/6%),var(--shadow-lg)] dark:bg-[color-mix(in_srgb,var(--popover),black_calc(6%*var(--toast-index,0)))] dark:inset-shadow-[0_1px_--theme(--color-white/8%)]",
+							"[--toast-calc-height:var(--toast-frontmost-height,var(--toast-height))] [--toast-gap:--spacing(3)] [--toast-peek:--spacing(3)] [--toast-scale:calc(max(0,1-(var(--toast-index)*0.05)))] [--toast-shrink:calc(1-var(--toast-scale))]",
+							"[transition:transform_0.4s_cubic-bezier(0.23,1,0.32,1),opacity_0.4s,height_0.15s,background-color_0.4s] motion-reduce:[transition:opacity_0.4s,height_0.15s,background-color_0.4s]",
+							"data-[position*=center]:right-0 data-[position*=center]:left-0 data-[position*=left]:right-auto data-[position*=left]:left-0 data-[position*=right]:right-0 data-[position*=right]:left-auto",
+							"data-[position*=top]:top-0 data-[position*=top]:bottom-auto data-[position*=top]:origin-top",
+							"data-[position*=bottom]:top-auto data-[position*=bottom]:bottom-0 data-[position*=bottom]:origin-bottom",
+							"after:absolute after:left-0 after:h-[calc(var(--toast-gap)+1px)] after:w-full data-[position*=bottom]:after:bottom-full data-[position*=top]:after:top-full",
+							"data-[position*=top]:[--toast-calc-offset-y:calc(var(--toast-offset-y)+var(--toast-index)*var(--toast-gap)+var(--toast-swipe-movement-y))]",
+							"data-[position*=bottom]:[--toast-calc-offset-y:calc(var(--toast-offset-y)*-1+var(--toast-index)*var(--toast-gap)*-1+var(--toast-swipe-movement-y))]",
+							"data-[position*=top]:transform-[translateX(var(--toast-swipe-movement-x))_translateY(calc(var(--toast-swipe-movement-y)+(var(--toast-index)*var(--toast-peek))+(var(--toast-shrink)*var(--toast-calc-height))))_scale(var(--toast-scale))]",
+							"data-[position*=bottom]:transform-[translateX(var(--toast-swipe-movement-x))_translateY(calc(var(--toast-swipe-movement-y)-(var(--toast-index)*var(--toast-peek))-(var(--toast-shrink)*var(--toast-calc-height))))_scale(var(--toast-scale))]",
+							"data-limited:opacity-0",
+							"data-expanded:h-(--toast-height) data-position:data-expanded:transform-[translateX(var(--toast-swipe-movement-x))_translateY(var(--toast-calc-offset-y))]",
+							"data-starting-style:opacity-0 motion-safe:data-[position*=bottom]:data-starting-style:transform-[translateY(calc(100%+var(--toast-inset)))] motion-safe:data-[position*=top]:data-starting-style:transform-[translateY(calc(-100%-var(--toast-inset)))]",
+							"data-ending-style:opacity-0",
+							"motion-safe:data-[position*=top]:data-ending-style:not-data-limited:not-data-swipe-direction:transform-[translateY(calc(-100%-var(--toast-inset)))]",
+							"motion-safe:data-[position*=bottom]:data-ending-style:not-data-limited:not-data-swipe-direction:transform-[translateY(calc(100%+var(--toast-inset)))]",
+							"data-ending-style:data-[swipe-direction=left]:transform-[translateX(calc(var(--toast-swipe-movement-x)-100%-var(--toast-inset)))_translateY(var(--toast-calc-offset-y))]",
+							"data-ending-style:data-[swipe-direction=right]:transform-[translateX(calc(var(--toast-swipe-movement-x)+100%+var(--toast-inset)))_translateY(var(--toast-calc-offset-y))]",
+							"data-ending-style:data-[swipe-direction=up]:transform-[translateY(calc(var(--toast-swipe-movement-y)-100%-var(--toast-inset)))]",
+							"data-ending-style:data-[swipe-direction=down]:transform-[translateY(calc(var(--toast-swipe-movement-y)+100%+var(--toast-inset)))]",
+						)}
+					>
+						<ToastContent
+							toast={toast}
+							className="transition-opacity duration-250 data-behind:opacity-0 data-behind:not-data-expanded:pointer-events-none data-expanded:opacity-100"
+						/>
+						{closeButton && (
+							<BaseToast.Close
+								data-slot="toast-close"
+								aria-label="Close"
+								className="bg-popover text-muted-foreground hover:text-foreground focus-visible:border-ring focus-visible:ring-ring/50 absolute -top-2 -left-2 flex size-5 cursor-pointer items-center justify-center rounded-full border opacity-[calc(1-min(var(--toast-index),1))] transition-opacity duration-250 outline-none focus-visible:ring-3 in-data-expanded:opacity-100 [&_svg]:size-3"
+							>
+								<XIcon />
+							</BaseToast.Close>
+						)}
+					</BaseToast.Root>
+				))}
+			</BaseToast.Viewport>
+		</BaseToast.Portal>
+	);
+}
+
+function AnchoredToastViewport({
+	portalProps,
+}: {
+	portalProps?: BaseToast.Portal.Props;
+}) {
+	const { toasts } = BaseToast.useToastManager();
+
+	return (
+		<BaseToast.Portal data-slot="toast-portal" {...portalProps}>
+			<BaseToast.Viewport data-slot="toast-viewport" className="outline-none">
+				{toasts.map((toast) => {
+					if (!toast.positionerProps?.anchor) {
+						return null;
+					}
+
+					return (
+						<BaseToast.Positioner
+							key={toast.id}
+							toast={toast}
+							data-slot="toast-positioner"
+							sideOffset={toast.positionerProps.sideOffset ?? 4}
+							className="z-60 max-w-[min(--spacing(90),var(--available-width))]"
+						>
+							<BaseToast.Root
+								toast={toast}
+								data-slot="toast"
+								className="bg-popover text-popover-foreground ease-out-quint relative origin-(--transform-origin) rounded-lg border bg-clip-padding text-sm shadow-lg transition-[scale,opacity] duration-150 not-dark:shadow-[0_1px_--theme(--color-black/6%),var(--shadow-lg)] data-ending-style:opacity-0 data-ending-style:duration-100 data-limited:pointer-events-none data-limited:opacity-0 data-starting-style:opacity-0 motion-safe:data-ending-style:scale-98 motion-safe:data-starting-style:scale-98 dark:inset-shadow-[0_1px_--theme(--color-white/8%)]"
+							>
+								<ToastContent toast={toast} />
+							</BaseToast.Root>
+						</BaseToast.Positioner>
+					);
+				})}
+			</BaseToast.Viewport>
+		</BaseToast.Portal>
+	);
+}
 
 function ToastProvider({
 	children,
+	position = "bottom-right",
+	closeButton = false,
+	portalProps,
 	...props
-}: React.ComponentProps<typeof Toast.Provider>) {
+}: BaseToast.Provider.Props & {
+	position?: ToastPosition;
+	closeButton?: boolean;
+	portalProps?: BaseToast.Portal.Props;
+}) {
 	return (
-		<Toast.Provider toastManager={toastManager} {...props}>
+		<BaseToast.Provider toastManager={toastManager} {...props}>
 			{children}
-			<ToastList />
-		</Toast.Provider>
+			<ToastViewport
+				position={position}
+				closeButton={closeButton}
+				portalProps={portalProps}
+			/>
+		</BaseToast.Provider>
 	);
 }
 
-function ToastList() {
-	const { toasts } = useToast();
-
+function AnchoredToastProvider({
+	children,
+	portalProps,
+	...props
+}: BaseToast.Provider.Props & {
+	portalProps?: BaseToast.Portal.Props;
+}) {
 	return (
-		<Toast.Portal data-slot="toast-portal">
-			<Toast.Viewport
-				className="fixed top-auto right-4 bottom-4 mx-auto flex w-[calc(100%_-_2rem)] sm:right-8 sm:bottom-8 sm:w-[356px]"
-				data-slot="toast-viewport"
-			>
-				{toasts.map((toast) => (
-					<Toast.Root
-						key={toast.id}
-						toast={toast}
-						swipeDirection={["right", "down"]}
-						data-slot="toast"
-						className={cn(
-							// CSS variables for stacking calculations
-							"[--gap:0.8rem] [--height:var(--toast-frontmost-height,var(--toast-height))] [--offset-y:calc(var(--toast-offset-y)*-1+(var(--toast-index)*var(--gap)*-1)+var(--toast-swipe-movement-y))] [--peek:0.75rem] [--scale:calc(max(0,1-(var(--toast-index)*0.1)))] [--shrink:calc(1-var(--scale))]",
-							// Base styles
-							"bg-popover absolute right-0 bottom-0 left-auto z-[calc(1000-var(--toast-index))] mr-0 flex w-full origin-bottom items-center justify-between gap-1.5 rounded-lg border bg-clip-padding p-4 shadow-lg select-none",
-							// Height based on frontmost toast
-							"h-[var(--height)]",
-							// Transitions
-							"transition-[opacity,transform,height] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]",
-							// Fill the gap between toasts
-							"after:absolute after:top-full after:left-0 after:h-[calc(var(--gap)+1px)] after:w-full after:content-['']",
-							// Initial position and scale with variable height stacking
-							"[transform:translateX(var(--toast-swipe-movement-x))_translateY(calc(var(--toast-swipe-movement-y)-(var(--toast-index)*var(--peek))-(var(--shrink)*var(--height))))_scale(var(--scale))]",
-							// Expanded state animation
-							"data-expanded:h-[var(--toast-height)] data-expanded:[transform:translateX(var(--toast-swipe-movement-x))_translateY(var(--offset-y))]",
-							// Starting/ending styles
-							"data-ending-style:opacity-0 data-limited:opacity-0 data-starting-style:[transform:translateY(150%)] data-starting-style:opacity-0",
-							// Right swipe animation
-							"data-ending-style:data-[swipe-direction=right]:[transform:translateX(calc(var(--toast-swipe-movement-x)+150%))_translateY(var(--offset-y))] data-expanded:data-ending-style:data-[swipe-direction=right]:[transform:translateX(calc(var(--toast-swipe-movement-x)+150%))_translateY(var(--offset-y))]",
-							// Down swipe animation
-							"data-ending-style:data-[swipe-direction=down]:[transform:translateY(calc(var(--toast-swipe-movement-y)+150%))] data-expanded:data-ending-style:data-[swipe-direction=down]:[transform:translateY(calc(var(--toast-swipe-movement-y)+150%))]",
-							// Type-specific styles
-							toast.type === "success" &&
-								"border-success/20 text-success bg-[color-mix(in_oklab,var(--color-success)_8%,var(--color-popover))]",
-							toast.type === "error" &&
-								"border-destructive/20 text-destructive bg-[color-mix(in_oklab,var(--color-destructive)_8%,var(--color-popover))]",
-							toast.type === "info" &&
-								"border-info/20 text-info bg-[color-mix(in_oklab,var(--color-info)_8%,var(--color-popover))]",
-							toast.type === "warning" &&
-								"border-warning/20 text-warning bg-[color-mix(in_oklab,var(--color-warning)_8%,var(--color-popover))]",
-						)}
-					>
-						<Toast.Content
-							className="flex w-full items-center justify-between gap-1.5 overflow-hidden transition-opacity duration-250 ease-[cubic-bezier(0.22,1,0.36,1)] data-behind:pointer-events-none data-behind:opacity-0 data-expanded:pointer-events-auto data-expanded:opacity-100"
-							data-slot="toast-content"
-						>
-							<div className="flex items-center gap-2">
-								{toast.type && TOAST_ICONS[toast.type] && (
-									<div
-										className="shrink-0 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-3.5"
-										data-slot="toast-icon"
-									>
-										{TOAST_ICONS[toast.type]}
-									</div>
-								)}
-
-								<div className="flex flex-col">
-									<Toast.Title
-										className="text-[13px] leading-relaxed font-medium"
-										data-slot="toast-title"
-									/>
-									<Toast.Description
-										className="text-[13px] leading-normal"
-										data-slot="toast-description"
-									/>
-								</div>
-							</div>
-							{toast.actionProps && (
-								<Toast.Action
-									className={cn(
-										buttonVariants({ size: "sm" }),
-										"h-6 px-2 text-xs font-medium",
-									)}
-									data-slot="toast-action"
-								>
-									{toast.actionProps.children}
-								</Toast.Action>
-							)}
-						</Toast.Content>
-					</Toast.Root>
-				))}
-			</Toast.Viewport>
-		</Toast.Portal>
+		<BaseToast.Provider toastManager={anchoredToastManager} {...props}>
+			{children}
+			<AnchoredToastViewport portalProps={portalProps} />
+		</BaseToast.Provider>
 	);
 }
 
-export { ToastProvider };
+export type { ToastPosition };
+export { AnchoredToastProvider, ToastProvider };

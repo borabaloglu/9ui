@@ -691,7 +691,7 @@
 			"name": "sonner",
 			"type": "registry:ui",
 			"dependencies": ["sonner"],
-			"registryDependencies": ["@9ui/button"],
+			"registryDependencies": ["@9ui/button", "@9ui/spinner"],
 			"files": [
 				{
 					"path": "src/components/ui/sonner.tsx",
@@ -787,7 +787,7 @@
 			"name": "toast",
 			"type": "registry:ui",
 			"dependencies": [],
-			"registryDependencies": [],
+			"registryDependencies": ["@9ui/button", "@9ui/spinner"],
 			"files": [
 				{
 					"path": "src/components/ui/toast.tsx",
