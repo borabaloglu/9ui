@@ -5,8 +5,8 @@ description: Displays a control to toggle between two states.
 <ComponentLinks
 	links={[
 		{
-			label: "Docs",
-			href: "https://base-ui.com/react/components/toggle",
+			label: "API Reference",
+			href: "https://base-ui.com/react/components/toggle#api-reference",
 		},
 	]}
 />
@@ -41,26 +41,30 @@ import { Toggle } from "@/components/ui/toggle"
 <Toggle />
 ```
 
+Give an icon-only toggle an `aria-label`.
+
 ## Examples
-
-### Sizes
-
-<ComponentPreview name="toggle-sizes-demo" />
-
----
 
 ### Outline
 
+Set `variant="outline"` for a bordered toggle.
+
 <ComponentPreview name="toggle-outline-demo" />
 
----
+### Sizes
 
-### Custom Control
+Set `size` to `sm` or `lg` to change the size.
 
-<ComponentPreview name="toggle-custom-control-demo" />
+<ComponentPreview name="toggle-sizes-demo" />
 
----
+### Controlled
+
+To control the toggle, set `pressed` and `onPressedChange`.
+
+<ComponentPreview name="toggle-controlled-demo" />
 
 ### Disabled
+
+Set `disabled` to prevent interaction.
 
 <ComponentPreview name="toggle-disabled-demo" />
