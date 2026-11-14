@@ -444,7 +444,7 @@
 			"name": "navigation-menu",
 			"type": "registry:ui",
 			"dependencies": [],
-			"registryDependencies": [],
+			"registryDependencies": ["@9ui/scroll-area"],
 			"files": [
 				{
 					"path": "src/components/ui/navigation-menu.tsx",

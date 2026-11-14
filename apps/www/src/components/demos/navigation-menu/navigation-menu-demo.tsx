@@ -1,85 +1,76 @@
-"use client";
-
-import type * as React from "react";
 import Link from "next/link";
 
-import { Icons } from "@/components/icons";
 import {
 	NavigationMenu,
 	NavigationMenuContent,
 	NavigationMenuItem,
 	NavigationMenuLink,
 	NavigationMenuList,
+	NavigationMenuPopup,
 	NavigationMenuTrigger,
-	navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
 
-import { cn } from "@/lib/utils";
-
-const components: { title: string; href: string; description: string }[] = [
-	{
-		title: "Alert Dialog",
-		href: "/docs/components/alert-dialog",
-		description:
-			"A modal dialog for critical messages or confirmation actions.",
-	},
-	{
-		title: "Preview Card",
-		href: "/docs/components/preview-card",
-		description: "Used to display a preview of content when hovered.",
-	},
-	{
-		title: "Emoji Picker",
-		href: "/docs/components/emoji-picker",
-		description: "A component that allows users to pick an emoji.",
-	},
-	{
-		title: "Progress",
-		href: "/docs/components/progress",
-		description: "Displays a progress bar with an optional label.",
-	},
-	{
-		title: "Tabs",
-		href: "/docs/components/tabs",
-		description: "Used to organize content into tabbed navigation.",
-	},
-	{
-		title: "Tooltip",
-		href: "/docs/components/tooltip",
-		description: "Used to provide context or hints for elements.",
-	},
-];
-
-const gettingStartedItems = [
+const docs = [
 	{
 		title: "Introduction",
 		href: "/docs/getting-started/introduction",
-		description: "Learn about 9ui.",
+		description: "Learn what 9ui is and how it works.",
 	},
 	{
 		title: "Installation",
 		href: "/docs/getting-started/installation",
-		description: "How to install 9ui in your project.",
+		description: "Add 9ui to your project.",
 	},
 	{
-		title: "Roadmap",
-		href: "/docs/getting-started/roadmap",
-		description: "See what we are working on next.",
+		title: "Theming",
+		href: "/docs/getting-started/theming",
+		description: "Change colors, radius and fonts.",
+	},
+];
+
+const components = [
+	{
+		title: "Button",
+		href: "/docs/components/button",
+		description: "Actions, icon buttons and loading states.",
+	},
+	{
+		title: "Field",
+		href: "/docs/components/field",
+		description: "Labels, descriptions and errors for controls.",
+	},
+	{
+		title: "Menu",
+		href: "/docs/components/menu",
+		description: "A list of actions that opens from a button.",
+	},
+	{
+		title: "Popover",
+		href: "/docs/components/popover",
+		description: "A popup for displaying content.",
+	},
+	{
+		title: "Table",
+		href: "/docs/components/table",
+		description: "Rows and columns of data.",
+	},
+	{
+		title: "Tooltip",
+		href: "/docs/components/tooltip",
+		description: "A short hint for a control.",
 	},
 ];
 
 export default function NavigationMenuDemo() {
 	return (
-		<NavigationMenu className="w-full">
-			<NavigationMenuList className="flex-col items-start md:flex-row md:items-center">
+		<NavigationMenu>
+			<NavigationMenuList>
 				<NavigationMenuItem>
-					<NavigationMenuTrigger>Getting Started</NavigationMenuTrigger>
+					<NavigationMenuTrigger>Docs</NavigationMenuTrigger>
 					<NavigationMenuContent>
-						<ul className="grid w-[400px] gap-1 md:w-[500px] md:grid-cols-2">
-							{gettingStartedItems.map((item) => (
-								<ListItem key={item.title} title={item.title} href={item.href}>
-									{item.description}
-								</ListItem>
+						<ul className="w-64">
+							{docs.map((item) => (
+								<ListItem key={item.href} {...item} />
 							))}
 						</ul>
 					</NavigationMenuContent>
@@ -87,53 +78,45 @@ export default function NavigationMenuDemo() {
 				<NavigationMenuItem>
 					<NavigationMenuTrigger>Components</NavigationMenuTrigger>
 					<NavigationMenuContent>
-						<ul className="grid w-[400px] gap-1 md:w-[500px] md:grid-cols-2">
-							{components.map((component) => (
-								<ListItem
-									key={component.title}
-									title={component.title}
-									href={component.href}
-								>
-									{component.description}
-								</ListItem>
+						<ul className="grid w-64 sm:w-120 sm:grid-cols-2">
+							{components.map((item) => (
+								<ListItem key={item.href} {...item} />
 							))}
 						</ul>
 					</NavigationMenuContent>
 				</NavigationMenuItem>
 				<NavigationMenuItem>
 					<NavigationMenuLink
+						variant="trigger"
 						href="https://github.com/borabaloglu/9ui"
-						render={({ ...props }) => (
-							<a {...props} className={cn(navigationMenuTriggerStyle())}>
-								<Icons.gitHub />
-								Source Code
-							</a>
-						)}
-					/>
+					>
+						GitHub
+					</NavigationMenuLink>
 				</NavigationMenuItem>
 			</NavigationMenuList>
+			<NavigationMenuPopup />
 		</NavigationMenu>
 	);
 }
 
 function ListItem({
 	title,
-	children,
+	description,
 	href,
-	...props
-}: React.ComponentPropsWithoutRef<"li"> & { href: string }) {
+}: {
+	title: string;
+	description: string;
+	href: string;
+}) {
 	return (
-		<li {...props}>
+		<li>
 			<NavigationMenuLink
-				render={(props) => (
-					<Link href={href} {...props}>
-						<div className="text-sm font-semibold">{title}</div>
-						<p className="text-muted-foreground line-clamp-2 text-sm">
-							{children}
-						</p>
-					</Link>
-				)}
-			/>
+				className="flex-col items-start gap-1"
+				render={<Link href={href} />}
+			>
+				<span className="leading-none font-medium">{title}</span>
+				<span className="text-muted-foreground">{description}</span>
+			</NavigationMenuLink>
 		</li>
 	);
 }
