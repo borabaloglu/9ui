@@ -6,8 +6,8 @@ description: Used to represent a value within a fixed scale.
 <ComponentLinks
 	links={[
 		{
-			label: "Docs",
-			href: "https://base-ui.com/react/components/meter",
+			label: "API Reference",
+			href: "https://base-ui.com/react/components/meter#api-reference",
 		},
 	]}
 />
@@ -35,12 +35,61 @@ npx shadcn@latest add @9ui/meter
 ## Usage
 
 ```tsx title="Imports"
-import { Meter, MeterLabel, MeterValue } from "@/components/ui/meter"
+import {
+	Meter,
+	MeterIndicator,
+	MeterLabel,
+	MeterTrack,
+	MeterValue,
+} from "@/components/ui/meter"
 ```
 
 ```tsx title="Anatomy"
 <Meter>
 	<MeterLabel />
 	<MeterValue />
+	<MeterTrack>
+		<MeterIndicator />
+	</MeterTrack>
 </Meter>
 ```
+
+Give every meter a name: add a `MeterLabel`, or set `aria-label` on `Meter` when there is no visible label.
+
+## Examples
+
+### Without Label
+
+Leave out `MeterLabel` and `MeterValue` to show only the bar.
+
+<ComponentPreview name="meter-without-label-demo" />
+
+### Format
+
+Set `format` to show the value as a unit, currency or percentage. It takes the same options as `Intl.NumberFormat`.
+
+<ComponentPreview name="meter-format-demo" />
+
+### Custom Value
+
+To write the value text yourself, pass a function to `MeterValue`. Set `getAriaValueText` so screen readers hear the same text.
+
+<ComponentPreview name="meter-custom-value-demo" />
+
+### Range
+
+Set `min` and `max` to change the scale.
+
+<ComponentPreview name="meter-range-demo" />
+
+### Thresholds
+
+To color the fill by how good the value is, set `low`, `high` and `optimum`. They work like the native `meter` element.
+
+<ComponentPreview name="meter-thresholds-demo" />
+
+### Color
+
+Set `className` on `MeterIndicator` to change the fill color.
+
+<ComponentPreview name="meter-color-demo" />
