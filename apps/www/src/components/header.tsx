@@ -13,7 +13,7 @@ import { ThemeToggle } from "@/components/theme-toggle";
 import { Button } from "@/components/ui/button";
 import {
 	Collapsible,
-	CollapsibleContent,
+	CollapsiblePanel,
 	CollapsibleTrigger,
 } from "@/components/ui/collapsible";
 
@@ -109,7 +109,7 @@ export const Header = ({ sidebarNav }: HeaderProps) => {
 						<ThemeToggle />
 					</div>
 				</div>
-				<CollapsibleContent className="transition-[height,opacity] ease-out data-ending-style:opacity-0 data-starting-style:opacity-0 motion-reduce:transition-none md:hidden">
+				<CollapsiblePanel className="text-sm md:hidden">
 					<nav aria-label="Main" className="flex flex-col px-3 pt-1">
 						{navConfig.mainNav.map((item) => (
 							<Link
@@ -131,7 +131,7 @@ export const Header = ({ sidebarNav }: HeaderProps) => {
 						aria-hidden
 						className="bg-background mx-2 h-4 rounded-t-2xl border border-b-0"
 					/>
-				</CollapsibleContent>
+				</CollapsiblePanel>
 			</Collapsible>
 		</header>
 	);

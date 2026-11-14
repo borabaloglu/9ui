@@ -71,12 +71,12 @@ function AccordionPanel({
 	return (
 		<BaseAccordion.Panel
 			data-slot="accordion-panel"
-			className="text-muted-foreground ease-out-quint h-(--accordion-panel-height) overflow-hidden text-sm transition-[height] duration-200 data-ending-style:h-0 data-ending-style:duration-150 data-starting-style:h-0 motion-reduce:transition-none"
+			className="text-muted-foreground ease-out-quint h-(--accordion-panel-height) overflow-hidden text-sm transition-[height] duration-200 data-ending-style:h-0 data-ending-style:duration-150 data-ending-style:ease-in-out data-starting-style:h-0 motion-reduce:transition-none"
 			{...props}
 		>
 			<div
 				className={cn(
-					"[&_a]:hover:text-foreground ease-out-quint pb-4 transition-opacity duration-200 in-data-ending-style:opacity-0 in-data-ending-style:duration-150 in-data-starting-style:opacity-0 [&_a]:underline [&_a]:underline-offset-3",
+					"[&_a]:hover:text-foreground ease-out-quint pb-4 transition-opacity duration-200 in-data-ending-style:opacity-0 in-data-ending-style:duration-150 in-data-ending-style:ease-in-out in-data-starting-style:opacity-0 [&_a]:underline [&_a]:underline-offset-3",
 					className,
 				)}
 			>
