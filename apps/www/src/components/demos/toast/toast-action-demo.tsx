@@ -9,16 +9,17 @@ export default function ToastActionDemo() {
 
 	return (
 		<Button
+			variant="outline"
 			onClick={() => {
 				const id = toast.add({
-					title: "Your email has been sent",
-					description: "We'll get back to you as soon as possible",
+					title: "Event added to calendar",
+					description: "Wednesday, April 23 at 4:20 PM",
 					actionProps: {
-						children: "Unsend",
+						children: "Undo",
 						onClick: () => {
 							toast.close(id);
 							toast.add({
-								title: "Email unsent",
+								title: "Event removed from calendar",
 								type: "success",
 							});
 						},
@@ -26,7 +27,7 @@ export default function ToastActionDemo() {
 				});
 			}}
 		>
-			Show Toast
+			Add event
 		</Button>
 	);
 }

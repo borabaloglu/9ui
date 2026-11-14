@@ -1,12 +1,12 @@
 ---
 title: Toast
-description: Displays a message to the user in a toast.
+description: A short message that appears on top of the page.
 ---
 
 <ComponentLinks
 	links={[
 		{
-			label: "Docs",
+			label: "API Reference",
 			href: "https://base-ui.com/react/components/toast",
 		},
 	]}
@@ -55,16 +55,42 @@ export default function RootLayout({ children }) {
 
 <ComponentSource name="toast" />
 
-<Step>Create `use-toast` hook.</Step>
+<Step>Create the `use-toast` hook.</Step>
 
-```tsx title="use-toast.tsx"
-"use client"
+```tsx title="hooks/use-toast.tsx"
+"use client";
 
-import { Toast } from "@base-ui/react/toast"
+import { Toast } from "@base-ui/react/toast";
 
-export const toastManager = Toast.createToastManager()
+import type { ButtonProps } from "@/components/ui/button";
 
-export const useToast = Toast.useToastManager
+type BaseToastManager = ReturnType<typeof Toast.createToastManager>;
+
+type WithActionProps<Options> = Omit<Options, "actionProps"> & {
+	actionProps?: Omit<ButtonProps, "size">;
+};
+
+type ToastManager = Omit<BaseToastManager, "add" | "update"> & {
+	add: (
+		options: WithActionProps<Parameters<BaseToastManager["add"]>[0]>,
+	) => string;
+	update: (
+		toastId: string,
+		options: WithActionProps<Parameters<BaseToastManager["update"]>[1]>,
+	) => void;
+};
+
+export const toastManager = Toast.createToastManager() as ToastManager;
+
+export const anchoredToastManager = Toast.createToastManager() as ToastManager;
+
+export function useToast() {
+	return Toast.useToastManager() as Omit<
+		ReturnType<typeof Toast.useToastManager>,
+		"add" | "update"
+	> &
+		Pick<ToastManager, "add" | "update">;
+}
 ```
 
 <Step>Add `ToastProvider` to your app layout.</Step>
@@ -89,20 +115,63 @@ export default function RootLayout({ children }) {
 </Steps>
 </ComponentInstallation>
 
+## Usage
+
+```tsx title="Imports"
+import { useToast } from "@/hooks/use-toast"
+```
+
+```tsx title="Toast"
+const toast = useToast()
+
+toast.add({
+	title: "Event added to calendar",
+	description: "Wednesday, April 23 at 4:20 PM",
+})
+```
+
+To show a toast outside a component, use `toastManager`.
+
+```tsx title="Outside React"
+import { toastManager } from "@/hooks/use-toast"
+
+toastManager.add({ title: "Event added to calendar" })
+```
+
 ## Examples
 
 ### Promise
 
-<ComponentPreview name="toast-promise-demo" />
+To follow an async task, pass the promise to `toast.promise`.
 
----
+<ComponentPreview name="toast-promise-demo" />
 
 ### Action
 
+To add a button, set `actionProps`. To change its style, set `variant` in `actionProps`.
+
 <ComponentPreview name="toast-action-demo" />
 
----
+### Status
 
-### Rich Colors
+To show a status icon, set `type` to `success`, `error`, `warning`, `info` or `loading`.
 
-<ComponentPreview name="toast-rich-colors-demo" />
+<ComponentPreview name="toast-status-demo" />
+
+### Close Button
+
+To show a close button, set `closeButton` on `ToastProvider`.
+
+<ComponentPreview name="toast-close-button-demo" />
+
+### Position
+
+To move the toasts, set `position` on `ToastProvider`.
+
+<ComponentPreview name="toast-position-demo" />
+
+### Anchored
+
+To attach a toast to an element, wrap it in `AnchoredToastProvider` and set `positionerProps.anchor`.
+
+<ComponentPreview name="toast-anchored-demo" />

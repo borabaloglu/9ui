@@ -9,14 +9,15 @@ export default function ToastDemo() {
 
 	return (
 		<Button
+			variant="outline"
 			onClick={() =>
 				toast.add({
-					title: "Your request has been sent",
-					description: "We'll get back to you as soon as possible",
+					title: "Event added to calendar",
+					description: "Wednesday, April 23 at 4:20 PM",
 				})
 			}
 		>
-			Show Toast
+			Show toast
 		</Button>
 	);
 }

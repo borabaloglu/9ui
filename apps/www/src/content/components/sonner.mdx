@@ -1,12 +1,13 @@
 ---
 title: Sonner
-description: Displays a message to the user in a toast.
+description: A short message that appears on top of the page, built on Sonner.
 ---
+
 <ComponentLinks
 	links={[
 		{
-			label: "Docs",
-			href: "https://sonner.emilkowal.ski/getting-started",
+			label: "API Reference",
+			href: "https://sonner.emilkowal.ski/toast",
 		},
 	]}
 />
@@ -29,7 +30,7 @@ description: Displays a message to the user in a toast.
 npx shadcn@latest add @9ui/sonner
 ```
 
-<Step>Add Toaster to your app layout.</Step>
+<Step>Add `Toaster` to your app layout.</Step>
 
 ```tsx {1,9} title="app/layout.tsx"
 import { Toaster } from "@/components/ui/sonner"
@@ -53,11 +54,17 @@ export default function RootLayout({ children }) {
 
 <Steps>
 
+<Step>Install the following dependencies.</Step>
+
+```bash title="Terminal"
+npm install sonner
+```
+
 <Step>Copy and paste the following code into your project.</Step>
 
 <ComponentSource name="sonner" />
 
-<Step>Add Toaster to your app layout.</Step>
+<Step>Add `Toaster` to your app layout.</Step>
 
 ```tsx {1,9} title="app/layout.tsx"
 import { Toaster } from "@/components/ui/sonner"
@@ -85,23 +92,45 @@ import { toast } from "sonner"
 ```
 
 ```tsx title="Toast"
-toast("Toast is working!")
+toast("Event added to calendar", {
+	description: "Wednesday, April 23 at 4:20 PM",
+})
 ```
 
 ## Examples
 
 ### Promise
 
-<ComponentPreview name="sonner-promise-demo" />
+To follow an async task, pass the promise to `toast.promise`.
 
----
+<ComponentPreview name="sonner-promise-demo" />
 
 ### Action
 
+To add a button, set `action`.
+
 <ComponentPreview name="sonner-action-demo" />
 
----
+### Status
+
+To show a status icon, call `toast.success`, `toast.error`, `toast.warning`, `toast.info` or `toast.loading`.
+
+<ComponentPreview name="sonner-status-demo" />
+
+### Close Button
+
+To show a close button, set `closeButton` on `Toaster` or on a single toast.
+
+<ComponentPreview name="sonner-close-button-demo" />
+
+### Position
+
+To move the toasts, set `position` on `Toaster` or on a single toast.
+
+<ComponentPreview name="sonner-position-demo" />
 
 ### Rich Colors
+
+To tint the whole toast with its status color, set `richColors`.
 
 <ComponentPreview name="sonner-rich-colors-demo" />
