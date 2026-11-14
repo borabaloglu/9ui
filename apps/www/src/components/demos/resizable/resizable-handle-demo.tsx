@@ -4,21 +4,18 @@ import {
 	ResizablePanelGroup,
 } from "@/components/ui/resizable";
 
-export default function ResizableWithHandleDemo() {
+export default function ResizableHandleDemo() {
 	return (
-		<ResizablePanelGroup
-			orientation="horizontal"
-			className="min-h-[200px] max-w-md rounded-lg border md:min-w-[450px]"
-		>
+		<ResizablePanelGroup className="h-60 max-w-md rounded-lg border">
 			<ResizablePanel defaultSize="25%">
 				<div className="flex h-full items-center justify-center p-6">
-					<span className="font-semibold">Sidebar</span>
+					<span className="text-sm font-medium">Sidebar</span>
 				</div>
 			</ResizablePanel>
 			<ResizableHandle withHandle />
 			<ResizablePanel defaultSize="75%">
 				<div className="flex h-full items-center justify-center p-6">
-					<span className="font-semibold">Content</span>
+					<span className="text-sm font-medium">Content</span>
 				</div>
 			</ResizablePanel>
 		</ResizablePanelGroup>
