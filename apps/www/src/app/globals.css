@@ -8,6 +8,15 @@
 	inherits: false;
 }
 
+@keyframes progress-indeterminate {
+	from {
+		translate: calc(-100% * var(--progress-direction, 1));
+	}
+	to {
+		translate: calc(250% * var(--progress-direction, 1));
+	}
+}
+
 @layer base {
 	* {
 		@apply border-border outline-ring/50 selection:bg-primary selection:text-primary-foreground;

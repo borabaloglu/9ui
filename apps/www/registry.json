@@ -546,7 +546,17 @@
 					"type": "registry:ui",
 					"target": ""
 				}
-			]
+			],
+			"css": {
+				"@keyframes progress-indeterminate": {
+					"from": {
+						"translate": "calc(-100% * var(--progress-direction, 1))"
+					},
+					"to": {
+						"translate": "calc(250% * var(--progress-direction, 1))"
+					}
+				}
+			}
 		},
 		{
 			"name": "radio-group",

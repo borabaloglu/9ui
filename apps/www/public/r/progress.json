@@ -6,10 +6,20 @@
 	"files": [
 		{
 			"path": "ui/progress.tsx",
-			"content": "import type * as React from \"react\";\nimport { Progress as BaseProgress } from \"@base-ui/react/progress\";\n\nimport { cn } from \"@/lib/utils\";\n\nfunction Progress({\n\tclassName,\n\tchildren,\n\t...props\n}: React.ComponentProps<typeof BaseProgress.Root>) {\n\treturn (\n\t\t<BaseProgress.Root data-slot=\"progress\" className=\"relative\" {...props}>\n\t\t\t<BaseProgress.Track\n\t\t\t\tdata-slot=\"progress-track\"\n\t\t\t\tclassName={cn(\n\t\t\t\t\t\"bg-primary/20 block h-2 w-full overflow-hidden rounded-full\",\n\t\t\t\t\tclassName,\n\t\t\t\t)}\n\t\t\t>\n\t\t\t\t<BaseProgress.Indicator\n\t\t\t\t\tdata-slot=\"progress-indicator\"\n\t\t\t\t\tclassName=\"bg-primary block h-full w-full transition-all\"\n\t\t\t\t/>\n\t\t\t</BaseProgress.Track>\n\t\t\t{children}\n\t\t</BaseProgress.Root>\n\t);\n}\n\nfunction ProgressValue({\n\tclassName,\n\t...props\n}: React.ComponentProps<typeof BaseProgress.Value>) {\n\treturn (\n\t\t<BaseProgress.Value\n\t\t\tdata-slot=\"progress-value\"\n\t\t\tclassName={cn(\n\t\t\t\t\"text-foreground mt-2 flex justify-end text-sm font-medium\",\n\t\t\t\tclassName,\n\t\t\t)}\n\t\t\t{...props}\n\t\t/>\n\t);\n}\n\nexport { Progress, ProgressValue };\n",
+			"content": "import { Progress as BaseProgress } from \"@base-ui/react/progress\";\n\nimport { cn } from \"@/lib/utils\";\n\nfunction Progress({\n\tclassName,\n\t...props\n}: Omit<BaseProgress.Root.Props, \"className\"> & {\n\tclassName?: string;\n}) {\n\treturn (\n\t\t<BaseProgress.Root\n\t\t\tdata-slot=\"progress\"\n\t\t\tclassName={cn(\n\t\t\t\t\"grid w-full grid-cols-[1fr_auto] gap-x-3 gap-y-2\",\n\t\t\t\tclassName,\n\t\t\t)}\n\t\t\t{...props}\n\t\t/>\n\t);\n}\n\nfunction ProgressTrack({\n\tclassName,\n\t...props\n}: Omit<BaseProgress.Track.Props, \"className\"> & {\n\tclassName?: string;\n}) {\n\treturn (\n\t\t<BaseProgress.Track\n\t\t\tdata-slot=\"progress-track\"\n\t\t\tclassName={cn(\n\t\t\t\t\"bg-muted col-span-2 h-1 w-full overflow-hidden rounded-full\",\n\t\t\t\tclassName,\n\t\t\t)}\n\t\t\t{...props}\n\t\t/>\n\t);\n}\n\nfunction ProgressIndicator({\n\tclassName,\n\t...props\n}: Omit<BaseProgress.Indicator.Props, \"className\"> & {\n\tclassName?: string;\n}) {\n\treturn (\n\t\t<BaseProgress.Indicator\n\t\t\tdata-slot=\"progress-indicator\"\n\t\t\tclassName={cn(\n\t\t\t\t\"bg-primary h-full rounded-full transition-[width] duration-300 ease-out data-indeterminate:w-2/5 motion-safe:data-indeterminate:animate-[progress-indeterminate_1.5s_ease-in-out_infinite] motion-reduce:transition-none motion-reduce:data-indeterminate:w-full motion-reduce:data-indeterminate:animate-pulse rtl:[--progress-direction:-1]\",\n\t\t\t\tclassName,\n\t\t\t)}\n\t\t\t{...props}\n\t\t/>\n\t);\n}\n\nfunction ProgressLabel({\n\tclassName,\n\t...props\n}: Omit<BaseProgress.Label.Props, \"className\"> & {\n\tclassName?: string;\n}) {\n\treturn (\n\t\t<BaseProgress.Label\n\t\t\tdata-slot=\"progress-label\"\n\t\t\tclassName={cn(\"text-sm leading-snug font-medium\", className)}\n\t\t\t{...props}\n\t\t/>\n\t);\n}\n\nfunction ProgressValue({\n\tclassName,\n\t...props\n}: Omit<BaseProgress.Value.Props, \"className\"> & {\n\tclassName?: string;\n}) {\n\treturn (\n\t\t<BaseProgress.Value\n\t\t\tdata-slot=\"progress-value\"\n\t\t\tclassName={cn(\n\t\t\t\t\"text-muted-foreground col-start-2 justify-self-end text-sm leading-snug tabular-nums\",\n\t\t\t\tclassName,\n\t\t\t)}\n\t\t\t{...props}\n\t\t/>\n\t);\n}\n\nexport {\n\tProgress,\n\tProgressIndicator,\n\tProgressLabel,\n\tProgressTrack,\n\tProgressValue,\n};\n",
 			"type": "registry:ui",
 			"target": ""
 		}
 	],
+	"css": {
+		"@keyframes progress-indeterminate": {
+			"from": {
+				"translate": "calc(-100% * var(--progress-direction, 1))"
+			},
+			"to": {
+				"translate": "calc(250% * var(--progress-direction, 1))"
+			}
+		}
+	},
 	"type": "registry:ui"
 }

@@ -7,7 +7,11 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Progress } from "@/components/ui/progress";
+import {
+	Progress,
+	ProgressIndicator,
+	ProgressTrack,
+} from "@/components/ui/progress";
 import { Switch } from "@/components/ui/switch";
 import { Textarea } from "@/components/ui/textarea";
 
@@ -309,7 +313,11 @@ function UsageDesign() {
 							</Piece>
 						</div>
 						<Piece index={6 + row * 3} radius={4}>
-							<Progress aria-label={item.label} value={item.percent} />
+							<Progress aria-label={item.label} value={item.percent}>
+								<ProgressTrack>
+									<ProgressIndicator />
+								</ProgressTrack>
+							</Progress>
 						</Piece>
 					</div>
 				))}
