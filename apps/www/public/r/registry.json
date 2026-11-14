@@ -119,13 +119,13 @@
 			]
 		},
 		{
-			"name": "breadcrumbs",
+			"name": "breadcrumb",
 			"type": "registry:ui",
 			"dependencies": [],
 			"registryDependencies": [],
 			"files": [
 				{
-					"path": "src/components/ui/breadcrumbs.tsx",
+					"path": "src/components/ui/breadcrumb.tsx",
 					"type": "registry:ui",
 					"target": ""
 				}

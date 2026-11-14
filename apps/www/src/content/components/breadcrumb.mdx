@@ -1,0 +1,82 @@
+---
+title: Breadcrumb
+description: A trail of links that shows where the current page sits in the site.
+---
+
+<ComponentPreview name="breadcrumb-demo" />
+
+## Installation
+
+<ComponentInstallation>
+<div>
+```bash title="Terminal"
+npx shadcn@latest add @9ui/breadcrumb
+```
+</div>
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="breadcrumb" />
+
+</Steps>
+</ComponentInstallation>
+
+## Usage
+
+```tsx title="Imports"
+import {
+	Breadcrumb,
+	BreadcrumbEllipsis,
+	BreadcrumbItem,
+	BreadcrumbLink,
+	BreadcrumbList,
+	BreadcrumbPage,
+	BreadcrumbSeparator,
+} from "@/components/ui/breadcrumb"
+```
+
+```tsx title="Anatomy"
+<Breadcrumb>
+	<BreadcrumbList>
+		<BreadcrumbItem>
+			<BreadcrumbLink />
+		</BreadcrumbItem>
+		<BreadcrumbSeparator />
+		<BreadcrumbItem>
+			<BreadcrumbEllipsis />
+		</BreadcrumbItem>
+		<BreadcrumbSeparator />
+		<BreadcrumbItem>
+			<BreadcrumbPage />
+		</BreadcrumbItem>
+	</BreadcrumbList>
+</Breadcrumb>
+```
+
+## Examples
+
+### Custom Separator
+
+To change the separator, pass an icon or text to `BreadcrumbSeparator` as children.
+
+<ComponentPreview name="breadcrumb-custom-separator-demo" />
+
+### Collapsed
+
+To shorten a long path, put the middle pages in a `Menu` and use `BreadcrumbEllipsis` as its trigger.
+
+<ComponentPreview name="breadcrumb-collapsed-demo" />
+
+### Truncate
+
+To keep a long page name on one line, set a `max-w-*` class and `truncate` on `BreadcrumbPage`.
+
+<ComponentPreview name="breadcrumb-truncate-demo" />
+
+### Link Component
+
+To use your router's link, set `render` on `BreadcrumbLink`.
+
+<ComponentPreview name="breadcrumb-link-demo" />

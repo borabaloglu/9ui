@@ -1,3 +1,4 @@
+import { Fragment } from "react";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -9,6 +10,14 @@ import { MobileToc } from "@/components/mobile-toc";
 import { PageActions } from "@/components/page-actions";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { TableOfContents } from "@/components/toc";
+import {
+	Breadcrumb,
+	BreadcrumbItem,
+	BreadcrumbLink,
+	BreadcrumbList,
+	BreadcrumbPage,
+	BreadcrumbSeparator,
+} from "@/components/ui/breadcrumb";
 
 import { siteConfig } from "@/config/site";
 
@@ -16,7 +25,6 @@ import { getLeadingComponentLinks } from "@/lib/component-links";
 import { getNavigationForPage } from "@/lib/navigation";
 import { getBreadcrumb, getSidebarNav, source } from "@/lib/source";
 import { absoluteUrl } from "@/lib/url";
-import { cn } from "@/lib/utils";
 
 import { getMDXComponents } from "@/mdx-components";
 
@@ -92,48 +100,38 @@ const DocPage = async ({ params }: DocPageProps) => {
 			<header className="before:from-background pointer-events-none absolute inset-x-0 top-0 z-10 hidden h-10.5 items-center gap-1.5 px-1.75 *:pointer-events-auto before:absolute before:inset-x-0 before:top-0 before:-z-10 before:h-16 before:bg-linear-to-b before:from-65% before:to-transparent md:flex">
 				<DocsSidebarToggle />
 				{breadcrumb.length > 0 && (
-					<nav
-						aria-label="Breadcrumb"
-						className="min-w-0 -translate-y-px overflow-hidden"
-					>
-						<ol className="text-muted-foreground flex items-center gap-1.5 text-sm">
+					<Breadcrumb className="min-w-0 -translate-y-px overflow-hidden">
+						<BreadcrumbList className="flex-nowrap">
 							{breadcrumb.map((item, index) => {
 								const isCurrent = index === breadcrumb.length - 1;
 
 								return (
-									<li
-										key={item.title}
-										className={cn(
-											"flex items-center gap-1.5",
-											isCurrent ? "text-foreground min-w-0" : "shrink-0",
-										)}
-									>
+									<Fragment key={item.title}>
 										{index > 0 && (
-											<SlashIcon
-												aria-hidden="true"
-												className="text-muted-foreground/60 size-3 shrink-0 -rotate-12"
-											/>
+											<BreadcrumbSeparator className="text-muted-foreground/60 shrink-0 [&>svg]:size-3">
+												<SlashIcon className="-rotate-12" />
+											</BreadcrumbSeparator>
 										)}
-										{item.href && !isCurrent ? (
-											<Link
-												href={item.href}
-												className="hover:text-foreground transition-colors"
-											>
-												{item.title}
-											</Link>
-										) : (
-											<span
-												aria-current={isCurrent ? "page" : undefined}
-												className="truncate"
-											>
-												{item.title}
-											</span>
-										)}
-									</li>
+										<BreadcrumbItem
+											className={isCurrent ? "min-w-0" : "shrink-0"}
+										>
+											{isCurrent ? (
+												<BreadcrumbPage className="truncate">
+													{item.title}
+												</BreadcrumbPage>
+											) : item.href ? (
+												<BreadcrumbLink render={<Link href={item.href} />}>
+													{item.title}
+												</BreadcrumbLink>
+											) : (
+												item.title
+											)}
+										</BreadcrumbItem>
+									</Fragment>
 								);
 							})}
-						</ol>
-					</nav>
+						</BreadcrumbList>
+					</Breadcrumb>
 				)}
 				<div className="bg-background ms-auto flex items-center gap-0.5 rounded-lg">
 					<GitHubLink />

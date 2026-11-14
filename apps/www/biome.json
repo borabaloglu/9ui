@@ -144,10 +144,7 @@
 			}
 		},
 		{
-			"includes": [
-				"src/components/ui/breadcrumbs.tsx",
-				"src/components/ui/carousel.tsx"
-			],
+			"includes": ["src/components/ui/carousel.tsx"],
 			"linter": {
 				"rules": {
 					"a11y": {
