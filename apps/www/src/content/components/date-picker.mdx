@@ -1,6 +1,6 @@
 ---
 title: Date Picker
-description: A date picker component.
+description: A calendar in a popover for picking a date.
 ---
 
 <ComponentPreview name="date-picker-demo" />
@@ -30,3 +30,51 @@ import {
 	</PopoverPopup>
 </Popover>
 ```
+
+## Examples
+
+### Range
+
+To select a range, set `mode="range"` on `Calendar`.
+
+<ComponentPreview name="date-picker-range-demo" />
+
+---
+
+### Label
+
+To label the picker, wrap it in `Field` and point `FieldLabel` at the trigger with `htmlFor`.
+
+<ComponentPreview name="date-picker-field-demo" />
+
+---
+
+### Date of Birth
+
+To jump between months and years, set `captionLayout="dropdown"` on `Calendar`.
+
+<ComponentPreview name="date-picker-date-of-birth-demo" />
+
+---
+
+### Input
+
+To let people type the date, use an `InputGroup` and pass its ref to `anchor` on `PopoverPopup`.
+
+<ComponentPreview name="date-picker-input-demo" />
+
+---
+
+### Time Input
+
+To pick a time too, add an input with `type="time"`.
+
+<ComponentPreview name="date-picker-with-time-demo" />
+
+---
+
+### Natural Language
+
+To accept text like "next Friday", parse the input with [`chrono-node`](https://github.com/wanasit/chrono).
+
+<ComponentPreview name="date-picker-natural-language-demo" />

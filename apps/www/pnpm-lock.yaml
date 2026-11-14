@@ -29,6 +29,9 @@ importers:
       '@vercel/analytics':
         specifier: ^1.4.1
         version: 1.5.0(next@16.4.5(@types/node@20.19.2)(react-dom@19.3.1(react@19.3.1))(react@19.3.1))(react@19.3.1)
+      chrono-node:
+        specifier: ^2.10.3
+        version: 2.10.3
       class-variance-authority:
         specifier: ^0.7.1
         version: 0.7.1
@@ -1174,6 +1177,10 @@ packages:
   chokidar@6.0.0:
     resolution: {integrity: sha512-Ec2Z7wpcKBiMpR7DxteoqS/sq5G5d2A4fpxzPv6+fD7xNNdrTghn7L11YwV5EN1B3i72Erc3XVT5FkWIDx90+A==}
     engines: {node: '>= 22.22'}
+
+  chrono-node@2.10.3:
+    resolution: {integrity: sha512-MOfrzXgSMZTH4SZ5gyRKQCVwiCrCKY+uYkSJiWoRLXS88DA6WGJm8UjgS+VVEuUQeew/UUXaxrO+SeDn/WCisg==}
+    engines: {node: ^12.20.0 || ^14.13.1 || >=16.0.0}
 
   class-variance-authority@0.7.1:
     resolution: {integrity: sha512-Ka+9Trutv7G8M6WT6SeiRWz792K5qEqIGEGzXKhAE6xOWAY6pPH8U+9IY3oCMv6kqTmLsv7Xh/2w2RigkePMsg==}
@@ -3235,6 +3242,8 @@ snapshots:
   chokidar@6.0.0:
     dependencies:
       readdirp: 5.1.1
+
+  chrono-node@2.10.3: {}
 
   class-variance-authority@0.7.1:
     dependencies:

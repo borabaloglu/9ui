@@ -1,5 +1,7 @@
-import * as React from "react";
-import dayjs from "dayjs";
+"use client";
+
+import { useState } from "react";
+import { format } from "date-fns";
 import { CalendarIcon, ChevronsUpDownIcon } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
@@ -7,32 +9,43 @@ import { Calendar } from "@/components/ui/calendar";
 import { Popover, PopoverPopup, PopoverTrigger } from "@/components/ui/popover";
 
 export default function DatePickerDemo() {
-	const [open, setOpen] = React.useState(false);
-	const [value, setValue] = React.useState<Date | undefined>(undefined);
+	const [open, setOpen] = useState(false);
+	const [date, setDate] = useState<Date | undefined>(undefined);
 
 	return (
 		<Popover open={open} onOpenChange={setOpen}>
 			<PopoverTrigger
-				render={(props) => (
+				render={
 					<Button
-						{...props}
 						variant="outline"
-						className="w-[250px] justify-between"
-					>
-						<div className="flex items-center">
-							<CalendarIcon className="mr-2 size-4" />
-							{value ? (
-								<span>{dayjs(value).format("DD MMMM YYYY")}</span>
-							) : (
-								<span>Select a date</span>
-							)}
-						</div>
-						<ChevronsUpDownIcon className="ml-2 size-4 shrink-0 opacity-50" />
-					</Button>
-				)}
-			/>
-			<PopoverPopup className="w-auto p-0">
-				<Calendar mode="single" selected={value} onSelect={setValue} />
+						className="w-60 justify-between font-normal any-pointer-coarse:text-base"
+					/>
+				}
+			>
+				<span className="flex min-w-0 items-center gap-2">
+					<CalendarIcon className="text-muted-foreground" />
+					{date ? (
+						<span className="truncate">{format(date, "MMM d, yyyy")}</span>
+					) : (
+						<span className="text-muted-foreground truncate">
+							Select a date
+						</span>
+					)}
+				</span>
+				<ChevronsUpDownIcon className="text-muted-foreground" />
+			</PopoverTrigger>
+			<PopoverPopup className="w-auto p-0" align="start">
+				<Calendar
+					mode="single"
+					autoFocus
+					fixedWeeks
+					selected={date}
+					defaultMonth={date}
+					onSelect={(next) => {
+						setDate(next);
+						setOpen(false);
+					}}
+				/>
 			</PopoverPopup>
 		</Popover>
 	);
