@@ -4,7 +4,7 @@ import React from "react";
 import { TerminalIcon } from "lucide-react";
 
 import { CodeBar, CodeFrame } from "@/components/code-bar";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Tabs, TabsList, TabsPanel, TabsTab } from "@/components/ui/tabs";
 
 import { highlightCode } from "@/lib/highlight-code";
 
@@ -47,15 +47,18 @@ export const CommandBlock = ({
 					label={
 						<>
 							<TerminalIcon className="text-muted-foreground size-3.5 shrink-0" />
-							<TabsList className="[&_[data-slot=tab-indicator]]:bg-foreground/8 h-7 gap-x-0.5 rounded-none bg-transparent p-0 [&_[data-slot=tab-indicator]]:rounded-md [&_[data-slot=tab-indicator]]:border-transparent [&_[data-slot=tab-indicator]]:shadow-none">
+							<TabsList
+								size="sm"
+								className="*:data-[slot=tabs-indicator]:bg-foreground/8! rounded-none bg-transparent p-0 *:data-[slot=tabs-indicator]:shadow-none!"
+							>
 								{packageManagers.map((packageManager) => (
-									<TabsTrigger
+									<TabsTab
 										key={packageManager}
-										className="h-7 px-2.5 text-[0.8125rem] font-medium"
+										className="px-2.5 text-[0.8125rem] focus-visible:ring-inset"
 										value={packageManager}
 									>
 										{packageManager}
-									</TabsTrigger>
+									</TabsTab>
 								))}
 							</TabsList>
 						</>
@@ -63,9 +66,9 @@ export const CommandBlock = ({
 					content={command}
 				/>
 
-				<TabsContent value={activeTab}>
+				<TabsPanel value={activeTab}>
 					<div dangerouslySetInnerHTML={{ __html: prettyCode }} />
-				</TabsContent>
+				</TabsPanel>
 			</Tabs>
 		</CodeFrame>
 	);

@@ -169,9 +169,9 @@ function transformJsx() {
 						return index;
 					}
 
-					case "TabsContent":
+					case "TabsPanel":
 					case "TabsList":
-					case "TabsTrigger": {
+					case "TabsTab": {
 						// These are handled by the parent Tabs component
 						return undefined;
 					}

@@ -1,78 +1,87 @@
 "use client";
 
-import * as React from "react";
 import { Tabs as BaseTabs } from "@base-ui/react/tabs";
 
 import { cn } from "@/lib/utils";
 
-type TabsVariant = "capsule" | "underline";
-
-type TabsContext = {
-	variant: TabsVariant;
-};
-
-const TabsContext = React.createContext<TabsContext | null>(null);
-
-const useTabs = () => {
-	const context = React.useContext(TabsContext);
-
-	if (!context) {
-		throw new Error("useTabs must be used within a Tabs");
-	}
-
-	return context;
-};
-
 function Tabs({
-	variant = "capsule",
 	className,
 	...props
-}: React.ComponentProps<typeof BaseTabs.Root> & {
-	variant?: TabsVariant;
+}: Omit<BaseTabs.Root.Props, "className"> & {
+	className?: string;
 }) {
 	return (
-		<TabsContext.Provider value={{ variant }}>
-			<BaseTabs.Root
-				data-slot="tabs"
-				className={cn("flex flex-col gap-2", className)}
-				{...props}
-			/>
-		</TabsContext.Provider>
+		<BaseTabs.Root
+			data-slot="tabs"
+			className={cn(
+				"group/tabs flex flex-col gap-2 data-[orientation=vertical]:flex-row",
+				className,
+			)}
+			{...props}
+		/>
 	);
 }
 
 function TabsList({
 	className,
 	children,
+	variant = "default",
+	size = "default",
 	...props
-}: React.ComponentProps<typeof BaseTabs.List>) {
-	const { variant } = useTabs();
-
+}: Omit<BaseTabs.List.Props, "className"> & {
+	className?: string;
+	variant?: "default" | "line";
+	size?: "sm" | "default" | "lg";
+}) {
 	return (
 		<BaseTabs.List
 			data-slot="tabs-list"
+			data-variant={variant}
+			data-size={size}
 			className={cn(
-				"text-muted-foreground relative z-0 inline-flex h-9 w-fit items-center justify-center gap-x-1 p-1",
-				variant === "capsule" ? "bg-muted rounded-lg" : "",
+				"group/tabs-list text-muted-foreground relative z-0 inline-flex w-fit shrink-0 [scrollbar-width:none] items-center justify-center gap-0.5 data-[orientation=horizontal]:h-(--tabs-height) data-[orientation=horizontal]:max-w-full data-[orientation=horizontal]:justify-start data-[orientation=horizontal]:overflow-x-auto data-[orientation=vertical]:flex-col data-[orientation=vertical]:items-stretch data-[orientation=vertical]:self-start",
+				"[mask-image:linear-gradient(to_right,transparent,black_--spacing(6)),linear-gradient(to_left,transparent,black_--spacing(6))] [mask-composite:intersect] [mask-size:calc(100%+--spacing(6))_100%] [mask-position:calc(--spacing(6)*-1)_0,0_0] [mask-repeat:no-repeat] [animation-fill-mode:both] [animation-name:tabs-fade-start,tabs-fade-end] [animation-range:0_--spacing(6),calc(100%-(--spacing(6)))_100%] [animation-timeline:scroll(self_inline)] [animation-timing-function:linear]",
+				size === "sm" &&
+					"[--tabs-height:--spacing(7)] any-pointer-coarse:[--tabs-height:--spacing(8)]",
+				size === "default" &&
+					"[--tabs-height:--spacing(8)] any-pointer-coarse:[--tabs-height:--spacing(9)]",
+				size === "lg" &&
+					"[--tabs-height:--spacing(9)] any-pointer-coarse:[--tabs-height:--spacing(10)]",
+				variant === "default"
+					? "bg-muted rounded-lg p-0.75"
+					: "data-[orientation=horizontal]:pb-1 data-[orientation=vertical]:ps-1",
 				className,
 			)}
 			{...props}
 		>
 			{children}
-			<TabIndicator />
+			<BaseTabs.Indicator
+				data-slot="tabs-indicator"
+				renderBeforeHydration
+				className={cn(
+					"ease-out-quint absolute top-0 left-0 transition-[translate,width,height] duration-200 motion-reduce:transition-none",
+					variant === "default"
+						? "bg-input dark:bg-accent -z-1 h-(--active-tab-height) w-(--active-tab-width) translate-x-(--active-tab-left) translate-y-(--active-tab-top) rounded-md shadow-xs dark:shadow-none"
+						: "bg-foreground rounded-full data-[orientation=horizontal]:top-auto data-[orientation=horizontal]:bottom-0 data-[orientation=horizontal]:h-0.5 data-[orientation=horizontal]:w-(--active-tab-width) data-[orientation=horizontal]:translate-x-(--active-tab-left) data-[orientation=vertical]:h-(--active-tab-height) data-[orientation=vertical]:w-0.5 data-[orientation=vertical]:translate-y-(--active-tab-top)",
+				)}
+			/>
 		</BaseTabs.List>
 	);
 }
 
-function TabsTrigger({
+function TabsTab({
 	className,
 	...props
-}: React.ComponentProps<typeof BaseTabs.Tab>) {
+}: Omit<BaseTabs.Tab.Props, "className"> & {
+	className?: string;
+}) {
 	return (
 		<BaseTabs.Tab
-			data-slot="tabs-trigger"
+			data-slot="tabs-tab"
 			className={cn(
-				"text-muted-foreground focus-visible:ring-ring/50 data-active:text-foreground z-[1] flex-1 items-center justify-center gap-1.5 rounded-md px-2 py-1 text-sm text-nowrap whitespace-nowrap outline-none focus-visible:ring-[3px] data-disabled:pointer-events-none data-disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0",
+				"text-muted-foreground hover:text-foreground focus-visible:border-ring focus-visible:ring-ring/50 data-active:text-foreground [&:active]:text-foreground/70 relative z-1 inline-flex shrink-0 cursor-pointer items-center justify-center gap-1.5 rounded-md border border-transparent px-2 text-sm font-medium whitespace-nowrap transition-[color,border-color,box-shadow] duration-150 ease-out outline-none select-none [-webkit-tap-highlight-color:transparent] group-data-[orientation=horizontal]/tabs:h-full group-data-[orientation=horizontal]/tabs:grow group-data-[orientation=vertical]/tabs:h-[calc(var(--tabs-height)-(--spacing(1)))] group-data-[orientation=vertical]/tabs:justify-start focus-visible:ring-3 group-data-[variant=line]/tabs-list:focus-visible:ring-inset data-disabled:pointer-events-none data-disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
+				"group-data-[size=lg]/tabs-list:px-2.5 group-data-[size=sm]/tabs-list:px-1.5 group-data-[size=sm]/tabs-list:text-[0.8rem] group-data-[size=sm]/tabs-list:[&_svg:not([class*='size-'])]:size-3.5",
+				"any-pointer-coarse:after:absolute group-data-[orientation=horizontal]/tabs:any-pointer-coarse:after:-inset-x-px group-data-[orientation=horizontal]/tabs:any-pointer-coarse:after:-inset-y-0.75 group-data-[orientation=vertical]/tabs:any-pointer-coarse:after:-inset-x-0.75 group-data-[orientation=vertical]/tabs:any-pointer-coarse:after:-inset-y-px",
 				className,
 			)}
 			{...props}
@@ -80,38 +89,22 @@ function TabsTrigger({
 	);
 }
 
-function TabIndicator({
+function TabsPanel({
 	className,
 	...props
-}: React.ComponentProps<typeof BaseTabs.Indicator>) {
-	const { variant } = useTabs();
-
-	return (
-		<BaseTabs.Indicator
-			data-slot="tab-indicator"
-			className={cn(
-				"absolute left-0 w-[var(--active-tab-width)] translate-x-[var(--active-tab-left)] -translate-y-1/2 transition-all duration-200 ease-in-out",
-				variant === "underline"
-					? "bg-primary top-full z-10 h-px"
-					: "border-ring/70 bg-accent top-1/2 -z-[1] h-[var(--active-tab-height)] rounded-md border shadow-sm",
-				className,
-			)}
-			{...props}
-		/>
-	);
-}
-
-function TabsContent({
-	className,
-	...props
-}: React.ComponentProps<typeof BaseTabs.Panel>) {
+}: Omit<BaseTabs.Panel.Props, "className"> & {
+	className?: string;
+}) {
 	return (
 		<BaseTabs.Panel
-			data-slot="tabs-content"
-			className={cn("flex-1 outline-none", className)}
+			data-slot="tabs-panel"
+			className={cn(
+				"focus-visible:ring-ring/50 min-w-0 flex-1 rounded-lg text-sm outline-none focus-visible:ring-3",
+				className,
+			)}
 			{...props}
 		/>
 	);
 }
 
-export { Tabs, TabsContent, TabsList, TabsTrigger };
+export { Tabs, TabsList, TabsPanel, TabsTab };
