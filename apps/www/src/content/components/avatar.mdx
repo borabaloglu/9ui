@@ -6,8 +6,8 @@ description: Displays an avatar with a fallback.
 <ComponentLinks
 	links={[
 		{
-			label: "Docs",
-			href: "https://base-ui.com/react/components/avatar",
+			label: "API Reference",
+			href: "https://base-ui.com/react/components/avatar#api-reference",
 		},
 	]}
 />
@@ -35,30 +35,69 @@ npx shadcn@latest add @9ui/avatar
 ## Usage
 
 ```tsx title="Imports"
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
+import {
+	Avatar,
+	AvatarBadge,
+	AvatarFallback,
+	AvatarGroup,
+	AvatarGroupOverflow,
+	AvatarImage,
+} from "@/components/ui/avatar"
 ```
 
 ```tsx title="Anatomy"
-<Avatar>
-	<AvatarImage />
-	<AvatarFallback />
-</Avatar>
+<AvatarGroup>
+	<Avatar>
+		<AvatarImage />
+		<AvatarFallback />
+		<AvatarBadge />
+	</Avatar>
+	<AvatarGroupOverflow />
+</AvatarGroup>
 ```
+
+To use `next/image`, set `keepMounted` on `AvatarImage` and pass the image to `render`.
 
 ## Examples
 
 ### Sizes
 
+Set `size` on `Avatar` to `sm` or `lg` to change its size.
+
 <ComponentPreview name="avatar-sizes-demo" />
 
----
+### Shapes
 
-### With Fallback
+Set `shape="square"` on `Avatar` for rounded corners instead of a circle.
 
-<ComponentPreview name="avatar-with-fallback-demo" />
+<ComponentPreview name="avatar-shapes-demo" />
 
----
+### Fallback
 
-### Avatar Group
+`AvatarFallback` shows initials or an icon when there is no image or it fails to load.
+
+<ComponentPreview name="avatar-fallback-demo" />
+
+### Loading
+
+The fallback shows while the image loads, then the image fades in. To wait before showing the fallback, set `delay` on `AvatarFallback`.
+
+<ComponentPreview name="avatar-loading-demo" showReload={true} />
+
+### Badge
+
+To show a status on the avatar, add `AvatarBadge`.
+
+<ComponentPreview name="avatar-badge-demo" />
+
+### Group
+
+To stack avatars, wrap them in `AvatarGroup`.
 
 <ComponentPreview name="avatar-group-demo" />
+
+### Group Overflow
+
+To show how many avatars are hidden, add `AvatarGroupOverflow` at the end of the group.
+
+<ComponentPreview name="avatar-group-overflow-demo" />

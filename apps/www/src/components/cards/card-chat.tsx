@@ -17,7 +17,7 @@ export function ChatCard() {
 		<Card className="flex size-full flex-col">
 			<CardHeader className="flex flex-row items-center justify-between">
 				<div className="flex items-center gap-3">
-					<Avatar>
+					<Avatar size="lg">
 						<AvatarImage src="/avatars/avatar-m1.png" />
 						<AvatarFallback>BM</AvatarFallback>
 					</Avatar>

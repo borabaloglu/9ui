@@ -139,7 +139,7 @@ export function ManageMembersCard() {
 						className="flex items-center justify-between gap-4"
 					>
 						<div className="flex items-center gap-4">
-							<Avatar>
+							<Avatar size="lg">
 								<AvatarFallback>
 									{member.name
 										.split(" ")
