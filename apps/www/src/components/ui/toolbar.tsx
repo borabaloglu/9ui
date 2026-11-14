@@ -1,20 +1,18 @@
-"use client";
-
-import type * as React from "react";
 import { Toolbar as BaseToolbar } from "@base-ui/react/toolbar";
-
-import { type ButtonProps, buttonVariants } from "@/components/ui/button";
 
 import { cn } from "@/lib/utils";
 
 function Toolbar({
 	className,
 	...props
-}: React.ComponentProps<typeof BaseToolbar.Root>) {
+}: Omit<BaseToolbar.Root.Props, "className"> & {
+	className?: string;
+}) {
 	return (
 		<BaseToolbar.Root
+			data-slot="toolbar"
 			className={cn(
-				"bg-popover outline-border flex items-center gap-1 rounded-md p-1 shadow-xs outline",
+				"bg-card text-card-foreground relative flex items-center gap-1.5 rounded-xl border p-1 shadow-xs not-dark:bg-clip-padding before:pointer-events-none before:absolute before:inset-0 before:rounded-[calc(var(--radius-xl)-1px)] before:shadow-[0_1px_--theme(--color-black/6%)] data-[orientation=vertical]:flex-col dark:bg-clip-border dark:before:shadow-[0_-1px_--theme(--color-white/8%)]",
 				className,
 			)}
 			{...props}
@@ -22,20 +20,17 @@ function Toolbar({
 	);
 }
 
-function ToolbarButton({
+function ToolbarGroup({
 	className,
-	variant,
-	size,
 	...props
-}: React.ComponentProps<typeof BaseToolbar.Button> & ButtonProps) {
+}: Omit<BaseToolbar.Group.Props, "className"> & {
+	className?: string;
+}) {
 	return (
-		<BaseToolbar.Button
+		<BaseToolbar.Group
+			data-slot="toolbar-group"
 			className={cn(
-				buttonVariants({
-					variant: variant ?? "ghost",
-					size: size ?? "default",
-				}),
-				"shrink-0",
+				"flex items-center gap-1 data-[orientation=vertical]:flex-col",
 				className,
 			)}
 			{...props}
@@ -46,41 +41,40 @@ function ToolbarButton({
 function ToolbarSeparator({
 	className,
 	...props
-}: React.ComponentProps<typeof BaseToolbar.Separator>) {
+}: Omit<BaseToolbar.Separator.Props, "className"> & {
+	className?: string;
+}) {
 	return (
 		<BaseToolbar.Separator
-			className={cn("bg-border h-6 w-px shrink-0", className)}
+			data-slot="toolbar-separator"
+			className={cn(
+				"bg-border shrink-0 self-stretch data-[orientation=horizontal]:mx-1.5 data-[orientation=horizontal]:h-px data-[orientation=vertical]:my-1.5 data-[orientation=vertical]:w-px",
+				className,
+			)}
 			{...props}
 		/>
 	);
 }
 
-function ToolbarInput({
-	...props
-}: React.ComponentProps<typeof BaseToolbar.Input>) {
+function ToolbarButton(props: BaseToolbar.Button.Props) {
+	return <BaseToolbar.Button {...props} />;
+}
+
+function ToolbarInput(props: BaseToolbar.Input.Props) {
 	return <BaseToolbar.Input {...props} />;
-}
-
-function ToolbarGroup({
-	className,
-	...props
-}: React.ComponentProps<typeof BaseToolbar.Group>) {
-	return (
-		<BaseToolbar.Group
-			className={cn("flex items-center gap-1", className)}
-			{...props}
-		/>
-	);
 }
 
 function ToolbarLink({
 	className,
 	...props
-}: React.ComponentProps<typeof BaseToolbar.Link>) {
+}: Omit<BaseToolbar.Link.Props, "className"> & {
+	className?: string;
+}) {
 	return (
 		<BaseToolbar.Link
+			data-slot="toolbar-link"
 			className={cn(
-				"text-muted-foreground hover:text-foreground focus-visible:ring-ring/50 inline-flex h-9 shrink-0 items-center gap-2 rounded-md px-4 text-sm no-underline transition-colors focus-visible:ring-[3px] focus-visible:outline-none [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
+				"text-muted-foreground hover:text-foreground focus-visible:ring-ring/50 inline-flex h-8 shrink-0 items-center gap-1.5 rounded-lg px-2.5 text-sm font-medium whitespace-nowrap transition-[color,box-shadow] duration-150 ease-out outline-none focus-visible:ring-3 any-pointer-coarse:h-9 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
 				className,
 			)}
 			{...props}

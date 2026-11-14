@@ -1,17 +1,5 @@
-"use client";
+import { BoldIcon, ItalicIcon, UnderlineIcon } from "lucide-react";
 
-import { GlobeIcon, LightbulbIcon, SparklesIcon } from "lucide-react";
-
-import { Button } from "@/components/ui/button";
-import {
-	Popover,
-	PopoverClose,
-	PopoverDescription,
-	PopoverHeader,
-	PopoverPopup,
-	PopoverTitle,
-	PopoverTrigger,
-} from "@/components/ui/popover";
 import {
 	Select,
 	SelectItem,
@@ -19,79 +7,34 @@ import {
 	SelectTrigger,
 	SelectValue,
 } from "@/components/ui/select";
-import { Textarea } from "@/components/ui/textarea";
-import { Toggle } from "@/components/ui/toggle";
-import { ToggleGroup } from "@/components/ui/toggle-group";
+import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
 import {
 	Toolbar,
 	ToolbarButton,
 	ToolbarSeparator,
 } from "@/components/ui/toolbar";
 
-const models = [
-	{
-		label: "Select a model",
-		value: null,
-	},
-	{
-		label: "Grok 3",
-		value: "grok-3",
-	},
-	{
-		label: "Claude 3.7 Sonnet",
-		value: "claude-3.7-sonnet",
-	},
-
-	{
-		label: "GPT-4o",
-		value: "gpt-4o",
-	},
-	{
-		label: "04-mini",
-		value: "o4-mini",
-	},
+const textStyles = [
+	{ label: "Body", value: "body" },
+	{ label: "Heading 1", value: "heading-1" },
+	{ label: "Heading 2", value: "heading-2" },
+	{ label: "Heading 3", value: "heading-3" },
 ];
 
 export default function ToolbarDemo() {
 	return (
-		<Toolbar>
-			<ToggleGroup spacing={1} multiple>
+		<Toolbar aria-label="Text formatting">
+			<Select items={textStyles} defaultValue="body">
 				<ToolbarButton
-					size="icon"
-					render={
-						<Toggle
-							className="data-[pressed]:bg-green-950 data-[pressed]:text-green-200"
-							aria-label="Show AI thinking"
-							value="ai-thinking"
-						>
-							<LightbulbIcon />
-						</Toggle>
-					}
-				/>
-				<ToolbarButton
-					size="icon"
-					render={
-						<Toggle
-							className="data-[pressed]:bg-blue-950 data-[pressed]:text-blue-200"
-							aria-label="Use web search"
-							value="web-search"
-						>
-							<GlobeIcon />
-						</Toggle>
-					}
-				/>
-			</ToggleGroup>
-
-			<ToolbarSeparator />
-
-			<Select items={models}>
-				<SelectTrigger className="w-40 md:w-52">
-					<SelectValue className="truncate" />
-				</SelectTrigger>
-				<SelectPopup className="w-52">
-					{models.map((model) => (
-						<SelectItem key={model.value} value={model.value}>
-							{model.label}
+					render={<SelectTrigger className="w-32" />}
+					aria-label="Text style"
+				>
+					<SelectValue />
+				</ToolbarButton>
+				<SelectPopup>
+					{textStyles.map(({ value, label }) => (
+						<SelectItem key={value} value={value}>
+							{label}
 						</SelectItem>
 					))}
 				</SelectPopup>
@@ -99,33 +42,26 @@ export default function ToolbarDemo() {
 
 			<ToolbarSeparator />
 
-			<Popover>
+			<ToggleGroup variant="outline" multiple aria-label="Formatting">
 				<ToolbarButton
-					size="icon"
-					variant="outline"
-					render={<PopoverTrigger />}
-					aria-label="Edit prompt"
+					render={<ToggleGroupItem value="bold" />}
+					aria-label="Bold"
 				>
-					<SparklesIcon />
+					<BoldIcon />
 				</ToolbarButton>
-				<PopoverPopup className="w-80">
-					<PopoverHeader>
-						<PopoverTitle>Edit Prompt Template</PopoverTitle>
-						<PopoverDescription>
-							Customize the system prompt used for AI generation
-						</PopoverDescription>
-					</PopoverHeader>
-					<Textarea
-						className="resize-none"
-						defaultValue="You are a helpful AI assistant. Your task is to help the user with their writing needs. Be concise, accurate, and helpful."
-					/>
-					<PopoverClose
-						render={<Button variant="outline" className="self-end" />}
-					>
-						Save Prompt
-					</PopoverClose>
-				</PopoverPopup>
-			</Popover>
+				<ToolbarButton
+					render={<ToggleGroupItem value="italic" />}
+					aria-label="Italic"
+				>
+					<ItalicIcon />
+				</ToolbarButton>
+				<ToolbarButton
+					render={<ToggleGroupItem value="underline" />}
+					aria-label="Underline"
+				>
+					<UnderlineIcon />
+				</ToolbarButton>
+			</ToggleGroup>
 		</Toolbar>
 	);
 }
