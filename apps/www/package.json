@@ -52,7 +52,7 @@
 		"embla-carousel-react": "^8.5.2",
 		"fast-glob": "^3.3.3",
 		"framer-motion": "^12.4.10",
-		"frimousse": "^0.1.0",
+		"frimousse": "^0.4.0",
 		"fumadocs-core": "16.18.3",
 		"fumadocs-mdx": "15.5.2",
 		"glob": "^11.0.1",

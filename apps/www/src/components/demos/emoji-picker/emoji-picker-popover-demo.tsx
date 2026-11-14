@@ -1,6 +1,7 @@
-import * as React from "react";
-import { LoaderCircle } from "lucide-react";
-import { toast } from "sonner";
+"use client";
+
+import { useState } from "react";
+import { SmilePlusIcon } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -14,38 +15,34 @@ import {
 import { Popover, PopoverPopup, PopoverTrigger } from "@/components/ui/popover";
 
 export default function EmojiPickerPopoverDemo() {
-	const [open, setOpen] = React.useState(false);
-	const [emoji, setEmoji] = React.useState<string | undefined>(undefined);
+	const [open, setOpen] = useState(false);
+	const [emoji, setEmoji] = useState<string | undefined>(undefined);
 
 	return (
 		<Popover open={open} onOpenChange={setOpen}>
 			<PopoverTrigger
-				render={(props) => (
-					<Button {...props} variant="outline" size="icon">
-						{emoji ? emoji : "👇"}
-					</Button>
-				)}
-			/>
-			<PopoverPopup className="w-full rounded-md p-0">
+				render={
+					<Button
+						variant="outline"
+						size="icon"
+						className="text-base"
+						aria-label="Pick an emoji"
+					/>
+				}
+			>
+				{emoji ?? <SmilePlusIcon />}
+			</PopoverTrigger>
+			<PopoverPopup className="w-auto p-0">
 				<EmojiPicker
-					className="border-none"
-					onEmojiSelect={({ emoji, label }) => {
+					onEmojiSelect={({ emoji }) => {
 						setEmoji(emoji);
 						setOpen(false);
-						toast(() => (
-							<p className="flex items-center gap-2 text-sm">
-								<span className="text-lg">{emoji}</span>
-								{label}
-							</p>
-						));
 					}}
 				>
 					<EmojiPickerSearch />
 					<EmojiPickerContent>
-						<EmojiPickerLoading>
-							<LoaderCircle className="size-4 animate-spin" />
-						</EmojiPickerLoading>
-						<EmojiPickerEmpty>No results</EmojiPickerEmpty>
+						<EmojiPickerLoading />
+						<EmojiPickerEmpty />
 						<EmojiPickerList />
 					</EmojiPickerContent>
 				</EmojiPicker>

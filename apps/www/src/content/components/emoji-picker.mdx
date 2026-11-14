@@ -1,12 +1,13 @@
 ---
 title: Emoji Picker
-description: A component that allows users to pick an emoji.
+description: A searchable grid for picking an emoji.
 ---
+
 <ComponentLinks
 	links={[
 		{
-			label: "Docs",
-			href: "https://frimousse.liveblocks.io/",
+			label: "API Reference",
+			href: "https://frimousse.liveblocks.io/#api-reference",
 		},
 	]}
 />
@@ -15,7 +16,7 @@ description: A component that allows users to pick an emoji.
 
 ## About
 
-The Emoji Picker is built on top of [`frimousse`](https://frimousse.liveblocks.io/), which is created by [liveblocks](https://liveblocks.io).
+The Emoji Picker is built on top of [Frimousse](https://frimousse.liveblocks.io/) by [Liveblocks](https://liveblocks.io).
 
 ## Installation
 
@@ -27,6 +28,14 @@ npx shadcn@latest add @9ui/emoji-picker
 </div>
 
 <Steps>
+
+<Step>Install dependencies</Step>
+
+```bash title="Terminal"
+npm install frimousse
+```
+
+<Step>Add the [Input Group](/docs/components/input-group) and [Spinner](/docs/components/spinner) components.</Step>
 
 <Step>Copy and paste the following code into your project.</Step>
 
@@ -42,8 +51,10 @@ import {
 	EmojiPicker,
 	EmojiPickerContent,
 	EmojiPickerEmpty,
+	EmojiPickerFooter,
 	EmojiPickerList,
 	EmojiPickerLoading,
+	EmojiPickerPreview,
 	EmojiPickerSearch,
 	EmojiPickerSkinToneSelector,
 } from "@/components/ui/emoji-picker"
@@ -52,17 +63,48 @@ import {
 ```tsx title="Anatomy"
 <EmojiPicker>
 	<EmojiPickerSearch />
-	<EmojiPickerSkinToneSelector />
 	<EmojiPickerContent>
 		<EmojiPickerLoading />
 		<EmojiPickerEmpty />
 		<EmojiPickerList />
 	</EmojiPickerContent>
+	<EmojiPickerFooter>
+		<EmojiPickerPreview />
+		<EmojiPickerSkinToneSelector />
+	</EmojiPickerFooter>
 </EmojiPicker>
 ```
+
+To get the picked emoji, set `onEmojiSelect` on `EmojiPicker`.
 
 ## Examples
 
 ### Popover
 
+To show the picker in a popover, set `className="w-auto p-0"` on `PopoverPopup`.
+
 <ComponentPreview name="emoji-picker-popover-demo" />
+
+---
+
+### Skin Tone
+
+To let people change the skin tone, add `EmojiPickerSkinToneSelector` to `EmojiPickerFooter`.
+
+<ComponentPreview name="emoji-picker-skin-tone-demo" />
+
+---
+
+### Input
+
+To add emojis to a text input, use an `InputGroup` and pass its ref to `anchor` on `PopoverPopup`.
+
+<ComponentPreview name="emoji-picker-input-demo" />
+
+---
+
+### Locale
+
+To translate the emoji names and categories, set `locale` on `EmojiPicker`.
+
+<ComponentPreview name="emoji-picker-locale-demo" />
