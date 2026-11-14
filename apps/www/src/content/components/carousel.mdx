@@ -6,12 +6,16 @@ description: A slider to display multiple items in a scrollable view.
 	links={[
 		{
 			label: "Docs",
-			href: "https://www.embla-carousel.com/",
+			href: "https://www.embla-carousel.com/docs",
 		},
 	]}
 />
 
 <ComponentPreview name="carousel-demo" />
+
+## About
+
+The Carousel is built on top of [`embla-carousel`](https://www.embla-carousel.com/) by [David Jerleke](https://github.com/davidjerleke).
 
 ## Installation
 
@@ -63,22 +67,24 @@ import {
 
 ### Vertical
 
-<ComponentPreview name="carousel-vertical-demo" />
+To scroll vertically, set `orientation="vertical"` and give `CarouselContent` a height.
 
----
+<ComponentPreview name="carousel-vertical-demo" />
 
 ### Multiple
 
-<ComponentPreview name="carousel-multiple-demo" />
+To show several slides at once, set a `basis-*` class on each `CarouselItem`.
 
----
+<ComponentPreview name="carousel-multiple-demo" />
 
 ### Looped
 
+To loop back to the first slide, set `opts={{ loop: true }}`.
+
 <ComponentPreview name="carousel-looped-demo" />
 
----
+### Dots
 
-### Thumbnail
+To build your own controls, get the carousel API with `setApi`.
 
-<ComponentPreview name="carousel-thumbnail-demo" />
+<ComponentPreview name="carousel-dots-demo" />

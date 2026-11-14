@@ -4,7 +4,7 @@ import * as React from "react";
 import useEmblaCarousel, {
 	type UseEmblaCarouselType,
 } from "embla-carousel-react";
-import { ArrowLeft, ArrowRight } from "lucide-react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 
@@ -32,6 +32,10 @@ type CarouselContextProps = {
 } & CarouselProps;
 
 const CarouselContext = React.createContext<CarouselContextProps | null>(null);
+
+function prefersReducedMotion() {
+	return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+}
 
 function useCarousel() {
 	const context = React.useContext(CarouselContext);
@@ -69,24 +73,46 @@ function Carousel({
 	}, []);
 
 	const scrollPrev = React.useCallback(() => {
-		api?.scrollPrev();
+		api?.scrollPrev(prefersReducedMotion());
 	}, [api]);
 
 	const scrollNext = React.useCallback(() => {
-		api?.scrollNext();
+		api?.scrollNext(prefersReducedMotion());
 	}, [api]);
+
+	const rtl = opts?.direction === "rtl";
 
 	const handleKeyDown = React.useCallback(
 		(event: React.KeyboardEvent<HTMLDivElement>) => {
-			if (event.key === "ArrowLeft") {
+			const target = event.target as HTMLElement;
+			if (
+				target.isContentEditable ||
+				target.closest("input, textarea, select")
+			) {
+				return;
+			}
+
+			const horizontal = orientation === "horizontal";
+			const prevKey = horizontal
+				? rtl
+					? "ArrowRight"
+					: "ArrowLeft"
+				: "ArrowUp";
+			const nextKey = horizontal
+				? rtl
+					? "ArrowLeft"
+					: "ArrowRight"
+				: "ArrowDown";
+
+			if (event.key === prevKey) {
 				event.preventDefault();
 				scrollPrev();
-			} else if (event.key === "ArrowRight") {
+			} else if (event.key === nextKey) {
 				event.preventDefault();
 				scrollNext();
 			}
 		},
-		[scrollPrev, scrollNext],
+		[orientation, rtl, scrollPrev, scrollNext],
 	);
 
 	React.useEffect(() => {
@@ -101,7 +127,8 @@ function Carousel({
 		api.on("select", onSelect);
 
 		return () => {
-			api?.off("select", onSelect);
+			api.off("reInit", onSelect);
+			api.off("select", onSelect);
 		};
 	}, [api, onSelect]);
 
@@ -109,10 +136,9 @@ function Carousel({
 		<CarouselContext.Provider
 			value={{
 				carouselRef,
-				api: api,
+				api,
 				opts,
-				orientation:
-					orientation || (opts?.axis === "y" ? "vertical" : "horizontal"),
+				orientation,
 				scrollPrev,
 				scrollNext,
 				canScrollPrev,
@@ -125,6 +151,7 @@ function Carousel({
 				role="region"
 				aria-roledescription="carousel"
 				data-slot="carousel"
+				data-orientation={orientation}
 				{...props}
 			>
 				{children}
@@ -139,13 +166,13 @@ function CarouselContent({ className, ...props }: React.ComponentProps<"div">) {
 	return (
 		<div
 			ref={carouselRef}
-			className="overflow-hidden"
+			className="group/carousel-content overflow-hidden"
 			data-slot="carousel-content"
+			data-orientation={orientation}
 		>
 			<div
 				className={cn(
-					"flex",
-					orientation === "horizontal" ? "-ml-4" : "-mt-4 flex-col",
+					"flex group-data-[orientation=horizontal]/carousel-content:-ms-4 group-data-[orientation=vertical]/carousel-content:-mt-4 group-data-[orientation=vertical]/carousel-content:flex-col",
 					className,
 				)}
 				{...props}
@@ -154,17 +181,54 @@ function CarouselContent({ className, ...props }: React.ComponentProps<"div">) {
 	);
 }
 
-function CarouselItem({ className, ...props }: React.ComponentProps<"div">) {
-	const { orientation } = useCarousel();
+function CarouselItem({
+	className,
+	ref,
+	...props
+}: React.ComponentProps<"div">) {
+	const { api, orientation } = useCarousel();
+	const [node, setNode] = React.useState<HTMLDivElement | null>(null);
+	const [label, setLabel] = React.useState<string>();
+
+	const setRef = React.useCallback(
+		(element: HTMLDivElement | null) => {
+			setNode(element);
+			if (typeof ref === "function") {
+				ref(element);
+			} else if (ref) {
+				ref.current = element;
+			}
+		},
+		[ref],
+	);
+
+	React.useEffect(() => {
+		if (!api || !node) return;
+
+		const updateLabel = () => {
+			const slides = api.slideNodes();
+			const index = slides.indexOf(node);
+			setLabel(index === -1 ? undefined : `${index + 1} of ${slides.length}`);
+		};
+
+		updateLabel();
+		api.on("reInit", updateLabel);
+
+		return () => {
+			api.off("reInit", updateLabel);
+		};
+	}, [api, node]);
 
 	return (
 		<div
+			ref={setRef}
 			role="group"
 			aria-roledescription="slide"
+			aria-label={label}
 			data-slot="carousel-item"
+			data-orientation={orientation}
 			className={cn(
-				"min-w-0 shrink-0 grow-0 basis-full",
-				orientation === "horizontal" ? "pl-4" : "pt-4",
+				"min-w-0 shrink-0 grow-0 basis-full data-[orientation=horizontal]:ps-4 data-[orientation=vertical]:pt-4",
 				className,
 			)}
 			{...props}
@@ -174,8 +238,8 @@ function CarouselItem({ className, ...props }: React.ComponentProps<"div">) {
 
 function CarouselPrevious({
 	className,
-	variant = "ghost",
-	size = "icon",
+	variant = "outline",
+	size = "icon-sm",
 	...props
 }: React.ComponentProps<typeof Button>) {
 	const { orientation, scrollPrev, canScrollPrev } = useCarousel();
@@ -185,18 +249,17 @@ function CarouselPrevious({
 			data-slot="carousel-previous"
 			variant={variant}
 			size={size}
+			data-orientation={orientation}
 			className={cn(
-				"absolute",
-				orientation === "horizontal"
-					? "top-1/2 -left-12 -translate-y-1/2"
-					: "-top-12 left-1/2 -translate-x-1/2 rotate-90",
+				"absolute touch-manipulation rounded-full before:rounded-full data-[orientation=horizontal]:-start-12 data-[orientation=horizontal]:top-1/2 data-[orientation=horizontal]:-translate-y-1/2 data-[orientation=vertical]:-top-12 data-[orientation=vertical]:left-1/2 data-[orientation=vertical]:-translate-x-1/2 data-[orientation=vertical]:rotate-90",
 				className,
 			)}
 			disabled={!canScrollPrev}
+			focusableWhenDisabled
 			onClick={scrollPrev}
 			{...props}
 		>
-			<ArrowLeft />
+			<ChevronLeft className="rtl:group-data-[orientation=horizontal]/button:rotate-180" />
 			<span className="sr-only">Previous slide</span>
 		</Button>
 	);
@@ -204,8 +267,8 @@ function CarouselPrevious({
 
 function CarouselNext({
 	className,
-	variant = "ghost",
-	size = "icon",
+	variant = "outline",
+	size = "icon-sm",
 	...props
 }: React.ComponentProps<typeof Button>) {
 	const { orientation, scrollNext, canScrollNext } = useCarousel();
@@ -215,18 +278,17 @@ function CarouselNext({
 			data-slot="carousel-next"
 			variant={variant}
 			size={size}
+			data-orientation={orientation}
 			className={cn(
-				"absolute",
-				orientation === "horizontal"
-					? "top-1/2 -right-12 -translate-y-1/2"
-					: "-bottom-12 left-1/2 -translate-x-1/2 rotate-90",
+				"absolute touch-manipulation rounded-full before:rounded-full data-[orientation=horizontal]:-end-12 data-[orientation=horizontal]:top-1/2 data-[orientation=horizontal]:-translate-y-1/2 data-[orientation=vertical]:-bottom-12 data-[orientation=vertical]:left-1/2 data-[orientation=vertical]:-translate-x-1/2 data-[orientation=vertical]:rotate-90",
 				className,
 			)}
 			disabled={!canScrollNext}
+			focusableWhenDisabled
 			onClick={scrollNext}
 			{...props}
 		>
-			<ArrowRight />
+			<ChevronRight className="rtl:group-data-[orientation=horizontal]/button:rotate-180" />
 			<span className="sr-only">Next slide</span>
 		</Button>
 	);
@@ -239,4 +301,5 @@ export {
 	CarouselItem,
 	CarouselNext,
 	CarouselPrevious,
+	useCarousel,
 };
