@@ -5,8 +5,8 @@ description: Displays a toolbar for user interaction.
 <ComponentLinks
 	links={[
 		{
-			label: "Docs",
-			href: "https://base-ui.com/react/components/toolbar",
+			label: "API Reference",
+			href: "https://base-ui.com/react/components/toolbar#api-reference",
 		},
 	]}
 />
@@ -46,19 +46,71 @@ import {
 
 ```tsx title="Anatomy"
 <Toolbar>
-  <ToolbarButton />
-  <ToolbarLink />
-  <ToolbarSeparator />
-  <ToolbarGroup>
-    <ToolbarButton />
-    <ToolbarButton />
-  <ToolbarGroup />
-  <ToolbarInput />
+	<ToolbarButton />
+	<ToolbarLink />
+	<ToolbarSeparator />
+	<ToolbarGroup>
+		<ToolbarButton />
+		<ToolbarButton />
+	</ToolbarGroup>
+	<ToolbarInput />
 </Toolbar>
 ```
 
+`ToolbarButton` and `ToolbarInput` have no styles of their own. Use the `render` prop to compose them with other components.
+
 ## Examples
 
-### File Explorer
+### Button
 
-<ComponentPreview name="toolbar-file-explorer-demo" />
+To add a button, render a `Button` from `ToolbarButton`.
+
+<ComponentPreview name="toolbar-button-demo" />
+
+### Groups
+
+To group related items, wrap them in `ToolbarGroup`.
+
+<ComponentPreview name="toolbar-groups-demo" />
+
+### Link
+
+To add a link, use `ToolbarLink`.
+
+<ComponentPreview name="toolbar-link-demo" />
+
+### Input
+
+To add an input, render it from `ToolbarInput`. Use only one input and place it last.
+
+<ComponentPreview name="toolbar-input-demo" />
+
+### Menu
+
+To open a menu, popover, dialog or select from the toolbar, render its trigger from `ToolbarButton`.
+
+<ComponentPreview name="toolbar-menu-demo" />
+
+### Tooltip
+
+To add a tooltip, render the `ToolbarButton` from `TooltipTrigger`.
+
+<ComponentPreview name="toolbar-tooltip-demo" />
+
+### Vertical
+
+Set `orientation="vertical"` on `Toolbar` to stack the items.
+
+<ComponentPreview name="toolbar-vertical-demo" />
+
+### Disabled
+
+Set `disabled` on a `ToolbarButton` to disable it. Set it on `Toolbar` to disable every item.
+
+<ComponentPreview name="toolbar-disabled-demo" />
+
+### Complex
+
+To let a long toolbar scroll, add `overflow-x-auto before:hidden` to `Toolbar`.
+
+<ComponentPreview name="toolbar-complex-demo" />
