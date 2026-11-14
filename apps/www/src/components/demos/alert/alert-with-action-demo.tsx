@@ -1,22 +1,26 @@
-import { TriangleAlertIcon } from "lucide-react";
+import { CircleAlertIcon } from "lucide-react";
 
-import { Alert, AlertTitle } from "@/components/ui/alert";
+import {
+	Alert,
+	AlertAction,
+	AlertDescription,
+	AlertTitle,
+} from "@/components/ui/alert";
 import { Button } from "@/components/ui/button";
 
 export default function AlertWithActionDemo() {
 	return (
-		<Alert>
-			<TriangleAlertIcon />
-			<AlertTitle className="line-clamp-1 max-w-[calc(100%-4rem)] overflow-ellipsis">
-				No Internet Connection
-			</AlertTitle>
-			<Button
-				className="absolute top-1/2 right-4 h-6 -translate-y-1/2 text-xs shadow-none"
-				size="sm"
-				variant="outline"
-			>
-				Try Again
-			</Button>
+		<Alert className="max-w-lg">
+			<CircleAlertIcon />
+			<AlertTitle>Changes are not saved</AlertTitle>
+			<AlertDescription>
+				Your changes will be lost if you leave this page.
+			</AlertDescription>
+			<AlertAction>
+				<Button size="xs" variant="outline">
+					Save
+				</Button>
+			</AlertAction>
 		</Alert>
 	);
 }

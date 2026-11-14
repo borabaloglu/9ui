@@ -26,42 +26,68 @@ npx shadcn@latest add @9ui/alert
 ## Usage
 
 ```tsx title="Imports"
-import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
+import {
+	Alert,
+	AlertAction,
+	AlertDescription,
+	AlertTitle,
+} from "@/components/ui/alert"
 ```
 
 ```tsx title="Anatomy"
 <Alert>
 	<AlertTitle />
 	<AlertDescription />
+	<AlertAction />
 </Alert>
 ```
+
+To show an icon, put it first inside `Alert`.
+
+For a message that isn't urgent, set `role="status"` on `Alert`.
 
 ## Examples
 
 ### Success
 
-<ComponentPreview name="alert-success-demo" />
+Set `variant` to `success` to confirm that something worked.
 
----
+<ComponentPreview name="alert-success-demo" />
 
 ### Info
 
-<ComponentPreview name="alert-info-demo" />
+Set `variant` to `info` for a neutral notice.
 
----
+<ComponentPreview name="alert-info-demo" />
 
 ### Warning
 
-<ComponentPreview name="alert-warning-demo" />
+Set `variant` to `warning` for something that needs attention.
 
----
+<ComponentPreview name="alert-warning-demo" />
 
 ### Danger
 
+Set `variant` to `danger` for an error or a failed action.
+
 <ComponentPreview name="alert-danger-demo" />
 
----
+### With Action
 
-### With action
+To add a button, put it in `AlertAction`.
 
 <ComponentPreview name="alert-with-action-demo" />
+
+### Dismissible
+
+To let people close the alert, put a close button in `AlertAction`.
+
+<ComponentPreview name="alert-dismissible-demo" />
+
+### Heading
+
+To make the title a heading, set `render` on `AlertTitle`.
+
+```tsx
+<AlertTitle render={<h3 />}>View-only access</AlertTitle>
+```
