@@ -6,10 +6,22 @@
 	"files": [
 		{
 			"path": "ui/skeleton.tsx",
-			"content": "import type * as React from \"react\";\n\nimport { cn } from \"@/lib/utils\";\n\nfunction Skeleton({ className, ...props }: React.ComponentProps<\"div\">) {\n\treturn (\n\t\t<div\n\t\t\tdata-slot=\"skeleton\"\n\t\t\tclassName={cn(\"bg-accent animate-pulse rounded-md\", className)}\n\t\t\t{...props}\n\t\t/>\n\t);\n}\n\nexport { Skeleton };\n",
+			"content": "import type * as React from \"react\";\n\nimport { cn } from \"@/lib/utils\";\n\nfunction Skeleton({ className, ...props }: React.ComponentProps<\"div\">) {\n\treturn (\n\t\t<div\n\t\t\tdata-slot=\"skeleton\"\n\t\t\tclassName={cn(\n\t\t\t\t\"animate-skeleton bg-muted rounded-sm bg-[linear-gradient(120deg,transparent_40%,var(--skeleton-highlight),transparent_60%)] bg-size-[200%_100%] bg-fixed [--skeleton-highlight:--alpha(var(--color-white)/64%)] motion-reduce:animate-none motion-reduce:bg-none dark:[--skeleton-highlight:--alpha(var(--color-white)/6%)]\",\n\t\t\t\tclassName,\n\t\t\t)}\n\t\t\t{...props}\n\t\t/>\n\t);\n}\n\nexport { Skeleton };\n",
 			"type": "registry:ui",
 			"target": ""
 		}
 	],
+	"cssVars": {
+		"theme": {
+			"animate-skeleton": "skeleton 2s -1s infinite linear"
+		}
+	},
+	"css": {
+		"@keyframes skeleton": {
+			"to": {
+				"background-position": "-200% 0"
+			}
+		}
+	},
 	"type": "registry:ui"
 }
