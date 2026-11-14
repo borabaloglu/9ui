@@ -1,6 +1,6 @@
 ---
 title: Aspect Ratio
-description: Allows you to display an element at a specific aspect ratio.
+description: A container that keeps its content at a set width-to-height ratio.
 ---
 
 <ComponentPreview name="aspect-ratio-demo" />
@@ -32,3 +32,23 @@ import { AspectRatio } from "@/components/ui/aspect-ratio"
 ```tsx title="Anatomy"
 <AspectRatio />
 ```
+
+## Examples
+
+### Square
+
+Set `ratio` to `1` for a square.
+
+<ComponentPreview name="aspect-ratio-square-demo" />
+
+### Portrait
+
+Set `ratio` to `9 / 16` for a portrait shape.
+
+<ComponentPreview name="aspect-ratio-portrait-demo" />
+
+### Image
+
+To fill the box with an image, set `size-full object-cover` on it.
+
+<ComponentPreview name="aspect-ratio-image-demo" />
