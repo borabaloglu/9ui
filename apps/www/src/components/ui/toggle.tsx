@@ -15,8 +15,8 @@ const toggleVariants = cva(
 			size: {
 				sm: "h-7 min-w-7 gap-1 rounded-[min(var(--radius-md),0.75rem)] px-1.5 text-[0.8rem] before:rounded-[calc(min(var(--radius-md),0.75rem)-1px)] any-pointer-coarse:h-8 any-pointer-coarse:min-w-8 [&_svg:not([class*='size-'])]:size-3.5",
 				default:
-					"h-8 min-w-8 gap-1.5 px-2 any-pointer-coarse:h-9 any-pointer-coarse:min-w-9",
-				lg: "h-9 min-w-9 gap-1.5 px-2.5 any-pointer-coarse:h-10 any-pointer-coarse:min-w-10",
+					"h-8 min-w-8 gap-1.5 px-[calc(--spacing(2)-1px)] any-pointer-coarse:h-9 any-pointer-coarse:min-w-9",
+				lg: "h-9 min-w-9 gap-1.5 px-[calc(--spacing(2.5)-1px)] any-pointer-coarse:h-10 any-pointer-coarse:min-w-10",
 			},
 		},
 		defaultVariants: {
