@@ -119,6 +119,19 @@
 			]
 		},
 		{
+			"name": "button-group",
+			"type": "registry:ui",
+			"dependencies": [],
+			"registryDependencies": ["@9ui/separator"],
+			"files": [
+				{
+					"path": "src/components/ui/button-group.tsx",
+					"type": "registry:ui",
+					"target": ""
+				}
+			]
+		},
+		{
 			"name": "breadcrumb",
 			"type": "registry:ui",
 			"dependencies": [],
