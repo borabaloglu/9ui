@@ -1,12 +1,12 @@
 ---
 title: Context Menu
-description: Used to provide options specific to an element or area.
+description: A menu that opens at the pointer on right click or long press.
 ---
 <ComponentLinks
 	links={[
 		{
-			label: "Docs",
-			href: "https://base-ui.com/react/components/menu",
+			label: "API Reference",
+			href: "https://base-ui.com/react/components/context-menu",
 		},
 	]}
 />
@@ -37,16 +37,17 @@ npx shadcn@latest add @9ui/context-menu
 import {
 	ContextMenu,
 	ContextMenuCheckboxItem,
-	ContextMenuContent,
 	ContextMenuGroup,
+	ContextMenuGroupLabel,
 	ContextMenuItem,
-	ContextMenuLabel,
+	ContextMenuLinkItem,
+	ContextMenuPopup,
 	ContextMenuRadioGroup,
 	ContextMenuRadioItem,
 	ContextMenuSeparator,
 	ContextMenuShortcut,
 	ContextMenuSub,
-	ContextMenuSubContent,
+	ContextMenuSubPopup,
 	ContextMenuSubTrigger,
 	ContextMenuTrigger,
 } from "@/components/ui/context-menu"
@@ -55,25 +56,91 @@ import {
 ```tsx title="Anatomy"
 <ContextMenu>
 	<ContextMenuTrigger />
-	<ContextMenuContent>
+	<ContextMenuPopup>
 		<ContextMenuGroup>
 			<ContextMenuGroupLabel />
 			<ContextMenuItem>
-				<ContextMenuItemShortcut />
+				<ContextMenuShortcut />
 			</ContextMenuItem>
+			<ContextMenuLinkItem />
 		</ContextMenuGroup>
 		<ContextMenuSeparator />
 		<ContextMenuCheckboxItem />
-		<ContextMenuSeparator />
 		<ContextMenuRadioGroup>
 			<ContextMenuRadioItem />
 		</ContextMenuRadioGroup>
 		<ContextMenuSub>
 			<ContextMenuSubTrigger />
-			<ContextMenuSubContent>
+			<ContextMenuSubPopup>
 				<ContextMenuItem />
-			</ContextMenuSubContent>
+			</ContextMenuSubPopup>
 		</ContextMenuSub>
-	</ContextMenuContent>
+	</ContextMenuPopup>
 </ContextMenu>
 ```
+
+Wrap the area that should open the menu in `ContextMenuTrigger`.
+
+## Examples
+
+### Group
+
+Wrap related items in `ContextMenuGroup` and name them with `ContextMenuGroupLabel`.
+
+<ComponentPreview name="context-menu-group-demo" />
+
+### Shortcut
+
+Add `ContextMenuShortcut` inside an item to show its keyboard shortcut. It is a hint only, so bind the keys yourself.
+
+<ComponentPreview name="context-menu-shortcut-demo" />
+
+### With Icons
+
+Place an icon before the item text.
+
+<ComponentPreview name="context-menu-icons-demo" />
+
+### Checkbox
+
+Use `ContextMenuCheckboxItem` for options that turn on and off. The menu stays open when one is toggled.
+
+<ComponentPreview name="context-menu-checkbox-demo" />
+
+### Checkbox with Icons
+
+<ComponentPreview name="context-menu-checkbox-icon-demo" />
+
+### Radio Group
+
+Use `ContextMenuRadioGroup` and `ContextMenuRadioItem` to pick one option from a set.
+
+<ComponentPreview name="context-menu-radio-demo" />
+
+### Radio Group with Icons
+
+<ComponentPreview name="context-menu-radio-icon-demo" />
+
+### Destructive
+
+Set `variant` to `destructive` for an action that deletes or can't be undone.
+
+<ComponentPreview name="context-menu-destructive-demo" />
+
+### Link
+
+Use `ContextMenuLinkItem` for items that go to another page. It renders an `<a>`.
+
+<ComponentPreview name="context-menu-link-demo" />
+
+### Submenu
+
+Nest `ContextMenuSub`, `ContextMenuSubTrigger` and `ContextMenuSubPopup` to open a second level.
+
+<ComponentPreview name="context-menu-submenu-demo" />
+
+### Complex
+
+Groups, shortcuts, checkboxes, radio items, submenus and a destructive action in one menu.
+
+<ComponentPreview name="context-menu-complex-demo" />
