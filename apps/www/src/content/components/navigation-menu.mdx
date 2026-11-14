@@ -1,18 +1,18 @@
 ---
 title: Navigation Menu
-description: A menu for navigating between different sections or pages.
+description: A set of links and menus for moving around a site.
 ---
 
 <ComponentLinks
 	links={[
 		{
-			label: "Docs",
+			label: "API Reference",
 			href: "https://base-ui.com/react/components/navigation-menu",
 		},
 	]}
 />
 
-<ComponentPreview name="navigation-menu-demo" />
+<ComponentPreview name="navigation-menu-demo" previewClassName="min-h-100 items-start" />
 
 ## Installation
 
@@ -41,7 +41,9 @@ import {
 	NavigationMenuItem,
 	NavigationMenuLink,
 	NavigationMenuList,
+	NavigationMenuPopup,
 	NavigationMenuTrigger,
+	NavigationMenuViewport,
 } from "@/components/ui/navigation-menu"
 ```
 
@@ -49,11 +51,60 @@ import {
 <NavigationMenu>
 	<NavigationMenuList>
 		<NavigationMenuItem>
-			<NavigationMenuTrigger>Item</NavigationMenuTrigger>
+			<NavigationMenuTrigger />
 			<NavigationMenuContent>
-				<NavigationMenuLink>Link</NavigationMenuLink>
+				<NavigationMenuLink />
 			</NavigationMenuContent>
 		</NavigationMenuItem>
 	</NavigationMenuList>
+	<NavigationMenuPopup />
 </NavigationMenu>
 ```
+
+Set `render` on `NavigationMenuLink` to use the link component of your framework.
+
+Set `active` on `NavigationMenuLink` to mark the current page.
+
+Set `closeOnClick` on `NavigationMenuLink` to close the menu when the link is clicked.
+
+`NavigationMenuPopup` takes `side`, `align`, `sideOffset` and `alignOffset` to change where the menu opens.
+
+## Examples
+
+### Links
+
+Set `variant="trigger"` on `NavigationMenuLink` to place a link next to the triggers.
+
+<ComponentPreview name="navigation-menu-link-demo" />
+
+### Icons
+
+Put an icon before the text of a `NavigationMenuLink`.
+
+<ComponentPreview name="navigation-menu-icon-demo" previewClassName="min-h-60 items-start" />
+
+### Vertical
+
+Set `orientation="vertical"` on `NavigationMenu` to stack the items. Set `side` on `NavigationMenuPopup` to open the menu next to the list.
+
+<ComponentPreview name="navigation-menu-vertical-demo" previewClassName="min-h-60 items-start" />
+
+### Nested
+
+To open a second menu from a panel, put another `NavigationMenu` inside `NavigationMenuContent`. Set `variant="link"` on its `NavigationMenuTrigger` to make it look like the links around it.
+
+<ComponentPreview name="navigation-menu-nested-demo" previewClassName="min-h-80 items-start" />
+
+### Nested Inline
+
+To switch panels inside the same menu, leave out the nested `NavigationMenuPopup` and render `NavigationMenuViewport` where the panels should appear. Set `defaultValue` on the nested `NavigationMenu` to pick the first panel.
+
+To remove the padding around a panel, set `className="[--navigation-menu-padding:0px]"` on `NavigationMenuContent`.
+
+<ComponentPreview name="navigation-menu-nested-inline-demo" previewClassName="min-h-100 items-start" />
+
+### Disabled
+
+Set `disabled` on `NavigationMenuTrigger` to turn off a menu.
+
+<ComponentPreview name="navigation-menu-disabled-demo" previewClassName="min-h-60 items-start" />
