@@ -1,12 +1,19 @@
-import { Meter, MeterLabel, MeterValue } from "@/components/ui/meter";
+import {
+	Meter,
+	MeterIndicator,
+	MeterLabel,
+	MeterTrack,
+	MeterValue,
+} from "@/components/ui/meter";
 
 export default function MeterDemo() {
 	return (
-		<Meter className="mx-auto w-48" value={4} max={5}>
-			<div className="flex items-center justify-between">
-				<MeterLabel>Tasks Completed</MeterLabel>
-				<MeterValue>{(_formattedValue, value) => `${value} / 5`}</MeterValue>
-			</div>
+		<Meter className="max-w-80" value={75}>
+			<MeterLabel>Storage used</MeterLabel>
+			<MeterValue />
+			<MeterTrack>
+				<MeterIndicator />
+			</MeterTrack>
 		</Meter>
 	);
 }
