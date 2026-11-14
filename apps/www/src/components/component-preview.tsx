@@ -11,12 +11,14 @@ interface ComponentPreviewProps extends React.HTMLAttributes<HTMLDivElement> {
 	name: string;
 	showReload?: boolean;
 	className?: string;
+	previewClassName?: string;
 }
 
 export const ComponentPreview = ({
 	name,
 	showReload = false,
 	className,
+	previewClassName,
 }: ComponentPreviewProps) => {
 	const demo = getDemo(name);
 
@@ -30,7 +32,12 @@ export const ComponentPreview = ({
 
 	return (
 		<div className={cn("mt-4 overflow-hidden rounded-xl border", className)}>
-			<div className="relative flex min-h-[200px] items-center justify-center p-10">
+			<div
+				className={cn(
+					"relative flex min-h-[200px] items-center justify-center p-10",
+					previewClassName,
+				)}
+			>
 				<DemoRenderer path={demo.path} showReload={showReload} />
 			</div>
 
