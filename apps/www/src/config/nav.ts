@@ -11,6 +11,10 @@ export const navConfig: NavConfig = {
 			href: "/docs/getting-started",
 		},
 		{
+			title: "Forms",
+			href: "/docs/forms",
+		},
+		{
 			title: "Components",
 			href: "/docs/components",
 		},

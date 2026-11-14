@@ -194,6 +194,10 @@ const DocPage = async ({ params }: DocPageProps) => {
 	);
 };
 
+export function generateStaticParams() {
+	return source.generateParams();
+}
+
 export const dynamicParams = false;
 
 export default DocPage;

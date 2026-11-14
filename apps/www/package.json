@@ -41,6 +41,7 @@
 		"@hookform/resolvers": "^5.9.2",
 		"@openpanel/nextjs": "^1.5.4",
 		"@tailwindcss/postcss": "^4.2.4",
+		"@tanstack/react-form": "^1.28.5",
 		"@tanstack/react-virtual": "^3.13.12",
 		"@types/mdx": "^2.0.13",
 		"@vercel/analytics": "^1.4.1",
