@@ -5,8 +5,8 @@ description: Displays a top-level bar with expandable menus for easy access.
 <ComponentLinks
 	links={[
 		{
-			label: "Docs",
-			href: "https://base-ui.com/react/components/menubar",
+			label: "API Reference",
+			href: "https://base-ui.com/react/components/menubar#api-reference",
 		},
 	]}
 />
@@ -37,18 +37,18 @@ npx shadcn@latest add @9ui/menubar
 import {
 	Menubar,
 	MenubarCheckboxItem,
-	MenubarContent,
 	MenubarGroup,
+	MenubarGroupLabel,
 	MenubarItem,
-	MenubarLabel,
+	MenubarLinkItem,
 	MenubarMenu,
-	MenubarPortal,
+	MenubarPopup,
 	MenubarRadioGroup,
 	MenubarRadioItem,
 	MenubarSeparator,
 	MenubarShortcut,
 	MenubarSub,
-	MenubarSubContent,
+	MenubarSubPopup,
 	MenubarSubTrigger,
 	MenubarTrigger,
 } from "@/components/ui/menubar"
@@ -58,20 +58,54 @@ import {
 <Menubar>
 	<MenubarMenu>
 		<MenubarTrigger />
-		<MenubarContent>
-			<MenubarItem>
-				<MenubarShortcut />
-			</MenubarItem>
+		<MenubarPopup>
+			<MenubarGroup>
+				<MenubarGroupLabel />
+				<MenubarItem>
+					<MenubarShortcut />
+				</MenubarItem>
+				<MenubarLinkItem />
+			</MenubarGroup>
 			<MenubarSeparator />
 			<MenubarCheckboxItem />
-			<MenubarSub>
-				<MenubarSubTrigger />
-				<MenubarSubContent>{/* ... */}</MenubarSubContent>
-			</MenubarSub>
 			<MenubarRadioGroup>
 				<MenubarRadioItem />
 			</MenubarRadioGroup>
-		</MenubarContent>
+			<MenubarSub>
+				<MenubarSubTrigger />
+				<MenubarSubPopup>
+					<MenubarItem />
+				</MenubarSubPopup>
+			</MenubarSub>
+		</MenubarPopup>
 	</MenubarMenu>
 </Menubar>
 ```
+
+The parts inside `MenubarPopup` work like the ones in [Menu](/docs/components/menu).
+
+## Examples
+
+### With Icons
+
+Place an icon before the item text.
+
+<ComponentPreview name="menubar-icons-demo" />
+
+### Link
+
+Use `MenubarLinkItem` for items that go to another page. It renders an `<a>`.
+
+<ComponentPreview name="menubar-link-demo" />
+
+### Disabled
+
+To disable one menu, set `disabled` on its `MenubarTrigger`. To disable the whole bar, set `disabled` on `Menubar`.
+
+<ComponentPreview name="menubar-disabled-demo" />
+
+### Vertical
+
+To stack the triggers, set `orientation="vertical"` on `Menubar`.
+
+<ComponentPreview name="menubar-vertical-demo" />

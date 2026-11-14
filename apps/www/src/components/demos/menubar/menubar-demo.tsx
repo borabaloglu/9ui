@@ -1,15 +1,15 @@
 import {
 	Menubar,
 	MenubarCheckboxItem,
-	MenubarContent,
 	MenubarItem,
 	MenubarMenu,
+	MenubarPopup,
 	MenubarRadioGroup,
 	MenubarRadioItem,
 	MenubarSeparator,
 	MenubarShortcut,
 	MenubarSub,
-	MenubarSubContent,
+	MenubarSubPopup,
 	MenubarSubTrigger,
 	MenubarTrigger,
 } from "@/components/ui/menubar";
@@ -19,7 +19,7 @@ export default function MenubarDemo() {
 		<Menubar>
 			<MenubarMenu>
 				<MenubarTrigger>File</MenubarTrigger>
-				<MenubarContent>
+				<MenubarPopup className="min-w-48">
 					<MenubarItem>
 						New File
 						<MenubarShortcut>⌘N</MenubarShortcut>
@@ -37,7 +37,7 @@ export default function MenubarDemo() {
 						Open Folder
 						<MenubarShortcut>⇧⌘O</MenubarShortcut>
 					</MenubarItem>
-					<MenubarItem>Open Recent</MenubarItem>
+					<MenubarItem disabled>Open Recent</MenubarItem>
 					<MenubarSeparator />
 					<MenubarItem>
 						Save
@@ -52,11 +52,11 @@ export default function MenubarDemo() {
 						Close Window
 						<MenubarShortcut>⌘W</MenubarShortcut>
 					</MenubarItem>
-				</MenubarContent>
+				</MenubarPopup>
 			</MenubarMenu>
 			<MenubarMenu>
 				<MenubarTrigger>Edit</MenubarTrigger>
-				<MenubarContent>
+				<MenubarPopup className="min-w-40">
 					<MenubarItem>
 						Undo
 						<MenubarShortcut>⌘Z</MenubarShortcut>
@@ -87,20 +87,20 @@ export default function MenubarDemo() {
 						Replace
 						<MenubarShortcut>⌥⌘F</MenubarShortcut>
 					</MenubarItem>
-				</MenubarContent>
+				</MenubarPopup>
 			</MenubarMenu>
 			<MenubarMenu>
 				<MenubarTrigger>View</MenubarTrigger>
-				<MenubarContent>
+				<MenubarPopup className="min-w-56">
 					<MenubarSub>
 						<MenubarSubTrigger>Appearance</MenubarSubTrigger>
-						<MenubarSubContent>
-							<MenubarRadioGroup>
+						<MenubarSubPopup>
+							<MenubarRadioGroup defaultValue="system">
 								<MenubarRadioItem value="system">System</MenubarRadioItem>
 								<MenubarRadioItem value="light">Light</MenubarRadioItem>
 								<MenubarRadioItem value="dark">Dark</MenubarRadioItem>
 							</MenubarRadioGroup>
-						</MenubarSubContent>
+						</MenubarSubPopup>
 					</MenubarSub>
 					<MenubarSeparator />
 					<MenubarItem>
@@ -126,18 +126,18 @@ export default function MenubarDemo() {
 						<MenubarShortcut>⌘0</MenubarShortcut>
 					</MenubarItem>
 					<MenubarSeparator />
-					<MenubarCheckboxItem>Show Toolbar</MenubarCheckboxItem>
+					<MenubarCheckboxItem defaultChecked>Show Toolbar</MenubarCheckboxItem>
 					<MenubarCheckboxItem>Show Status Bar</MenubarCheckboxItem>
-				</MenubarContent>
+				</MenubarPopup>
 			</MenubarMenu>
 			<MenubarMenu>
 				<MenubarTrigger>Help</MenubarTrigger>
-				<MenubarContent>
+				<MenubarPopup className="min-w-48">
 					<MenubarItem>Getting Started</MenubarItem>
 					<MenubarItem>Report Issue</MenubarItem>
 					<MenubarItem>Check for Updates</MenubarItem>
 					<MenubarItem>Contact the Team</MenubarItem>
-				</MenubarContent>
+				</MenubarPopup>
 			</MenubarMenu>
 		</Menubar>
 	);
