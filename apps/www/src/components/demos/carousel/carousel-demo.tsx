@@ -11,13 +11,13 @@ const slides = [1, 2, 3, 4, 5];
 
 export default function CarouselDemo() {
 	return (
-		<div className="w-60 sm:w-80 lg:w-96">
+		<div className="w-full max-w-sm px-12">
 			<Carousel>
 				<CarouselContent>
 					{slides.map((slide) => (
 						<CarouselItem key={slide}>
-							<AspectRatio ratio={16 / 9} className="bg-card rounded-lg border">
-								<div className="text-foreground flex size-full items-center justify-center text-xl font-semibold">
+							<AspectRatio ratio={1} className="bg-card rounded-xl border">
+								<div className="text-foreground flex size-full items-center justify-center text-xl">
 									{slide}
 								</div>
 							</AspectRatio>
