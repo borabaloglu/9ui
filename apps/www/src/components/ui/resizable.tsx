@@ -1,28 +1,23 @@
-import type * as React from "react";
-import { GripVerticalIcon } from "lucide-react";
 import * as BaseResizable from "react-resizable-panels";
 
 import { cn } from "@/lib/utils";
 
 function ResizablePanelGroup({
 	className,
+	style,
 	...props
-}: React.ComponentProps<typeof BaseResizable.Group>) {
+}: BaseResizable.GroupProps) {
 	return (
 		<BaseResizable.Group
 			data-slot="resizable-panel-group"
-			className={cn(
-				"flex h-full w-full aria-[orientation=vertical]:flex-col",
-				className,
-			)}
+			className={cn("h-full w-full", className)}
+			style={{ height: undefined, width: undefined, ...style }}
 			{...props}
 		/>
 	);
 }
 
-function ResizablePanel({
-	...props
-}: React.ComponentProps<typeof BaseResizable.Panel>) {
+function ResizablePanel(props: BaseResizable.PanelProps) {
 	return <BaseResizable.Panel data-slot="resizable-panel" {...props} />;
 }
 
@@ -30,22 +25,23 @@ function ResizableHandle({
 	withHandle,
 	className,
 	...props
-}: React.ComponentProps<typeof BaseResizable.Separator> & {
+}: BaseResizable.SeparatorProps & {
 	withHandle?: boolean;
 }) {
 	return (
 		<BaseResizable.Separator
 			data-slot="resizable-handle"
 			className={cn(
-				"bg-border focus-visible:ring-ring/50 focus-visible:ring-offset-ring relative flex w-px items-center justify-center after:absolute after:inset-y-0 after:left-1/2 after:w-1 after:-translate-x-1/2 focus-visible:ring-1 focus-visible:ring-offset-1 focus-visible:outline-hidden aria-[orientation=horizontal]:h-px aria-[orientation=horizontal]:w-full aria-[orientation=horizontal]:after:left-0 aria-[orientation=horizontal]:after:h-1 aria-[orientation=horizontal]:after:w-full aria-[orientation=horizontal]:after:translate-x-0 aria-[orientation=horizontal]:after:-translate-y-1/2 [&[aria-orientation=horizontal]>div]:rotate-90",
+				"group/resizable-handle bg-border focus-visible:bg-ring focus-visible:ring-ring/50 data-[separator=active]:bg-ring data-[separator=active]:ring-ring data-[separator=hover]:bg-ring relative flex w-px items-center justify-center transition-[background-color,box-shadow] duration-150 outline-none focus-visible:ring-3 aria-[orientation=horizontal]:h-px aria-[orientation=horizontal]:w-full data-[separator=active]:ring-1",
 				className,
 			)}
 			{...props}
 		>
 			{withHandle && (
-				<div className="bg-border z-10 flex h-4 w-3 items-center justify-center rounded-xs border">
-					<GripVerticalIcon className="size-2.5" />
-				</div>
+				<div
+					data-slot="resizable-handle-grip"
+					className="bg-border group-focus-visible/resizable-handle:bg-ring group-data-[separator=active]/resizable-handle:bg-ring group-data-[separator=hover]/resizable-handle:bg-ring z-10 h-6 w-1 shrink-0 rounded-full transition-colors duration-150 group-aria-[orientation=horizontal]/resizable-handle:h-1 group-aria-[orientation=horizontal]/resizable-handle:w-6 any-pointer-coarse:h-8 any-pointer-coarse:w-1.5 any-pointer-coarse:group-aria-[orientation=horizontal]/resizable-handle:h-1.5 any-pointer-coarse:group-aria-[orientation=horizontal]/resizable-handle:w-8"
+				/>
 			)}
 		</BaseResizable.Separator>
 	);

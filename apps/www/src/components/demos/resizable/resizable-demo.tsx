@@ -6,27 +6,24 @@ import {
 
 export default function ResizableDemo() {
 	return (
-		<ResizablePanelGroup
-			orientation="horizontal"
-			className="max-w-md rounded-lg border md:min-w-[450px]"
-		>
+		<ResizablePanelGroup className="h-60 max-w-md rounded-lg border">
 			<ResizablePanel defaultSize="50%">
-				<div className="flex h-[200px] items-center justify-center p-6">
-					<span className="font-semibold">One</span>
+				<div className="flex h-full items-center justify-center p-6">
+					<span className="text-sm font-medium">One</span>
 				</div>
 			</ResizablePanel>
-			<ResizableHandle />
+			<ResizableHandle withHandle />
 			<ResizablePanel defaultSize="50%">
 				<ResizablePanelGroup orientation="vertical">
 					<ResizablePanel defaultSize="25%">
 						<div className="flex h-full items-center justify-center p-6">
-							<span className="font-semibold">Two</span>
+							<span className="text-sm font-medium">Two</span>
 						</div>
 					</ResizablePanel>
-					<ResizableHandle />
+					<ResizableHandle withHandle />
 					<ResizablePanel defaultSize="75%">
 						<div className="flex h-full items-center justify-center p-6">
-							<span className="font-semibold">Three</span>
+							<span className="text-sm font-medium">Three</span>
 						</div>
 					</ResizablePanel>
 				</ResizablePanelGroup>

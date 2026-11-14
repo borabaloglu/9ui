@@ -1,11 +1,12 @@
 ---
 title: Resizable
-description: A group of panels with accessible, resizable layouts.
+description: A group of panels that can be resized by dragging the handle between them.
 ---
+
 <ComponentLinks
 	links={[
 		{
-			label: "Docs",
+			label: "API Reference",
 			href: "https://react-resizable-panels.vercel.app/",
 		},
 	]}
@@ -23,6 +24,12 @@ npx shadcn@latest add @9ui/resizable
 </div>
 
 <Steps>
+
+<Step>Install the following dependencies:</Step>
+
+```bash
+npm install react-resizable-panels
+```
 
 <Step>Copy and paste the following code into your project.</Step>
 
@@ -49,14 +56,20 @@ import {
 </ResizablePanelGroup>
 ```
 
+To set the starting size of a panel, set `defaultSize` on `ResizablePanel`.
+
+To limit how far a panel can be resized, set `minSize` and `maxSize` on `ResizablePanel`.
+
 ## Examples
 
 ### Vertical
 
+Set `orientation` to `vertical` to stack the panels.
+
 <ComponentPreview name="resizable-vertical-demo" />
 
----
+### Handle
 
-### With handle
+Set `withHandle` on `ResizableHandle` to show a grip.
 
-<ComponentPreview name="resizable-with-handle-demo" />
+<ComponentPreview name="resizable-handle-demo" />
