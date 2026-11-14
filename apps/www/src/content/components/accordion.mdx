@@ -6,13 +6,13 @@ description: A collapsible section to show or hide content.
 <ComponentLinks
 	links={[
 		{
-			label: "Docs",
-			href: "https://base-ui.com/react/components/accordion",
+			label: "API Reference",
+			href: "https://base-ui.com/react/components/accordion#api-reference",
 		},
 	]}
 />
 
-<ComponentPreview name="accordion-demo" />
+<ComponentPreview name="accordion-demo" previewClassName="min-h-75 items-start" />
 
 ## Installation
 
@@ -37,8 +37,8 @@ npx shadcn@latest add @9ui/accordion
 ```tsx title="Imports"
 import {
 	Accordion,
-	AccordionContent,
 	AccordionItem,
+	AccordionPanel,
 	AccordionTrigger,
 } from "@/components/ui/accordion"
 ```
@@ -47,11 +47,25 @@ import {
 <Accordion>
 	<AccordionItem>
 		<AccordionTrigger />
-		<AccordionContent />
+		<AccordionPanel />
 	</AccordionItem>
 </Accordion>
 ```
 
+To open a panel by default, set `defaultValue` on `Accordion` to the `value` of its `AccordionItem`.
+
+To let the browser's find in page open closed panels, set `hiddenUntilFound` on `Accordion`.
+
+## Examples
+
 ### Multiple
 
-<ComponentPreview name="accordion-multiple-demo" />
+Set `multiple` to keep more than one panel open at the same time.
+
+<ComponentPreview name="accordion-multiple-demo" previewClassName="min-h-110 items-start" />
+
+### Disabled
+
+Set `disabled` on an `AccordionItem` to prevent it from opening.
+
+<ComponentPreview name="accordion-disabled-demo" previewClassName="min-h-75 items-start" />

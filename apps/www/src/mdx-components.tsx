@@ -15,8 +15,8 @@ import { InstallationTabs } from "@/components/installation-tabs";
 import { ThemeToggle } from "@/components/theme-toggle";
 import {
 	Accordion,
-	AccordionContent,
 	AccordionItem,
+	AccordionPanel,
 	AccordionTrigger,
 } from "@/components/ui/accordion";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
@@ -254,7 +254,7 @@ const components: MDXComponents = {
 	Accordion,
 	AccordionTrigger,
 	AccordionItem,
-	AccordionContent,
+	AccordionPanel,
 	AlertTriangleIcon,
 	Alert,
 	AlertTitle,
