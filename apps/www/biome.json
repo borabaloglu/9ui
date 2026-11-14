@@ -119,6 +119,7 @@
 			"includes": [
 				"src/components/ui/combobox.tsx",
 				"src/components/ui/field.tsx",
+				"src/components/ui/progress.tsx",
 				"src/components/ui/select.tsx",
 				"src/components/ui/slider.tsx"
 			],

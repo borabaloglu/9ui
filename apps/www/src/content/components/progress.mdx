@@ -5,8 +5,8 @@ description: Displays a progress bar with an optional label.
 <ComponentLinks
 	links={[
 		{
-			label: "Docs",
-			href: "https://base-ui.com/react/components/progress",
+			label: "API Reference",
+			href: "https://base-ui.com/react/components/progress#api-reference",
 		},
 	]}
 />
@@ -28,23 +28,62 @@ npx shadcn@latest add @9ui/progress
 
 <ComponentSource name="progress" />
 
+<Step>Add the keyframes to your CSS.</Step>
+
+```css title="globals.css"
+@keyframes progress-indeterminate {
+	from {
+		translate: calc(-100% * var(--progress-direction, 1));
+	}
+	to {
+		translate: calc(250% * var(--progress-direction, 1));
+	}
+}
+```
+
 </Steps>
 </ComponentInstallation>
 
 ## Usage
 
 ```tsx title="Imports"
-import { Progress, ProgressValue } from "@/components/ui/progress"
+import {
+	Progress,
+	ProgressIndicator,
+	ProgressLabel,
+	ProgressTrack,
+	ProgressValue,
+} from "@/components/ui/progress"
 ```
 
 ```tsx title="Anatomy"
 <Progress>
+	<ProgressLabel />
 	<ProgressValue />
+	<ProgressTrack>
+		<ProgressIndicator />
+	</ProgressTrack>
 </Progress>
 ```
 
+Give every progress bar a name: add a `ProgressLabel`, or set `aria-label` on `Progress` when there is no visible label.
+
 ## Examples
 
-### With Value
+### Without Label
 
-<ComponentPreview name="progress-with-value-demo" showReload={true} />
+Leave out `ProgressLabel` and `ProgressValue` to show only the bar.
+
+<ComponentPreview name="progress-without-label-demo" showReload={true} />
+
+### Formatted Value
+
+Pass a function to `ProgressValue` to show the value in your own format.
+
+<ComponentPreview name="progress-formatted-value-demo" showReload={true} />
+
+### Indeterminate
+
+Set `value={null}` when the amount of progress is unknown.
+
+<ComponentPreview name="progress-indeterminate-demo" />
