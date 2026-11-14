@@ -34,11 +34,17 @@ npx shadcn@latest add @9ui/toggle-group
 ## Usage
 
 ```tsx title="Imports"
-import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group"
+import {
+	ToggleGroup,
+	ToggleGroupItem,
+	ToggleGroupSeparator,
+} from "@/components/ui/toggle-group"
 ```
 
 ```tsx title="Anatomy"
 <ToggleGroup>
+	<ToggleGroupItem />
+	<ToggleGroupSeparator />
 	<ToggleGroupItem />
 </ToggleGroup>
 ```
@@ -70,6 +76,12 @@ Set `size` on `ToggleGroup` to `sm` or `lg` to change the size of every item.
 To change the gap between items, set `spacing` on `ToggleGroup`. Set `spacing={0}` to join them.
 
 <ComponentPreview name="toggle-group-spacing-demo" />
+
+### Separator
+
+To divide the items, add `ToggleGroupSeparator` between them.
+
+<ComponentPreview name="toggle-group-separator-demo" />
 
 ### Vertical
 

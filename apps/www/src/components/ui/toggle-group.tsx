@@ -5,6 +5,7 @@ import { Toggle as BaseToggle } from "@base-ui/react/toggle";
 import { ToggleGroup as BaseToggleGroup } from "@base-ui/react/toggle-group";
 import type { VariantProps } from "class-variance-authority";
 
+import { Separator } from "@/components/ui/separator";
 import { toggleVariants } from "@/components/ui/toggle";
 
 import { cn } from "@/lib/utils";
@@ -83,7 +84,7 @@ function ToggleGroupItem({
 				vertical
 					? "any-pointer-coarse:after:min-h-0"
 					: "any-pointer-coarse:after:min-w-0",
-				joined && "motion-safe:active:scale-100",
+				joined && "active:bg-accent motion-safe:active:scale-100",
 				joined &&
 					(vertical
 						? "not-first:rounded-t-none not-first:border-t-0 not-last:rounded-b-none not-first:before:rounded-t-none not-last:before:rounded-b-none not-dark:not-last:before:hidden dark:not-first:before:hidden"
@@ -95,4 +96,20 @@ function ToggleGroupItem({
 	);
 }
 
-export { ToggleGroup, ToggleGroupItem };
+function ToggleGroupSeparator({
+	className,
+	...props
+}: Omit<React.ComponentProps<typeof Separator>, "orientation">) {
+	const { vertical } = React.useContext(ToggleGroupContext);
+
+	return (
+		<Separator
+			data-slot="toggle-group-separator"
+			orientation={vertical ? "horizontal" : "vertical"}
+			className={cn(vertical ? "mx-1.5 w-auto" : "my-1.5", className)}
+			{...props}
+		/>
+	);
+}
+
+export { ToggleGroup, ToggleGroupItem, ToggleGroupSeparator };
