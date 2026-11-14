@@ -1,30 +1,49 @@
 import { Skeleton } from "@/components/ui/skeleton";
+import {
+	Table,
+	TableBody,
+	TableCell,
+	TableHead,
+	TableHeader,
+	TableRow,
+} from "@/components/ui/table";
 
 const rows = ["first", "second", "third", "fourth", "fifth"];
 
 export default function SkeletonTableDemo() {
 	return (
-		<div
-			className="w-full max-w-lg overflow-hidden rounded-xl border"
+		<Table
+			variant="card"
+			containerClassName="max-w-lg"
 			aria-busy="true"
+			aria-label="Loading members"
 		>
-			<div className="bg-muted/50 flex items-center gap-4 border-b px-4 py-3">
-				<Skeleton className="h-3.5 w-20" />
-				<Skeleton className="h-3.5 w-24 max-sm:hidden" />
-				<Skeleton className="h-3.5 w-16" />
-				<Skeleton className="ml-auto h-3.5 w-12" />
-			</div>
-			{rows.map((row) => (
-				<div
-					key={row}
-					className="flex items-center gap-4 border-b px-4 py-3 last:border-b-0"
-				>
-					<Skeleton className="h-3.5 w-20" />
-					<Skeleton className="h-3.5 w-24 max-sm:hidden" />
-					<Skeleton className="h-3.5 w-16" />
-					<Skeleton className="ml-auto h-3.5 w-12" />
-				</div>
-			))}
-		</div>
+			<TableHeader>
+				<TableRow>
+					<TableHead>Name</TableHead>
+					<TableHead className="max-sm:hidden">Email</TableHead>
+					<TableHead>Role</TableHead>
+					<TableHead className="text-end">Joined</TableHead>
+				</TableRow>
+			</TableHeader>
+			<TableBody>
+				{rows.map((row) => (
+					<TableRow key={row}>
+						<TableCell>
+							<Skeleton className="h-5 w-24" />
+						</TableCell>
+						<TableCell className="max-sm:hidden">
+							<Skeleton className="h-5 w-36" />
+						</TableCell>
+						<TableCell>
+							<Skeleton className="h-5 w-16" />
+						</TableCell>
+						<TableCell>
+							<Skeleton className="ms-auto h-5 w-20" />
+						</TableCell>
+					</TableRow>
+				))}
+			</TableBody>
+		</Table>
 	);
 }

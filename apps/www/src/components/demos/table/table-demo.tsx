@@ -1,58 +1,59 @@
+import { Badge } from "@/components/ui/badge";
 import {
 	Table,
 	TableBody,
-	TableCaption,
 	TableCell,
 	TableHead,
 	TableHeader,
 	TableRow,
 } from "@/components/ui/table";
 
-const movies = [
-	{ title: "The Shawshank Redemption", year: 1994, rating: 9.3 },
-	{ title: "The Godfather", year: 1972, rating: 9.2 },
-	{ title: "The Dark Knight", year: 2008, rating: 9.0 },
-	{ title: "The Godfather Part II", year: 1974, rating: 9.0 },
-	{ title: "12 Angry Men", year: 1957, rating: 9.0 },
-	{ title: "Schindler's List", year: 1993, rating: 9.0 },
-	{
-		title: "The Lord of the Rings: The Return of the King",
-		year: 2003,
-		rating: 9.0,
-	},
-	{ title: "Pulp Fiction", year: 1994, rating: 8.9 },
-	{
-		title: "The Lord of the Rings: The Fellowship of the Ring",
-		year: 2001,
-		rating: 8.8,
-	},
-	{ title: "Forrest Gump", year: 1994, rating: 8.8 },
-];
+const invoices = [
+	{ id: "INV-1042", customer: "Acme Inc.", status: "Paid", amount: 1250 },
+	{ id: "INV-1041", customer: "Globex", status: "Pending", amount: 480 },
+	{ id: "INV-1040", customer: "Initech", status: "Paid", amount: 2310.5 },
+	{ id: "INV-1039", customer: "Umbrella", status: "Overdue", amount: 925 },
+	{ id: "INV-1038", customer: "Hooli", status: "Paid", amount: 149.99 },
+] as const;
+
+const statusVariant = {
+	Paid: "success",
+	Pending: "warning",
+	Overdue: "danger",
+} as const;
+
+const currency = new Intl.NumberFormat("en-US", {
+	style: "currency",
+	currency: "USD",
+});
 
 export default function TableDemo() {
 	return (
-		<div className="w-full overflow-hidden rounded-lg border pb-2">
-			<Table>
-				<TableCaption>Top 10 Movies of All Time</TableCaption>
-				<TableHeader>
-					<TableRow>
-						<TableHead>Title</TableHead>
-						<TableHead className="w-20">Year</TableHead>
-						<TableHead className="w-20 text-right">IMDB</TableHead>
+		<Table variant="card">
+			<TableHeader>
+				<TableRow>
+					<TableHead>Invoice</TableHead>
+					<TableHead>Customer</TableHead>
+					<TableHead>Status</TableHead>
+					<TableHead className="text-end">Amount</TableHead>
+				</TableRow>
+			</TableHeader>
+			<TableBody>
+				{invoices.map((invoice) => (
+					<TableRow key={invoice.id}>
+						<TableCell className="font-medium">{invoice.id}</TableCell>
+						<TableCell>{invoice.customer}</TableCell>
+						<TableCell>
+							<Badge variant={statusVariant[invoice.status]} size="sm">
+								{invoice.status}
+							</Badge>
+						</TableCell>
+						<TableCell className="text-end">
+							{currency.format(invoice.amount)}
+						</TableCell>
 					</TableRow>
-				</TableHeader>
-				<TableBody>
-					{movies.map((movie) => (
-						<TableRow key={movie.title}>
-							<TableCell className="py-4 font-medium sm:py-0">
-								{movie.title}
-							</TableCell>
-							<TableCell>{movie.year}</TableCell>
-							<TableCell className="text-right">{movie.rating}</TableCell>
-						</TableRow>
-					))}
-				</TableBody>
-			</Table>
-		</div>
+				))}
+			</TableBody>
+		</Table>
 	);
 }

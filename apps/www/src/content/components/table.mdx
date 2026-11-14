@@ -29,7 +29,9 @@ npx shadcn@latest add @9ui/table
 import {
 	Table,
 	TableBody,
+	TableCaption,
 	TableCell,
+	TableFooter,
 	TableHead,
 	TableHeader,
 	TableRow,
@@ -49,5 +51,54 @@ import {
 			<TableCell />
 		</TableRow>
 	</TableBody>
+	<TableFooter>
+		<TableRow>
+			<TableCell />
+		</TableRow>
+	</TableFooter>
 </Table>
 ```
+
+## Examples
+
+### Default
+
+To render the table without a surface, leave out `variant`.
+
+<ComponentPreview name="table-default-demo" />
+
+### Size
+
+To make the rows more compact, set `size="sm"`.
+
+<ComponentPreview name="table-size-demo" />
+
+### Sticky Header
+
+To keep the header in view, set `sticky` on `TableHeader` and a max height with `containerClassName`.
+
+<ComponentPreview name="table-sticky-header-demo" />
+
+### Footer
+
+To show totals or a summary under the rows, add `TableFooter`.
+
+<ComponentPreview name="table-footer-demo" />
+
+### Caption
+
+To describe the table, add `TableCaption`.
+
+<ComponentPreview name="table-caption-demo" />
+
+### Row Actions
+
+To add actions to a row, put a `Menu` in the last cell.
+
+<ComponentPreview name="table-actions-demo" />
+
+### Selection
+
+To mark a row as selected, set `aria-selected` on `TableRow`.
+
+<ComponentPreview name="table-selection-demo" />
