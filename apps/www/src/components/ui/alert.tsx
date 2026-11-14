@@ -1,22 +1,21 @@
 import type * as React from "react";
+import { mergeProps } from "@base-ui/react/merge-props";
+import { useRender } from "@base-ui/react/use-render";
 import { cva, type VariantProps } from "class-variance-authority";
 
 import { cn } from "@/lib/utils";
 
 const alertVariants = cva(
-	"relative grid w-full grid-cols-[0_1fr] items-start gap-y-0.5 rounded-lg border px-4 py-3 text-sm has-[>svg]:grid-cols-[calc(var(--spacing)*4)_1fr] has-[>svg]:gap-x-3 [&>svg]:size-4 [&>svg]:translate-y-0.5 [&>svg]:text-current",
+	"group/alert text-card-foreground relative grid w-full grid-cols-1 items-start gap-x-2 gap-y-0.5 rounded-xl border px-3.5 py-3 text-sm shadow-xs not-dark:bg-clip-padding before:pointer-events-none before:absolute before:inset-0 before:rounded-[calc(var(--radius-xl)-1px)] before:shadow-[0_1px_--theme(--color-black/6%)] has-[>svg]:grid-cols-[auto_1fr] sm:has-data-[slot=alert-action]:grid-cols-[1fr_auto] sm:has-[>svg]:has-data-[slot=alert-action]:grid-cols-[auto_1fr_auto] dark:bg-clip-border dark:before:shadow-[0_-1px_--theme(--color-white/8%)] *:[svg]:h-lh *:[svg]:shrink-0 *:[svg:not([class*='size-'])]:w-4",
 	{
 		variants: {
 			variant: {
-				default:
-					"bg-card text-card-foreground [&_*[data-slot=alert-description]]:text-muted-foreground",
-				warning:
-					"border-warning/20 bg-warning/5 text-warning [&_*[data-slot=alert-description]]:text-warning/70",
+				default: "bg-card",
+				warning: "border-warning/20 bg-warning/5 *:[svg]:text-warning",
 				danger:
-					"border-destructive/20 bg-destructive/5 text-destructive [&_*[data-slot=alert-description]]:text-destructive/70",
-				info: "border-info/20 bg-info/5 text-info [&_*[data-slot=alert-description]]:text-info/70",
-				success:
-					"border-success/20 bg-success/5 text-success [&_*[data-slot=alert-description]]:text-success/70",
+					"border-destructive/20 bg-destructive/5 *:[svg]:text-destructive",
+				info: "border-info/20 bg-info/5 *:[svg]:text-info",
+				success: "border-success/20 bg-success/5 *:[svg]:text-success",
 			},
 		},
 		defaultVariants: {
@@ -27,12 +26,13 @@ const alertVariants = cva(
 
 function Alert({
 	className,
-	variant,
+	variant = "default",
 	...props
 }: React.ComponentProps<"div"> & VariantProps<typeof alertVariants>) {
 	return (
 		<div
 			data-slot="alert"
+			data-variant={variant}
 			role="alert"
 			className={cn(alertVariants({ variant }), className)}
 			{...props}
@@ -40,17 +40,27 @@ function Alert({
 	);
 }
 
-function AlertTitle({ className, ...props }: React.ComponentProps<"h4">) {
-	return (
-		<h4
-			data-slot="alert-title"
-			className={cn(
-				"col-start-2 min-h-4 font-medium tracking-tight",
-				className,
-			)}
-			{...props}
-		/>
-	);
+function AlertTitle({
+	className,
+	render,
+	...props
+}: useRender.ComponentProps<"div">) {
+	return useRender({
+		defaultTagName: "div",
+		props: mergeProps<"div">(
+			{
+				className: cn(
+					"col-start-1 font-medium group-has-[>svg]/alert:col-start-2",
+					className,
+				),
+			},
+			props,
+		),
+		render,
+		state: {
+			slot: "alert-title",
+		},
+	});
 }
 
 function AlertDescription({
@@ -61,7 +71,7 @@ function AlertDescription({
 		<div
 			data-slot="alert-description"
 			className={cn(
-				"col-start-2 grid justify-items-start gap-1 text-sm [&_p]:leading-relaxed",
+				"text-muted-foreground col-start-1 grid justify-items-start gap-1 text-pretty group-has-[>svg]/alert:col-start-2 [&_a]:underline [&_a]:underline-offset-3 [&_p]:leading-relaxed",
 				className,
 			)}
 			{...props}
@@ -69,4 +79,17 @@ function AlertDescription({
 	);
 }
 
-export { Alert, AlertDescription, AlertTitle };
+function AlertAction({ className, ...props }: React.ComponentProps<"div">) {
+	return (
+		<div
+			data-slot="alert-action"
+			className={cn(
+				"col-start-1 mt-2 flex gap-1 group-has-[>svg]/alert:col-start-2 sm:col-start-2 sm:row-start-1 sm:row-end-3 sm:mt-0 sm:self-center sm:group-has-[>svg]/alert:col-start-3",
+				className,
+			)}
+			{...props}
+		/>
+	);
+}
+
+export { Alert, AlertAction, AlertDescription, AlertTitle };

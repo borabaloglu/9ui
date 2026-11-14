@@ -4,7 +4,7 @@ import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 
 export default function AlertSuccessDemo() {
 	return (
-		<Alert variant="success">
+		<Alert className="max-w-lg" variant="success">
 			<CircleCheckIcon />
 			<AlertTitle>Your account has been created</AlertTitle>
 			<AlertDescription>
