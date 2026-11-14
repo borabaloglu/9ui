@@ -4,21 +4,20 @@ import {
 	TextAlignStartIcon,
 } from "lucide-react";
 
-import { Toggle } from "@/components/ui/toggle";
-import { ToggleGroup } from "@/components/ui/toggle-group";
+import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
 
 export default function ToggleGroupDemo() {
 	return (
-		<ToggleGroup>
-			<Toggle value="left">
+		<ToggleGroup defaultValue={["left"]} aria-label="Text alignment">
+			<ToggleGroupItem value="left" aria-label="Align left">
 				<TextAlignStartIcon />
-			</Toggle>
-			<Toggle value="center">
+			</ToggleGroupItem>
+			<ToggleGroupItem value="center" aria-label="Align center">
 				<TextAlignCenterIcon />
-			</Toggle>
-			<Toggle value="right">
+			</ToggleGroupItem>
+			<ToggleGroupItem value="right" aria-label="Align right">
 				<TextAlignEndIcon />
-			</Toggle>
+			</ToggleGroupItem>
 		</ToggleGroup>
 	);
 }

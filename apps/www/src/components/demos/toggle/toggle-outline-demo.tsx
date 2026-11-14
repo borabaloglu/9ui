@@ -1,11 +1,17 @@
-import { PinIcon } from "lucide-react";
+import { ItalicIcon } from "lucide-react";
 
 import { Toggle } from "@/components/ui/toggle";
 
 export default function ToggleOutlineDemo() {
 	return (
-		<Toggle aria-label="Pin" variant="outline">
-			<PinIcon />
-		</Toggle>
+		<div className="flex items-center gap-2">
+			<Toggle variant="outline" aria-label="Italic">
+				<ItalicIcon />
+			</Toggle>
+			<Toggle variant="outline">
+				<ItalicIcon />
+				Italic
+			</Toggle>
+		</div>
 	);
 }

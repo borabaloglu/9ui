@@ -751,7 +751,7 @@
 			"name": "toggle-group",
 			"type": "registry:ui",
 			"dependencies": [],
-			"registryDependencies": [],
+			"registryDependencies": ["@9ui/separator", "@9ui/toggle"],
 			"files": [
 				{
 					"path": "src/components/ui/toggle-group.tsx",

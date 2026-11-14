@@ -1,20 +1,24 @@
 import { BoldIcon, ItalicIcon, UnderlineIcon } from "lucide-react";
 
-import { Toggle } from "@/components/ui/toggle";
-import { ToggleGroup } from "@/components/ui/toggle-group";
+import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
 
 export default function ToggleGroupMultipleDemo() {
 	return (
-		<ToggleGroup multiple>
-			<Toggle value="bold">
+		<ToggleGroup
+			variant="outline"
+			multiple
+			defaultValue={["bold", "italic"]}
+			aria-label="Text formatting"
+		>
+			<ToggleGroupItem value="bold" aria-label="Bold">
 				<BoldIcon />
-			</Toggle>
-			<Toggle value="italic">
+			</ToggleGroupItem>
+			<ToggleGroupItem value="italic" aria-label="Italic">
 				<ItalicIcon />
-			</Toggle>
-			<Toggle value="underline">
+			</ToggleGroupItem>
+			<ToggleGroupItem value="underline" aria-label="Underline">
 				<UnderlineIcon />
-			</Toggle>
+			</ToggleGroupItem>
 		</ToggleGroup>
 	);
 }

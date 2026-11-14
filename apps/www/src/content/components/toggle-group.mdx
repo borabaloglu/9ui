@@ -5,8 +5,8 @@ description: A group of toggles for selecting single or multiple options.
 <ComponentLinks
 	links={[
 		{
-			label: "Docs",
-			href: "https://base-ui.com/react/components/toggle-group",
+			label: "API Reference",
+			href: "https://base-ui.com/react/components/toggle-group#api-reference",
 		},
 	]}
 />
@@ -34,18 +34,75 @@ npx shadcn@latest add @9ui/toggle-group
 ## Usage
 
 ```tsx title="Imports"
-import { Toggle } from "@/components/ui/toggle"
-import { ToggleGroup } from "@/components/ui/toggle-group"
+import {
+	ToggleGroup,
+	ToggleGroupItem,
+	ToggleGroupSeparator,
+} from "@/components/ui/toggle-group"
 ```
 
 ```tsx title="Anatomy"
 <ToggleGroup>
-	<Toggle />
+	<ToggleGroupItem />
+	<ToggleGroupSeparator />
+	<ToggleGroupItem />
 </ToggleGroup>
 ```
 
+Give the group an `aria-label`, and each icon-only item its own.
+
 ## Examples
+
+### Outline
+
+Set `variant="outline"` on `ToggleGroup` for bordered items that are joined together.
+
+<ComponentPreview name="toggle-group-outline-demo" />
 
 ### Multiple
 
+Set `multiple` to allow more than one pressed item.
+
 <ComponentPreview name="toggle-group-multiple-demo" />
+
+### Sizes
+
+Set `size` on `ToggleGroup` to `sm` or `lg` to change the size of every item.
+
+<ComponentPreview name="toggle-group-sizes-demo" />
+
+### Spacing
+
+To change the gap between items, set `spacing` on `ToggleGroup`. Set `spacing={0}` to join them.
+
+<ComponentPreview name="toggle-group-spacing-demo" />
+
+### Separator
+
+To divide the items, add `ToggleGroupSeparator` between them.
+
+<ComponentPreview name="toggle-group-separator-demo" />
+
+### Vertical
+
+Set `orientation="vertical"` to stack the items.
+
+<ComponentPreview name="toggle-group-vertical-demo" />
+
+### Disabled
+
+Set `disabled` on `ToggleGroup` to disable every item.
+
+<ComponentPreview name="toggle-group-disabled-demo" />
+
+### Disabled Item
+
+Set `disabled` on a `ToggleGroupItem` to disable only that item.
+
+<ComponentPreview name="toggle-group-disabled-item-demo" />
+
+### Tooltip
+
+To add a tooltip, render the item from `TooltipTrigger`.
+
+<ComponentPreview name="toggle-group-tooltip-demo" />

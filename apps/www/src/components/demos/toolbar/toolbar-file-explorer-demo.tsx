@@ -29,7 +29,7 @@ import {
 export default function ToolbarFileExplorerDemo() {
 	return (
 		<Toolbar>
-			<ToggleGroup className="border-none bg-transparent p-0">
+			<ToggleGroup spacing={1}>
 				<ToolbarButton
 					size="icon"
 					render={

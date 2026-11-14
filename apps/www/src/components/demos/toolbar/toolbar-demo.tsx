@@ -55,7 +55,7 @@ const models = [
 export default function ToolbarDemo() {
 	return (
 		<Toolbar>
-			<ToggleGroup className="border-none bg-transparent p-0" multiple>
+			<ToggleGroup spacing={1} multiple>
 				<ToolbarButton
 					size="icon"
 					render={
