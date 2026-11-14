@@ -246,7 +246,7 @@ function MembersDesign() {
 					>
 						<div className="flex items-center gap-3">
 							<Piece index={3 + row * 4} radius={20}>
-								<Avatar>
+								<Avatar size="lg">
 									<AvatarFallback className="text-sm">
 										{member.initials}
 									</AvatarFallback>
