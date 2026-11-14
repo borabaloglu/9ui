@@ -1,6 +1,6 @@
 ---
 title: Skeleton
-description: Displays a loading state for a component.
+description: A placeholder that shows while content loads.
 ---
 
 <ComponentPreview name="skeleton-demo" />
@@ -20,6 +20,20 @@ npx shadcn@latest add @9ui/skeleton
 
 <ComponentSource name="skeleton" />
 
+<Step>Add the animation to your CSS file.</Step>
+
+```css title="globals.css"
+@theme inline {
+	--animate-skeleton: skeleton 2s -1s infinite linear;
+
+	@keyframes skeleton {
+		to {
+			background-position: -200% 0;
+		}
+	}
+}
+```
+
 </Steps>
 </ComponentInstallation>
 
@@ -32,3 +46,29 @@ import { Skeleton } from "@/components/ui/skeleton"
 ```tsx title="Anatomy"
 <Skeleton />
 ```
+
+Set the size and shape with `className`. To tell screen readers the content is loading, set `aria-busy` on the container.
+
+## Examples
+
+### Loading
+
+To soften the swap, fade the content in when it replaces the skeleton.
+
+<ComponentPreview name="skeleton-loading-demo" showReload={true} />
+
+### Avatar
+
+<ComponentPreview name="skeleton-avatar-demo" />
+
+### Text
+
+<ComponentPreview name="skeleton-text-demo" />
+
+### Form
+
+<ComponentPreview name="skeleton-form-demo" />
+
+### Table
+
+<ComponentPreview name="skeleton-table-demo" />

@@ -154,6 +154,7 @@
 	--color-chart-4: var(--chart-4);
 	--color-chart-5: var(--chart-5);
 	--animate-blink: blink 1s infinite;
+	--animate-skeleton: skeleton 2s -1s infinite linear;
 	--font-sans: var(--font-inter);
 	--font-mono: var(--font-geist-mono);
 
@@ -164,6 +165,12 @@
 		}
 		50% {
 			opacity: 0;
+		}
+	}
+
+	@keyframes skeleton {
+		to {
+			background-position: -200% 0;
 		}
 	}
 }
