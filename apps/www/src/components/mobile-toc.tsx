@@ -7,7 +7,7 @@ import { createPortal } from "react-dom";
 
 import {
 	Collapsible,
-	CollapsibleContent,
+	CollapsiblePanel,
 	CollapsibleTrigger,
 } from "@/components/ui/collapsible";
 
@@ -105,7 +105,7 @@ export const MobileToc = ({ items }: MobileTocProps) => {
 			onOpenChange={setOpen}
 			className="bg-card absolute inset-x-0 top-0 z-20 text-sm"
 		>
-			<CollapsibleTrigger className="text-muted-foreground focus-visible:ring-ring/50 flex h-10 w-full cursor-pointer items-center gap-2.5 ps-5.5 pe-4.5 outline-none focus-visible:ring-3 focus-visible:ring-inset">
+			<CollapsibleTrigger className="text-muted-foreground focus-visible:ring-ring/50 flex h-10 w-full items-center gap-2.5 ps-5.5 pe-4.5 outline-none focus-visible:ring-3 focus-visible:ring-inset">
 				<svg
 					aria-hidden="true"
 					viewBox="0 0 16 16"
@@ -149,7 +149,7 @@ export const MobileToc = ({ items }: MobileTocProps) => {
 					)}
 				/>
 			</CollapsibleTrigger>
-			<CollapsibleContent className="transition-[height,opacity] ease-out data-ending-style:opacity-0 data-starting-style:opacity-0 motion-reduce:transition-none">
+			<CollapsiblePanel>
 				<nav
 					ref={navRef}
 					aria-label="On this page"
@@ -186,7 +186,7 @@ export const MobileToc = ({ items }: MobileTocProps) => {
 					aria-hidden
 					className="bg-background mx-2 h-4 rounded-t-2xl border border-b-0"
 				/>
-			</CollapsibleContent>
+			</CollapsiblePanel>
 		</Collapsible>,
 		slot,
 	);
