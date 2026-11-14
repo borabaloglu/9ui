@@ -41,33 +41,51 @@ import {
 <Pagination>
 	<PaginationContent>
 		<PaginationItem>
-			<PaginationPrevious href="#" />
+			<PaginationPrevious />
 		</PaginationItem>
 		<PaginationItem>
-			<PaginationLink href="#">1</PaginationLink>
+			<PaginationLink />
 		</PaginationItem>
 		<PaginationItem>
 			<PaginationEllipsis />
 		</PaginationItem>
 		<PaginationItem>
-			<PaginationNext href="#" />
+			<PaginationNext />
 		</PaginationItem>
 	</PaginationContent>
 </Pagination>
 ```
 
-## Pagination Link
+Set `active` on the `PaginationLink` of the current page.
 
-By default, the `PaginationLink` component renders an anchor (`<a>`) element.
+## Examples
 
-You can customize it to render a different element by passing a `render` prop.
+### Simple
 
-```tsx title="Using Next.js Link"
-<PaginationLink
-	render={(...props) => (
-		<Link href="#" {...props}>
-			Go to page 1
-		</Link>
-	)}
-/>
-```
+To show page numbers only, leave out `PaginationPrevious` and `PaginationNext`.
+
+<ComponentPreview name="pagination-simple-demo" />
+
+### Icons Only
+
+To hide the labels, set `text=""` and `size="icon"` on `PaginationPrevious` and `PaginationNext`.
+
+<ComponentPreview name="pagination-icons-only-demo" />
+
+### Size
+
+To change the size, set `size` on `PaginationPrevious`, `PaginationNext`, `PaginationLink` and `PaginationEllipsis`.
+
+<ComponentPreview name="pagination-size-demo" />
+
+### Disabled
+
+To disable `PaginationPrevious` or `PaginationNext`, set `aria-disabled` and leave out `href`.
+
+<ComponentPreview name="pagination-disabled-demo" />
+
+### Next.js Link
+
+To use a framework link, pass it to the `render` prop.
+
+<ComponentPreview name="pagination-next-link-demo" />
