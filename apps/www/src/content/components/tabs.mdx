@@ -5,8 +5,8 @@ description: Used to organize content into tabbed navigation.
 <ComponentLinks
 	links={[
 		{
-			label: "Docs",
-			href: "https://base-ui.com/react/components/tabs",
+			label: "API Reference",
+			href: "https://base-ui.com/react/components/tabs#api-reference",
 		},
 	]}
 />
@@ -28,32 +28,82 @@ npx shadcn@latest add @9ui/tabs
 
 <ComponentSource name="tabs" />
 
+<Step>Add the animations to your CSS file.</Step>
+
+```css title="globals.css"
+@keyframes tabs-fade-start {
+	from {
+		mask-position: calc(var(--spacing) * -6) 0, 0 0;
+	}
+	to {
+		mask-position: 0 0, 0 0;
+	}
+}
+
+@keyframes tabs-fade-end {
+	from {
+		mask-size: calc(100% + var(--spacing) * 6) 100%, 100% 100%;
+	}
+	to {
+		mask-size:
+			calc(100% + var(--spacing) * 6) 100%,
+			calc(100% + var(--spacing) * 6) 100%;
+	}
+}
+```
+
 </Steps>
 </ComponentInstallation>
 
 ## Usage
 
 ```tsx title="Imports"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import { Tabs, TabsList, TabsPanel, TabsTab } from "@/components/ui/tabs"
 ```
 
 ```tsx title="Anatomy"
 <Tabs>
 	<TabsList>
-		<TabsTrigger />
+		<TabsTab />
 	</TabsList>
-	<TabsContent />
+	<TabsPanel />
 </Tabs>
 ```
 
 ## Examples
 
-### Underlined
+### Line
 
-<ComponentPreview name="tabs-underline-demo" />
+Set `variant="line"` on `TabsList` for an underline instead of a filled tab.
 
----
+<ComponentPreview name="tabs-line-demo" />
+
+### Sizes
+
+Set `size` on `TabsList` to `sm` or `lg` to change the size of every tab.
+
+<ComponentPreview name="tabs-sizes-demo" />
+
+### Vertical
+
+Set `orientation="vertical"` on `Tabs` to stack the tabs beside the panel.
+
+<ComponentPreview name="tabs-vertical-demo" />
+
+### Vertical Line
+
+Set `orientation="vertical"` on `Tabs` and `variant="line"` on `TabsList` to combine them.
+
+<ComponentPreview name="tabs-vertical-line-demo" />
+
+### With Icon
+
+To add an icon, place it inside `TabsTab` before the label.
+
+<ComponentPreview name="tabs-with-icon-demo" />
 
 ### Disabled
+
+Set `disabled` on a `TabsTab` to disable it.
 
 <ComponentPreview name="tabs-disabled-demo" />

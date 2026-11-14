@@ -231,7 +231,7 @@ export function processTabs(node: any) {
 	const tabsContents: any[] = [];
 
 	for (const child of children) {
-		if (child.type === "mdxJsxFlowElement" && child.name === "TabsContent") {
+		if (child.type === "mdxJsxFlowElement" && child.name === "TabsPanel") {
 			tabsContents.push(child);
 		}
 	}

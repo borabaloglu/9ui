@@ -1,46 +1,61 @@
-import { Button } from "@/components/ui/button";
 import {
 	Card,
-	CardContent,
 	CardDescription,
-	CardFooter,
 	CardHeader,
 	CardTitle,
 } from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Tabs, TabsList, TabsPanel, TabsTab } from "@/components/ui/tabs";
 
 export default function TabsDisabledDemo() {
 	return (
-		<Tabs className="w-full max-w-96" defaultValue="login">
+		<Tabs className="w-full max-w-lg" defaultValue="workspace">
 			<TabsList>
-				<TabsTrigger value="login">Login</TabsTrigger>
-				<TabsTrigger value="signup" disabled>
-					Sign up
-				</TabsTrigger>
+				<TabsTab value="workspace">Workspace</TabsTab>
+				<TabsTab value="analytics">Analytics</TabsTab>
+				<TabsTab value="team">Team</TabsTab>
+				<TabsTab value="billing" disabled>
+					Billing
+				</TabsTab>
 			</TabsList>
-			<TabsContent value="login">
-				<Card>
+
+			<TabsPanel value="workspace">
+				<Card size="sm">
 					<CardHeader>
-						<CardTitle>Login</CardTitle>
-						<CardDescription>Login to your account to continue</CardDescription>
+						<CardTitle>Workspace</CardTitle>
+						<CardDescription>
+							Manage your workspace name, slug, and default settings for all
+							members. Changes apply across the workspace and take effect
+							immediately after saving.
+						</CardDescription>
 					</CardHeader>
-					<CardContent className="space-y-4">
-						<div className="flex flex-col gap-2">
-							<Label htmlFor="email">Email</Label>
-							<Input id="email" placeholder="Email" type="email" />
-						</div>
-						<div className="flex flex-col gap-2">
-							<Label htmlFor="password">Password</Label>
-							<Input id="password" placeholder="Password" type="password" />
-						</div>
-					</CardContent>
-					<CardFooter>
-						<Button className="w-full">Login</Button>
-					</CardFooter>
 				</Card>
-			</TabsContent>
+			</TabsPanel>
+
+			<TabsPanel value="analytics">
+				<Card size="sm">
+					<CardHeader>
+						<CardTitle>Analytics</CardTitle>
+						<CardDescription>
+							View page views, unique visitors, and session trends for your
+							workspace over time. Data is updated hourly and retained for 90
+							days on the current plan.
+						</CardDescription>
+					</CardHeader>
+				</Card>
+			</TabsPanel>
+
+			<TabsPanel value="team">
+				<Card size="sm">
+					<CardHeader>
+						<CardTitle>Team</CardTitle>
+						<CardDescription>
+							Invite members, assign roles, and manage access permissions across
+							your workspace. Owners can transfer ownership or remove any member
+							from the workspace at any time.
+						</CardDescription>
+					</CardHeader>
+				</Card>
+			</TabsPanel>
 		</Tabs>
 	);
 }
