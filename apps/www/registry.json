@@ -715,6 +715,14 @@
 			"type": "registry:ui",
 			"dependencies": ["sonner"],
 			"registryDependencies": ["@9ui/button", "@9ui/spinner"],
+			"css": {
+				"[data-sonner-toaster] [data-sonner-toast]:focus-visible": {
+					"border-color": "var(--ring)",
+					"outline": "2px solid transparent",
+					"outline-offset": "2px",
+					"box-shadow": "0 0 0 3px color-mix(in oklab, var(--ring) 50%, transparent), var(--tw-shadow, 0 0 #0000)"
+				}
+			},
 			"files": [
 				{
 					"path": "src/components/ui/sonner.tsx",

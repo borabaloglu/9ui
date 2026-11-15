@@ -17,7 +17,7 @@ function CollapsibleTrigger({
 		<BaseCollapsible.Trigger
 			data-slot="collapsible-trigger"
 			className={cn(
-				"cursor-pointer data-disabled:cursor-not-allowed",
+				"[:where(&:focus-visible)]:ring-ring/50 cursor-pointer outline-none focus-visible:ring-3 focus-visible:outline-hidden data-disabled:pointer-events-none data-disabled:opacity-50 [:where(&)]:rounded-sm",
 				className,
 			)}
 			{...props}
@@ -35,7 +35,7 @@ function CollapsiblePanel({
 		<BaseCollapsible.Panel
 			data-slot="collapsible-panel"
 			className={cn(
-				"ease-out-quint h-(--collapsible-panel-height) overflow-hidden transition-[height,opacity] duration-200 data-ending-style:h-0 data-ending-style:opacity-0 data-ending-style:duration-150 data-ending-style:ease-in-out data-starting-style:h-0 data-starting-style:opacity-0 motion-reduce:transition-opacity",
+				"ease-out-quint h-(--collapsible-panel-height) overflow-hidden transition-[height,opacity] duration-200 data-ending-style:h-0 data-ending-style:opacity-0 data-ending-style:duration-150 data-starting-style:h-0 data-starting-style:opacity-0 motion-reduce:transition-opacity",
 				className,
 			)}
 			{...props}

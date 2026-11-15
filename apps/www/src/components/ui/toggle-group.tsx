@@ -54,7 +54,7 @@ function ToggleGroup<Value extends string>({
 			}
 			className={cn(
 				"flex w-fit gap-[--spacing(var(--toggle-group-spacing))]",
-				vertical ? "flex-col items-stretch" : "items-center",
+				vertical ? "flex-col" : "items-center",
 				className,
 			)}
 			{...props}
@@ -78,13 +78,15 @@ function ToggleGroupItem({
 	return (
 		<BaseToggle
 			data-slot="toggle-group-item"
+			data-variant={variant}
+			data-size={size}
 			className={cn(
 				toggleVariants({ variant, size }),
 				"focus-visible:z-1",
 				vertical
 					? "any-pointer-coarse:after:min-h-0"
 					: "any-pointer-coarse:after:min-w-0",
-				joined && "active:bg-accent motion-safe:active:scale-100",
+				joined && "motion-safe:active:scale-100",
 				joined &&
 					(vertical
 						? "not-first:rounded-t-none not-first:border-t-0 not-last:rounded-b-none not-first:before:rounded-t-none not-last:before:rounded-b-none not-dark:not-last:before:hidden dark:not-first:before:hidden"
