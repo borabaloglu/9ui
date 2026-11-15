@@ -68,7 +68,7 @@ function Toaster({ className, style, toastOptions, ...props }: ToasterProps) {
 					actionButton: buttonVariants({ size: "xs" }),
 					cancelButton: buttonVariants({ variant: "outline", size: "xs" }),
 					closeButton:
-						"absolute -top-2 -left-2 flex size-5 cursor-pointer items-center justify-center rounded-full border bg-popover text-muted-foreground outline-none hover:text-foreground focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 [&_svg]:size-3",
+						"absolute -top-2 -start-2 z-1 flex size-5 cursor-pointer items-center justify-center rounded-full border bg-popover text-muted-foreground outline-none hover:text-foreground focus-visible:border-ring focus-visible:ring-3 focus-visible:outline-hidden focus-visible:ring-ring/50 motion-safe:active:scale-95 any-pointer-coarse:after:absolute any-pointer-coarse:after:-inset-3 [[data-expanded=false][data-front=false]>&]:pointer-events-none [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-3",
 					...toastOptions?.classNames,
 				},
 			}}

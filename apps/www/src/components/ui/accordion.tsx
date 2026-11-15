@@ -46,7 +46,7 @@ function AccordionTrigger({
 			<BaseAccordion.Trigger
 				data-slot="accordion-trigger"
 				className={cn(
-					"focus-visible:ring-ring/50 focus-visible:outline-ring not-data-disabled:active:text-foreground/70 flex flex-1 cursor-pointer items-start justify-between gap-4 rounded-lg py-4 text-left text-sm font-medium [-webkit-tap-highlight-color:transparent] not-data-disabled:hover:underline focus-visible:ring-3 focus-visible:outline-1 focus-visible:-outline-offset-1 data-disabled:cursor-not-allowed data-disabled:opacity-50",
+					"focus-visible:ring-ring/50 focus-visible:outline-ring not-data-disabled:active:text-foreground/70 flex flex-1 cursor-pointer items-start justify-between gap-4 rounded-lg py-4 text-start text-sm font-medium [-webkit-tap-highlight-color:transparent] not-data-disabled:hover:underline focus-visible:ring-3 focus-visible:outline-1 focus-visible:-outline-offset-1 data-disabled:cursor-not-allowed data-disabled:opacity-50",
 					className,
 				)}
 				{...props}
@@ -71,12 +71,12 @@ function AccordionPanel({
 	return (
 		<BaseAccordion.Panel
 			data-slot="accordion-panel"
-			className="text-muted-foreground ease-out-quint h-(--accordion-panel-height) overflow-hidden text-sm transition-[height] duration-200 data-ending-style:h-0 data-ending-style:duration-150 data-ending-style:ease-in-out data-starting-style:h-0 motion-reduce:transition-none"
+			className="text-muted-foreground ease-out-quint h-(--accordion-panel-height) overflow-hidden text-sm transition-[height] duration-200 data-ending-style:h-0 data-ending-style:duration-150 data-starting-style:h-0 motion-reduce:transition-none"
 			{...props}
 		>
 			<div
 				className={cn(
-					"[&_a]:hover:text-foreground ease-out-quint pb-4 transition-opacity duration-200 in-data-ending-style:opacity-0 in-data-ending-style:duration-150 in-data-ending-style:ease-in-out in-data-starting-style:opacity-0 [&_a]:underline [&_a]:underline-offset-3",
+					"[&_a]:hover:text-foreground ease-out-quint pb-4 transition-opacity duration-200 [&_a]:underline [&_a]:underline-offset-3 [[data-ending-style]>&]:opacity-0 [[data-ending-style]>&]:duration-150 [[data-starting-style]>&]:opacity-0",
 					className,
 				)}
 			>

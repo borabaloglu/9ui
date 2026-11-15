@@ -1,11 +1,7 @@
 import type * as React from "react";
 import { mergeProps } from "@base-ui/react/merge-props";
 import { useRender } from "@base-ui/react/use-render";
-import {
-	ChevronLeftIcon,
-	ChevronRightIcon,
-	MoreHorizontalIcon,
-} from "lucide-react";
+import { ChevronLeftIcon, ChevronRightIcon, EllipsisIcon } from "lucide-react";
 
 import { type Button, buttonVariants } from "@/components/ui/button";
 
@@ -62,7 +58,7 @@ function PaginationLink({
 					buttonVariants({ variant: active ? "outline" : "ghost", size }),
 					"tabular-nums aria-disabled:pointer-events-none aria-disabled:opacity-50",
 					active &&
-						"active:before:shadow-[0_1px_--theme(--color-black/6%)] dark:active:before:shadow-[0_-1px_--theme(--color-white/8%)] [&:is(:active,[data-disabled])]:shadow-xs motion-safe:[&:not([data-variant=link]):not([aria-haspopup])]:active:scale-100",
+						"[&:active]:bg-input dark:[&:active]:bg-input [&:active]:hover:bg-accent dark:[&:active]:hover:bg-accent/50 active:before:shadow-[0_1px_--theme(--color-black/6%)] dark:active:before:shadow-[0_-1px_--theme(--color-white/8%)] [&:is(:active,[data-disabled])]:shadow-xs motion-safe:[&:not([data-variant=link]):not([aria-haspopup=menu]):not([aria-haspopup=listbox]):not([role=combobox])]:active:scale-100",
 					className,
 				),
 			},
@@ -144,12 +140,12 @@ function PaginationEllipsis({
 			)}
 			{...props}
 		>
-			<MoreHorizontalIcon />
+			<EllipsisIcon />
 		</span>
 	);
 }
 
-export type { PaginationLinkProps };
+export type { PaginationLinkProps, PaginationStepProps };
 export {
 	Pagination,
 	PaginationContent,

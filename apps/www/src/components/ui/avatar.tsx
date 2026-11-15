@@ -141,7 +141,7 @@ function AvatarGroup({
 			data-slot="avatar-group"
 			className={cn(
 				"group/avatar-group flex w-fit *:not-first:-ms-(--avatar-group-overlap)",
-				"[--avatar-group-gap:2px] [--avatar-group-overlap:--spacing(2)] [--avatar-group-radius:calc(var(--avatar-group-size)/2)] [--avatar-group-size:--spacing(8)] has-data-[shape=square]:[--avatar-group-radius:var(--radius-lg)] has-data-[size=lg]:[--avatar-group-size:--spacing(10)] has-data-[size=sm]:[--avatar-group-size:--spacing(6)] has-data-[size=sm]:has-data-[shape=square]:[--avatar-group-radius:var(--radius-md)]",
+				"[--avatar-group-gap:2px] [--avatar-group-overlap:--spacing(2)] [--avatar-group-radius:calc(var(--avatar-group-size)/2)] [--avatar-group-size:--spacing(8)] has-data-[shape=square]:[--avatar-group-radius:var(--radius-lg)] has-[[data-slot=avatar][data-size=lg]]:[--avatar-group-size:--spacing(10)] has-[[data-slot=avatar][data-size=sm]]:[--avatar-group-size:--spacing(6)] has-[[data-slot=avatar][data-size=sm]]:has-data-[shape=square]:[--avatar-group-radius:var(--radius-md)]",
 				"[--cut-inner:calc(var(--cut-size)-var(--cut-radius)*2)] [--cut-radius:calc(var(--avatar-group-radius)+var(--avatar-group-gap))] [--cut-size:calc(var(--avatar-group-size)+var(--avatar-group-gap)*2)] [--cut-x:calc(var(--avatar-group-size)-var(--avatar-group-overlap)-var(--avatar-group-gap))] [--cut-y:calc(var(--avatar-group-gap)*-1)] rtl:[--cut-x:calc(var(--avatar-group-overlap)-var(--avatar-group-size)-var(--avatar-group-gap))]",
 				"*:not-last:mask-(--avatar-group-mask) *:not-last:[mask-composite:subtract,add,add,add,add,add,add] *:not-last:[mask-size:var(--avatar-group-mask-size)] *:not-last:[mask-position:var(--avatar-group-mask-position)] *:not-last:mask-no-repeat",
 				className,
@@ -162,8 +162,8 @@ function AvatarGroupOverflow({
 			className={cn(
 				"bg-muted text-muted-foreground after:border-border relative flex size-8 shrink-0 items-center justify-center rounded-full text-sm select-none after:pointer-events-none after:absolute after:inset-0 after:rounded-[inherit] after:border after:mix-blend-darken dark:after:mix-blend-lighten",
 				"group-has-data-[shape=square]/avatar-group:rounded-lg",
-				"group-has-data-[size=sm]/avatar-group:size-6 group-has-data-[size=sm]/avatar-group:text-xs group-has-data-[size=sm]/avatar-group:group-has-data-[shape=square]/avatar-group:rounded-md",
-				"group-has-data-[size=lg]/avatar-group:size-10 group-has-data-[size=lg]/avatar-group:text-base",
+				"group-has-[[data-slot=avatar][data-size=sm]]/avatar-group:size-6 group-has-[[data-slot=avatar][data-size=sm]]/avatar-group:text-xs group-has-[[data-slot=avatar][data-size=sm]]/avatar-group:group-has-data-[shape=square]/avatar-group:rounded-md",
+				"group-has-[[data-slot=avatar][data-size=lg]]/avatar-group:size-10 group-has-[[data-slot=avatar][data-size=lg]]/avatar-group:text-base",
 				className,
 			)}
 			{...props}

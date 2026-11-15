@@ -4,7 +4,7 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 
 const toggleVariants = cva(
-	"group/toggle text-foreground hover:bg-accent/50 hover:text-accent-foreground focus-visible:border-ring focus-visible:ring-ring/50 data-pressed:bg-accent data-pressed:text-accent-foreground relative inline-flex shrink-0 cursor-pointer items-center justify-center rounded-lg border border-transparent bg-clip-padding text-sm font-medium whitespace-nowrap transition-[color,background-color,border-color,box-shadow,scale] duration-150 ease-out outline-none select-none before:pointer-events-none before:absolute before:inset-0 before:rounded-[calc(var(--radius-lg)-1px)] focus-visible:ring-3 data-disabled:pointer-events-none data-disabled:opacity-50 motion-safe:active:scale-98 any-pointer-coarse:after:absolute any-pointer-coarse:after:size-full any-pointer-coarse:after:min-h-11 any-pointer-coarse:after:min-w-11 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4 [&:is(:active,[data-pressed])]:transition-[border-color,box-shadow,scale]",
+	"group/toggle text-foreground hover:bg-accent/50 hover:text-accent-foreground focus-visible:border-ring focus-visible:ring-ring/50 [&:active]:bg-foreground/15 dark:[&:active]:bg-foreground/30 data-pressed:bg-accent data-pressed:text-accent-foreground relative inline-flex shrink-0 cursor-pointer items-center justify-center rounded-lg border border-transparent bg-clip-padding text-sm font-medium whitespace-nowrap transition-[color,background-color,border-color,box-shadow,scale] duration-150 ease-out outline-none select-none before:pointer-events-none before:absolute before:inset-0 before:rounded-[calc(var(--radius-lg)-1px)] focus-visible:ring-3 focus-visible:outline-hidden data-disabled:pointer-events-none data-disabled:opacity-50 motion-safe:active:scale-98 any-pointer-coarse:after:absolute any-pointer-coarse:after:size-full any-pointer-coarse:after:min-h-11 any-pointer-coarse:after:min-w-11 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4 [&:is(:active,[data-pressed])]:transition-[border-color,box-shadow,scale]",
 	{
 		variants: {
 			variant: {
@@ -28,8 +28,8 @@ const toggleVariants = cva(
 
 function Toggle({
 	className,
-	variant,
-	size,
+	variant = "default",
+	size = "default",
 	...props
 }: Omit<BaseToggle.Props, "className"> &
 	VariantProps<typeof toggleVariants> & {
@@ -38,6 +38,8 @@ function Toggle({
 	return (
 		<BaseToggle
 			data-slot="toggle"
+			data-variant={variant}
+			data-size={size}
 			className={cn(toggleVariants({ variant, size }), className)}
 			{...props}
 		/>

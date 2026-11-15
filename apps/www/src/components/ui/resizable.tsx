@@ -32,7 +32,7 @@ function ResizableHandle({
 		<BaseResizable.Separator
 			data-slot="resizable-handle"
 			className={cn(
-				"group/resizable-handle bg-border focus-visible:bg-ring focus-visible:ring-ring/50 data-[separator=active]:bg-ring data-[separator=active]:ring-ring data-[separator=hover]:bg-ring relative flex w-px items-center justify-center transition-[background-color,box-shadow] duration-150 outline-none focus-visible:ring-3 aria-[orientation=horizontal]:h-px aria-[orientation=horizontal]:w-full data-[separator=active]:ring-1",
+				"group/resizable-handle bg-border focus-visible:bg-ring focus-visible:ring-ring/50 data-[separator=active]:bg-ring data-[separator=active]:ring-ring data-[separator=hover]:bg-ring relative flex w-px items-center justify-center transition-[background-color,box-shadow] duration-150 outline-none focus-visible:ring-3 focus-visible:outline-hidden aria-[orientation=horizontal]:h-px aria-[orientation=horizontal]:w-full data-[separator=active]:ring-1",
 				className,
 			)}
 			{...props}
