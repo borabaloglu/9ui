@@ -1,4 +1,3 @@
-import type * as React from "react";
 import { Tooltip as BaseTooltip } from "@base-ui/react/tooltip";
 
 import { cn } from "@/lib/utils";
@@ -6,24 +5,24 @@ import { cn } from "@/lib/utils";
 function TooltipProvider({
 	delay = 300,
 	...props
-}: React.ComponentProps<typeof BaseTooltip.Provider>) {
+}: BaseTooltip.Provider.Props) {
 	return <BaseTooltip.Provider delay={delay} {...props} />;
 }
 
-function Tooltip({ ...props }: React.ComponentProps<typeof BaseTooltip.Root>) {
+function Tooltip({ ...props }: BaseTooltip.Root.Props) {
 	return <BaseTooltip.Root {...props} />;
 }
 
-function TooltipTrigger({
-	...props
-}: React.ComponentProps<typeof BaseTooltip.Trigger>) {
+function TooltipTrigger({ ...props }: BaseTooltip.Trigger.Props) {
 	return <BaseTooltip.Trigger data-slot="tooltip-trigger" {...props} />;
 }
 
 function TooltipArrow({
 	className,
 	...props
-}: React.ComponentProps<typeof BaseTooltip.Arrow>) {
+}: Omit<BaseTooltip.Arrow.Props, "className"> & {
+	className?: string;
+}) {
 	return (
 		<BaseTooltip.Arrow
 			data-slot="tooltip-arrow"
@@ -59,11 +58,12 @@ function TooltipPopup({
 	sideOffset = arrow ? 10 : 4,
 	anchor,
 	...props
-}: React.ComponentProps<typeof BaseTooltip.Popup> &
+}: Omit<BaseTooltip.Popup.Props, "className"> &
 	Pick<
 		BaseTooltip.Positioner.Props,
 		"align" | "alignOffset" | "side" | "sideOffset" | "anchor"
 	> & {
+		className?: string;
 		arrow?: boolean;
 	}) {
 	return (

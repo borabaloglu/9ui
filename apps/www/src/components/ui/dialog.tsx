@@ -10,22 +10,20 @@ function Dialog({ ...props }: React.ComponentProps<typeof BaseDialog.Root>) {
 	return <BaseDialog.Root {...props} />;
 }
 
-function DialogTrigger({
-	...props
-}: React.ComponentProps<typeof BaseDialog.Trigger>) {
+function DialogTrigger({ ...props }: BaseDialog.Trigger.Props) {
 	return <BaseDialog.Trigger data-slot="dialog-trigger" {...props} />;
 }
 
-function DialogClose({
-	...props
-}: React.ComponentProps<typeof BaseDialog.Close>) {
+function DialogClose({ ...props }: BaseDialog.Close.Props) {
 	return <BaseDialog.Close data-slot="dialog-close" {...props} />;
 }
 
 function DialogBackdrop({
 	className,
 	...props
-}: React.ComponentProps<typeof BaseDialog.Backdrop>) {
+}: Omit<BaseDialog.Backdrop.Props, "className"> & {
+	className?: string;
+}) {
 	return (
 		<BaseDialog.Backdrop
 			data-slot="dialog-backdrop"
@@ -45,7 +43,8 @@ function DialogPopup({
 	showAtBottomOnMobile = true,
 	showCloseButton = true,
 	...props
-}: React.ComponentProps<typeof BaseDialog.Popup> & {
+}: Omit<BaseDialog.Popup.Props, "className"> & {
+	className?: string;
 	size?: "default" | "sm";
 	showAtBottomOnMobile?: boolean;
 	showCloseButton?: boolean;
@@ -132,7 +131,9 @@ function DialogFooter({
 function DialogTitle({
 	className,
 	...props
-}: React.ComponentProps<typeof BaseDialog.Title>) {
+}: Omit<BaseDialog.Title.Props, "className"> & {
+	className?: string;
+}) {
 	return (
 		<BaseDialog.Title
 			data-slot="dialog-title"
@@ -145,7 +146,9 @@ function DialogTitle({
 function DialogDescription({
 	className,
 	...props
-}: React.ComponentProps<typeof BaseDialog.Description>) {
+}: Omit<BaseDialog.Description.Props, "className"> & {
+	className?: string;
+}) {
 	return (
 		<BaseDialog.Description
 			data-slot="dialog-description"

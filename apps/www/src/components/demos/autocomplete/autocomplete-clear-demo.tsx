@@ -1,3 +1,5 @@
+"use client";
+
 import { XIcon } from "lucide-react";
 
 import {

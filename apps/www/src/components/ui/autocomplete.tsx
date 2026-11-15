@@ -1,4 +1,3 @@
-import type * as React from "react";
 import { Autocomplete as BaseAutocomplete } from "@base-ui/react/autocomplete";
 
 import { cn } from "@/lib/utils";
@@ -9,7 +8,7 @@ const useFilteredItems = BaseAutocomplete.useFilteredItems;
 
 function AutocompleteInputGroup({
 	...props
-}: React.ComponentProps<typeof BaseAutocomplete.InputGroup>) {
+}: BaseAutocomplete.InputGroup.Props) {
 	return (
 		<BaseAutocomplete.InputGroup
 			data-slot="autocomplete-input-group"
@@ -18,29 +17,21 @@ function AutocompleteInputGroup({
 	);
 }
 
-function AutocompleteInput({
-	...props
-}: React.ComponentProps<typeof BaseAutocomplete.Input>) {
+function AutocompleteInput({ ...props }: BaseAutocomplete.Input.Props) {
 	return <BaseAutocomplete.Input data-slot="autocomplete-input" {...props} />;
 }
 
-function AutocompleteTrigger({
-	...props
-}: React.ComponentProps<typeof BaseAutocomplete.Trigger>) {
+function AutocompleteTrigger({ ...props }: BaseAutocomplete.Trigger.Props) {
 	return (
 		<BaseAutocomplete.Trigger data-slot="autocomplete-trigger" {...props} />
 	);
 }
 
-function AutocompleteClear({
-	...props
-}: React.ComponentProps<typeof BaseAutocomplete.Clear>) {
+function AutocompleteClear({ ...props }: BaseAutocomplete.Clear.Props) {
 	return <BaseAutocomplete.Clear data-slot="autocomplete-clear" {...props} />;
 }
 
-function AutocompleteValue({
-	...props
-}: React.ComponentProps<typeof BaseAutocomplete.Value>) {
+function AutocompleteValue({ ...props }: BaseAutocomplete.Value.Props) {
 	return <BaseAutocomplete.Value {...props} />;
 }
 
@@ -52,11 +43,13 @@ function AutocompletePopup({
 	sideOffset = 4,
 	anchor,
 	...props
-}: React.ComponentProps<typeof BaseAutocomplete.Popup> &
+}: Omit<BaseAutocomplete.Popup.Props, "className"> &
 	Pick<
 		BaseAutocomplete.Positioner.Props,
 		"align" | "alignOffset" | "side" | "sideOffset" | "anchor"
-	>) {
+	> & {
+		className?: string;
+	}) {
 	return (
 		<BaseAutocomplete.Portal data-slot="autocomplete-portal">
 			<BaseAutocomplete.Positioner
@@ -84,7 +77,9 @@ function AutocompletePopup({
 function AutocompleteList({
 	className,
 	...props
-}: React.ComponentProps<typeof BaseAutocomplete.List>) {
+}: Omit<BaseAutocomplete.List.Props, "className"> & {
+	className?: string;
+}) {
 	return (
 		<BaseAutocomplete.List
 			data-slot="autocomplete-list"
@@ -100,7 +95,9 @@ function AutocompleteList({
 function AutocompleteItem({
 	className,
 	...props
-}: React.ComponentProps<typeof BaseAutocomplete.Item>) {
+}: Omit<BaseAutocomplete.Item.Props, "className"> & {
+	className?: string;
+}) {
 	return (
 		<BaseAutocomplete.Item
 			data-slot="autocomplete-item"
@@ -116,7 +113,9 @@ function AutocompleteItem({
 function AutocompleteEmpty({
 	className,
 	...props
-}: React.ComponentProps<typeof BaseAutocomplete.Empty>) {
+}: Omit<BaseAutocomplete.Empty.Props, "className"> & {
+	className?: string;
+}) {
 	return (
 		<BaseAutocomplete.Empty
 			data-slot="autocomplete-empty"
@@ -132,7 +131,9 @@ function AutocompleteEmpty({
 function AutocompleteStatus({
 	className,
 	...props
-}: React.ComponentProps<typeof BaseAutocomplete.Status>) {
+}: Omit<BaseAutocomplete.Status.Props, "className"> & {
+	className?: string;
+}) {
 	return (
 		<BaseAutocomplete.Status
 			data-slot="autocomplete-status"
@@ -145,16 +146,16 @@ function AutocompleteStatus({
 	);
 }
 
-function AutocompleteGroup({
-	...props
-}: React.ComponentProps<typeof BaseAutocomplete.Group>) {
+function AutocompleteGroup({ ...props }: BaseAutocomplete.Group.Props) {
 	return <BaseAutocomplete.Group data-slot="autocomplete-group" {...props} />;
 }
 
 function AutocompleteGroupLabel({
 	className,
 	...props
-}: React.ComponentProps<typeof BaseAutocomplete.GroupLabel>) {
+}: Omit<BaseAutocomplete.GroupLabel.Props, "className"> & {
+	className?: string;
+}) {
 	return (
 		<BaseAutocomplete.GroupLabel
 			data-slot="autocomplete-group-label"
@@ -170,7 +171,9 @@ function AutocompleteGroupLabel({
 function AutocompleteSeparator({
 	className,
 	...props
-}: React.ComponentProps<typeof BaseAutocomplete.Separator>) {
+}: Omit<BaseAutocomplete.Separator.Props, "className"> & {
+	className?: string;
+}) {
 	return (
 		<BaseAutocomplete.Separator
 			data-slot="autocomplete-separator"
@@ -182,14 +185,16 @@ function AutocompleteSeparator({
 
 function AutocompleteCollection({
 	...props
-}: React.ComponentProps<typeof BaseAutocomplete.Collection>) {
+}: BaseAutocomplete.Collection.Props) {
 	return <BaseAutocomplete.Collection {...props} />;
 }
 
 function AutocompleteRow({
 	className,
 	...props
-}: React.ComponentProps<typeof BaseAutocomplete.Row>) {
+}: Omit<BaseAutocomplete.Row.Props, "className"> & {
+	className?: string;
+}) {
 	return (
 		<BaseAutocomplete.Row
 			data-slot="autocomplete-row"

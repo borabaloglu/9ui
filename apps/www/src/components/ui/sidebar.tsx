@@ -72,15 +72,15 @@ function SidebarProvider({
 		(value: boolean | ((open: boolean) => boolean)) => {
 			const next = typeof value === "function" ? value(open) : value;
 
-			if (onOpenChange) {
-				onOpenChange(next);
-			} else {
+			if (openProp === undefined) {
 				setOpenState(next);
 			}
 
+			onOpenChange?.(next);
+
 			document.cookie = `${SIDEBAR_COOKIE_NAME}=${next}; path=/; max-age=${SIDEBAR_COOKIE_MAX_AGE}`;
 		},
-		[onOpenChange, open],
+		[onOpenChange, open, openProp],
 	);
 
 	const toggleSidebar = React.useCallback(() => {
@@ -133,7 +133,7 @@ function SidebarProvider({
 					} as React.CSSProperties
 				}
 				className={cn(
-					"group/sidebar-wrapper has-data-[variant=inset]:bg-card flex min-h-svh w-full",
+					"group/sidebar-wrapper has-[[data-slot=sidebar][data-variant=inset]]:bg-card flex min-h-svh w-full",
 					className,
 				)}
 				{...props}
@@ -147,6 +147,7 @@ function Sidebar({
 	variant = "sidebar",
 	collapsible = "offcanvas",
 	className,
+	style,
 	children,
 	...props
 }: React.ComponentProps<"div"> & {
@@ -164,6 +165,7 @@ function Sidebar({
 					"bg-card text-card-foreground flex h-full w-(--sidebar-width) flex-col",
 					className,
 				)}
+				style={style}
 				{...props}
 			>
 				{children}
@@ -177,14 +179,20 @@ function Sidebar({
 				<SheetPopup
 					data-slot="sidebar"
 					data-mobile=""
+					data-variant={variant}
 					side={side}
 					showCloseButton={false}
 					style={
 						{
 							"--sidebar-width": SIDEBAR_WIDTH_MOBILE,
+							...style,
 						} as React.CSSProperties
 					}
-					className="bg-card text-card-foreground w-(--sidebar-width) gap-0"
+					className={cn(
+						"bg-card text-card-foreground w-(--sidebar-width) gap-0",
+						className,
+					)}
+					{...props}
 				>
 					<SheetHeader className="sr-only">
 						<SheetTitle>Sidebar</SheetTitle>
@@ -224,6 +232,7 @@ function Sidebar({
 						: "p-2 group-data-[collapsible=icon]/sidebar:w-[calc(var(--sidebar-width-icon)+(--spacing(4))+2px)]",
 					className,
 				)}
+				style={style}
 				{...props}
 			>
 				<div
@@ -291,7 +300,7 @@ function SidebarInset({ className, ...props }: React.ComponentProps<"main">) {
 		<main
 			data-slot="sidebar-inset"
 			className={cn(
-				"bg-background relative flex w-full min-w-0 flex-1 flex-col md:peer-data-[variant=inset]/sidebar:m-2 md:peer-data-[variant=inset]/sidebar:ml-0 md:peer-data-[variant=inset]/sidebar:rounded-xl md:peer-data-[variant=inset]/sidebar:border md:peer-data-[variant=inset]/sidebar:shadow-xs md:peer-data-[variant=inset]/sidebar:peer-data-[state=collapsed]/sidebar:ml-2",
+				"bg-background relative flex w-full min-w-0 flex-1 flex-col md:group-has-[[data-slot=sidebar][data-variant=inset]]/sidebar-wrapper:m-2 md:group-has-[[data-slot=sidebar][data-variant=inset]]/sidebar-wrapper:rounded-xl md:group-has-[[data-slot=sidebar][data-variant=inset]]/sidebar-wrapper:border md:group-has-[[data-slot=sidebar][data-variant=inset]]/sidebar-wrapper:shadow-xs md:group-has-[[data-slot=sidebar][data-variant=inset][data-side=left]]/sidebar-wrapper:ms-0 md:group-has-[[data-slot=sidebar][data-variant=inset][data-side=left][data-state=collapsed]]/sidebar-wrapper:ms-2 md:group-has-[[data-slot=sidebar][data-variant=inset][data-side=right]]/sidebar-wrapper:me-0 md:group-has-[[data-slot=sidebar][data-variant=inset][data-side=right][data-state=collapsed]]/sidebar-wrapper:me-2",
 				className,
 			)}
 			{...props}

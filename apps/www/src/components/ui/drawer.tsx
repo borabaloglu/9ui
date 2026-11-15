@@ -48,7 +48,9 @@ function DrawerProvider({ ...props }: BaseDrawer.Provider.Props) {
 function DrawerIndentBackground({
 	className,
 	...props
-}: React.ComponentProps<typeof BaseDrawer.IndentBackground>) {
+}: Omit<BaseDrawer.IndentBackground.Props, "className"> & {
+	className?: string;
+}) {
 	return (
 		<BaseDrawer.IndentBackground
 			data-slot="drawer-indent-background"
@@ -64,7 +66,9 @@ function DrawerIndentBackground({
 function DrawerIndent({
 	className,
 	...props
-}: React.ComponentProps<typeof BaseDrawer.Indent>) {
+}: Omit<BaseDrawer.Indent.Props, "className"> & {
+	className?: string;
+}) {
 	return (
 		<BaseDrawer.Indent
 			data-slot="drawer-indent"
@@ -77,22 +81,20 @@ function DrawerIndent({
 	);
 }
 
-function DrawerTrigger({
-	...props
-}: React.ComponentProps<typeof BaseDrawer.Trigger>) {
+function DrawerTrigger({ ...props }: BaseDrawer.Trigger.Props) {
 	return <BaseDrawer.Trigger data-slot="drawer-trigger" {...props} />;
 }
 
-function DrawerClose({
-	...props
-}: React.ComponentProps<typeof BaseDrawer.Close>) {
+function DrawerClose({ ...props }: BaseDrawer.Close.Props) {
 	return <BaseDrawer.Close data-slot="drawer-close" {...props} />;
 }
 
 function DrawerSwipeArea({
 	className,
 	...props
-}: React.ComponentProps<typeof BaseDrawer.SwipeArea>) {
+}: Omit<BaseDrawer.SwipeArea.Props, "className"> & {
+	className?: string;
+}) {
 	const { swipeDirection } = React.use(DrawerContext);
 
 	return (
@@ -114,7 +116,9 @@ function DrawerSwipeArea({
 function DrawerBackdrop({
 	className,
 	...props
-}: React.ComponentProps<typeof BaseDrawer.Backdrop>) {
+}: Omit<BaseDrawer.Backdrop.Props, "className"> & {
+	className?: string;
+}) {
 	return (
 		<BaseDrawer.Backdrop
 			data-slot="drawer-backdrop"
@@ -149,7 +153,8 @@ function DrawerPopup({
 	showHandle = true,
 	container,
 	...props
-}: React.ComponentProps<typeof BaseDrawer.Popup> & {
+}: Omit<BaseDrawer.Popup.Props, "className"> & {
+	className?: string;
 	variant?: "default" | "inset";
 	showHandle?: boolean;
 	container?: BaseDrawer.Portal.Props["container"];
@@ -254,7 +259,9 @@ function DrawerHeader({ className, ...props }: React.ComponentProps<"div">) {
 function DrawerPanel({
 	className,
 	...props
-}: React.ComponentProps<typeof BaseDrawer.Content>) {
+}: Omit<BaseDrawer.Content.Props, "className"> & {
+	className?: string;
+}) {
 	return (
 		<BaseDrawer.Content
 			data-slot="drawer-panel"
@@ -292,7 +299,9 @@ function DrawerFooter({
 function DrawerTitle({
 	className,
 	...props
-}: React.ComponentProps<typeof BaseDrawer.Title>) {
+}: Omit<BaseDrawer.Title.Props, "className"> & {
+	className?: string;
+}) {
 	return (
 		<BaseDrawer.Title
 			data-slot="drawer-title"
@@ -305,7 +314,9 @@ function DrawerTitle({
 function DrawerDescription({
 	className,
 	...props
-}: React.ComponentProps<typeof BaseDrawer.Description>) {
+}: Omit<BaseDrawer.Description.Props, "className"> & {
+	className?: string;
+}) {
 	return (
 		<BaseDrawer.Description
 			data-slot="drawer-description"

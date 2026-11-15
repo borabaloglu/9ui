@@ -4,13 +4,11 @@ import { CheckIcon, ChevronRightIcon } from "lucide-react";
 
 import { cn } from "@/lib/utils";
 
-function Menu({ ...props }: React.ComponentProps<typeof BaseMenu.Root>) {
+function Menu<Payload>({ ...props }: BaseMenu.Root.Props<Payload>) {
 	return <BaseMenu.Root {...props} />;
 }
 
-function MenuTrigger({
-	...props
-}: React.ComponentProps<typeof BaseMenu.Trigger>) {
+function MenuTrigger<Payload>({ ...props }: BaseMenu.Trigger.Props<Payload>) {
 	return <BaseMenu.Trigger data-slot="menu-trigger" {...props} />;
 }
 
@@ -22,11 +20,13 @@ function MenuPopup({
 	sideOffset = 4,
 	anchor,
 	...props
-}: React.ComponentProps<typeof BaseMenu.Popup> &
+}: Omit<BaseMenu.Popup.Props, "className"> &
 	Pick<
 		BaseMenu.Positioner.Props,
 		"align" | "alignOffset" | "side" | "sideOffset" | "anchor"
-	>) {
+	> & {
+		className?: string;
+	}) {
 	return (
 		<BaseMenu.Portal data-slot="menu-portal">
 			<BaseMenu.Positioner
@@ -51,7 +51,7 @@ function MenuPopup({
 	);
 }
 
-function MenuGroup({ ...props }: React.ComponentProps<typeof BaseMenu.Group>) {
+function MenuGroup({ ...props }: BaseMenu.Group.Props) {
 	return <BaseMenu.Group data-slot="menu-group" {...props} />;
 }
 
@@ -59,7 +59,8 @@ function MenuGroupLabel({
 	className,
 	inset,
 	...props
-}: React.ComponentProps<typeof BaseMenu.GroupLabel> & {
+}: Omit<BaseMenu.GroupLabel.Props, "className"> & {
+	className?: string;
 	inset?: boolean;
 }) {
 	return (
@@ -80,7 +81,8 @@ function MenuItem({
 	inset,
 	variant = "default",
 	...props
-}: React.ComponentProps<typeof BaseMenu.Item> & {
+}: Omit<BaseMenu.Item.Props, "className"> & {
+	className?: string;
 	inset?: boolean;
 	variant?: "default" | "destructive";
 }) {
@@ -102,7 +104,8 @@ function MenuLinkItem({
 	className,
 	inset,
 	...props
-}: React.ComponentProps<typeof BaseMenu.LinkItem> & {
+}: Omit<BaseMenu.LinkItem.Props, "className"> & {
+	className?: string;
 	inset?: boolean;
 }) {
 	return (
@@ -122,7 +125,9 @@ function MenuCheckboxItem({
 	className,
 	children,
 	...props
-}: React.ComponentProps<typeof BaseMenu.CheckboxItem>) {
+}: Omit<BaseMenu.CheckboxItem.Props, "className"> & {
+	className?: string;
+}) {
 	return (
 		<BaseMenu.CheckboxItem
 			data-slot="menu-checkbox-item"
@@ -142,9 +147,7 @@ function MenuCheckboxItem({
 	);
 }
 
-function MenuRadioGroup({
-	...props
-}: React.ComponentProps<typeof BaseMenu.RadioGroup>) {
+function MenuRadioGroup({ ...props }: BaseMenu.RadioGroup.Props) {
 	return <BaseMenu.RadioGroup data-slot="menu-radio-group" {...props} />;
 }
 
@@ -152,7 +155,9 @@ function MenuRadioItem({
 	className,
 	children,
 	...props
-}: React.ComponentProps<typeof BaseMenu.RadioItem>) {
+}: Omit<BaseMenu.RadioItem.Props, "className"> & {
+	className?: string;
+}) {
 	return (
 		<BaseMenu.RadioItem
 			data-slot="menu-radio-item"
@@ -175,7 +180,9 @@ function MenuRadioItem({
 function MenuSeparator({
 	className,
 	...props
-}: React.ComponentProps<typeof BaseMenu.Separator>) {
+}: Omit<BaseMenu.Separator.Props, "className"> & {
+	className?: string;
+}) {
 	return (
 		<BaseMenu.Separator
 			data-slot="menu-separator"
@@ -198,9 +205,7 @@ function MenuShortcut({ className, ...props }: React.ComponentProps<"kbd">) {
 	);
 }
 
-function MenuSub({
-	...props
-}: React.ComponentProps<typeof BaseMenu.SubmenuRoot>) {
+function MenuSub({ ...props }: BaseMenu.SubmenuRoot.Props) {
 	return <BaseMenu.SubmenuRoot {...props} />;
 }
 
@@ -209,7 +214,8 @@ function MenuSubTrigger({
 	inset,
 	children,
 	...props
-}: React.ComponentProps<typeof BaseMenu.SubmenuTrigger> & {
+}: Omit<BaseMenu.SubmenuTrigger.Props, "className"> & {
+	className?: string;
 	inset?: boolean;
 }) {
 	return (

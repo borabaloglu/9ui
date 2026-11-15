@@ -27,7 +27,9 @@ function PreviewCardTrigger<Payload>({
 function PreviewCardArrow({
 	className,
 	...props
-}: React.ComponentProps<typeof BasePreviewCard.Arrow>) {
+}: Omit<BasePreviewCard.Arrow.Props, "className"> & {
+	className?: string;
+}) {
 	return (
 		<BasePreviewCard.Arrow
 			data-slot="preview-card-arrow"
@@ -67,11 +69,12 @@ function PreviewCardPopup({
 	sideOffset = arrow ? 10 : 4,
 	anchor,
 	...props
-}: React.ComponentProps<typeof BasePreviewCard.Popup> &
+}: Omit<BasePreviewCard.Popup.Props, "className"> &
 	Pick<
 		BasePreviewCard.Positioner.Props,
 		"align" | "alignOffset" | "side" | "sideOffset" | "anchor"
 	> & {
+		className?: string;
 		arrow?: boolean;
 	}) {
 	return (
@@ -121,7 +124,9 @@ function PreviewCardPanel({
 function PreviewCardViewport({
 	className,
 	...props
-}: React.ComponentProps<typeof BasePreviewCard.Viewport>) {
+}: Omit<BasePreviewCard.Viewport.Props, "className"> & {
+	className?: string;
+}) {
 	return (
 		<BasePreviewCard.Viewport
 			data-slot="preview-card-viewport"

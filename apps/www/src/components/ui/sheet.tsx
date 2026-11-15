@@ -10,22 +10,20 @@ function Sheet({ ...props }: React.ComponentProps<typeof BaseSheet.Root>) {
 	return <BaseSheet.Root {...props} />;
 }
 
-function SheetTrigger({
-	...props
-}: React.ComponentProps<typeof BaseSheet.Trigger>) {
+function SheetTrigger({ ...props }: BaseSheet.Trigger.Props) {
 	return <BaseSheet.Trigger data-slot="sheet-trigger" {...props} />;
 }
 
-function SheetClose({
-	...props
-}: React.ComponentProps<typeof BaseSheet.Close>) {
+function SheetClose({ ...props }: BaseSheet.Close.Props) {
 	return <BaseSheet.Close data-slot="sheet-close" {...props} />;
 }
 
 function SheetBackdrop({
 	className,
 	...props
-}: React.ComponentProps<typeof BaseSheet.Backdrop>) {
+}: Omit<BaseSheet.Backdrop.Props, "className"> & {
+	className?: string;
+}) {
 	return (
 		<BaseSheet.Backdrop
 			data-slot="sheet-backdrop"
@@ -45,7 +43,8 @@ function SheetPopup({
 	variant = "default",
 	showCloseButton = true,
 	...props
-}: React.ComponentProps<typeof BaseSheet.Popup> & {
+}: Omit<BaseSheet.Popup.Props, "className"> & {
+	className?: string;
 	side?: "top" | "right" | "bottom" | "left";
 	variant?: "default" | "inset";
 	showCloseButton?: boolean;
@@ -157,7 +156,9 @@ function SheetFooter({
 function SheetTitle({
 	className,
 	...props
-}: React.ComponentProps<typeof BaseSheet.Title>) {
+}: Omit<BaseSheet.Title.Props, "className"> & {
+	className?: string;
+}) {
 	return (
 		<BaseSheet.Title
 			data-slot="sheet-title"
@@ -170,7 +171,9 @@ function SheetTitle({
 function SheetDescription({
 	className,
 	...props
-}: React.ComponentProps<typeof BaseSheet.Description>) {
+}: Omit<BaseSheet.Description.Props, "className"> & {
+	className?: string;
+}) {
 	return (
 		<BaseSheet.Description
 			data-slot="sheet-description"

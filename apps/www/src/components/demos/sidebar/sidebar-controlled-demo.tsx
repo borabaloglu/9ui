@@ -1,3 +1,5 @@
+"use client";
+
 import * as React from "react";
 import { CalendarIcon, HomeIcon, InboxIcon, SettingsIcon } from "lucide-react";
 
@@ -12,6 +14,7 @@ import {
 	SidebarMenuButton,
 	SidebarMenuItem,
 	SidebarProvider,
+	useSidebar,
 } from "@/components/ui/sidebar";
 
 const items = [
@@ -20,6 +23,17 @@ const items = [
 	{ title: "Calendar", icon: CalendarIcon },
 	{ title: "Settings", icon: SettingsIcon },
 ];
+
+function SidebarToggle() {
+	const { isMobile, open, openMobile, toggleSidebar } = useSidebar();
+	const isOpen = isMobile ? openMobile : open;
+
+	return (
+		<Button variant="outline" size="sm" onClick={toggleSidebar}>
+			{isOpen ? "Close" : "Open"} sidebar
+		</Button>
+	);
+}
 
 export default function SidebarControlledDemo() {
 	const [open, setOpen] = React.useState(true);
@@ -45,13 +59,7 @@ export default function SidebarControlledDemo() {
 			</Sidebar>
 			<SidebarInset>
 				<header className="flex h-12 shrink-0 items-center px-3">
-					<Button
-						variant="outline"
-						size="sm"
-						onClick={() => setOpen((current) => !current)}
-					>
-						{open ? "Close" : "Open"} sidebar
-					</Button>
+					<SidebarToggle />
 				</header>
 				<div className="flex flex-1 p-3 pt-0">
 					<div className="bg-muted/50 flex-1 rounded-xl" />

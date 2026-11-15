@@ -9,24 +9,22 @@ function AlertDialog({
 	return <BaseAlertDialog.Root {...props} />;
 }
 
-function AlertDialogTrigger({
-	...props
-}: React.ComponentProps<typeof BaseAlertDialog.Trigger>) {
+function AlertDialogTrigger({ ...props }: BaseAlertDialog.Trigger.Props) {
 	return (
 		<BaseAlertDialog.Trigger data-slot="alert-dialog-trigger" {...props} />
 	);
 }
 
-function AlertDialogClose({
-	...props
-}: React.ComponentProps<typeof BaseAlertDialog.Close>) {
+function AlertDialogClose({ ...props }: BaseAlertDialog.Close.Props) {
 	return <BaseAlertDialog.Close data-slot="alert-dialog-close" {...props} />;
 }
 
 function AlertDialogBackdrop({
 	className,
 	...props
-}: React.ComponentProps<typeof BaseAlertDialog.Backdrop>) {
+}: Omit<BaseAlertDialog.Backdrop.Props, "className"> & {
+	className?: string;
+}) {
 	return (
 		<BaseAlertDialog.Backdrop
 			data-slot="alert-dialog-backdrop"
@@ -44,7 +42,8 @@ function AlertDialogPopup({
 	size = "default",
 	showAtBottomOnMobile = true,
 	...props
-}: React.ComponentProps<typeof BaseAlertDialog.Popup> & {
+}: Omit<BaseAlertDialog.Popup.Props, "className"> & {
+	className?: string;
 	size?: "default" | "sm";
 	showAtBottomOnMobile?: boolean;
 }) {
@@ -132,7 +131,9 @@ function AlertDialogFooter({
 function AlertDialogTitle({
 	className,
 	...props
-}: React.ComponentProps<typeof BaseAlertDialog.Title>) {
+}: Omit<BaseAlertDialog.Title.Props, "className"> & {
+	className?: string;
+}) {
 	return (
 		<BaseAlertDialog.Title
 			data-slot="alert-dialog-title"
@@ -145,7 +146,9 @@ function AlertDialogTitle({
 function AlertDialogDescription({
 	className,
 	...props
-}: React.ComponentProps<typeof BaseAlertDialog.Description>) {
+}: Omit<BaseAlertDialog.Description.Props, "className"> & {
+	className?: string;
+}) {
 	return (
 		<BaseAlertDialog.Description
 			data-slot="alert-dialog-description"

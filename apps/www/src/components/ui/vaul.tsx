@@ -62,7 +62,9 @@ function VaulClose({ ...props }: React.ComponentProps<typeof BaseVaul.Close>) {
 function VaulOverlay({
 	className,
 	...props
-}: React.ComponentProps<typeof BaseVaul.Overlay>) {
+}: Omit<React.ComponentProps<typeof BaseVaul.Overlay>, "className"> & {
+	className?: string;
+}) {
 	return (
 		<BaseVaul.Overlay
 			data-slot="vaul-overlay"
@@ -97,7 +99,8 @@ function VaulContent({
 	variant = "default",
 	showHandle = true,
 	...props
-}: React.ComponentProps<typeof BaseVaul.Content> & {
+}: Omit<React.ComponentProps<typeof BaseVaul.Content>, "className"> & {
+	className?: string;
 	variant?: "default" | "inset";
 	showHandle?: boolean;
 }) {
@@ -207,7 +210,9 @@ function VaulFooter({
 function VaulTitle({
 	className,
 	...props
-}: React.ComponentProps<typeof BaseVaul.Title>) {
+}: Omit<React.ComponentProps<typeof BaseVaul.Title>, "className"> & {
+	className?: string;
+}) {
 	return (
 		<BaseVaul.Title
 			data-slot="vaul-title"
@@ -220,7 +225,9 @@ function VaulTitle({
 function VaulDescription({
 	className,
 	...props
-}: React.ComponentProps<typeof BaseVaul.Description>) {
+}: Omit<React.ComponentProps<typeof BaseVaul.Description>, "className"> & {
+	className?: string;
+}) {
 	return (
 		<BaseVaul.Description
 			data-slot="vaul-description"

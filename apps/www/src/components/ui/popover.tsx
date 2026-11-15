@@ -15,16 +15,16 @@ function PopoverTrigger<Payload>({
 	return <BasePopover.Trigger data-slot="popover-trigger" {...props} />;
 }
 
-function PopoverClose({
-	...props
-}: React.ComponentProps<typeof BasePopover.Close>) {
+function PopoverClose({ ...props }: BasePopover.Close.Props) {
 	return <BasePopover.Close data-slot="popover-close" {...props} />;
 }
 
 function PopoverArrow({
 	className,
 	...props
-}: React.ComponentProps<typeof BasePopover.Arrow>) {
+}: Omit<BasePopover.Arrow.Props, "className"> & {
+	className?: string;
+}) {
 	return (
 		<BasePopover.Arrow
 			data-slot="popover-arrow"
@@ -64,11 +64,12 @@ function PopoverPopup({
 	sideOffset = arrow ? 10 : 4,
 	anchor,
 	...props
-}: React.ComponentProps<typeof BasePopover.Popup> &
+}: Omit<BasePopover.Popup.Props, "className"> &
 	Pick<
 		BasePopover.Positioner.Props,
 		"align" | "alignOffset" | "side" | "sideOffset" | "anchor"
 	> & {
+		className?: string;
 		arrow?: boolean;
 	}) {
 	return (
@@ -115,7 +116,9 @@ function PopoverPanel({ className, ...props }: React.ComponentProps<"div">) {
 function PopoverViewport({
 	className,
 	...props
-}: React.ComponentProps<typeof BasePopover.Viewport>) {
+}: Omit<BasePopover.Viewport.Props, "className"> & {
+	className?: string;
+}) {
 	return (
 		<BasePopover.Viewport
 			data-slot="popover-viewport"
@@ -141,7 +144,9 @@ function PopoverHeader({ className, ...props }: React.ComponentProps<"div">) {
 function PopoverTitle({
 	className,
 	...props
-}: React.ComponentProps<typeof BasePopover.Title>) {
+}: Omit<BasePopover.Title.Props, "className"> & {
+	className?: string;
+}) {
 	return (
 		<BasePopover.Title
 			data-slot="popover-title"
@@ -154,7 +159,9 @@ function PopoverTitle({
 function PopoverDescription({
 	className,
 	...props
-}: React.ComponentProps<typeof BasePopover.Description>) {
+}: Omit<BasePopover.Description.Props, "className"> & {
+	className?: string;
+}) {
 	return (
 		<BasePopover.Description
 			data-slot="popover-description"
