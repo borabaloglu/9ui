@@ -24,6 +24,9 @@ export const generateTheme = (
 			card: shadeColors.cssVars.dark.background,
 			popover: shadeColors.cssVars.dark.background,
 			input: shadeColors.cssVars.dark.background,
+			"secondary-elevated": shadeColors.cssVars.dark.secondary,
+			"muted-elevated": shadeColors.cssVars.dark.muted,
+			"accent-elevated": shadeColors.cssVars.dark.accent,
 		};
 	}
 
@@ -103,6 +106,9 @@ const STYLES_TEMPLATE = `:root {
 	--success: <%- colors.shade.dark["success"] %> !important;
 	--border: <%- colors.shade.dark["border"] %> !important;
 	--input: <%- colors.shade.dark["input"] %> !important;
+	--secondary-elevated: <%- colors.shade.dark["secondary-elevated"] %> !important;
+	--muted-elevated: <%- colors.shade.dark["muted-elevated"] %> !important;
+	--accent-elevated: <%- colors.shade.dark["accent-elevated"] %> !important;
 	--ring: <%- colors.shade.dark["ring"] %> !important;
 	--chart-1: <%- colors.shade.dark["chart-1"] %> !important;
 	--chart-2: <%- colors.shade.dark["chart-2"] %> !important;

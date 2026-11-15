@@ -9,7 +9,7 @@ interface InitConfig {
 	};
 	css: {
 		"@layer base": Record<string, Record<string, string>>;
-	};
+	} & Record<`@utility ${string}`, Record<string, string>>;
 }
 
 function generateGlobalsCss(config: InitConfig): string {
@@ -63,6 +63,17 @@ function generateGlobalsCss(config: InitConfig): string {
 	// Generate theme variables section
 	const themeSection = `@theme inline {\n${themeVars}\n}`;
 
+	const utilities = Object.entries(css)
+		.filter(([key]) => key.startsWith("@utility "))
+		.map(([key, styles]) => {
+			const styleProps = Object.entries(styles as Record<string, string>)
+				.map(([prop, value]) => `\t${prop}: ${value};`)
+				.join("\n");
+
+			return `${key} {\n${styleProps}\n}`;
+		})
+		.join("\n\n");
+
 	return [
 		imports,
 		themeSection,
@@ -72,6 +83,8 @@ function generateGlobalsCss(config: InitConfig): string {
 		darkSection,
 		"",
 		layerBase,
+		"",
+		utilities,
 	].join("\n");
 }
 
