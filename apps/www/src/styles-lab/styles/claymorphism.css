@@ -1,0 +1,189 @@
+@reference "../../app/globals.css";
+
+/*
+ * Claymorphism — puffy, saturated blobs: big radii, a soft coloured drop
+ * shadow, and inner light/shade that makes each shape look inflated.
+ */
+
+[data-style="claymorphism"] {
+	/* Knobs */
+	--clay-hue: 285;
+	--clay-depth: 8px;
+	--radius: 1.75rem;
+	--control-height: 2.75rem;
+	--control-padding-x: 1.375rem;
+	--surface-padding: 1.5rem;
+
+	/* Recipes */
+	--clay-highlight: oklch(1 0 0 / 0.75);
+	--clay-shade: oklch(0.35 0.12 var(--clay-hue) / 0.22);
+	--clay-drop: oklch(0.45 0.14 var(--clay-hue) / 0.28);
+	--clay-surface:
+		0 calc(var(--clay-depth) * 2) calc(var(--clay-depth) * 4)
+		calc(var(--clay-depth) * -0.75) var(--clay-drop),
+		inset calc(var(--clay-depth) * -0.75) calc(var(--clay-depth) * -1)
+		calc(var(--clay-depth) * 2) var(--clay-shade),
+		inset calc(var(--clay-depth) * 0.75) calc(var(--clay-depth) * 1)
+		calc(var(--clay-depth) * 2) var(--clay-highlight);
+	--clay-control:
+		0 calc(var(--clay-depth) * 0.75) calc(var(--clay-depth) * 1.75)
+		calc(var(--clay-depth) * -0.25) var(--clay-drop),
+		inset 0 calc(var(--clay-depth) * -0.6) calc(var(--clay-depth) * 0.9)
+		var(--clay-shade),
+		inset 0 calc(var(--clay-depth) * 0.5) calc(var(--clay-depth) * 0.75)
+		var(--clay-highlight);
+	--clay-pressed:
+		0 calc(var(--clay-depth) * 0.25) calc(var(--clay-depth) * 0.5)
+		var(--clay-drop),
+		inset 0 calc(var(--clay-depth) * 0.6) calc(var(--clay-depth) * 0.9)
+		var(--clay-shade);
+	--clay-well:
+		inset 0 calc(var(--clay-depth) * 0.5) calc(var(--clay-depth) * 0.9)
+		var(--clay-shade),
+		inset 0 calc(var(--clay-depth) * -0.4) calc(var(--clay-depth) * 0.6)
+		var(--clay-highlight);
+
+	/* Colours */
+	--background: oklch(0.94 0.04 var(--clay-hue));
+	--foreground: oklch(0.3 0.07 var(--clay-hue));
+	--card: oklch(0.985 0.012 var(--clay-hue));
+	--card-foreground: var(--foreground);
+	--popover: oklch(0.985 0.012 var(--clay-hue));
+	--popover-foreground: var(--foreground);
+	--primary: oklch(0.64 0.2 var(--clay-hue));
+	--primary-foreground: oklch(0.99 0 0);
+	--secondary: oklch(0.86 0.1 calc(var(--clay-hue) + 200));
+	--secondary-foreground: oklch(0.3 0.08 calc(var(--clay-hue) + 200));
+	--muted: oklch(0.93 0.035 var(--clay-hue));
+	--muted-foreground: oklch(0.5 0.07 var(--clay-hue));
+	--accent: oklch(0.9 0.07 var(--clay-hue));
+	--destructive: oklch(0.68 0.19 20);
+	--border: oklch(0.35 0.12 var(--clay-hue) / 0.12);
+	--ring: oklch(0.64 0.2 var(--clay-hue) / 0.45);
+}
+
+[data-style="claymorphism"].dark,
+.dark [data-style="claymorphism"] {
+	--clay-highlight: oklch(1 0 0 / 0.16);
+	--clay-shade: oklch(0.1 0.05 var(--clay-hue) / 0.45);
+	--clay-drop: oklch(0.08 0.05 var(--clay-hue) / 0.6);
+	--background: oklch(0.23 0.045 var(--clay-hue));
+	--foreground: oklch(0.95 0.02 var(--clay-hue));
+	--card: oklch(0.33 0.06 var(--clay-hue));
+	--popover: oklch(0.33 0.06 var(--clay-hue));
+	--primary: oklch(0.7 0.19 var(--clay-hue));
+	--primary-foreground: oklch(0.16 0.05 var(--clay-hue));
+	--secondary: oklch(0.72 0.12 calc(var(--clay-hue) + 200));
+	--secondary-foreground: oklch(0.18 0.05 calc(var(--clay-hue) + 200));
+	--muted: oklch(0.27 0.05 var(--clay-hue));
+	--muted-foreground: oklch(0.76 0.05 var(--clay-hue));
+	--accent: oklch(0.4 0.08 var(--clay-hue));
+	/* 9ui lifts these on cards in dark mode; clay keeps them as they are. */
+	--secondary-elevated: var(--secondary);
+	--muted-elevated: var(--muted);
+	--accent-elevated: var(--accent);
+	--destructive: oklch(0.72 0.18 20);
+	--border: oklch(1 0 0 / 0.1);
+}
+
+@layer components {
+	/* Button */
+	[data-style="claymorphism"] .skin-button {
+		@apply bg-card text-foreground focus-visible:ring-ring h-(--control-height) gap-2 rounded-full px-(--control-padding-x) text-[0.9375rem] font-bold shadow-(--clay-control) transition-[box-shadow,scale,filter] duration-200 ease-[cubic-bezier(0.34,1.56,0.64,1)] hover:scale-103 hover:brightness-105 focus-visible:ring-4 active:scale-96 active:shadow-(--clay-pressed) data-disabled:opacity-50 [&_svg:not([class*='size-'])]:size-4.5;
+	}
+	[data-style="claymorphism"] .skin-button[data-variant="default"] {
+		@apply bg-primary text-primary-foreground;
+	}
+	[data-style="claymorphism"] .skin-button[data-variant="secondary"] {
+		@apply bg-secondary text-secondary-foreground;
+	}
+	[data-style="claymorphism"] .skin-button[data-variant="ghost"] {
+		@apply hover:bg-accent bg-transparent shadow-none hover:scale-100 active:shadow-none;
+	}
+	[data-style="claymorphism"] .skin-button[data-variant="link"] {
+		@apply text-primary bg-transparent shadow-none underline-offset-4 hover:scale-100 hover:underline active:shadow-none;
+	}
+	[data-style="claymorphism"] .skin-button[data-variant="destructive"] {
+		@apply bg-destructive text-white;
+	}
+	[data-style="claymorphism"] .skin-button[data-size="sm"] {
+		@apply h-[calc(var(--control-height)-0.625rem)] px-[calc(var(--control-padding-x)*0.75)] text-sm;
+	}
+	[data-style="claymorphism"] .skin-button[data-size="lg"] {
+		@apply h-[calc(var(--control-height)+0.5rem)] px-[calc(var(--control-padding-x)*1.25)] text-base;
+	}
+	[data-style="claymorphism"] .skin-button[data-size="icon"] {
+		@apply size-(--control-height) px-0;
+	}
+	[data-style="claymorphism"] .skin-button[data-size="icon-sm"] {
+		@apply size-[calc(var(--control-height)-0.625rem)] px-0;
+	}
+
+	/* Input */
+	[data-style="claymorphism"] .skin-input {
+		@apply bg-muted text-foreground placeholder:text-muted-foreground/70 focus-visible:ring-ring h-(--control-height) rounded-[calc(var(--radius)*0.6)] px-(--control-padding-x) text-[0.9375rem] font-medium shadow-(--clay-well) transition-shadow duration-200 focus-visible:ring-4 disabled:opacity-50;
+	}
+	[data-style="claymorphism"] .skin-label {
+		@apply gap-2 pl-1 text-sm font-bold;
+	}
+
+	/* Select */
+	[data-style="claymorphism"] .skin-select-trigger {
+		@apply bg-card text-foreground focus-visible:ring-ring h-(--control-height) gap-3 rounded-full pr-[calc(var(--control-padding-x)*0.7)] pl-(--control-padding-x) text-[0.9375rem] font-semibold shadow-(--clay-control) transition-[box-shadow,scale] duration-200 ease-[cubic-bezier(0.34,1.56,0.64,1)] focus-visible:ring-4 active:scale-98 data-disabled:opacity-50 data-popup-open:shadow-(--clay-pressed) [&_svg:not([class*='size-'])]:size-4.5;
+	}
+	[data-style="claymorphism"] .skin-select-icon {
+		@apply text-primary;
+	}
+	[data-style="claymorphism"] .skin-select-value {
+		@apply data-placeholder:text-muted-foreground;
+	}
+	[data-style="claymorphism"] .skin-select-popup {
+		@apply bg-popover text-popover-foreground rounded-[calc(var(--radius)*0.8)] shadow-(--clay-surface) transition-[scale,opacity] duration-250 ease-[cubic-bezier(0.34,1.56,0.64,1)] data-ending-style:scale-90 data-ending-style:opacity-0 data-starting-style:scale-90 data-starting-style:opacity-0;
+	}
+	[data-style="claymorphism"] .skin-select-list {
+		@apply flex flex-col gap-1 p-2.5;
+	}
+	[data-style="claymorphism"] .skin-select-item {
+		@apply data-highlighted:bg-primary data-highlighted:text-primary-foreground min-h-9 gap-2 rounded-full px-3.5 text-[0.9375rem] font-semibold data-disabled:opacity-50 data-highlighted:shadow-(--clay-control) [&_svg:not([class*='size-'])]:size-4;
+	}
+	[data-style="claymorphism"] .skin-select-item-indicator {
+		@apply ml-4 size-4;
+	}
+
+	/* Card */
+	[data-style="claymorphism"] .skin-card {
+		@apply bg-card text-card-foreground rounded-(--radius) text-[0.9375rem] shadow-(--clay-surface) [--card-spacing:var(--surface-padding)];
+	}
+	[data-style="claymorphism"] .skin-card-header {
+		@apply gap-1;
+	}
+	[data-style="claymorphism"] .skin-card-title {
+		@apply text-xl leading-snug font-extrabold tracking-tight;
+	}
+	[data-style="claymorphism"] .skin-card-description {
+		@apply text-muted-foreground text-sm font-medium;
+	}
+	[data-style="claymorphism"] .skin-card-footer {
+		@apply gap-3 px-(--card-spacing) pb-(--card-spacing);
+	}
+
+	/* Dialog */
+	[data-style="claymorphism"] .skin-dialog-backdrop {
+		@apply bg-background/60 backdrop-blur-md transition-opacity duration-200 data-ending-style:opacity-0 data-starting-style:opacity-0;
+	}
+	[data-style="claymorphism"] .skin-dialog-popup {
+		@apply bg-popover text-popover-foreground rounded-(--radius) text-[0.9375rem] shadow-(--clay-surface) transition-[scale,opacity] duration-300 ease-[cubic-bezier(0.34,1.56,0.64,1)] [--dialog-spacing:var(--surface-padding)] data-ending-style:scale-85 data-ending-style:opacity-0 data-starting-style:scale-85 data-starting-style:opacity-0;
+	}
+	[data-style="claymorphism"] .skin-dialog-header {
+		@apply gap-1.5;
+	}
+	[data-style="claymorphism"] .skin-dialog-title {
+		@apply text-xl leading-snug font-extrabold tracking-tight;
+	}
+	[data-style="claymorphism"] .skin-dialog-description {
+		@apply text-muted-foreground text-sm font-medium text-pretty;
+	}
+	[data-style="claymorphism"] .skin-dialog-footer {
+		@apply gap-3 pt-1;
+	}
+}

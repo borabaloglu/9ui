@@ -1,0 +1,112 @@
+@reference "../../app/globals.css";
+
+/*
+ * Default — the current 9ui look, moved out of the components unchanged.
+ * Skins are @apply-only so a registry build can inline them back into the
+ * component class strings.
+ */
+
+@layer components {
+	/* Button */
+	[data-style="default"] .skin-button {
+		@apply focus-visible:border-ring focus-visible:ring-ring/50 h-8 gap-1.5 rounded-lg border border-transparent bg-clip-padding px-2.5 text-sm font-medium transition-[color,background-color,border-color,box-shadow,scale,opacity] duration-150 ease-out before:pointer-events-none before:absolute before:inset-0 before:rounded-[calc(var(--radius-lg)-1px)] focus-visible:ring-3 data-disabled:opacity-50 motion-safe:active:scale-98 [&_svg:not([class*='size-'])]:size-4;
+	}
+	[data-style="default"] .skin-button[data-variant="default"] {
+		@apply border-primary bg-primary text-primary-foreground shadow-primary/30 hover:bg-primary/80 shadow-xs not-data-disabled:inset-shadow-[0_1px_--theme(--color-white/20%)] dark:shadow-none [&:active]:inset-shadow-[0_1px_--theme(--color-black/12%)] [&:is(:active,[data-disabled])]:shadow-none;
+	}
+	[data-style="default"] .skin-button[data-variant="secondary"] {
+		@apply bg-secondary text-secondary-foreground hover:bg-secondary/80;
+	}
+	[data-style="default"] .skin-button[data-variant="ghost"] {
+		@apply text-foreground hover:bg-accent hover:text-accent-foreground dark:hover:bg-accent/50;
+	}
+	[data-style="default"] .skin-button[data-variant="outline"] {
+		@apply border-border bg-input text-foreground hover:bg-accent hover:text-accent-foreground dark:hover:bg-accent/50 shadow-xs not-dark:bg-clip-padding not-data-disabled:not-active:before:shadow-[0_1px_--theme(--color-black/6%)] dark:bg-clip-border dark:not-data-disabled:not-active:before:shadow-[0_-1px_--theme(--color-white/8%)] [&:is(:active,[data-disabled])]:shadow-none;
+	}
+	[data-style="default"] .skin-button[data-variant="link"] {
+		@apply text-foreground underline-offset-4 hover:underline;
+	}
+	[data-style="default"] .skin-button[data-variant="destructive"] {
+		@apply bg-destructive/10 text-destructive hover:bg-destructive/20 focus-visible:border-destructive/60 focus-visible:ring-destructive/30 dark:bg-destructive/20 dark:hover:bg-destructive/30;
+	}
+	[data-style="default"] .skin-button[data-size="sm"] {
+		@apply h-7 gap-1 rounded-[min(var(--radius-md),0.75rem)] px-2.5 text-[0.8rem] before:rounded-[calc(min(var(--radius-md),0.75rem)-1px)] [&_svg:not([class*='size-'])]:size-3.5;
+	}
+	[data-style="default"] .skin-button[data-size="lg"] {
+		@apply h-9 px-3;
+	}
+	[data-style="default"] .skin-button[data-size="icon"] {
+		@apply size-8 px-0;
+	}
+	[data-style="default"] .skin-button[data-size="icon-sm"] {
+		@apply size-7 rounded-[min(var(--radius-md),0.75rem)] px-0 before:rounded-[calc(min(var(--radius-md),0.75rem)-1px)] [&_svg:not([class*='size-'])]:size-3.5;
+	}
+
+	/* Input */
+	[data-style="default"] .skin-input {
+		@apply bg-input placeholder:text-muted-foreground focus-visible:ring-ring/50 inset-ring-border focus-visible:inset-ring-ring h-8 rounded-lg px-2.75 py-1 text-sm shadow-xs inset-ring-1 transition-[color,box-shadow] duration-150 ease-out not-dark:inset-shadow-[0_-1px_--theme(--color-black/6%)] focus-visible:ring-3 disabled:opacity-50 dark:inset-shadow-[0_1px_--theme(--color-white/8%)] [&:is(:focus-visible,:disabled)]:inset-shadow-none;
+	}
+	[data-style="default"] .skin-label {
+		@apply gap-2 text-sm leading-snug font-medium;
+	}
+
+	/* Select */
+	[data-style="default"] .skin-select-trigger {
+		@apply border-border bg-input text-foreground focus-visible:border-ring focus-visible:ring-ring/50 h-8 gap-2 rounded-lg border py-1 pr-2 pl-2.5 text-sm shadow-xs transition-[color,border-color,box-shadow] duration-150 ease-out not-dark:bg-clip-padding before:pointer-events-none before:absolute before:inset-0 before:rounded-[calc(var(--radius-lg)-1px)] not-data-disabled:before:shadow-[0_1px_--theme(--color-black/6%)] focus-visible:ring-3 data-disabled:opacity-50 dark:bg-clip-border dark:not-data-disabled:before:shadow-[0_-1px_--theme(--color-white/8%)] [&_svg:not([class*='size-'])]:size-4;
+	}
+	[data-style="default"] .skin-select-icon {
+		@apply text-muted-foreground;
+	}
+	[data-style="default"] .skin-select-value {
+		@apply data-placeholder:text-muted-foreground;
+	}
+	[data-style="default"] .skin-select-popup {
+		@apply bg-popover text-popover-foreground ease-out-quint ring-border rounded-lg shadow-md ring-1 transition-[scale,opacity] duration-150 data-ending-style:scale-95 data-ending-style:opacity-0 data-starting-style:scale-95 data-starting-style:opacity-0;
+	}
+	[data-style="default"] .skin-select-list {
+		@apply p-1;
+	}
+	[data-style="default"] .skin-select-item {
+		@apply data-highlighted:bg-accent data-highlighted:text-accent-foreground min-h-7 gap-2 rounded-sm py-1 pr-8 pl-2 text-sm data-disabled:opacity-50 [&_svg:not([class*='size-'])]:size-4;
+	}
+	[data-style="default"] .skin-select-item-indicator {
+		@apply absolute right-2 size-4;
+	}
+
+	/* Card */
+	[data-style="default"] .skin-card {
+		@apply bg-card text-card-foreground rounded-xl border text-sm shadow-xs [--card-spacing:--spacing(4)] not-dark:bg-clip-padding before:pointer-events-none before:absolute before:inset-0 before:rounded-[calc(var(--radius-xl)-1px)] before:shadow-[0_1px_--theme(--color-black/6%)] dark:bg-clip-border dark:before:shadow-[0_-1px_--theme(--color-white/8%)];
+	}
+	[data-style="default"] .skin-card-header {
+		@apply gap-1;
+	}
+	[data-style="default"] .skin-card-title {
+		@apply text-base leading-snug font-medium;
+	}
+	[data-style="default"] .skin-card-description {
+		@apply text-muted-foreground text-sm;
+	}
+	[data-style="default"] .skin-card-footer {
+		@apply bg-muted/50 gap-2 rounded-b-[calc(var(--radius-xl)-1px)] border-t p-(--card-spacing);
+	}
+
+	/* Dialog */
+	[data-style="default"] .skin-dialog-backdrop {
+		@apply bg-black/30 transition-opacity duration-200 data-ending-style:opacity-0 data-starting-style:opacity-0 supports-backdrop-filter:backdrop-blur-xs;
+	}
+	[data-style="default"] .skin-dialog-popup {
+		@apply bg-popover text-popover-foreground ease-out-quint rounded-xl border text-sm shadow-lg transition-[scale,opacity] duration-200 [--dialog-spacing:--spacing(4)] data-ending-style:scale-96 data-ending-style:opacity-0 data-starting-style:scale-96 data-starting-style:opacity-0;
+	}
+	[data-style="default"] .skin-dialog-header {
+		@apply gap-1.5;
+	}
+	[data-style="default"] .skin-dialog-title {
+		@apply text-base leading-snug font-medium;
+	}
+	[data-style="default"] .skin-dialog-description {
+		@apply text-muted-foreground text-sm text-pretty;
+	}
+	[data-style="default"] .skin-dialog-footer {
+		@apply bg-muted/50 -mx-(--dialog-spacing) -mb-(--dialog-spacing) gap-2 rounded-b-[calc(var(--radius-xl)-1px)] border-t p-(--dialog-spacing);
+	}
+}

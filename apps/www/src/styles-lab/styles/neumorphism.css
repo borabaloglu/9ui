@@ -1,0 +1,169 @@
+@reference "../../app/globals.css";
+
+/*
+ * Neumorphism — one surface colour; depth comes only from paired light and
+ * dark shadows. Raised = sits on the surface, pressed = carved into it.
+ */
+
+[data-style="neumorphism"] {
+	/* Knobs */
+	--neu-hue: 255;
+	--neu-distance: 6px;
+	--neu-blur: 14px;
+	--neu-intensity: 0.6;
+	--radius: 1rem;
+	--control-height: 2.5rem;
+	--control-padding-x: 1.125rem;
+	--surface-padding: 1.5rem;
+
+	/* Recipes */
+	--neu-base: oklch(0.93 0.012 var(--neu-hue));
+	--neu-light: oklch(1 0 0 / calc(var(--neu-intensity) * 1.5));
+	--neu-dark: oklch(0.68 0.035 var(--neu-hue) / var(--neu-intensity));
+	--neu-raised:
+		calc(var(--neu-distance) * -1) calc(var(--neu-distance) * -1)
+		var(--neu-blur) var(--neu-light),
+		var(--neu-distance) var(--neu-distance) var(--neu-blur) var(--neu-dark);
+	--neu-raised-sm:
+		calc(var(--neu-distance) * -0.6) calc(var(--neu-distance) * -0.6)
+		calc(var(--neu-blur) * 0.6) var(--neu-light),
+		calc(var(--neu-distance) * 0.6) calc(var(--neu-distance) * 0.6)
+		calc(var(--neu-blur) * 0.6) var(--neu-dark);
+	--neu-pressed:
+		inset calc(var(--neu-distance) * 0.5) calc(var(--neu-distance) * 0.5)
+		calc(var(--neu-blur) * 0.5) var(--neu-dark),
+		inset calc(var(--neu-distance) * -0.5) calc(var(--neu-distance) * -0.5)
+		calc(var(--neu-blur) * 0.5) var(--neu-light);
+
+	/* Colours */
+	--background: var(--neu-base);
+	--foreground: oklch(0.36 0.03 var(--neu-hue));
+	--card: var(--neu-base);
+	--card-foreground: var(--foreground);
+	--popover: var(--neu-base);
+	--popover-foreground: var(--foreground);
+	--primary: oklch(0.56 0.19 var(--neu-hue));
+	--primary-foreground: oklch(0.99 0 0);
+	--muted-foreground: oklch(0.54 0.03 var(--neu-hue));
+	--destructive: oklch(0.58 0.2 25);
+	--border: oklch(0.68 0.035 var(--neu-hue) / 0.25);
+	--ring: var(--primary);
+}
+
+[data-style="neumorphism"].dark,
+.dark [data-style="neumorphism"] {
+	--neu-base: oklch(0.27 0.015 var(--neu-hue));
+	--neu-light: oklch(0.38 0.02 var(--neu-hue) / var(--neu-intensity));
+	--neu-dark: oklch(
+		0.14 0.015 var(--neu-hue) /
+		calc(var(--neu-intensity) * 1.3)
+	);
+	--foreground: oklch(0.88 0.015 var(--neu-hue));
+	--primary: oklch(0.72 0.16 var(--neu-hue));
+	--primary-foreground: oklch(0.2 0.03 var(--neu-hue));
+	--muted-foreground: oklch(0.68 0.02 var(--neu-hue));
+	--destructive: oklch(0.72 0.18 25);
+	--border: oklch(0.14 0.015 var(--neu-hue) / 0.5);
+}
+
+@layer components {
+	/* Button */
+	[data-style="neumorphism"] .skin-button {
+		@apply bg-background text-foreground hover:text-primary focus-visible:ring-primary/50 h-(--control-height) gap-2 rounded-(--radius) px-(--control-padding-x) text-sm font-semibold tracking-wide shadow-(--neu-raised-sm) transition-[box-shadow,color,background-color] duration-200 ease-out focus-visible:ring-2 active:shadow-(--neu-pressed) data-disabled:opacity-50 [&_svg:not([class*='size-'])]:size-4;
+	}
+	[data-style="neumorphism"] .skin-button[data-variant="default"] {
+		@apply bg-primary text-primary-foreground hover:text-primary-foreground hover:bg-primary/90 active:shadow-[inset_0_3px_8px_--theme(--color-black/35%)];
+	}
+	[data-style="neumorphism"] .skin-button[data-variant="outline"] {
+		@apply inset-ring-border inset-ring-1;
+	}
+	[data-style="neumorphism"] .skin-button[data-variant="ghost"] {
+		@apply shadow-none hover:shadow-(--neu-raised-sm) active:shadow-(--neu-pressed);
+	}
+	[data-style="neumorphism"] .skin-button[data-variant="link"] {
+		@apply text-primary shadow-none underline-offset-4 hover:underline active:shadow-none;
+	}
+	[data-style="neumorphism"] .skin-button[data-variant="destructive"] {
+		@apply text-destructive hover:text-destructive focus-visible:ring-destructive/50;
+	}
+	[data-style="neumorphism"] .skin-button[data-size="sm"] {
+		@apply h-[calc(var(--control-height)-0.5rem)] rounded-[calc(var(--radius)*0.8)] px-[calc(var(--control-padding-x)*0.75)] text-xs;
+	}
+	[data-style="neumorphism"] .skin-button[data-size="lg"] {
+		@apply h-[calc(var(--control-height)+0.5rem)] px-[calc(var(--control-padding-x)*1.25)] text-base;
+	}
+	[data-style="neumorphism"] .skin-button[data-size="icon"] {
+		@apply size-(--control-height) rounded-full px-0;
+	}
+	[data-style="neumorphism"] .skin-button[data-size="icon-sm"] {
+		@apply size-[calc(var(--control-height)-0.5rem)] rounded-full px-0;
+	}
+
+	/* Input */
+	[data-style="neumorphism"] .skin-input {
+		@apply bg-background text-foreground placeholder:text-muted-foreground/70 focus-visible:ring-primary/50 h-(--control-height) rounded-(--radius) px-(--control-padding-x) text-sm shadow-(--neu-pressed) transition-shadow duration-200 focus-visible:ring-2 disabled:opacity-50;
+	}
+	[data-style="neumorphism"] .skin-label {
+		@apply text-muted-foreground gap-2 pl-1 text-xs font-semibold tracking-wide uppercase;
+	}
+
+	/* Select */
+	[data-style="neumorphism"] .skin-select-trigger {
+		@apply bg-background text-foreground focus-visible:ring-primary/50 h-(--control-height) gap-3 rounded-(--radius) pr-[calc(var(--control-padding-x)*0.75)] pl-(--control-padding-x) text-sm font-medium shadow-(--neu-raised-sm) transition-shadow duration-200 focus-visible:ring-2 data-disabled:opacity-50 data-popup-open:shadow-(--neu-pressed) [&_svg:not([class*='size-'])]:size-4;
+	}
+	[data-style="neumorphism"] .skin-select-icon {
+		@apply text-primary;
+	}
+	[data-style="neumorphism"] .skin-select-value {
+		@apply data-placeholder:text-muted-foreground;
+	}
+	[data-style="neumorphism"] .skin-select-popup {
+		@apply bg-popover text-popover-foreground rounded-(--radius) shadow-(--neu-raised) transition-[scale,opacity] duration-200 ease-out data-ending-style:scale-95 data-ending-style:opacity-0 data-starting-style:scale-95 data-starting-style:opacity-0;
+	}
+	[data-style="neumorphism"] .skin-select-list {
+		@apply flex flex-col gap-1 p-2;
+	}
+	[data-style="neumorphism"] .skin-select-item {
+		@apply data-highlighted:text-primary min-h-9 gap-2 rounded-[calc(var(--radius)*0.65)] px-3 text-sm font-medium transition-shadow duration-150 data-disabled:opacity-50 data-highlighted:shadow-(--neu-pressed) [&_svg:not([class*='size-'])]:size-4;
+	}
+	[data-style="neumorphism"] .skin-select-item-indicator {
+		@apply text-primary ml-4 size-4;
+	}
+
+	/* Card */
+	[data-style="neumorphism"] .skin-card {
+		@apply bg-card text-card-foreground rounded-[calc(var(--radius)*1.75)] text-sm shadow-(--neu-raised) [--card-spacing:var(--surface-padding)];
+	}
+	[data-style="neumorphism"] .skin-card-header {
+		@apply gap-1.5;
+	}
+	[data-style="neumorphism"] .skin-card-title {
+		@apply text-lg leading-snug font-semibold tracking-tight;
+	}
+	[data-style="neumorphism"] .skin-card-description {
+		@apply text-muted-foreground text-sm;
+	}
+	[data-style="neumorphism"] .skin-card-footer {
+		@apply gap-3 p-(--card-spacing) shadow-[inset_0_1px_0_var(--neu-dark),inset_0_2px_0_var(--neu-light)];
+	}
+
+	/* Dialog */
+	[data-style="neumorphism"] .skin-dialog-backdrop {
+		@apply bg-background/70 backdrop-blur-sm transition-opacity duration-200 data-ending-style:opacity-0 data-starting-style:opacity-0;
+	}
+	[data-style="neumorphism"] .skin-dialog-popup {
+		@apply bg-popover text-popover-foreground rounded-[calc(var(--radius)*1.75)] text-sm shadow-(--neu-raised) transition-[scale,opacity] duration-200 ease-out [--dialog-spacing:var(--surface-padding)] data-ending-style:scale-95 data-ending-style:opacity-0 data-starting-style:scale-95 data-starting-style:opacity-0;
+	}
+	[data-style="neumorphism"] .skin-dialog-header {
+		@apply gap-2;
+	}
+	[data-style="neumorphism"] .skin-dialog-title {
+		@apply text-lg leading-snug font-semibold tracking-tight;
+	}
+	[data-style="neumorphism"] .skin-dialog-description {
+		@apply text-muted-foreground text-sm text-pretty;
+	}
+	[data-style="neumorphism"] .skin-dialog-footer {
+		@apply gap-3 pt-1;
+	}
+}
