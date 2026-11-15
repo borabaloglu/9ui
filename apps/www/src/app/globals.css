@@ -47,7 +47,7 @@
 	* {
 		@apply border-border outline-ring/50 selection:bg-primary selection:text-primary-foreground;
 		scrollbar-width: thin;
-		scrollbar-color: var(--muted) transparent;
+		scrollbar-color: var(--surface-muted, var(--muted)) transparent;
 	}
 	::-webkit-scrollbar {
 		width: 4px;
@@ -56,7 +56,7 @@
 		background: transparent;
 	}
 	::-webkit-scrollbar-thumb {
-		background: var(--muted);
+		background: var(--surface-muted, var(--muted));
 		border-radius: 4px;
 	}
 
@@ -127,6 +127,9 @@
 	--destructive-foreground: oklch(0.58 0.22 27);
 	--border: oklch(1 0 0 / 10%);
 	--input: oklch(1 0 0 / 5%);
+	--secondary-elevated: oklch(0.319 0 0);
+	--muted-elevated: oklch(0.319 0 0);
+	--accent-elevated: oklch(0.421 0 0);
 	--ring: oklch(0.556 0 0);
 	--warning: oklch(0.828 0.189 84.429);
 	--info: oklch(0.707 0.165 254.624);
@@ -169,11 +172,11 @@
 	--color-popover-foreground: var(--popover-foreground);
 	--color-primary: var(--primary);
 	--color-primary-foreground: var(--primary-foreground);
-	--color-secondary: var(--secondary);
+	--color-secondary: var(--surface-secondary, var(--secondary));
 	--color-secondary-foreground: var(--secondary-foreground);
-	--color-muted: var(--muted);
+	--color-muted: var(--surface-muted, var(--muted));
 	--color-muted-foreground: var(--muted-foreground);
-	--color-accent: var(--accent);
+	--color-accent: var(--surface-accent, var(--accent));
 	--color-accent-foreground: var(--accent-foreground);
 	--color-destructive: var(--destructive);
 	--color-destructive-foreground: var(--destructive-foreground);
@@ -208,6 +211,24 @@
 			background-position: -200% 0;
 		}
 	}
+}
+
+@utility bg-background {
+	--surface-secondary: initial;
+	--surface-muted: initial;
+	--surface-accent: initial;
+}
+
+@utility bg-card {
+	--surface-secondary: var(--secondary-elevated);
+	--surface-muted: var(--muted-elevated);
+	--surface-accent: var(--accent-elevated);
+}
+
+@utility bg-popover {
+	--surface-secondary: var(--secondary-elevated);
+	--surface-muted: var(--muted-elevated);
+	--surface-accent: var(--accent-elevated);
 }
 
 @utility container {

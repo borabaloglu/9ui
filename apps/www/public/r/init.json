@@ -32,11 +32,11 @@
 			"color-popover-foreground": "var(--popover-foreground)",
 			"color-primary": "var(--primary)",
 			"color-primary-foreground": "var(--primary-foreground)",
-			"color-secondary": "var(--secondary)",
+			"color-secondary": "var(--surface-secondary, var(--secondary))",
 			"color-secondary-foreground": "var(--secondary-foreground)",
-			"color-muted": "var(--muted)",
+			"color-muted": "var(--surface-muted, var(--muted))",
 			"color-muted-foreground": "var(--muted-foreground)",
-			"color-accent": "var(--accent)",
+			"color-accent": "var(--surface-accent, var(--accent))",
 			"color-accent-foreground": "var(--accent-foreground)",
 			"color-destructive": "var(--destructive)",
 			"color-destructive-foreground": "var(--destructive-foreground)",
@@ -101,6 +101,9 @@
 			"destructive-foreground": "oklch(98.5% 0 0)",
 			"border": "oklch(37.1% 0 0)",
 			"input": "oklch(100% 0 0 / 5%)",
+			"secondary-elevated": "oklch(31.9% 0 0)",
+			"muted-elevated": "oklch(31.9% 0 0)",
+			"accent-elevated": "oklch(42.1% 0 0)",
 			"ring": "oklch(55.6% 0 0)",
 			"warning": "oklch(82.8% 0.189 84.429)",
 			"info": "oklch(70.7% 0.165 254.624)",
@@ -148,6 +151,21 @@
 				"background": "var(--border)",
 				"border-radius": "4px"
 			}
+		},
+		"@utility bg-background": {
+			"--surface-secondary": "initial",
+			"--surface-muted": "initial",
+			"--surface-accent": "initial"
+		},
+		"@utility bg-card": {
+			"--surface-secondary": "var(--secondary-elevated)",
+			"--surface-muted": "var(--muted-elevated)",
+			"--surface-accent": "var(--accent-elevated)"
+		},
+		"@utility bg-popover": {
+			"--surface-secondary": "var(--secondary-elevated)",
+			"--surface-muted": "var(--muted-elevated)",
+			"--surface-accent": "var(--accent-elevated)"
 		}
 	}
 }

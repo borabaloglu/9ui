@@ -112,7 +112,7 @@ function TableHead({
 			data-slot="table-head"
 			scope={scope}
 			className={cn(
-				"text-muted-foreground in-data-sticky:bg-background in-data-sticky:in-data-[slot=card]:bg-card h-10 px-3 text-start align-middle font-medium whitespace-nowrap first:ps-4 last:pe-4 in-data-sticky:sticky in-data-sticky:top-0 in-data-sticky:z-1 in-data-sticky:shadow-[inset_0_-1px_var(--border)] in-data-[size=sm]:h-8 in-data-sticky:in-data-[variant=card]:bg-[color-mix(in_oklab,var(--muted)_50%,var(--card))] has-[[role=checkbox]]:w-px first:has-[[role=checkbox]]:pe-0 last:has-[[role=checkbox]]:ps-0 any-pointer-coarse:h-11 any-pointer-coarse:in-data-[size=sm]:h-10 *:[[role=checkbox]]:flex",
+				"text-muted-foreground in-data-sticky:bg-background in-data-sticky:in-data-[slot=card]:bg-card h-10 px-3 text-start align-middle font-medium whitespace-nowrap first:ps-4 last:pe-4 in-data-sticky:sticky in-data-sticky:top-0 in-data-sticky:z-1 in-data-sticky:shadow-[inset_0_-1px_var(--border)] in-data-[size=sm]:h-8 in-data-sticky:in-data-[variant=card]:bg-[color-mix(in_oklab,var(--surface-muted,var(--muted))_50%,var(--card))] has-[[role=checkbox]]:w-px first:has-[[role=checkbox]]:pe-0 last:has-[[role=checkbox]]:ps-0 any-pointer-coarse:h-11 any-pointer-coarse:in-data-[size=sm]:h-10 *:[[role=checkbox]]:flex",
 				className,
 			)}
 			{...props}
