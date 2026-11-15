@@ -4,6 +4,63 @@ description: Latest Updates
 label: Updated
 ---
 
+## DD/MM/2026
+
+The last entry on this page is almost a year old. 9ui went quiet in that time, and Base UI did not: it went from `1.0` to `1.9` and gained a drawer and an OTP field along the way.
+
+Catching up with small patches would have left the library half old and half new. So I started again from the first component and rebuilt every one of them against Base UI `1.9`, reading its guide next to the code each time. This release is the result. Think of it as 9ui relaunched.
+
+### Every component, rebuilt
+
+All 62 components were rewritten, not adjusted. A few things are now true across the whole library:
+
+- **Base UI names.** Parts are called what Base UI calls them: `DialogPopup`, `AccordionPanel`, `TabsTab`, `SheetBackdrop`. What you read in the Base UI docs maps directly to what is in your project.
+- **Made for touch.** Controls are larger and easier to hit on touch devices, and focusing an input no longer zooms the page on iOS.
+- **Purposeful motion.** Every animation was reviewed and designed around its purpose, with the help of [Emil Kowalski's skills](https://github.com/emilkowalski/skills). Everything respects reduced motion.
+- **Consistent states.** Focus, disabled and invalid look the same on every control, and the invalid state comes straight from `Field`.
+- **A little depth.** Buttons, inputs and checkboxes have subtle depth, so they read as controls on any surface.
+
+### New components
+
+- [`Menu`](/docs/components/menu), which replaces Dropdown Menu
+- [`Drawer`](/docs/components/drawer), now built on the Base UI drawer with swipe, snap points and a scaled background
+- [`Vaul`](/docs/components/vaul), the previous drawer under its own name
+- [`OTP Field`](/docs/components/otp-field), which replaces Input OTP
+- [`Field`](/docs/components/field) and [`Fieldset`](/docs/components/fieldset)
+- [`Input Group`](/docs/components/input-group)
+- [`Button Group`](/docs/components/button-group)
+- [`Sidebar`](/docs/components/sidebar)
+- [`Spinner`](/docs/components/spinner)
+- [`Data Table`](/docs/components/data-table), a guide for building tables with TanStack Table
+
+### Forms
+
+Forms have their own section now. There is a guide for [Base UI](/docs/forms/base-ui), [React Hook Form](/docs/forms/react-hook-form) and [TanStack Form](/docs/forms/tanstack-form). Each one covers validation, server errors, array fields and every field type, with a working example for each.
+
+### Theme
+
+- Status colors use one token each: `warning`, `info` and `success`. Tints come from opacity, the same way `destructive` works.
+- Dark mode has better contrast on cards and popovers.
+- Chart colors are a single tonal scale.
+- Two easing tokens were added: `ease-out-quint` and `ease-drawer`.
+
+### Docs
+
+The site was redesigned, with a new layout, new code blocks and better navigation on mobile. Component pages went from about 150 examples to nearly 500, and most pages link to their Base UI reference.
+
+### Breaking changes
+
+Components live in your project, so nothing changes until you add a component again. When you do, expect these differences:
+
+- `dropdown-menu` is now [`menu`](/docs/components/menu), `input-otp` is [`otp-field`](/docs/components/otp-field) and `breadcrumbs` is [`breadcrumb`](/docs/components/breadcrumb).
+- `drawer` installs the Base UI drawer. To keep the old one, install [`vaul`](/docs/components/vaul). It has the same parts under `Vaul*` names.
+- `*Content` parts are now `*Popup` (dialogs, popovers, menus, selects, tooltips) or `*Panel` (accordion, collapsible, tabs). `*Overlay` is `*Backdrop`. The portal and positioner are part of the popup, so they are no longer separate parts.
+- `TabsTrigger` is `TabsTab`, `RadioGroupItem` is `Radio`, and menu labels are `*GroupLabel`.
+- `FormField`, `FormItem`, `FormLabel`, `FormControl` and `FormMessage` are gone. Build forms with `Field` and follow the [forms guides](/docs/forms/base-ui).
+- The `danger` tokens and the `*-foreground` and `*-border` status tokens were removed. Use `destructive` for errors and update your theme from the [installation](/docs/getting-started/installation) page.
+
+Thank you to everyone who kept using 9ui and opening issues while it was quiet. If something feels off, [tell me on GitHub](https://github.com/borabaloglu/9ui/issues).
+
 ## 27/12/2025
 
 - **Important:** All components now use Base UI v1.0.0.
