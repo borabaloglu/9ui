@@ -136,7 +136,7 @@ function VaulContent({
 							"inset-y-0 left-0 rounded-r-(--vaul-radius) border-r pt-[env(safe-area-inset-top,0px)] [--vaul-bottom:env(safe-area-inset-bottom,0px)] [--vaul-overdrag:0_100%_0_-100vw] data-[vaul-custom-container=true]:[--vaul-overdrag:auto]",
 					],
 					inset && [
-						"rounded-(--vaul-radius) border bg-size-[var(--vaul-radius)_var(--vaul-radius),var(--vaul-radius)_var(--vaul-radius),calc(100%-2*var(--vaul-radius))_1px] bg-position-[0_0,100%_0,50%_0] bg-no-repeat bg-origin-border [--initial-transform:calc(100%+--spacing(4))] not-dark:shadow-[0_1px_--theme(--color-black/6%),var(--shadow-lg)] after:hidden! dark:bg-[radial-gradient(circle_at_var(--vaul-radius)_calc(var(--vaul-radius)+1px),transparent_calc(var(--vaul-radius)-0.5px),--theme(--color-white/8%)_calc(var(--vaul-radius)+0.5px)),radial-gradient(circle_at_0_calc(var(--vaul-radius)+1px),transparent_calc(var(--vaul-radius)-0.5px),--theme(--color-white/8%)_calc(var(--vaul-radius)+0.5px)),linear-gradient(--theme(--color-white/8%),--theme(--color-white/8%))]",
+						"dark:edge-highlight-(--vaul-radius) rounded-(--vaul-radius) border [--initial-transform:calc(100%+--spacing(4))] not-dark:shadow-[0_1px_--theme(--color-black/6%),var(--shadow-lg)] after:hidden!",
 						direction === "top" &&
 							"inset-x-4 top-[calc(--spacing(4)+env(safe-area-inset-top,0px))]",
 						direction === "bottom" &&

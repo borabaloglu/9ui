@@ -195,7 +195,7 @@ function NavigationMenuPopup({
 				<BaseNavigationMenu.Popup
 					data-slot="navigation-menu-popup"
 					className={cn(
-						"bg-popover text-popover-foreground ease-out-quint relative h-(--popup-height) w-(--popup-width) origin-(--transform-origin) rounded-lg border shadow-md transition-[width,height,scale,opacity] duration-200 outline-none data-ending-style:scale-98 data-ending-style:opacity-0 data-ending-style:transition-[scale,opacity] data-ending-style:duration-150 data-starting-style:scale-98 data-starting-style:opacity-0 motion-reduce:transition-opacity motion-reduce:data-ending-style:scale-100 motion-reduce:data-starting-style:scale-100",
+						"bg-popover text-popover-foreground ease-out-quint dark:edge-highlight-lg relative h-(--popup-height) w-(--popup-width) origin-(--transform-origin) rounded-lg border shadow-md transition-[width,height,scale,opacity] duration-200 outline-none not-dark:shadow-[0_1px_--theme(--color-black/6%),var(--shadow-md)] data-ending-style:scale-98 data-ending-style:opacity-0 data-ending-style:transition-[scale,opacity] data-ending-style:duration-150 data-starting-style:scale-98 data-starting-style:opacity-0 motion-reduce:transition-opacity motion-reduce:data-ending-style:scale-100 motion-reduce:data-starting-style:scale-100",
 						className,
 					)}
 					{...props}

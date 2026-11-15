@@ -74,7 +74,7 @@ function MenubarPopup({
 				<BaseMenu.Popup
 					data-slot="menubar-popup"
 					className={cn(
-						"bg-popover text-popover-foreground ease-out-quint max-h-(--available-height) min-w-32 overflow-x-hidden overflow-y-auto rounded-lg border p-1 shadow-md transition-opacity duration-100 outline-none data-ending-style:opacity-0 data-instant:transition-none",
+						"bg-popover text-popover-foreground ease-out-quint dark:edge-highlight-lg max-h-(--available-height) min-w-32 overflow-x-hidden overflow-y-auto rounded-lg border p-1 shadow-md transition-opacity duration-100 outline-none not-dark:shadow-[0_1px_--theme(--color-black/6%),var(--shadow-md)] data-ending-style:opacity-0 data-instant:transition-none",
 						className,
 					)}
 					{...props}

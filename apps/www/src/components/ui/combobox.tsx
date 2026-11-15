@@ -77,7 +77,7 @@ function ComboboxPopup({
 				<BaseCombobox.Popup
 					data-slot="combobox-popup"
 					className={cn(
-						"bg-popover text-popover-foreground flex max-h-[min(var(--available-height),20rem)] max-w-(--available-width) min-w-(--anchor-width) flex-col rounded-lg border shadow-md outline-none",
+						"bg-popover text-popover-foreground dark:edge-highlight-lg flex max-h-[min(var(--available-height),20rem)] max-w-(--available-width) min-w-(--anchor-width) flex-col rounded-lg border shadow-md outline-none not-dark:shadow-[0_1px_--theme(--color-black/6%),var(--shadow-md)]",
 						className,
 					)}
 					{...props}
