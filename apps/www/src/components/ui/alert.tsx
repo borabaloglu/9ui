@@ -6,7 +6,7 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 
 const alertVariants = cva(
-	"group/alert text-card-foreground relative grid w-full grid-cols-1 items-start gap-x-2 gap-y-0.5 rounded-xl border px-3.5 py-3 text-sm shadow-xs not-dark:bg-clip-padding before:pointer-events-none before:absolute before:inset-0 before:rounded-[calc(var(--radius-xl)-1px)] before:shadow-[0_1px_--theme(--color-black/6%)] has-[>svg]:grid-cols-[auto_1fr] sm:has-data-[slot=alert-action]:grid-cols-[1fr_auto] sm:has-[>svg]:has-data-[slot=alert-action]:grid-cols-[auto_1fr_auto] dark:bg-clip-border dark:before:shadow-[0_-1px_--theme(--color-white/8%)] *:[svg]:h-lh *:[svg]:shrink-0 *:[svg:not([class*='size-'])]:w-4",
+	"group/alert text-card-foreground relative grid w-full grid-cols-1 items-start gap-x-2 gap-y-0.5 rounded-xl border px-3.5 py-3 text-sm shadow-xs not-dark:bg-clip-padding before:pointer-events-none before:absolute before:inset-0 before:rounded-[calc(var(--radius-xl)-1px)] before:shadow-[0_1px_--theme(--color-black/6%)] has-[>svg]:grid-cols-[auto_minmax(0,1fr)] sm:has-data-[slot=alert-action]:grid-cols-[minmax(0,1fr)_auto] sm:has-[>svg]:has-data-[slot=alert-action]:grid-cols-[auto_minmax(0,1fr)_auto] dark:bg-clip-border dark:before:shadow-[0_-1px_--theme(--color-white/8%)] *:[svg]:h-lh *:[svg]:shrink-0 *:[svg:not([class*='size-'])]:w-4",
 	{
 		variants: {
 			variant: {
@@ -50,7 +50,7 @@ function AlertTitle({
 		props: mergeProps<"div">(
 			{
 				className: cn(
-					"col-start-1 font-medium group-has-[>svg]/alert:col-start-2",
+					"col-start-1 font-medium wrap-break-word group-has-[>svg]/alert:col-start-2",
 					className,
 				),
 			},
@@ -71,7 +71,7 @@ function AlertDescription({
 		<div
 			data-slot="alert-description"
 			className={cn(
-				"text-muted-foreground col-start-1 grid justify-items-start gap-1 text-pretty group-has-[>svg]/alert:col-start-2 [&_a]:underline [&_a]:underline-offset-3 [&_p]:leading-relaxed",
+				"text-muted-foreground col-start-1 grid justify-items-start gap-1 text-pretty wrap-anywhere group-has-[>svg]/alert:col-start-2 [&_a]:underline [&_a]:underline-offset-3 [&_p]:leading-relaxed",
 				className,
 			)}
 			{...props}

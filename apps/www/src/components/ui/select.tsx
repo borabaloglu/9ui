@@ -112,7 +112,7 @@ function SelectPopup({
 				<BaseSelect.Popup
 					data-slot="select-popup"
 					className={cn(
-						"bg-popover text-popover-foreground ease-out-quint ring-border relative min-w-(--anchor-width) origin-(--transform-origin) rounded-lg shadow-md ring-1 transition-[scale,opacity] duration-150 outline-none not-dark:shadow-[0_1px_0_1px_--theme(--color-black/6%),var(--shadow-md)] data-ending-style:scale-95 data-ending-style:opacity-0 data-ending-style:duration-100 data-starting-style:scale-95 data-starting-style:opacity-0 data-[side=none]:min-w-[calc(var(--anchor-width)+2px)] data-[side=none]:transition-none motion-reduce:transition-opacity motion-reduce:data-ending-style:scale-100 motion-reduce:data-starting-style:scale-100 dark:shadow-[0_-1px_--theme(--color-white/8%),var(--shadow-md)]",
+						"bg-popover text-popover-foreground ease-out-quint ring-border relative max-w-(--available-width) min-w-(--anchor-width) origin-(--transform-origin) rounded-lg shadow-md ring-1 transition-[scale,opacity] duration-150 outline-none not-dark:shadow-[0_1px_0_1px_--theme(--color-black/6%),var(--shadow-md)] data-ending-style:scale-95 data-ending-style:opacity-0 data-ending-style:duration-100 data-starting-style:scale-95 data-starting-style:opacity-0 data-[side=none]:min-w-[calc(var(--anchor-width)+2px)] data-[side=none]:transition-none motion-reduce:transition-opacity motion-reduce:data-ending-style:scale-100 motion-reduce:data-starting-style:scale-100 dark:shadow-[0_-1px_--theme(--color-white/8%),var(--shadow-md)]",
 						className,
 					)}
 					{...props}
@@ -159,7 +159,7 @@ function SelectItem({
 		>
 			<BaseSelect.ItemText
 				data-slot="select-item-text"
-				className="flex min-w-0 flex-1 items-center gap-2 whitespace-nowrap"
+				className="flex min-w-0 flex-1 items-center gap-2 wrap-anywhere"
 			>
 				{children}
 			</BaseSelect.ItemText>

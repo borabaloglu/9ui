@@ -369,7 +369,10 @@ function SidebarGroup({ className, ...props }: React.ComponentProps<"div">) {
 	return (
 		<div
 			data-slot="sidebar-group"
-			className={cn("relative flex w-full min-w-0 flex-col p-2", className)}
+			className={cn(
+				"group/sidebar-group relative flex w-full min-w-0 flex-col p-2",
+				className,
+			)}
 			{...props}
 		/>
 	);
@@ -388,7 +391,7 @@ function SidebarGroupLabel({
 				"data-slot": "sidebar-group-label",
 				"data-sidebar": "group-label",
 				className: cn(
-					"text-muted-foreground focus-visible:ring-ring/50 ease-out-quint flex h-8 shrink-0 items-center rounded-lg px-2 text-xs font-medium transition-[margin,opacity] duration-200 outline-none group-data-instant/sidebar-wrapper:transition-none group-data-[collapsible=icon]/sidebar:pointer-events-none group-data-[collapsible=icon]/sidebar:-mt-8 group-data-[collapsible=icon]/sidebar:opacity-0 focus-visible:ring-3 focus-visible:outline-hidden motion-reduce:transition-none [&>svg]:pointer-events-none [&>svg]:shrink-0 [&>svg:not([class*='size-'])]:size-4",
+					"text-muted-foreground focus-visible:ring-ring/50 ease-out-quint flex h-8 shrink-0 items-center rounded-lg px-2 text-xs font-medium transition-[margin,opacity] duration-200 outline-none group-has-data-[slot=sidebar-group-action]/sidebar-group:pe-8 group-data-instant/sidebar-wrapper:transition-none group-data-[collapsible=icon]/sidebar:pointer-events-none group-data-[collapsible=icon]/sidebar:-mt-8 group-data-[collapsible=icon]/sidebar:opacity-0 focus-visible:ring-3 focus-visible:outline-hidden motion-reduce:transition-none [&>span]:truncate [&>svg]:pointer-events-none [&>svg]:shrink-0 [&>svg:not([class*='size-'])]:size-4",
 					className,
 				),
 			} as React.ComponentProps<"div">,
@@ -453,7 +456,7 @@ function SidebarMenuItem({ className, ...props }: React.ComponentProps<"li">) {
 }
 
 const sidebarMenuButtonVariants = cva(
-	"peer/menu-button group/menu-button hover:bg-accent/50 hover:text-accent-foreground focus-visible:ring-ring/50 active:bg-foreground/10 dark:active:bg-accent data-active:bg-accent data-active:text-accent-foreground data-active:active:bg-foreground/10 dark:data-active:active:bg-foreground/10 data-popup-open:bg-accent data-popup-open:text-accent-foreground data-popup-open:active:bg-foreground/10 dark:data-popup-open:active:bg-foreground/10 ease-out-quint flex w-full cursor-pointer items-center gap-2 overflow-hidden rounded-lg px-2 text-start text-sm transition-[width,height,padding] duration-200 outline-none group-has-data-[sidebar=menu-action]/menu-item:pe-8 group-data-instant/sidebar-wrapper:transition-none group-data-[collapsible=icon]/sidebar:size-8 group-data-[collapsible=icon]/sidebar:p-2 focus-visible:ring-3 focus-visible:outline-hidden disabled:pointer-events-none disabled:opacity-50 aria-disabled:pointer-events-none aria-disabled:opacity-50 data-active:font-medium motion-reduce:transition-none [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4 [&>span]:truncate",
+	"peer/menu-button group/menu-button hover:bg-accent/50 hover:text-accent-foreground focus-visible:ring-ring/50 active:bg-foreground/10 dark:active:bg-accent data-active:bg-accent data-active:text-accent-foreground data-active:active:bg-foreground/10 dark:data-active:active:bg-foreground/10 data-popup-open:bg-accent data-popup-open:text-accent-foreground data-popup-open:active:bg-foreground/10 dark:data-popup-open:active:bg-foreground/10 ease-out-quint flex w-full cursor-pointer items-center gap-2 overflow-hidden rounded-lg px-2 text-start text-sm transition-[width,height,padding] duration-200 outline-none group-has-data-[sidebar=menu-action]/menu-item:pe-8 group-has-data-[slot=sidebar-menu-badge]/menu-item:pe-8 group-data-instant/sidebar-wrapper:transition-none group-data-[collapsible=icon]/sidebar:size-8 group-data-[collapsible=icon]/sidebar:p-2 focus-visible:ring-3 focus-visible:outline-hidden disabled:pointer-events-none disabled:opacity-50 aria-disabled:pointer-events-none aria-disabled:opacity-50 data-active:font-medium motion-reduce:transition-none [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4 [&>span]:truncate",
 	{
 		variants: {
 			variant: {

@@ -27,7 +27,7 @@ function CardHeader({ className, ...props }: React.ComponentProps<"div">) {
 		<div
 			data-slot="card-header"
 			className={cn(
-				"@container/card-header grid auto-rows-min items-start gap-1 px-(--card-spacing) has-data-[slot=card-action]:grid-cols-[1fr_auto] has-data-[slot=card-description]:grid-rows-[auto_auto] [.border-b]:pb-(--card-spacing)",
+				"@container/card-header grid auto-rows-min grid-cols-1 items-start gap-1 px-(--card-spacing) has-data-[slot=card-action]:grid-cols-[minmax(0,1fr)_auto] has-data-[slot=card-description]:grid-rows-[auto_auto] [.border-b]:pb-(--card-spacing)",
 				className,
 			)}
 			{...props}
@@ -45,7 +45,7 @@ function CardTitle({
 		props: mergeProps<"div">(
 			{
 				className: cn(
-					"text-base leading-snug font-medium group-data-[size=sm]/card:text-sm",
+					"text-base leading-snug font-medium wrap-break-word group-data-[size=sm]/card:text-sm",
 					className,
 				),
 			},
@@ -62,7 +62,7 @@ function CardDescription({ className, ...props }: React.ComponentProps<"div">) {
 	return (
 		<div
 			data-slot="card-description"
-			className={cn("text-muted-foreground text-sm", className)}
+			className={cn("text-muted-foreground text-sm wrap-break-word", className)}
 			{...props}
 		/>
 	);
