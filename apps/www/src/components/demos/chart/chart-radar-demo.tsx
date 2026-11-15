@@ -1,28 +1,30 @@
 "use client";
 
-import { Legend, PolarAngleAxis, PolarGrid, Radar, RadarChart } from "recharts";
+import { PolarAngleAxis, PolarGrid, Radar, RadarChart } from "recharts";
 
 import {
 	Card,
 	CardContent,
 	CardDescription,
-	CardFooter,
 	CardHeader,
 	CardTitle,
 } from "@/components/ui/card";
 import {
 	type ChartConfig,
 	ChartContainer,
+	ChartLegend,
+	ChartLegendContent,
 	ChartTooltip,
 	ChartTooltipContent,
 } from "@/components/ui/chart";
 
 const chartData = [
-	{ category: "Performance", a: 90, b: 60 },
-	{ category: "Reliability", a: 75, b: 90 },
-	{ category: "Scalability", a: 95, b: 90 },
-	{ category: "Security", a: 88, b: 65 },
-	{ category: "Usability", a: 92, b: 88 },
+	{ category: "Speed", a: 80, b: 90 },
+	{ category: "Reliability", a: 95, b: 85 },
+	{ category: "Comfort", a: 70, b: 95 },
+	{ category: "Safety", a: 90, b: 80 },
+	{ category: "Efficiency", a: 85, b: 75 },
+	{ category: "Design", a: 75, b: 95 },
 ];
 
 const chartConfig = {
@@ -37,59 +39,38 @@ const chartConfig = {
 } satisfies ChartConfig;
 
 export default function ChartRadarDemo() {
-	const productAAverage =
-		chartData.reduce((sum, item) => sum + item.a, 0) / chartData.length;
-	const productBAverage =
-		chartData.reduce((sum, item) => sum + item.b, 0) / chartData.length;
-	const bestPerformer =
-		productAAverage > productBAverage ? "Product A" : "Product B";
-
 	return (
-		<Card className="flex w-full flex-col">
-			<CardHeader className="text-center">
-				<CardTitle>Product Comparison</CardTitle>
-				<CardDescription>
-					Performance metrics across key categories
-				</CardDescription>
+		<Card className="w-full">
+			<CardHeader>
+				<CardTitle>Product comparison</CardTitle>
+				<CardDescription>Scores out of 100 by category</CardDescription>
 			</CardHeader>
-			<CardContent className="flex-1">
-				<ChartContainer config={chartConfig} className="h-[300px] w-full">
-					<RadarChart data={chartData}>
+			<CardContent>
+				<ChartContainer config={chartConfig} className="h-72 w-full">
+					<RadarChart data={chartData} outerRadius="72%">
 						<PolarGrid />
 						<PolarAngleAxis dataKey="category" />
-						<ChartTooltip content={<ChartTooltipContent />} />
-						<Legend />
+						<ChartTooltip content={<ChartTooltipContent indicator="line" />} />
+						<ChartLegend content={<ChartLegendContent />} />
 						<Radar
-							name="Product A"
 							dataKey="a"
-							stroke={chartConfig.a.color}
-							fill={chartConfig.a.color}
+							fill="var(--color-a)"
 							fillOpacity={0.2}
+							stroke="var(--color-a)"
+							strokeWidth={2}
+							animationDuration={500}
 						/>
 						<Radar
-							name="Product B"
 							dataKey="b"
-							stroke={chartConfig.b.color}
-							fill={chartConfig.b.color}
+							fill="var(--color-b)"
 							fillOpacity={0.2}
+							stroke="var(--color-b)"
+							strokeWidth={2}
+							animationDuration={500}
 						/>
 					</RadarChart>
 				</ChartContainer>
 			</CardContent>
-			<CardFooter className="flex-col gap-2 text-sm leading-none">
-				<div className="flex w-full justify-between font-medium">
-					<span>Best Overall:</span>
-					<span>{bestPerformer}</span>
-				</div>
-				<div className="text-muted-foreground flex w-full justify-between">
-					<span>Product A Average:</span>
-					<span>{productAAverage.toFixed(1)}%</span>
-				</div>
-				<div className="text-muted-foreground flex w-full justify-between">
-					<span>Product B Average:</span>
-					<span>{productBAverage.toFixed(1)}%</span>
-				</div>
-			</CardFooter>
 		</Card>
 	);
 }

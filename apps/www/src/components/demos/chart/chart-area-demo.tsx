@@ -1,13 +1,11 @@
 "use client";
 
-import { TrendingUpIcon } from "lucide-react";
-import { Area, AreaChart, CartesianGrid, XAxis } from "recharts";
+import { Area, AreaChart, CartesianGrid, XAxis, YAxis } from "recharts";
 
 import {
 	Card,
 	CardContent,
 	CardDescription,
-	CardFooter,
 	CardHeader,
 	CardTitle,
 } from "@/components/ui/card";
@@ -19,94 +17,81 @@ import {
 } from "@/components/ui/chart";
 
 const chartData = [
-	{ month: "Jan", revenue: 1500 },
-	{ month: "Feb", revenue: 3200 },
-	{ month: "Mar", revenue: 2900 },
-	{ month: "Apr", revenue: 2100 },
-	{ month: "May", revenue: 4000 },
-	{ month: "Jun", revenue: 3700 },
-	{ month: "Jul", revenue: 4300 },
-	{ month: "Aug", revenue: 4900 },
-	{ month: "Sep", revenue: 4700 },
-	{ month: "Oct", revenue: 5200 },
-	{ month: "Nov", revenue: 6000 },
-	{ month: "Dec", revenue: 7200 },
+	{ week: "W1", users: 1240 },
+	{ week: "W2", users: 1380 },
+	{ week: "W3", users: 1310 },
+	{ week: "W4", users: 1560 },
+	{ week: "W5", users: 1720 },
+	{ week: "W6", users: 1690 },
+	{ week: "W7", users: 1940 },
+	{ week: "W8", users: 2180 },
+	{ week: "W9", users: 2090 },
+	{ week: "W10", users: 2360 },
+	{ week: "W11", users: 2540 },
+	{ week: "W12", users: 2810 },
 ];
 
 const chartConfig = {
-	revenue: {
-		label: "Revenue",
+	users: {
+		label: "Active users",
 		color: "var(--chart-1)",
 	},
 } satisfies ChartConfig;
 
 export default function ChartAreaDemo() {
-	const totalRevenue = chartData.reduce((sum, item) => sum + item.revenue, 0);
-	const averageRevenue = totalRevenue / chartData.length;
-	const lastMonthGrowth =
-		((chartData[11].revenue - chartData[10].revenue) / chartData[10].revenue) *
-		100;
-
 	return (
-		<Card className="flex w-full flex-col">
-			<CardHeader className="text-center">
-				<CardTitle>Monthly Revenue Trend</CardTitle>
-				<CardDescription>Performance overview for 2024</CardDescription>
+		<Card className="w-full">
+			<CardHeader>
+				<CardTitle>Active users</CardTitle>
+				<CardDescription>Weekly, last 12 weeks</CardDescription>
 			</CardHeader>
-			<CardContent className="flex-1">
-				<ChartContainer config={chartConfig} className="h-[300px] w-full">
-					<AreaChart
-						accessibilityLayer
-						data={chartData}
-						margin={{
-							left: 12,
-							right: 12,
-						}}
-					>
+			<CardContent>
+				<ChartContainer config={chartConfig} className="h-64 w-full">
+					<AreaChart data={chartData} margin={{ right: 12 }}>
+						<defs>
+							<linearGradient id="chart-area-users" x1="0" y1="0" x2="0" y2="1">
+								<stop
+									offset="5%"
+									stopColor="var(--color-users)"
+									stopOpacity={0.4}
+								/>
+								<stop
+									offset="95%"
+									stopColor="var(--color-users)"
+									stopOpacity={0}
+								/>
+							</linearGradient>
+						</defs>
 						<CartesianGrid vertical={false} />
 						<XAxis
-							dataKey="month"
+							dataKey="week"
 							tickLine={false}
 							axisLine={false}
 							tickMargin={8}
-							tickFormatter={(value) => value.slice(0, 3)}
+						/>
+						<YAxis
+							tickLine={false}
+							axisLine={false}
+							tickMargin={8}
+							width={40}
+							ticks={[0, 1000, 2000, 3000]}
+							tickFormatter={(value) => `${value / 1000}k`}
 						/>
 						<ChartTooltip
 							cursor={false}
 							content={<ChartTooltipContent indicator="line" />}
 						/>
 						<Area
-							dataKey="revenue"
-							type="natural"
-							fill="var(--chart-1)"
-							fillOpacity={0.2}
-							stroke="var(--chart-1)"
+							dataKey="users"
+							type="monotone"
+							fill="url(#chart-area-users)"
+							stroke="var(--color-users)"
+							strokeWidth={2}
+							animationDuration={500}
 						/>
 					</AreaChart>
 				</ChartContainer>
 			</CardContent>
-			<CardFooter className="flex-col gap-2 text-sm leading-none">
-				<div className="flex w-full justify-between font-medium">
-					<span>Total Revenue:</span>
-					<span>${totalRevenue.toLocaleString()}</span>
-				</div>
-				<div className="text-muted-foreground flex w-full justify-between">
-					<span>Monthly Average:</span>
-					<span>
-						$
-						{averageRevenue.toLocaleString(undefined, {
-							maximumFractionDigits: 0,
-						})}
-					</span>
-				</div>
-				<div className="text-muted-foreground flex w-full justify-between">
-					<span>Month-over-month growth:</span>
-					<span className="flex items-center gap-1">
-						<TrendingUpIcon className="size-4" />
-						{lastMonthGrowth.toFixed(1)}%
-					</span>
-				</div>
-			</CardFooter>
 		</Card>
 	);
 }

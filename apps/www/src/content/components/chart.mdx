@@ -1,12 +1,13 @@
 ---
 title: Chart
-description: A visual representation of data in various formats.
+description: A container, tooltip and legend for charts built with Recharts.
 ---
+
 <ComponentLinks
 	links={[
 		{
-			label: "Docs",
-			href: "https://recharts.org",
+			label: "API Reference",
+			href: "https://recharts.github.io/en-US/api",
 		},
 	]}
 />
@@ -15,7 +16,9 @@ description: A visual representation of data in various formats.
 
 ## About
 
-The Chart is built on top of [`recharts`](https://recharts.org), which is a React component library for building charts.
+Chart is a thin layer over [Recharts](https://recharts.org). You build the chart with Recharts components and add `ChartContainer`, `ChartTooltip` and `ChartLegend` where you need them.
+
+Recharts is not wrapped, so every Recharts prop and component still works.
 
 ## Installation
 
@@ -27,6 +30,7 @@ npx shadcn@latest add @9ui/chart
 </div>
 
 <Steps>
+
 <Step>Install the following dependencies:</Step>
 
 ```bash
@@ -40,32 +44,242 @@ npm install recharts
 </Steps>
 </ComponentInstallation>
 
+## Usage
+
+```tsx title="Imports"
+import { Bar, BarChart } from "recharts"
+
+import {
+	type ChartConfig,
+	ChartContainer,
+	ChartLegend,
+	ChartLegendContent,
+	ChartTooltip,
+	ChartTooltipContent,
+} from "@/components/ui/chart"
+```
+
+```tsx title="Anatomy"
+<ChartContainer config={chartConfig}>
+	<BarChart data={chartData}>
+		<ChartTooltip content={<ChartTooltipContent />} />
+		<ChartLegend content={<ChartLegendContent />} />
+		<Bar dataKey="desktop" fill="var(--color-desktop)" />
+	</BarChart>
+</ChartContainer>
+```
+
+## Your First Chart
+
+This section builds a bar chart step by step.
+
+### Data and config
+
+Start with the data and a config. The data can have any shape. The config gives each series a label and a color.
+
+```tsx
+const chartData = [
+	{ month: "Jan", desktop: 186, mobile: 80 },
+	{ month: "Feb", desktop: 305, mobile: 200 },
+	{ month: "Mar", desktop: 237, mobile: 120 },
+]
+
+const chartConfig = {
+	desktop: {
+		label: "Desktop",
+		color: "var(--chart-1)",
+	},
+	mobile: {
+		label: "Mobile",
+		color: "var(--chart-2)",
+	},
+} satisfies ChartConfig
+```
+
+### Chart
+
+Wrap a Recharts chart in `ChartContainer` and pass the config. Set a height on `ChartContainer` so the chart can size itself.
+
+<ComponentPreview name="chart-start-demo" />
+
+### Grid and axis
+
+Add `CartesianGrid` and `XAxis` from Recharts.
+
+<ComponentPreview name="chart-start-axis-demo" />
+
+### Tooltip
+
+Add `ChartTooltip` with `ChartTooltipContent`. Labels and colors come from the config.
+
+<ComponentPreview name="chart-start-tooltip-demo" />
+
+### Legend
+
+Add `ChartLegend` with `ChartLegendContent`.
+
+<ComponentPreview name="chart-start-legend-demo" />
+
+## Config
+
+The config holds the label, icon and color of each series. It is separate from the data, so several charts can share one config.
+
+```tsx
+import { MonitorIcon } from "lucide-react"
+
+const chartConfig = {
+	desktop: {
+		label: "Desktop",
+		icon: MonitorIcon,
+		color: "var(--chart-1)",
+	},
+} satisfies ChartConfig
+```
+
+## Theming
+
+### Colors
+
+The theme has five chart colors, `chart-1` through `chart-5`. They are shades of one hue, with separate values for light and dark.
+
+To use a theme color, set `color` to `var(--chart-1)`. Any CSS color works too.
+
+```tsx
+const chartConfig = {
+	desktop: {
+		label: "Desktop",
+		color: "var(--chart-1)",
+	},
+	mobile: {
+		label: "Mobile",
+		color: "oklch(70.7% 0.165 254.624)",
+	},
+} satisfies ChartConfig
+```
+
+To use one color in light and another in dark, set `theme` instead of `color`.
+
+<ComponentPreview name="chart-theme-demo" />
+
+### Using colors
+
+Each key in the config becomes a `--color-<key>` variable inside the chart.
+
+To color a Recharts component, set `fill` or `stroke`.
+
+```tsx
+<Bar dataKey="desktop" fill="var(--color-desktop)" />
+```
+
+To color a single data point, set `fill` in the data.
+
+```tsx
+const chartData = [
+	{ browser: "chrome", visitors: 275, fill: "var(--color-chrome)" },
+	{ browser: "safari", visitors: 200, fill: "var(--color-safari)" },
+]
+```
+
+To color your own elements, use the variable in a class.
+
+```tsx
+<span className="text-(--color-desktop)">Desktop</span>
+```
+
+## Tooltip
+
+`ChartTooltip` is the Recharts tooltip. `ChartTooltipContent` renders its content.
+
+| Prop | Type | Description |
+| --- | --- | --- |
+| `indicator` | `dot`, `line` or `dashed` | The marker next to each row. |
+| `hideLabel` | `boolean` | Hides the label. |
+| `hideIndicator` | `boolean` | Hides the marker. |
+| `nameKey` | `string` | The config or data key to read row names from. |
+| `labelKey` | `string` | The config or data key to read the label from. |
+| `formatter` | `function` | Renders each row. |
+| `labelFormatter` | `function` | Renders the label. |
+
+### Indicator
+
+Set `indicator` on `ChartTooltipContent` to `dot`, `line` or `dashed`.
+
+<ComponentPreview name="chart-tooltip-indicator-demo" />
+
+### Formatter
+
+Set `formatter` on `ChartTooltipContent` to render each row yourself. Set `labelFormatter` to change the label.
+
+<ComponentPreview name="chart-tooltip-formatter-demo" />
+
+## Legend
+
+`ChartLegend` is the Recharts legend. `ChartLegendContent` renders its content. Items keep the order of the series.
+
+| Prop | Type | Description |
+| --- | --- | --- |
+| `nameKey` | `string` | The config or data key to read item names from. |
+| `hideIcon` | `boolean` | Shows the color marker in place of the config icon. |
+
+Set `icon` in the config to show an icon next to each label. Set `verticalAlign` on `ChartLegend` to `top` to move the legend above the chart.
+
+<ComponentPreview name="chart-legend-demo" />
+
+## Accessibility
+
+Recharts adds keyboard navigation and screen reader support to charts by default. To turn it off, set `accessibilityLayer` to `false` on the chart.
+
+Charts respect the reduced motion setting.
+
+## Upgrading to Recharts 3
+
+Chart uses Recharts 3. When you update charts written for Recharts 2:
+
+- Use `var(--chart-1)`, not `hsl(var(--chart-1))`.
+- Keep a height or an aspect ratio on `ChartContainer`.
+- Remove `layout` from `Bar` when `BarChart` already sets it.
+- Remove `accessibilityLayer`. It is on by default.
+
 ## Examples
 
-### Area Chart
+### Area
 
 <ComponentPreview name="chart-area-demo" />
 
-### Bar Chart
+### Bar
 
 <ComponentPreview name="chart-bar-demo" />
 
-### Line Chart
+### Stacked Bar
+
+Set the same `stackId` on each `Bar`.
+
+<ComponentPreview name="chart-bar-stacked-demo" />
+
+### Horizontal Bar
+
+Set `layout` to `vertical` on `BarChart`.
+
+<ComponentPreview name="chart-bar-horizontal-demo" />
+
+### Line
 
 <ComponentPreview name="chart-line-demo" />
 
-### Pie Chart
+### Pie
+
+Set `innerRadius` on `Pie` to make a donut.
 
 <ComponentPreview name="chart-pie-demo" />
 
-### Radar Chart
+### Radar
 
 <ComponentPreview name="chart-radar-demo" />
 
-### Radial Bar Chart
+### Radial Bar
 
 <ComponentPreview name="chart-radial-bar-demo" />
 
-### Scatter Chart
+### Scatter
 
 <ComponentPreview name="chart-scatter-demo" />

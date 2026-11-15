@@ -1,33 +1,34 @@
 "use client";
 
-import { RadialBar, RadialBarChart } from "recharts";
+import { PolarAngleAxis, RadialBar, RadialBarChart } from "recharts";
 
 import {
 	Card,
 	CardContent,
 	CardDescription,
-	CardFooter,
 	CardHeader,
 	CardTitle,
 } from "@/components/ui/card";
 import {
 	type ChartConfig,
 	ChartContainer,
+	ChartLegend,
+	ChartLegendContent,
 	ChartTooltip,
 	ChartTooltipContent,
 } from "@/components/ui/chart";
 
 const chartData = [
-	{ browser: "chrome", visitors: 540, fill: "var(--color-chrome)" },
-	{ browser: "safari", visitors: 410, fill: "var(--color-safari)" },
-	{ browser: "firefox", visitors: 262, fill: "var(--color-firefox)" },
-	{ browser: "edge", visitors: 160, fill: "var(--color-edge)" },
-	{ browser: "other", visitors: 100, fill: "var(--color-other)" },
+	{ browser: "chrome", share: 64, fill: "var(--color-chrome)" },
+	{ browser: "safari", share: 19, fill: "var(--color-safari)" },
+	{ browser: "edge", share: 8, fill: "var(--color-edge)" },
+	{ browser: "firefox", share: 6, fill: "var(--color-firefox)" },
+	{ browser: "other", share: 3, fill: "var(--color-other)" },
 ];
 
 const chartConfig = {
-	visitors: {
-		label: "Visitors",
+	share: {
+		label: "Share",
 	},
 	chrome: {
 		label: "Chrome",
@@ -37,12 +38,12 @@ const chartConfig = {
 		label: "Safari",
 		color: "var(--chart-2)",
 	},
-	firefox: {
-		label: "Firefox",
-		color: "var(--chart-3)",
-	},
 	edge: {
 		label: "Edge",
+		color: "var(--chart-3)",
+	},
+	firefox: {
+		label: "Firefox",
 		color: "var(--chart-4)",
 	},
 	other: {
@@ -52,46 +53,36 @@ const chartConfig = {
 } satisfies ChartConfig;
 
 export default function ChartRadialBarDemo() {
-	const totalVisitors = chartData.reduce((sum, item) => sum + item.visitors, 0);
-	const highestVisitors = Math.max(...chartData.map((item) => item.visitors));
-	const topBrowser = chartData.find(
-		(item) => item.visitors === highestVisitors,
-	)?.browser;
-
 	return (
-		<Card className="flex w-full flex-col">
-			<CardHeader className="text-center">
-				<CardTitle>Browser Usage</CardTitle>
-				<CardDescription>Visitor distribution by browser</CardDescription>
+		<Card className="w-full">
+			<CardHeader>
+				<CardTitle>Browser share</CardTitle>
+				<CardDescription>Percent of visits, last 30 days</CardDescription>
 			</CardHeader>
-			<CardContent className="flex-1">
-				<ChartContainer
-					config={chartConfig}
-					className="mx-auto aspect-square h-[250px]"
-				>
-					<RadialBarChart data={chartData} innerRadius={30} outerRadius={110}>
+			<CardContent>
+				<ChartContainer config={chartConfig} className="h-72 w-full">
+					<RadialBarChart
+						data={chartData}
+						innerRadius={32}
+						outerRadius={112}
+						startAngle={90}
+						endAngle={-270}
+					>
+						<PolarAngleAxis type="number" domain={[0, 100]} tick={false} />
 						<ChartTooltip
 							cursor={false}
 							content={<ChartTooltipContent hideLabel nameKey="browser" />}
 						/>
-						<RadialBar dataKey="visitors" background />
+						<ChartLegend content={<ChartLegendContent nameKey="browser" />} />
+						<RadialBar
+							dataKey="share"
+							background
+							cornerRadius={4}
+							animationDuration={500}
+						/>
 					</RadialBarChart>
 				</ChartContainer>
 			</CardContent>
-			<CardFooter className="flex-col gap-2 text-sm leading-none">
-				<div className="flex w-full justify-between font-medium">
-					<span>Total Visitors:</span>
-					<span>{totalVisitors.toLocaleString()}</span>
-				</div>
-				<div className="text-muted-foreground flex w-full justify-between">
-					<span>Most Used Browser:</span>
-					<span className="capitalize">{topBrowser}</span>
-				</div>
-				<div className="text-muted-foreground flex w-full justify-between">
-					<span>Peak Visitors:</span>
-					<span>{highestVisitors.toLocaleString()}</span>
-				</div>
-			</CardFooter>
 		</Card>
 	);
 }

@@ -1,19 +1,11 @@
 "use client";
 
-import {
-	CartesianGrid,
-	Scatter,
-	ScatterChart,
-	XAxis,
-	YAxis,
-	ZAxis,
-} from "recharts";
+import { CartesianGrid, Scatter, ScatterChart, XAxis, YAxis } from "recharts";
 
 import {
 	Card,
 	CardContent,
 	CardDescription,
-	CardFooter,
 	CardHeader,
 	CardTitle,
 } from "@/components/ui/card";
@@ -25,94 +17,69 @@ import {
 } from "@/components/ui/chart";
 
 const chartData = [
-	{ population: 850000, price: 425000, city: "San Francisco" },
-	{ population: 2700000, price: 385000, city: "Chicago" },
-	{ population: 8400000, price: 750000, city: "New York" },
-	{ population: 4000000, price: 890000, city: "Los Angeles" },
-	{ population: 2300000, price: 350000, city: "Houston" },
-	{ population: 1600000, price: 420000, city: "Philadelphia" },
-	{ population: 730000, price: 480000, city: "Seattle" },
-	{ population: 690000, price: 445000, city: "Boston" },
-	{ population: 710000, price: 320000, city: "Denver" },
-	{ population: 950000, price: 295000, city: "Austin" },
+	{ spend: 400, signups: 38 },
+	{ spend: 650, signups: 54 },
+	{ spend: 900, signups: 61 },
+	{ spend: 1200, signups: 96 },
+	{ spend: 1500, signups: 88 },
+	{ spend: 1800, signups: 132 },
+	{ spend: 2100, signups: 121 },
+	{ spend: 2600, signups: 168 },
+	{ spend: 3000, signups: 174 },
+	{ spend: 3400, signups: 215 },
 ];
 
 const chartConfig = {
-	scatter: {
-		label: "Cities",
+	signups: {
+		label: "Sign-ups",
 		color: "var(--chart-1)",
+	},
+	spend: {
+		label: "Ad spend",
 	},
 } satisfies ChartConfig;
 
 export default function ChartScatterDemo() {
-	const averagePrice =
-		chartData.reduce((sum, item) => sum + item.price, 0) / chartData.length;
-	const highestPrice = Math.max(...chartData.map((item) => item.price));
-	const mostExpensiveCity = chartData.find(
-		(item) => item.price === highestPrice,
-	)?.city;
-
 	return (
-		<Card className="flex w-full flex-col">
-			<CardHeader className="text-center">
-				<CardTitle>Housing Market Analysis</CardTitle>
-				<CardDescription>
-					Population vs House Prices in Major Cities
-				</CardDescription>
+		<Card className="w-full">
+			<CardHeader>
+				<CardTitle>Ad spend and sign-ups</CardTitle>
+				<CardDescription>Per campaign, 2024</CardDescription>
 			</CardHeader>
 			<CardContent>
-				<ChartContainer config={chartConfig} className="h-[300px] w-full">
-					<ScatterChart>
-						<CartesianGrid strokeDasharray="3 3" />
+				<ChartContainer config={chartConfig} className="h-64 w-full">
+					<ScatterChart margin={{ right: 12 }}>
+						<CartesianGrid />
 						<XAxis
 							type="number"
-							dataKey="price"
-							name="Average House Price"
-							unit="$"
+							dataKey="spend"
+							name="spend"
+							domain={[0, 4000]}
+							ticks={[0, 1000, 2000, 3000, 4000]}
 							tickLine={false}
 							axisLine={false}
-							tickFormatter={(value) => `$${(value / 1000).toFixed(0)}k`}
+							tickMargin={8}
+							tickFormatter={(value) => `$${value / 1000}k`}
 						/>
 						<YAxis
 							type="number"
-							dataKey="population"
-							name="Population"
+							dataKey="signups"
+							name="signups"
+							domain={[0, 250]}
+							ticks={[0, 50, 100, 150, 200, 250]}
 							tickLine={false}
 							axisLine={false}
-							tickFormatter={(value) => `${(value / 1000000).toFixed(1)}M`}
+							tickMargin={8}
+							width={40}
 						/>
-						<ZAxis type="category" dataKey="city" name="City" />
 						<ChartTooltip
-							content={
-								<ChartTooltipContent
-									nameKey="city"
-									labelKey="price"
-									hideIndicator
-								/>
-							}
+							cursor={false}
+							content={<ChartTooltipContent hideLabel hideIndicator />}
 						/>
-						<Scatter
-							name="Cities"
-							data={chartData}
-							fill={chartConfig.scatter.color}
-						/>
+						<Scatter data={chartData} fill="var(--color-signups)" />
 					</ScatterChart>
 				</ChartContainer>
 			</CardContent>
-			<CardFooter className="flex-col gap-2 text-sm leading-none">
-				<div className="flex w-full justify-between font-medium">
-					<span>Most Expensive City:</span>
-					<span>{mostExpensiveCity}</span>
-				</div>
-				<div className="text-muted-foreground flex w-full justify-between">
-					<span>Average House Price:</span>
-					<span>${averagePrice.toLocaleString()}</span>
-				</div>
-				<div className="text-muted-foreground flex w-full justify-between">
-					<span>Highest House Price:</span>
-					<span>${highestPrice.toLocaleString()}</span>
-				</div>
-			</CardFooter>
 		</Card>
 	);
 }

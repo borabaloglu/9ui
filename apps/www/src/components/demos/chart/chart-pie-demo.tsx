@@ -1,102 +1,117 @@
 "use client";
 
-import { Cell, Legend, Pie, PieChart } from "recharts";
+import { Pie, PieChart, Label as PieLabel } from "recharts";
 
 import {
 	Card,
 	CardContent,
 	CardDescription,
-	CardFooter,
 	CardHeader,
 	CardTitle,
 } from "@/components/ui/card";
 import {
 	type ChartConfig,
 	ChartContainer,
+	ChartLegend,
+	ChartLegendContent,
 	ChartTooltip,
 	ChartTooltipContent,
 } from "@/components/ui/chart";
 
 const chartData = [
-	{ category: "Sales", amount: 4000, fill: "var(--chart-1)" },
-	{ category: "Marketing", amount: 3000, fill: "var(--chart-2)" },
-	{ category: "IT", amount: 2000, fill: "var(--chart-3)" },
-	{ category: "HR", amount: 1000, fill: "var(--chart-4)" },
-	{ category: "Operations", amount: 1000, fill: "var(--chart-5)" },
+	{ source: "search", visitors: 4200, fill: "var(--color-search)" },
+	{ source: "direct", visitors: 2900, fill: "var(--color-direct)" },
+	{ source: "social", visitors: 1800, fill: "var(--color-social)" },
+	{ source: "referral", visitors: 1100, fill: "var(--color-referral)" },
+	{ source: "email", visitors: 600, fill: "var(--color-email)" },
 ];
 
+const totalVisitors = chartData.reduce((sum, item) => sum + item.visitors, 0);
+
 const chartConfig = {
-	sales: {
-		label: "Sales",
+	visitors: {
+		label: "Visitors",
+	},
+	search: {
+		label: "Search",
 		color: "var(--chart-1)",
 	},
-	marketing: {
-		label: "Marketing",
+	direct: {
+		label: "Direct",
 		color: "var(--chart-2)",
 	},
-	it: {
-		label: "IT",
+	social: {
+		label: "Social",
 		color: "var(--chart-3)",
 	},
-	hr: {
-		label: "HR",
+	referral: {
+		label: "Referral",
 		color: "var(--chart-4)",
 	},
-	operations: {
-		label: "Operations",
+	email: {
+		label: "Email",
 		color: "var(--chart-5)",
 	},
 } satisfies ChartConfig;
 
 export default function ChartPieDemo() {
-	const totalBudget = chartData.reduce((sum, item) => sum + item.amount, 0);
-	const highestBudget = Math.max(...chartData.map((item) => item.amount));
-	const highestCategory = chartData.find(
-		(item) => item.amount === highestBudget,
-	)?.category;
-
 	return (
-		<Card className="flex w-full flex-col">
-			<CardHeader className="pb-0 text-center">
-				<CardTitle>Budget Distribution</CardTitle>
-				<CardDescription>Department budget allocation for 2024</CardDescription>
+		<Card className="w-full">
+			<CardHeader>
+				<CardTitle>Traffic sources</CardTitle>
+				<CardDescription>Visitors, last 30 days</CardDescription>
 			</CardHeader>
-			<CardContent className="flex-1">
-				<ChartContainer config={chartConfig} className="h-[300px] w-full">
+			<CardContent>
+				<ChartContainer config={chartConfig} className="h-72 w-full">
 					<PieChart>
 						<ChartTooltip
-							cursor={false}
-							content={<ChartTooltipContent hideLabel />}
+							content={<ChartTooltipContent hideLabel nameKey="source" />}
 						/>
-						<Legend />
+						<ChartLegend content={<ChartLegendContent nameKey="source" />} />
 						<Pie
 							data={chartData}
-							dataKey="amount"
-							nameKey="category"
-							cx="50%"
-							cy="50%"
+							dataKey="visitors"
+							nameKey="source"
+							innerRadius={64}
+							paddingAngle={2}
+							cornerRadius={4}
+							animationDuration={500}
 						>
-							{chartData.map((entry, index) => (
-								<Cell key={`cell-${index}`} fill={entry.fill} />
-							))}
+							<PieLabel
+								content={({ viewBox }) => {
+									if (!viewBox || !("cx" in viewBox) || !("cy" in viewBox)) {
+										return null;
+									}
+
+									return (
+										<text
+											x={viewBox.cx}
+											y={viewBox.cy}
+											textAnchor="middle"
+											dominantBaseline="middle"
+										>
+											<tspan
+												x={viewBox.cx}
+												y={(viewBox.cy ?? 0) - 6}
+												className="fill-foreground text-2xl font-semibold"
+											>
+												{totalVisitors.toLocaleString()}
+											</tspan>
+											<tspan
+												x={viewBox.cx}
+												y={(viewBox.cy ?? 0) + 16}
+												className="fill-muted-foreground"
+											>
+												Visitors
+											</tspan>
+										</text>
+									);
+								}}
+							/>
 						</Pie>
 					</PieChart>
 				</ChartContainer>
 			</CardContent>
-			<CardFooter className="flex-col gap-2 text-sm leading-none">
-				<div className="flex w-full justify-between font-medium">
-					<span>Total Budget:</span>
-					<span>${totalBudget.toLocaleString()}</span>
-				</div>
-				<div className="text-muted-foreground flex w-full justify-between">
-					<span>Largest Department:</span>
-					<span>{highestCategory}</span>
-				</div>
-				<div className="text-muted-foreground flex w-full justify-between">
-					<span>Highest Budget:</span>
-					<span>${highestBudget.toLocaleString()}</span>
-				</div>
-			</CardFooter>
 		</Card>
 	);
 }
