@@ -237,7 +237,10 @@
 			}
 		},
 		{
-			"includes": ["src/components/ui/slider.tsx"],
+			"includes": [
+				"src/components/ui/chart.tsx",
+				"src/components/ui/slider.tsx"
+			],
 			"linter": {
 				"rules": {
 					"suspicious": {
