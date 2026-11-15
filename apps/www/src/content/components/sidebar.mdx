@@ -1,0 +1,235 @@
+---
+title: Sidebar
+description: A composable sidebar that collapses on desktop and opens as a sheet on mobile.
+label: New
+---
+
+<ComponentPreview
+	name="sidebar-demo"
+	previewClassName="h-140 items-stretch overflow-hidden p-0 contain-layout **:data-[slot=sidebar-wrapper]:min-h-0"
+/>
+
+## Installation
+
+<ComponentInstallation>
+<div>
+```bash title="Terminal"
+npx shadcn@latest add @9ui/sidebar
+```
+</div>
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="sidebar" />
+
+<Step>Create the `use-mobile` hook.</Step>
+
+```tsx title="hooks/use-mobile.ts"
+import * as React from "react";
+
+const MOBILE_QUERY = "(max-width: 767px)";
+
+function subscribe(callback: () => void) {
+	const query = window.matchMedia(MOBILE_QUERY);
+	query.addEventListener("change", callback);
+	return () => query.removeEventListener("change", callback);
+}
+
+function getSnapshot() {
+	return window.matchMedia(MOBILE_QUERY).matches;
+}
+
+function getServerSnapshot() {
+	return false;
+}
+
+export function useIsMobile() {
+	return React.useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
+}
+```
+
+</Steps>
+</ComponentInstallation>
+
+## Usage
+
+```tsx title="Imports"
+import {
+	Sidebar,
+	SidebarContent,
+	SidebarFooter,
+	SidebarGroup,
+	SidebarGroupAction,
+	SidebarGroupContent,
+	SidebarGroupLabel,
+	SidebarHeader,
+	SidebarInset,
+	SidebarMenu,
+	SidebarMenuAction,
+	SidebarMenuBadge,
+	SidebarMenuButton,
+	SidebarMenuItem,
+	SidebarMenuSkeleton,
+	SidebarMenuSub,
+	SidebarMenuSubButton,
+	SidebarMenuSubItem,
+	SidebarProvider,
+	SidebarRail,
+	SidebarSeparator,
+	SidebarTrigger,
+	useSidebar,
+} from "@/components/ui/sidebar"
+```
+
+```tsx title="Anatomy"
+<SidebarProvider>
+	<Sidebar>
+		<SidebarHeader />
+		<SidebarContent>
+			<SidebarGroup>
+				<SidebarGroupLabel />
+				<SidebarGroupAction />
+				<SidebarMenu>
+					<SidebarMenuItem>
+						<SidebarMenuButton />
+						<SidebarMenuAction />
+						<SidebarMenuBadge />
+						<SidebarMenuSub>
+							<SidebarMenuSubItem>
+								<SidebarMenuSubButton />
+							</SidebarMenuSubItem>
+						</SidebarMenuSub>
+					</SidebarMenuItem>
+				</SidebarMenu>
+			</SidebarGroup>
+		</SidebarContent>
+		<SidebarFooter />
+		<SidebarRail />
+	</Sidebar>
+	<SidebarInset>
+		<SidebarTrigger />
+	</SidebarInset>
+</SidebarProvider>
+```
+
+Wrap your layout in `SidebarProvider` and put the page content in `SidebarInset`.
+
+Press `⌘B` on Mac or `Ctrl+B` on Windows to toggle the sidebar.
+
+To render a menu button as a link, set `render` on `SidebarMenuButton`.
+
+```tsx
+<SidebarMenuButton render={<Link href="/inbox" />}>
+	<InboxIcon />
+	<span>Inbox</span>
+</SidebarMenuButton>
+```
+
+To mark the current page, set `isActive` on `SidebarMenuButton`.
+
+### Collapsing
+
+Set `collapsible` on `Sidebar` to choose how it collapses.
+
+| Value       | Behavior                              |
+| ----------- | ------------------------------------- |
+| `offcanvas` | Slides out of view. This is the default. |
+| `icon`      | Shrinks to a strip of icons.          |
+| `none`      | Never collapses.                      |
+
+To show a label next to a button while the sidebar is collapsed to icons, set `tooltip` on `SidebarMenuButton`.
+
+To hide a part while the sidebar is collapsed to icons, set `className="group-data-[collapsible=icon]/sidebar:hidden"` on it.
+
+### Width
+
+To change the width, set `--sidebar-width` and `--sidebar-width-icon` on `SidebarProvider`.
+
+```tsx
+<SidebarProvider
+	style={
+		{
+			"--sidebar-width": "20rem",
+			"--sidebar-width-icon": "3.5rem",
+		} as React.CSSProperties
+	}
+/>
+```
+
+### Remembering the state
+
+The sidebar saves its state in a `sidebar_state` cookie. To restore it on the server, read the cookie and pass it to `defaultOpen`.
+
+```tsx title="app/layout.tsx"
+import { cookies } from "next/headers"
+
+export default async function Layout({ children }) {
+	const cookieStore = await cookies()
+	const defaultOpen = cookieStore.get("sidebar_state")?.value !== "false"
+
+	return (
+		<SidebarProvider defaultOpen={defaultOpen}>
+			<AppSidebar />
+			<SidebarInset>{children}</SidebarInset>
+		</SidebarProvider>
+	)
+}
+```
+
+### useSidebar
+
+To read or change the sidebar from your own components, call `useSidebar` inside `SidebarProvider`.
+
+```tsx
+const { state, open, setOpen, openMobile, setOpenMobile, isMobile, toggleSidebar } =
+	useSidebar()
+```
+
+## Examples
+
+### Floating
+
+Set `variant="floating"` on `Sidebar` to detach it from the edge.
+
+<ComponentPreview
+	name="sidebar-floating-demo"
+	previewClassName="h-100 items-stretch overflow-hidden p-0 contain-layout **:data-[slot=sidebar-wrapper]:min-h-0"
+/>
+
+### Inset
+
+Set `variant="inset"` on `Sidebar` to show the page content as a raised panel.
+
+<ComponentPreview
+	name="sidebar-inset-demo"
+	previewClassName="h-100 items-stretch overflow-hidden p-0 contain-layout **:data-[slot=sidebar-wrapper]:min-h-0"
+/>
+
+### Side
+
+Set `side="right"` on `Sidebar` to move it to the right edge.
+
+<ComponentPreview
+	name="sidebar-side-demo"
+	previewClassName="h-100 items-stretch overflow-hidden p-0 contain-layout **:data-[slot=sidebar-wrapper]:min-h-0"
+/>
+
+### Loading
+
+Use `SidebarMenuSkeleton` in place of menu buttons while the items load.
+
+<ComponentPreview
+	name="sidebar-skeleton-demo"
+	previewClassName="h-80 items-stretch overflow-hidden p-0 contain-layout **:data-[slot=sidebar-wrapper]:min-h-0"
+/>
+
+### Controlled
+
+Set `open` and `onOpenChange` on `SidebarProvider` to control the sidebar yourself.
+
+<ComponentPreview
+	name="sidebar-controlled-demo"
+	previewClassName="h-100 items-stretch overflow-hidden p-0 contain-layout **:data-[slot=sidebar-wrapper]:min-h-0"
+/>

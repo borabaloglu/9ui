@@ -36,23 +36,18 @@ html.light code[data-theme] span {
 
 [data-rehype-pretty-code-figure] code:not([data-language="bash"]) {
 	counter-reset: line;
-	--line-number-width: 1ch;
-}
-
-[data-rehype-pretty-code-figure]
-	code:not([data-language="bash"]):has(> [data-line]:nth-child(10)) {
 	--line-number-width: 2ch;
 }
 
 [data-rehype-pretty-code-figure]
 	code:not([data-language="bash"]):has(> [data-line]:nth-child(100)) {
-	--line-number-width: 3ch;
+	--line-number-width: 4ch;
 }
 
 [data-rehype-pretty-code-figure]
 	code:not([data-language="bash"])
 	> [data-line]::before {
-	@apply text-muted-foreground/60 mr-4 inline-block text-right tabular-nums select-none;
+	@apply text-muted-foreground/60 mr-[2ch] inline-block text-right tabular-nums select-none;
 	counter-increment: line;
 	content: counter(line);
 	width: var(--line-number-width);
