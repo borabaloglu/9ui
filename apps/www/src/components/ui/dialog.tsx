@@ -28,7 +28,7 @@ function DialogBackdrop({
 		<BaseDialog.Backdrop
 			data-slot="dialog-backdrop"
 			className={cn(
-				"fixed inset-0 z-50 min-h-dvh bg-black/30 transition-opacity duration-200 has-[+*>.transition-none]:transition-none data-ending-style:opacity-0 data-ending-style:duration-150 data-starting-style:opacity-0 supports-backdrop-filter:backdrop-blur-xs supports-[-webkit-touch-callout:none]:absolute",
+				"ease-out-quint fixed inset-0 z-50 min-h-dvh bg-black/30 transition-opacity duration-200 has-[+*>.transition-none]:transition-none data-ending-style:opacity-0 data-ending-style:duration-150 data-starting-style:opacity-0 supports-backdrop-filter:backdrop-blur-xs supports-[-webkit-touch-callout:none]:absolute",
 				className,
 			)}
 			{...props}
@@ -51,7 +51,12 @@ function DialogPopup({
 }) {
 	return (
 		<BaseDialog.Portal data-slot="dialog-portal">
-			<DialogBackdrop />
+			<DialogBackdrop
+				className={cn(
+					showAtBottomOnMobile &&
+						"motion-safe:max-sm:ease-drawer motion-safe:max-sm:duration-400 motion-safe:max-sm:data-ending-style:duration-250",
+				)}
+			/>
 			<BaseDialog.Viewport
 				data-slot="dialog-viewport"
 				className={cn(
@@ -66,7 +71,7 @@ function DialogPopup({
 						"group/dialog-popup bg-popover text-popover-foreground ease-out-quint dark:edge-highlight-(--dialog-radius) relative grid max-h-full w-full scale-[calc(1-0.1*var(--nested-dialogs))] gap-(--dialog-spacing) overflow-y-auto overscroll-contain rounded-(--dialog-radius) border p-(--dialog-spacing) pb-(--dialog-bottom) text-sm shadow-lg transition-[scale,opacity,translate,filter] duration-200 outline-none [--dialog-bottom:var(--dialog-spacing)] [--dialog-radius:var(--radius-xl)] [--dialog-spacing:--spacing(4)] not-dark:shadow-[0_1px_--theme(--color-black/6%),var(--shadow-lg)] data-ending-style:scale-96 data-ending-style:opacity-0 data-ending-style:duration-150 data-nested-dialog-open:brightness-90 data-starting-style:scale-96 data-starting-style:opacity-0 data-[size=sm]:[--dialog-spacing:--spacing(3)] motion-reduce:transition-opacity motion-reduce:data-ending-style:scale-100 motion-reduce:data-starting-style:scale-100 dark:data-nested-dialog-open:brightness-75",
 						size === "sm" ? "max-w-xs" : "max-w-sm",
 						showAtBottomOnMobile &&
-							"max-sm:max-w-none max-sm:scale-100 max-sm:rounded-b-none max-sm:border-x-0 max-sm:border-b-0 max-sm:duration-300 max-sm:[--dialog-bottom:calc(var(--dialog-spacing)+env(safe-area-inset-bottom))] max-sm:data-ending-style:scale-100 max-sm:data-ending-style:duration-200 max-sm:data-nested-dialog-open:opacity-0 max-sm:data-starting-style:scale-100 motion-safe:max-sm:data-ending-style:translate-y-full motion-safe:max-sm:data-ending-style:opacity-100 motion-safe:max-sm:data-starting-style:translate-y-full motion-safe:max-sm:data-starting-style:opacity-100",
+							"motion-safe:max-sm:ease-drawer max-sm:max-w-none max-sm:scale-100 max-sm:rounded-b-none max-sm:border-x-0 max-sm:border-b-0 max-sm:[--dialog-bottom:calc(var(--dialog-spacing)+env(safe-area-inset-bottom))] max-sm:data-ending-style:scale-100 max-sm:data-nested-dialog-open:opacity-0 max-sm:data-starting-style:scale-100 motion-safe:max-sm:duration-400 motion-safe:max-sm:data-ending-style:translate-y-full motion-safe:max-sm:data-ending-style:opacity-100 motion-safe:max-sm:data-ending-style:duration-250 motion-safe:max-sm:data-starting-style:translate-y-full motion-safe:max-sm:data-starting-style:opacity-100",
 						className,
 					)}
 					{...props}
@@ -74,7 +79,7 @@ function DialogPopup({
 					{children}
 					{showCloseButton && (
 						<BaseDialog.Close
-							data-slot="dialog-close"
+							data-slot="dialog-close-button"
 							aria-label="Close"
 							render={
 								<Button
@@ -98,7 +103,7 @@ function DialogHeader({ className, ...props }: React.ComponentProps<"div">) {
 		<div
 			data-slot="dialog-header"
 			className={cn(
-				"flex flex-col gap-1.5 group-has-[>[data-slot=dialog-close]]/dialog-popup:pe-8",
+				"flex flex-col gap-1.5 group-has-[>[data-slot=dialog-close-button]]/dialog-popup:pe-8",
 				className,
 			)}
 			{...props}

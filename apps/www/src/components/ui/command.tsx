@@ -74,7 +74,7 @@ function CommandDialog({
 			<DialogPopup
 				className={cn(
 					"flex max-w-lg flex-col gap-0 overflow-hidden p-0 *:data-[slot=command]:rounded-none *:data-[slot=command]:border-0 *:data-[slot=command]:bg-transparent *:data-[slot=command]:shadow-none not-dark:*:data-[slot=command]:shadow-none sm:mt-[10vh] sm:max-h-[calc(100%-10vh)] dark:*:data-[slot=command]:bg-none",
-					"transition-none",
+					"transition-none motion-reduce:transition-none",
 					showAtBottomOnMobile ? "sm:self-start" : "self-start",
 					className,
 				)}

@@ -29,7 +29,7 @@ function AlertDialogBackdrop({
 		<BaseAlertDialog.Backdrop
 			data-slot="alert-dialog-backdrop"
 			className={cn(
-				"fixed inset-0 z-50 min-h-dvh bg-black/30 transition-opacity duration-200 data-ending-style:opacity-0 data-ending-style:duration-150 data-starting-style:opacity-0 supports-backdrop-filter:backdrop-blur-xs supports-[-webkit-touch-callout:none]:absolute",
+				"ease-out-quint fixed inset-0 z-50 min-h-dvh bg-black/30 transition-opacity duration-200 has-[+*>.transition-none]:transition-none data-ending-style:opacity-0 data-ending-style:duration-150 data-starting-style:opacity-0 supports-backdrop-filter:backdrop-blur-xs supports-[-webkit-touch-callout:none]:absolute",
 				className,
 			)}
 			{...props}
@@ -49,7 +49,12 @@ function AlertDialogPopup({
 }) {
 	return (
 		<BaseAlertDialog.Portal data-slot="alert-dialog-portal">
-			<AlertDialogBackdrop />
+			<AlertDialogBackdrop
+				className={cn(
+					showAtBottomOnMobile &&
+						"motion-safe:max-sm:ease-drawer motion-safe:max-sm:duration-400 motion-safe:max-sm:data-ending-style:duration-250",
+				)}
+			/>
 			<BaseAlertDialog.Viewport
 				data-slot="alert-dialog-viewport"
 				className={cn(
@@ -64,7 +69,7 @@ function AlertDialogPopup({
 						"group/alert-dialog-popup bg-popover text-popover-foreground ease-out-quint dark:edge-highlight-(--alert-dialog-radius) relative grid max-h-full w-full scale-[calc(1-0.1*var(--nested-dialogs))] gap-(--alert-dialog-spacing) overflow-y-auto overscroll-contain rounded-(--alert-dialog-radius) border p-(--alert-dialog-spacing) pb-(--alert-dialog-bottom) text-sm shadow-lg transition-[scale,opacity,translate,filter] duration-200 outline-none [--alert-dialog-bottom:var(--alert-dialog-spacing)] [--alert-dialog-radius:var(--radius-xl)] [--alert-dialog-spacing:--spacing(4)] not-dark:shadow-[0_1px_--theme(--color-black/6%),var(--shadow-lg)] data-ending-style:scale-96 data-ending-style:opacity-0 data-ending-style:duration-150 data-nested-dialog-open:brightness-90 data-starting-style:scale-96 data-starting-style:opacity-0 data-[size=sm]:[--alert-dialog-spacing:--spacing(3)] motion-reduce:transition-opacity motion-reduce:data-ending-style:scale-100 motion-reduce:data-starting-style:scale-100 dark:data-nested-dialog-open:brightness-75",
 						size === "sm" ? "max-w-xs" : "max-w-sm",
 						showAtBottomOnMobile &&
-							"max-sm:max-w-none max-sm:scale-100 max-sm:rounded-b-none max-sm:border-x-0 max-sm:border-b-0 max-sm:duration-300 max-sm:[--alert-dialog-bottom:calc(var(--alert-dialog-spacing)+env(safe-area-inset-bottom))] max-sm:data-ending-style:scale-100 max-sm:data-ending-style:duration-200 max-sm:data-nested-dialog-open:opacity-0 max-sm:data-starting-style:scale-100 motion-safe:max-sm:data-ending-style:translate-y-full motion-safe:max-sm:data-ending-style:opacity-100 motion-safe:max-sm:data-starting-style:translate-y-full motion-safe:max-sm:data-starting-style:opacity-100",
+							"motion-safe:max-sm:ease-drawer max-sm:max-w-none max-sm:scale-100 max-sm:rounded-b-none max-sm:border-x-0 max-sm:border-b-0 max-sm:[--alert-dialog-bottom:calc(var(--alert-dialog-spacing)+env(safe-area-inset-bottom))] max-sm:data-ending-style:scale-100 max-sm:data-nested-dialog-open:opacity-0 max-sm:data-starting-style:scale-100 motion-safe:max-sm:duration-400 motion-safe:max-sm:data-ending-style:translate-y-full motion-safe:max-sm:data-ending-style:opacity-100 motion-safe:max-sm:data-ending-style:duration-250 motion-safe:max-sm:data-starting-style:translate-y-full motion-safe:max-sm:data-starting-style:opacity-100",
 						className,
 					)}
 					{...props}

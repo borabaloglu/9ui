@@ -28,7 +28,7 @@ function SheetBackdrop({
 		<BaseSheet.Backdrop
 			data-slot="sheet-backdrop"
 			className={cn(
-				"fixed inset-0 z-50 min-h-dvh bg-black/30 transition-opacity duration-400 data-ending-style:opacity-0 data-ending-style:duration-250 data-starting-style:opacity-0 supports-backdrop-filter:backdrop-blur-xs supports-[-webkit-touch-callout:none]:absolute",
+				"ease-drawer fixed inset-0 z-50 min-h-dvh bg-black/30 transition-opacity duration-400 has-[+*>.transition-none]:transition-none data-ending-style:opacity-0 data-ending-style:duration-250 data-starting-style:opacity-0 supports-backdrop-filter:backdrop-blur-xs supports-[-webkit-touch-callout:none]:absolute motion-reduce:duration-200 motion-reduce:data-ending-style:duration-150",
 				className,
 			)}
 			{...props}
@@ -60,7 +60,8 @@ function SheetPopup({
 					side === "right" && "justify-end",
 					side === "bottom" && "flex-col justify-end pt-12",
 					side === "left" && "justify-start",
-					variant === "inset" && "sm:p-4",
+					variant === "inset" &&
+						"sm:px-4 sm:pt-[calc(--spacing(4)+env(safe-area-inset-top,0px))] sm:pb-[calc(--spacing(4)+env(safe-area-inset-bottom,0px))]",
 				)}
 			>
 				<BaseSheet.Popup
@@ -68,7 +69,7 @@ function SheetPopup({
 					data-side={side}
 					data-variant={variant}
 					className={cn(
-						"group/sheet-popup bg-popover text-popover-foreground ease-drawer relative flex flex-col gap-4 overflow-y-auto overscroll-contain pt-(--sheet-top) pb-(--sheet-bottom) text-sm shadow-lg transition-[translate,opacity,filter] duration-400 outline-none [--sheet-offset:0px] [--sheet-radius:var(--radius-2xl)] data-ending-style:duration-250 data-nested-dialog-open:brightness-90 motion-reduce:data-ending-style:opacity-0 motion-reduce:data-starting-style:opacity-0 dark:data-nested-dialog-open:brightness-75",
+						"group/sheet-popup bg-popover text-popover-foreground ease-drawer relative flex flex-col gap-4 overflow-y-auto overscroll-contain pt-(--sheet-top) pb-(--sheet-bottom) text-sm shadow-lg transition-[translate,opacity,filter] duration-400 outline-none [--sheet-offset:0px] [--sheet-radius:var(--radius-2xl)] data-ending-style:duration-250 data-nested-dialog-open:brightness-90 motion-reduce:duration-200 motion-reduce:data-ending-style:opacity-0 motion-reduce:data-ending-style:duration-150 motion-reduce:data-starting-style:opacity-0 dark:data-nested-dialog-open:brightness-75",
 						side === "top" &&
 							"max-h-full w-full border-b [--sheet-bottom:0px] [--sheet-top:env(safe-area-inset-top,0px)] motion-safe:data-ending-style:-translate-y-[calc(100%+var(--sheet-offset))] motion-safe:data-starting-style:-translate-y-[calc(100%+var(--sheet-offset))]",
 						side === "right" &&
@@ -86,7 +87,7 @@ function SheetPopup({
 					{children}
 					{showCloseButton && (
 						<BaseSheet.Close
-							data-slot="sheet-close"
+							data-slot="sheet-close-button"
 							aria-label="Close"
 							render={
 								<Button
@@ -110,7 +111,7 @@ function SheetHeader({ className, ...props }: React.ComponentProps<"div">) {
 		<div
 			data-slot="sheet-header"
 			className={cn(
-				"flex flex-col gap-1.5 p-4 group-has-[>[data-slot=sheet-close]]/sheet-popup:pe-12",
+				"flex flex-col gap-1.5 p-4 group-has-[>[data-slot=sheet-close-button]]/sheet-popup:pe-12",
 				className,
 			)}
 			{...props}

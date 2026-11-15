@@ -11,7 +11,7 @@ const itemClassName =
 
 const itemVariantClassNames = {
 	trigger:
-		"inline-flex h-8 shrink-0 cursor-pointer items-center justify-center gap-1.5 rounded-lg px-2.5 text-sm font-medium whitespace-nowrap any-pointer-coarse:text-base transition-[color,background-color,box-shadow] duration-150 ease-out select-none in-data-[orientation=vertical]:w-full in-data-[orientation=vertical]:justify-between any-pointer-coarse:h-9",
+		"inline-flex h-8 shrink-0 cursor-pointer items-center justify-center gap-1.5 rounded-lg px-2.5 text-sm font-medium whitespace-nowrap any-pointer-coarse:text-base transition-[color,background-color,box-shadow] duration-150 focus-visible:duration-0 ease-out select-none in-data-[orientation=vertical]:w-full in-data-[orientation=vertical]:justify-between any-pointer-coarse:h-9",
 	link: "flex h-full w-full items-center gap-2 rounded-sm p-2 text-start text-sm any-pointer-coarse:text-base",
 };
 

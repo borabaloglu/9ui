@@ -61,7 +61,7 @@
 	}
 
 	html {
-		@apply overscroll-none md:scroll-smooth;
+		@apply overscroll-none motion-safe:md:scroll-smooth;
 	}
 
 	html[data-base-ui-scroll-locked] {
@@ -175,20 +175,9 @@
 	--color-chart-3: var(--chart-3);
 	--color-chart-4: var(--chart-4);
 	--color-chart-5: var(--chart-5);
-	--animate-blink: blink 1s infinite;
 	--animate-skeleton: skeleton 2s -1s infinite linear;
 	--font-sans: var(--font-inter);
 	--font-mono: var(--font-geist-mono);
-
-	@keyframes blink {
-		0%,
-		100% {
-			opacity: 1;
-		}
-		50% {
-			opacity: 0;
-		}
-	}
 
 	@keyframes skeleton {
 		to {

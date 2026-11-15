@@ -103,7 +103,7 @@ export default function SidebarDemo() {
 								>
 									<BookOpenIcon />
 									<span>Documentation</span>
-									<ChevronRightIcon className="text-muted-foreground ease-out-quint ms-auto transition-[rotate] duration-150 in-data-panel-open:rotate-90 motion-reduce:transition-none" />
+									<ChevronRightIcon className="text-muted-foreground ease-out-quint ms-auto transition-[rotate] duration-150 in-data-panel-open:rotate-90 in-data-panel-open:duration-200 motion-reduce:transition-none" />
 								</CollapsibleTrigger>
 								<CollapsiblePanel>
 									<SidebarMenuSub>

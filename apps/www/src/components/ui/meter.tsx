@@ -126,7 +126,7 @@ function MeterIndicator({
 		<BaseMeter.Indicator
 			data-slot="meter-indicator"
 			className={cn(
-				"bg-primary in-data-[level=optimum]:bg-success in-data-[level=suboptimum]:bg-warning in-data-[level=critical]:bg-destructive rounded-full transition-[width] duration-300 ease-out motion-reduce:transition-none",
+				"bg-primary in-data-[level=optimum]:bg-success in-data-[level=suboptimum]:bg-warning in-data-[level=critical]:bg-destructive rounded-full transition-[width,background-color] duration-300 ease-out motion-reduce:transition-[background-color]",
 				className,
 			)}
 			{...props}

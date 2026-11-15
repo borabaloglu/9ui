@@ -123,7 +123,7 @@ function DrawerBackdrop({
 		<BaseDrawer.Backdrop
 			data-slot="drawer-backdrop"
 			className={cn(
-				"ease-drawer fixed inset-0 z-50 min-h-dvh bg-black/30 opacity-[max(var(--drawer-backdrop-floor,0),calc(1-var(--drawer-swipe-progress)))] transition-opacity duration-450 data-ending-style:opacity-0 data-ending-style:duration-[calc(var(--drawer-swipe-strength)*400ms)] data-starting-style:opacity-0 data-swiping:duration-0 supports-backdrop-filter:backdrop-blur-xs supports-[-webkit-touch-callout:none]:absolute",
+				"ease-drawer fixed inset-0 z-50 min-h-dvh bg-black/30 opacity-[max(var(--drawer-backdrop-floor,0),calc(1-var(--drawer-swipe-progress)))] transition-opacity duration-450 data-ending-style:opacity-0 data-ending-style:duration-[calc(var(--drawer-swipe-strength)*400ms)] data-starting-style:opacity-0 data-swiping:duration-0 supports-backdrop-filter:backdrop-blur-xs supports-[-webkit-touch-callout:none]:absolute motion-reduce:duration-200 motion-reduce:data-ending-style:duration-150",
 				className,
 			)}
 			{...props}
@@ -137,7 +137,7 @@ function DrawerSwipeHandle({ className }: { className?: string }) {
 			aria-hidden="true"
 			data-slot="drawer-swipe-handle"
 			className={cn(
-				"z-1 flex cursor-grab justify-center transition-opacity duration-200 group-data-nested-drawer-open/drawer-popup:opacity-0 group-data-nested-drawer-swiping/drawer-popup:opacity-100 group-data-swiping/drawer-popup:cursor-grabbing active:cursor-grabbing",
+				"z-1 flex cursor-grab justify-center transition-opacity duration-200 ease-out group-data-nested-drawer-open/drawer-popup:opacity-0 group-data-nested-drawer-swiping/drawer-popup:opacity-100 group-data-swiping/drawer-popup:cursor-grabbing active:cursor-grabbing",
 				className,
 			)}
 		>
@@ -191,7 +191,7 @@ function DrawerPopup({
 						"group/drawer-popup bg-popover text-popover-foreground pointer-events-auto relative flex touch-none flex-col gap-4 pt-(--drawer-top) pb-(--drawer-bottom) text-sm shadow-lg outline-none [--drawer-bottom:0px] [--drawer-inset:max(--spacing(4),calc((100%-var(--container-md))/2+--spacing(4)))] [--drawer-offset:0px] [--drawer-radius:var(--radius-2xl)] [--drawer-top:0px]",
 						"after:pointer-events-none after:absolute after:[inset:var(--drawer-bleed,auto)] after:bg-inherit",
 						"[--drawer-stack-shift:calc((var(--drawer-height,var(--drawer-frontmost-height,0px))-var(--drawer-frontmost-height,0px))*min(1,var(--drawer-stack)))] [--drawer-stack:max(0,calc(var(--nested-drawers)-clamp(0,var(--drawer-swipe-progress),1)))] data-nested-drawer-open:brightness-90 dark:data-nested-drawer-open:brightness-75",
-						"ease-drawer transition-[transform,opacity,filter] duration-450 will-change-transform data-ending-style:duration-[calc(var(--drawer-swipe-strength)*400ms)] data-nested-drawer-swiping:duration-0 data-ending-style:data-nested-drawer-swiping:duration-[calc(var(--drawer-swipe-strength)*400ms)] data-swipe-dismiss:[transform:var(--drawer-closed)] data-swiping:cursor-grabbing data-swiping:select-none motion-safe:data-ending-style:[transform:var(--drawer-closed)] motion-safe:data-starting-style:[transform:var(--drawer-closed)] motion-reduce:data-ending-style:opacity-0 motion-reduce:data-starting-style:opacity-0",
+						"ease-drawer transition-[transform,opacity,filter] duration-450 will-change-transform data-ending-style:duration-[calc(var(--drawer-swipe-strength)*400ms)] data-nested-drawer-swiping:duration-0 data-ending-style:data-nested-drawer-swiping:duration-[calc(var(--drawer-swipe-strength)*400ms)] data-swipe-dismiss:[transform:var(--drawer-closed)] data-swiping:cursor-grabbing data-swiping:select-none motion-safe:data-ending-style:[transform:var(--drawer-closed)] motion-safe:data-starting-style:[transform:var(--drawer-closed)] motion-reduce:duration-200 motion-reduce:data-ending-style:opacity-0 motion-reduce:data-ending-style:duration-150 motion-reduce:data-starting-style:opacity-0",
 						(swipeDirection === "up" || swipeDirection === "down") &&
 							"max-h-[80dvh] w-full",
 						(swipeDirection === "left" || swipeDirection === "right") &&

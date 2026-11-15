@@ -74,7 +74,7 @@ function ToolbarLink({
 		<BaseToolbar.Link
 			data-slot="toolbar-link"
 			className={cn(
-				"text-muted-foreground hover:text-foreground active:text-foreground focus-visible:ring-ring/50 relative inline-flex h-8 shrink-0 items-center gap-1.5 rounded-lg px-2.5 text-sm font-medium whitespace-nowrap transition-[color,box-shadow] duration-150 ease-out outline-none focus-visible:ring-3 focus-visible:outline-hidden active:transition-[box-shadow] any-pointer-coarse:h-9 any-pointer-coarse:after:absolute any-pointer-coarse:after:inset-x-0 any-pointer-coarse:after:inset-y-[calc(50%-22px)] [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
+				"text-muted-foreground hover:text-foreground active:text-foreground focus-visible:ring-ring/50 relative inline-flex h-8 shrink-0 items-center gap-1.5 rounded-lg px-2.5 text-sm font-medium whitespace-nowrap transition-[color,box-shadow] duration-150 ease-out outline-none focus-visible:ring-3 focus-visible:outline-hidden focus-visible:duration-0 active:transition-[box-shadow] any-pointer-coarse:h-9 any-pointer-coarse:after:absolute any-pointer-coarse:after:inset-x-0 any-pointer-coarse:after:inset-y-[calc(50%-22px)] [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
 				className,
 			)}
 			{...props}
