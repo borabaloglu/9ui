@@ -80,7 +80,7 @@ function TooltipPopup({
 				<BaseTooltip.Popup
 					data-slot="tooltip-popup"
 					className={cn(
-						"bg-foreground text-background ease-out-quint w-fit max-w-xs origin-(--transform-origin) rounded-md px-2 py-1 text-xs text-balance transition-[scale,opacity] duration-150 data-ending-style:scale-98 data-ending-style:opacity-0 data-ending-style:duration-100 data-instant:transition-none data-starting-style:scale-98 data-starting-style:opacity-0 motion-reduce:transition-opacity motion-reduce:data-ending-style:scale-100 motion-reduce:data-starting-style:scale-100",
+						"bg-foreground text-background ease-out-quint w-fit max-w-[min(--spacing(80),var(--available-width))] origin-(--transform-origin) rounded-md px-2 py-1 text-xs text-balance wrap-break-word transition-[scale,opacity] duration-150 data-ending-style:scale-98 data-ending-style:opacity-0 data-ending-style:duration-100 data-instant:transition-none data-starting-style:scale-98 data-starting-style:opacity-0 motion-reduce:transition-opacity motion-reduce:data-ending-style:scale-100 motion-reduce:data-starting-style:scale-100",
 						className,
 					)}
 					{...props}

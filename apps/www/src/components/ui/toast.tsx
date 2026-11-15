@@ -81,10 +81,13 @@ function ToastContent({
 				data-slot="toast-text"
 				className="flex min-w-0 flex-1 flex-col gap-0.5"
 			>
-				<BaseToast.Title data-slot="toast-title" className="font-medium" />
+				<BaseToast.Title
+					data-slot="toast-title"
+					className="font-medium wrap-break-word"
+				/>
 				<BaseToast.Description
 					data-slot="toast-description"
-					className="text-muted-foreground"
+					className="text-muted-foreground wrap-break-word"
 				/>
 			</div>
 			{toast.actionProps && (

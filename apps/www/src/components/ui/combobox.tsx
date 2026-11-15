@@ -116,7 +116,7 @@ function ComboboxItem({
 		<BaseCombobox.Item
 			data-slot="combobox-item"
 			className={cn(
-				"data-highlighted:bg-accent data-highlighted:text-accent-foreground relative flex min-h-7 w-full cursor-default items-center gap-2 rounded-sm py-1 pr-8 pl-2 text-sm outline-none select-none data-disabled:pointer-events-none data-disabled:opacity-50 any-pointer-coarse:min-h-9 any-pointer-coarse:text-base [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
+				"data-highlighted:bg-accent data-highlighted:text-accent-foreground relative flex min-h-7 w-full cursor-default items-center gap-2 rounded-sm py-1 pr-8 pl-2 text-sm wrap-anywhere outline-none select-none data-disabled:pointer-events-none data-disabled:opacity-50 any-pointer-coarse:min-h-9 any-pointer-coarse:text-base [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
 				className,
 			)}
 			{...props}
@@ -290,17 +290,19 @@ function ComboboxChip({
 		<BaseCombobox.Chip
 			data-slot="combobox-chip"
 			className={cn(
-				"bg-muted text-foreground focus-visible:ring-ring/50 flex h-5.5 w-fit cursor-default items-center rounded-sm px-1.5 text-xs font-medium whitespace-nowrap outline-none select-none focus-visible:ring-2 focus-visible:outline-hidden has-data-[slot=combobox-chip-remove]:pr-0 any-pointer-coarse:h-6.5 any-pointer-coarse:text-sm",
+				"bg-muted text-foreground focus-visible:ring-ring/50 flex h-5.5 w-fit max-w-full min-w-0 cursor-default items-center rounded-sm px-1.5 text-xs font-medium whitespace-nowrap outline-none select-none focus-visible:ring-2 focus-visible:outline-hidden has-data-[slot=combobox-chip-remove]:pe-0 any-pointer-coarse:h-6.5 any-pointer-coarse:text-sm",
 				className,
 			)}
 			{...props}
 		>
-			{children}
+			<span data-slot="combobox-chip-label" className="min-w-0 truncate">
+				{children}
+			</span>
 			{showRemove && (
 				<BaseCombobox.ChipRemove
 					data-slot="combobox-chip-remove"
 					aria-label={removeLabel}
-					className="text-muted-foreground hover:text-foreground flex h-full w-5 items-center justify-center outline-none any-pointer-coarse:w-6.5 [&_svg]:pointer-events-none [&_svg]:size-3"
+					className="text-muted-foreground hover:text-foreground flex h-full w-5 shrink-0 items-center justify-center outline-none any-pointer-coarse:w-6.5 [&_svg]:pointer-events-none [&_svg]:size-3"
 				>
 					<XIcon />
 				</BaseCombobox.ChipRemove>

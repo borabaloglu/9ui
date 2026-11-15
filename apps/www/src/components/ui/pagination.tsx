@@ -9,6 +9,20 @@ import { cn } from "@/lib/utils";
 
 type PaginationSize = React.ComponentProps<typeof Button>["size"];
 
+const paginationLinkIconSizes: Partial<
+	Record<NonNullable<PaginationSize>, string>
+> = {
+	"icon-xs":
+		"w-auto min-w-6 px-1 any-pointer-coarse:w-auto any-pointer-coarse:min-w-7",
+	"icon-sm":
+		"w-auto min-w-7 px-1 any-pointer-coarse:w-auto any-pointer-coarse:min-w-8",
+	icon: "w-auto min-w-8 px-1 any-pointer-coarse:w-auto any-pointer-coarse:min-w-9",
+	"icon-lg":
+		"w-auto min-w-9 px-1 any-pointer-coarse:w-auto any-pointer-coarse:min-w-10",
+	"icon-xl":
+		"w-auto min-w-10 px-1 any-pointer-coarse:w-auto any-pointer-coarse:min-w-11",
+};
+
 function Pagination({ className, ...props }: React.ComponentProps<"nav">) {
 	return (
 		<nav
@@ -56,6 +70,7 @@ function PaginationLink({
 				"aria-current": active ? "page" : undefined,
 				className: cn(
 					buttonVariants({ variant: active ? "outline" : "ghost", size }),
+					size && paginationLinkIconSizes[size],
 					"tabular-nums aria-disabled:pointer-events-none aria-disabled:opacity-50",
 					active &&
 						"[&:active]:bg-input dark:[&:active]:bg-input [&:active]:hover:bg-accent dark:[&:active]:hover:bg-accent/50 active:before:shadow-[0_1px_--theme(--color-black/6%)] dark:active:before:shadow-[0_-1px_--theme(--color-white/8%)] [&:is(:active,[data-disabled])]:shadow-xs motion-safe:[&:not([data-variant=link]):not([aria-haspopup=menu]):not([aria-haspopup=listbox]):not([role=combobox])]:active:scale-100",

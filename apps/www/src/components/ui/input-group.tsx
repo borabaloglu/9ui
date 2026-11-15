@@ -119,7 +119,7 @@ function InputGroupText({ className, ...props }: React.ComponentProps<"span">) {
 		<span
 			data-slot="input-group-text"
 			className={cn(
-				"text-muted-foreground flex min-w-0 items-center gap-2 truncate [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
+				"text-muted-foreground block min-w-0 truncate has-[>svg]:flex has-[>svg]:items-center has-[>svg]:gap-2 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
 				className,
 			)}
 			{...props}

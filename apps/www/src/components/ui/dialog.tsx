@@ -68,7 +68,7 @@ function DialogPopup({
 					data-slot="dialog-popup"
 					data-size={size}
 					className={cn(
-						"group/dialog-popup bg-popover text-popover-foreground ease-out-quint dark:edge-highlight-(--dialog-radius) relative grid max-h-full w-full scale-[calc(1-0.1*var(--nested-dialogs))] gap-(--dialog-spacing) overflow-y-auto overscroll-contain rounded-(--dialog-radius) border p-(--dialog-spacing) pb-(--dialog-bottom) text-sm shadow-lg transition-[scale,opacity,translate,filter] duration-200 outline-none [--dialog-bottom:var(--dialog-spacing)] [--dialog-radius:var(--radius-xl)] [--dialog-spacing:--spacing(4)] not-dark:shadow-[0_1px_--theme(--color-black/6%),var(--shadow-lg)] data-ending-style:scale-96 data-ending-style:opacity-0 data-ending-style:duration-150 data-nested-dialog-open:brightness-90 data-starting-style:scale-96 data-starting-style:opacity-0 data-[size=sm]:[--dialog-spacing:--spacing(3)] motion-reduce:transition-opacity motion-reduce:data-ending-style:scale-100 motion-reduce:data-starting-style:scale-100 dark:data-nested-dialog-open:brightness-75",
+						"group/dialog-popup bg-popover text-popover-foreground ease-out-quint dark:edge-highlight-(--dialog-radius) relative grid max-h-full w-full scale-[calc(1-0.1*var(--nested-dialogs))] grid-cols-1 gap-(--dialog-spacing) overflow-y-auto overscroll-contain rounded-(--dialog-radius) border p-(--dialog-spacing) pb-(--dialog-bottom) text-sm shadow-lg transition-[scale,opacity,translate,filter] duration-200 outline-none [--dialog-bottom:var(--dialog-spacing)] [--dialog-radius:var(--radius-xl)] [--dialog-spacing:--spacing(4)] not-dark:shadow-[0_1px_--theme(--color-black/6%),var(--shadow-lg)] data-ending-style:scale-96 data-ending-style:opacity-0 data-ending-style:duration-150 data-nested-dialog-open:brightness-90 data-starting-style:scale-96 data-starting-style:opacity-0 data-[size=sm]:[--dialog-spacing:--spacing(3)] motion-reduce:transition-opacity motion-reduce:data-ending-style:scale-100 motion-reduce:data-starting-style:scale-100 dark:data-nested-dialog-open:brightness-75",
 						size === "sm" ? "max-w-xs" : "max-w-sm",
 						showAtBottomOnMobile &&
 							"motion-safe:max-sm:ease-drawer max-sm:max-w-none max-sm:scale-100 max-sm:rounded-b-none max-sm:border-x-0 max-sm:border-b-0 max-sm:[--dialog-bottom:calc(var(--dialog-spacing)+env(safe-area-inset-bottom))] max-sm:data-ending-style:scale-100 max-sm:data-nested-dialog-open:opacity-0 max-sm:data-starting-style:scale-100 motion-safe:max-sm:duration-400 motion-safe:max-sm:data-ending-style:translate-y-full motion-safe:max-sm:data-ending-style:opacity-100 motion-safe:max-sm:data-ending-style:duration-250 motion-safe:max-sm:data-starting-style:translate-y-full motion-safe:max-sm:data-starting-style:opacity-100",
@@ -142,7 +142,10 @@ function DialogTitle({
 	return (
 		<BaseDialog.Title
 			data-slot="dialog-title"
-			className={cn("text-base leading-snug font-medium", className)}
+			className={cn(
+				"text-base leading-snug font-medium wrap-break-word",
+				className,
+			)}
 			{...props}
 		/>
 	);
@@ -158,7 +161,7 @@ function DialogDescription({
 		<BaseDialog.Description
 			data-slot="dialog-description"
 			className={cn(
-				"text-muted-foreground *:[a]:hover:text-foreground text-sm text-pretty *:[a]:underline *:[a]:underline-offset-3",
+				"text-muted-foreground *:[a]:hover:text-foreground text-sm text-pretty wrap-break-word *:[a]:underline *:[a]:underline-offset-3",
 				className,
 			)}
 			{...props}
