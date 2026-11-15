@@ -1,5 +1,463 @@
 ---
 title: Data Table
-label: Soon
-disabled: true
+description: A table with sorting, filtering, pagination and row selection, built with TanStack Table.
+label: New
 ---
+<ComponentLinks
+	links={[
+		{
+			label: "Docs",
+			href: "https://tanstack.com/table/latest/docs/overview",
+		},
+	]}
+/>
+
+<ComponentPreview name="data-table-demo" />
+
+## About
+
+Every data table is different. Each one has its own columns, sorting and filtering rules and data source.
+
+So instead of a single component, this page is a guide. It shows how to build your own data table with the [`Table`](/docs/components/table) component and [`TanStack Table`](https://tanstack.com/table).
+
+## Installation
+
+The data table is a composition of the `Table` component and TanStack Table. This guide uses TanStack Table v9.
+
+<Steps>
+
+<Step>Follow installation instructions for the [`Table`](/docs/components/table) component.</Step>
+
+<Step>Add the components your table uses. The demo on this page uses [`Badge`](/docs/components/badge), [`Button`](/docs/components/button), [`Checkbox`](/docs/components/checkbox), [`Input Group`](/docs/components/input-group), [`Menu`](/docs/components/menu) and [`Select`](/docs/components/select).</Step>
+
+<Step>Install the dependencies.</Step>
+
+```bash title="Terminal"
+npm install @tanstack/react-table
+```
+
+</Steps>
+
+## Usage
+
+```tsx title="Imports"
+import {
+	createColumnHelper,
+	tableFeatures,
+	useTable,
+} from "@tanstack/react-table"
+
+import {
+	Table,
+	TableBody,
+	TableCell,
+	TableHead,
+	TableHeader,
+	TableRow,
+} from "@/components/ui/table"
+```
+
+```tsx title="Anatomy"
+<Table>
+	<TableHeader>
+		{table.getHeaderGroups().map((headerGroup) => (
+			<TableRow key={headerGroup.id}>
+				{headerGroup.headers.map((header) => (
+					<TableHead key={header.id}>
+						<table.FlexRender header={header} />
+					</TableHead>
+				))}
+			</TableRow>
+		))}
+	</TableHeader>
+	<TableBody>
+		{table.getRowModel().rows.map((row) => (
+			<TableRow key={row.id}>
+				{row.getAllCells().map((cell) => (
+					<TableCell key={cell.id}>
+						<table.FlexRender cell={cell} />
+					</TableCell>
+				))}
+			</TableRow>
+		))}
+	</TableBody>
+</Table>
+```
+
+## Guide
+
+The guide builds a table of payments in three files.
+
+```txt title="Structure"
+payments
+├── features.ts
+├── columns.tsx
+└── data-table.tsx
+```
+
+```tsx title="Data"
+type Payment = {
+	id: string
+	amount: number
+	status: "pending" | "processing" | "success" | "failed"
+	email: string
+}
+```
+
+### Features
+
+To turn on a behavior, add its feature to `tableFeatures`. Sorting, filtering and pagination also need their row model.
+
+To sort or filter, also add the functions your columns use to `sortFns` and `filterFns`.
+
+```tsx {25-26,29} title="features.ts"
+import {
+	columnFilteringFeature,
+	columnVisibilityFeature,
+	createFilteredRowModel,
+	createPaginatedRowModel,
+	createSortedRowModel,
+	filterFn_includesString,
+	rowPaginationFeature,
+	rowSelectionFeature,
+	rowSortingFeature,
+	sortFn_alphanumeric,
+	sortFn_text,
+	tableFeatures,
+} from "@tanstack/react-table"
+
+export const features = tableFeatures({
+	columnFilteringFeature,
+	columnVisibilityFeature,
+	rowPaginationFeature,
+	rowSelectionFeature,
+	rowSortingFeature,
+	filteredRowModel: createFilteredRowModel(),
+	paginatedRowModel: createPaginatedRowModel(),
+	sortedRowModel: createSortedRowModel(),
+	filterFns: { includesString: filterFn_includesString },
+	sortFns: { alphanumeric: sortFn_alphanumeric, text: sortFn_text },
+})
+
+export type DataTableFeatures = typeof features
+```
+
+### Columns
+
+To define a data column, use `columnHelper.accessor`. To format a cell or a header, set `cell` or `header`.
+
+```tsx title="columns.tsx"
+import { createColumnHelper } from "@tanstack/react-table"
+
+import type { DataTableFeatures } from "./features"
+
+const columnHelper = createColumnHelper<DataTableFeatures, Payment>()
+
+export const columns = columnHelper.columns([
+	columnHelper.accessor("email", {
+		header: "Email",
+	}),
+	columnHelper.accessor("amount", {
+		header: () => <div className="text-end">Amount</div>,
+		cell: ({ getValue }) => (
+			<div className="text-end font-medium">
+				{new Intl.NumberFormat("en-US", {
+					style: "currency",
+					currency: "USD",
+				}).format(getValue())}
+			</div>
+		),
+	}),
+])
+```
+
+### Reusable Component
+
+To reuse the table, wrap it in a `DataTable` component that takes `columns` and `data`.
+
+```tsx {16-19,25,35,48} title="data-table.tsx"
+"use client"
+
+import { type ColumnDef, type RowData, useTable } from "@tanstack/react-table"
+
+import {
+	Table,
+	TableBody,
+	TableCell,
+	TableHead,
+	TableHeader,
+	TableRow,
+} from "@/components/ui/table"
+
+import { type DataTableFeatures, features } from "./features"
+
+interface DataTableProps<TData extends RowData> {
+	columns: ColumnDef<DataTableFeatures, TData>[]
+	data: TData[]
+}
+
+export function DataTable<TData extends RowData>({
+	columns,
+	data,
+}: DataTableProps<TData>) {
+	const table = useTable({ features, data, columns })
+
+	return (
+		<Table variant="card">
+			<TableHeader>
+				{table.getHeaderGroups().map((headerGroup) => (
+					<TableRow key={headerGroup.id}>
+						{headerGroup.headers.map((header) => (
+							<TableHead key={header.id}>
+								{header.isPlaceholder ? null : (
+									<table.FlexRender header={header} />
+								)}
+							</TableHead>
+						))}
+					</TableRow>
+				))}
+			</TableHeader>
+			<TableBody>
+				{table.getRowModel().rows.length ? (
+					table.getRowModel().rows.map((row) => (
+						<TableRow key={row.id} aria-selected={row.getIsSelected()}>
+							{row.getVisibleCells().map((cell) => (
+								<TableCell key={cell.id}>
+									<table.FlexRender cell={cell} />
+								</TableCell>
+							))}
+						</TableRow>
+					))
+				) : (
+					<TableRow>
+						<TableCell colSpan={columns.length} className="h-24 text-center">
+							No results.
+						</TableCell>
+					</TableRow>
+				)}
+			</TableBody>
+		</Table>
+	)
+}
+```
+
+```tsx title="Usage"
+<DataTable columns={columns} data={payments} />
+```
+
+<ComponentPreview name="data-table-basic-demo" />
+
+### Row Actions
+
+To add actions to a row, use `columnHelper.display`. The row data is available as `row.original`.
+
+```tsx {13} title="columns.tsx"
+columnHelper.display({
+	id: "actions",
+	header: () => <span className="sr-only">Actions</span>,
+	cell: ({ row }) => (
+		<Menu>
+			<MenuTrigger
+				render={<Button variant="ghost" size="icon-sm" aria-label="Actions" />}
+			>
+				<EllipsisIcon />
+			</MenuTrigger>
+			<MenuPopup align="end">
+				<MenuItem
+					onClick={() => navigator.clipboard.writeText(row.original.id)}
+				>
+					Copy payment ID
+				</MenuItem>
+			</MenuPopup>
+		</Menu>
+	),
+})
+```
+
+### Sorting
+
+To sort by a column, call `column.toggleSorting` from its header.
+
+```tsx {7} title="columns.tsx"
+columnHelper.accessor("email", {
+	header: ({ column }) => (
+		<Button
+			variant="ghost"
+			size="sm"
+			className="text-muted-foreground -ms-2.5"
+			onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+		>
+			Email
+			{column.getIsSorted() === "asc" ? (
+				<ArrowUpIcon data-icon="inline-end" />
+			) : column.getIsSorted() === "desc" ? (
+				<ArrowDownIcon data-icon="inline-end" />
+			) : (
+				<ChevronsUpDownIcon data-icon="inline-end" />
+			)}
+		</Button>
+	),
+})
+```
+
+To announce the sort direction to screen readers, set `aria-sort` on `TableHead`.
+
+```tsx title="data-table.tsx"
+const sorted = header.column.getIsSorted()
+
+<TableHead
+	aria-sort={
+		sorted === "asc"
+			? "ascending"
+			: sorted === "desc"
+				? "descending"
+				: undefined
+	}
+/>
+```
+
+To sort and hide a column from one menu, put a `Menu` in the header.
+
+<ComponentPreview name="data-table-column-header-demo" />
+
+### Filtering
+
+To filter a column, call `column.setFilterValue` from an input.
+
+```tsx title="data-table.tsx"
+<Input
+	aria-label="Filter emails"
+	placeholder="Filter emails..."
+	value={(table.getColumn("email")?.getFilterValue() as string) ?? ""}
+	onChange={(event) =>
+		table.getColumn("email")?.setFilterValue(event.target.value)
+	}
+/>
+```
+
+### Column Visibility
+
+To show or hide a column, call `column.toggleVisibility`. To keep a column always visible, set `enableHiding` to `false`.
+
+To render only the visible columns, use `row.getVisibleCells` instead of `row.getAllCells`.
+
+```tsx title="data-table.tsx"
+<MenuPopup align="end">
+	{table
+		.getAllColumns()
+		.filter((column) => column.getCanHide())
+		.map((column) => (
+			<MenuCheckboxItem
+				key={column.id}
+				className="capitalize"
+				checked={column.getIsVisible()}
+				onCheckedChange={(checked) => column.toggleVisibility(checked)}
+			>
+				{column.id}
+			</MenuCheckboxItem>
+		))}
+</MenuPopup>
+```
+
+### Row Selection
+
+To select rows, add a column with a `Checkbox` in its header and cell.
+
+```tsx {5-9} title="columns.tsx"
+columnHelper.display({
+	id: "select",
+	header: ({ table }) => (
+		<Checkbox
+			checked={table.getIsAllPageRowsSelected()}
+			indeterminate={
+				table.getIsSomePageRowsSelected() && !table.getIsAllPageRowsSelected()
+			}
+			onCheckedChange={(checked) => table.toggleAllPageRowsSelected(checked)}
+			aria-label="Select all"
+		/>
+	),
+	cell: ({ row }) => (
+		<Checkbox
+			checked={row.getIsSelected()}
+			onCheckedChange={(checked) => row.toggleSelected(checked)}
+			aria-label="Select row"
+		/>
+	),
+	enableSorting: false,
+	enableHiding: false,
+})
+```
+
+To highlight selected rows, set `aria-selected` on `TableRow`.
+
+```tsx title="data-table.tsx"
+<TableRow aria-selected={row.getIsSelected()} />
+```
+
+To show how many rows are selected, use `table.getFilteredSelectedRowModel`.
+
+```tsx title="data-table.tsx"
+<p className="text-muted-foreground text-sm">
+	{table.getFilteredSelectedRowModel().rows.length} of{" "}
+	{table.getFilteredRowModel().rows.length} row(s) selected.
+</p>
+```
+
+### Pagination
+
+To change the page, call `table.previousPage` and `table.nextPage`.
+
+```tsx title="data-table.tsx"
+<Button
+	variant="outline"
+	size="sm"
+	onClick={() => table.previousPage()}
+	disabled={!table.getCanPreviousPage()}
+>
+	Previous
+</Button>
+<Button
+	variant="outline"
+	size="sm"
+	onClick={() => table.nextPage()}
+	disabled={!table.getCanNextPage()}
+>
+	Next
+</Button>
+```
+
+To set the first page size, set `initialState.pagination`. To change it later, call `table.setPageSize`.
+
+```tsx {5} title="data-table.tsx"
+const table = useTable({
+	features,
+	data,
+	columns,
+	initialState: { pagination: { pageIndex: 0, pageSize: 20 } },
+})
+```
+
+<ComponentPreview name="data-table-pagination-demo" />
+
+### State
+
+The table keeps its own state. To control a part of it, set it in `state` and pass its change handler.
+
+```tsx {11-15} title="data-table.tsx"
+const [sorting, setSorting] = React.useState<SortingState>([])
+const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>([])
+const [columnVisibility, setColumnVisibility] =
+	React.useState<ColumnVisibilityState>({})
+const [rowSelection, setRowSelection] = React.useState<RowSelectionState>({})
+
+const table = useTable({
+	features,
+	data,
+	columns,
+	onSortingChange: setSorting,
+	onColumnFiltersChange: setColumnFilters,
+	onColumnVisibilityChange: setColumnVisibility,
+	onRowSelectionChange: setRowSelection,
+	state: { sorting, columnFilters, columnVisibility, rowSelection },
+})
+```
