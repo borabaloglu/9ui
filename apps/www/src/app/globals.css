@@ -215,6 +215,38 @@
 	--surface-accent: var(--accent-elevated);
 }
 
+@utility edge-highlight-* {
+	--edge-highlight-radius: --value(--radius-*, [length], [*]);
+	background-image:
+		radial-gradient(
+			circle at var(--edge-highlight-radius)
+				calc(var(--edge-highlight-radius) + 1px),
+			transparent calc(var(--edge-highlight-radius) - 0.5px),
+			--alpha(var(--color-white) / 8%)
+				calc(var(--edge-highlight-radius) + 0.5px)
+		),
+		radial-gradient(
+			circle at 0 calc(var(--edge-highlight-radius) + 1px),
+			transparent calc(var(--edge-highlight-radius) - 0.5px),
+			--alpha(var(--color-white) / 8%)
+				calc(var(--edge-highlight-radius) + 0.5px)
+		),
+		linear-gradient(
+			--alpha(var(--color-white) / 8%),
+			--alpha(var(--color-white) / 8%)
+		);
+	background-size:
+		var(--edge-highlight-radius) var(--edge-highlight-radius),
+		var(--edge-highlight-radius) var(--edge-highlight-radius),
+		calc(100% - 2 * var(--edge-highlight-radius)) 1px;
+	background-position:
+		0 0,
+		100% 0,
+		50% 0;
+	background-repeat: no-repeat;
+	background-origin: border-box;
+}
+
 @utility container {
 	@apply mx-auto w-full max-w-7xl px-4 xl:px-6;
 }

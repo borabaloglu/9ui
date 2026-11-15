@@ -23,7 +23,7 @@ const items = [
 export default function SidebarFloatingDemo() {
 	return (
 		<SidebarProvider>
-			<Sidebar variant="floating" className="p-3">
+			<Sidebar variant="floating" className="md:p-3">
 				<SidebarContent>
 					<SidebarGroup>
 						<SidebarGroupLabel>Application</SidebarGroupLabel>

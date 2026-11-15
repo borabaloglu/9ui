@@ -4,16 +4,16 @@ import { CheckIcon, ChevronRightIcon } from "lucide-react";
 
 import { cn } from "@/lib/utils";
 
-function ContextMenu({
-	...props
-}: React.ComponentProps<typeof BaseContextMenu.Root>) {
+function ContextMenu({ ...props }: BaseContextMenu.Root.Props) {
 	return <BaseContextMenu.Root {...props} />;
 }
 
 function ContextMenuTrigger({
 	className,
 	...props
-}: React.ComponentProps<typeof BaseContextMenu.Trigger>) {
+}: Omit<BaseContextMenu.Trigger.Props, "className"> & {
+	className?: string;
+}) {
 	return (
 		<BaseContextMenu.Trigger
 			data-slot="context-menu-trigger"
@@ -31,11 +31,13 @@ function ContextMenuPopup({
 	sideOffset,
 	anchor,
 	...props
-}: React.ComponentProps<typeof BaseContextMenu.Popup> &
+}: Omit<BaseContextMenu.Popup.Props, "className"> &
 	Pick<
 		BaseContextMenu.Positioner.Props,
 		"align" | "alignOffset" | "side" | "sideOffset" | "anchor"
-	>) {
+	> & {
+		className?: string;
+	}) {
 	return (
 		<BaseContextMenu.Portal data-slot="context-menu-portal">
 			<BaseContextMenu.Positioner
@@ -50,7 +52,7 @@ function ContextMenuPopup({
 				<BaseContextMenu.Popup
 					data-slot="context-menu-popup"
 					className={cn(
-						"bg-popover text-popover-foreground ease-out-quint max-h-(--available-height) min-w-32 origin-(--transform-origin) overflow-x-hidden overflow-y-auto rounded-lg border p-1 shadow-md transition-[scale,opacity] duration-150 outline-none data-ending-style:scale-95 data-ending-style:opacity-0 data-ending-style:duration-100 data-instant:transition-none data-starting-style:scale-95 data-starting-style:opacity-0 motion-reduce:transition-opacity motion-reduce:data-ending-style:scale-100 motion-reduce:data-starting-style:scale-100",
+						"bg-popover text-popover-foreground ease-out-quint dark:edge-highlight-lg max-h-(--available-height) min-w-32 origin-(--transform-origin) overflow-x-hidden overflow-y-auto rounded-lg border p-1 shadow-md transition-[scale,opacity] duration-150 outline-none not-dark:shadow-[0_1px_--theme(--color-black/6%),var(--shadow-md)] data-ending-style:scale-95 data-ending-style:opacity-0 data-ending-style:duration-100 data-instant:transition-none data-starting-style:scale-95 data-starting-style:opacity-0 motion-reduce:transition-opacity motion-reduce:data-ending-style:scale-100 motion-reduce:data-starting-style:scale-100",
 						className,
 					)}
 					{...props}
@@ -60,9 +62,7 @@ function ContextMenuPopup({
 	);
 }
 
-function ContextMenuGroup({
-	...props
-}: React.ComponentProps<typeof BaseContextMenu.Group>) {
+function ContextMenuGroup({ ...props }: BaseContextMenu.Group.Props) {
 	return <BaseContextMenu.Group data-slot="context-menu-group" {...props} />;
 }
 
@@ -70,7 +70,8 @@ function ContextMenuGroupLabel({
 	className,
 	inset,
 	...props
-}: React.ComponentProps<typeof BaseContextMenu.GroupLabel> & {
+}: Omit<BaseContextMenu.GroupLabel.Props, "className"> & {
+	className?: string;
 	inset?: boolean;
 }) {
 	return (
@@ -91,7 +92,8 @@ function ContextMenuItem({
 	inset,
 	variant = "default",
 	...props
-}: React.ComponentProps<typeof BaseContextMenu.Item> & {
+}: Omit<BaseContextMenu.Item.Props, "className"> & {
+	className?: string;
 	inset?: boolean;
 	variant?: "default" | "destructive";
 }) {
@@ -113,7 +115,8 @@ function ContextMenuLinkItem({
 	className,
 	inset,
 	...props
-}: React.ComponentProps<typeof BaseContextMenu.LinkItem> & {
+}: Omit<BaseContextMenu.LinkItem.Props, "className"> & {
+	className?: string;
 	inset?: boolean;
 }) {
 	return (
@@ -133,7 +136,9 @@ function ContextMenuCheckboxItem({
 	className,
 	children,
 	...props
-}: React.ComponentProps<typeof BaseContextMenu.CheckboxItem>) {
+}: Omit<BaseContextMenu.CheckboxItem.Props, "className"> & {
+	className?: string;
+}) {
 	return (
 		<BaseContextMenu.CheckboxItem
 			data-slot="context-menu-checkbox-item"
@@ -153,9 +158,7 @@ function ContextMenuCheckboxItem({
 	);
 }
 
-function ContextMenuRadioGroup({
-	...props
-}: React.ComponentProps<typeof BaseContextMenu.RadioGroup>) {
+function ContextMenuRadioGroup({ ...props }: BaseContextMenu.RadioGroup.Props) {
 	return (
 		<BaseContextMenu.RadioGroup
 			data-slot="context-menu-radio-group"
@@ -168,7 +171,9 @@ function ContextMenuRadioItem({
 	className,
 	children,
 	...props
-}: React.ComponentProps<typeof BaseContextMenu.RadioItem>) {
+}: Omit<BaseContextMenu.RadioItem.Props, "className"> & {
+	className?: string;
+}) {
 	return (
 		<BaseContextMenu.RadioItem
 			data-slot="context-menu-radio-item"
@@ -191,7 +196,9 @@ function ContextMenuRadioItem({
 function ContextMenuSeparator({
 	className,
 	...props
-}: React.ComponentProps<typeof BaseContextMenu.Separator>) {
+}: Omit<BaseContextMenu.Separator.Props, "className"> & {
+	className?: string;
+}) {
 	return (
 		<BaseContextMenu.Separator
 			data-slot="context-menu-separator"
@@ -217,9 +224,7 @@ function ContextMenuShortcut({
 	);
 }
 
-function ContextMenuSub({
-	...props
-}: React.ComponentProps<typeof BaseContextMenu.SubmenuRoot>) {
+function ContextMenuSub({ ...props }: BaseContextMenu.SubmenuRoot.Props) {
 	return <BaseContextMenu.SubmenuRoot {...props} />;
 }
 
@@ -228,7 +233,8 @@ function ContextMenuSubTrigger({
 	inset,
 	children,
 	...props
-}: React.ComponentProps<typeof BaseContextMenu.SubmenuTrigger> & {
+}: Omit<BaseContextMenu.SubmenuTrigger.Props, "className"> & {
+	className?: string;
 	inset?: boolean;
 }) {
 	return (

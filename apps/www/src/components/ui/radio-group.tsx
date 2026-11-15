@@ -4,10 +4,10 @@ import { RadioGroup as BaseRadioGroup } from "@base-ui/react/radio-group";
 
 import { cn } from "@/lib/utils";
 
-function RadioGroup({
+function RadioGroup<Value>({
 	className,
 	...props
-}: Omit<BaseRadioGroup.Props, "className"> & {
+}: Omit<BaseRadioGroup.Props<Value>, "className"> & {
 	className?: string;
 }) {
 	return (
@@ -35,10 +35,10 @@ function RadioGroupLabel({ className, ...props }: React.ComponentProps<"div">) {
 	);
 }
 
-function Radio({
+function Radio<Value>({
 	className,
 	...props
-}: Omit<BaseRadio.Root.Props, "className"> & {
+}: Omit<BaseRadio.Root.Props<Value>, "className"> & {
 	className?: string;
 }) {
 	return (

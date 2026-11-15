@@ -60,7 +60,7 @@ function Toaster({ className, style, toastOptions, ...props }: ToasterProps) {
 				...toastOptions,
 				classNames: {
 					toast:
-						"flex w-(--width) items-center gap-2 rounded-lg border bg-[color-mix(in_srgb,var(--popover),black_calc(1%*var(--toasts-before,0)))] data-[expanded=true]:bg-popover dark:bg-[color-mix(in_srgb,var(--popover),black_calc(6%*var(--toasts-before,0)))] dark:data-[expanded=true]:bg-popover dark:inset-shadow-[0_1px_--theme(--color-white/8%)] bg-clip-padding px-3.5 py-3 text-sm text-popover-foreground shadow-lg select-none not-dark:shadow-[0_1px_--theme(--color-black/6%),var(--shadow-lg)] data-[expanded=false]:data-[front=false]:*:opacity-0",
+						"flex w-(--width) items-center gap-2 rounded-lg border dark:edge-highlight-lg bg-[color-mix(in_srgb,var(--popover),black_calc(1%*var(--toasts-before,0)))] data-[expanded=true]:bg-popover dark:bg-[color-mix(in_srgb,var(--popover),black_calc(6%*var(--toasts-before,0)))] dark:data-[expanded=true]:bg-popover px-3.5 py-3 text-sm text-popover-foreground shadow-lg select-none not-dark:shadow-[0_1px_--theme(--color-black/6%),var(--shadow-lg)] data-[expanded=false]:data-[front=false]:*:opacity-0",
 					content: "flex min-w-0 flex-1 flex-col gap-0.5",
 					title: "font-medium",
 					description: "text-muted-foreground",

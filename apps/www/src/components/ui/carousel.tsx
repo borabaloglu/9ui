@@ -86,6 +86,7 @@ function Carousel({
 		(event: React.KeyboardEvent<HTMLDivElement>) => {
 			const target = event.target as HTMLElement;
 			if (
+				event.defaultPrevented ||
 				event.altKey ||
 				event.ctrlKey ||
 				event.metaKey ||
@@ -150,7 +151,7 @@ function Carousel({
 			}}
 		>
 			<div
-				onKeyDownCapture={handleKeyDown}
+				onKeyDown={handleKeyDown}
 				className={cn("relative", className)}
 				role="region"
 				aria-roledescription="carousel"
@@ -244,6 +245,8 @@ function CarouselPrevious({
 	className,
 	variant = "outline",
 	size = "icon-sm",
+	disabled,
+	onClick,
 	...props
 }: React.ComponentProps<typeof Button>) {
 	const { orientation, scrollPrev, canScrollPrev } = useCarousel();
@@ -258,9 +261,12 @@ function CarouselPrevious({
 				"absolute touch-manipulation rounded-full before:rounded-full data-[orientation=horizontal]:-start-12 data-[orientation=horizontal]:top-1/2 data-[orientation=horizontal]:-translate-y-1/2 data-[orientation=vertical]:-top-12 data-[orientation=vertical]:left-1/2 data-[orientation=vertical]:-translate-x-1/2 data-[orientation=vertical]:rotate-90",
 				className,
 			)}
-			disabled={!canScrollPrev}
+			disabled={disabled || !canScrollPrev}
 			focusableWhenDisabled
-			onClick={scrollPrev}
+			onClick={(event) => {
+				onClick?.(event);
+				if (!event.defaultPrevented) scrollPrev();
+			}}
 			{...props}
 		>
 			<ChevronLeft className="rtl:group-data-[orientation=horizontal]/button:rotate-180" />
@@ -273,6 +279,8 @@ function CarouselNext({
 	className,
 	variant = "outline",
 	size = "icon-sm",
+	disabled,
+	onClick,
 	...props
 }: React.ComponentProps<typeof Button>) {
 	const { orientation, scrollNext, canScrollNext } = useCarousel();
@@ -287,9 +295,12 @@ function CarouselNext({
 				"absolute touch-manipulation rounded-full before:rounded-full data-[orientation=horizontal]:-end-12 data-[orientation=horizontal]:top-1/2 data-[orientation=horizontal]:-translate-y-1/2 data-[orientation=vertical]:-bottom-12 data-[orientation=vertical]:left-1/2 data-[orientation=vertical]:-translate-x-1/2 data-[orientation=vertical]:rotate-90",
 				className,
 			)}
-			disabled={!canScrollNext}
+			disabled={disabled || !canScrollNext}
 			focusableWhenDisabled
-			onClick={scrollNext}
+			onClick={(event) => {
+				onClick?.(event);
+				if (!event.defaultPrevented) scrollNext();
+			}}
 			{...props}
 		>
 			<ChevronRight className="rtl:group-data-[orientation=horizontal]/button:rotate-180" />

@@ -22,7 +22,7 @@ function EmojiPicker({
 		<BaseEmojiPicker.Root
 			data-slot="emoji-picker"
 			className={cn(
-				"bg-popover text-popover-foreground isolate flex h-84 w-fit max-w-full flex-col overflow-hidden rounded-xl border shadow-md in-data-[slot=popover-popup]:rounded-none in-data-[slot=popover-popup]:border-0 in-data-[slot=popover-popup]:bg-transparent in-data-[slot=popover-popup]:shadow-none",
+				"bg-popover text-popover-foreground dark:edge-highlight-xl isolate flex h-84 w-fit max-w-full flex-col overflow-hidden rounded-xl border shadow-md not-dark:shadow-[0_1px_--theme(--color-black/6%),var(--shadow-md)] in-data-[slot=popover-popup]:rounded-none in-data-[slot=popover-popup]:border-0 in-data-[slot=popover-popup]:bg-transparent in-data-[slot=popover-popup]:shadow-none not-dark:in-data-[slot=popover-popup]:shadow-none dark:in-data-[slot=popover-popup]:bg-none",
 				className,
 			)}
 			{...props}

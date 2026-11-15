@@ -41,7 +41,7 @@ function Command({
 			<div
 				data-slot="command"
 				className={cn(
-					"bg-popover text-popover-foreground flex min-h-0 w-full flex-col overflow-hidden rounded-xl border shadow-md",
+					"bg-popover text-popover-foreground dark:edge-highlight-xl flex min-h-0 w-full flex-col overflow-hidden rounded-xl border shadow-md not-dark:shadow-[0_1px_--theme(--color-black/6%),var(--shadow-md)]",
 					className,
 				)}
 			>
@@ -73,7 +73,7 @@ function CommandDialog({
 		<Dialog {...props}>
 			<DialogPopup
 				className={cn(
-					"flex max-w-lg flex-col gap-0 overflow-hidden p-0 *:data-[slot=command]:rounded-none *:data-[slot=command]:border-0 *:data-[slot=command]:bg-transparent *:data-[slot=command]:shadow-none sm:mt-[10vh] sm:max-h-[calc(100%-10vh)]",
+					"flex max-w-lg flex-col gap-0 overflow-hidden p-0 *:data-[slot=command]:rounded-none *:data-[slot=command]:border-0 *:data-[slot=command]:bg-transparent *:data-[slot=command]:shadow-none not-dark:*:data-[slot=command]:shadow-none sm:mt-[10vh] sm:max-h-[calc(100%-10vh)] dark:*:data-[slot=command]:bg-none",
 					"transition-none",
 					showAtBottomOnMobile ? "sm:self-start" : "self-start",
 					className,

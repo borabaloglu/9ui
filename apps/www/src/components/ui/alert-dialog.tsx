@@ -9,24 +9,22 @@ function AlertDialog({
 	return <BaseAlertDialog.Root {...props} />;
 }
 
-function AlertDialogTrigger({
-	...props
-}: React.ComponentProps<typeof BaseAlertDialog.Trigger>) {
+function AlertDialogTrigger({ ...props }: BaseAlertDialog.Trigger.Props) {
 	return (
 		<BaseAlertDialog.Trigger data-slot="alert-dialog-trigger" {...props} />
 	);
 }
 
-function AlertDialogClose({
-	...props
-}: React.ComponentProps<typeof BaseAlertDialog.Close>) {
+function AlertDialogClose({ ...props }: BaseAlertDialog.Close.Props) {
 	return <BaseAlertDialog.Close data-slot="alert-dialog-close" {...props} />;
 }
 
 function AlertDialogBackdrop({
 	className,
 	...props
-}: React.ComponentProps<typeof BaseAlertDialog.Backdrop>) {
+}: Omit<BaseAlertDialog.Backdrop.Props, "className"> & {
+	className?: string;
+}) {
 	return (
 		<BaseAlertDialog.Backdrop
 			data-slot="alert-dialog-backdrop"
@@ -44,7 +42,8 @@ function AlertDialogPopup({
 	size = "default",
 	showAtBottomOnMobile = true,
 	...props
-}: React.ComponentProps<typeof BaseAlertDialog.Popup> & {
+}: Omit<BaseAlertDialog.Popup.Props, "className"> & {
+	className?: string;
 	size?: "default" | "sm";
 	showAtBottomOnMobile?: boolean;
 }) {
@@ -62,7 +61,7 @@ function AlertDialogPopup({
 					data-slot="alert-dialog-popup"
 					data-size={size}
 					className={cn(
-						"group/alert-dialog-popup bg-popover text-popover-foreground ease-out-quint relative grid max-h-full w-full scale-[calc(1-0.1*var(--nested-dialogs))] gap-(--alert-dialog-spacing) overflow-y-auto overscroll-contain rounded-(--alert-dialog-radius) border bg-size-[var(--alert-dialog-radius)_var(--alert-dialog-radius),var(--alert-dialog-radius)_var(--alert-dialog-radius),calc(100%-2*var(--alert-dialog-radius))_1px] bg-position-[0_0,100%_0,50%_0] bg-no-repeat bg-origin-border p-(--alert-dialog-spacing) pb-(--alert-dialog-bottom) text-sm shadow-lg transition-[scale,opacity,translate,filter] duration-200 outline-none [--alert-dialog-bottom:var(--alert-dialog-spacing)] [--alert-dialog-radius:var(--radius-xl)] [--alert-dialog-spacing:--spacing(4)] not-dark:shadow-[0_1px_--theme(--color-black/6%),var(--shadow-lg)] data-ending-style:scale-96 data-ending-style:opacity-0 data-ending-style:duration-150 data-nested-dialog-open:brightness-90 data-starting-style:scale-96 data-starting-style:opacity-0 data-[size=sm]:[--alert-dialog-spacing:--spacing(3)] motion-reduce:transition-opacity motion-reduce:data-ending-style:scale-100 motion-reduce:data-starting-style:scale-100 dark:bg-[radial-gradient(circle_at_var(--alert-dialog-radius)_calc(var(--alert-dialog-radius)+1px),transparent_calc(var(--alert-dialog-radius)-0.5px),--theme(--color-white/8%)_calc(var(--alert-dialog-radius)+0.5px)),radial-gradient(circle_at_0_calc(var(--alert-dialog-radius)+1px),transparent_calc(var(--alert-dialog-radius)-0.5px),--theme(--color-white/8%)_calc(var(--alert-dialog-radius)+0.5px)),linear-gradient(--theme(--color-white/8%),--theme(--color-white/8%))] dark:data-nested-dialog-open:brightness-75",
+						"group/alert-dialog-popup bg-popover text-popover-foreground ease-out-quint dark:edge-highlight-(--alert-dialog-radius) relative grid max-h-full w-full scale-[calc(1-0.1*var(--nested-dialogs))] gap-(--alert-dialog-spacing) overflow-y-auto overscroll-contain rounded-(--alert-dialog-radius) border p-(--alert-dialog-spacing) pb-(--alert-dialog-bottom) text-sm shadow-lg transition-[scale,opacity,translate,filter] duration-200 outline-none [--alert-dialog-bottom:var(--alert-dialog-spacing)] [--alert-dialog-radius:var(--radius-xl)] [--alert-dialog-spacing:--spacing(4)] not-dark:shadow-[0_1px_--theme(--color-black/6%),var(--shadow-lg)] data-ending-style:scale-96 data-ending-style:opacity-0 data-ending-style:duration-150 data-nested-dialog-open:brightness-90 data-starting-style:scale-96 data-starting-style:opacity-0 data-[size=sm]:[--alert-dialog-spacing:--spacing(3)] motion-reduce:transition-opacity motion-reduce:data-ending-style:scale-100 motion-reduce:data-starting-style:scale-100 dark:data-nested-dialog-open:brightness-75",
 						size === "sm" ? "max-w-xs" : "max-w-sm",
 						showAtBottomOnMobile &&
 							"max-sm:max-w-none max-sm:scale-100 max-sm:rounded-b-none max-sm:border-x-0 max-sm:border-b-0 max-sm:duration-300 max-sm:[--alert-dialog-bottom:calc(var(--alert-dialog-spacing)+env(safe-area-inset-bottom))] max-sm:data-ending-style:scale-100 max-sm:data-ending-style:duration-200 max-sm:data-nested-dialog-open:opacity-0 max-sm:data-starting-style:scale-100 motion-safe:max-sm:data-ending-style:translate-y-full motion-safe:max-sm:data-ending-style:opacity-100 motion-safe:max-sm:data-starting-style:translate-y-full motion-safe:max-sm:data-starting-style:opacity-100",
@@ -132,7 +131,9 @@ function AlertDialogFooter({
 function AlertDialogTitle({
 	className,
 	...props
-}: React.ComponentProps<typeof BaseAlertDialog.Title>) {
+}: Omit<BaseAlertDialog.Title.Props, "className"> & {
+	className?: string;
+}) {
 	return (
 		<BaseAlertDialog.Title
 			data-slot="alert-dialog-title"
@@ -145,7 +146,9 @@ function AlertDialogTitle({
 function AlertDialogDescription({
 	className,
 	...props
-}: React.ComponentProps<typeof BaseAlertDialog.Description>) {
+}: Omit<BaseAlertDialog.Description.Props, "className"> & {
+	className?: string;
+}) {
 	return (
 		<BaseAlertDialog.Description
 			data-slot="alert-dialog-description"

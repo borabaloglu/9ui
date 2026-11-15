@@ -40,7 +40,7 @@ function TabsList({
 			data-size={size}
 			className={cn(
 				"group/tabs-list text-muted-foreground relative z-0 inline-flex w-fit shrink-0 [scrollbar-width:none] items-center justify-center gap-0.5 data-[orientation=horizontal]:h-(--tabs-height) data-[orientation=horizontal]:max-w-full data-[orientation=horizontal]:justify-start data-[orientation=horizontal]:overflow-x-auto data-[orientation=vertical]:flex-col data-[orientation=vertical]:items-stretch data-[orientation=vertical]:self-start",
-				"[mask-image:linear-gradient(to_right,transparent,black_--spacing(6)),linear-gradient(to_left,transparent,black_--spacing(6))] [mask-composite:intersect] [mask-size:calc(100%+--spacing(6))_100%] [mask-position:calc(--spacing(6)*-1)_0,0_0] [mask-repeat:no-repeat] [animation-fill-mode:both] [animation-name:tabs-fade-start,tabs-fade-end] [animation-range:0_--spacing(6),calc(100%-(--spacing(6)))_100%] [animation-timeline:scroll(self_inline)] [animation-timing-function:linear]",
+				"animate-[tabs-fade-start_linear_both,tabs-fade-end_linear_both] [mask-image:linear-gradient(to_right,transparent,black_--spacing(6)),linear-gradient(to_left,transparent,black_--spacing(6))] [mask-composite:intersect] [mask-size:calc(100%+--spacing(6))_100%] [mask-position:calc(--spacing(6)*-1)_0,0_0] [mask-repeat:no-repeat] [animation-range:0_--spacing(6),calc(100%-(--spacing(6)))_100%] [animation-timeline:scroll(self_inline)]",
 				size === "sm" &&
 					"[--tabs-height:--spacing(7)] any-pointer-coarse:[--tabs-height:--spacing(8)]",
 				size === "default" &&

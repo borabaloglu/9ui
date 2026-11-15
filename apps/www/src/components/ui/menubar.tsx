@@ -1,45 +1,36 @@
-"use client";
-
-import * as React from "react";
+import type * as React from "react";
 import { Menu as BaseMenu } from "@base-ui/react/menu";
 import { Menubar as BaseMenubar } from "@base-ui/react/menubar";
 import { CheckIcon, ChevronRightIcon } from "lucide-react";
 
 import { cn } from "@/lib/utils";
 
-const MenubarContext =
-	React.createContext<BaseMenubar.Props["orientation"]>("horizontal");
-
 function Menubar({
 	className,
-	orientation = "horizontal",
 	...props
 }: Omit<BaseMenubar.Props, "className"> & {
 	className?: string;
 }) {
 	return (
-		<MenubarContext value={orientation}>
-			<BaseMenubar
-				data-slot="menubar"
-				orientation={orientation}
-				className={cn(
-					"bg-card text-card-foreground relative flex w-fit items-center gap-0.5 rounded-xl border p-1 shadow-xs not-dark:bg-clip-padding before:pointer-events-none before:absolute before:inset-0 before:rounded-[calc(var(--radius-xl)-1px)] before:shadow-[0_1px_--theme(--color-black/6%)] data-[orientation=vertical]:flex-col data-[orientation=vertical]:items-stretch dark:bg-clip-border dark:before:shadow-[0_-1px_--theme(--color-white/8%)]",
-					className,
-				)}
-				{...props}
-			/>
-		</MenubarContext>
+		<BaseMenubar
+			data-slot="menubar"
+			className={cn(
+				"bg-card text-card-foreground relative flex w-fit items-center gap-0.5 rounded-xl border p-1 shadow-xs not-dark:bg-clip-padding before:pointer-events-none before:absolute before:inset-0 before:rounded-[calc(var(--radius-xl)-1px)] before:shadow-[0_1px_--theme(--color-black/6%)] data-[orientation=vertical]:flex-col data-[orientation=vertical]:items-stretch dark:bg-clip-border dark:before:shadow-[0_-1px_--theme(--color-white/8%)]",
+				className,
+			)}
+			{...props}
+		/>
 	);
 }
 
-function MenubarMenu({ ...props }: React.ComponentProps<typeof BaseMenu.Root>) {
+function MenubarMenu<Payload>({ ...props }: BaseMenu.Root.Props<Payload>) {
 	return <BaseMenu.Root {...props} />;
 }
 
-function MenubarTrigger({
+function MenubarTrigger<Payload>({
 	className,
 	...props
-}: Omit<React.ComponentProps<typeof BaseMenu.Trigger>, "className"> & {
+}: Omit<BaseMenu.Trigger.Props<Payload>, "className"> & {
 	className?: string;
 }) {
 	return (
@@ -62,13 +53,13 @@ function MenubarPopup({
 	sideOffset = 9,
 	anchor,
 	...props
-}: React.ComponentProps<typeof BaseMenu.Popup> &
+}: Omit<BaseMenu.Popup.Props, "className"> &
 	Pick<
 		BaseMenu.Positioner.Props,
 		"align" | "alignOffset" | "side" | "sideOffset" | "anchor"
-	>) {
-	const orientation = React.useContext(MenubarContext);
-
+	> & {
+		className?: string;
+	}) {
 	return (
 		<BaseMenu.Portal data-slot="menubar-portal">
 			<BaseMenu.Positioner
@@ -76,14 +67,14 @@ function MenubarPopup({
 				className="z-50 outline-none"
 				align={align}
 				alignOffset={alignOffset}
-				side={side ?? (orientation === "vertical" ? "inline-end" : "bottom")}
+				side={side}
 				sideOffset={sideOffset}
 				anchor={anchor}
 			>
 				<BaseMenu.Popup
 					data-slot="menubar-popup"
 					className={cn(
-						"bg-popover text-popover-foreground ease-out-quint max-h-(--available-height) min-w-32 overflow-x-hidden overflow-y-auto rounded-lg border p-1 shadow-md transition-opacity duration-100 outline-none data-ending-style:opacity-0 data-instant:transition-none",
+						"bg-popover text-popover-foreground ease-out-quint dark:edge-highlight-lg max-h-(--available-height) min-w-32 overflow-x-hidden overflow-y-auto rounded-lg border p-1 shadow-md transition-opacity duration-100 outline-none not-dark:shadow-[0_1px_--theme(--color-black/6%),var(--shadow-md)] data-ending-style:opacity-0 data-instant:transition-none",
 						className,
 					)}
 					{...props}
@@ -93,9 +84,7 @@ function MenubarPopup({
 	);
 }
 
-function MenubarGroup({
-	...props
-}: React.ComponentProps<typeof BaseMenu.Group>) {
+function MenubarGroup({ ...props }: BaseMenu.Group.Props) {
 	return <BaseMenu.Group data-slot="menubar-group" {...props} />;
 }
 
@@ -103,7 +92,8 @@ function MenubarGroupLabel({
 	className,
 	inset,
 	...props
-}: React.ComponentProps<typeof BaseMenu.GroupLabel> & {
+}: Omit<BaseMenu.GroupLabel.Props, "className"> & {
+	className?: string;
 	inset?: boolean;
 }) {
 	return (
@@ -124,7 +114,8 @@ function MenubarItem({
 	inset,
 	variant = "default",
 	...props
-}: React.ComponentProps<typeof BaseMenu.Item> & {
+}: Omit<BaseMenu.Item.Props, "className"> & {
+	className?: string;
 	inset?: boolean;
 	variant?: "default" | "destructive";
 }) {
@@ -146,7 +137,8 @@ function MenubarLinkItem({
 	className,
 	inset,
 	...props
-}: React.ComponentProps<typeof BaseMenu.LinkItem> & {
+}: Omit<BaseMenu.LinkItem.Props, "className"> & {
+	className?: string;
 	inset?: boolean;
 }) {
 	return (
@@ -166,7 +158,9 @@ function MenubarCheckboxItem({
 	className,
 	children,
 	...props
-}: React.ComponentProps<typeof BaseMenu.CheckboxItem>) {
+}: Omit<BaseMenu.CheckboxItem.Props, "className"> & {
+	className?: string;
+}) {
 	return (
 		<BaseMenu.CheckboxItem
 			data-slot="menubar-checkbox-item"
@@ -186,9 +180,7 @@ function MenubarCheckboxItem({
 	);
 }
 
-function MenubarRadioGroup({
-	...props
-}: React.ComponentProps<typeof BaseMenu.RadioGroup>) {
+function MenubarRadioGroup({ ...props }: BaseMenu.RadioGroup.Props) {
 	return <BaseMenu.RadioGroup data-slot="menubar-radio-group" {...props} />;
 }
 
@@ -196,7 +188,9 @@ function MenubarRadioItem({
 	className,
 	children,
 	...props
-}: React.ComponentProps<typeof BaseMenu.RadioItem>) {
+}: Omit<BaseMenu.RadioItem.Props, "className"> & {
+	className?: string;
+}) {
 	return (
 		<BaseMenu.RadioItem
 			data-slot="menubar-radio-item"
@@ -219,7 +213,9 @@ function MenubarRadioItem({
 function MenubarSeparator({
 	className,
 	...props
-}: React.ComponentProps<typeof BaseMenu.Separator>) {
+}: Omit<BaseMenu.Separator.Props, "className"> & {
+	className?: string;
+}) {
 	return (
 		<BaseMenu.Separator
 			data-slot="menubar-separator"
@@ -242,9 +238,7 @@ function MenubarShortcut({ className, ...props }: React.ComponentProps<"kbd">) {
 	);
 }
 
-function MenubarSub({
-	...props
-}: React.ComponentProps<typeof BaseMenu.SubmenuRoot>) {
+function MenubarSub({ ...props }: BaseMenu.SubmenuRoot.Props) {
 	return <BaseMenu.SubmenuRoot {...props} />;
 }
 
@@ -253,7 +247,8 @@ function MenubarSubTrigger({
 	inset,
 	children,
 	...props
-}: React.ComponentProps<typeof BaseMenu.SubmenuTrigger> & {
+}: Omit<BaseMenu.SubmenuTrigger.Props, "className"> & {
+	className?: string;
 	inset?: boolean;
 }) {
 	return (

@@ -10,22 +10,20 @@ function Sheet({ ...props }: React.ComponentProps<typeof BaseSheet.Root>) {
 	return <BaseSheet.Root {...props} />;
 }
 
-function SheetTrigger({
-	...props
-}: React.ComponentProps<typeof BaseSheet.Trigger>) {
+function SheetTrigger({ ...props }: BaseSheet.Trigger.Props) {
 	return <BaseSheet.Trigger data-slot="sheet-trigger" {...props} />;
 }
 
-function SheetClose({
-	...props
-}: React.ComponentProps<typeof BaseSheet.Close>) {
+function SheetClose({ ...props }: BaseSheet.Close.Props) {
 	return <BaseSheet.Close data-slot="sheet-close" {...props} />;
 }
 
 function SheetBackdrop({
 	className,
 	...props
-}: React.ComponentProps<typeof BaseSheet.Backdrop>) {
+}: Omit<BaseSheet.Backdrop.Props, "className"> & {
+	className?: string;
+}) {
 	return (
 		<BaseSheet.Backdrop
 			data-slot="sheet-backdrop"
@@ -45,7 +43,8 @@ function SheetPopup({
 	variant = "default",
 	showCloseButton = true,
 	...props
-}: React.ComponentProps<typeof BaseSheet.Popup> & {
+}: Omit<BaseSheet.Popup.Props, "className"> & {
+	className?: string;
 	side?: "top" | "right" | "bottom" | "left";
 	variant?: "default" | "inset";
 	showCloseButton?: boolean;
@@ -79,7 +78,7 @@ function SheetPopup({
 						side === "left" &&
 							"h-full w-[calc(100%-(--spacing(12)))] max-w-sm border-r [--sheet-bottom:env(safe-area-inset-bottom,0px)] [--sheet-top:env(safe-area-inset-top,0px)] motion-safe:data-ending-style:-translate-x-[calc(100%+var(--sheet-offset))] motion-safe:data-starting-style:-translate-x-[calc(100%+var(--sheet-offset))]",
 						variant === "inset" &&
-							"bg-size-[var(--sheet-radius)_var(--sheet-radius),var(--sheet-radius)_var(--sheet-radius),calc(100%-2*var(--sheet-radius))_1px] bg-position-[0_0,100%_0,50%_0] bg-no-repeat bg-origin-border sm:rounded-(--sheet-radius) sm:border sm:[--sheet-bottom:0px] sm:[--sheet-offset:--spacing(4)] sm:[--sheet-top:0px] sm:not-dark:shadow-[0_1px_--theme(--color-black/6%),var(--shadow-lg)] sm:dark:bg-[radial-gradient(circle_at_var(--sheet-radius)_calc(var(--sheet-radius)+1px),transparent_calc(var(--sheet-radius)-0.5px),--theme(--color-white/8%)_calc(var(--sheet-radius)+0.5px)),radial-gradient(circle_at_0_calc(var(--sheet-radius)+1px),transparent_calc(var(--sheet-radius)-0.5px),--theme(--color-white/8%)_calc(var(--sheet-radius)+0.5px)),linear-gradient(--theme(--color-white/8%),--theme(--color-white/8%))]",
+							"sm:dark:edge-highlight-(--sheet-radius) sm:rounded-(--sheet-radius) sm:border sm:[--sheet-bottom:0px] sm:[--sheet-offset:--spacing(4)] sm:[--sheet-top:0px] sm:not-dark:shadow-[0_1px_--theme(--color-black/6%),var(--shadow-lg)]",
 						className,
 					)}
 					{...props}
@@ -157,7 +156,9 @@ function SheetFooter({
 function SheetTitle({
 	className,
 	...props
-}: React.ComponentProps<typeof BaseSheet.Title>) {
+}: Omit<BaseSheet.Title.Props, "className"> & {
+	className?: string;
+}) {
 	return (
 		<BaseSheet.Title
 			data-slot="sheet-title"
@@ -170,7 +171,9 @@ function SheetTitle({
 function SheetDescription({
 	className,
 	...props
-}: React.ComponentProps<typeof BaseSheet.Description>) {
+}: Omit<BaseSheet.Description.Props, "className"> & {
+	className?: string;
+}) {
 	return (
 		<BaseSheet.Description
 			data-slot="sheet-description"

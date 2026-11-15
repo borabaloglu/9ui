@@ -27,7 +27,9 @@ function PreviewCardTrigger<Payload>({
 function PreviewCardArrow({
 	className,
 	...props
-}: React.ComponentProps<typeof BasePreviewCard.Arrow>) {
+}: Omit<BasePreviewCard.Arrow.Props, "className"> & {
+	className?: string;
+}) {
 	return (
 		<BasePreviewCard.Arrow
 			data-slot="preview-card-arrow"
@@ -67,11 +69,12 @@ function PreviewCardPopup({
 	sideOffset = arrow ? 10 : 4,
 	anchor,
 	...props
-}: React.ComponentProps<typeof BasePreviewCard.Popup> &
+}: Omit<BasePreviewCard.Popup.Props, "className"> &
 	Pick<
 		BasePreviewCard.Positioner.Props,
 		"align" | "alignOffset" | "side" | "sideOffset" | "anchor"
 	> & {
+		className?: string;
 		arrow?: boolean;
 	}) {
 	return (
@@ -88,7 +91,7 @@ function PreviewCardPopup({
 				<BasePreviewCard.Popup
 					data-slot="preview-card-popup"
 					className={cn(
-						"bg-popover text-popover-foreground ease-out-quint relative flex h-(--popup-height,auto) max-h-(--available-height) w-72 max-w-(--available-width) origin-(--transform-origin) flex-col gap-1 overflow-y-auto overscroll-contain rounded-(--preview-card-radius) border bg-size-[var(--preview-card-radius)_var(--preview-card-radius),var(--preview-card-radius)_var(--preview-card-radius),calc(100%-2*var(--preview-card-radius))_1px] bg-position-[0_0,100%_0,50%_0] bg-no-repeat bg-origin-border p-(--preview-card-padding) text-sm shadow-md transition-[width,height,scale,opacity] duration-150 [--preview-card-padding:--spacing(4)] [--preview-card-radius:var(--radius-lg)] not-dark:shadow-[0_1px_--theme(--color-black/6%),var(--shadow-md)] has-data-[slot=preview-card-panel]:overflow-visible has-data-[slot=preview-card-viewport]:overflow-visible data-ending-style:scale-98 data-ending-style:opacity-0 data-ending-style:duration-100 data-starting-style:scale-98 data-starting-style:opacity-0 motion-reduce:transition-opacity motion-reduce:data-ending-style:scale-100 motion-reduce:data-starting-style:scale-100 dark:bg-[radial-gradient(circle_at_var(--preview-card-radius)_calc(var(--preview-card-radius)+1px),transparent_calc(var(--preview-card-radius)-0.5px),--theme(--color-white/8%)_calc(var(--preview-card-radius)+0.5px)),radial-gradient(circle_at_0_calc(var(--preview-card-radius)+1px),transparent_calc(var(--preview-card-radius)-0.5px),--theme(--color-white/8%)_calc(var(--preview-card-radius)+0.5px)),linear-gradient(--theme(--color-white/8%),--theme(--color-white/8%))] dark:[--preview-card-edge:color-mix(in_oklab,var(--border),white_8%)]",
+						"bg-popover text-popover-foreground ease-out-quint dark:edge-highlight-(--preview-card-radius) relative flex h-(--popup-height,auto) max-h-(--available-height) w-72 max-w-(--available-width) origin-(--transform-origin) flex-col gap-1 overflow-y-auto overscroll-contain rounded-(--preview-card-radius) border p-(--preview-card-padding) text-sm shadow-md transition-[width,height,scale,opacity] duration-150 [--preview-card-padding:--spacing(4)] [--preview-card-radius:var(--radius-lg)] not-dark:shadow-[0_1px_--theme(--color-black/6%),var(--shadow-md)] has-data-[slot=preview-card-panel]:overflow-visible has-data-[slot=preview-card-viewport]:overflow-visible data-ending-style:scale-98 data-ending-style:opacity-0 data-ending-style:duration-100 data-starting-style:scale-98 data-starting-style:opacity-0 motion-reduce:transition-opacity motion-reduce:data-ending-style:scale-100 motion-reduce:data-starting-style:scale-100 dark:[--preview-card-edge:color-mix(in_oklab,var(--border),white_8%)]",
 						arrow && "overflow-visible",
 						className,
 					)}
@@ -121,7 +124,9 @@ function PreviewCardPanel({
 function PreviewCardViewport({
 	className,
 	...props
-}: React.ComponentProps<typeof BasePreviewCard.Viewport>) {
+}: Omit<BasePreviewCard.Viewport.Props, "className"> & {
+	className?: string;
+}) {
 	return (
 		<BasePreviewCard.Viewport
 			data-slot="preview-card-viewport"

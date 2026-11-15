@@ -6,7 +6,7 @@
 		{
 			"name": "utils",
 			"type": "registry:lib",
-			"dependencies": ["clsx", "class-variance-authority"],
+			"dependencies": ["clsx", "tailwind-merge", "class-variance-authority"],
 			"files": [
 				{
 					"path": "src/lib/utils.ts",
@@ -173,7 +173,7 @@
 		{
 			"name": "carousel",
 			"type": "registry:ui",
-			"dependencies": ["embla-carousel", "embla-carousel-react"],
+			"dependencies": ["embla-carousel-react"],
 			"registryDependencies": ["@9ui/button"],
 			"files": [
 				{

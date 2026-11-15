@@ -1,6 +1,11 @@
 "use client";
 
-import { Toast } from "@base-ui/react/toast";
+import {
+	Toast,
+	type ToastManagerAddOptions,
+	type ToastManagerUpdateOptions,
+	type ToastObject,
+} from "@base-ui/react/toast";
 
 import type { ButtonProps } from "@/components/ui/button";
 
@@ -10,13 +15,21 @@ type WithActionProps<Options> = Omit<Options, "actionProps"> & {
 	actionProps?: Omit<ButtonProps, "size">;
 };
 
+type AddOptions<Data extends object> = WithActionProps<
+	ToastManagerAddOptions<Data>
+>;
+
+type UpdateOptions<Data extends object> = WithActionProps<
+	ToastManagerUpdateOptions<Data>
+>;
+
 type ToastManager = Omit<BaseToastManager, "add" | "update"> & {
-	add: (
-		options: WithActionProps<Parameters<BaseToastManager["add"]>[0]>,
-	) => string;
-	update: (
+	add: <Data extends object>(options: AddOptions<Data>) => string;
+	update: <Data extends object>(
 		toastId: string,
-		options: WithActionProps<Parameters<BaseToastManager["update"]>[1]>,
+		options:
+			| UpdateOptions<Data>
+			| ((prevToast: ToastObject<Data>) => UpdateOptions<Data>),
 	) => void;
 };
 

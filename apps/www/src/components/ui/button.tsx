@@ -1,6 +1,3 @@
-"use client";
-
-import type * as React from "react";
 import { Button as BaseButton } from "@base-ui/react/button";
 import { cva, type VariantProps } from "class-variance-authority";
 
@@ -51,8 +48,9 @@ const buttonVariants = cva(
 	},
 );
 
-type ButtonProps = VariantProps<typeof buttonVariants> &
-	React.ComponentProps<typeof BaseButton> & {
+type ButtonProps = Omit<BaseButton.Props, "className"> &
+	VariantProps<typeof buttonVariants> & {
+		className?: string;
 		loading?: boolean;
 	};
 
@@ -73,7 +71,7 @@ function Button({
 			aria-busy={loading || undefined}
 			disabled={disabled || loading}
 			focusableWhenDisabled={loading}
-			className={cn(buttonVariants({ variant, size, className }))}
+			className={cn(buttonVariants({ variant, size }), className)}
 			{...props}
 		>
 			{children}
