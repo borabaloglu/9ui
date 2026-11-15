@@ -77,7 +77,10 @@ function ToastContent({
 					<Icon />
 				</div>
 			)}
-			<div className="flex min-w-0 flex-1 flex-col gap-0.5">
+			<div
+				data-slot="toast-text"
+				className="flex min-w-0 flex-1 flex-col gap-0.5"
+			>
 				<BaseToast.Title data-slot="toast-title" className="font-medium" />
 				<BaseToast.Description
 					data-slot="toast-description"
@@ -123,7 +126,7 @@ function ToastViewport({
 						className={cn(
 							"data-expanded:bg-popover dark:data-expanded:bg-popover text-popover-foreground dark:edge-highlight-lg focus-visible:border-ring focus-visible:ring-ring/50 absolute z-[calc(9999-var(--toast-index))] h-(--toast-calc-height) w-full rounded-lg border bg-[color-mix(in_srgb,var(--popover),black_calc(1%*var(--toast-index,0)))] text-sm shadow-lg outline-none select-none not-dark:shadow-[0_1px_--theme(--color-black/6%),var(--shadow-lg)] focus-visible:ring-3 focus-visible:outline-hidden dark:bg-[color-mix(in_srgb,var(--popover),black_calc(6%*var(--toast-index,0)))]",
 							"[--toast-calc-height:var(--toast-frontmost-height,var(--toast-height))] [--toast-gap:--spacing(3)] [--toast-peek:--spacing(3)] [--toast-scale:calc(max(0,1-(var(--toast-index)*0.05)))] [--toast-shrink:calc(1-var(--toast-scale))]",
-							"[transition:transform_0.4s_cubic-bezier(0.23,1,0.32,1),opacity_0.4s,height_0.15s,background-color_0.4s] motion-reduce:[transition:opacity_0.4s,height_0.15s,background-color_0.4s]",
+							"[transition:transform_0.4s_--theme(--ease-out-quint),opacity_0.4s_--theme(--ease-out-quint),height_0.15s_--theme(--ease-out-quint),background-color_0.4s_--theme(--ease-out-quint)] motion-reduce:[transition:opacity_0.4s_--theme(--ease-out-quint),height_0.15s_--theme(--ease-out-quint),background-color_0.4s_--theme(--ease-out-quint)]",
 							"data-[position*=center]:right-0 data-[position*=center]:left-0 data-[position*=left]:right-auto data-[position*=left]:left-0 data-[position*=right]:right-0 data-[position*=right]:left-auto",
 							"data-[position*=top]:top-0 data-[position*=top]:bottom-auto data-[position*=top]:origin-top",
 							"data-[position*=bottom]:top-auto data-[position*=bottom]:bottom-0 data-[position*=bottom]:origin-bottom",
@@ -146,7 +149,7 @@ function ToastViewport({
 					>
 						<ToastContent
 							toast={toast}
-							className="transition-opacity duration-250 data-behind:opacity-0 data-behind:not-data-expanded:pointer-events-none data-expanded:opacity-100"
+							className="transition-opacity duration-250 ease-out data-behind:opacity-0 data-behind:not-data-expanded:pointer-events-none data-expanded:opacity-100"
 						/>
 						{closeButton && (
 							<BaseToast.Close
@@ -190,7 +193,7 @@ function AnchoredToastViewport({
 							<BaseToast.Root
 								toast={toast}
 								data-slot="toast"
-								className="bg-popover text-popover-foreground ease-out-quint dark:edge-highlight-lg focus-visible:border-ring focus-visible:ring-ring/50 relative origin-(--transform-origin) rounded-lg border text-sm shadow-lg transition-[scale,opacity] duration-150 outline-none not-dark:shadow-[0_1px_--theme(--color-black/6%),var(--shadow-lg)] focus-visible:ring-3 focus-visible:outline-hidden data-ending-style:opacity-0 data-ending-style:duration-100 data-limited:pointer-events-none data-limited:opacity-0 data-starting-style:opacity-0 motion-safe:data-ending-style:scale-98 motion-safe:data-starting-style:scale-98"
+								className="bg-popover text-popover-foreground ease-out-quint dark:edge-highlight-lg focus-visible:border-ring focus-visible:ring-ring/50 relative origin-(--transform-origin) rounded-lg border text-sm shadow-lg transition-[scale,opacity] duration-150 outline-none not-dark:shadow-[0_1px_--theme(--color-black/6%),var(--shadow-lg)] focus-visible:ring-3 focus-visible:outline-hidden data-ending-style:scale-98 data-ending-style:opacity-0 data-ending-style:duration-100 data-limited:pointer-events-none data-limited:opacity-0 data-starting-style:scale-98 data-starting-style:opacity-0 motion-reduce:transition-opacity motion-reduce:data-ending-style:scale-100 motion-reduce:data-starting-style:scale-100"
 							>
 								<ToastContent toast={toast} />
 							</BaseToast.Root>

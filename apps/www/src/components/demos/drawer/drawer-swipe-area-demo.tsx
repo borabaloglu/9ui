@@ -12,6 +12,7 @@ import {
 	DrawerPopup,
 	DrawerSwipeArea,
 	DrawerTitle,
+	DrawerTrigger,
 } from "@/components/ui/drawer";
 
 export default function DrawerSwipeAreaDemo() {
@@ -24,10 +25,13 @@ export default function DrawerSwipeAreaDemo() {
 		>
 			<Drawer swipeDirection="right" modal={false}>
 				<DrawerSwipeArea className="border-primary/40 bg-primary/5 z-1 border-l border-dashed" />
-				<div className="flex h-full items-center justify-center p-4 pr-12 text-center">
+				<div className="flex h-full flex-col items-center justify-center gap-3 p-4 pr-12 text-center">
 					<p className="text-muted-foreground text-sm text-pretty">
 						Swipe in from the right edge to open the drawer.
 					</p>
+					<DrawerTrigger render={<Button variant="outline" />}>
+						Open library
+					</DrawerTrigger>
 				</div>
 				<DrawerPopup container={container} className="max-w-64">
 					<DrawerHeader>

@@ -1,6 +1,7 @@
 "use client";
 
 import * as React from "react";
+import type { Dialog as BaseDialog } from "@base-ui/react/dialog";
 
 import {
 	AlertDialog,
@@ -36,7 +37,7 @@ export default function AlertDialogCloseConfirmationDemo() {
 
 	function handleDialogOpenChange(
 		nextOpen: boolean,
-		details: { cancel: () => void },
+		details: BaseDialog.Root.ChangeEventDetails,
 	) {
 		if (nextOpen) {
 			setDialogOpen(true);
