@@ -117,7 +117,7 @@ function ToastViewport({
 			<BaseToast.Viewport
 				data-slot="toast-viewport"
 				data-position={position}
-				className="fixed z-60 mx-auto flex w-[calc(100%-var(--toast-inset)*2)] max-w-90 outline-none [--toast-inset:--spacing(4)] data-[position*=bottom]:bottom-(--toast-inset) data-[position*=center]:left-1/2 data-[position*=center]:-translate-x-1/2 data-[position*=left]:left-(--toast-inset) data-[position*=right]:right-(--toast-inset) data-[position*=top]:top-(--toast-inset) sm:[--toast-inset:--spacing(8)]"
+				className="fixed z-60 w-[calc(100%-var(--toast-inset)*2)] max-w-90 outline-none [--toast-inset:--spacing(4)] data-[position*=bottom]:bottom-(--toast-inset) data-[position*=center]:left-1/2 data-[position*=center]:-translate-x-1/2 data-[position*=left]:left-(--toast-inset) data-[position*=right]:right-(--toast-inset) data-[position*=top]:top-(--toast-inset) sm:[--toast-inset:--spacing(8)]"
 			>
 				{toasts.map((toast) => (
 					<BaseToast.Root
@@ -130,9 +130,9 @@ function ToastViewport({
 							"data-expanded:bg-popover dark:data-expanded:bg-popover text-popover-foreground dark:edge-highlight-lg focus-visible:border-ring focus-visible:ring-ring/50 absolute z-[calc(9999-var(--toast-index))] h-(--toast-calc-height) w-full rounded-lg border bg-[color-mix(in_srgb,var(--popover),black_calc(1%*var(--toast-index,0)))] text-sm shadow-lg outline-none select-none not-dark:shadow-[0_1px_--theme(--color-black/6%),var(--shadow-lg)] focus-visible:ring-3 focus-visible:outline-hidden dark:bg-[color-mix(in_srgb,var(--popover),black_calc(6%*var(--toast-index,0)))]",
 							"[--toast-calc-height:var(--toast-frontmost-height,var(--toast-height))] [--toast-gap:--spacing(3)] [--toast-peek:--spacing(3)] [--toast-scale:calc(max(0,1-(var(--toast-index)*0.05)))] [--toast-shrink:calc(1-var(--toast-scale))]",
 							"[transition:transform_0.4s_--theme(--ease-out-quint),opacity_0.4s_--theme(--ease-out-quint),height_0.15s_--theme(--ease-out-quint),background-color_0.4s_--theme(--ease-out-quint)] motion-reduce:[transition:opacity_0.4s_--theme(--ease-out-quint),height_0.15s_--theme(--ease-out-quint),background-color_0.4s_--theme(--ease-out-quint)]",
-							"data-[position*=center]:right-0 data-[position*=center]:left-0 data-[position*=left]:right-auto data-[position*=left]:left-0 data-[position*=right]:right-0 data-[position*=right]:left-auto",
-							"data-[position*=top]:top-0 data-[position*=top]:bottom-auto data-[position*=top]:origin-top",
-							"data-[position*=bottom]:top-auto data-[position*=bottom]:bottom-0 data-[position*=bottom]:origin-bottom",
+							"data-[position*=center]:left-0 data-[position*=left]:left-0 data-[position*=right]:right-0",
+							"data-[position*=top]:top-0 data-[position*=top]:origin-top",
+							"data-[position*=bottom]:bottom-0 data-[position*=bottom]:origin-bottom",
 							"after:absolute after:left-0 after:h-[calc(var(--toast-gap)+1px)] after:w-full data-[position*=bottom]:after:bottom-full data-[position*=top]:after:top-full",
 							"data-[position*=top]:[--toast-calc-offset-y:calc(var(--toast-offset-y)+var(--toast-index)*var(--toast-gap)+var(--toast-swipe-movement-y))]",
 							"data-[position*=bottom]:[--toast-calc-offset-y:calc(var(--toast-offset-y)*-1+var(--toast-index)*var(--toast-gap)*-1+var(--toast-swipe-movement-y))]",
@@ -196,7 +196,7 @@ function AnchoredToastViewport({
 							<BaseToast.Root
 								toast={toast}
 								data-slot="toast"
-								className="bg-popover text-popover-foreground ease-out-quint dark:edge-highlight-lg focus-visible:border-ring focus-visible:ring-ring/50 relative origin-(--transform-origin) rounded-lg border text-sm shadow-lg transition-[scale,opacity] duration-150 outline-none not-dark:shadow-[0_1px_--theme(--color-black/6%),var(--shadow-lg)] focus-visible:ring-3 focus-visible:outline-hidden data-ending-style:scale-98 data-ending-style:opacity-0 data-ending-style:duration-100 data-limited:pointer-events-none data-limited:opacity-0 data-starting-style:scale-98 data-starting-style:opacity-0 motion-reduce:transition-opacity motion-reduce:data-ending-style:scale-100 motion-reduce:data-starting-style:scale-100"
+								className="bg-popover text-popover-foreground ease-out-quint dark:edge-highlight-lg focus-visible:border-ring focus-visible:ring-ring/50 relative origin-(--transform-origin) rounded-lg border text-sm shadow-lg transition-[scale,opacity] duration-150 outline-none not-dark:shadow-[0_1px_--theme(--color-black/6%),var(--shadow-lg)] focus-visible:ring-3 focus-visible:outline-hidden data-ending-style:scale-98 data-ending-style:opacity-0 data-ending-style:duration-100 data-limited:opacity-0 data-starting-style:scale-98 data-starting-style:opacity-0 motion-reduce:transition-opacity motion-reduce:data-ending-style:scale-100 motion-reduce:data-starting-style:scale-100"
 							>
 								<ToastContent toast={toast} />
 							</BaseToast.Root>

@@ -229,7 +229,7 @@ function Sidebar({
 			<div
 				data-slot="sidebar-gap"
 				className={cn(
-					"ease-out-quint relative w-(--sidebar-width) bg-transparent transition-[width] duration-200 group-data-instant/sidebar-wrapper:transition-none group-data-[collapsible=offcanvas]/sidebar:w-0 motion-reduce:transition-none",
+					"ease-out-quint w-(--sidebar-width) transition-[width] duration-200 group-data-instant/sidebar-wrapper:transition-none group-data-[collapsible=offcanvas]/sidebar:w-0 motion-reduce:transition-none",
 					variant === "sidebar"
 						? "group-data-[collapsible=icon]/sidebar:w-(--sidebar-width-icon)"
 						: "group-data-[collapsible=icon]/sidebar:w-[calc(var(--sidebar-width-icon)+(--spacing(4)))]",
@@ -239,7 +239,7 @@ function Sidebar({
 				data-slot="sidebar-container"
 				data-side={side}
 				className={cn(
-					"ease-out-quint fixed inset-y-0 z-10 hidden w-(--sidebar-width) transition-[translate,width] duration-200 group-data-instant/sidebar-wrapper:transition-none data-[side=left]:left-0 data-[side=left]:group-data-[collapsible=offcanvas]/sidebar:-translate-x-full data-[side=right]:right-0 data-[side=right]:group-data-[collapsible=offcanvas]/sidebar:translate-x-full motion-reduce:transition-none md:flex",
+					"ease-out-quint fixed inset-y-0 z-10 flex w-(--sidebar-width) transition-[translate,width] duration-200 group-data-instant/sidebar-wrapper:transition-none data-[side=left]:left-0 data-[side=left]:group-data-[collapsible=offcanvas]/sidebar:-translate-x-full data-[side=right]:right-0 data-[side=right]:group-data-[collapsible=offcanvas]/sidebar:translate-x-full motion-reduce:transition-none",
 					variant === "sidebar"
 						? "group-data-[collapsible=icon]/sidebar:w-(--sidebar-width-icon) data-[side=left]:border-r data-[side=right]:border-l"
 						: "p-2 group-data-[collapsible=icon]/sidebar:w-[calc(var(--sidebar-width-icon)+(--spacing(4))+2px)]",
@@ -460,7 +460,7 @@ function SidebarMenuItem({ className, ...props }: React.ComponentProps<"li">) {
 }
 
 const sidebarMenuButtonVariants = cva(
-	"peer/menu-button group/menu-button hover:bg-accent/50 hover:text-accent-foreground focus-visible:ring-ring/50 active:bg-foreground/10 dark:active:bg-accent data-active:bg-accent data-active:text-accent-foreground data-active:active:bg-foreground/10 dark:data-active:active:bg-foreground/10 data-popup-open:bg-accent data-popup-open:text-accent-foreground data-popup-open:active:bg-foreground/10 dark:data-popup-open:active:bg-foreground/10 ease-out-quint flex w-full cursor-pointer items-center gap-2 overflow-hidden rounded-lg px-2 text-start text-sm transition-[width,height,padding] duration-200 outline-none group-has-data-[sidebar=menu-action]/menu-item:pe-8 group-has-data-[slot=sidebar-menu-badge]/menu-item:pe-8 group-data-instant/sidebar-wrapper:transition-none group-data-[collapsible=icon]/sidebar:size-8 group-data-[collapsible=icon]/sidebar:p-2 focus-visible:ring-3 focus-visible:outline-hidden disabled:pointer-events-none disabled:opacity-50 aria-disabled:pointer-events-none aria-disabled:opacity-50 data-active:font-medium motion-reduce:transition-none [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4 [&>span]:truncate",
+	"peer/menu-button hover:bg-accent/50 hover:text-accent-foreground focus-visible:ring-ring/50 active:bg-foreground/10 dark:active:bg-accent data-active:bg-accent data-active:text-accent-foreground data-active:active:bg-foreground/10 dark:data-active:active:bg-foreground/10 data-popup-open:bg-accent data-popup-open:text-accent-foreground data-popup-open:active:bg-foreground/10 dark:data-popup-open:active:bg-foreground/10 ease-out-quint flex w-full cursor-pointer items-center gap-2 overflow-hidden rounded-lg px-2 text-start text-sm transition-[width,height,padding] duration-200 outline-none group-has-data-[sidebar=menu-action]/menu-item:pe-8 group-has-data-[slot=sidebar-menu-badge]/menu-item:pe-8 group-data-instant/sidebar-wrapper:transition-none group-data-[collapsible=icon]/sidebar:size-8 group-data-[collapsible=icon]/sidebar:p-2 focus-visible:ring-3 focus-visible:outline-hidden disabled:pointer-events-none disabled:opacity-50 aria-disabled:pointer-events-none aria-disabled:opacity-50 data-active:font-medium motion-reduce:transition-none [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4 [&>span]:truncate",
 	{
 		variants: {
 			variant: {
@@ -546,7 +546,7 @@ function SidebarMenuAction({
 				"data-slot": "sidebar-menu-action",
 				"data-sidebar": "menu-action",
 				className: cn(
-					"text-muted-foreground hover:bg-accent hover:text-accent-foreground focus-visible:ring-ring/50 data-popup-open:bg-accent data-popup-open:text-accent-foreground dark:hover:bg-accent/50 dark:data-popup-open:bg-accent/50 active:bg-foreground/10 dark:active:bg-accent data-popup-open:active:bg-foreground/10 dark:data-popup-open:active:bg-accent absolute end-1.5 top-1.5 flex size-5 cursor-pointer items-center justify-center rounded-md outline-none group-data-[collapsible=icon]/sidebar:hidden peer-data-[size=lg]/menu-button:top-3.5 peer-data-[size=sm]/menu-button:top-1 focus-visible:ring-3 focus-visible:outline-hidden any-pointer-coarse:top-2 any-pointer-coarse:peer-data-[size=lg]/menu-button:top-3.5 any-pointer-coarse:peer-data-[size=sm]/menu-button:top-1.5 any-pointer-coarse:after:absolute any-pointer-coarse:after:-inset-2 [&>svg]:pointer-events-none [&>svg]:shrink-0 [&>svg:not([class*='size-'])]:size-4",
+					"text-muted-foreground hover:bg-accent hover:text-accent-foreground focus-visible:ring-ring/50 data-popup-open:bg-accent data-popup-open:text-accent-foreground dark:hover:bg-accent/50 dark:data-popup-open:bg-accent/50 active:bg-foreground/10 dark:active:bg-accent data-popup-open:active:bg-foreground/10 dark:data-popup-open:active:bg-accent absolute end-1.5 top-1.5 flex size-5 cursor-pointer items-center justify-center rounded-md outline-none group-data-[collapsible=icon]/sidebar:hidden peer-data-[size=lg]/menu-button:top-3.5 peer-data-[size=sm]/menu-button:top-1 focus-visible:ring-3 focus-visible:outline-hidden any-pointer-coarse:top-2 any-pointer-coarse:peer-data-[size=sm]/menu-button:top-1.5 any-pointer-coarse:after:absolute any-pointer-coarse:after:-inset-2 [&>svg]:pointer-events-none [&>svg]:shrink-0 [&>svg:not([class*='size-'])]:size-4",
 					showOnHover &&
 						"opacity-0 group-focus-within/menu-item:opacity-100 group-hover/menu-item:opacity-100 data-popup-open:opacity-100 any-pointer-coarse:opacity-100",
 					className,
@@ -565,7 +565,7 @@ function SidebarMenuBadge({
 		<div
 			data-slot="sidebar-menu-badge"
 			className={cn(
-				"text-muted-foreground peer-hover/menu-button:text-accent-foreground peer-data-active/menu-button:text-accent-foreground pointer-events-none absolute end-1.5 top-1.5 flex h-5 min-w-5 items-center justify-center rounded-md px-1 text-xs font-medium tabular-nums select-none group-data-[collapsible=icon]/sidebar:hidden peer-data-[size=lg]/menu-button:top-3.5 peer-data-[size=sm]/menu-button:top-1 any-pointer-coarse:top-2 any-pointer-coarse:peer-data-[size=lg]/menu-button:top-3.5 any-pointer-coarse:peer-data-[size=sm]/menu-button:top-1.5",
+				"text-muted-foreground peer-hover/menu-button:text-accent-foreground peer-data-active/menu-button:text-accent-foreground pointer-events-none absolute end-1.5 top-1.5 flex h-5 min-w-5 items-center justify-center rounded-md px-1 text-xs font-medium tabular-nums select-none group-data-[collapsible=icon]/sidebar:hidden peer-data-[size=lg]/menu-button:top-3.5 peer-data-[size=sm]/menu-button:top-1 any-pointer-coarse:top-2 any-pointer-coarse:peer-data-[size=sm]/menu-button:top-1.5",
 				className,
 			)}
 			{...props}
@@ -629,7 +629,7 @@ function SidebarMenuSubItem({
 	return (
 		<li
 			data-slot="sidebar-menu-sub-item"
-			className={cn("group/menu-sub-item relative", className)}
+			className={cn("relative", className)}
 			{...props}
 		/>
 	);

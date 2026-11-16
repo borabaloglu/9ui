@@ -50,7 +50,7 @@ function ScrollBar({
 			data-slot="scroll-area-scrollbar"
 			orientation={orientation}
 			className={cn(
-				"pointer-events-none m-0.5 flex touch-none p-0.5 opacity-0 transition-opacity delay-300 select-none data-hovering:pointer-events-auto data-hovering:opacity-100 data-hovering:delay-0 data-hovering:duration-100 data-scrolling:pointer-events-auto data-scrolling:opacity-100 data-scrolling:delay-0 data-scrolling:duration-100",
+				"pointer-events-none m-0.5 flex p-0.5 opacity-0 transition-opacity delay-300 data-hovering:pointer-events-auto data-hovering:opacity-100 data-hovering:delay-0 data-hovering:duration-100 data-scrolling:pointer-events-auto data-scrolling:opacity-100 data-scrolling:delay-0 data-scrolling:duration-100",
 				orientation === "vertical" ? "w-2.5" : "h-2.5 flex-col",
 				className,
 			)}
@@ -58,7 +58,7 @@ function ScrollBar({
 		>
 			<BaseScrollArea.Thumb
 				data-slot="scroll-area-thumb"
-				className="bg-foreground/20 hover:bg-foreground/30 active:bg-foreground/40 relative flex-1 rounded-full transition-colors"
+				className="bg-foreground/20 hover:bg-foreground/30 active:bg-foreground/40 flex-1 rounded-full transition-colors"
 			/>
 		</BaseScrollArea.Scrollbar>
 	);

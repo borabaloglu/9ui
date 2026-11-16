@@ -14,7 +14,7 @@ function Card({
 			data-slot="card"
 			data-size={size}
 			className={cn(
-				"group/card bg-card text-card-foreground relative flex flex-col gap-(--card-spacing) rounded-xl border py-(--card-spacing) text-sm shadow-xs [--card-spacing:--spacing(4)] not-dark:bg-clip-padding before:pointer-events-none before:absolute before:inset-0 before:rounded-[calc(var(--radius-xl)-1px)] before:shadow-[0_1px_--theme(--color-black/6%)] has-data-[slot=card-footer]:pb-0 has-[>img:first-child]:pt-0 data-[size=sm]:[--card-spacing:--spacing(3)] dark:bg-clip-border dark:before:shadow-[0_-1px_--theme(--color-white/8%)] *:[img:first-child]:rounded-t-[calc(var(--radius-xl)-1px)]",
+				"group/card bg-card text-card-foreground relative flex flex-col gap-(--card-spacing) rounded-xl border py-(--card-spacing) text-sm shadow-xs [--card-spacing:--spacing(4)] not-dark:bg-clip-padding before:pointer-events-none before:absolute before:inset-0 before:rounded-[calc(var(--radius-xl)-1px)] before:shadow-[0_1px_--theme(--color-black/6%)] has-data-[slot=card-footer]:pb-0 has-[>img:first-child]:pt-0 data-[size=sm]:[--card-spacing:--spacing(3)] dark:before:shadow-[0_-1px_--theme(--color-white/8%)] *:[img:first-child]:rounded-t-[calc(var(--radius-xl)-1px)]",
 				className,
 			)}
 			{...props}
@@ -27,7 +27,7 @@ function CardHeader({ className, ...props }: React.ComponentProps<"div">) {
 		<div
 			data-slot="card-header"
 			className={cn(
-				"@container/card-header grid auto-rows-min grid-cols-1 items-start gap-1 px-(--card-spacing) has-data-[slot=card-action]:grid-cols-[minmax(0,1fr)_auto] has-data-[slot=card-description]:grid-rows-[auto_auto] [.border-b]:pb-(--card-spacing)",
+				"grid auto-rows-min grid-cols-1 items-start gap-1 px-(--card-spacing) has-data-[slot=card-action]:grid-cols-[minmax(0,1fr)_auto] has-data-[slot=card-description]:grid-rows-[auto_auto] [.border-b]:pb-(--card-spacing)",
 				className,
 			)}
 			{...props}

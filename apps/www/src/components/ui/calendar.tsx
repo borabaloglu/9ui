@@ -45,7 +45,7 @@ function Calendar({
 		root: "w-fit",
 		months: "relative flex flex-col gap-4 md:flex-row",
 		month: "flex w-full flex-col gap-4",
-		nav: "absolute inset-x-0 top-0 flex w-full items-center justify-between gap-1",
+		nav: "absolute inset-x-0 top-0 flex items-center justify-between",
 		button_previous: navButtonClassName,
 		button_next: navButtonClassName,
 		month_caption:
@@ -59,7 +59,7 @@ function Calendar({
 		dropdown_root:
 			"hover:bg-accent has-focus-visible:ring-ring/50 dark:hover:bg-accent/50 relative rounded-md has-focus-visible:ring-3 has-focus-visible:outline-hidden",
 		dropdown: "bg-popover absolute inset-0 cursor-pointer opacity-0",
-		month_grid: "w-full border-collapse",
+		month_grid: "w-full",
 		weekdays: "flex",
 		weekday:
 			"text-muted-foreground flex w-(--cell-size) justify-center text-xs font-normal select-none",
@@ -67,7 +67,7 @@ function Calendar({
 		week_number_header: "w-(--cell-size) select-none any-pointer-coarse:w-6",
 		week_number:
 			"text-muted-foreground flex h-(--cell-size) w-(--cell-size) items-center justify-center text-xs font-normal select-none any-pointer-coarse:w-6",
-		day: "group/day relative size-(--cell-size) p-0 text-center select-none has-[+[data-hidden]]:rounded-e-(--cell-radius) first-of-type:rounded-s-(--cell-radius) last-of-type:rounded-e-(--cell-radius) [[data-hidden]+&]:rounded-s-(--cell-radius)",
+		day: "relative size-(--cell-size) text-center select-none has-[+[data-hidden]]:rounded-e-(--cell-radius) first-of-type:rounded-s-(--cell-radius) last-of-type:rounded-e-(--cell-radius) [[data-hidden]+&]:rounded-s-(--cell-radius)",
 		range_start: "bg-muted rounded-s-(--cell-radius)",
 		range_middle: "bg-muted",
 		range_end: "bg-muted rounded-e-(--cell-radius)",

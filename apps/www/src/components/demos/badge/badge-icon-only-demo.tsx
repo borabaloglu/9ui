@@ -4,7 +4,7 @@ import { Badge } from "@/components/ui/badge";
 
 export default function BadgeIconOnlyDemo() {
 	return (
-		<div className="flex flex-row items-center gap-2">
+		<div className="flex items-center gap-2">
 			<Badge size="icon" variant="info" aria-label="Notification">
 				<BellIcon />
 			</Badge>

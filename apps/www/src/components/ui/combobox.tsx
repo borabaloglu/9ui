@@ -68,7 +68,7 @@ function ComboboxPopup({
 		<BaseCombobox.Portal data-slot="combobox-portal">
 			<BaseCombobox.Positioner
 				data-slot="combobox-positioner"
-				className="z-50 outline-none"
+				className="z-50"
 				align={align}
 				alignOffset={alignOffset}
 				side={side}
@@ -237,7 +237,7 @@ function ComboboxChips({
 		<BaseCombobox.InputGroup
 			data-slot="combobox-chips"
 			className={cn(
-				"group/combobox-chips border-border bg-input relative flex min-h-8 w-full min-w-0 cursor-text rounded-lg border px-2.5 py-1 text-sm shadow-xs transition-[color,border-color,box-shadow] duration-150 ease-out outline-none not-dark:bg-clip-padding dark:bg-clip-border any-pointer-coarse:min-h-9",
+				"group/combobox-chips border-border bg-input relative flex min-h-8 w-full min-w-0 cursor-text rounded-lg border px-2.5 py-1 text-sm shadow-xs transition-[border-color,box-shadow] duration-150 ease-out not-dark:bg-clip-padding any-pointer-coarse:min-h-9",
 				"before:pointer-events-none before:absolute before:inset-0 before:rounded-[calc(var(--radius-lg)-1px)] before:shadow-[0_1px_--theme(--color-black/6%)] dark:before:shadow-[0_-1px_--theme(--color-white/8%)]",
 				"has-data-[slot=combobox-chip]:px-1",
 				"focus-within:border-ring focus-within:ring-ring/50 focus-within:ring-3 focus-within:outline-hidden focus-within:before:shadow-none",

@@ -32,7 +32,7 @@ function MenuPopup({
 		<BaseMenu.Portal data-slot="menu-portal">
 			<BaseMenu.Positioner
 				data-slot="menu-positioner"
-				className="z-50 outline-none"
+				className="z-50"
 				align={align}
 				alignOffset={alignOffset}
 				side={side}

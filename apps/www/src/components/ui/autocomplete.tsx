@@ -55,7 +55,7 @@ function AutocompletePopup({
 		<BaseAutocomplete.Portal data-slot="autocomplete-portal">
 			<BaseAutocomplete.Positioner
 				data-slot="autocomplete-positioner"
-				className="z-50 outline-none"
+				className="z-50"
 				align={align}
 				alignOffset={alignOffset}
 				side={side}

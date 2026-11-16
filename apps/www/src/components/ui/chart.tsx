@@ -219,7 +219,7 @@ function ChartTooltipContent({
 		<div
 			data-slot="chart-tooltip"
 			className={cn(
-				"bg-popover text-popover-foreground grid min-w-32 items-start gap-1.5 rounded-lg border px-2.5 py-2 text-xs shadow-md",
+				"bg-popover text-popover-foreground grid min-w-32 gap-1.5 rounded-lg border px-2.5 py-2 text-xs shadow-md",
 				className,
 			)}
 		>
@@ -236,7 +236,7 @@ function ChartTooltipContent({
 							<div
 								key={index}
 								className={cn(
-									"flex w-full flex-wrap items-stretch gap-2 [&>svg]:size-2.5 [&>svg]:text-(--color-icon)",
+									"flex flex-wrap gap-2 [&>svg]:size-2.5 [&>svg]:text-(--color-icon)",
 									indicator === "dot" && "items-center",
 								)}
 								style={

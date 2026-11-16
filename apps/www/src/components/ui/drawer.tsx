@@ -101,7 +101,7 @@ function DrawerSwipeArea({
 		<BaseDrawer.SwipeArea
 			data-slot="drawer-swipe-area"
 			className={cn(
-				"fixed z-50 touch-none",
+				"fixed z-50",
 				swipeDirection === "up" && "inset-x-0 top-0 h-8",
 				swipeDirection === "down" && "inset-x-0 bottom-0 h-8",
 				swipeDirection === "right" && "inset-y-0 right-0 w-8",
@@ -266,7 +266,7 @@ function DrawerPanel({
 		<BaseDrawer.Content
 			data-slot="drawer-panel"
 			className={cn(
-				"-my-1 min-h-0 flex-1 touch-auto overflow-y-auto overscroll-contain px-(--drawer-inset) py-1",
+				"-my-1 min-h-0 flex-1 overflow-y-auto overscroll-contain px-(--drawer-inset) py-1",
 				className,
 			)}
 			{...props}

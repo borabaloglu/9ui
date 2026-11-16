@@ -60,7 +60,7 @@ function EmojiPickerContent({
 		<BaseEmojiPicker.Viewport
 			data-slot="emoji-picker-content"
 			className={cn(
-				"relative min-h-0 flex-1 [scrollbar-width:thin] [scrollbar-color:--alpha(var(--color-foreground)/20%)_transparent] outline-none",
+				"min-h-0 flex-1 [scrollbar-color:--alpha(var(--color-foreground)/20%)_transparent] outline-none",
 				className,
 			)}
 			{...props}
@@ -134,7 +134,7 @@ function EmojiPickerEmoji({ emoji, ...props }: EmojiPickerListEmojiProps) {
 		<button
 			type="button"
 			data-slot="emoji-picker-emoji"
-			className="data-active:bg-accent flex h-8 w-8 min-w-0 cursor-pointer items-center justify-center rounded-md text-lg transition-[scale] duration-100 ease-out outline-none motion-safe:active:scale-95 any-pointer-coarse:h-10 any-pointer-coarse:w-10 any-pointer-coarse:text-xl"
+			className="data-active:bg-accent flex h-8 w-8 min-w-0 cursor-pointer items-center justify-center rounded-md text-lg transition-[scale] duration-100 ease-out motion-safe:active:scale-95 any-pointer-coarse:h-10 any-pointer-coarse:w-10 any-pointer-coarse:text-xl"
 			{...props}
 		>
 			{emoji.emoji}
@@ -170,7 +170,7 @@ function EmojiPickerFooter({
 		<div
 			data-slot="emoji-picker-footer"
 			className={cn(
-				"bg-muted/50 text-muted-foreground flex w-full max-w-(--frimousse-viewport-width) min-w-0 shrink-0 items-center gap-1 border-t p-1 text-xs",
+				"bg-muted/50 text-muted-foreground flex w-full max-w-(--frimousse-viewport-width) shrink-0 items-center gap-1 border-t p-1 text-xs",
 				className,
 			)}
 			{...props}

@@ -69,17 +69,17 @@ function SheetPopup({
 					data-side={side}
 					data-variant={variant}
 					className={cn(
-						"group/sheet-popup bg-popover text-popover-foreground ease-drawer relative flex flex-col gap-4 overflow-y-auto overscroll-contain pt-(--sheet-top) pb-(--sheet-bottom) text-sm shadow-lg transition-[translate,opacity,filter] duration-400 outline-none [--sheet-offset:0px] [--sheet-radius:var(--radius-2xl)] data-ending-style:duration-250 data-nested-dialog-open:brightness-90 motion-reduce:duration-200 motion-reduce:data-ending-style:opacity-0 motion-reduce:data-ending-style:duration-150 motion-reduce:data-starting-style:opacity-0 dark:data-nested-dialog-open:brightness-75",
+						"group/sheet-popup bg-popover text-popover-foreground ease-drawer relative flex flex-col gap-4 overflow-y-auto overscroll-contain pt-(--sheet-top) pb-(--sheet-bottom) text-sm shadow-lg transition-[translate,opacity,filter] duration-400 outline-none [--sheet-offset:0px] data-ending-style:duration-250 data-nested-dialog-open:brightness-90 motion-reduce:duration-200 motion-reduce:data-ending-style:opacity-0 motion-reduce:data-ending-style:duration-150 motion-reduce:data-starting-style:opacity-0 dark:data-nested-dialog-open:brightness-75",
 						side === "top" &&
-							"max-h-full w-full border-b [--sheet-bottom:0px] [--sheet-top:env(safe-area-inset-top,0px)] motion-safe:data-ending-style:-translate-y-[calc(100%+var(--sheet-offset))] motion-safe:data-starting-style:-translate-y-[calc(100%+var(--sheet-offset))]",
+							"max-h-full border-b [--sheet-bottom:0px] [--sheet-top:env(safe-area-inset-top,0px)] motion-safe:data-ending-style:-translate-y-[calc(100%+var(--sheet-offset))] motion-safe:data-starting-style:-translate-y-[calc(100%+var(--sheet-offset))]",
 						side === "right" &&
-							"h-full w-[calc(100%-(--spacing(12)))] max-w-sm border-l [--sheet-bottom:env(safe-area-inset-bottom,0px)] [--sheet-top:env(safe-area-inset-top,0px)] motion-safe:data-ending-style:translate-x-[calc(100%+var(--sheet-offset))] motion-safe:data-starting-style:translate-x-[calc(100%+var(--sheet-offset))]",
+							"w-[calc(100%-(--spacing(12)))] max-w-sm border-l [--sheet-bottom:env(safe-area-inset-bottom,0px)] [--sheet-top:env(safe-area-inset-top,0px)] motion-safe:data-ending-style:translate-x-[calc(100%+var(--sheet-offset))] motion-safe:data-starting-style:translate-x-[calc(100%+var(--sheet-offset))]",
 						side === "bottom" &&
-							"max-h-full w-full border-t [--sheet-bottom:env(safe-area-inset-bottom,0px)] [--sheet-top:0px] motion-safe:data-ending-style:translate-y-[calc(100%+var(--sheet-offset))] motion-safe:data-starting-style:translate-y-[calc(100%+var(--sheet-offset))]",
+							"max-h-full border-t [--sheet-bottom:env(safe-area-inset-bottom,0px)] [--sheet-top:0px] motion-safe:data-ending-style:translate-y-[calc(100%+var(--sheet-offset))] motion-safe:data-starting-style:translate-y-[calc(100%+var(--sheet-offset))]",
 						side === "left" &&
-							"h-full w-[calc(100%-(--spacing(12)))] max-w-sm border-r [--sheet-bottom:env(safe-area-inset-bottom,0px)] [--sheet-top:env(safe-area-inset-top,0px)] motion-safe:data-ending-style:-translate-x-[calc(100%+var(--sheet-offset))] motion-safe:data-starting-style:-translate-x-[calc(100%+var(--sheet-offset))]",
+							"w-[calc(100%-(--spacing(12)))] max-w-sm border-r [--sheet-bottom:env(safe-area-inset-bottom,0px)] [--sheet-top:env(safe-area-inset-top,0px)] motion-safe:data-ending-style:-translate-x-[calc(100%+var(--sheet-offset))] motion-safe:data-starting-style:-translate-x-[calc(100%+var(--sheet-offset))]",
 						variant === "inset" &&
-							"sm:dark:edge-highlight-(--sheet-radius) sm:rounded-(--sheet-radius) sm:border sm:[--sheet-bottom:0px] sm:[--sheet-offset:--spacing(4)] sm:[--sheet-top:0px] sm:not-dark:shadow-[0_1px_--theme(--color-black/6%),var(--shadow-lg)]",
+							"sm:dark:edge-highlight-(--sheet-radius) [--sheet-radius:var(--radius-2xl)] sm:rounded-(--sheet-radius) sm:border sm:[--sheet-bottom:0px] sm:[--sheet-offset:--spacing(4)] sm:[--sheet-top:0px] sm:not-dark:shadow-[0_1px_--theme(--color-black/6%),var(--shadow-lg)]",
 						className,
 					)}
 					{...props}

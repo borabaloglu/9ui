@@ -36,7 +36,7 @@ function Slider<Value extends number | readonly number[]>({
 			>
 				<BaseSlider.Track
 					data-slot="slider-track"
-					className="bg-muted relative grow rounded-full data-[orientation=horizontal]:h-1 data-[orientation=vertical]:h-full data-[orientation=vertical]:w-1"
+					className="bg-muted grow rounded-full data-[orientation=horizontal]:h-1 data-[orientation=vertical]:w-1"
 				>
 					<BaseSlider.Indicator
 						data-slot="slider-indicator"
@@ -48,7 +48,7 @@ function Slider<Value extends number | readonly number[]>({
 							key={index}
 							index={index}
 							aria-label={thumbLabels?.[index] ?? ariaLabel}
-							className="border-border has-focus-visible:border-ring has-focus-visible:ring-ring/50 data-invalid:border-destructive/60 data-invalid:ring-destructive/30 dark:border-background dark:has-focus-visible:border-ring dark:data-invalid:border-destructive/60 dark:data-invalid:ring-destructive/40 ease-out-quint block size-4 shrink-0 rounded-full border bg-white shadow-xs transition-[border-color,box-shadow,scale] duration-150 before:absolute before:inset-0 before:rounded-full before:shadow-[0_1px_--theme(--color-black/6%)] has-focus-visible:ring-3 has-focus-visible:outline-hidden has-focus-visible:duration-0 motion-safe:data-dragging:has-[input:focus]:scale-110 dark:before:shadow-none any-pointer-coarse:size-5"
+							className="has-focus-visible:border-ring has-focus-visible:ring-ring/50 data-invalid:border-destructive/60 data-invalid:ring-destructive/30 dark:border-background dark:has-focus-visible:border-ring dark:data-invalid:border-destructive/60 dark:data-invalid:ring-destructive/40 ease-out-quint size-4 rounded-full border bg-white shadow-xs transition-[border-color,box-shadow,scale] duration-150 before:absolute before:inset-0 before:rounded-full before:shadow-[0_1px_--theme(--color-black/6%)] has-focus-visible:ring-3 has-focus-visible:outline-hidden has-focus-visible:duration-0 motion-safe:data-dragging:has-[input:focus]:scale-110 dark:before:shadow-none any-pointer-coarse:size-5"
 						/>
 					))}
 				</BaseSlider.Track>
