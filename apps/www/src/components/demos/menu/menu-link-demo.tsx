@@ -25,7 +25,7 @@ export default function MenuLinkDemo() {
 					rel="noreferrer"
 				>
 					GitHub
-					<ExternalLinkIcon className="ml-auto" />
+					<ExternalLinkIcon className="ms-auto" />
 				</MenuLinkItem>
 			</MenuPopup>
 		</Menu>

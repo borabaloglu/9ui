@@ -162,6 +162,7 @@ function NavigationMenuPopup({
 	collisionAvoidance = side === "bottom" || side === "top"
 		? { side: "none" }
 		: undefined,
+	dir,
 	...props
 }: Omit<React.ComponentProps<typeof BaseNavigationMenu.Popup>, "className"> &
 	Pick<
@@ -191,6 +192,7 @@ function NavigationMenuPopup({
 				sideOffset={sideOffset}
 				anchor={anchor}
 				collisionAvoidance={collisionAvoidance}
+				dir={dir}
 			>
 				<BaseNavigationMenu.Popup
 					data-slot="navigation-menu-popup"

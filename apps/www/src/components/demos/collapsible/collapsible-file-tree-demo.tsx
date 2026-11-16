@@ -53,7 +53,7 @@ const tree: FileNode[] = [
 ];
 
 const itemClassName =
-	"focus-visible:ring-ring/50 flex min-h-7 w-full items-center gap-2 rounded-sm pr-2 text-left text-sm outline-none select-none focus-visible:ring-3 focus-visible:ring-inset any-pointer-coarse:min-h-9 [&_svg]:size-4 [&_svg]:shrink-0";
+	"focus-visible:ring-ring/50 flex min-h-7 w-full items-center gap-2 rounded-sm pe-2 text-start text-sm outline-none select-none focus-visible:ring-3 focus-visible:ring-inset any-pointer-coarse:min-h-9 [&_svg]:size-4 [&_svg]:shrink-0";
 
 function FileTreeNode({
 	node,
@@ -73,7 +73,7 @@ function FileTreeNode({
 		"aria-level": depth + 1,
 		tabIndex: path === active ? 0 : -1,
 		onFocus: () => onActiveChange(path),
-		style: { paddingLeft: `${depth * 16 + 8}px` },
+		style: { paddingInlineStart: `${depth * 16 + 8}px` },
 	};
 
 	if (!node.children) {

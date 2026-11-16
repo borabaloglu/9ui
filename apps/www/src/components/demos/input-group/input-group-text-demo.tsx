@@ -24,7 +24,7 @@ export default function InputGroupTextDemo() {
 				<InputGroupInput
 					aria-label="Website"
 					placeholder="example.com"
-					className="pl-0.5!"
+					className="ps-0.5!"
 				/>
 			</InputGroup>
 			<InputGroup>

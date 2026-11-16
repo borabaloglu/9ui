@@ -63,6 +63,7 @@ function PopoverPopup({
 	side = "bottom",
 	sideOffset = arrow ? 10 : 4,
 	anchor,
+	dir,
 	...props
 }: Omit<BasePopover.Popup.Props, "className"> &
 	Pick<
@@ -82,6 +83,7 @@ function PopoverPopup({
 				side={side}
 				sideOffset={sideOffset}
 				anchor={anchor}
+				dir={dir}
 			>
 				<BasePopover.Popup
 					data-slot="popover-popup"

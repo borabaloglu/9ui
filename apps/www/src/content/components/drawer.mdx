@@ -149,3 +149,9 @@ Wrap your app in `DrawerProvider` and put `DrawerIndentBackground` and `DrawerIn
 The example below runs in a sandbox: the drawer is rendered into the frame with `container`, and the frame holds the indent. In your app the indent is the page itself.
 
 <ComponentPreview name="drawer-scale-background-demo" />
+
+### RTL
+
+To show the drawer right to left, set `dir="rtl"` on `html` and wrap your app in `DirectionProvider`. See [RTL](/docs/getting-started/rtl). `swipeDirection` is the screen edge in both directions, so to open the drawer from the start, set `swipeDirection="right"`.
+
+<ComponentPreview name="drawer-rtl-demo" direction="rtl" />

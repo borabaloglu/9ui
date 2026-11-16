@@ -25,12 +25,12 @@ const buttonVariants = cva(
 					"border-border bg-input text-destructive hover:border-destructive/30 hover:bg-destructive/5 focus-visible:border-destructive/60 focus-visible:ring-destructive/30 aria-expanded:border-destructive/30 aria-expanded:bg-destructive/5 *:data-[slot=button-loading-indicator]:text-destructive dark:aria-expanded:bg-destructive/10 dark:focus-visible:ring-destructive/40 dark:hover:bg-destructive/10 [&:active]:bg-destructive/10 dark:[&:active]:bg-destructive/20 shadow-xs not-data-disabled:not-active:before:shadow-[0_1px_--theme(--color-black/6%)] dark:bg-clip-border dark:not-data-disabled:not-active:before:shadow-[0_-1px_--theme(--color-white/8%)] [&:is(:active,[data-disabled])]:shadow-none",
 			},
 			size: {
-				xs: "h-6 gap-1 rounded-[min(var(--radius-md),0.625rem)] px-2 text-xs before:rounded-[calc(min(var(--radius-md),0.625rem)-1px)] has-data-[icon=inline-end]:pr-1.5 has-data-[icon=inline-start]:pl-1.5 any-pointer-coarse:h-7 [&_svg:not([class*='size-'])]:size-3",
-				sm: "h-7 gap-1 rounded-[min(var(--radius-md),0.75rem)] px-2.5 text-[0.8rem] before:rounded-[calc(min(var(--radius-md),0.75rem)-1px)] has-data-[icon=inline-end]:pr-1.5 has-data-[icon=inline-start]:pl-1.5 any-pointer-coarse:h-8 [&_svg:not([class*='size-'])]:size-3.5",
+				xs: "h-6 gap-1 rounded-[min(var(--radius-md),0.625rem)] px-2 text-xs before:rounded-[calc(min(var(--radius-md),0.625rem)-1px)] has-data-[icon=inline-end]:pe-1.5 has-data-[icon=inline-start]:ps-1.5 any-pointer-coarse:h-7 [&_svg:not([class*='size-'])]:size-3",
+				sm: "h-7 gap-1 rounded-[min(var(--radius-md),0.75rem)] px-2.5 text-[0.8rem] before:rounded-[calc(min(var(--radius-md),0.75rem)-1px)] has-data-[icon=inline-end]:pe-1.5 has-data-[icon=inline-start]:ps-1.5 any-pointer-coarse:h-8 [&_svg:not([class*='size-'])]:size-3.5",
 				default:
-					"h-8 gap-1.5 px-2.5 has-data-[icon=inline-end]:pr-2 has-data-[icon=inline-start]:pl-2 any-pointer-coarse:h-9",
-				lg: "h-9 gap-1.5 px-3 has-data-[icon=inline-end]:pr-2.5 has-data-[icon=inline-start]:pl-2.5 any-pointer-coarse:h-10",
-				xl: "h-10 px-3.5 text-base has-data-[icon=inline-end]:pr-3 has-data-[icon=inline-start]:pl-3 any-pointer-coarse:h-11 [&_svg:not([class*='size-'])]:size-4.5",
+					"h-8 gap-1.5 px-2.5 has-data-[icon=inline-end]:pe-2 has-data-[icon=inline-start]:ps-2 any-pointer-coarse:h-9",
+				lg: "h-9 gap-1.5 px-3 has-data-[icon=inline-end]:pe-2.5 has-data-[icon=inline-start]:ps-2.5 any-pointer-coarse:h-10",
+				xl: "h-10 px-3.5 text-base has-data-[icon=inline-end]:pe-3 has-data-[icon=inline-start]:ps-3 any-pointer-coarse:h-11 [&_svg:not([class*='size-'])]:size-4.5",
 				"icon-xs":
 					"size-6 rounded-[min(var(--radius-md),0.625rem)] before:rounded-[calc(min(var(--radius-md),0.625rem)-1px)] any-pointer-coarse:size-7 [&_svg:not([class*='size-'])]:size-3",
 				"icon-sm":

@@ -10,16 +10,16 @@ export default function ToggleGroupDisabledItemDemo() {
 	return (
 		<ToggleGroup
 			variant="outline"
-			defaultValue={["left"]}
+			defaultValue={["start"]}
 			aria-label="Text alignment"
 		>
-			<ToggleGroupItem value="left" aria-label="Align left">
+			<ToggleGroupItem value="start" aria-label="Align start">
 				<TextAlignStartIcon />
 			</ToggleGroupItem>
 			<ToggleGroupItem value="center" aria-label="Align center">
 				<TextAlignCenterIcon />
 			</ToggleGroupItem>
-			<ToggleGroupItem value="right" aria-label="Align right" disabled>
+			<ToggleGroupItem value="end" aria-label="Align end" disabled>
 				<TextAlignEndIcon />
 			</ToggleGroupItem>
 		</ToggleGroup>

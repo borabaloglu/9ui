@@ -22,7 +22,7 @@ function InputGroup({ className, ...props }: React.ComponentProps<"div">) {
 				"has-[[data-slot=input-group-control]:disabled]:opacity-50",
 				"has-[[data-slot=input-group-control][aria-invalid=true]]:border-destructive/60 has-[[data-slot=input-group-control][aria-invalid=true]]:ring-destructive/30 dark:has-[[data-slot=input-group-control][aria-invalid=true]]:ring-destructive/40",
 				"has-[[data-slot=input-group-control]:focus-visible]:border-ring has-[[data-slot=input-group-control]:focus-visible]:ring-ring/50 has-[[data-slot=input-group-control]:focus-visible]:ring-3 has-[[data-slot=input-group-control]:focus-visible]:outline-hidden",
-				"has-[>[data-align=block-end]]:[&>input]:pt-3 has-[>[data-align=block-start]]:[&>input]:pb-3 has-[>[data-align=inline-end]]:[&>input]:pr-1.5 has-[>[data-align=inline-start]]:[&>input]:pl-1.5",
+				"has-[>[data-align=block-end]]:[&>input]:pt-3 has-[>[data-align=block-start]]:[&>input]:pb-3 has-[>[data-align=inline-end]]:[&>input]:pe-1.5 has-[>[data-align=inline-start]]:[&>input]:ps-1.5",
 				className,
 			)}
 			{...props}
@@ -36,13 +36,13 @@ const inputGroupAddonVariants = cva(
 		variants: {
 			align: {
 				"inline-start":
-					"order-first min-w-0 pl-2 has-[>[data-slot=badge]]:-ml-0.75 has-[>button]:-ml-1.25 has-[>kbd]:-ml-0.75 any-pointer-coarse:text-base",
+					"order-first min-w-0 ps-2 has-[>[data-slot=badge]]:-ms-0.75 has-[>button]:-ms-1.25 has-[>kbd]:-ms-0.75 any-pointer-coarse:text-base",
 				"inline-end":
-					"order-last min-w-0 pr-2 has-[>[data-slot=badge]]:-mr-0.75 has-[>button]:-mr-1.25 has-[>kbd]:-mr-0.75 any-pointer-coarse:text-base",
+					"order-last min-w-0 pe-2 has-[>[data-slot=badge]]:-me-0.75 has-[>button]:-me-1.25 has-[>kbd]:-me-0.75 any-pointer-coarse:text-base",
 				"block-start":
-					"order-first w-full justify-start px-2.5 pt-2 [&>button:not(:has(~_[data-slot]))]:-mr-0.5 [&>button:not([data-slot]_~_*)]:-ml-0.5 [.border-b]:pb-2",
+					"order-first w-full justify-start px-2.5 pt-2 [&>button:not(:has(~_[data-slot]))]:-me-0.5 [&>button:not([data-slot]_~_*)]:-ms-0.5 [.border-b]:pb-2",
 				"block-end":
-					"order-last w-full justify-start px-2.5 pb-2 [&>button:not(:has(~_[data-slot]))]:-mr-0.5 [&>button:not([data-slot]_~_*)]:-ml-0.5 [.border-t]:pt-2",
+					"order-last w-full justify-start px-2.5 pb-2 [&>button:not(:has(~_[data-slot]))]:-me-0.5 [&>button:not([data-slot]_~_*)]:-ms-0.5 [.border-t]:pt-2",
 			},
 		},
 		defaultVariants: {

@@ -30,7 +30,7 @@ export default function CheckboxGroupParentDemo() {
 			{permissions.map((permission) => (
 				<Label
 					key={permission.value}
-					className="ml-6 font-normal any-pointer-coarse:ml-7"
+					className="ms-6 font-normal any-pointer-coarse:ms-7"
 				>
 					<Checkbox value={permission.value} />
 					{permission.label}

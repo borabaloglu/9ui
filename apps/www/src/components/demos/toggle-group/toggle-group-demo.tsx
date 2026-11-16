@@ -8,14 +8,14 @@ import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
 
 export default function ToggleGroupDemo() {
 	return (
-		<ToggleGroup defaultValue={["left"]} aria-label="Text alignment">
-			<ToggleGroupItem value="left" aria-label="Align left">
+		<ToggleGroup defaultValue={["start"]} aria-label="Text alignment">
+			<ToggleGroupItem value="start" aria-label="Align start">
 				<TextAlignStartIcon />
 			</ToggleGroupItem>
 			<ToggleGroupItem value="center" aria-label="Align center">
 				<TextAlignCenterIcon />
 			</ToggleGroupItem>
-			<ToggleGroupItem value="right" aria-label="Align right">
+			<ToggleGroupItem value="end" aria-label="Align end">
 				<TextAlignEndIcon />
 			</ToggleGroupItem>
 		</ToggleGroup>

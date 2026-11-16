@@ -57,9 +57,9 @@ function SheetPopup({
 				className={cn(
 					"fixed inset-0 z-50 flex",
 					side === "top" && "flex-col justify-start pb-12",
-					side === "right" && "justify-end",
+					side === "right" && "justify-end rtl:justify-start",
 					side === "bottom" && "flex-col justify-end pt-12",
-					side === "left" && "justify-start",
+					side === "left" && "justify-start rtl:justify-end",
 					variant === "inset" &&
 						"sm:px-4 sm:pt-[calc(--spacing(4)+env(safe-area-inset-top,0px))] sm:pb-[calc(--spacing(4)+env(safe-area-inset-bottom,0px))]",
 				)}

@@ -1,0 +1,45 @@
+"use client";
+
+import { ChevronRightIcon } from "lucide-react";
+
+import {
+	type Translations,
+	useTranslation,
+} from "@/components/language-selector";
+import {
+	Collapsible,
+	CollapsiblePanel,
+	CollapsibleTrigger,
+} from "@/components/ui/collapsible";
+
+const translations = {
+	en: {
+		recoveryKeys: "Show recovery keys",
+	},
+	ar: {
+		recoveryKeys: "إظهار مفاتيح الاسترداد",
+	},
+	he: {
+		recoveryKeys: "הצגת מפתחות שחזור",
+	},
+} satisfies Translations<Record<string, string>>;
+
+export default function CollapsibleRtlDemo() {
+	const { t } = useTranslation(translations);
+
+	return (
+		<Collapsible className="mx-auto w-48">
+			<CollapsibleTrigger className="flex min-h-7 w-full items-center justify-between gap-2 text-sm font-medium any-pointer-coarse:min-h-9">
+				{t.recoveryKeys}
+				<ChevronRightIcon className="text-muted-foreground ease-out-quint size-4 shrink-0 transition-[rotate] duration-150 in-data-panel-open:rotate-90 in-data-panel-open:duration-200 motion-reduce:transition-none rtl:not-in-data-panel-open:rotate-180" />
+			</CollapsibleTrigger>
+			<CollapsiblePanel>
+				<ol className="flex flex-col gap-1.5 pt-2 font-mono text-sm">
+					<li className="bg-muted rounded-sm px-2 py-1">A5FD-7K1B-ZR92</li>
+					<li className="bg-muted rounded-sm px-2 py-1">CQ9P-L02R-W8NV</li>
+					<li className="bg-muted rounded-sm px-2 py-1">8FD5-GH2B-0SA7</li>
+				</ol>
+			</CollapsiblePanel>
+		</Collapsible>
+	);
+}

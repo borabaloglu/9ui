@@ -175,3 +175,9 @@ To move the toasts, set `position` on `ToastProvider`.
 To attach a toast to an element, wrap it in `AnchoredToastProvider` and set `positionerProps.anchor`.
 
 <ComponentPreview name="toast-anchored-demo" />
+
+### RTL
+
+To show the toast right to left, set `dir="rtl"` on `html` and wrap your app in `DirectionProvider`. See [RTL](/docs/getting-started/rtl). `position` is the screen corner in both directions, so to show toasts at the bottom start, set `position="bottom-right"`.
+
+<ComponentPreview name="toast-rtl-demo" direction="rtl" />

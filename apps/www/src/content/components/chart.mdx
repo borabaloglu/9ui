@@ -283,3 +283,11 @@ Set `innerRadius` on `Pie` to make a donut.
 ### Scatter
 
 <ComponentPreview name="chart-scatter-demo" />
+
+### RTL
+
+To show the chart right to left, set `dir="rtl"` on `html` and wrap your app in `DirectionProvider`. Set `reversed` on `XAxis` and `orientation="right"` on `YAxis` too. See [RTL](/docs/getting-started/rtl).
+
+Bars in a group keep their left to right order. This comes from Recharts.
+
+<ComponentPreview name="chart-rtl-demo" direction="rtl" />

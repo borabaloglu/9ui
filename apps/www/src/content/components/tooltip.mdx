@@ -82,3 +82,9 @@ Wrap related tooltips in `TooltipProvider`. After the first one opens, the other
 Tooltips inside a `TooltipProvider` open after 300ms. Without one they open after 600ms. Set `delay` on `TooltipProvider` to change it for a group, or on `TooltipTrigger` for a single tooltip.
 
 <ComponentPreview name="tooltip-delay-demo" />
+
+### RTL
+
+To show the tooltip right to left, set `dir="rtl"` on `html` and wrap your app in `DirectionProvider`. See [RTL](/docs/getting-started/rtl).
+
+<ComponentPreview name="tooltip-rtl-demo" direction="rtl" />

@@ -178,8 +178,8 @@ function DrawerPopup({
 					!modal && "pointer-events-none",
 					swipeDirection === "up" && "items-start",
 					swipeDirection === "down" && "items-end",
-					swipeDirection === "right" && "justify-end",
-					swipeDirection === "left" && "justify-start",
+					swipeDirection === "right" && "justify-end rtl:justify-start",
+					swipeDirection === "left" && "justify-start rtl:justify-end",
 					inset &&
 						"px-4 pt-[calc(--spacing(4)+env(safe-area-inset-top,0px))] pb-[calc(--spacing(4)+env(safe-area-inset-bottom,0px))]",
 				)}

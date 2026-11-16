@@ -1,6 +1,7 @@
 "use client";
 
 import * as React from "react";
+import { useDirection } from "@base-ui/react/direction-provider";
 import useEmblaCarousel, {
 	type UseEmblaCarouselType,
 } from "embla-carousel-react";
@@ -56,9 +57,12 @@ function Carousel({
 	children,
 	...props
 }: React.ComponentProps<"div"> & CarouselProps) {
+	const contextDirection = useDirection();
+	const direction = opts?.direction ?? contextDirection;
 	const [carouselRef, api] = useEmblaCarousel(
 		{
 			...opts,
+			direction,
 			axis: orientation === "horizontal" ? "x" : "y",
 		},
 		plugins,
@@ -80,7 +84,7 @@ function Carousel({
 		api?.scrollNext(prefersReducedMotion());
 	}, [api]);
 
-	const rtl = opts?.direction === "rtl";
+	const rtl = direction === "rtl";
 
 	const handleKeyDown = React.useCallback(
 		(event: React.KeyboardEvent<HTMLDivElement>) => {

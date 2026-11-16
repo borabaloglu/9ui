@@ -92,3 +92,9 @@ Set `showCloseButton={false}` on `SheetPopup` to remove the close button from th
 Set `variant="bare"` on `SheetFooter` to drop its border and background.
 
 <ComponentPreview name="sheet-footer-bare-demo" />
+
+### RTL
+
+To show the sheet right to left, set `dir="rtl"` on `html` and wrap your app in `DirectionProvider`. See [RTL](/docs/getting-started/rtl). `side` is the screen edge in both directions, so to open the sheet from the start, set `side="right"`.
+
+<ComponentPreview name="sheet-rtl-demo" direction="rtl" />

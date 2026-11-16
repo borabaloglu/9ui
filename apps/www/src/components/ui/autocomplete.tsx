@@ -42,6 +42,7 @@ function AutocompletePopup({
 	side = "bottom",
 	sideOffset = 4,
 	anchor,
+	dir,
 	...props
 }: Omit<BaseAutocomplete.Popup.Props, "className"> &
 	Pick<
@@ -60,6 +61,7 @@ function AutocompletePopup({
 				side={side}
 				sideOffset={sideOffset}
 				anchor={anchor}
+				dir={dir}
 			>
 				<BaseAutocomplete.Popup
 					data-slot="autocomplete-popup"

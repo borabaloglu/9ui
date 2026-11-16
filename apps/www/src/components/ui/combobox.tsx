@@ -55,6 +55,7 @@ function ComboboxPopup({
 	side = "bottom",
 	sideOffset = 4,
 	anchor,
+	dir,
 	...props
 }: Omit<BaseCombobox.Popup.Props, "className"> &
 	Pick<
@@ -73,6 +74,7 @@ function ComboboxPopup({
 				side={side}
 				sideOffset={sideOffset}
 				anchor={anchor}
+				dir={dir}
 			>
 				<BaseCombobox.Popup
 					data-slot="combobox-popup"
@@ -116,7 +118,7 @@ function ComboboxItem({
 		<BaseCombobox.Item
 			data-slot="combobox-item"
 			className={cn(
-				"data-highlighted:bg-accent data-highlighted:text-accent-foreground relative flex min-h-7 w-full cursor-default items-center gap-2 rounded-sm py-1 pr-8 pl-2 text-sm wrap-anywhere outline-none select-none data-disabled:pointer-events-none data-disabled:opacity-50 any-pointer-coarse:min-h-9 any-pointer-coarse:text-base [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
+				"data-highlighted:bg-accent data-highlighted:text-accent-foreground relative flex min-h-7 w-full cursor-default items-center gap-2 rounded-sm py-1 ps-2 pe-8 text-sm wrap-anywhere outline-none select-none data-disabled:pointer-events-none data-disabled:opacity-50 any-pointer-coarse:min-h-9 any-pointer-coarse:text-base [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
 				className,
 			)}
 			{...props}
@@ -124,7 +126,7 @@ function ComboboxItem({
 			{children}
 			<BaseCombobox.ItemIndicator
 				data-slot="combobox-item-indicator"
-				className="pointer-events-none absolute right-2 flex size-4 items-center justify-center"
+				className="pointer-events-none absolute end-2 flex size-4 items-center justify-center"
 			>
 				<CheckIcon />
 			</BaseCombobox.ItemIndicator>
