@@ -10,7 +10,7 @@ const toggleVariants = cva(
 			variant: {
 				default: "",
 				outline:
-					"border-border bg-input shadow-xs not-dark:bg-clip-padding not-data-disabled:not-data-pressed:not-active:before:shadow-[0_1px_--theme(--color-black/6%)] dark:bg-clip-border dark:not-data-disabled:not-data-pressed:not-active:before:shadow-[0_-1px_--theme(--color-white/8%)] [&:is(:active,[data-pressed],[data-disabled])]:shadow-none",
+					"border-border bg-input shadow-xs not-data-disabled:not-data-pressed:not-active:before:shadow-[0_1px_--theme(--color-black/6%)] dark:bg-clip-border dark:not-data-disabled:not-data-pressed:not-active:before:shadow-[0_-1px_--theme(--color-white/8%)] [&:is(:active,[data-pressed],[data-disabled])]:shadow-none",
 			},
 			size: {
 				sm: "h-7 min-w-7 gap-1 rounded-[min(var(--radius-md),0.75rem)] px-1.5 text-[0.8rem] before:rounded-[calc(min(var(--radius-md),0.75rem)-1px)] any-pointer-coarse:h-8 any-pointer-coarse:min-w-8 [&_svg:not([class*='size-'])]:size-3.5",

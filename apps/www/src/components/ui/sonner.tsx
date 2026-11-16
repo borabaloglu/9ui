@@ -13,12 +13,10 @@ import { Toaster as Sonner, type ToasterProps } from "sonner";
 import { buttonVariants } from "@/components/ui/button";
 import { Spinner } from "@/components/ui/spinner";
 
-import { cn } from "@/lib/utils";
-
 function Toaster({ className, style, toastOptions, ...props }: ToasterProps) {
 	return (
 		<Sonner
-			className={cn("toaster group", className)}
+			className={className}
 			gap={12}
 			offset={32}
 			mobileOffset={16}

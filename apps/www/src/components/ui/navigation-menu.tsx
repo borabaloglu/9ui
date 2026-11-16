@@ -7,7 +7,7 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 import { cn } from "@/lib/utils";
 
 const itemClassName =
-	"text-foreground hover:bg-accent hover:text-accent-foreground focus-visible:ring-ring/50 data-active:bg-accent data-active:text-accent-foreground data-popup-open:bg-accent data-popup-open:text-accent-foreground dark:hover:bg-accent/50 dark:data-active:bg-accent/50 dark:data-popup-open:bg-accent/50 outline-none focus-visible:ring-3 focus-visible:outline-hidden data-disabled:pointer-events-none data-disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4";
+	"text-foreground hover:bg-accent hover:text-accent-foreground focus-visible:ring-ring/50 dark:hover:bg-accent/50 outline-none focus-visible:ring-3 focus-visible:outline-hidden [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4";
 
 const itemVariantClassNames = {
 	trigger:
@@ -79,6 +79,7 @@ function NavigationMenuTrigger({
 			data-variant={variant}
 			className={cn(
 				itemClassName,
+				"data-popup-open:bg-accent data-popup-open:text-accent-foreground dark:data-popup-open:bg-accent/50 data-disabled:pointer-events-none data-disabled:opacity-50",
 				variant === "link"
 					? itemVariantClassNames.link
 					: itemVariantClassNames.trigger,
@@ -142,6 +143,7 @@ function NavigationMenuLink({
 			data-variant={variant}
 			className={cn(
 				itemClassName,
+				"data-active:bg-accent data-active:text-accent-foreground dark:data-active:bg-accent/50",
 				variant === "trigger"
 					? itemVariantClassNames.trigger
 					: itemVariantClassNames.link,

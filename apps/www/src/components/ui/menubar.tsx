@@ -15,7 +15,7 @@ function Menubar({
 		<BaseMenubar
 			data-slot="menubar"
 			className={cn(
-				"bg-card text-card-foreground relative flex w-fit items-center gap-0.5 rounded-xl border p-1 shadow-xs not-dark:bg-clip-padding before:pointer-events-none before:absolute before:inset-0 before:rounded-[calc(var(--radius-xl)-1px)] before:shadow-[0_1px_--theme(--color-black/6%)] data-[orientation=vertical]:flex-col data-[orientation=vertical]:items-stretch dark:bg-clip-border dark:before:shadow-[0_-1px_--theme(--color-white/8%)]",
+				"bg-card text-card-foreground relative flex w-fit items-center gap-0.5 rounded-xl border p-1 shadow-xs not-dark:bg-clip-padding before:pointer-events-none before:absolute before:inset-0 before:rounded-[calc(var(--radius-xl)-1px)] before:shadow-[0_1px_--theme(--color-black/6%)] data-[orientation=vertical]:flex-col data-[orientation=vertical]:items-stretch dark:before:shadow-[0_-1px_--theme(--color-white/8%)]",
 				className,
 			)}
 			{...props}
@@ -65,7 +65,7 @@ function MenubarPopup({
 		<BaseMenu.Portal data-slot="menubar-portal">
 			<BaseMenu.Positioner
 				data-slot="menubar-positioner"
-				className="z-50 outline-none"
+				className="z-50"
 				align={align}
 				alignOffset={alignOffset}
 				side={side}

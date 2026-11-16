@@ -43,7 +43,7 @@ function ContextMenuPopup({
 		<BaseContextMenu.Portal data-slot="context-menu-portal">
 			<BaseContextMenu.Positioner
 				data-slot="context-menu-positioner"
-				className="z-50 outline-none"
+				className="z-50"
 				align={align}
 				alignOffset={alignOffset}
 				side={side}

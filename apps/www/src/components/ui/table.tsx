@@ -25,7 +25,7 @@ function Table({
 			className={cn(
 				"group/table relative flex w-full flex-col",
 				card &&
-					"bg-card text-card-foreground rounded-xl border shadow-xs not-dark:bg-clip-padding before:pointer-events-none before:absolute before:inset-0 before:rounded-[calc(var(--radius-xl)-1px)] before:shadow-[0_1px_--theme(--color-black/6%)] dark:bg-clip-border dark:before:shadow-[0_-1px_--theme(--color-white/8%)]",
+					"bg-card text-card-foreground rounded-xl border shadow-xs not-dark:bg-clip-padding before:pointer-events-none before:absolute before:inset-0 before:rounded-[calc(var(--radius-xl)-1px)] before:shadow-[0_1px_--theme(--color-black/6%)] dark:before:shadow-[0_-1px_--theme(--color-white/8%)]",
 				containerClassName,
 			)}
 		>
@@ -94,7 +94,7 @@ function TableRow({ className, ...props }: React.ComponentProps<"tr">) {
 		<tr
 			data-slot="table-row"
 			className={cn(
-				"in-data-[slot=table-body]:hover:bg-muted/50 aria-selected:bg-muted data-[state=selected]:bg-muted border-b",
+				"in-data-[slot=table-body]:hover:bg-muted/50 aria-selected:bg-muted border-b",
 				className,
 			)}
 			{...props}

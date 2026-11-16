@@ -27,7 +27,7 @@ function ButtonGroup({
 				data-slot="button-group"
 				data-orientation={orientation}
 				className={cn(
-					"flex w-fit items-stretch *:focus-visible:z-1 *:has-focus-visible:z-1 has-[>[data-slot=button-group]]:gap-2 *:aria-invalid:z-1 *:data-[slot=select-trigger]:shrink-0 [&>button]:active:inset-shadow-sm motion-safe:[&>button:not([data-variant=link]):not([aria-haspopup=menu]):not([aria-haspopup=listbox]):not([role=combobox])]:active:scale-100 *:[[data-slot]~[data-slot=input]]:focus-visible:[clip-path:none] *:[[data-slot]~[data-slot=input]]:aria-invalid:[clip-path:none]",
+					"flex w-fit *:focus-visible:z-1 *:has-focus-visible:z-1 has-[>[data-slot=button-group]]:gap-2 *:aria-invalid:z-1 *:data-[slot=select-trigger]:shrink-0 [&>button]:active:inset-shadow-sm motion-safe:[&>button:not([data-variant=link]):not([aria-haspopup=menu]):not([aria-haspopup=listbox]):not([role=combobox])]:active:scale-100 *:[[data-slot]~[data-slot=input]]:focus-visible:[clip-path:none] *:[[data-slot]~[data-slot=input]]:aria-invalid:[clip-path:none]",
 					orientation === "vertical"
 						? "flex-col *:data-slot:has-[~[data-slot]]:rounded-b-none *:data-slot:has-[~[data-slot]]:before:rounded-b-none not-dark:*:data-slot:has-[~[data-slot]]:before:hidden [&>button]:any-pointer-coarse:after:min-h-0 *:[[data-slot]~[data-slot=input]]:-mt-px *:[[data-slot]~[data-slot=input]]:[clip-path:inset(1px_-3px_-3px_-3px)] *:[[data-slot]~[data-slot]]:rounded-t-none *:[[data-slot]~[data-slot]]:border-t-0 *:[[data-slot]~[data-slot]]:before:rounded-t-none dark:*:[[data-slot]~[data-slot]]:before:hidden"
 						: "*:data-slot:has-[~[data-slot]]:rounded-e-none *:data-slot:has-[~[data-slot]]:before:rounded-e-none [&>button]:any-pointer-coarse:after:min-w-0 *:[[data-slot]~[data-slot=input]]:-ms-px *:[[data-slot]~[data-slot=input]]:[clip-path:inset(-3px_-3px_-3px_1px)] rtl:*:[[data-slot]~[data-slot=input]]:[clip-path:inset(-3px_1px_-3px_-3px)] *:[[data-slot]~[data-slot]]:rounded-s-none *:[[data-slot]~[data-slot]]:border-s-0 *:[[data-slot]~[data-slot]]:before:rounded-s-none",
@@ -49,7 +49,7 @@ function ButtonGroupText({
 		props: mergeProps<"div">(
 			{
 				className: cn(
-					"border-border bg-muted text-foreground relative flex items-center gap-2 rounded-lg border px-2.5 text-sm font-medium whitespace-nowrap shadow-xs not-dark:bg-clip-padding before:pointer-events-none before:absolute before:inset-0 before:rounded-[calc(var(--radius-lg)-1px)] before:shadow-[0_1px_--theme(--color-black/6%)] dark:bg-clip-border dark:before:shadow-[0_-1px_--theme(--color-white/8%)] any-pointer-coarse:text-base [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
+					"bg-muted text-foreground relative flex items-center gap-2 rounded-lg border px-2.5 text-sm font-medium whitespace-nowrap shadow-xs not-dark:bg-clip-padding before:pointer-events-none before:absolute before:inset-0 before:rounded-[calc(var(--radius-lg)-1px)] before:shadow-[0_1px_--theme(--color-black/6%)] dark:before:shadow-[0_-1px_--theme(--color-white/8%)] any-pointer-coarse:text-base [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
 					className,
 				),
 			},

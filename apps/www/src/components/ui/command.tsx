@@ -114,7 +114,7 @@ function CommandList({
 			<AutocompleteList
 				data-slot="command-list"
 				className={cn(
-					"flex-none overflow-y-visible",
+					"overflow-y-visible",
 					scrollbarGutter && "not-empty:in-data-has-overflow-y:pe-0",
 				)}
 				{...props}
@@ -185,7 +185,7 @@ function CommandShortcut({
 		<kbd
 			data-slot="command-shortcut"
 			className={cn(
-				"text-muted-foreground ms-auto inline-flex items-center gap-1 ps-4 font-sans text-xs tracking-widest",
+				"text-muted-foreground ms-auto inline-flex items-center ps-4 font-sans text-xs tracking-widest",
 				className,
 			)}
 			{...props}
