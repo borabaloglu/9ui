@@ -37,7 +37,7 @@ export default function MenubarLinkDemo() {
 						rel="noreferrer"
 					>
 						GitHub
-						<ExternalLinkIcon className="ml-auto" />
+						<ExternalLinkIcon className="ms-auto" />
 					</MenubarLinkItem>
 				</MenubarPopup>
 			</MenubarMenu>

@@ -233,3 +233,13 @@ Set `open` and `onOpenChange` on `SidebarProvider` to control the sidebar yourse
 	name="sidebar-controlled-demo"
 	previewClassName="h-100 items-stretch overflow-hidden p-0 contain-layout **:data-[slot=sidebar-wrapper]:min-h-0"
 />
+
+### RTL
+
+To show the sidebar right to left, set `dir="rtl"` on `html` and wrap your app in `DirectionProvider`. See [RTL](/docs/getting-started/rtl). `side` is the screen edge in both directions, so to put the sidebar at the start, set `side="right"`.
+
+<ComponentPreview
+	name="sidebar-rtl-demo"
+	direction="rtl"
+	previewClassName="h-140 items-stretch overflow-hidden p-0 contain-layout **:data-[slot=sidebar-wrapper]:min-h-0"
+/>

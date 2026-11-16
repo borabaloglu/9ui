@@ -176,7 +176,9 @@
 	--color-chart-4: var(--chart-4);
 	--color-chart-5: var(--chart-5);
 	--animate-skeleton: skeleton 2s -1s infinite linear;
-	--font-sans: var(--font-inter);
+	--font-sans:
+		"Inter", "Noto Sans Arabic", "Noto Sans Hebrew", "Inter Fallback",
+		ui-sans-serif, system-ui, sans-serif;
 	--font-mono: var(--font-geist-mono);
 
 	@keyframes skeleton {

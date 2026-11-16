@@ -1,6 +1,7 @@
 "use client";
 
 import * as React from "react";
+import { useDirection } from "@base-ui/react/direction-provider";
 import {
 	ChevronDownIcon,
 	ChevronLeftIcon,
@@ -12,6 +13,7 @@ import {
 	type DayButtonProps,
 	DayPicker,
 	type RootProps,
+	useDayPicker,
 } from "react-day-picker";
 
 import { type ButtonProps, buttonVariants } from "@/components/ui/button";
@@ -30,8 +32,10 @@ function Calendar({
 	buttonVariant = "ghost",
 	formatters,
 	components,
+	dir,
 	...props
 }: CalendarProps) {
+	const direction = useDirection();
 	const navButtonClassName = cn(
 		buttonVariants({ variant: buttonVariant, size: "icon" }),
 		"size-(--cell-size) aria-disabled:pointer-events-none aria-disabled:opacity-50 any-pointer-coarse:size-(--cell-size)",
@@ -58,7 +62,7 @@ function Calendar({
 		month_grid: "w-full border-collapse",
 		weekdays: "flex",
 		weekday:
-			"text-muted-foreground w-(--cell-size) text-xs font-normal select-none",
+			"text-muted-foreground flex w-(--cell-size) justify-center text-xs font-normal select-none",
 		week: "mt-1.5 flex w-full",
 		week_number_header: "w-(--cell-size) select-none any-pointer-coarse:w-6",
 		week_number:
@@ -96,6 +100,7 @@ function Calendar({
 				DayButton: CalendarDayButton,
 				...components,
 			}}
+			dir={dir ?? (direction === "rtl" ? "rtl" : undefined)}
 			{...props}
 		/>
 	);
@@ -112,11 +117,16 @@ function CalendarChevron({
 	disabled: _disabled,
 	...props
 }: ChevronProps) {
+	const { dayPickerProps } = useDayPicker();
+	const mirror =
+		!(dayPickerProps.navLayout === "around" && dayPickerProps.dir === "rtl") &&
+		"rtl:rotate-180";
+
 	if (orientation === "left") {
 		return (
 			<ChevronLeftIcon
 				aria-hidden="true"
-				className={cn("rtl:rotate-180", className)}
+				className={cn(mirror, className)}
 				{...props}
 			/>
 		);
@@ -126,7 +136,7 @@ function CalendarChevron({
 		return (
 			<ChevronRightIcon
 				aria-hidden="true"
-				className={cn("rtl:rotate-180", className)}
+				className={cn(mirror, className)}
 				{...props}
 			/>
 		);

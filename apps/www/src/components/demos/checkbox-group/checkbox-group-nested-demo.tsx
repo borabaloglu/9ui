@@ -55,7 +55,7 @@ export default function CheckboxGroupNestedDemo() {
 			{workspacePermissions.map((permission) => (
 				<Label
 					key={permission.value}
-					className="ml-6 font-normal any-pointer-coarse:ml-7"
+					className="ms-6 font-normal any-pointer-coarse:ms-7"
 				>
 					<Checkbox value={permission.value} />
 					{permission.label}
@@ -77,7 +77,7 @@ export default function CheckboxGroupNestedDemo() {
 					setUsersValue(value);
 				}}
 				allValues={userValues}
-				className="ml-6 any-pointer-coarse:ml-7"
+				className="ms-6 any-pointer-coarse:ms-7"
 			>
 				<Label id={usersId} className="font-normal">
 					<Checkbox parent />
@@ -86,7 +86,7 @@ export default function CheckboxGroupNestedDemo() {
 				{userPermissions.map((permission) => (
 					<Label
 						key={permission.value}
-						className="ml-6 font-normal any-pointer-coarse:ml-7"
+						className="ms-6 font-normal any-pointer-coarse:ms-7"
 					>
 						<Checkbox value={permission.value} />
 						{permission.label}

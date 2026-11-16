@@ -118,6 +118,14 @@ Use `isValidPhoneNumber` to check the value when the form is submitted.
 
 <ComponentPreview name="phone-input-form-demo" />
 
+### RTL
+
+To show the phone input right to left, set `dir="rtl"` on `html` and wrap your app in `DirectionProvider`. See [RTL](/docs/getting-started/rtl).
+
+To set the direction on one phone input, set `dir` on `PhoneInput`. The country popup uses it too.
+
+<ComponentPreview name="phone-input-rtl-demo" direction="rtl" />
+
 ## Form Integration
 
 See the form guides for [Base UI Form](/docs/forms/base-ui#phone-input), [React Hook Form](/docs/forms/react-hook-form#phone-input) and [TanStack Form](/docs/forms/tanstack-form#phone-input).

@@ -154,6 +154,7 @@ function AvatarGroup({
 
 function AvatarGroupOverflow({
 	className,
+	children,
 	...props
 }: React.ComponentProps<"div">) {
 	return (
@@ -167,7 +168,9 @@ function AvatarGroupOverflow({
 				className,
 			)}
 			{...props}
-		/>
+		>
+			<span dir="ltr">{children}</span>
+		</div>
 	);
 }
 

@@ -44,6 +44,8 @@ type PhoneInputProps = Omit<
 	};
 
 function PhoneInput({
+	className,
+	dir,
 	onChange,
 	value,
 	searchPlaceholder = "Search countries",
@@ -54,10 +56,14 @@ function PhoneInput({
 
 	return (
 		<BasePhoneInput.default
+			className={cn(
+				"rtl:[&>input]:text-end rtl:has-[>[data-align=inline-start]]:[&>input]:pr-1.5 rtl:has-[>[data-align=inline-start]]:[&>input]:pl-2.5",
+				className,
+			)}
 			containerComponent={InputGroup}
-			containerComponentProps={{ ref: anchor }}
+			containerComponentProps={{ ref: anchor, dir }}
 			countrySelectComponent={PhoneInputCountrySelect}
-			countrySelectProps={{ anchor, searchPlaceholder, emptyMessage }}
+			countrySelectProps={{ anchor, dir, searchPlaceholder, emptyMessage }}
 			inputComponent={InputGroupInput}
 			smartCaret={false}
 			value={value || undefined}
@@ -80,6 +86,7 @@ type PhoneInputCountrySelectProps = {
 	options: PhoneInputCountry[];
 	onChange: (country: BasePhoneInput.Country) => void;
 	anchor: React.RefObject<HTMLDivElement | null>;
+	dir?: string;
 	searchPlaceholder: string;
 	emptyMessage: string;
 };
@@ -92,6 +99,7 @@ function PhoneInputCountrySelect({
 	options,
 	onChange,
 	anchor,
+	dir,
 	searchPlaceholder,
 	emptyMessage,
 }: PhoneInputCountrySelectProps) {
@@ -124,6 +132,7 @@ function PhoneInputCountrySelect({
 				<ComboboxPopup
 					anchor={anchor}
 					aria-label={ariaLabel}
+					dir={dir}
 					className="w-(--anchor-width) min-w-64"
 					finalFocus={() => !anchor.current?.contains(document.activeElement)}
 				>
@@ -141,7 +150,10 @@ function PhoneInputCountrySelect({
 								<PhoneInputFlag country={country.value} />
 								<span className="flex-1 truncate">{country.label}</span>
 								{country.value && (
-									<span className="text-muted-foreground tabular-nums">
+									<span
+										dir="ltr"
+										className="text-muted-foreground tabular-nums"
+									>
 										+{BasePhoneInput.getCountryCallingCode(country.value)}
 									</span>
 								)}

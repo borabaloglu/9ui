@@ -40,7 +40,7 @@ function TabsList({
 			data-size={size}
 			className={cn(
 				"group/tabs-list text-muted-foreground relative z-0 inline-flex w-fit shrink-0 [scrollbar-width:none] items-center justify-center gap-0.5 data-[orientation=horizontal]:h-(--tabs-height) data-[orientation=horizontal]:max-w-full data-[orientation=horizontal]:justify-start data-[orientation=horizontal]:overflow-x-auto data-[orientation=vertical]:flex-col data-[orientation=vertical]:items-stretch data-[orientation=vertical]:self-start",
-				"animate-[tabs-fade-start_linear_both,tabs-fade-end_linear_both] [mask-image:linear-gradient(to_right,transparent,black_--spacing(6)),linear-gradient(to_left,transparent,black_--spacing(6))] [mask-composite:intersect] [mask-size:calc(100%+--spacing(6))_100%] [mask-position:calc(--spacing(6)*-1)_0,0_0] [mask-repeat:no-repeat] [animation-range:0_--spacing(6),calc(100%-(--spacing(6)))_100%] [animation-timeline:scroll(self_inline)]",
+				"animate-[tabs-fade-start_linear_both,tabs-fade-end_linear_both] [mask-image:linear-gradient(to_right,transparent,black_--spacing(6)),linear-gradient(to_left,transparent,black_--spacing(6))] [mask-composite:intersect] [mask-size:calc(100%+--spacing(6))_100%] [mask-position:calc(--spacing(6)*-1)_0,0_0] [mask-repeat:no-repeat] [animation-range:0_--spacing(6),calc(100%-(--spacing(6)))_100%] [animation-timeline:scroll(self_inline)] rtl:[animation-direction:reverse] rtl:[animation-range:calc(100%-(--spacing(6)))_100%,0_--spacing(6)]",
 				size === "sm" &&
 					"[--tabs-height:--spacing(7)] any-pointer-coarse:[--tabs-height:--spacing(8)]",
 				size === "default" &&
@@ -62,7 +62,7 @@ function TabsList({
 					"ease-out-quint absolute top-0 left-0 transition-[translate,width,height] duration-200 motion-reduce:transition-none",
 					variant === "default"
 						? "bg-input dark:bg-accent -z-1 h-(--active-tab-height) w-(--active-tab-width) translate-x-(--active-tab-left) translate-y-(--active-tab-top) rounded-md shadow-xs dark:shadow-none"
-						: "bg-foreground rounded-full data-[orientation=horizontal]:top-auto data-[orientation=horizontal]:bottom-0 data-[orientation=horizontal]:h-0.5 data-[orientation=horizontal]:w-(--active-tab-width) data-[orientation=horizontal]:translate-x-(--active-tab-left) data-[orientation=vertical]:h-(--active-tab-height) data-[orientation=vertical]:w-0.5 data-[orientation=vertical]:translate-y-(--active-tab-top)",
+						: "bg-foreground rounded-full data-[orientation=horizontal]:top-auto data-[orientation=horizontal]:bottom-0 data-[orientation=horizontal]:h-0.5 data-[orientation=horizontal]:w-(--active-tab-width) data-[orientation=horizontal]:translate-x-(--active-tab-left) data-[orientation=vertical]:h-(--active-tab-height) data-[orientation=vertical]:w-0.5 data-[orientation=vertical]:translate-y-(--active-tab-top) rtl:data-[orientation=vertical]:right-0 rtl:data-[orientation=vertical]:left-auto",
 				)}
 			/>
 		</BaseTabs.List>

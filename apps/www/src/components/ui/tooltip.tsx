@@ -57,6 +57,7 @@ function TooltipPopup({
 	side = "top",
 	sideOffset = arrow ? 10 : 4,
 	anchor,
+	dir,
 	...props
 }: Omit<BaseTooltip.Popup.Props, "className"> &
 	Pick<
@@ -76,6 +77,7 @@ function TooltipPopup({
 				side={side}
 				sideOffset={sideOffset}
 				anchor={anchor}
+				dir={dir}
 			>
 				<BaseTooltip.Popup
 					data-slot="tooltip-popup"

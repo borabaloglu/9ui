@@ -17,8 +17,8 @@ export default function SliderMarksDemo() {
 				{marks.map((mark) => (
 					<span
 						key={mark}
-						className="text-muted-foreground absolute -translate-x-1/2 text-xs tabular-nums"
-						style={{ left: `${mark}%` }}
+						className="text-muted-foreground absolute -translate-x-1/2 text-xs tabular-nums rtl:translate-x-1/2"
+						style={{ insetInlineStart: `${mark}%` }}
 					>
 						{mark}
 					</span>

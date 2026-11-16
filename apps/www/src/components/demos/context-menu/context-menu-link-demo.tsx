@@ -31,7 +31,7 @@ export default function ContextMenuLinkDemo() {
 					rel="noreferrer"
 				>
 					GitHub
-					<ExternalLinkIcon className="ml-auto" />
+					<ExternalLinkIcon className="ms-auto" />
 				</ContextMenuLinkItem>
 			</ContextMenuPopup>
 		</ContextMenu>

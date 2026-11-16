@@ -67,7 +67,7 @@ export default function CommandDemo() {
 										<item.icon />
 										{item.label}
 										{item.count && (
-											<Badge size="sm" variant="secondary" className="ml-auto">
+											<Badge size="sm" variant="secondary" className="ms-auto">
 												{item.count}
 											</Badge>
 										)}

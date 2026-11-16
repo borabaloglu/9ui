@@ -108,3 +108,13 @@ To add emojis to a text input, use an `InputGroup` and pass its ref to `anchor` 
 To translate the emoji names and categories, set `locale` on `EmojiPicker`.
 
 <ComponentPreview name="emoji-picker-locale-demo" />
+
+---
+
+### RTL
+
+To show the emoji picker right to left, set `dir="rtl"` on `html` and wrap your app in `DirectionProvider`. See [RTL](/docs/getting-started/rtl).
+
+Emoji and category names stay in English in Arabic and Hebrew, and arrow keys are not mirrored. Both come from frimousse.
+
+<ComponentPreview name="emoji-picker-rtl-demo" direction="rtl" />

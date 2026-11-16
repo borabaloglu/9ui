@@ -57,12 +57,13 @@ function CommandDialog({
 	className,
 	showAtBottomOnMobile = false,
 	showCloseButton = false,
+	dir,
 	children,
 	...props
 }: Omit<React.ComponentProps<typeof Dialog>, "children"> &
 	Pick<
 		React.ComponentProps<typeof DialogPopup>,
-		"showAtBottomOnMobile" | "showCloseButton"
+		"showAtBottomOnMobile" | "showCloseButton" | "dir"
 	> & {
 		title?: string;
 		description?: string;
@@ -80,6 +81,7 @@ function CommandDialog({
 				)}
 				showAtBottomOnMobile={showAtBottomOnMobile}
 				showCloseButton={showCloseButton}
+				dir={dir}
 			>
 				<DialogHeader className="sr-only">
 					<DialogTitle>{title}</DialogTitle>
@@ -174,16 +176,22 @@ function CommandSeparator({
 	return <AutocompleteSeparator data-slot="command-separator" {...props} />;
 }
 
-function CommandShortcut({ className, ...props }: React.ComponentProps<"kbd">) {
+function CommandShortcut({
+	className,
+	children,
+	...props
+}: React.ComponentProps<"kbd">) {
 	return (
 		<kbd
 			data-slot="command-shortcut"
 			className={cn(
-				"text-muted-foreground ml-auto inline-flex items-center gap-1 pl-4 font-sans text-xs tracking-widest",
+				"text-muted-foreground ms-auto inline-flex items-center gap-1 ps-4 font-sans text-xs tracking-widest",
 				className,
 			)}
 			{...props}
-		/>
+		>
+			<span dir="ltr">{children}</span>
+		</kbd>
 	);
 }
 

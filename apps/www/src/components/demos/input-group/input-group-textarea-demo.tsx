@@ -22,7 +22,7 @@ export default function InputGroupTextareaDemo() {
 				<InputGroupButton size="icon-xs" aria-label="Mention someone">
 					<AtSignIcon />
 				</InputGroupButton>
-				<InputGroupButton variant="default" className="ml-auto">
+				<InputGroupButton variant="default" className="ms-auto">
 					Comment
 				</InputGroupButton>
 			</InputGroupAddon>

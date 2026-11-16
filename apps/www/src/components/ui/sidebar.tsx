@@ -41,6 +41,8 @@ type SidebarContextValue = {
 
 const SidebarContext = React.createContext<SidebarContextValue | null>(null);
 
+const SidebarSideContext = React.createContext<"left" | "right">("left");
+
 function useSidebar() {
 	const context = React.useContext(SidebarContext);
 
@@ -222,7 +224,7 @@ function Sidebar({
 			data-collapsible={state === "collapsed" ? collapsible : undefined}
 			data-variant={variant}
 			data-side={side}
-			className="group/sidebar peer/sidebar text-card-foreground hidden md:block"
+			className="group/sidebar peer/sidebar text-card-foreground hidden md:block rtl:data-[side=left]:order-last rtl:data-[side=right]:order-first"
 		>
 			<div
 				data-slot="sidebar-gap"
@@ -250,7 +252,9 @@ function Sidebar({
 					data-slot="sidebar-inner"
 					className="bg-card flex size-full flex-col transition-[visibility] duration-200 group-data-instant/sidebar-wrapper:transition-none group-data-[collapsible=offcanvas]/sidebar:invisible group-data-[variant=floating]/sidebar:rounded-xl group-data-[variant=floating]/sidebar:border group-data-[variant=floating]/sidebar:shadow-sm motion-reduce:transition-none"
 				>
-					{children}
+					<SidebarSideContext.Provider value={side}>
+						{children}
+					</SidebarSideContext.Provider>
 				</div>
 			</div>
 		</div>
@@ -311,7 +315,7 @@ function SidebarInset({ className, ...props }: React.ComponentProps<"main">) {
 		<main
 			data-slot="sidebar-inset"
 			className={cn(
-				"bg-background ease-out-quint relative flex w-full min-w-0 flex-1 flex-col transition-[margin] duration-200 group-data-instant/sidebar-wrapper:transition-none motion-reduce:transition-none md:group-has-[[data-slot=sidebar][data-variant=inset]]/sidebar-wrapper:m-2 md:group-has-[[data-slot=sidebar][data-variant=inset]]/sidebar-wrapper:rounded-xl md:group-has-[[data-slot=sidebar][data-variant=inset]]/sidebar-wrapper:border md:group-has-[[data-slot=sidebar][data-variant=inset]]/sidebar-wrapper:shadow-xs md:group-has-[[data-slot=sidebar][data-variant=inset][data-side=left]]/sidebar-wrapper:ms-0 md:group-has-[[data-slot=sidebar][data-variant=inset][data-side=left][data-state=collapsed]]/sidebar-wrapper:ms-2 md:group-has-[[data-slot=sidebar][data-variant=inset][data-side=right]]/sidebar-wrapper:me-0 md:group-has-[[data-slot=sidebar][data-variant=inset][data-side=right][data-state=collapsed]]/sidebar-wrapper:me-2",
+				"bg-background ease-out-quint relative flex w-full min-w-0 flex-1 flex-col transition-[margin] duration-200 group-data-instant/sidebar-wrapper:transition-none motion-reduce:transition-none md:group-has-[[data-slot=sidebar][data-variant=inset]]/sidebar-wrapper:m-2 md:group-has-[[data-slot=sidebar][data-variant=inset]]/sidebar-wrapper:rounded-xl md:group-has-[[data-slot=sidebar][data-variant=inset]]/sidebar-wrapper:border md:group-has-[[data-slot=sidebar][data-variant=inset]]/sidebar-wrapper:shadow-xs md:group-has-[[data-slot=sidebar][data-variant=inset][data-side=left]]/sidebar-wrapper:ml-0 md:group-has-[[data-slot=sidebar][data-variant=inset][data-side=left][data-state=collapsed]]/sidebar-wrapper:ml-2 md:group-has-[[data-slot=sidebar][data-variant=inset][data-side=right]]/sidebar-wrapper:mr-0 md:group-has-[[data-slot=sidebar][data-variant=inset][data-side=right][data-state=collapsed]]/sidebar-wrapper:mr-2",
 				className,
 			)}
 			{...props}
@@ -491,6 +495,7 @@ function SidebarMenuButton({
 		tooltip?: string | React.ComponentProps<typeof TooltipPopup>;
 	}) {
 	const { isMobile, state } = useSidebar();
+	const sidebarSide = React.useContext(SidebarSideContext);
 
 	const button = useRender({
 		defaultTagName: "button",
@@ -517,7 +522,10 @@ function SidebarMenuButton({
 	return (
 		<Tooltip disabled={state !== "collapsed" || isMobile}>
 			<TooltipTrigger render={button} />
-			<TooltipPopup side="right" {...tooltipProps} />
+			<TooltipPopup
+				side={sidebarSide === "left" ? "right" : "left"}
+				{...tooltipProps}
+			/>
 		</Tooltip>
 	);
 }

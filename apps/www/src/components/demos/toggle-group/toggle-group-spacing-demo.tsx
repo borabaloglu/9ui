@@ -11,16 +11,16 @@ export default function ToggleGroupSpacingDemo() {
 		<ToggleGroup
 			variant="outline"
 			spacing={1}
-			defaultValue={["left"]}
+			defaultValue={["start"]}
 			aria-label="Text alignment"
 		>
-			<ToggleGroupItem value="left" aria-label="Align left">
+			<ToggleGroupItem value="start" aria-label="Align start">
 				<TextAlignStartIcon />
 			</ToggleGroupItem>
 			<ToggleGroupItem value="center" aria-label="Align center">
 				<TextAlignCenterIcon />
 			</ToggleGroupItem>
-			<ToggleGroupItem value="right" aria-label="Align right">
+			<ToggleGroupItem value="end" aria-label="Align end">
 				<TextAlignEndIcon />
 			</ToggleGroupItem>
 		</ToggleGroup>

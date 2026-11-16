@@ -23,7 +23,7 @@ export default function DialogScrollableContentDemo() {
 						Read the agreement, then accept to continue.
 					</DialogDescription>
 				</DialogHeader>
-				<div className="-mr-4 max-h-80 min-h-0 overflow-y-auto overscroll-none pr-4">
+				<div className="-me-4 max-h-80 min-h-0 overflow-y-auto overscroll-none pe-4">
 					<p className="font-medium">1. Services</p>
 					<p className="text-muted-foreground mt-1">
 						We provide the platform as described in your order. Features may

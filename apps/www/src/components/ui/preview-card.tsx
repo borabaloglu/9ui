@@ -68,6 +68,7 @@ function PreviewCardPopup({
 	side = "bottom",
 	sideOffset = arrow ? 10 : 4,
 	anchor,
+	dir,
 	...props
 }: Omit<BasePreviewCard.Popup.Props, "className"> &
 	Pick<
@@ -87,6 +88,7 @@ function PreviewCardPopup({
 				side={side}
 				sideOffset={sideOffset}
 				anchor={anchor}
+				dir={dir}
 			>
 				<BasePreviewCard.Popup
 					data-slot="preview-card-popup"

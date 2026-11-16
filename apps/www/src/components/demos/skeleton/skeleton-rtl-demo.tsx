@@ -1,0 +1,39 @@
+"use client";
+
+import {
+	type Translations,
+	useTranslation,
+} from "@/components/language-selector";
+import { Card, CardContent } from "@/components/ui/card";
+import { Skeleton } from "@/components/ui/skeleton";
+
+const translations = {
+	en: { loading: "Loading" },
+	ar: { loading: "جارٍ التحميل" },
+	he: { loading: "טוען" },
+} satisfies Translations<Record<string, string>>;
+
+export default function SkeletonRtlDemo() {
+	const { t } = useTranslation(translations);
+
+	return (
+		<Card className="w-full max-w-72" aria-busy="true" aria-label={t.loading}>
+			<CardContent className="flex flex-col gap-4">
+				<Skeleton className="aspect-video w-full rounded-lg" />
+				<div className="flex items-center gap-3">
+					<Skeleton className="size-8 shrink-0 rounded-full" />
+					<div className="flex flex-1 flex-col gap-1.5">
+						<Skeleton className="h-3.5 w-24" />
+						<Skeleton className="h-3 w-16" />
+					</div>
+				</div>
+				<div className="flex flex-col gap-2">
+					<Skeleton className="h-3.5 w-full" />
+					<Skeleton className="h-3.5 w-full" />
+					<Skeleton className="h-3.5 w-3/4" />
+				</div>
+				<Skeleton className="h-8 w-full rounded-lg" />
+			</CardContent>
+		</Card>
+	);
+}

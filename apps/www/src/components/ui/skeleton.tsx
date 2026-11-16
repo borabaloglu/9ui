@@ -7,7 +7,7 @@ function Skeleton({ className, ...props }: React.ComponentProps<"div">) {
 		<div
 			data-slot="skeleton"
 			className={cn(
-				"animate-skeleton bg-muted rounded-sm bg-[linear-gradient(120deg,transparent_40%,var(--skeleton-highlight),transparent_60%)] bg-size-[200%_100%] bg-fixed [--skeleton-highlight:--alpha(var(--color-white)/64%)] motion-reduce:animate-none motion-reduce:bg-none dark:[--skeleton-highlight:--alpha(var(--color-white)/6%)]",
+				"animate-skeleton bg-muted rounded-sm bg-[linear-gradient(120deg,transparent_40%,var(--skeleton-highlight),transparent_60%)] bg-size-[200%_100%] bg-fixed [--skeleton-highlight:--alpha(var(--color-white)/64%)] motion-reduce:animate-none motion-reduce:bg-none rtl:[animation-direction:reverse] motion-safe:rtl:bg-[linear-gradient(240deg,transparent_40%,var(--skeleton-highlight),transparent_60%)] dark:[--skeleton-highlight:--alpha(var(--color-white)/6%)]",
 				className,
 			)}
 			{...props}

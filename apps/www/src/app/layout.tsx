@@ -1,5 +1,10 @@
 import type { Metadata } from "next";
-import { Geist_Mono, Inter } from "next/font/google";
+import {
+	Geist_Mono,
+	Inter,
+	Noto_Sans_Arabic,
+	Noto_Sans_Hebrew,
+} from "next/font/google";
 
 import "./globals.css";
 import "./syntax.css";
@@ -8,7 +13,7 @@ import { ThemeProvider } from "next-themes";
 
 import { DisableAutofill } from "@/components/disable-autofill";
 import { Openpanel } from "@/components/openpanel";
-import { Toaster } from "@/components/ui/sonner";
+import { SiteToaster } from "@/components/site-toaster";
 import { ToastProvider } from "@/components/ui/toast";
 import { TooltipProvider } from "@/components/ui/tooltip";
 
@@ -20,6 +25,20 @@ const inter = Inter({
 	subsets: ["latin"],
 	display: "swap",
 	variable: "--font-inter",
+});
+
+const notoSansArabic = Noto_Sans_Arabic({
+	subsets: ["arabic"],
+	display: "swap",
+	preload: false,
+	variable: "--font-noto-sans-arabic",
+});
+
+const notoSansHebrew = Noto_Sans_Hebrew({
+	subsets: ["hebrew"],
+	display: "swap",
+	preload: false,
+	variable: "--font-noto-sans-hebrew",
 });
 
 const geistMono = Geist_Mono({
@@ -73,7 +92,7 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => (
 	<html lang="en" suppressHydrationWarning>
 		<body
 			className={cn(
-				`${inter.variable} ${geistMono.variable}`,
+				`${inter.variable} ${notoSansArabic.variable} ${notoSansHebrew.variable} ${geistMono.variable}`,
 				"font-sans antialiased",
 			)}
 		>
@@ -91,7 +110,7 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => (
 						<div className="root flex flex-1 flex-col">{children}</div>
 					</TooltipProvider>
 				</ToastProvider>
-				<Toaster />
+				<SiteToaster />
 			</ThemeProvider>
 		</body>
 	</html>

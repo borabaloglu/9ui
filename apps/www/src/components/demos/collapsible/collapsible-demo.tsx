@@ -11,7 +11,7 @@ export default function CollapsibleDemo() {
 		<Collapsible className="mx-auto w-48">
 			<CollapsibleTrigger className="flex min-h-7 w-full items-center justify-between gap-2 text-sm font-medium any-pointer-coarse:min-h-9">
 				Show recovery keys
-				<ChevronRightIcon className="text-muted-foreground ease-out-quint size-4 shrink-0 transition-[rotate] duration-150 in-data-panel-open:rotate-90 in-data-panel-open:duration-200 motion-reduce:transition-none" />
+				<ChevronRightIcon className="text-muted-foreground ease-out-quint size-4 shrink-0 transition-[rotate] duration-150 in-data-panel-open:rotate-90 in-data-panel-open:duration-200 motion-reduce:transition-none rtl:not-in-data-panel-open:rotate-180" />
 			</CollapsibleTrigger>
 			<CollapsiblePanel>
 				<ol className="flex flex-col gap-1.5 pt-2 font-mono text-sm">

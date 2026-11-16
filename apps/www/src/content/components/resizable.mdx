@@ -73,3 +73,11 @@ Set `orientation` to `vertical` to stack the panels.
 Set `withHandle` on `ResizableHandle` to show a grip.
 
 <ComponentPreview name="resizable-handle-demo" />
+
+### RTL
+
+To show the resizable right to left, set `dir="rtl"` on `html` and wrap your app in `DirectionProvider`. See [RTL](/docs/getting-started/rtl).
+
+In right to left, the handle's `aria-valuenow` and `aria-controls` describe the panel after the handle. This comes from react-resizable-panels.
+
+<ComponentPreview name="resizable-rtl-demo" direction="rtl" />

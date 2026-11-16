@@ -11,10 +11,16 @@ import { cn } from "@/lib/utils";
 interface PreviewCodeProps {
 	label: string;
 	content: string;
+	note?: React.ReactNode;
 	children: React.ReactNode;
 }
 
-export const PreviewCode = ({ label, content, children }: PreviewCodeProps) => {
+export const PreviewCode = ({
+	label,
+	content,
+	note,
+	children,
+}: PreviewCodeProps) => {
 	const [open, setOpen] = React.useState(false);
 	const contentId = React.useId();
 
@@ -46,6 +52,7 @@ export const PreviewCode = ({ label, content, children }: PreviewCodeProps) => {
 			</CodeBar>
 
 			<div id={contentId} hidden={!open} className="[&_pre]:!max-h-[400px]">
+				{note}
 				{children}
 			</div>
 		</div>

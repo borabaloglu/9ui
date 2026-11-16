@@ -109,7 +109,7 @@ export default function CommandDialogDemo() {
 							Select
 							<Kbd>↵</Kbd>
 						</span>
-						<span className="ml-auto flex items-center gap-2">
+						<span className="ms-auto flex items-center gap-2">
 							Close
 							<Kbd>Esc</Kbd>
 						</span>

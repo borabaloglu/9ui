@@ -12,7 +12,7 @@ export default function KbdWithinTooltipDemo() {
 			>
 				<SaveIcon />
 			</TooltipTrigger>
-			<TooltipPopup className="flex items-center gap-2 pr-1">
+			<TooltipPopup className="flex items-center gap-2 pe-1">
 				Save file
 				<KbdGroup>
 					<Kbd>⌘</Kbd>
