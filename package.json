@@ -11,7 +11,9 @@
 		"clean": "turbo clean && rm -rf node_modules",
 		"type-check": "turbo type-check",
 		"check": "turbo check",
-		"lint:ci": "biome ci"
+		"lint:ci": "biome ci",
+		"skills:sync": "node scripts/sync-skills.mjs",
+		"skills:check": "node scripts/sync-skills.mjs --check"
 	},
 	"packageManager": "pnpm@10.26.1",
 	"engines": {

@@ -895,6 +895,69 @@
 					"target": ""
 				}
 			]
+		},
+		{
+			"name": "rulebook",
+			"type": "registry:item",
+			"title": "Rulebook",
+			"description": "The rules every 9ui component follows, for the 9ui skills.",
+			"files": [
+				{
+					"path": "../../.rulebook/README.md",
+					"type": "registry:file",
+					"target": "~/.rulebook/README.md"
+				},
+				{
+					"path": "../../.rulebook/surfaces.md",
+					"type": "registry:file",
+					"target": "~/.rulebook/surfaces.md"
+				},
+				{
+					"path": "../../.rulebook/states.md",
+					"type": "registry:file",
+					"target": "~/.rulebook/states.md"
+				},
+				{
+					"path": "../../.rulebook/sizing.md",
+					"type": "registry:file",
+					"target": "~/.rulebook/sizing.md"
+				},
+				{
+					"path": "../../.rulebook/motion.md",
+					"type": "registry:file",
+					"target": "~/.rulebook/motion.md"
+				},
+				{
+					"path": "../../.rulebook/content.md",
+					"type": "registry:file",
+					"target": "~/.rulebook/content.md"
+				},
+				{
+					"path": "../../.rulebook/rtl.md",
+					"type": "registry:file",
+					"target": "~/.rulebook/rtl.md"
+				},
+				{
+					"path": "../../.rulebook/accessibility.md",
+					"type": "registry:file",
+					"target": "~/.rulebook/accessibility.md"
+				},
+				{
+					"path": "../../.rulebook/code.md",
+					"type": "registry:file",
+					"target": "~/.rulebook/code.md"
+				},
+				{
+					"path": "../../.rulebook/registry.md",
+					"type": "registry:file",
+					"target": "~/.rulebook/registry.md"
+				},
+				{
+					"path": "../../.rulebook/decisions.md",
+					"type": "registry:file",
+					"target": "~/.rulebook/decisions.md"
+				}
+			]
 		}
 	]
 }
