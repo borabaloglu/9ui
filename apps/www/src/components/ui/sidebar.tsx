@@ -26,7 +26,6 @@ const SIDEBAR_COOKIE_NAME = "sidebar_state";
 const SIDEBAR_COOKIE_MAX_AGE = 60 * 60 * 24 * 7;
 const SIDEBAR_WIDTH = "16rem";
 const SIDEBAR_WIDTH_MOBILE = "18rem";
-const SIDEBAR_WIDTH_ICON = "3rem";
 const SIDEBAR_KEYBOARD_SHORTCUT = "b";
 
 type SidebarContextValue = {
@@ -141,12 +140,11 @@ function SidebarProvider({
 				style={
 					{
 						"--sidebar-width": SIDEBAR_WIDTH,
-						"--sidebar-width-icon": SIDEBAR_WIDTH_ICON,
 						...style,
 					} as React.CSSProperties
 				}
 				className={cn(
-					"group/sidebar-wrapper has-[[data-slot=sidebar][data-variant=inset]]:bg-card flex min-h-svh w-full",
+					"group/sidebar-wrapper has-[[data-slot=sidebar][data-variant=inset]]:bg-card flex min-h-svh w-full [--sidebar-width-icon:3rem] any-pointer-coarse:[--sidebar-width-icon:3.25rem]",
 					className,
 				)}
 				{...props}
@@ -460,7 +458,7 @@ function SidebarMenuItem({ className, ...props }: React.ComponentProps<"li">) {
 }
 
 const sidebarMenuButtonVariants = cva(
-	"peer/menu-button hover:bg-accent/50 hover:text-accent-foreground focus-visible:ring-ring/50 active:bg-foreground/10 dark:active:bg-accent data-active:bg-accent data-active:text-accent-foreground data-active:active:bg-foreground/10 dark:data-active:active:bg-foreground/10 data-popup-open:bg-accent data-popup-open:text-accent-foreground data-popup-open:active:bg-foreground/10 dark:data-popup-open:active:bg-foreground/10 ease-out-quint flex w-full cursor-pointer items-center gap-2 overflow-hidden rounded-lg px-2 text-start text-sm transition-[width,height,padding] duration-200 outline-none group-has-data-[sidebar=menu-action]/menu-item:pe-8 group-has-data-[slot=sidebar-menu-badge]/menu-item:pe-8 group-data-instant/sidebar-wrapper:transition-none group-data-[collapsible=icon]/sidebar:size-8 group-data-[collapsible=icon]/sidebar:p-2 focus-visible:ring-3 focus-visible:outline-hidden disabled:pointer-events-none disabled:opacity-50 aria-disabled:pointer-events-none aria-disabled:opacity-50 data-active:font-medium motion-reduce:transition-none [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4 [&>span]:truncate",
+	"peer/menu-button hover:bg-accent/50 hover:text-accent-foreground focus-visible:ring-ring/50 active:bg-foreground/10 dark:active:bg-accent data-active:bg-accent data-active:text-accent-foreground data-active:active:bg-foreground/10 dark:data-active:active:bg-foreground/10 data-popup-open:bg-accent data-popup-open:text-accent-foreground data-popup-open:active:bg-foreground/10 dark:data-popup-open:active:bg-foreground/10 ease-out-quint flex w-full cursor-pointer items-center gap-2 overflow-hidden rounded-lg px-2 text-start text-sm transition-[width,height,padding] duration-200 outline-none group-has-data-[sidebar=menu-action]/menu-item:pe-8 group-has-data-[slot=sidebar-menu-badge]/menu-item:pe-8 group-data-instant/sidebar-wrapper:transition-none group-data-[collapsible=icon]/sidebar:size-8 group-data-[collapsible=icon]/sidebar:p-2 focus-visible:ring-3 focus-visible:outline-hidden disabled:pointer-events-none disabled:opacity-50 aria-disabled:pointer-events-none aria-disabled:opacity-50 data-active:font-medium motion-reduce:transition-none any-pointer-coarse:group-data-[collapsible=icon]/sidebar:size-9 any-pointer-coarse:group-data-[collapsible=icon]/sidebar:not-data-[size=lg]:p-2.5 any-pointer-coarse:group-data-[collapsible=icon]/sidebar:data-[size=lg]:p-0.5 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4 [&>span]:truncate",
 	{
 		variants: {
 			variant: {
