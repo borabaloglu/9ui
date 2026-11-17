@@ -1,7 +1,7 @@
 {
 	"$schema": "https://ui.shadcn.com/schema/registry-item.json",
 	"name": "spinner",
-	"dependencies": [],
+	"dependencies": ["lucide-react"],
 	"registryDependencies": [],
 	"files": [
 		{

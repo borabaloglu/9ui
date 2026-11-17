@@ -1,7 +1,7 @@
 {
 	"$schema": "https://ui.shadcn.com/schema/registry-item.json",
 	"name": "checkbox",
-	"dependencies": [],
+	"dependencies": ["@base-ui/react", "lucide-react"],
 	"registryDependencies": [],
 	"files": [
 		{

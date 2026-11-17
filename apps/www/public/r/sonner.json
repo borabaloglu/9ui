@@ -1,7 +1,7 @@
 {
 	"$schema": "https://ui.shadcn.com/schema/registry-item.json",
 	"name": "sonner",
-	"dependencies": ["sonner"],
+	"dependencies": ["lucide-react", "sonner"],
 	"registryDependencies": ["@9ui/button", "@9ui/spinner"],
 	"files": [
 		{

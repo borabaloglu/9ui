@@ -1,7 +1,11 @@
 {
 	"$schema": "https://ui.shadcn.com/schema/registry-item.json",
 	"name": "sidebar",
-	"dependencies": [],
+	"dependencies": [
+		"@base-ui/react",
+		"class-variance-authority",
+		"lucide-react"
+	],
 	"registryDependencies": [
 		"@9ui/button",
 		"@9ui/separator",

@@ -1,7 +1,7 @@
 {
 	"$schema": "https://ui.shadcn.com/schema/registry-item.json",
 	"name": "toggle-group",
-	"dependencies": [],
+	"dependencies": ["@base-ui/react", "class-variance-authority"],
 	"registryDependencies": ["@9ui/separator", "@9ui/toggle"],
 	"files": [
 		{

@@ -1,7 +1,7 @@
 {
 	"$schema": "https://ui.shadcn.com/schema/registry-item.json",
 	"name": "textarea",
-	"dependencies": [],
+	"dependencies": ["@base-ui/react"],
 	"registryDependencies": [],
 	"files": [
 		{

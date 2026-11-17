@@ -6,7 +6,7 @@
 		{
 			"name": "utils",
 			"type": "registry:lib",
-			"dependencies": ["clsx", "tailwind-merge", "class-variance-authority"],
+			"dependencies": ["clsx", "tailwind-merge"],
 			"files": [
 				{
 					"path": "src/lib/utils.ts",
@@ -17,7 +17,7 @@
 		{
 			"name": "accordion",
 			"type": "registry:ui",
-			"dependencies": [],
+			"dependencies": ["@base-ui/react", "lucide-react"],
 			"registryDependencies": [],
 			"files": [
 				{
@@ -30,7 +30,7 @@
 		{
 			"name": "alert-dialog",
 			"type": "registry:ui",
-			"dependencies": [],
+			"dependencies": ["@base-ui/react"],
 			"registryDependencies": [],
 			"files": [
 				{
@@ -43,7 +43,7 @@
 		{
 			"name": "alert",
 			"type": "registry:ui",
-			"dependencies": [],
+			"dependencies": ["@base-ui/react", "class-variance-authority"],
 			"registryDependencies": [],
 			"files": [
 				{
@@ -69,7 +69,7 @@
 		{
 			"name": "autocomplete",
 			"type": "registry:ui",
-			"dependencies": [],
+			"dependencies": ["@base-ui/react"],
 			"registryDependencies": [],
 			"files": [
 				{
@@ -82,7 +82,7 @@
 		{
 			"name": "avatar",
 			"type": "registry:ui",
-			"dependencies": [],
+			"dependencies": ["@base-ui/react", "class-variance-authority"],
 			"registryDependencies": [],
 			"files": [
 				{
@@ -95,7 +95,7 @@
 		{
 			"name": "badge",
 			"type": "registry:ui",
-			"dependencies": [],
+			"dependencies": ["@base-ui/react", "class-variance-authority"],
 			"registryDependencies": [],
 			"files": [
 				{
@@ -108,7 +108,7 @@
 		{
 			"name": "button",
 			"type": "registry:ui",
-			"dependencies": [],
+			"dependencies": ["@base-ui/react", "class-variance-authority"],
 			"registryDependencies": ["@9ui/spinner"],
 			"files": [
 				{
@@ -121,7 +121,7 @@
 		{
 			"name": "button-group",
 			"type": "registry:ui",
-			"dependencies": [],
+			"dependencies": ["@base-ui/react"],
 			"registryDependencies": ["@9ui/separator"],
 			"files": [
 				{
@@ -134,7 +134,7 @@
 		{
 			"name": "breadcrumb",
 			"type": "registry:ui",
-			"dependencies": [],
+			"dependencies": ["@base-ui/react", "lucide-react"],
 			"registryDependencies": [],
 			"files": [
 				{
@@ -147,7 +147,7 @@
 		{
 			"name": "calendar",
 			"type": "registry:ui",
-			"dependencies": ["react-day-picker"],
+			"dependencies": ["@base-ui/react", "lucide-react", "react-day-picker@^9"],
 			"registryDependencies": ["@9ui/button"],
 			"files": [
 				{
@@ -160,7 +160,7 @@
 		{
 			"name": "card",
 			"type": "registry:ui",
-			"dependencies": [],
+			"dependencies": ["@base-ui/react"],
 			"registryDependencies": [],
 			"files": [
 				{
@@ -173,7 +173,11 @@
 		{
 			"name": "carousel",
 			"type": "registry:ui",
-			"dependencies": ["embla-carousel-react"],
+			"dependencies": [
+				"@base-ui/react",
+				"lucide-react",
+				"embla-carousel-react"
+			],
 			"registryDependencies": ["@9ui/button"],
 			"files": [
 				{
@@ -199,7 +203,7 @@
 		{
 			"name": "checkbox",
 			"type": "registry:ui",
-			"dependencies": [],
+			"dependencies": ["@base-ui/react", "lucide-react"],
 			"registryDependencies": [],
 			"files": [
 				{
@@ -212,7 +216,7 @@
 		{
 			"name": "checkbox-group",
 			"type": "registry:ui",
-			"dependencies": [],
+			"dependencies": ["@base-ui/react"],
 			"registryDependencies": ["@9ui/checkbox"],
 			"files": [
 				{
@@ -225,7 +229,7 @@
 		{
 			"name": "collapsible",
 			"type": "registry:ui",
-			"dependencies": [],
+			"dependencies": ["@base-ui/react"],
 			"registryDependencies": [],
 			"files": [
 				{
@@ -255,7 +259,7 @@
 		{
 			"name": "combobox",
 			"type": "registry:ui",
-			"dependencies": [],
+			"dependencies": ["@base-ui/react", "lucide-react"],
 			"registryDependencies": [],
 			"files": [
 				{
@@ -268,7 +272,7 @@
 		{
 			"name": "context-menu",
 			"type": "registry:ui",
-			"dependencies": [],
+			"dependencies": ["@base-ui/react", "lucide-react"],
 			"registryDependencies": [],
 			"files": [
 				{
@@ -281,7 +285,7 @@
 		{
 			"name": "dialog",
 			"type": "registry:ui",
-			"dependencies": [],
+			"dependencies": ["@base-ui/react", "lucide-react"],
 			"registryDependencies": ["@9ui/button"],
 			"files": [
 				{
@@ -294,7 +298,7 @@
 		{
 			"name": "drawer",
 			"type": "registry:ui",
-			"dependencies": [],
+			"dependencies": ["@base-ui/react"],
 			"registryDependencies": [],
 			"files": [
 				{
@@ -313,7 +317,7 @@
 		{
 			"name": "emoji-picker",
 			"type": "registry:ui",
-			"dependencies": ["frimousse"],
+			"dependencies": ["lucide-react", "frimousse"],
 			"registryDependencies": ["@9ui/input-group", "@9ui/spinner"],
 			"files": [
 				{
@@ -326,7 +330,7 @@
 		{
 			"name": "field",
 			"type": "registry:ui",
-			"dependencies": [],
+			"dependencies": ["@base-ui/react", "class-variance-authority"],
 			"registryDependencies": [],
 			"files": [
 				{
@@ -339,7 +343,7 @@
 		{
 			"name": "fieldset",
 			"type": "registry:ui",
-			"dependencies": [],
+			"dependencies": ["@base-ui/react"],
 			"registryDependencies": [],
 			"files": [
 				{
@@ -352,7 +356,7 @@
 		{
 			"name": "form",
 			"type": "registry:ui",
-			"dependencies": [],
+			"dependencies": ["@base-ui/react"],
 			"registryDependencies": [],
 			"files": [
 				{
@@ -365,7 +369,7 @@
 		{
 			"name": "input",
 			"type": "registry:ui",
-			"dependencies": [],
+			"dependencies": ["@base-ui/react"],
 			"registryDependencies": [],
 			"files": [
 				{
@@ -378,7 +382,7 @@
 		{
 			"name": "input-group",
 			"type": "registry:ui",
-			"dependencies": [],
+			"dependencies": ["class-variance-authority"],
 			"registryDependencies": ["@9ui/button", "@9ui/input", "@9ui/textarea"],
 			"files": [
 				{
@@ -417,7 +421,7 @@
 		{
 			"name": "menu",
 			"type": "registry:ui",
-			"dependencies": [],
+			"dependencies": ["@base-ui/react", "lucide-react"],
 			"registryDependencies": [],
 			"files": [
 				{
@@ -430,7 +434,7 @@
 		{
 			"name": "menubar",
 			"type": "registry:ui",
-			"dependencies": [],
+			"dependencies": ["@base-ui/react", "lucide-react"],
 			"registryDependencies": [],
 			"files": [
 				{
@@ -443,7 +447,7 @@
 		{
 			"name": "meter",
 			"type": "registry:ui",
-			"dependencies": [],
+			"dependencies": ["@base-ui/react"],
 			"registryDependencies": [],
 			"files": [
 				{
@@ -456,7 +460,7 @@
 		{
 			"name": "navigation-menu",
 			"type": "registry:ui",
-			"dependencies": [],
+			"dependencies": ["@base-ui/react", "lucide-react"],
 			"registryDependencies": ["@9ui/scroll-area"],
 			"files": [
 				{
@@ -469,7 +473,7 @@
 		{
 			"name": "number-field",
 			"type": "registry:ui",
-			"dependencies": [],
+			"dependencies": ["@base-ui/react", "lucide-react"],
 			"registryDependencies": [],
 			"files": [
 				{
@@ -482,7 +486,7 @@
 		{
 			"name": "otp-field",
 			"type": "registry:ui",
-			"dependencies": [],
+			"dependencies": ["@base-ui/react"],
 			"registryDependencies": [],
 			"files": [
 				{
@@ -495,7 +499,7 @@
 		{
 			"name": "pagination",
 			"type": "registry:ui",
-			"dependencies": [],
+			"dependencies": ["@base-ui/react", "lucide-react"],
 			"registryDependencies": ["@9ui/button"],
 			"files": [
 				{
@@ -508,7 +512,11 @@
 		{
 			"name": "phone-input",
 			"type": "registry:ui",
-			"dependencies": ["react-phone-number-input"],
+			"dependencies": [
+				"@base-ui/react",
+				"lucide-react",
+				"react-phone-number-input"
+			],
 			"registryDependencies": [
 				"@9ui/combobox",
 				"@9ui/input",
@@ -525,7 +533,7 @@
 		{
 			"name": "popover",
 			"type": "registry:ui",
-			"dependencies": [],
+			"dependencies": ["@base-ui/react"],
 			"registryDependencies": [],
 			"files": [
 				{
@@ -538,7 +546,7 @@
 		{
 			"name": "preview-card",
 			"type": "registry:ui",
-			"dependencies": [],
+			"dependencies": ["@base-ui/react"],
 			"registryDependencies": [],
 			"files": [
 				{
@@ -551,7 +559,7 @@
 		{
 			"name": "progress",
 			"type": "registry:ui",
-			"dependencies": [],
+			"dependencies": ["@base-ui/react"],
 			"registryDependencies": [],
 			"files": [
 				{
@@ -574,7 +582,7 @@
 		{
 			"name": "radio-group",
 			"type": "registry:ui",
-			"dependencies": [],
+			"dependencies": ["@base-ui/react"],
 			"registryDependencies": [],
 			"files": [
 				{
@@ -600,7 +608,7 @@
 		{
 			"name": "scroll-area",
 			"type": "registry:ui",
-			"dependencies": [],
+			"dependencies": ["@base-ui/react"],
 			"registryDependencies": [],
 			"files": [
 				{
@@ -613,7 +621,7 @@
 		{
 			"name": "select",
 			"type": "registry:ui",
-			"dependencies": [],
+			"dependencies": ["@base-ui/react", "lucide-react"],
 			"registryDependencies": [],
 			"files": [
 				{
@@ -626,7 +634,7 @@
 		{
 			"name": "separator",
 			"type": "registry:ui",
-			"dependencies": [],
+			"dependencies": ["@base-ui/react"],
 			"registryDependencies": [],
 			"files": [
 				{
@@ -639,7 +647,7 @@
 		{
 			"name": "sheet",
 			"type": "registry:ui",
-			"dependencies": [],
+			"dependencies": ["@base-ui/react", "lucide-react"],
 			"registryDependencies": ["@9ui/button"],
 			"files": [
 				{
@@ -652,7 +660,11 @@
 		{
 			"name": "sidebar",
 			"type": "registry:ui",
-			"dependencies": [],
+			"dependencies": [
+				"@base-ui/react",
+				"class-variance-authority",
+				"lucide-react"
+			],
 			"registryDependencies": [
 				"@9ui/button",
 				"@9ui/separator",
@@ -700,7 +712,7 @@
 		{
 			"name": "slider",
 			"type": "registry:ui",
-			"dependencies": [],
+			"dependencies": ["@base-ui/react"],
 			"registryDependencies": [],
 			"files": [
 				{
@@ -713,7 +725,7 @@
 		{
 			"name": "sonner",
 			"type": "registry:ui",
-			"dependencies": ["sonner"],
+			"dependencies": ["lucide-react", "sonner"],
 			"registryDependencies": ["@9ui/button", "@9ui/spinner"],
 			"css": {
 				"[data-sonner-toaster] [data-sonner-toast]:focus-visible": {
@@ -734,7 +746,7 @@
 		{
 			"name": "spinner",
 			"type": "registry:ui",
-			"dependencies": [],
+			"dependencies": ["lucide-react"],
 			"registryDependencies": [],
 			"files": [
 				{
@@ -747,7 +759,7 @@
 		{
 			"name": "switch",
 			"type": "registry:ui",
-			"dependencies": [],
+			"dependencies": ["@base-ui/react"],
 			"registryDependencies": [],
 			"files": [
 				{
@@ -773,7 +785,7 @@
 		{
 			"name": "tabs",
 			"type": "registry:ui",
-			"dependencies": [],
+			"dependencies": ["@base-ui/react"],
 			"registryDependencies": [],
 			"files": [
 				{
@@ -804,7 +816,7 @@
 		{
 			"name": "textarea",
 			"type": "registry:ui",
-			"dependencies": [],
+			"dependencies": ["@base-ui/react"],
 			"registryDependencies": [],
 			"files": [
 				{
@@ -817,7 +829,7 @@
 		{
 			"name": "toast",
 			"type": "registry:ui",
-			"dependencies": [],
+			"dependencies": ["@base-ui/react", "lucide-react"],
 			"registryDependencies": ["@9ui/button", "@9ui/spinner"],
 			"files": [
 				{
@@ -834,7 +846,7 @@
 		{
 			"name": "toggle-group",
 			"type": "registry:ui",
-			"dependencies": [],
+			"dependencies": ["@base-ui/react", "class-variance-authority"],
 			"registryDependencies": ["@9ui/separator", "@9ui/toggle"],
 			"files": [
 				{
@@ -847,7 +859,7 @@
 		{
 			"name": "toggle",
 			"type": "registry:ui",
-			"dependencies": [],
+			"dependencies": ["@base-ui/react", "class-variance-authority"],
 			"registryDependencies": [],
 			"files": [
 				{
@@ -860,7 +872,7 @@
 		{
 			"name": "toolbar",
 			"type": "registry:ui",
-			"dependencies": [],
+			"dependencies": ["@base-ui/react"],
 			"registryDependencies": [],
 			"files": [
 				{
@@ -873,7 +885,7 @@
 		{
 			"name": "tooltip",
 			"type": "registry:ui",
-			"dependencies": [],
+			"dependencies": ["@base-ui/react"],
 			"registryDependencies": [],
 			"files": [
 				{
