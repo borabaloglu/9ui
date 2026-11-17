@@ -3,13 +3,15 @@ import { AlertDialog as BaseAlertDialog } from "@base-ui/react/alert-dialog";
 
 import { cn } from "@/lib/utils";
 
-function AlertDialog({
+function AlertDialog<Payload>({
 	...props
-}: React.ComponentProps<typeof BaseAlertDialog.Root>) {
+}: BaseAlertDialog.Root.Props<Payload>) {
 	return <BaseAlertDialog.Root {...props} />;
 }
 
-function AlertDialogTrigger({ ...props }: BaseAlertDialog.Trigger.Props) {
+function AlertDialogTrigger<Payload>({
+	...props
+}: BaseAlertDialog.Trigger.Props<Payload>) {
 	return (
 		<BaseAlertDialog.Trigger data-slot="alert-dialog-trigger" {...props} />
 	);
@@ -46,7 +48,7 @@ function AlertDialogPopup({
 }: Omit<BaseAlertDialog.Popup.Props, "className"> & {
 	className?: string;
 	portalProps?: BaseAlertDialog.Portal.Props;
-	size?: "default" | "sm";
+	size?: "sm" | "default";
 	showAtBottomOnMobile?: boolean;
 }) {
 	return (
@@ -125,7 +127,7 @@ function AlertDialogFooter({
 			data-slot="alert-dialog-footer"
 			data-variant={variant}
 			className={cn(
-				"flex flex-col-reverse gap-2 group-data-[size=sm]/alert-dialog-popup:grid group-data-[size=sm]/alert-dialog-popup:grid-cols-2 sm:flex-row sm:justify-end",
+				"flex flex-col-reverse gap-2 group-data-[size=sm]/alert-dialog-popup:grid group-data-[size=sm]/alert-dialog-popup:auto-cols-fr group-data-[size=sm]/alert-dialog-popup:grid-flow-col sm:flex-row sm:justify-end",
 				variant === "default" &&
 					"bg-muted/50 -mx-(--alert-dialog-spacing) -mb-(--alert-dialog-bottom) border-t p-(--alert-dialog-spacing) pb-(--alert-dialog-bottom)",
 				className,

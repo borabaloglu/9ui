@@ -61,12 +61,8 @@
 	}
 
 	html {
-		@apply overscroll-none motion-safe:md:scroll-smooth;
+		@apply overscroll-none;
 		-webkit-tap-highlight-color: transparent;
-	}
-
-	html[data-base-ui-scroll-locked] {
-		@apply scroll-auto;
 	}
 
 	body {

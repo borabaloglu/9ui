@@ -19,6 +19,10 @@ export const navConfig: NavConfig = {
 			href: "/docs/components",
 		},
 		{
+			title: "Skills",
+			href: "/docs/getting-started/skills",
+		},
+		{
 			title: "Changelog",
 			href: "/docs/getting-started/changelog",
 		},

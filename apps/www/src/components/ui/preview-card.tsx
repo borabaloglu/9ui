@@ -101,7 +101,11 @@ function PreviewCardPopup({
 					)}
 					{...props}
 				>
-					{children}
+					{showArrow ? (
+						<PreviewCardPanel>{children}</PreviewCardPanel>
+					) : (
+						children
+					)}
 					{showArrow && <PreviewCardArrow />}
 				</BasePreviewCard.Popup>
 			</BasePreviewCard.Positioner>

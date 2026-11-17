@@ -45,7 +45,7 @@ function MenuPopup({
 				<BaseMenu.Popup
 					data-slot="menu-popup"
 					className={cn(
-						"bg-popover text-popover-foreground ease-out-quint dark:edge-highlight-lg max-h-(--available-height) min-w-32 origin-(--transform-origin) overflow-x-hidden overflow-y-auto rounded-lg border p-1 shadow-md transition-[scale,opacity] duration-150 outline-none not-dark:shadow-[0_1px_--theme(--color-black/6%),var(--shadow-md)] data-ending-style:scale-95 data-ending-style:opacity-0 data-ending-style:duration-100 data-instant:transition-none data-starting-style:scale-95 data-starting-style:opacity-0 motion-reduce:transition-opacity motion-reduce:data-ending-style:scale-100 motion-reduce:data-starting-style:scale-100",
+						"bg-popover text-popover-foreground ease-out-quint dark:edge-highlight-lg max-h-(--available-height) min-w-32 origin-(--transform-origin) overflow-x-hidden overflow-y-auto overscroll-contain rounded-lg border p-1 shadow-md transition-[scale,opacity] duration-150 outline-none not-dark:shadow-[0_1px_--theme(--color-black/6%),var(--shadow-md)] data-ending-style:scale-95 data-ending-style:opacity-0 data-ending-style:duration-100 data-instant:transition-none data-starting-style:scale-95 data-starting-style:opacity-0 motion-reduce:transition-opacity motion-reduce:data-ending-style:scale-100 motion-reduce:data-starting-style:scale-100",
 						className,
 					)}
 					{...props}
@@ -141,7 +141,10 @@ function MenuCheckboxItem({
 			)}
 			{...props}
 		>
-			<span className="pointer-events-none absolute start-2 flex size-4 items-center justify-center">
+			<span
+				data-slot="menu-checkbox-item-indicator-wrapper"
+				className="pointer-events-none absolute start-2 flex size-4 items-center justify-center"
+			>
 				<BaseMenu.CheckboxItemIndicator data-slot="menu-checkbox-item-indicator">
 					<CheckIcon />
 				</BaseMenu.CheckboxItemIndicator>
@@ -171,7 +174,10 @@ function MenuRadioItem({
 			)}
 			{...props}
 		>
-			<span className="pointer-events-none absolute start-2 flex size-4 items-center justify-center">
+			<span
+				data-slot="menu-radio-item-indicator-wrapper"
+				className="pointer-events-none absolute start-2 flex size-4 items-center justify-center"
+			>
 				<BaseMenu.RadioItemIndicator data-slot="menu-radio-item-indicator">
 					<CheckIcon />
 				</BaseMenu.RadioItemIndicator>

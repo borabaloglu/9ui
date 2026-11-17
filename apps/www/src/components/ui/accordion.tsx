@@ -75,6 +75,7 @@ function AccordionPanel({
 			{...props}
 		>
 			<div
+				data-slot="accordion-panel-inner"
 				className={cn(
 					"[&_a]:hover:text-foreground ease-out-quint pb-4 transition-opacity duration-200 [&_a]:underline [&_a]:underline-offset-3 [[data-ending-style]>&]:opacity-0 [[data-ending-style]>&]:duration-150 [[data-starting-style]>&]:opacity-0",
 					className,

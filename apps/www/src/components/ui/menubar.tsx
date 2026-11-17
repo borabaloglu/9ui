@@ -78,7 +78,7 @@ function MenubarPopup({
 				<BaseMenu.Popup
 					data-slot="menubar-popup"
 					className={cn(
-						"bg-popover text-popover-foreground ease-out-quint dark:edge-highlight-lg max-h-(--available-height) min-w-32 overflow-x-hidden overflow-y-auto rounded-lg border p-1 shadow-md transition-opacity duration-100 outline-none not-dark:shadow-[0_1px_--theme(--color-black/6%),var(--shadow-md)] data-ending-style:opacity-0 data-instant:transition-none",
+						"bg-popover text-popover-foreground ease-out-quint dark:edge-highlight-lg max-h-(--available-height) min-w-32 overflow-x-hidden overflow-y-auto overscroll-contain rounded-lg border p-1 shadow-md transition-opacity duration-100 outline-none not-dark:shadow-[0_1px_--theme(--color-black/6%),var(--shadow-md)] data-ending-style:opacity-0 data-instant:transition-none",
 						className,
 					)}
 					{...props}
@@ -174,7 +174,10 @@ function MenubarCheckboxItem({
 			)}
 			{...props}
 		>
-			<span className="pointer-events-none absolute start-2 flex size-4 items-center justify-center">
+			<span
+				data-slot="menubar-checkbox-item-indicator-wrapper"
+				className="pointer-events-none absolute start-2 flex size-4 items-center justify-center"
+			>
 				<BaseMenu.CheckboxItemIndicator data-slot="menubar-checkbox-item-indicator">
 					<CheckIcon />
 				</BaseMenu.CheckboxItemIndicator>
@@ -204,7 +207,10 @@ function MenubarRadioItem({
 			)}
 			{...props}
 		>
-			<span className="pointer-events-none absolute start-2 flex size-4 items-center justify-center">
+			<span
+				data-slot="menubar-radio-item-indicator-wrapper"
+				className="pointer-events-none absolute start-2 flex size-4 items-center justify-center"
+			>
 				<BaseMenu.RadioItemIndicator data-slot="menubar-radio-item-indicator">
 					<CheckIcon />
 				</BaseMenu.RadioItemIndicator>

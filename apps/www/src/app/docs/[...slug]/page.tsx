@@ -141,7 +141,7 @@ const DocPage = async ({ params }: DocPageProps) => {
 			<MobileToc key={`toc-${page.url}`} items={toc} />
 			<div
 				key={page.url}
-				className="flex min-h-0 flex-1 [scrollbar-gutter:stable] items-start overflow-y-auto overscroll-y-contain px-4 [--toc-width:0px] md:scroll-smooth md:px-[max(1.5rem,calc((100%-760px-var(--toc-width))/2))] md:pt-10 @5xl:[--toc-width:19rem]"
+				className="flex min-h-0 flex-1 [scrollbar-gutter:stable] items-start overflow-y-auto overscroll-y-contain px-4 [--toc-width:0px] md:px-[max(1.5rem,calc((100%-760px-var(--toc-width))/2))] md:pt-10 @5xl:[--toc-width:19rem]"
 			>
 				<article className="flex w-full max-w-[760px] min-w-0 flex-col gap-4 pt-6 pb-16">
 					<h1 className="text-[1.75rem] font-semibold">{title}</h1>

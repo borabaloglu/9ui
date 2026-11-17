@@ -137,7 +137,7 @@ function SelectPopup({
 					</BaseSelect.ScrollUpArrow>
 					<BaseSelect.List
 						data-slot="select-list"
-						className="max-h-(--available-height) scroll-py-6 overflow-y-auto p-1 outline-none"
+						className="max-h-(--available-height) scroll-py-6 overflow-y-auto overscroll-contain p-1 outline-none"
 					>
 						{children}
 					</BaseSelect.List>
