@@ -250,7 +250,7 @@ function Sidebar({
 			>
 				<div
 					data-slot="sidebar-inner"
-					className="bg-card flex size-full flex-col transition-[visibility] duration-200 group-data-instant/sidebar-wrapper:transition-none group-data-[collapsible=offcanvas]/sidebar:invisible group-data-[variant=floating]/sidebar:rounded-xl group-data-[variant=floating]/sidebar:border group-data-[variant=floating]/sidebar:shadow-sm motion-reduce:transition-none"
+					className="bg-card flex size-full flex-col transition-[visibility] duration-200 group-data-instant/sidebar-wrapper:transition-none group-data-[collapsible=offcanvas]/sidebar:invisible group-data-[variant=floating]/sidebar:rounded-xl group-data-[variant=floating]/sidebar:border group-data-[variant=floating]/sidebar:shadow-xs not-dark:group-data-[variant=floating]/sidebar:border-b-[color-mix(in_oklab,var(--border),black_6%)] motion-reduce:transition-none dark:group-data-[variant=floating]/sidebar:border-t-[color-mix(in_oklab,var(--border),white_8%)]"
 				>
 					<SidebarSideContext.Provider value={side}>
 						{children}
@@ -315,7 +315,7 @@ function SidebarInset({ className, ...props }: React.ComponentProps<"main">) {
 		<main
 			data-slot="sidebar-inset"
 			className={cn(
-				"bg-background ease-out-quint relative flex w-full min-w-0 flex-1 flex-col transition-[margin] duration-200 group-data-instant/sidebar-wrapper:transition-none motion-reduce:transition-none md:group-has-[[data-slot=sidebar][data-variant=inset]]/sidebar-wrapper:m-2 md:group-has-[[data-slot=sidebar][data-variant=inset]]/sidebar-wrapper:rounded-xl md:group-has-[[data-slot=sidebar][data-variant=inset]]/sidebar-wrapper:border md:group-has-[[data-slot=sidebar][data-variant=inset]]/sidebar-wrapper:shadow-xs md:group-has-[[data-slot=sidebar][data-variant=inset][data-side=left]]/sidebar-wrapper:ml-0 md:group-has-[[data-slot=sidebar][data-variant=inset][data-side=left][data-state=collapsed]]/sidebar-wrapper:ml-2 md:group-has-[[data-slot=sidebar][data-variant=inset][data-side=right]]/sidebar-wrapper:mr-0 md:group-has-[[data-slot=sidebar][data-variant=inset][data-side=right][data-state=collapsed]]/sidebar-wrapper:mr-2",
+				"bg-background ease-out-quint relative flex w-full min-w-0 flex-1 flex-col transition-[margin] duration-200 group-data-instant/sidebar-wrapper:transition-none motion-reduce:transition-none md:group-has-[[data-slot=sidebar][data-variant=inset]]/sidebar-wrapper:m-2 md:group-has-[[data-slot=sidebar][data-variant=inset]]/sidebar-wrapper:rounded-xl md:group-has-[[data-slot=sidebar][data-variant=inset]]/sidebar-wrapper:border md:group-has-[[data-slot=sidebar][data-variant=inset]]/sidebar-wrapper:shadow-xs md:not-dark:group-has-[[data-slot=sidebar][data-variant=inset]]/sidebar-wrapper:border-b-[color-mix(in_oklab,var(--border),black_6%)] md:group-has-[[data-slot=sidebar][data-variant=inset][data-side=left]]/sidebar-wrapper:ml-0 md:group-has-[[data-slot=sidebar][data-variant=inset][data-side=left][data-state=collapsed]]/sidebar-wrapper:ml-2 md:group-has-[[data-slot=sidebar][data-variant=inset][data-side=right]]/sidebar-wrapper:mr-0 md:group-has-[[data-slot=sidebar][data-variant=inset][data-side=right][data-state=collapsed]]/sidebar-wrapper:mr-2 md:dark:group-has-[[data-slot=sidebar][data-variant=inset]]/sidebar-wrapper:border-t-[color-mix(in_oklab,var(--border),white_8%)]",
 				className,
 			)}
 			{...props}
