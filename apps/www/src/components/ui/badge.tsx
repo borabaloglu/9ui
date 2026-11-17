@@ -24,7 +24,7 @@ const badgeVariants = cva(
 					"bg-destructive/10 text-destructive dark:bg-destructive/20 [button&,a&]:hover:bg-destructive/20 dark:[button&,a&]:hover:bg-destructive/30 [button&,a&]:active:bg-destructive/30 dark:[button&,a&]:active:bg-destructive/40",
 			},
 			size: {
-				sm: "h-4.5 px-1.5 text-[10px] has-data-[icon=inline-end]:pe-1 has-data-[icon=inline-start]:ps-1 any-pointer-coarse:text-[11px] [&_svg:not([class*='size-'])]:size-2.5",
+				sm: "h-4.5 px-1.5 text-[0.6875rem] has-data-[icon=inline-end]:pe-1 has-data-[icon=inline-start]:ps-1 [&_svg:not([class*='size-'])]:size-2.5",
 				default:
 					"h-5 px-2 text-xs has-data-[icon=inline-end]:pe-1.5 has-data-[icon=inline-start]:ps-1.5",
 				lg: "h-6 px-2.5 text-sm has-data-[icon=inline-end]:pe-2 has-data-[icon=inline-start]:ps-2 [&_svg:not([class*='size-'])]:size-3.5",
