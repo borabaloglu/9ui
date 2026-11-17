@@ -10,7 +10,7 @@ export default function AvatarFallbackDemo() {
 			</Avatar>
 			<Avatar>
 				<AvatarFallback>
-					<UserIcon aria-label="Unknown user" />
+					<UserIcon role="img" aria-label="Unknown user" />
 				</AvatarFallback>
 			</Avatar>
 		</div>

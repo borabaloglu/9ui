@@ -61,6 +61,7 @@ export default function DatePickerInputDemo() {
 						<CalendarIcon />
 					</PopoverTrigger>
 					<PopoverPopup
+						aria-label="Choose date"
 						className="w-auto p-0"
 						align="end"
 						anchor={anchor}

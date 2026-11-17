@@ -49,6 +49,7 @@ export default function EmojiPickerInputDemo() {
 						<SmileIcon />
 					</PopoverTrigger>
 					<PopoverPopup
+						aria-label="Choose emoji"
 						className="w-auto p-0"
 						align="end"
 						anchor={anchor}

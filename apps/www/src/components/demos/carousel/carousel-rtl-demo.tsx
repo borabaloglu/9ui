@@ -14,9 +14,9 @@ import {
 } from "@/components/ui/carousel";
 
 const translations = {
-	en: { locale: "en" },
-	ar: { locale: "ar-u-nu-arab" },
-	he: { locale: "he" },
+	en: { locale: "en", label: "Numbered slides" },
+	ar: { locale: "ar-u-nu-arab", label: "شرائح مرقمة" },
+	he: { locale: "he", label: "שקופיות ממוספרות" },
 } satisfies Translations<Record<string, string>>;
 
 const slides = [1, 2, 3, 4, 5];
@@ -27,7 +27,7 @@ export default function CarouselRtlDemo() {
 
 	return (
 		<div className="w-full max-w-sm px-12">
-			<Carousel>
+			<Carousel aria-label={t.label}>
 				<CarouselContent>
 					{slides.map((slide) => (
 						<CarouselItem key={slide}>

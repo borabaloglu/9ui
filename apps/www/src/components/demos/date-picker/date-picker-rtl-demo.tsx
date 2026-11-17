@@ -16,12 +16,15 @@ import { Popover, PopoverPopup, PopoverTrigger } from "@/components/ui/popover";
 const translations = {
 	en: {
 		selectDate: "Select a date",
+		chooseDate: "Choose date",
 	},
 	ar: {
 		selectDate: "اختر تاريخًا",
+		chooseDate: "اختيار التاريخ",
 	},
 	he: {
 		selectDate: "בחירת תאריך",
+		chooseDate: "בחירת תאריך",
 	},
 } satisfies Translations<Record<string, string>>;
 
@@ -55,7 +58,12 @@ export default function DatePickerRtlDemo() {
 				</span>
 				<ChevronsUpDownIcon className="text-muted-foreground" />
 			</PopoverTrigger>
-			<PopoverPopup dir={dir} className="w-auto p-0" align="start">
+			<PopoverPopup
+				dir={dir}
+				aria-label={t.chooseDate}
+				className="w-auto p-0"
+				align="start"
+			>
 				<Calendar
 					locale={locale}
 					formatters={

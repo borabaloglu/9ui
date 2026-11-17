@@ -12,7 +12,7 @@ const slides = [1, 2, 3, 4, 5];
 export default function CarouselDemo() {
 	return (
 		<div className="w-full max-w-sm px-12">
-			<Carousel>
+			<Carousel aria-label="Numbered slides">
 				<CarouselContent>
 					{slides.map((slide) => (
 						<CarouselItem key={slide}>

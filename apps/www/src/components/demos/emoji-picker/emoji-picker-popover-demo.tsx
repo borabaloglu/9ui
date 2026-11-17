@@ -32,7 +32,7 @@ export default function EmojiPickerPopoverDemo() {
 			>
 				{emoji ?? <SmilePlusIcon />}
 			</PopoverTrigger>
-			<PopoverPopup className="w-auto p-0">
+			<PopoverPopup aria-label="Choose emoji" className="w-auto p-0">
 				<EmojiPicker
 					onEmojiSelect={({ emoji }) => {
 						setEmoji(emoji);

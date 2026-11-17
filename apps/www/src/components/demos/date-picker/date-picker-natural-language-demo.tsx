@@ -54,6 +54,7 @@ export default function DatePickerNaturalLanguageDemo() {
 							<CalendarIcon />
 						</PopoverTrigger>
 						<PopoverPopup
+							aria-label="Choose date"
 							className="w-auto p-0"
 							align="end"
 							anchor={anchor}

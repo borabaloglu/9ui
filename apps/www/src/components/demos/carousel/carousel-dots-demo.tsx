@@ -33,7 +33,7 @@ export default function CarouselDotsDemo() {
 
 	return (
 		<div className="w-full max-w-sm px-12">
-			<Carousel setApi={setApi}>
+			<Carousel aria-label="Numbered slides" setApi={setApi}>
 				<CarouselContent>
 					{slides.map((slide) => (
 						<CarouselItem key={slide}>
@@ -55,7 +55,7 @@ export default function CarouselDotsDemo() {
 						type="button"
 						aria-label={`Go to slide ${slide}`}
 						aria-current={selectedIndex === index || undefined}
-						className="bg-muted-foreground/30 not-aria-current:hover:bg-muted-foreground/60 aria-current:bg-foreground focus-visible:ring-ring/50 ease-out-quint relative h-1.5 w-1.5 cursor-pointer rounded-full transition-[width,background-color] duration-300 outline-none after:absolute after:-inset-x-0.5 after:-inset-y-2 focus-visible:ring-3 aria-current:w-4 motion-reduce:transition-[background-color]"
+						className="bg-muted-foreground/30 not-aria-current:hover:bg-muted-foreground/60 aria-current:bg-foreground focus-visible:ring-ring/50 ease-out-quint relative h-1.5 w-1.5 cursor-pointer rounded-full transition-[width,background-color] duration-300 outline-none after:absolute after:-inset-x-0.5 after:-inset-y-2.5 focus-visible:ring-3 aria-current:w-4 motion-reduce:transition-[background-color]"
 						onClick={() => api?.scrollTo(index)}
 					/>
 				))}
