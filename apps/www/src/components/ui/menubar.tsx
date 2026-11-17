@@ -37,7 +37,7 @@ function MenubarTrigger<Payload>({
 		<BaseMenu.Trigger
 			data-slot="menubar-trigger"
 			className={cn(
-				"text-foreground hover:bg-accent hover:text-accent-foreground focus-visible:ring-ring/50 data-popup-open:bg-accent data-popup-open:text-accent-foreground dark:hover:bg-accent/50 dark:data-popup-open:bg-accent/50 relative inline-flex h-7 shrink-0 cursor-pointer items-center gap-1.5 rounded-lg px-2 text-sm font-medium whitespace-nowrap outline-none select-none focus-visible:ring-3 focus-visible:outline-hidden data-disabled:pointer-events-none data-disabled:opacity-50 any-pointer-coarse:h-9 any-pointer-coarse:text-base any-pointer-coarse:after:absolute any-pointer-coarse:after:inset-x-0 any-pointer-coarse:after:-inset-y-1 any-pointer-coarse:group-data-[orientation=vertical]/menubar:after:inset-y-0 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
+				"text-foreground hover:bg-accent hover:text-accent-foreground focus-visible:ring-ring/50 data-popup-open:bg-accent data-popup-open:text-accent-foreground dark:hover:bg-accent/50 dark:data-popup-open:bg-accent/50 relative inline-flex h-7 shrink-0 cursor-pointer items-center gap-1.5 rounded-lg px-2 text-sm font-medium whitespace-nowrap outline-none select-none focus-visible:ring-3 data-disabled:pointer-events-none data-disabled:opacity-50 any-pointer-coarse:h-9 any-pointer-coarse:text-base any-pointer-coarse:after:absolute any-pointer-coarse:after:inset-x-0 any-pointer-coarse:after:-inset-y-1 any-pointer-coarse:group-data-[orientation=vertical]/menubar:after:inset-y-0 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
 				className,
 			)}
 			{...props}
@@ -232,7 +232,7 @@ function MenubarShortcut({ className, ...props }: React.ComponentProps<"kbd">) {
 		<kbd
 			data-slot="menubar-shortcut"
 			className={cn(
-				"text-muted-foreground ms-auto ps-4 font-sans text-xs tracking-widest [unicode-bidi:plaintext]",
+				"text-muted-foreground in-data-highlighted:text-accent-foreground ms-auto ps-4 font-sans text-xs tracking-widest [unicode-bidi:plaintext]",
 				className,
 			)}
 			{...props}

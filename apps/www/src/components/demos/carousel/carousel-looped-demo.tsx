@@ -12,7 +12,7 @@ const slides = [1, 2, 3, 4, 5];
 export default function CarouselLoopedDemo() {
 	return (
 		<div className="w-full max-w-sm px-12">
-			<Carousel opts={{ loop: true }}>
+			<Carousel aria-label="Looped slides" opts={{ loop: true }}>
 				<CarouselContent>
 					{slides.map((slide) => (
 						<CarouselItem key={slide}>

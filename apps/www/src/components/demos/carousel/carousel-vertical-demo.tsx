@@ -11,7 +11,7 @@ const slides = [1, 2, 3, 4, 5];
 export default function CarouselVerticalDemo() {
 	return (
 		<div className="w-full max-w-xs py-12">
-			<Carousel orientation="vertical">
+			<Carousel aria-label="Vertical slides" orientation="vertical">
 				<CarouselContent className="h-48">
 					{slides.map((slide) => (
 						<CarouselItem key={slide}>

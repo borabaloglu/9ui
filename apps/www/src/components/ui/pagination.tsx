@@ -63,11 +63,15 @@ function PaginationLink({
 	render,
 	...props
 }: PaginationLinkProps) {
+	const disabled =
+		props["aria-disabled"] === true || props["aria-disabled"] === "true";
+
 	return useRender({
 		defaultTagName: "a",
 		props: mergeProps<"a">(
 			{
 				"aria-current": active ? "page" : undefined,
+				role: disabled ? "link" : undefined,
 				className: cn(
 					buttonVariants({ variant: active ? "outline" : "ghost", size }),
 					size && paginationLinkIconSizes[size],

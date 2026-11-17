@@ -240,7 +240,7 @@ function ComboboxChips({
 				"group/combobox-chips border-border bg-input relative flex min-h-8 w-full min-w-0 cursor-text rounded-lg border px-2.5 py-1 text-sm shadow-xs transition-[border-color,box-shadow] duration-150 ease-out not-dark:bg-clip-padding any-pointer-coarse:min-h-9",
 				"before:pointer-events-none before:absolute before:inset-0 before:rounded-[calc(var(--radius-lg)-1px)] before:shadow-[0_1px_--theme(--color-black/6%)] dark:before:shadow-[0_-1px_--theme(--color-white/8%)]",
 				"has-data-[slot=combobox-chip]:px-1",
-				"focus-within:border-ring focus-within:ring-ring/50 focus-within:ring-3 focus-within:outline-hidden focus-within:before:shadow-none",
+				"focus-within:border-ring focus-within:ring-ring/50 focus-within:ring-3 focus-within:before:shadow-none",
 				"has-aria-invalid:border-destructive/60 has-aria-invalid:ring-destructive/30 dark:has-aria-invalid:ring-destructive/40 has-aria-invalid:shadow-none has-aria-invalid:before:shadow-none",
 				"data-disabled:cursor-not-allowed data-disabled:opacity-50 data-disabled:shadow-none data-disabled:before:shadow-none",
 				className,
@@ -292,7 +292,7 @@ function ComboboxChip({
 		<BaseCombobox.Chip
 			data-slot="combobox-chip"
 			className={cn(
-				"bg-muted text-foreground focus-visible:ring-ring/50 flex h-5.5 w-fit max-w-full min-w-0 cursor-default items-center rounded-sm px-1.5 text-xs font-medium whitespace-nowrap outline-none select-none focus-visible:ring-2 focus-visible:outline-hidden has-data-[slot=combobox-chip-remove]:pe-0 any-pointer-coarse:h-6.5 any-pointer-coarse:text-sm",
+				"bg-muted text-foreground focus-visible:ring-ring/50 flex h-5.5 w-fit max-w-full min-w-0 cursor-default items-center rounded-sm px-1.5 text-xs font-medium whitespace-nowrap outline-none select-none focus-visible:ring-2 has-data-[slot=combobox-chip-remove]:pe-0 any-pointer-coarse:h-6.5 any-pointer-coarse:text-sm",
 				className,
 			)}
 			{...props}

@@ -123,7 +123,11 @@ export default function FormTanstackFormDatePickerDemo() {
 											</span>
 											<ChevronsUpDownIcon className="text-muted-foreground" />
 										</PopoverTrigger>
-										<PopoverPopup className="w-auto p-0" align="start">
+										<PopoverPopup
+											aria-label="Choose date"
+											className="w-auto p-0"
+											align="start"
+										>
 											<Calendar
 												mode="single"
 												autoFocus

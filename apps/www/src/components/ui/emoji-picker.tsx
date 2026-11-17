@@ -220,7 +220,7 @@ function EmojiPickerSkinToneSelector({
 		<BaseEmojiPicker.SkinToneSelector
 			data-slot="emoji-picker-skin-tone-selector"
 			className={cn(
-				"hover:bg-accent focus-visible:ring-ring/50 ms-auto flex size-8 shrink-0 cursor-pointer items-center justify-center rounded-md font-(family-name:--frimousse-emoji-font) text-lg transition-[scale] duration-100 ease-out outline-none focus-visible:ring-3 focus-visible:outline-hidden motion-safe:active:scale-95 any-pointer-coarse:size-10",
+				"hover:bg-accent focus-visible:ring-ring/50 ms-auto flex size-8 shrink-0 cursor-pointer items-center justify-center rounded-md font-(family-name:--frimousse-emoji-font) text-lg transition-[scale] duration-100 ease-out outline-none focus-visible:ring-3 motion-safe:active:scale-95 any-pointer-coarse:size-10",
 				className,
 			)}
 			{...props}

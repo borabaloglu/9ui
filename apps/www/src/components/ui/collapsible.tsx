@@ -17,7 +17,7 @@ function CollapsibleTrigger({
 		<BaseCollapsible.Trigger
 			data-slot="collapsible-trigger"
 			className={cn(
-				"[:where(&:focus-visible)]:ring-ring/50 cursor-pointer outline-none focus-visible:ring-3 focus-visible:outline-hidden data-disabled:pointer-events-none data-disabled:opacity-50 [:where(&)]:rounded-sm",
+				"[:where(&:focus-visible)]:ring-ring/50 cursor-pointer outline-none focus-visible:ring-3 data-disabled:pointer-events-none data-disabled:opacity-50 [:where(&)]:rounded-sm",
 				className,
 			)}
 			{...props}

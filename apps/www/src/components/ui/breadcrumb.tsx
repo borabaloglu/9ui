@@ -42,7 +42,7 @@ function BreadcrumbLink({
 		props: mergeProps<"a">(
 			{
 				className: cn(
-					"hover:text-foreground active:text-foreground focus-visible:ring-ring/50 relative rounded-sm transition-colors duration-150 ease-out outline-none focus-visible:ring-3 focus-visible:outline-hidden any-pointer-coarse:after:absolute any-pointer-coarse:after:-inset-x-1 any-pointer-coarse:after:-inset-y-3",
+					"hover:text-foreground active:text-foreground focus-visible:ring-ring/50 relative rounded-sm transition-colors duration-150 ease-out outline-none focus-visible:ring-3 any-pointer-coarse:after:absolute any-pointer-coarse:after:-inset-x-1 any-pointer-coarse:after:-inset-y-3",
 					className,
 				),
 			},
