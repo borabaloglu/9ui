@@ -104,7 +104,7 @@ export default function FormTanstackFormDatePickerDemo() {
 													}
 													aria-invalid={isInvalid || undefined}
 													variant="outline"
-													className="justify-between font-normal any-pointer-coarse:text-base"
+													className="justify-between font-normal"
 													onBlur={field.handleBlur}
 												/>
 											}

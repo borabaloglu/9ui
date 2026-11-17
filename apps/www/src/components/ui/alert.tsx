@@ -11,11 +11,13 @@ const alertVariants = cva(
 		variants: {
 			variant: {
 				default: "bg-card",
-				warning: "border-warning/20 bg-warning/5 *:[svg]:text-warning",
+				warning:
+					"border-warning/20 *:[svg]:text-warning bg-[color-mix(in_oklab,var(--warning)_5%,var(--card))] [--surface-accent:var(--accent-elevated)] [--surface-muted:var(--muted-elevated)] [--surface-secondary:var(--secondary-elevated)]",
 				danger:
-					"border-destructive/20 bg-destructive/5 *:[svg]:text-destructive",
-				info: "border-info/20 bg-info/5 *:[svg]:text-info",
-				success: "border-success/20 bg-success/5 *:[svg]:text-success",
+					"border-destructive/20 *:[svg]:text-destructive bg-[color-mix(in_oklab,var(--destructive)_5%,var(--card))] [--surface-accent:var(--accent-elevated)] [--surface-muted:var(--muted-elevated)] [--surface-secondary:var(--secondary-elevated)]",
+				info: "border-info/20 *:[svg]:text-info bg-[color-mix(in_oklab,var(--info)_5%,var(--card))] [--surface-accent:var(--accent-elevated)] [--surface-muted:var(--muted-elevated)] [--surface-secondary:var(--secondary-elevated)]",
+				success:
+					"border-success/20 *:[svg]:text-success bg-[color-mix(in_oklab,var(--success)_5%,var(--card))] [--surface-accent:var(--accent-elevated)] [--surface-muted:var(--muted-elevated)] [--surface-secondary:var(--secondary-elevated)]",
 			},
 		},
 		defaultVariants: {

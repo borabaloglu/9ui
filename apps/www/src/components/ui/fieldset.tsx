@@ -66,7 +66,7 @@ function FieldsetDescription({
 			id={id}
 			data-slot="fieldset-description"
 			className={cn(
-				"text-muted-foreground [&>a:hover]:text-foreground -mt-3 text-sm leading-normal [&>a]:underline [&>a]:underline-offset-4",
+				"text-muted-foreground [&>a]:hover:text-foreground -mt-3 text-sm leading-normal [&>a]:underline [&>a]:underline-offset-4",
 				className,
 			)}
 			{...props}

@@ -38,7 +38,7 @@ function Calendar({
 	const direction = useDirection();
 	const navButtonClassName = cn(
 		buttonVariants({ variant: buttonVariant, size: "icon" }),
-		"size-(--cell-size) aria-disabled:pointer-events-none aria-disabled:opacity-50 any-pointer-coarse:size-(--cell-size)",
+		"size-(--cell-size) touch-manipulation aria-disabled:pointer-events-none aria-disabled:opacity-50 any-pointer-coarse:size-(--cell-size)",
 	);
 
 	const defaultClassNames: Partial<ClassNames> = {
@@ -55,9 +55,10 @@ function Calendar({
 			captionLayout !== "label" &&
 				"[&>svg]:text-muted-foreground flex h-7 items-center gap-1 ps-2 pe-1.5 any-pointer-coarse:h-8 [&>svg]:size-3.5",
 		),
-		dropdowns: "flex h-(--cell-size) w-full items-center justify-center gap-1",
+		dropdowns:
+			"flex h-(--cell-size) w-full items-center justify-center gap-1 text-sm font-medium any-pointer-coarse:text-base",
 		dropdown_root:
-			"hover:bg-accent has-focus-visible:ring-ring/50 dark:hover:bg-accent/50 relative rounded-md has-focus-visible:ring-3 has-focus-visible:outline-hidden",
+			"hover:bg-accent has-focus-visible:ring-ring/50 dark:hover:bg-accent/50 relative rounded-[min(var(--radius-md),0.75rem)] has-focus-visible:ring-3 has-focus-visible:outline-hidden",
 		dropdown: "bg-popover absolute inset-0 cursor-pointer opacity-0",
 		month_grid: "w-full",
 		weekdays: "flex",

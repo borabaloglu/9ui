@@ -25,7 +25,7 @@ export default function DatePickerWithTimeDemo() {
 					render={
 						<Button
 							variant="outline"
-							className="justify-between font-normal sm:min-w-0 sm:flex-1 any-pointer-coarse:text-base"
+							className="justify-between font-normal sm:min-w-0 sm:flex-1"
 						/>
 					}
 				>

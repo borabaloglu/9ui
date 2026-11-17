@@ -100,6 +100,7 @@ Add the 9ui theme configuration and styling to your global CSS file. This includ
 	--radius-md: calc(var(--radius) - 2px);
 	--radius-lg: var(--radius);
 	--radius-xl: calc(var(--radius) + 2px);
+	--radius-2xl: calc(var(--radius) + 6px);
 	--ease-out-quint: cubic-bezier(0.23, 1, 0.32, 1);
 	--ease-drawer: cubic-bezier(0.32, 0.72, 0, 1);
 	--color-background: var(--background);
@@ -200,7 +201,7 @@ Add the 9ui theme configuration and styling to your global CSS file. This includ
 		border-color: var(--border);
 		outline-color: oklch(from var(--ring) l c h / 0.5);
 		scrollbar-width: thin;
-		scrollbar-color: var(--border) transparent;
+		scrollbar-color: var(--surface-muted, var(--muted)) transparent;
 	}
 	html {
 		scroll-behavior: smooth;
@@ -227,7 +228,7 @@ Add the 9ui theme configuration and styling to your global CSS file. This includ
 		background: transparent;
 	}
 	::-webkit-scrollbar-thumb {
-		background: var(--border);
+		background: var(--surface-muted, var(--muted));
 		border-radius: 4px;
 	}
 }
