@@ -1,7 +1,7 @@
 {
 	"$schema": "https://ui.shadcn.com/schema/registry-item.json",
 	"name": "carousel",
-	"dependencies": ["embla-carousel-react"],
+	"dependencies": ["@base-ui/react", "lucide-react", "embla-carousel-react"],
 	"registryDependencies": ["@9ui/button"],
 	"files": [
 		{

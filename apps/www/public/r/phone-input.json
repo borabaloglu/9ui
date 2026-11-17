@@ -1,7 +1,11 @@
 {
 	"$schema": "https://ui.shadcn.com/schema/registry-item.json",
 	"name": "phone-input",
-	"dependencies": ["react-phone-number-input"],
+	"dependencies": [
+		"@base-ui/react",
+		"lucide-react",
+		"react-phone-number-input"
+	],
 	"registryDependencies": ["@9ui/combobox", "@9ui/input", "@9ui/input-group"],
 	"files": [
 		{

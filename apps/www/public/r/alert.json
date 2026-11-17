@@ -1,7 +1,7 @@
 {
 	"$schema": "https://ui.shadcn.com/schema/registry-item.json",
 	"name": "alert",
-	"dependencies": [],
+	"dependencies": ["@base-ui/react", "class-variance-authority"],
 	"registryDependencies": [],
 	"files": [
 		{

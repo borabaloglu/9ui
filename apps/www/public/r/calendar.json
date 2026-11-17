@@ -1,7 +1,7 @@
 {
 	"$schema": "https://ui.shadcn.com/schema/registry-item.json",
 	"name": "calendar",
-	"dependencies": ["react-day-picker"],
+	"dependencies": ["@base-ui/react", "lucide-react", "react-day-picker@^9"],
 	"registryDependencies": ["@9ui/button"],
 	"files": [
 		{
