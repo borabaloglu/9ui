@@ -113,3 +113,44 @@ Set `disabled` on a `TabsTab` to disable it.
 To show the tabs right to left, set `dir="rtl"` on `html` and wrap your app in `DirectionProvider`. See [RTL](/docs/getting-started/rtl).
 
 <ComponentPreview name="tabs-rtl-demo" direction="rtl" />
+
+## API Reference
+
+What 9ui adds to Base UI Tabs. For the rest of the API, see the [Base UI Tabs reference](https://base-ui.com/react/components/tabs#api-reference).
+
+### TabsList
+
+<ApiTable
+	rows={[
+		{
+			name: "variant",
+			type: '"default" | "line"',
+			default: '"default"',
+			description: "A filled tab or an underline as the indicator.",
+		},
+		{
+			name: "size",
+			type: '"sm" | "default" | "lg"',
+			default: '"default"',
+			description: "The height, padding and text size of every tab.",
+		},
+	]}
+/>
+
+### Data attributes
+
+<ApiTable
+	label="Attribute"
+	rows={[
+		{
+			name: "data-variant",
+			type: '"default" | "line"',
+			description: <>Set on <code>TabsList</code>. The current <code>variant</code>.</>,
+		},
+		{
+			name: "data-size",
+			type: '"sm" | "default" | "lg"',
+			description: <>Set on <code>TabsList</code>. The current <code>size</code>.</>,
+		},
+	]}
+/>

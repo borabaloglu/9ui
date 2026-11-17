@@ -58,3 +58,20 @@ To fill the box with an image, set `size-full object-cover` on it.
 To show the aspect ratio right to left, set `dir="rtl"` on `html` and wrap your app in `DirectionProvider`. See [RTL](/docs/getting-started/rtl).
 
 <ComponentPreview name="aspect-ratio-rtl-demo" direction="rtl" />
+
+## API Reference
+
+Aspect Ratio is built by 9ui, so this is its full API.
+
+### AspectRatio
+
+<ApiTable
+	rows={[
+		{
+			name: "ratio",
+			type: "number",
+			default: "1",
+			description: <>The width divided by the height, such as <code>16 / 9</code>.</>,
+		},
+	]}
+/>

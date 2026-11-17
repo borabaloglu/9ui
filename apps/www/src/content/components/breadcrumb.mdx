@@ -86,3 +86,19 @@ To use your router's link, set `render` on `BreadcrumbLink`.
 To show the breadcrumb right to left, set `dir="rtl"` on `html` and wrap your app in `DirectionProvider`. See [RTL](/docs/getting-started/rtl).
 
 <ComponentPreview name="breadcrumb-rtl-demo" direction="rtl" />
+
+## API Reference
+
+Breadcrumb is built by 9ui, so this is its full API. Each part takes the props of its HTML element and adds none of its own.
+
+### BreadcrumbLink
+
+To use your router's link, set `render`.
+
+### BreadcrumbPage
+
+The current page. It is not a link and is marked with `aria-current="page"`.
+
+### BreadcrumbSeparator
+
+Shows a chevron. To use another separator, pass it as children.

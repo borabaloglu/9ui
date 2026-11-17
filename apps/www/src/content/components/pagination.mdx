@@ -95,3 +95,100 @@ To use a framework link, pass it to the `render` prop.
 To show the pagination right to left, set `dir="rtl"` on `html` and wrap your app in `DirectionProvider`. See [RTL](/docs/getting-started/rtl).
 
 <ComponentPreview name="pagination-rtl-demo" direction="rtl" />
+
+## API Reference
+
+Pagination is built by 9ui, so this is its full API.
+
+### PaginationPrevious
+
+Takes the props of `PaginationLink`.
+
+<ApiTable
+	rows={[
+		{
+			name: "text",
+			type: "string",
+			default: '"Previous"',
+			description: "The label next to the arrow. Set it to an empty string to show only the arrow.",
+		},
+		{
+			name: "size",
+			shortType: "union",
+			type: '"xs" | "sm" | "default" | "lg" | "xl" | "icon-xs" | "icon-sm" | "icon" | "icon-lg" | "icon-xl"',
+			default: '"default"',
+			description: <>The size of the link. Takes the <code>Button</code> sizes.</>,
+		},
+	]}
+/>
+
+### PaginationLink
+
+To use your router's link, set `render`.
+
+<ApiTable
+	rows={[
+		{
+			name: "active",
+			type: "boolean",
+			default: "false",
+			description: "Marks the link as the current page.",
+		},
+		{
+			name: "size",
+			shortType: "union",
+			type: '"xs" | "sm" | "default" | "lg" | "xl" | "icon-xs" | "icon-sm" | "icon" | "icon-lg" | "icon-xl"',
+			default: '"icon"',
+			description: <>The size of the link. Takes the <code>Button</code> sizes.</>,
+		},
+	]}
+/>
+
+### PaginationEllipsis
+
+<ApiTable
+	rows={[
+		{
+			name: "size",
+			shortType: "union",
+			type: '"xs" | "sm" | "default" | "lg" | "xl" | "icon-xs" | "icon-sm" | "icon" | "icon-lg" | "icon-xl"',
+			default: '"icon"',
+			description: <>The size of the ellipsis. Match it to the links.</>,
+		},
+	]}
+/>
+
+### PaginationNext
+
+Takes the props of `PaginationLink`.
+
+<ApiTable
+	rows={[
+		{
+			name: "text",
+			type: "string",
+			default: '"Next"',
+			description: "The label next to the arrow. Set it to an empty string to show only the arrow.",
+		},
+		{
+			name: "size",
+			shortType: "union",
+			type: '"xs" | "sm" | "default" | "lg" | "xl" | "icon-xs" | "icon-sm" | "icon" | "icon-lg" | "icon-xl"',
+			default: '"default"',
+			description: <>The size of the link. Takes the <code>Button</code> sizes.</>,
+		},
+	]}
+/>
+
+### Data attributes
+
+<ApiTable
+	label="Attribute"
+	rows={[
+		{
+			name: "data-active",
+			type: "boolean",
+			description: <>Set on <code>PaginationLink</code> when <code>active</code> is true.</>,
+		},
+	]}
+/>

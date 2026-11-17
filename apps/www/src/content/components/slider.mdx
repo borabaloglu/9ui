@@ -107,3 +107,29 @@ Set `orientation="vertical"` for a vertical slider.
 To show the slider right to left, set `dir="rtl"` on `html` and wrap your app in `DirectionProvider`. See [RTL](/docs/getting-started/rtl).
 
 <ComponentPreview name="slider-rtl-demo" direction="rtl" />
+
+## API Reference
+
+What 9ui adds to Base UI Slider. For the rest of the API, see the [Base UI Slider reference](https://base-ui.com/react/components/slider#api-reference).
+
+### Slider
+
+Renders the control, track, indicator and one thumb per value for you.
+
+<ApiTable
+	rows={[
+		{
+			name: "thumbLabels",
+			type: "readonly string[]",
+			description: <>Accessible names for the thumbs, in order. Thumbs without one use <code>aria-label</code>.</>,
+		},
+		{
+			name: "thumbAlignment",
+			type: '"center" | "edge" | "edge-client-only"',
+			shortType: "union",
+			default: '"edge"',
+			baseDefault: '"center"',
+			description: "Keeps the thumbs inside the track at the minimum and maximum.",
+		},
+	]}
+/>

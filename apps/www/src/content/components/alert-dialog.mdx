@@ -102,3 +102,68 @@ Open an alert dialog from a dialog to confirm before unsaved changes are discard
 To show the alert dialog right to left, set `dir="rtl"` on `html` and wrap your app in `DirectionProvider`. See [RTL](/docs/getting-started/rtl).
 
 <ComponentPreview name="alert-dialog-rtl-demo" direction="rtl" />
+
+## API Reference
+
+What 9ui adds to Base UI Alert Dialog. For the rest of the API, see the [Base UI Alert Dialog reference](https://base-ui.com/react/components/alert-dialog#api-reference).
+
+### AlertDialogPopup
+
+Bundles the portal, backdrop, viewport and popup.
+
+<ApiTable
+	rows={[
+		{
+			name: "size",
+			type: '"default" | "sm"',
+			default: '"default"',
+			description: "The width and padding of the dialog. The small size also centers the header and splits the footer buttons evenly.",
+		},
+		{
+			name: "showAtBottomOnMobile",
+			type: "boolean",
+			default: "true",
+			description: "Docks the dialog to the bottom edge on small screens.",
+		},
+		{
+			name: "portalProps",
+			type: "AlertDialog.Portal.Props",
+			description: <>Props for the portal, such as <code>container</code>.</>,
+		},
+	]}
+/>
+
+### AlertDialogMedia
+
+Holds an icon at the top of `AlertDialogHeader`.
+
+### AlertDialogFooter
+
+<ApiTable
+	rows={[
+		{
+			name: "variant",
+			type: '"default" | "bare"',
+			default: '"default"',
+			description: <>The footer style. <code>bare</code> drops the border and background.</>,
+		},
+	]}
+/>
+
+### Data attributes
+
+<ApiTable
+	label="Attribute"
+	rows={[
+		{
+			name: "data-size",
+			type: '"default" | "sm"',
+			description: <>Set on <code>AlertDialogPopup</code>. The current <code>size</code>.</>,
+		},
+		{
+			name: "data-variant",
+			type: '"default" | "bare"',
+			description: <>Set on <code>AlertDialogFooter</code>. The current <code>variant</code>.</>,
+		},
+	]}
+/>

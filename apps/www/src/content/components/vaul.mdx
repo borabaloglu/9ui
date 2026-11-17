@@ -141,3 +141,68 @@ The example below runs in a sandbox: the drawer is rendered into the frame with 
 To show the drawer right to left, set `dir="rtl"` on `html` and wrap your app in `DirectionProvider`. See [RTL](/docs/getting-started/rtl).
 
 <ComponentPreview name="vaul-rtl-demo" direction="rtl" />
+
+## API Reference
+
+What 9ui adds to vaul-base. For the rest of the API, see the [vaul-base docs](https://vaul-base.vercel.app).
+
+### VaulNested
+
+Renders `Drawer.NestedRoot`. Use it as the root of a drawer opened from inside another.
+
+### VaulContent
+
+Bundles the portal, overlay and content.
+
+<ApiTable
+	rows={[
+		{
+			name: "variant",
+			type: '"default" | "inset"',
+			default: '"default"',
+			description: <>The drawer style. <code>inset</code> floats it inside the viewport with rounded corners on every side.</>,
+		},
+		{
+			name: "showHandle",
+			type: "boolean",
+			default: "true",
+			description: "Shows the handle on top and bottom drawers.",
+		},
+		{
+			name: "portalProps",
+			shortType: "object",
+			type: "React.ComponentProps<typeof Drawer.Portal>",
+			description: <>Props for the portal, such as <code>container</code>.</>,
+		},
+	]}
+/>
+
+### VaulPanel
+
+Holds the body and scrolls it while the header and footer stay in place.
+
+### VaulFooter
+
+<ApiTable
+	rows={[
+		{
+			name: "variant",
+			type: '"default" | "bare"',
+			default: '"default"',
+			description: <>The footer style. <code>bare</code> drops the border and background.</>,
+		},
+	]}
+/>
+
+### Data attributes
+
+<ApiTable
+	label="Attribute"
+	rows={[
+		{
+			name: "data-variant",
+			type: '"default" | "inset" | "bare"',
+			description: <>Set on <code>VaulContent</code> and <code>VaulFooter</code>. The current <code>variant</code>.</>,
+		},
+	]}
+/>

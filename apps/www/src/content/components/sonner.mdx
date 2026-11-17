@@ -140,3 +140,46 @@ To tint the whole toast with its status color, set `richColors`.
 To show the sonner right to left, set `dir="rtl"` on `html` and wrap your app in `DirectionProvider`. See [RTL](/docs/getting-started/rtl).
 
 <ComponentPreview name="sonner-rtl-demo" direction="rtl" />
+
+## API Reference
+
+What 9ui adds to Sonner. For the rest of the API, see the [Sonner docs](https://sonner.emilkowal.ski/toast).
+
+### Toaster
+
+<ApiTable
+	rows={[
+		{
+			name: "gap",
+			type: "number",
+			default: "12",
+			baseDefault: "14",
+			description: "The space between expanded toasts, in pixels.",
+		},
+		{
+			name: "offset",
+			shortType: "string | number",
+			type: "string | number | { top?, right?, bottom?, left? }",
+			default: "32",
+			baseDefault: '"24px"',
+			description: "The space between the toasts and the screen edge.",
+		},
+		{
+			name: "icons",
+			type: "ToastIcons",
+			description: <>Lucide icons for each status, a <code>Spinner</code> for loading and an X for the close button.</>,
+		},
+		{
+			name: "toastOptions.unstyled",
+			type: "boolean",
+			default: "true",
+			baseDefault: "false",
+			description: "Drops the Sonner styles so the 9ui styles apply.",
+		},
+		{
+			name: "toastOptions.classNames",
+			type: "ToastClassnames",
+			description: "Classes for each part of a toast, merged with the 9ui classes.",
+		},
+	]}
+/>

@@ -97,3 +97,42 @@ To make the title a heading, set `render` on `AlertTitle`.
 To show the alert right to left, set `dir="rtl"` on `html` and wrap your app in `DirectionProvider`. See [RTL](/docs/getting-started/rtl).
 
 <ComponentPreview name="alert-rtl-demo" direction="rtl" />
+
+## API Reference
+
+Alert is built by 9ui, so this is its full API.
+
+### Alert
+
+<ApiTable
+	rows={[
+		{
+			name: "variant",
+			shortType: "union",
+			type: '"default" | "warning" | "danger" | "info" | "success"',
+			default: '"default"',
+			description: "The color of the alert and its icon.",
+		},
+	]}
+/>
+
+### AlertTitle
+
+To render it as a heading, set `render`.
+
+### AlertAction
+
+Holds buttons. Sits beside the text on wide screens and below it on small ones.
+
+### Data attributes
+
+<ApiTable
+	label="Attribute"
+	rows={[
+		{
+			name: "data-variant",
+			type: "string",
+			description: <>Set on <code>Alert</code>. The current <code>variant</code>.</>,
+		},
+	]}
+/>

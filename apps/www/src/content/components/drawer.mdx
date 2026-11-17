@@ -119,7 +119,7 @@ Set `modal={false}` on `Drawer` to leave the page behind usable: there is no bac
 
 Place `DrawerSwipeArea` inside `Drawer` to open the drawer by swiping in from its edge. The area is an invisible strip along that edge of the screen.
 
-The example below runs in a sandbox: the drawer is rendered into the frame with `container`, and the strip is tinted so you can see it. In your app the strip sits on the edge of the screen.
+The example below runs in a sandbox: the drawer is rendered into the frame with `portalProps.container`, and the strip is tinted so you can see it. In your app the strip sits on the edge of the screen.
 
 <ComponentPreview name="drawer-swipe-area-demo" />
 
@@ -146,7 +146,7 @@ Wrap your app in `DrawerProvider` and put `DrawerIndentBackground` and `DrawerIn
 
 `DrawerIndent` is the page: it carries the page background and clips its content to the rounded corners. While a drawer is open, `position: fixed` elements inside it are positioned against it instead of the viewport. With reduced motion the page stays in place.
 
-The example below runs in a sandbox: the drawer is rendered into the frame with `container`, and the frame holds the indent. In your app the indent is the page itself.
+The example below runs in a sandbox: the drawer is rendered into the frame with `portalProps.container`, and the frame holds the indent. In your app the indent is the page itself.
 
 <ComponentPreview name="drawer-scale-background-demo" />
 
@@ -155,3 +155,76 @@ The example below runs in a sandbox: the drawer is rendered into the frame with 
 To show the drawer right to left, set `dir="rtl"` on `html` and wrap your app in `DirectionProvider`. See [RTL](/docs/getting-started/rtl). `swipeDirection` is the screen edge in both directions, so to open the drawer from the start, set `swipeDirection="right"`.
 
 <ComponentPreview name="drawer-rtl-demo" direction="rtl" />
+
+## API Reference
+
+What 9ui adds to Base UI Drawer. For the rest of the API, see the [Base UI Drawer reference](https://base-ui.com/react/components/drawer#api-reference).
+
+### DrawerPopup
+
+Bundles the portal, backdrop, viewport and popup.
+
+<ApiTable
+	rows={[
+		{
+			name: "variant",
+			type: '"default" | "inset"',
+			default: '"default"',
+			description: <>The drawer style. <code>inset</code> floats it inside the viewport with rounded corners on every side.</>,
+		},
+		{
+			name: "showHandle",
+			type: "boolean",
+			default: "true",
+			description: "Shows the handle on top and bottom drawers.",
+		},
+		{
+			name: "portalProps",
+			type: "Drawer.Portal.Props",
+			description: <>Props for the portal, such as <code>container</code>.</>,
+		},
+	]}
+/>
+
+### DrawerPanel
+
+Renders Base UI `Drawer.Content`. Holds the body and scrolls it while the header and footer stay in place.
+
+### DrawerFooter
+
+<ApiTable
+	rows={[
+		{
+			name: "variant",
+			type: '"default" | "bare"',
+			default: '"default"',
+			description: <>The footer style. <code>bare</code> drops the border and background.</>,
+		},
+	]}
+/>
+
+### Exports
+
+<ApiTable
+	label="Export"
+	rows={[
+		{
+			name: "createDrawerHandle()",
+			type: "() => Drawer.Handle<Payload>",
+			description: <>Creates a handle that connects <code>Drawer</code> to triggers outside it.</>,
+		},
+	]}
+/>
+
+### Data attributes
+
+<ApiTable
+	label="Attribute"
+	rows={[
+		{
+			name: "data-variant",
+			type: '"default" | "inset" | "bare"',
+			description: <>Set on <code>DrawerPopup</code> and <code>DrawerFooter</code>. The current <code>variant</code>.</>,
+		},
+	]}
+/>

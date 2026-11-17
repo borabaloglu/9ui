@@ -100,3 +100,106 @@ Pass your own classes to `CommandInput` and wrap `CommandList` to change the lay
 To show the command menu right to left, set `dir="rtl"` on `html` and wrap your app in `DirectionProvider`. See [RTL](/docs/getting-started/rtl).
 
 <ComponentPreview name="command-rtl-demo" direction="rtl" />
+
+## API Reference
+
+What 9ui adds to Base UI Autocomplete. For the rest of the API, see the [Base UI Autocomplete reference](https://base-ui.com/react/components/autocomplete#api-reference).
+
+### Command
+
+Wraps `Autocomplete` with a list that is always shown.
+
+<ApiTable
+	rows={[
+		{
+			name: "open",
+			type: "boolean",
+			default: "true",
+			description: "Keeps the list open.",
+		},
+		{
+			name: "inline",
+			type: "boolean",
+			default: "true",
+			baseDefault: "false",
+			description: "Renders the list in place instead of in a popup.",
+		},
+		{
+			name: "autoHighlight",
+			type: 'boolean | "always"',
+			default: '"always"',
+			baseDefault: "false",
+			description: "Always highlights the first matching item.",
+		},
+		{
+			name: "keepHighlight",
+			type: "boolean",
+			default: "true",
+			baseDefault: "false",
+			description: "Keeps the highlight when the pointer leaves the list.",
+		},
+		{
+			name: "loopFocus",
+			type: "boolean",
+			default: "false",
+			baseDefault: "true",
+			description: "Stops at the first and last item instead of looping through the input.",
+		},
+	]}
+/>
+
+### CommandDialog
+
+Opens `Command` in a [Dialog](/docs/components/dialog) with a title and description for screen readers.
+
+<ApiTable
+	rows={[
+		{
+			name: "title",
+			type: "string",
+			default: '"Command Palette"',
+			description: "The dialog title read by screen readers.",
+		},
+		{
+			name: "description",
+			type: "string",
+			default: '"Search for a command to run..."',
+			description: "The dialog description read by screen readers.",
+		},
+		{
+			name: "showAtBottomOnMobile",
+			type: "boolean",
+			default: "false",
+			description: <>Docks the dialog to the bottom edge on small screens. Off here, unlike <code>DialogPopup</code>.</>,
+		},
+		{
+			name: "showCloseButton",
+			type: "boolean",
+			default: "false",
+			description: <>Shows a close button in the top corner. Off here, unlike <code>DialogPopup</code>.</>,
+		},
+	]}
+/>
+
+### CommandList
+
+Wraps the list in a [Scroll Area](/docs/components/scroll-area).
+
+<ApiTable
+	rows={[
+		{
+			name: "scrollbarGutter",
+			type: "boolean",
+			default: "false",
+			description: "Reserves space for the scrollbar so items stay clear of it.",
+		},
+	]}
+/>
+
+### CommandShortcut
+
+Shows a keyboard shortcut at the end of `CommandItem`.
+
+### CommandFooter
+
+A bar at the bottom of `Command` for hints.

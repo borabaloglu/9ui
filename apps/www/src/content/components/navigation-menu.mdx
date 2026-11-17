@@ -114,3 +114,108 @@ Set `disabled` on `NavigationMenuTrigger` to turn off a menu.
 To show the navigation menu right to left, set `dir="rtl"` on `html` and wrap your app in `DirectionProvider`. See [RTL](/docs/getting-started/rtl).
 
 <ComponentPreview name="navigation-menu-rtl-demo" direction="rtl" />
+
+## API Reference
+
+What 9ui adds to Base UI Navigation Menu. For the rest of the API, see the [Base UI Navigation Menu reference](https://base-ui.com/react/components/navigation-menu#api-reference).
+
+### NavigationMenuTrigger
+
+<ApiTable
+	rows={[
+		{
+			name: "variant",
+			type: '"default" | "link"',
+			default: '"default"',
+			description: <>The style of the trigger. <code>link</code> styles it like a link inside a popup, for nested menus.</>,
+		},
+		{
+			name: "showIcon",
+			type: "boolean",
+			default: "true",
+			description: "Shows a chevron after the label.",
+		},
+	]}
+/>
+
+### NavigationMenuContent
+
+Wraps its children in a scroll area.
+
+### NavigationMenuLink
+
+<ApiTable
+	rows={[
+		{
+			name: "variant",
+			type: '"default" | "trigger"',
+			default: '"default"',
+			description: <>The style of the link. <code>trigger</code> styles it like a trigger in the list.</>,
+		},
+	]}
+/>
+
+### NavigationMenuPopup
+
+Bundles the portal, positioner, popup and viewport.
+
+<ApiTable
+	rows={[
+		{
+			name: "side",
+			shortType: "Side",
+			type: '"top" | "bottom" | "left" | "right" | "inline-end" | "inline-start"',
+			default: '"bottom"',
+			description: "The side of the trigger the popup opens on.",
+		},
+		{
+			name: "align",
+			type: '"start" | "center" | "end"',
+			default: '"start"',
+			baseDefault: '"center"',
+			description: "How the popup lines up with the trigger on that side.",
+		},
+		{
+			name: "sideOffset",
+			type: "number | OffsetFunction",
+			default: "8",
+			baseDefault: "0",
+			description: "The gap between the trigger and the popup.",
+		},
+		{
+			name: "alignOffset",
+			type: "number | OffsetFunction",
+			default: "0",
+			description: "The shift along the alignment axis.",
+		},
+		{
+			name: "anchor",
+			shortType: "Element | RefObject",
+			type: "Element | VirtualElement | RefObject<Element | null> | (() => Element | VirtualElement | null) | null",
+			description: "The element to position the popup against, in place of the trigger.",
+		},
+		{
+			name: "collisionAvoidance",
+			type: "CollisionAvoidance",
+			description: <>How the popup avoids collisions. When <code>side</code> is <code>top</code> or <code>bottom</code>, it defaults to <code>{'{ side: "none" }'}</code>, so the popup never flips.</>,
+		},
+		{
+			name: "portalProps",
+			type: "NavigationMenu.Portal.Props",
+			description: <>Props for the portal, such as <code>container</code>.</>,
+		},
+	]}
+/>
+
+### Data attributes
+
+<ApiTable
+	label="Attribute"
+	rows={[
+		{
+			name: "data-variant",
+			type: "string",
+			description: <>Set on <code>NavigationMenuTrigger</code> and <code>NavigationMenuLink</code>. The current <code>variant</code>.</>,
+		},
+	]}
+/>

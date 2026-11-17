@@ -53,6 +53,12 @@ Give the control a `<label>` or `aria-label`, and give icon-only buttons an acce
 
 ## Examples
 
+### Size
+
+Set `size` to `sm`, `default` or `lg` on `InputGroup`. The input and buttons inside follow it.
+
+<ComponentPreview name="input-group-size-demo" />
+
 ### Align
 
 Set `align` on `InputGroupAddon` to place it at `inline-start`, `inline-end`, `block-start`, or `block-end`.
@@ -122,3 +128,103 @@ Place it inside [`Field`](/docs/components/field) to link the label, description
 To show the input group right to left, set `dir="rtl"` on `html` and wrap your app in `DirectionProvider`. See [RTL](/docs/getting-started/rtl).
 
 <ComponentPreview name="input-group-rtl-demo" direction="rtl" />
+
+## API Reference
+
+Input Group is built by 9ui, so this is its full API.
+
+### InputGroup
+
+<ApiTable
+	rows={[
+		{
+			name: "size",
+			type: '"sm" | "default" | "lg"',
+			default: '"default"',
+			description: "The height and text size of the group. The input and buttons inside follow it.",
+		},
+	]}
+/>
+
+### InputGroupAddon
+
+<ApiTable
+	rows={[
+		{
+			name: "align",
+			shortType: "union",
+			type: '"inline-start" | "inline-end" | "block-start" | "block-end"',
+			default: '"inline-start"',
+			description: "Where the addon sits in the group.",
+		},
+	]}
+/>
+
+### InputGroupText
+
+Text or an icon inside an addon.
+
+### InputGroupInput
+
+Accepts the props of [Input](/docs/components/input#api-reference).
+
+<ApiTable
+	rows={[
+		{
+			name: "size",
+			type: '"sm" | "default" | "lg" | number',
+			description: <>The size of the input. Defaults to the <code>size</code> of the group.</>,
+		},
+	]}
+/>
+
+### InputGroupButton
+
+Accepts the props of [Button](/docs/components/button#api-reference).
+
+<ApiTable
+	rows={[
+		{
+			name: "size",
+			shortType: "union",
+			type: '"xs" | "sm" | "icon-xs" | "icon-sm"',
+			default: '"xs"',
+			description: <>The size of the button. <code>xs</code> and <code>icon-xs</code> follow the <code>size</code> of the group.</>,
+		},
+		{
+			name: "variant",
+			type: 'ButtonProps["variant"]',
+			default: '"ghost"',
+			description: "The style of the button.",
+		},
+		{
+			name: "type",
+			type: '"button" | "submit" | "reset"',
+			default: '"button"',
+			description: "The native type of the button.",
+		},
+	]}
+/>
+
+### InputGroupTextarea
+
+Accepts the props of [Textarea](/docs/components/textarea#api-reference).
+
+### Data attributes
+
+<ApiTable
+	label="Attribute"
+	rows={[
+		{
+			name: "data-size",
+			type: '"sm" | "default" | "lg"',
+			description: <>Set on <code>InputGroup</code>. Use it to style the group per size.</>,
+		},
+		{
+			name: "data-align",
+			shortType: "union",
+			type: '"inline-start" | "inline-end" | "block-start" | "block-end"',
+			description: <>Set on <code>InputGroupAddon</code>. Use it to style addons per position.</>,
+		},
+	]}
+/>

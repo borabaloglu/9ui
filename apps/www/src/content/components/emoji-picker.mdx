@@ -118,3 +118,54 @@ To show the emoji picker right to left, set `dir="rtl"` on `html` and wrap your 
 Emoji and category names stay in English in Arabic and Hebrew, and arrow keys are not mirrored. Both come from frimousse.
 
 <ComponentPreview name="emoji-picker-rtl-demo" direction="rtl" />
+
+## API Reference
+
+What 9ui adds to Frimousse. For the rest of the API, see the [Frimousse docs](https://frimousse.liveblocks.io/#api-reference).
+
+### EmojiPickerSearch
+
+Renders the search field inside an [Input Group](/docs/components/input-group) with a search icon.
+
+<ApiTable
+	rows={[
+		{
+			name: "aria-label",
+			type: "string",
+			default: '"Search emoji"',
+			description: "The accessible name of the search field.",
+		},
+	]}
+/>
+
+### EmojiPickerContent
+
+Wraps `EmojiPicker.Viewport`.
+
+### EmojiPickerLoading
+
+Shows a spinner unless you pass children.
+
+### EmojiPickerEmpty
+
+Shows "No emoji found." unless you pass children.
+
+### EmojiPickerList
+
+<ApiTable
+	rows={[
+		{
+			name: "components",
+			type: "Partial<EmojiPickerListComponents>",
+			description: <>Replaces the 9ui <code>CategoryHeader</code>, <code>Row</code> or <code>Emoji</code> component. Parts you leave out keep the 9ui styles.</>,
+		},
+	]}
+/>
+
+### EmojiPickerFooter
+
+A row at the bottom of the picker for the preview and skin tone selector.
+
+### EmojiPickerPreview
+
+Shows the highlighted emoji and its name. Shows "Select an emoji…" when none is highlighted, unless you pass children.

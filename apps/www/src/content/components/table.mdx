@@ -108,3 +108,82 @@ To mark a row as selected, set `aria-selected` on `TableRow`.
 To show the table right to left, set `dir="rtl"` on `html` and wrap your app in `DirectionProvider`. See [RTL](/docs/getting-started/rtl).
 
 <ComponentPreview name="table-rtl-demo" direction="rtl" />
+
+## API Reference
+
+Table is built by 9ui, so this is its full API. Every part takes the props of its HTML element.
+
+### Table
+
+Wraps the table in a container and a scroll area.
+
+<ApiTable
+	rows={[
+		{
+			name: "variant",
+			type: '"default" | "card"',
+			default: '"default"',
+			description: "No surface, or a card with a border and shadow.",
+		},
+		{
+			name: "size",
+			type: '"default" | "sm"',
+			default: '"default"',
+			description: "The height of the rows.",
+		},
+		{
+			name: "containerClassName",
+			type: "string",
+			description: <>Classes for the container, such as a max height for a sticky header. <code>className</code> goes on the <code>table</code>.</>,
+		},
+	]}
+/>
+
+### TableHeader
+
+<ApiTable
+	rows={[
+		{
+			name: "sticky",
+			type: "boolean",
+			default: "false",
+			description: "Keeps the header in view while the rows scroll.",
+		},
+	]}
+/>
+
+### TableHead
+
+<ApiTable
+	rows={[
+		{
+			name: "scope",
+			type: "string",
+			default: '"col"',
+			description: "The cells this header describes.",
+		},
+	]}
+/>
+
+### Data attributes
+
+<ApiTable
+	label="Attribute"
+	rows={[
+		{
+			name: "data-variant",
+			type: '"default" | "card"',
+			description: <>Set on the container. The current <code>variant</code>.</>,
+		},
+		{
+			name: "data-size",
+			type: '"default" | "sm"',
+			description: <>Set on the container. The current <code>size</code>.</>,
+		},
+		{
+			name: "data-sticky",
+			type: "boolean",
+			description: <>Present on <code>TableHeader</code> when <code>sticky</code> is set.</>,
+		},
+	]}
+/>

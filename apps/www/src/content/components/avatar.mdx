@@ -107,3 +107,56 @@ To show how many avatars are hidden, add `AvatarGroupOverflow` at the end of the
 To show the avatar right to left, set `dir="rtl"` on `html` and wrap your app in `DirectionProvider`. See [RTL](/docs/getting-started/rtl).
 
 <ComponentPreview name="avatar-rtl-demo" direction="rtl" />
+
+## API Reference
+
+What 9ui adds to Base UI Avatar. For the rest of the API, see the [Base UI Avatar reference](https://base-ui.com/react/components/avatar#api-reference).
+
+### Avatar
+
+<ApiTable
+	rows={[
+		{
+			name: "size",
+			type: '"sm" | "default" | "lg"',
+			default: '"default"',
+			description: "The size and text size of the avatar.",
+		},
+		{
+			name: "shape",
+			type: '"circle" | "square"',
+			default: '"circle"',
+			description: "Rounds the avatar fully or to a rounded square.",
+		},
+	]}
+/>
+
+### AvatarBadge
+
+A status dot at the bottom end corner. It sizes itself to the avatar.
+
+### AvatarGroup
+
+Overlaps its avatars with a cutout around each one.
+
+### AvatarGroupOverflow
+
+A count of the hidden avatars, sized to match the avatars in the group.
+
+### Data attributes
+
+<ApiTable
+	label="Attribute"
+	rows={[
+		{
+			name: "data-size",
+			type: '"sm" | "default" | "lg"',
+			description: <>Set on <code>Avatar</code>. The current <code>size</code>.</>,
+		},
+		{
+			name: "data-shape",
+			type: '"circle" | "square"',
+			description: <>Set on <code>Avatar</code>. The current <code>shape</code>.</>,
+		},
+	]}
+/>

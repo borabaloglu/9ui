@@ -154,3 +154,76 @@ Set `grid` and wrap each line of items in `AutocompleteRow` to lay items out in 
 To show the autocomplete right to left, set `dir="rtl"` on `html` and wrap your app in `DirectionProvider`. See [RTL](/docs/getting-started/rtl).
 
 <ComponentPreview name="autocomplete-rtl-demo" direction="rtl" />
+
+## API Reference
+
+What 9ui adds to Base UI Autocomplete. For the rest of the API, see the [Base UI Autocomplete reference](https://base-ui.com/react/components/autocomplete#api-reference).
+
+### AutocompletePopup
+
+Bundles the portal, positioner and popup.
+
+<ApiTable
+	rows={[
+		{
+			name: "side",
+			shortType: "Side",
+			type: '"top" | "bottom" | "left" | "right" | "inline-end" | "inline-start"',
+			default: '"bottom"',
+			description: "The side of the input the popup opens on.",
+		},
+		{
+			name: "align",
+			type: '"start" | "center" | "end"',
+			default: '"start"',
+			baseDefault: '"center"',
+			description: "How the popup lines up with the input on that side.",
+		},
+		{
+			name: "sideOffset",
+			type: "number | OffsetFunction",
+			default: "4",
+			baseDefault: "0",
+			description: "The gap between the input and the popup.",
+		},
+		{
+			name: "alignOffset",
+			type: "number | OffsetFunction",
+			default: "0",
+			description: "The shift along the alignment axis.",
+		},
+		{
+			name: "anchor",
+			shortType: "Element | RefObject",
+			type: "Element | VirtualElement | RefObject<Element | null> | (() => Element | VirtualElement | null) | null",
+			description: "The element to position the popup against, in place of the input.",
+		},
+		{
+			name: "portalProps",
+			type: "Autocomplete.Portal.Props",
+			description: <>Props for the portal, such as <code>container</code>.</>,
+		},
+	]}
+/>
+
+### Exports
+
+The component file also exports these.
+
+<ApiTable
+	label="Export"
+	rows={[
+		{
+			name: "useAutocompleteFilter()",
+			shortType: "Filter",
+			type: "(options?: UseFilterOptions) => Filter",
+			description: <>Returns locale-aware <code>contains</code>, <code>startsWith</code> and <code>endsWith</code> matchers for the <code>filter</code> prop.</>,
+		},
+		{
+			name: "useAutocompleteFilteredItems()",
+			shortType: "T[]",
+			type: "<T>() => T[]",
+			description: "Returns the items left after filtering. Use it inside the autocomplete.",
+		},
+	]}
+/>

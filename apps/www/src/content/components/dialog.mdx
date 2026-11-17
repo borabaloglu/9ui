@@ -114,3 +114,70 @@ Open a dialog from inside another. The parent scales down behind the nested one.
 To show the dialog right to left, set `dir="rtl"` on `html` and wrap your app in `DirectionProvider`. See [RTL](/docs/getting-started/rtl).
 
 <ComponentPreview name="dialog-rtl-demo" direction="rtl" />
+
+## API Reference
+
+What 9ui adds to Base UI Dialog. For the rest of the API, see the [Base UI Dialog reference](https://base-ui.com/react/components/dialog#api-reference).
+
+### DialogPopup
+
+Bundles the portal, backdrop, viewport and popup.
+
+<ApiTable
+	rows={[
+		{
+			name: "size",
+			type: '"default" | "sm"',
+			default: '"default"',
+			description: "The width and padding of the dialog. The small size also splits the footer buttons evenly.",
+		},
+		{
+			name: "showAtBottomOnMobile",
+			type: "boolean",
+			default: "true",
+			description: "Docks the dialog to the bottom edge on small screens.",
+		},
+		{
+			name: "showCloseButton",
+			type: "boolean",
+			default: "true",
+			description: "Shows a close button in the top corner.",
+		},
+		{
+			name: "portalProps",
+			type: "Dialog.Portal.Props",
+			description: <>Props for the portal, such as <code>container</code>.</>,
+		},
+	]}
+/>
+
+### DialogFooter
+
+<ApiTable
+	rows={[
+		{
+			name: "variant",
+			type: '"default" | "bare"',
+			default: '"default"',
+			description: <>The footer style. <code>bare</code> drops the border and background.</>,
+		},
+	]}
+/>
+
+### Data attributes
+
+<ApiTable
+	label="Attribute"
+	rows={[
+		{
+			name: "data-size",
+			type: '"default" | "sm"',
+			description: <>Set on <code>DialogPopup</code>. The current <code>size</code>.</>,
+		},
+		{
+			name: "data-variant",
+			type: '"default" | "bare"',
+			description: <>Set on <code>DialogFooter</code>. The current <code>variant</code>.</>,
+		},
+	]}
+/>

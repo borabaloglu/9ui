@@ -86,3 +86,41 @@ Place an image as the first child and it sits flush with the top of the card.
 To show the card right to left, set `dir="rtl"` on `html` and wrap your app in `DirectionProvider`. See [RTL](/docs/getting-started/rtl).
 
 <ComponentPreview name="card-rtl-demo" direction="rtl" />
+
+## API Reference
+
+Card is built by 9ui, so this is its full API.
+
+### Card
+
+<ApiTable
+	rows={[
+		{
+			name: "size",
+			type: '"sm" | "default"',
+			default: '"default"',
+			description: "The padding, spacing and title size of the card.",
+		},
+	]}
+/>
+
+### CardTitle
+
+To render it as a heading, set `render`.
+
+### CardAction
+
+Sits at the end of `CardHeader`, next to the title and description.
+
+### Data attributes
+
+<ApiTable
+	label="Attribute"
+	rows={[
+		{
+			name: "data-size",
+			type: '"sm" | "default"',
+			description: <>Set on <code>Card</code>. The current <code>size</code>.</>,
+		},
+	]}
+/>

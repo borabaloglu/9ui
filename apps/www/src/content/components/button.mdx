@@ -142,3 +142,70 @@ Set `disabled` and render a `Spinner` next to the label to keep the text visible
 To show the button right to left, set `dir="rtl"` on `html` and wrap your app in `DirectionProvider`. See [RTL](/docs/getting-started/rtl).
 
 <ComponentPreview name="button-rtl-demo" direction="rtl" />
+
+## API Reference
+
+What 9ui adds to Base UI Button. For the rest of the API, see the [Base UI Button reference](https://base-ui.com/react/components/button#api-reference).
+
+### Button
+
+<ApiTable
+	rows={[
+		{
+			name: "variant",
+			shortType: "union",
+			type: '"default" | "secondary" | "ghost" | "outline" | "link" | "destructive" | "destructive-outline"',
+			default: '"default"',
+			description: "The visual style of the button.",
+		},
+		{
+			name: "size",
+			shortType: "union",
+			type: '"xs" | "sm" | "default" | "lg" | "xl" | "icon-xs" | "icon-sm" | "icon" | "icon-lg" | "icon-xl"',
+			default: '"default"',
+			description: "The height, padding and text size of the button. The icon sizes make a square button.",
+		},
+		{
+			name: "loading",
+			type: "boolean",
+			default: "false",
+			description: "Shows a spinner in place of the content and disables the button while keeping it focusable.",
+		},
+	]}
+/>
+
+### Data attributes
+
+<ApiTable
+	label="Attribute"
+	rows={[
+		{
+			name: "data-variant",
+			type: "string",
+			description: <>The current <code>variant</code>.</>,
+		},
+		{
+			name: "data-size",
+			type: "string",
+			description: <>The current <code>size</code>.</>,
+		},
+		{
+			name: "data-loading",
+			type: "boolean",
+			description: "Present while the button is loading.",
+		},
+	]}
+/>
+
+### Exports
+
+<ApiTable
+	label="Export"
+	rows={[
+		{
+			name: "buttonVariants",
+			type: "(options?: { variant?: string; size?: string; className?: string }) => string",
+			description: "Returns the button classes. Use it to style other elements, such as links, as buttons.",
+		},
+	]}
+/>
