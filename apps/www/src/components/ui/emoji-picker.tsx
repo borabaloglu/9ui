@@ -77,7 +77,7 @@ function EmojiPickerLoading({
 		<BaseEmojiPicker.Loading
 			data-slot="emoji-picker-loading"
 			className={cn(
-				"text-muted-foreground absolute inset-0 flex items-center justify-center text-sm",
+				"text-muted-foreground absolute inset-0 flex items-center justify-center text-sm any-pointer-coarse:text-base",
 				className,
 			)}
 			{...props}

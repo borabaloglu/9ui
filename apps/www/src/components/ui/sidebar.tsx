@@ -469,7 +469,7 @@ const sidebarMenuButtonVariants = cva(
 					"bg-input inset-ring-border shadow-xs inset-ring-1 dark:shadow-none",
 			},
 			size: {
-				sm: "h-7 text-xs any-pointer-coarse:h-8",
+				sm: "h-7 rounded-[min(var(--radius-md),0.75rem)] text-xs any-pointer-coarse:h-8",
 				default: "h-8 any-pointer-coarse:h-9",
 				lg: "h-12 group-data-[collapsible=icon]/sidebar:p-0",
 			},
@@ -655,7 +655,7 @@ function SidebarMenuSubButton({
 				"data-size": size,
 				"data-active": isActive ? "" : undefined,
 				className: cn(
-					"hover:bg-accent/50 hover:text-accent-foreground focus-visible:ring-ring/50 active:bg-foreground/10 dark:active:bg-accent data-active:bg-accent data-active:text-accent-foreground data-active:active:bg-foreground/10 dark:data-active:active:bg-foreground/10 flex h-7 min-w-0 cursor-pointer items-center gap-2 overflow-hidden rounded-md px-2 text-sm outline-none group-data-[collapsible=icon]/sidebar:hidden focus-visible:ring-3 focus-visible:outline-hidden aria-disabled:pointer-events-none aria-disabled:opacity-50 data-active:font-medium data-[size=sm]:text-xs any-pointer-coarse:h-8 [&>span]:truncate [&>svg]:pointer-events-none [&>svg]:shrink-0 [&>svg:not([class*='size-'])]:size-4",
+					"hover:bg-accent/50 hover:text-accent-foreground focus-visible:ring-ring/50 active:bg-foreground/10 dark:active:bg-accent data-active:bg-accent data-active:text-accent-foreground data-active:active:bg-foreground/10 dark:data-active:active:bg-foreground/10 flex h-7 min-w-0 cursor-pointer items-center gap-2 overflow-hidden rounded-[min(var(--radius-md),0.75rem)] px-2 text-sm outline-none group-data-[collapsible=icon]/sidebar:hidden focus-visible:ring-3 focus-visible:outline-hidden aria-disabled:pointer-events-none aria-disabled:opacity-50 data-active:font-medium data-[size=sm]:text-xs any-pointer-coarse:h-8 [&>span]:truncate [&>svg]:pointer-events-none [&>svg]:shrink-0 [&>svg:not([class*='size-'])]:size-4",
 					className,
 				),
 			} as React.ComponentProps<"a">,

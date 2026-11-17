@@ -58,7 +58,7 @@ function TableHeader({
 			data-slot="table-header"
 			data-sticky={sticky ? "" : undefined}
 			className={cn(
-				"group-data-[variant=card]/table:bg-muted/50 [&_tr]:border-b data-sticky:[&_tr]:border-b-0",
+				"group/table-header group-data-[variant=card]/table:bg-muted/50 [&_tr]:border-b data-sticky:[&_tr]:border-b-0",
 				className,
 			)}
 			{...props}
@@ -112,7 +112,7 @@ function TableHead({
 			data-slot="table-head"
 			scope={scope}
 			className={cn(
-				"text-muted-foreground in-data-sticky:bg-background in-data-sticky:in-data-[slot=card]:bg-card h-10 px-3 text-start align-middle font-medium whitespace-nowrap group-data-[size=sm]/table:h-8 first:ps-4 last:pe-4 in-data-sticky:sticky in-data-sticky:top-0 in-data-sticky:z-1 in-data-sticky:shadow-[inset_0_-1px_var(--border)] in-data-sticky:group-data-[variant=card]/table:bg-[color-mix(in_oklab,var(--surface-muted,var(--muted))_50%,var(--card))] has-[[role=checkbox]]:w-px first:has-[[role=checkbox]]:pe-0 last:has-[[role=checkbox]]:ps-0 any-pointer-coarse:h-11 any-pointer-coarse:group-data-[size=sm]/table:h-10 *:[[role=checkbox]]:flex",
+				"text-muted-foreground group-data-sticky/table-header:bg-background group-data-sticky/table-header:in-data-[slot=card]:bg-card h-10 px-3 text-start align-middle font-medium whitespace-nowrap group-data-sticky/table-header:sticky group-data-sticky/table-header:top-0 group-data-sticky/table-header:z-1 group-data-sticky/table-header:shadow-[inset_0_-1px_var(--border)] group-data-[size=sm]/table:h-8 group-data-sticky/table-header:group-data-[variant=card]/table:bg-[color-mix(in_oklab,var(--surface-muted,var(--muted))_50%,var(--card))] first:ps-4 last:pe-4 has-[[role=checkbox]]:w-px first:has-[[role=checkbox]]:pe-0 last:has-[[role=checkbox]]:ps-0 any-pointer-coarse:h-11 any-pointer-coarse:group-data-[size=sm]/table:h-10 *:[[role=checkbox]]:flex",
 				className,
 			)}
 			{...props}

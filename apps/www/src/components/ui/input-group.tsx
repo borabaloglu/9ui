@@ -30,14 +30,14 @@ function InputGroup({ className, ...props }: React.ComponentProps<"div">) {
 }
 
 const inputGroupAddonVariants = cva(
-	"text-muted-foreground flex cursor-text items-center justify-center gap-2 py-1.5 text-sm font-medium select-none [&>svg]:pointer-events-none [&>svg]:shrink-0 [&>svg:not([class*='size-'])]:size-4",
+	"text-muted-foreground flex cursor-text items-center justify-center gap-2 py-1.5 text-sm font-medium select-none any-pointer-coarse:text-base [&>svg]:pointer-events-none [&>svg]:shrink-0 [&>svg:not([class*='size-'])]:size-4",
 	{
 		variants: {
 			align: {
 				"inline-start":
-					"order-first min-w-0 ps-2 has-[>[data-slot=badge]]:-ms-0.75 has-[>button]:-ms-1.25 has-[>kbd]:-ms-0.75 any-pointer-coarse:text-base",
+					"order-first min-w-0 ps-2 has-[>[data-slot=badge]]:-ms-0.75 has-[>button]:-ms-1.25 has-[>kbd]:-ms-0.75",
 				"inline-end":
-					"order-last min-w-0 pe-2 has-[>[data-slot=badge]]:-me-0.75 has-[>button]:-me-1.25 has-[>kbd]:-me-0.75 any-pointer-coarse:text-base",
+					"order-last min-w-0 pe-2 has-[>[data-slot=badge]]:-me-0.75 has-[>button]:-me-1.25 has-[>kbd]:-me-0.75",
 				"block-start":
 					"order-first w-full justify-start px-2.5 pt-2 [&>button:not(:has(~_[data-slot]))]:-me-0.5 [&>button:not([data-slot]_~_*)]:-ms-0.5 [.border-b]:pb-2",
 				"block-end":
@@ -102,7 +102,7 @@ function InputGroupButton({
 			variant={variant}
 			size={size}
 			className={cn(
-				"shadow-none any-pointer-coarse:after:hidden",
+				"shadow-none any-pointer-coarse:after:inset-x-0 any-pointer-coarse:after:inset-y-[calc(50%-22px)] any-pointer-coarse:after:size-auto any-pointer-coarse:after:min-h-0 any-pointer-coarse:after:min-w-0",
 				(size === "xs" || size === "icon-xs") &&
 					"rounded-sm before:rounded-[calc(var(--radius-sm)-1px)]",
 				size === "icon-xs" && "[&_svg:not([class*='size-'])]:size-4",

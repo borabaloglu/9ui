@@ -123,7 +123,7 @@ function DrawerBackdrop({
 		<BaseDrawer.Backdrop
 			data-slot="drawer-backdrop"
 			className={cn(
-				"ease-drawer fixed inset-0 z-50 min-h-dvh bg-black/30 opacity-[max(var(--drawer-backdrop-floor,0),calc(1-var(--drawer-swipe-progress)))] transition-opacity duration-450 data-ending-style:opacity-0 data-ending-style:duration-[calc(var(--drawer-swipe-strength)*400ms)] data-starting-style:opacity-0 data-swiping:duration-0 supports-backdrop-filter:backdrop-blur-xs supports-[-webkit-touch-callout:none]:absolute motion-reduce:duration-200 motion-reduce:data-ending-style:duration-150",
+				"ease-drawer fixed inset-0 z-50 min-h-dvh bg-black/30 opacity-[max(var(--drawer-backdrop-floor,0),calc(1-var(--drawer-swipe-progress)))] transition-opacity duration-450 data-ending-style:opacity-0 data-ending-style:duration-[calc(var(--drawer-swipe-strength)*400ms)] data-starting-style:opacity-0 data-swiping:duration-0 supports-backdrop-filter:backdrop-blur-xs supports-[-webkit-touch-callout:none]:absolute motion-reduce:duration-200 motion-reduce:data-ending-style:duration-150 dark:bg-black/50",
 				className,
 			)}
 			{...props}

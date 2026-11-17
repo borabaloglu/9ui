@@ -69,7 +69,7 @@ function FieldDescription({
 		<BaseField.Description
 			data-slot="field-description"
 			className={cn(
-				"text-muted-foreground [&>a:hover]:text-foreground text-sm leading-normal [&>a]:underline [&>a]:underline-offset-4",
+				"text-muted-foreground [&>a]:hover:text-foreground text-sm leading-normal [&>a]:underline [&>a]:underline-offset-4",
 				className,
 			)}
 			{...props}

@@ -69,7 +69,7 @@ function VaulOverlay({
 		<BaseVaul.Overlay
 			data-slot="vaul-overlay"
 			className={cn(
-				"fixed inset-0 z-50 bg-black/30 supports-backdrop-filter:backdrop-blur-xs",
+				"fixed inset-0 z-50 min-h-dvh bg-black/30 supports-backdrop-filter:backdrop-blur-xs supports-[-webkit-touch-callout:none]:absolute dark:bg-black/50",
 				className,
 			)}
 			{...props}

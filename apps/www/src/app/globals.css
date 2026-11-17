@@ -62,6 +62,7 @@
 
 	html {
 		@apply overscroll-none motion-safe:md:scroll-smooth;
+		-webkit-tap-highlight-color: transparent;
 	}
 
 	html[data-base-ui-scroll-locked] {
@@ -146,6 +147,7 @@
 	--radius-md: calc(var(--radius) - 2px);
 	--radius-lg: var(--radius);
 	--radius-xl: calc(var(--radius) + 2px);
+	--radius-2xl: calc(var(--radius) + 6px);
 	--ease-out-quint: cubic-bezier(0.23, 1, 0.32, 1);
 	--ease-drawer: cubic-bezier(0.32, 0.72, 0, 1);
 	--color-background: var(--background);
