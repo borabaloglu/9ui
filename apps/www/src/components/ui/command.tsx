@@ -185,7 +185,7 @@ function CommandShortcut({
 		<kbd
 			data-slot="command-shortcut"
 			className={cn(
-				"text-muted-foreground ms-auto inline-flex items-center ps-4 font-sans text-xs tracking-widest",
+				"text-muted-foreground in-data-highlighted:text-accent-foreground ms-auto inline-flex items-center ps-4 font-sans text-xs tracking-widest",
 				className,
 			)}
 			{...props}

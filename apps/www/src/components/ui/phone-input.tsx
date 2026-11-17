@@ -152,7 +152,7 @@ function PhoneInputCountrySelect({
 								{country.value && (
 									<span
 										dir="ltr"
-										className="text-muted-foreground tabular-nums"
+										className="text-muted-foreground in-data-highlighted:text-accent-foreground tabular-nums"
 									>
 										+{BasePhoneInput.getCountryCallingCode(country.value)}
 									</span>

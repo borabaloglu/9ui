@@ -58,7 +58,7 @@ function Calendar({
 		dropdowns:
 			"flex h-(--cell-size) w-full items-center justify-center gap-1 text-sm font-medium any-pointer-coarse:text-base",
 		dropdown_root:
-			"hover:bg-accent has-focus-visible:ring-ring/50 dark:hover:bg-accent/50 relative rounded-[min(var(--radius-md),0.75rem)] has-focus-visible:ring-3 has-focus-visible:outline-hidden",
+			"hover:bg-accent has-focus-visible:ring-ring/50 dark:hover:bg-accent/50 relative rounded-[min(var(--radius-md),0.75rem)] has-focus-visible:ring-3",
 		dropdown: "bg-popover absolute inset-0 cursor-pointer opacity-0",
 		month_grid: "w-full",
 		weekdays: "flex",
@@ -175,7 +175,7 @@ function CalendarDayButton({
 			data-outside={modifiers.outside ? "" : undefined}
 			data-today={modifiers.today ? "" : undefined}
 			className={cn(
-				"focus-visible:ring-ring/50 not-data-selected-primary:not-data-range-middle:hover:bg-accent data-outside:text-muted-foreground data-selected-primary:bg-primary data-selected-primary:text-primary-foreground dark:not-data-selected-primary:not-data-range-middle:hover:bg-accent/50 data-range-middle:hover:bg-foreground/10 relative z-10 flex size-full cursor-pointer flex-col items-center justify-center gap-1 rounded-(--cell-radius) text-sm leading-none font-normal outline-none select-none focus-visible:z-20 focus-visible:ring-3 focus-visible:outline-hidden disabled:pointer-events-none disabled:line-through disabled:opacity-50 data-selected-primary:inset-shadow-[0_1px_--theme(--color-white/20%)] data-today:after:absolute data-today:after:inset-x-0 data-today:after:bottom-1 data-today:after:mx-auto data-today:after:h-px data-today:after:w-1.5 data-today:after:rounded-full data-today:after:bg-current motion-safe:transition-[scale] motion-safe:duration-150 motion-safe:ease-out motion-safe:active:scale-95 any-pointer-coarse:text-base",
+				"focus-visible:ring-ring/50 not-data-selected-primary:not-data-range-middle:hover:bg-accent data-outside:text-muted-foreground data-selected-primary:bg-primary data-selected-primary:text-primary-foreground dark:not-data-selected-primary:not-data-range-middle:hover:bg-accent/50 data-range-middle:hover:bg-foreground/10 relative z-10 flex size-full cursor-pointer flex-col items-center justify-center gap-1 rounded-(--cell-radius) text-sm leading-none font-normal outline-none select-none focus-visible:z-20 focus-visible:ring-3 disabled:pointer-events-none disabled:line-through disabled:opacity-50 aria-disabled:pointer-events-none aria-disabled:line-through aria-disabled:opacity-50 data-selected-primary:inset-shadow-[0_1px_--theme(--color-white/20%)] data-today:after:absolute data-today:after:inset-x-0 data-today:after:bottom-1 data-today:after:mx-auto data-today:after:h-px data-today:after:w-1.5 data-today:after:rounded-full data-today:after:bg-current motion-safe:transition-[scale] motion-safe:duration-150 motion-safe:ease-out motion-safe:active:scale-95 any-pointer-coarse:text-base",
 				className,
 			)}
 			{...props}
