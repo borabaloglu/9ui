@@ -12,7 +12,7 @@ export default function ResizableDemo() {
 					<span className="text-sm font-medium">One</span>
 				</div>
 			</ResizablePanel>
-			<ResizableHandle withHandle />
+			<ResizableHandle showHandle />
 			<ResizablePanel defaultSize="50%">
 				<ResizablePanelGroup orientation="vertical">
 					<ResizablePanel defaultSize="25%">
@@ -20,7 +20,7 @@ export default function ResizableDemo() {
 							<span className="text-sm font-medium">Two</span>
 						</div>
 					</ResizablePanel>
-					<ResizableHandle withHandle />
+					<ResizableHandle showHandle />
 					<ResizablePanel defaultSize="75%">
 						<div className="flex h-full items-center justify-center p-6">
 							<span className="text-sm font-medium">Three</span>

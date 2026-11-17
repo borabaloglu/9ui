@@ -1,9 +1,9 @@
 "use client";
 
-import { Toast } from "@base-ui/react/toast";
-
 import { Button } from "@/components/ui/button";
 import { type ToastPosition, ToastProvider } from "@/components/ui/toast";
+
+import { createToastManager } from "@/hooks/use-toast";
 
 const positions: ToastPosition[] = [
 	"top-left",
@@ -15,7 +15,7 @@ const positions: ToastPosition[] = [
 ];
 
 const toastManagers = Object.fromEntries(
-	positions.map((position) => [position, Toast.createToastManager()]),
+	positions.map((position) => [position, createToastManager()]),
 );
 
 export default function ToastPositionDemo() {

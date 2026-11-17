@@ -41,14 +41,16 @@ function AlertDialogPopup({
 	className,
 	size = "default",
 	showAtBottomOnMobile = true,
+	portalProps,
 	...props
 }: Omit<BaseAlertDialog.Popup.Props, "className"> & {
 	className?: string;
+	portalProps?: BaseAlertDialog.Portal.Props;
 	size?: "default" | "sm";
 	showAtBottomOnMobile?: boolean;
 }) {
 	return (
-		<BaseAlertDialog.Portal data-slot="alert-dialog-portal">
+		<BaseAlertDialog.Portal data-slot="alert-dialog-portal" {...portalProps}>
 			<AlertDialogBackdrop
 				className={cn(
 					showAtBottomOnMobile &&

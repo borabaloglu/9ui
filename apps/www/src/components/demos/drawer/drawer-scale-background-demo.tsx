@@ -37,7 +37,7 @@ export default function DrawerScaleBackgroundDemo() {
 							<DrawerTrigger render={<Button variant="outline" />}>
 								Turn on
 							</DrawerTrigger>
-							<DrawerPopup container={container}>
+							<DrawerPopup portalProps={{ container }}>
 								<DrawerHeader>
 									<DrawerTitle>Turn on notifications?</DrawerTitle>
 									<DrawerDescription>

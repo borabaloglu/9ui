@@ -165,8 +165,10 @@ function NavigationMenuPopup({
 		? { side: "none" }
 		: undefined,
 	dir,
+	children,
+	portalProps,
 	...props
-}: Omit<React.ComponentProps<typeof BaseNavigationMenu.Popup>, "className"> &
+}: Omit<BaseNavigationMenu.Popup.Props, "className"> &
 	Pick<
 		BaseNavigationMenu.Positioner.Props,
 		| "align"
@@ -177,9 +179,13 @@ function NavigationMenuPopup({
 		| "collisionAvoidance"
 	> & {
 		className?: string;
+		portalProps?: BaseNavigationMenu.Portal.Props;
 	}) {
 	return (
-		<BaseNavigationMenu.Portal data-slot="navigation-menu-portal">
+		<BaseNavigationMenu.Portal
+			data-slot="navigation-menu-portal"
+			{...portalProps}
+		>
 			<BaseNavigationMenu.Positioner
 				data-slot="navigation-menu-positioner"
 				className="ease-out-quint z-50 h-(--positioner-height) w-(--positioner-width) max-w-(--available-width) before:absolute data-instant:transition-none data-[side=bottom]:before:inset-x-0 data-[side=bottom]:before:bottom-full data-[side=bottom]:before:h-(--navigation-menu-offset) data-[side=inline-end]:before:inset-y-0 data-[side=inline-end]:before:end-full data-[side=inline-end]:before:w-(--navigation-menu-offset) data-[side=inline-start]:before:inset-y-0 data-[side=inline-start]:before:start-full data-[side=inline-start]:before:w-(--navigation-menu-offset) data-[side=left]:before:inset-y-0 data-[side=left]:before:left-full data-[side=left]:before:w-(--navigation-menu-offset) data-[side=right]:before:inset-y-0 data-[side=right]:before:right-full data-[side=right]:before:w-(--navigation-menu-offset) data-[side=top]:before:inset-x-0 data-[side=top]:before:top-full data-[side=top]:before:h-(--navigation-menu-offset) motion-safe:transition-[top,left,right,bottom] motion-safe:duration-200"
@@ -205,6 +211,7 @@ function NavigationMenuPopup({
 					{...props}
 				>
 					<NavigationMenuViewport />
+					{children}
 				</BaseNavigationMenu.Popup>
 			</BaseNavigationMenu.Positioner>
 		</BaseNavigationMenu.Portal>

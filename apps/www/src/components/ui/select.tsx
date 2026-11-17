@@ -27,6 +27,13 @@ function SelectLabel({
 	);
 }
 
+const selectTriggerSizes = {
+	sm: "h-7 rounded-[min(var(--radius-md),0.75rem)] ps-2.5 text-[0.8rem] before:rounded-[calc(min(var(--radius-md),0.75rem)-1px)] any-pointer-coarse:h-8",
+	default:
+		"h-8 rounded-lg ps-2.5 text-sm before:rounded-[calc(var(--radius-lg)-1px)] any-pointer-coarse:h-9",
+	lg: "h-9 rounded-lg ps-3 pe-2.5 text-sm before:rounded-[calc(var(--radius-lg)-1px)] any-pointer-coarse:h-10",
+};
+
 function SelectTrigger({
 	className,
 	size = "default",
@@ -34,14 +41,15 @@ function SelectTrigger({
 	...props
 }: Omit<BaseSelect.Trigger.Props, "className"> & {
 	className?: string;
-	size?: "sm" | "default";
+	size?: keyof typeof selectTriggerSizes;
 }) {
 	return (
 		<BaseSelect.Trigger
 			data-slot="select-trigger"
 			data-size={size}
 			className={cn(
-				"border-border bg-input text-foreground focus-visible:border-ring focus-visible:ring-ring/50 aria-invalid:border-destructive/60 aria-invalid:ring-destructive/30 dark:aria-invalid:ring-destructive/40 relative flex h-8 w-fit min-w-0 items-center justify-between gap-2 rounded-lg border py-1 ps-2.5 pe-2 text-sm whitespace-nowrap shadow-xs transition-[border-color,box-shadow] duration-150 ease-out outline-none select-none not-dark:bg-clip-padding before:pointer-events-none before:absolute before:inset-0 before:rounded-[calc(var(--radius-lg)-1px)] not-data-disabled:not-aria-invalid:not-focus-visible:before:shadow-[0_1px_--theme(--color-black/6%)] focus-visible:ring-3 focus-visible:duration-0 data-disabled:cursor-not-allowed data-disabled:opacity-50 data-[size=sm]:h-7 data-[size=sm]:rounded-[min(var(--radius-md),0.75rem)] data-[size=sm]:before:rounded-[calc(min(var(--radius-md),0.75rem)-1px)] dark:not-data-disabled:not-aria-invalid:not-focus-visible:before:shadow-[0_-1px_--theme(--color-white/8%)] any-pointer-coarse:h-9 any-pointer-coarse:text-base any-pointer-coarse:after:absolute any-pointer-coarse:after:inset-x-0 any-pointer-coarse:after:inset-y-[calc(50%-22px)] any-pointer-coarse:data-[size=sm]:h-8 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4 [&:is([data-disabled],[aria-invalid=true])]:shadow-none",
+				"border-border bg-input text-foreground focus-visible:border-ring focus-visible:ring-ring/50 aria-invalid:border-destructive/60 aria-invalid:ring-destructive/30 dark:aria-invalid:ring-destructive/40 relative flex w-fit min-w-0 items-center justify-between gap-2 border py-1 pe-2 whitespace-nowrap shadow-xs transition-[border-color,box-shadow] duration-150 ease-out outline-none select-none not-dark:bg-clip-padding before:pointer-events-none before:absolute before:inset-0 not-data-disabled:not-aria-invalid:not-focus-visible:before:shadow-[0_1px_--theme(--color-black/6%)] focus-visible:ring-3 focus-visible:duration-0 data-disabled:cursor-not-allowed data-disabled:opacity-50 dark:not-data-disabled:not-aria-invalid:not-focus-visible:before:shadow-[0_-1px_--theme(--color-white/8%)] any-pointer-coarse:text-base any-pointer-coarse:after:absolute any-pointer-coarse:after:inset-x-0 any-pointer-coarse:after:inset-y-[calc(50%-22px)] [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4 [&:is([data-disabled],[aria-invalid=true])]:shadow-none",
+				selectTriggerSizes[size],
 				className,
 			)}
 			{...props}
@@ -85,6 +93,7 @@ function SelectPopup({
 	alignItemWithTrigger = true,
 	anchor,
 	dir,
+	portalProps,
 	...props
 }: Omit<BaseSelect.Popup.Props, "className"> &
 	Pick<
@@ -97,9 +106,10 @@ function SelectPopup({
 		| "anchor"
 	> & {
 		className?: string;
+		portalProps?: BaseSelect.Portal.Props;
 	}) {
 	return (
-		<BaseSelect.Portal data-slot="select-portal">
+		<BaseSelect.Portal data-slot="select-portal" {...portalProps}>
 			<BaseSelect.Positioner
 				data-slot="select-positioner"
 				className="z-50"

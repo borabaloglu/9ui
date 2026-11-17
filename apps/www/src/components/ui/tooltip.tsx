@@ -51,13 +51,14 @@ function TooltipArrow({
 function TooltipPopup({
 	className,
 	children,
-	arrow = false,
+	showArrow = false,
 	align = "center",
 	alignOffset = 0,
 	side = "top",
-	sideOffset = arrow ? 10 : 4,
+	sideOffset = showArrow ? 10 : 4,
 	anchor,
 	dir,
+	portalProps,
 	...props
 }: Omit<BaseTooltip.Popup.Props, "className"> &
 	Pick<
@@ -65,10 +66,11 @@ function TooltipPopup({
 		"align" | "alignOffset" | "side" | "sideOffset" | "anchor"
 	> & {
 		className?: string;
-		arrow?: boolean;
+		portalProps?: BaseTooltip.Portal.Props;
+		showArrow?: boolean;
 	}) {
 	return (
-		<BaseTooltip.Portal data-slot="tooltip-portal">
+		<BaseTooltip.Portal data-slot="tooltip-portal" {...portalProps}>
 			<BaseTooltip.Positioner
 				data-slot="tooltip-positioner"
 				className="z-50"
@@ -88,7 +90,7 @@ function TooltipPopup({
 					{...props}
 				>
 					{children}
-					{arrow && <TooltipArrow />}
+					{showArrow && <TooltipArrow />}
 				</BaseTooltip.Popup>
 			</BaseTooltip.Positioner>
 		</BaseTooltip.Portal>

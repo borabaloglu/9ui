@@ -148,8 +148,8 @@ function ChartTooltipContent({
 	payload,
 	className,
 	indicator = "dot",
-	hideLabel = false,
-	hideIndicator = false,
+	showLabel = true,
+	showIndicator = true,
 	label,
 	labelFormatter,
 	labelClassName,
@@ -159,8 +159,8 @@ function ChartTooltipContent({
 	labelKey,
 }: React.ComponentProps<typeof RechartsPrimitive.Tooltip> &
 	React.ComponentProps<"div"> & {
-		hideLabel?: boolean;
-		hideIndicator?: boolean;
+		showLabel?: boolean;
+		showIndicator?: boolean;
 		indicator?: "line" | "dot" | "dashed";
 		nameKey?: string;
 		labelKey?: string;
@@ -174,7 +174,7 @@ function ChartTooltipContent({
 	const { config } = useChart();
 
 	const tooltipLabel = React.useMemo(() => {
-		if (hideLabel || !payload?.length) {
+		if (!showLabel || !payload?.length) {
 			return null;
 		}
 
@@ -203,7 +203,7 @@ function ChartTooltipContent({
 		label,
 		labelFormatter,
 		payload,
-		hideLabel,
+		showLabel,
 		labelClassName,
 		config,
 		labelKey,
@@ -250,7 +250,7 @@ function ChartTooltipContent({
 										{itemConfig?.icon ? (
 											<itemConfig.icon />
 										) : (
-											!hideIndicator && (
+											showIndicator && (
 												<div
 													className={cn(
 														"shrink-0 rounded-xs border-(--color-border) bg-(--color-bg)",
@@ -310,12 +310,12 @@ function ChartLegend({
 
 function ChartLegendContent({
 	className,
-	hideIcon = false,
+	showIcon = true,
 	payload,
 	verticalAlign = "bottom",
 	nameKey,
 }: React.ComponentProps<"div"> & {
-	hideIcon?: boolean;
+	showIcon?: boolean;
 	nameKey?: string;
 } & RechartsPrimitive.DefaultLegendContentProps) {
 	const { config } = useChart();
@@ -345,7 +345,7 @@ function ChartLegendContent({
 							className="flex items-center gap-1.5 [&>svg]:size-3 [&>svg]:text-(--color-icon)"
 							style={{ "--color-icon": item.color } as React.CSSProperties}
 						>
-							{itemConfig?.icon && !hideIcon ? (
+							{itemConfig?.icon && showIcon ? (
 								<itemConfig.icon />
 							) : (
 								<div

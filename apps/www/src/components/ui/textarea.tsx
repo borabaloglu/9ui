@@ -6,16 +6,24 @@ import { cn } from "@/lib/utils";
 function Textarea({
 	className,
 	ref,
+	id,
+	name,
+	value,
+	defaultValue,
+	disabled,
+	onValueChange,
 	...props
-}: React.ComponentProps<"textarea">) {
+}: Omit<React.ComponentProps<"textarea">, "value" | "defaultValue"> &
+	Pick<BaseField.Control.Props, "value" | "defaultValue" | "onValueChange">) {
 	return (
 		<BaseField.Control
-			ref={ref}
-			id={props.id}
-			name={props.name}
-			value={props.value}
-			defaultValue={props.defaultValue}
-			disabled={props.disabled}
+			ref={ref as React.Ref<HTMLInputElement>}
+			id={id}
+			name={name}
+			value={value}
+			defaultValue={defaultValue}
+			disabled={disabled}
+			onValueChange={onValueChange}
 			render={
 				<textarea
 					data-slot="textarea"

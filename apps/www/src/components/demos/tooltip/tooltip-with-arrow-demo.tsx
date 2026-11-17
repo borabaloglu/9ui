@@ -13,7 +13,7 @@ export default function TooltipWithArrowDemo() {
 			>
 				<BellIcon />
 			</TooltipTrigger>
-			<TooltipPopup arrow>Notifications</TooltipPopup>
+			<TooltipPopup showArrow>Notifications</TooltipPopup>
 		</Tooltip>
 	);
 }

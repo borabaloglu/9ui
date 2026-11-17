@@ -71,7 +71,9 @@ export default function ChartRadialBarDemo() {
 						<PolarAngleAxis type="number" domain={[0, 100]} tick={false} />
 						<ChartTooltip
 							cursor={false}
-							content={<ChartTooltipContent hideLabel nameKey="browser" />}
+							content={
+								<ChartTooltipContent showLabel={false} nameKey="browser" />
+							}
 						/>
 						<ChartLegend content={<ChartLegendContent nameKey="browser" />} />
 						<RadialBar

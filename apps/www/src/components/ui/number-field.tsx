@@ -4,7 +4,7 @@ import { MinusIcon, PlusIcon } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const stepperClassName =
-	"hover:bg-accent hover:text-accent-foreground active:bg-foreground/10 dark:hover:bg-accent/50 dark:active:bg-accent relative flex w-8 shrink-0 cursor-pointer touch-manipulation items-center [-webkit-tap-highlight-color:transparent] justify-center transition-colors duration-150 ease-out outline-none select-none hover:transition-none active:transition-none data-disabled:pointer-events-none data-readonly:pointer-events-none data-readonly:opacity-50 in-data-[size=sm]:w-7 not-in-data-disabled:data-disabled:opacity-50 any-pointer-coarse:w-11 any-pointer-coarse:after:absolute any-pointer-coarse:after:inset-x-0 any-pointer-coarse:after:inset-y-[calc(50%-22px)] [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg]:transition-[scale] [&_svg]:duration-100 [&_svg]:ease-out motion-safe:active:[&_svg]:scale-90 [&_svg:not([class*='size-'])]:size-4";
+	"hover:bg-accent hover:text-accent-foreground active:bg-foreground/10 dark:hover:bg-accent/50 dark:active:bg-accent relative flex w-8 shrink-0 cursor-pointer touch-manipulation items-center [-webkit-tap-highlight-color:transparent] justify-center transition-colors duration-150 ease-out outline-none select-none hover:transition-none active:transition-none data-disabled:pointer-events-none data-readonly:pointer-events-none data-readonly:opacity-50 group-data-[size=sm]/number-field:w-7 group-data-[size=lg]/number-field:w-9 not-in-data-disabled:data-disabled:opacity-50 any-pointer-coarse:w-11 any-pointer-coarse:group-data-[size=lg]/number-field:w-11 any-pointer-coarse:group-data-[size=sm]/number-field:w-11 any-pointer-coarse:after:absolute any-pointer-coarse:after:inset-x-0 any-pointer-coarse:after:inset-y-[calc(50%-22px)] [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg]:transition-[scale] [&_svg]:duration-100 [&_svg]:ease-out motion-safe:active:[&_svg]:scale-90 [&_svg:not([class*='size-'])]:size-4";
 
 function NumberField({
 	className,
@@ -12,13 +12,16 @@ function NumberField({
 	...props
 }: Omit<BaseNumberField.Root.Props, "className"> & {
 	className?: string;
-	size?: "sm" | "default";
+	size?: "sm" | "default" | "lg";
 }) {
 	return (
 		<BaseNumberField.Root
 			data-slot="number-field"
 			data-size={size}
-			className={cn("flex w-full flex-col items-start gap-2", className)}
+			className={cn(
+				"group/number-field flex w-full flex-col items-start gap-2",
+				className,
+			)}
 			{...props}
 		/>
 	);
@@ -34,7 +37,7 @@ function NumberFieldGroup({
 		<BaseNumberField.Group
 			data-slot="number-field-group"
 			className={cn(
-				"bg-input text-foreground has-[input:focus-visible]:border-ring has-[input:focus-visible]:ring-ring/50 has-aria-invalid:border-destructive/60 has-aria-invalid:ring-destructive/30 dark:has-aria-invalid:ring-destructive/40 has-aria-invalid:has-[input:focus-visible]:border-destructive/60 has-aria-invalid:has-[input:focus-visible]:ring-destructive/30 dark:has-aria-invalid:has-[input:focus-visible]:ring-destructive/40 relative flex h-8 w-full min-w-0 rounded-lg border text-sm shadow-xs transition-[border-color,box-shadow] duration-150 ease-out not-dark:bg-clip-padding before:pointer-events-none before:absolute before:inset-0 before:rounded-[calc(var(--radius-lg)-1px)] not-data-disabled:not-data-readonly:not-has-aria-invalid:not-has-[input:focus-visible]:before:shadow-[0_1px_--theme(--color-black/6%)] in-data-[size=sm]:h-7 in-data-[size=sm]:rounded-[min(var(--radius-md),0.75rem)] in-data-[size=sm]:before:rounded-[calc(min(var(--radius-md),0.75rem)-1px)] has-[input:focus-visible]:ring-3 data-disabled:cursor-not-allowed data-disabled:opacity-50 data-readonly:bg-transparent dark:not-data-disabled:not-data-readonly:not-has-aria-invalid:not-has-[input:focus-visible]:before:shadow-[0_-1px_--theme(--color-white/8%)] any-pointer-coarse:h-9 any-pointer-coarse:text-base any-pointer-coarse:in-data-[size=sm]:h-8 [&:is([data-disabled],[data-readonly],:has([aria-invalid=true]))]:shadow-none",
+				"bg-input text-foreground has-[input:focus-visible]:border-ring has-[input:focus-visible]:ring-ring/50 has-aria-invalid:border-destructive/60 has-aria-invalid:ring-destructive/30 dark:has-aria-invalid:ring-destructive/40 has-aria-invalid:has-[input:focus-visible]:border-destructive/60 has-aria-invalid:has-[input:focus-visible]:ring-destructive/30 dark:has-aria-invalid:has-[input:focus-visible]:ring-destructive/40 relative flex h-8 w-full min-w-0 rounded-lg border text-sm shadow-xs transition-[border-color,box-shadow] duration-150 ease-out not-dark:bg-clip-padding group-data-[size=lg]/number-field:h-9 group-data-[size=sm]/number-field:h-7 group-data-[size=sm]/number-field:rounded-[min(var(--radius-md),0.75rem)] group-data-[size=sm]/number-field:text-[0.8rem] before:pointer-events-none before:absolute before:inset-0 before:rounded-[calc(var(--radius-lg)-1px)] not-data-disabled:not-data-readonly:not-has-aria-invalid:not-has-[input:focus-visible]:before:shadow-[0_1px_--theme(--color-black/6%)] group-data-[size=sm]/number-field:before:rounded-[calc(min(var(--radius-md),0.75rem)-1px)] has-[input:focus-visible]:ring-3 data-disabled:cursor-not-allowed data-disabled:opacity-50 data-readonly:bg-transparent dark:not-data-disabled:not-data-readonly:not-has-aria-invalid:not-has-[input:focus-visible]:before:shadow-[0_-1px_--theme(--color-white/8%)] any-pointer-coarse:h-9 any-pointer-coarse:text-base any-pointer-coarse:group-data-[size=lg]/number-field:h-10 any-pointer-coarse:group-data-[size=sm]/number-field:h-8 any-pointer-coarse:group-data-[size=sm]/number-field:text-base [&:is([data-disabled],[data-readonly],:has([aria-invalid=true]))]:shadow-none",
 				className,
 			)}
 			{...props}
@@ -72,7 +75,7 @@ function NumberFieldDecrement({
 			data-slot="number-field-decrement"
 			className={cn(
 				stepperClassName,
-				"rounded-s-[calc(var(--radius-lg)-1px)] in-data-[size=sm]:rounded-s-[calc(min(var(--radius-md),0.75rem)-1px)]",
+				"rounded-s-[calc(var(--radius-lg)-1px)] group-data-[size=sm]/number-field:rounded-s-[calc(min(var(--radius-md),0.75rem)-1px)]",
 				className,
 			)}
 			{...props}
@@ -94,7 +97,7 @@ function NumberFieldIncrement({
 			data-slot="number-field-increment"
 			className={cn(
 				stepperClassName,
-				"rounded-e-[calc(var(--radius-lg)-1px)] in-data-[size=sm]:rounded-e-[calc(min(var(--radius-md),0.75rem)-1px)]",
+				"rounded-e-[calc(var(--radius-lg)-1px)] group-data-[size=sm]/number-field:rounded-e-[calc(min(var(--radius-md),0.75rem)-1px)]",
 				className,
 			)}
 			{...props}

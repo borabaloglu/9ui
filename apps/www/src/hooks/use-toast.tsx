@@ -33,9 +33,13 @@ type ToastManager = Omit<BaseToastManager, "add" | "update"> & {
 	) => void;
 };
 
-export const toastManager = Toast.createToastManager() as ToastManager;
+export function createToastManager() {
+	return Toast.createToastManager() as ToastManager;
+}
 
-export const anchoredToastManager = Toast.createToastManager() as ToastManager;
+export const toastManager = createToastManager();
+
+export const anchoredToastManager = createToastManager();
 
 export function useToast() {
 	return Toast.useToastManager() as Omit<

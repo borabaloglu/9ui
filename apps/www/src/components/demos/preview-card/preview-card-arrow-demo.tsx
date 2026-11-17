@@ -17,7 +17,7 @@ export default function PreviewCardArrowDemo() {
 				</PreviewCardTrigger>
 				.
 			</p>
-			<PreviewCardPopup arrow>
+			<PreviewCardPopup showArrow>
 				<span className="font-medium">base-ui.com</span>
 				<p className="text-muted-foreground text-pretty">
 					Unstyled React components for building accessible user interfaces.

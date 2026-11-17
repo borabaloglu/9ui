@@ -65,7 +65,9 @@ export default function ChartPieDemo() {
 				<ChartContainer config={chartConfig} className="h-72 w-full">
 					<PieChart>
 						<ChartTooltip
-							content={<ChartTooltipContent hideLabel nameKey="source" />}
+							content={
+								<ChartTooltipContent showLabel={false} nameKey="source" />
+							}
 						/>
 						<ChartLegend content={<ChartLegendContent nameKey="source" />} />
 						<Pie

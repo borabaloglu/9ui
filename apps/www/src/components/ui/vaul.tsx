@@ -98,9 +98,11 @@ function VaulContent({
 	children,
 	variant = "default",
 	showHandle = true,
+	portalProps,
 	...props
 }: Omit<React.ComponentProps<typeof BaseVaul.Content>, "className"> & {
 	className?: string;
+	portalProps?: React.ComponentProps<typeof BaseVaul.Portal>;
 	variant?: "default" | "inset";
 	showHandle?: boolean;
 }) {
@@ -108,7 +110,7 @@ function VaulContent({
 	const inset = variant === "inset";
 
 	return (
-		<BaseVaul.Portal data-slot="vaul-portal">
+		<BaseVaul.Portal data-slot="vaul-portal" {...portalProps}>
 			<VaulOverlay
 				className={
 					hasSnapPoints

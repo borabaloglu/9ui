@@ -74,7 +74,9 @@ export default function ChartScatterDemo() {
 						/>
 						<ChartTooltip
 							cursor={false}
-							content={<ChartTooltipContent hideLabel hideIndicator />}
+							content={
+								<ChartTooltipContent showLabel={false} showIndicator={false} />
+							}
 						/>
 						<Scatter data={chartData} fill="var(--color-signups)" />
 					</ScatterChart>

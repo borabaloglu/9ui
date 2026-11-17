@@ -72,7 +72,12 @@ export default function PreviewCardRtlDemo() {
 							>
 								{t[label]}
 							</PreviewCardTrigger>
-							<PreviewCardPopup dir={dir} arrow side={side} className="w-48">
+							<PreviewCardPopup
+								dir={dir}
+								showArrow
+								side={side}
+								className="w-48"
+							>
 								<span className="font-medium">9ui.dev</span>
 								<p className="text-muted-foreground text-pretty">
 									{t.description}

@@ -38,7 +38,7 @@ export default function ResizableRtlDemo() {
 					<span className="text-sm font-medium">{t.one}</span>
 				</div>
 			</ResizablePanel>
-			<ResizableHandle withHandle />
+			<ResizableHandle showHandle />
 			<ResizablePanel defaultSize="50%">
 				<ResizablePanelGroup orientation="vertical">
 					<ResizablePanel defaultSize="25%">
@@ -46,7 +46,7 @@ export default function ResizableRtlDemo() {
 							<span className="text-sm font-medium">{t.two}</span>
 						</div>
 					</ResizablePanel>
-					<ResizableHandle withHandle />
+					<ResizableHandle showHandle />
 					<ResizablePanel defaultSize="75%">
 						<div className="flex h-full items-center justify-center p-6">
 							<span className="text-sm font-medium">{t.three}</span>

@@ -42,15 +42,17 @@ function DialogPopup({
 	size = "default",
 	showAtBottomOnMobile = true,
 	showCloseButton = true,
+	portalProps,
 	...props
 }: Omit<BaseDialog.Popup.Props, "className"> & {
 	className?: string;
+	portalProps?: BaseDialog.Portal.Props;
 	size?: "default" | "sm";
 	showAtBottomOnMobile?: boolean;
 	showCloseButton?: boolean;
 }) {
 	return (
-		<BaseDialog.Portal data-slot="dialog-portal">
+		<BaseDialog.Portal data-slot="dialog-portal" {...portalProps}>
 			<DialogBackdrop
 				className={cn(
 					showAtBottomOnMobile &&

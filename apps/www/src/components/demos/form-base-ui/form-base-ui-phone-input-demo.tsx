@@ -1,6 +1,6 @@
 "use client";
 
-import { useId, useState } from "react";
+import { useRef, useState } from "react";
 import { isValidPhoneNumber } from "react-phone-number-input";
 import { toast } from "sonner";
 
@@ -22,7 +22,7 @@ import { Form } from "@/components/ui/form";
 import { PhoneInput } from "@/components/ui/phone-input";
 
 export default function FormBaseUiPhoneInputDemo() {
-	const id = useId();
+	const inputRef = useRef<HTMLInputElement>(null);
 	const [loading, setLoading] = useState(false);
 	const [formKey, setFormKey] = useState(0);
 	const [phoneNumber, setPhoneNumber] = useState("");
@@ -31,7 +31,7 @@ export default function FormBaseUiPhoneInputDemo() {
 	const handleSubmit = async () => {
 		if (!isValidPhoneNumber(phoneNumber)) {
 			setInvalid(true);
-			document.getElementById(id)?.focus();
+			inputRef.current?.focus();
 			return;
 		}
 
@@ -70,7 +70,7 @@ export default function FormBaseUiPhoneInputDemo() {
 					<Field name="phoneNumber" invalid={invalid}>
 						<FieldLabel>Phone number</FieldLabel>
 						<PhoneInput
-							id={id}
+							ref={inputRef}
 							placeholder="Enter a phone number"
 							value={phoneNumber}
 							onChange={(value) => {

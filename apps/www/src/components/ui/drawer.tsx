@@ -151,19 +151,19 @@ function DrawerPopup({
 	children,
 	variant = "default",
 	showHandle = true,
-	container,
+	portalProps,
 	...props
 }: Omit<BaseDrawer.Popup.Props, "className"> & {
 	className?: string;
 	variant?: "default" | "inset";
 	showHandle?: boolean;
-	container?: BaseDrawer.Portal.Props["container"];
+	portalProps?: BaseDrawer.Portal.Props;
 }) {
 	const { swipeDirection, modal, hasSnapPoints } = React.use(DrawerContext);
 	const inset = variant === "inset";
 
 	return (
-		<BaseDrawer.Portal data-slot="drawer-portal" container={container}>
+		<BaseDrawer.Portal data-slot="drawer-portal" {...portalProps}>
 			{modal && (
 				<DrawerBackdrop
 					className={

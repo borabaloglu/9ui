@@ -57,13 +57,14 @@ function PopoverArrow({
 function PopoverPopup({
 	className,
 	children,
-	arrow = false,
+	showArrow = false,
 	align = "center",
 	alignOffset = 0,
 	side = "bottom",
-	sideOffset = arrow ? 10 : 4,
+	sideOffset = showArrow ? 10 : 4,
 	anchor,
 	dir,
+	portalProps,
 	...props
 }: Omit<BasePopover.Popup.Props, "className"> &
 	Pick<
@@ -71,10 +72,11 @@ function PopoverPopup({
 		"align" | "alignOffset" | "side" | "sideOffset" | "anchor"
 	> & {
 		className?: string;
-		arrow?: boolean;
+		portalProps?: BasePopover.Portal.Props;
+		showArrow?: boolean;
 	}) {
 	return (
-		<BasePopover.Portal data-slot="popover-portal">
+		<BasePopover.Portal data-slot="popover-portal" {...portalProps}>
 			<BasePopover.Positioner
 				data-slot="popover-positioner"
 				className="ease-out-quint z-50 h-(--positioner-height) w-(--positioner-width) max-w-(--available-width) motion-safe:has-data-transitioning:transition-[top,left,right,bottom,transform] motion-safe:has-data-transitioning:duration-150"
@@ -89,13 +91,13 @@ function PopoverPopup({
 					data-slot="popover-popup"
 					className={cn(
 						"bg-popover text-popover-foreground ease-out-quint dark:edge-highlight-(--popover-radius) relative flex h-(--popup-height,auto) max-h-(--available-height) w-72 max-w-(--available-width) origin-(--transform-origin) flex-col gap-4 overflow-y-auto overscroll-contain rounded-(--popover-radius) border p-(--popover-padding) text-sm shadow-md transition-[width,height,scale,opacity] duration-150 outline-none [--popover-padding:--spacing(4)] [--popover-radius:var(--radius-lg)] not-dark:shadow-[0_1px_--theme(--color-black/6%),var(--shadow-md)] has-data-[slot=popover-panel]:overflow-visible has-data-[slot=popover-viewport]:overflow-visible data-ending-style:scale-98 data-ending-style:opacity-0 data-ending-style:duration-100 data-instant:transition-none data-starting-style:scale-98 data-starting-style:opacity-0 motion-reduce:transition-opacity motion-reduce:data-ending-style:scale-100 motion-reduce:data-starting-style:scale-100 dark:[--popover-edge:color-mix(in_oklab,var(--border),white_8%)]",
-						arrow && "overflow-visible",
+						showArrow && "overflow-visible",
 						className,
 					)}
 					{...props}
 				>
 					{children}
-					{arrow && <PopoverArrow />}
+					{showArrow && <PopoverArrow />}
 				</BasePopover.Popup>
 			</BasePopover.Positioner>
 		</BasePopover.Portal>

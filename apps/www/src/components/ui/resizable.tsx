@@ -22,11 +22,11 @@ function ResizablePanel(props: BaseResizable.PanelProps) {
 }
 
 function ResizableHandle({
-	withHandle,
+	showHandle,
 	className,
 	...props
 }: BaseResizable.SeparatorProps & {
-	withHandle?: boolean;
+	showHandle?: boolean;
 }) {
 	return (
 		<BaseResizable.Separator
@@ -37,7 +37,7 @@ function ResizableHandle({
 			)}
 			{...props}
 		>
-			{withHandle && (
+			{showHandle && (
 				<div
 					data-slot="resizable-handle-grip"
 					className="bg-border group-focus-visible/resizable-handle:bg-ring group-data-[separator=active]/resizable-handle:bg-ring group-data-[separator=hover]/resizable-handle:bg-ring z-10 h-6 w-1 shrink-0 rounded-full transition-colors duration-150 group-aria-[orientation=horizontal]/resizable-handle:h-1 group-aria-[orientation=horizontal]/resizable-handle:w-6 any-pointer-coarse:h-8 any-pointer-coarse:w-1.5 any-pointer-coarse:group-aria-[orientation=horizontal]/resizable-handle:h-1.5 any-pointer-coarse:group-aria-[orientation=horizontal]/resizable-handle:w-8"
