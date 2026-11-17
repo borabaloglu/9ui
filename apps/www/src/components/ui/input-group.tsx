@@ -16,7 +16,7 @@ function InputGroup({ className, ...props }: React.ComponentProps<"div">) {
 			role="group"
 			className={cn(
 				"bg-input relative flex h-8 w-full min-w-0 items-center rounded-lg border transition-[border-color,box-shadow] duration-150 ease-out any-pointer-coarse:h-9",
-				"shadow-xs not-dark:bg-clip-padding before:pointer-events-none before:absolute before:inset-0 before:rounded-[calc(var(--radius-lg)-1px)] before:shadow-[0_1px_--theme(--color-black/6%)] has-[[data-slot=input-group-control]:is(:disabled,[aria-invalid=true])]:shadow-none has-[[data-slot=input-group-control]:is(:focus-visible,:disabled,[aria-invalid=true])]:before:shadow-none dark:before:shadow-[0_-1px_--theme(--color-white/8%)]",
+				"shadow-xs not-dark:bg-clip-padding before:pointer-events-none before:absolute before:inset-0 before:rounded-[calc(var(--radius-lg)-1px)] before:shadow-[0_1px_--theme(--color-black/6%)] has-[[data-slot=input-group-control]:is(:disabled,[readonly],[aria-invalid=true])]:shadow-none has-[[data-slot=input-group-control]:is(:focus-visible,:disabled,[readonly],[aria-invalid=true])]:before:shadow-none has-[[data-slot=input-group-control][readonly]]:bg-transparent dark:before:shadow-[0_-1px_--theme(--color-white/8%)]",
 				"has-[>[data-align=block-end]]:h-auto has-[>[data-align=block-end]]:flex-col has-[>[data-align=block-start]]:h-auto has-[>[data-align=block-start]]:flex-col has-[>textarea]:h-auto",
 				"has-[[data-slot=input-group-control]:disabled]:opacity-50",
 				"has-[[data-slot=input-group-control][aria-invalid=true]]:border-destructive/60 has-[[data-slot=input-group-control][aria-invalid=true]]:ring-destructive/30 dark:has-[[data-slot=input-group-control][aria-invalid=true]]:ring-destructive/40",
