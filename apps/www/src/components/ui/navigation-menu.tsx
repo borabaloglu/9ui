@@ -11,7 +11,7 @@ const itemClassName =
 
 const itemVariantClassNames = {
 	trigger:
-		"inline-flex h-8 shrink-0 cursor-pointer items-center justify-center gap-1.5 rounded-lg px-2.5 text-sm font-medium whitespace-nowrap any-pointer-coarse:text-base transition-[color,background-color,box-shadow] duration-150 focus-visible:duration-0 ease-out select-none in-data-[orientation=vertical]:w-full in-data-[orientation=vertical]:justify-between relative any-pointer-coarse:h-9 any-pointer-coarse:after:absolute any-pointer-coarse:after:inset-x-0 any-pointer-coarse:after:-inset-y-1 any-pointer-coarse:in-data-[orientation=vertical]:after:inset-y-0",
+		"inline-flex h-8 shrink-0 cursor-pointer items-center justify-center gap-1.5 rounded-lg px-2.5 text-sm font-medium whitespace-nowrap any-pointer-coarse:text-base transition-[color,background-color,box-shadow] duration-150 focus-visible:duration-0 ease-out select-none group-data-[orientation=vertical]/navigation-menu:w-full group-data-[orientation=vertical]/navigation-menu:justify-between relative any-pointer-coarse:h-9 any-pointer-coarse:after:absolute any-pointer-coarse:after:inset-x-0 any-pointer-coarse:after:-inset-y-1 any-pointer-coarse:group-data-[orientation=vertical]/navigation-menu:after:inset-y-0",
 	link: "flex h-full w-full items-center gap-2 rounded-sm p-2 text-start text-sm any-pointer-coarse:text-base",
 };
 
@@ -27,7 +27,7 @@ function NavigationMenu({
 			data-slot="navigation-menu"
 			data-orientation={orientation}
 			orientation={orientation}
-			className={className}
+			className={cn("group/navigation-menu", className)}
 			{...props}
 		/>
 	);
@@ -43,7 +43,7 @@ function NavigationMenuList({
 		<BaseNavigationMenu.List
 			data-slot="navigation-menu-list"
 			className={cn(
-				"flex items-center gap-1 in-data-[orientation=vertical]:flex-col in-data-[orientation=vertical]:items-stretch",
+				"flex items-center gap-1 group-data-[orientation=vertical]/navigation-menu:flex-col group-data-[orientation=vertical]/navigation-menu:items-stretch",
 				className,
 			)}
 			{...props}
@@ -92,7 +92,7 @@ function NavigationMenuTrigger({
 				<BaseNavigationMenu.Icon
 					data-slot="navigation-menu-icon"
 					className={cn(
-						"ease-out-quint flex opacity-80 transition-[rotate] duration-200 in-data-[orientation=vertical]:-rotate-90 in-data-[orientation=horizontal]:data-popup-open:rotate-180 motion-reduce:transition-none rtl:in-data-[orientation=vertical]:rotate-90",
+						"ease-out-quint flex opacity-80 transition-[rotate] duration-200 group-data-[orientation=vertical]/navigation-menu:-rotate-90 group-data-[orientation=horizontal]/navigation-menu:data-popup-open:rotate-180 motion-reduce:transition-none rtl:group-data-[orientation=vertical]/navigation-menu:rotate-90",
 						variant === "link" && "ms-auto",
 					)}
 				>
@@ -123,7 +123,12 @@ function NavigationMenuContent({
 			{...props}
 		>
 			<ScrollArea className="min-h-0 flex-1">
-				<div className="p-(--navigation-menu-padding)">{children}</div>
+				<div
+					data-slot="navigation-menu-content-inner"
+					className="p-(--navigation-menu-padding)"
+				>
+					{children}
+				</div>
 			</ScrollArea>
 		</BaseNavigationMenu.Content>
 	);

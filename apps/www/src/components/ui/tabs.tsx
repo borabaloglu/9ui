@@ -1,5 +1,3 @@
-"use client";
-
 import { Tabs as BaseTabs } from "@base-ui/react/tabs";
 
 import { cn } from "@/lib/utils";
@@ -59,10 +57,10 @@ function TabsList({
 				data-slot="tabs-indicator"
 				renderBeforeHydration
 				className={cn(
-					"ease-out-quint absolute top-0 left-0 transition-[translate,width,height] duration-200 motion-reduce:transition-none",
+					"ease-out-quint absolute top-0 transition-[translate,width,height] duration-200 motion-reduce:transition-none",
 					variant === "default"
-						? "bg-input dark:bg-accent -z-1 h-(--active-tab-height) w-(--active-tab-width) translate-x-(--active-tab-left) translate-y-(--active-tab-top) rounded-md shadow-xs dark:shadow-none"
-						: "bg-foreground rounded-full data-[orientation=horizontal]:top-auto data-[orientation=horizontal]:bottom-0 data-[orientation=horizontal]:h-0.5 data-[orientation=horizontal]:w-(--active-tab-width) data-[orientation=horizontal]:translate-x-(--active-tab-left) data-[orientation=vertical]:h-(--active-tab-height) data-[orientation=vertical]:w-0.5 data-[orientation=vertical]:translate-y-(--active-tab-top) rtl:data-[orientation=vertical]:right-0 rtl:data-[orientation=vertical]:left-auto",
+						? "bg-input dark:bg-accent left-0 -z-1 h-(--active-tab-height) w-(--active-tab-width) translate-x-(--active-tab-left) translate-y-(--active-tab-top) rounded-md shadow-xs dark:shadow-none"
+						: "bg-foreground rounded-full data-[orientation=horizontal]:top-auto data-[orientation=horizontal]:bottom-0 data-[orientation=horizontal]:left-0 data-[orientation=horizontal]:h-0.5 data-[orientation=horizontal]:w-(--active-tab-width) data-[orientation=horizontal]:translate-x-(--active-tab-left) data-[orientation=vertical]:start-0 data-[orientation=vertical]:h-(--active-tab-height) data-[orientation=vertical]:w-0.5 data-[orientation=vertical]:translate-y-(--active-tab-top)",
 				)}
 			/>
 		</BaseTabs.List>

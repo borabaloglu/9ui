@@ -5,7 +5,7 @@ import { useDirection } from "@base-ui/react/direction-provider";
 import useEmblaCarousel, {
 	type UseEmblaCarouselType,
 } from "embla-carousel-react";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { ChevronLeftIcon, ChevronRightIcon } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 
@@ -180,6 +180,7 @@ function CarouselContent({ className, ...props }: React.ComponentProps<"div">) {
 			data-orientation={orientation}
 		>
 			<div
+				data-slot="carousel-content-inner"
 				className={cn(
 					"flex group-data-[orientation=horizontal]/carousel-content:-ms-4 group-data-[orientation=vertical]/carousel-content:-mt-4 group-data-[orientation=vertical]/carousel-content:flex-col",
 					className,
@@ -273,7 +274,7 @@ function CarouselPrevious({
 			}}
 			{...props}
 		>
-			<ChevronLeft className="rtl:group-data-[orientation=horizontal]/button:rotate-180" />
+			<ChevronLeftIcon className="rtl:group-data-[orientation=horizontal]/button:rotate-180" />
 			<span className="sr-only">Previous slide</span>
 		</Button>
 	);
@@ -307,15 +308,15 @@ function CarouselNext({
 			}}
 			{...props}
 		>
-			<ChevronRight className="rtl:group-data-[orientation=horizontal]/button:rotate-180" />
+			<ChevronRightIcon className="rtl:group-data-[orientation=horizontal]/button:rotate-180" />
 			<span className="sr-only">Next slide</span>
 		</Button>
 	);
 }
 
+export type { CarouselApi };
 export {
 	Carousel,
-	type CarouselApi,
 	CarouselContent,
 	CarouselItem,
 	CarouselNext,

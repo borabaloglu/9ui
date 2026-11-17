@@ -162,7 +162,7 @@ function CommandItem({
 		<AutocompleteItem
 			data-slot="command-item"
 			className={cn(
-				"data-highlighted:**:data-[slot=kbd]:bg-background min-h-8 scroll-my-1 [&>svg:not([class*='opacity-'])]:opacity-80",
+				"data-highlighted:**:data-[slot=kbd]:bg-background scroll-my-1 [&>svg:not([class*='opacity-'])]:opacity-80",
 				className,
 			)}
 			{...props}
@@ -190,7 +190,9 @@ function CommandShortcut({
 			)}
 			{...props}
 		>
-			<span dir="ltr">{children}</span>
+			<span data-slot="command-shortcut-inner" dir="ltr">
+				{children}
+			</span>
 		</kbd>
 	);
 }

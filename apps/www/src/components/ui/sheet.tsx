@@ -6,11 +6,11 @@ import { Button } from "@/components/ui/button";
 
 import { cn } from "@/lib/utils";
 
-function Sheet({ ...props }: React.ComponentProps<typeof BaseSheet.Root>) {
+function Sheet<Payload>({ ...props }: BaseSheet.Root.Props<Payload>) {
 	return <BaseSheet.Root {...props} />;
 }
 
-function SheetTrigger({ ...props }: BaseSheet.Trigger.Props) {
+function SheetTrigger<Payload>({ ...props }: BaseSheet.Trigger.Props<Payload>) {
 	return <BaseSheet.Trigger data-slot="sheet-trigger" {...props} />;
 }
 

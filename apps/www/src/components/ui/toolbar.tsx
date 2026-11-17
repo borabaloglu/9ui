@@ -57,11 +57,11 @@ function ToolbarSeparator({
 }
 
 function ToolbarButton(props: BaseToolbar.Button.Props) {
-	return <BaseToolbar.Button {...props} />;
+	return <BaseToolbar.Button data-slot="toolbar-button" {...props} />;
 }
 
 function ToolbarInput(props: BaseToolbar.Input.Props) {
-	return <BaseToolbar.Input {...props} />;
+	return <BaseToolbar.Input data-slot="toolbar-input" {...props} />;
 }
 
 function ToolbarLink({

@@ -134,7 +134,7 @@ function EmojiPickerEmoji({ emoji, ...props }: EmojiPickerListEmojiProps) {
 		<button
 			type="button"
 			data-slot="emoji-picker-emoji"
-			className="data-active:bg-accent flex h-8 w-8 min-w-0 cursor-pointer items-center justify-center rounded-md text-lg transition-[scale] duration-100 ease-out motion-safe:active:scale-95 any-pointer-coarse:h-10 any-pointer-coarse:w-10 any-pointer-coarse:text-xl"
+			className="data-active:bg-accent flex h-8 w-8 min-w-0 cursor-pointer items-center justify-center rounded-lg text-lg transition-[scale] duration-100 ease-out motion-safe:active:scale-95 any-pointer-coarse:h-10 any-pointer-coarse:w-10 any-pointer-coarse:text-xl"
 			{...props}
 		>
 			{emoji.emoji}
@@ -220,7 +220,7 @@ function EmojiPickerSkinToneSelector({
 		<BaseEmojiPicker.SkinToneSelector
 			data-slot="emoji-picker-skin-tone-selector"
 			className={cn(
-				"hover:bg-accent focus-visible:ring-ring/50 ms-auto flex size-8 shrink-0 cursor-pointer items-center justify-center rounded-md font-(family-name:--frimousse-emoji-font) text-lg transition-[scale] duration-100 ease-out outline-none focus-visible:ring-3 motion-safe:active:scale-95 any-pointer-coarse:size-10",
+				"hover:bg-accent focus-visible:ring-ring/50 ms-auto flex size-8 shrink-0 cursor-pointer items-center justify-center rounded-lg font-(family-name:--frimousse-emoji-font) text-lg transition-[scale] duration-100 ease-out outline-none focus-visible:ring-3 motion-safe:active:scale-95 any-pointer-coarse:size-10",
 				className,
 			)}
 			{...props}

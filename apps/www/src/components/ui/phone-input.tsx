@@ -141,7 +141,7 @@ function PhoneInputCountrySelect({
 					className="w-(--anchor-width) min-w-64"
 					finalFocus={() => !anchor.current?.contains(document.activeElement)}
 				>
-					<div className="p-1 pb-0">
+					<div data-slot="phone-input-search" className="p-1 pb-0">
 						<ComboboxInput
 							placeholder={searchPlaceholder}
 							aria-label={searchPlaceholder}

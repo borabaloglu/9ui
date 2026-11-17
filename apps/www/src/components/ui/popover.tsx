@@ -96,7 +96,7 @@ function PopoverPopup({
 					)}
 					{...props}
 				>
-					{children}
+					{showArrow ? <PopoverPanel>{children}</PopoverPanel> : children}
 					{showArrow && <PopoverArrow />}
 				</BasePopover.Popup>
 			</BasePopover.Positioner>
@@ -154,7 +154,7 @@ function PopoverTitle({
 	return (
 		<BasePopover.Title
 			data-slot="popover-title"
-			className={cn("leading-snug font-medium", className)}
+			className={cn("leading-snug font-medium wrap-break-word", className)}
 			{...props}
 		/>
 	);
@@ -169,7 +169,10 @@ function PopoverDescription({
 	return (
 		<BasePopover.Description
 			data-slot="popover-description"
-			className={cn("text-muted-foreground text-pretty", className)}
+			className={cn(
+				"text-muted-foreground *:[a]:hover:text-foreground text-pretty wrap-break-word *:[a]:underline *:[a]:underline-offset-3",
+				className,
+			)}
 			{...props}
 		/>
 	);

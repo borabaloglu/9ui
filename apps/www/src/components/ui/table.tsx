@@ -13,7 +13,7 @@ function Table({
 }: React.ComponentProps<"table"> & {
 	containerClassName?: string;
 	variant?: "default" | "card";
-	size?: "default" | "sm";
+	size?: "sm" | "default";
 }) {
 	const card = variant === "card";
 

@@ -169,7 +169,9 @@ function AvatarGroupOverflow({
 			)}
 			{...props}
 		>
-			<span dir="ltr">{children}</span>
+			<span data-slot="avatar-group-overflow-inner" dir="ltr">
+				{children}
+			</span>
 		</div>
 	);
 }

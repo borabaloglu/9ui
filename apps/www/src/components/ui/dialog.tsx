@@ -6,11 +6,13 @@ import { Button } from "@/components/ui/button";
 
 import { cn } from "@/lib/utils";
 
-function Dialog({ ...props }: React.ComponentProps<typeof BaseDialog.Root>) {
+function Dialog<Payload>({ ...props }: BaseDialog.Root.Props<Payload>) {
 	return <BaseDialog.Root {...props} />;
 }
 
-function DialogTrigger({ ...props }: BaseDialog.Trigger.Props) {
+function DialogTrigger<Payload>({
+	...props
+}: BaseDialog.Trigger.Props<Payload>) {
 	return <BaseDialog.Trigger data-slot="dialog-trigger" {...props} />;
 }
 
@@ -47,7 +49,7 @@ function DialogPopup({
 }: Omit<BaseDialog.Popup.Props, "className"> & {
 	className?: string;
 	portalProps?: BaseDialog.Portal.Props;
-	size?: "default" | "sm";
+	size?: "sm" | "default";
 	showAtBottomOnMobile?: boolean;
 	showCloseButton?: boolean;
 }) {
@@ -125,7 +127,7 @@ function DialogFooter({
 			data-slot="dialog-footer"
 			data-variant={variant}
 			className={cn(
-				"flex flex-col-reverse gap-2 group-data-[size=sm]/dialog-popup:grid group-data-[size=sm]/dialog-popup:grid-cols-2 sm:flex-row sm:justify-end",
+				"flex flex-col-reverse gap-2 group-data-[size=sm]/dialog-popup:grid group-data-[size=sm]/dialog-popup:auto-cols-fr group-data-[size=sm]/dialog-popup:grid-flow-col sm:flex-row sm:justify-end",
 				variant === "default" &&
 					"bg-muted/50 -mx-(--dialog-spacing) -mb-(--dialog-bottom) border-t p-(--dialog-spacing) pb-(--dialog-bottom)",
 				className,
