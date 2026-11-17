@@ -92,7 +92,7 @@ export default function FormReactHookFormDatePickerDemo() {
 												}
 												aria-invalid={fieldState.invalid || undefined}
 												variant="outline"
-												className="justify-between font-normal any-pointer-coarse:text-base"
+												className="justify-between font-normal"
 												ref={field.ref}
 												onBlur={field.onBlur}
 											/>

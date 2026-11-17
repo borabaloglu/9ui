@@ -28,15 +28,16 @@ const buttonVariants = cva(
 				xs: "h-6 gap-1 rounded-[min(var(--radius-md),0.625rem)] px-2 text-xs before:rounded-[calc(min(var(--radius-md),0.625rem)-1px)] has-data-[icon=inline-end]:pe-1.5 has-data-[icon=inline-start]:ps-1.5 any-pointer-coarse:h-7 [&_svg:not([class*='size-'])]:size-3",
 				sm: "h-7 gap-1 rounded-[min(var(--radius-md),0.75rem)] px-2.5 text-[0.8rem] before:rounded-[calc(min(var(--radius-md),0.75rem)-1px)] has-data-[icon=inline-end]:pe-1.5 has-data-[icon=inline-start]:ps-1.5 any-pointer-coarse:h-8 [&_svg:not([class*='size-'])]:size-3.5",
 				default:
-					"h-8 gap-1.5 px-2.5 has-data-[icon=inline-end]:pe-2 has-data-[icon=inline-start]:ps-2 any-pointer-coarse:h-9",
-				lg: "h-9 gap-1.5 px-3 has-data-[icon=inline-end]:pe-2.5 has-data-[icon=inline-start]:ps-2.5 any-pointer-coarse:h-10",
+					"h-8 gap-1.5 px-2.5 has-data-[icon=inline-end]:pe-2 has-data-[icon=inline-start]:ps-2 any-pointer-coarse:h-9 any-pointer-coarse:text-base",
+				lg: "h-9 gap-1.5 px-3 has-data-[icon=inline-end]:pe-2.5 has-data-[icon=inline-start]:ps-2.5 any-pointer-coarse:h-10 any-pointer-coarse:text-base",
 				xl: "h-10 px-3.5 text-base has-data-[icon=inline-end]:pe-3 has-data-[icon=inline-start]:ps-3 any-pointer-coarse:h-11 [&_svg:not([class*='size-'])]:size-4.5",
 				"icon-xs":
 					"size-6 rounded-[min(var(--radius-md),0.625rem)] before:rounded-[calc(min(var(--radius-md),0.625rem)-1px)] any-pointer-coarse:size-7 [&_svg:not([class*='size-'])]:size-3",
 				"icon-sm":
 					"size-7 rounded-[min(var(--radius-md),0.75rem)] before:rounded-[calc(min(var(--radius-md),0.75rem)-1px)] any-pointer-coarse:size-8 [&_svg:not([class*='size-'])]:size-3.5",
-				icon: "size-8 any-pointer-coarse:size-9",
-				"icon-lg": "size-9 any-pointer-coarse:size-10",
+				icon: "size-8 any-pointer-coarse:size-9 any-pointer-coarse:text-base",
+				"icon-lg":
+					"size-9 any-pointer-coarse:size-10 any-pointer-coarse:text-base",
 				"icon-xl":
 					"size-10 any-pointer-coarse:size-11 [&_svg:not([class*='size-'])]:size-4.5",
 			},

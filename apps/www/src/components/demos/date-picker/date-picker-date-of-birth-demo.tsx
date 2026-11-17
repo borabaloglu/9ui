@@ -30,7 +30,7 @@ export default function DatePickerDateOfBirthDemo() {
 							id={id}
 							aria-labelledby={`${labelId} ${id}`}
 							variant="outline"
-							className="justify-between font-normal any-pointer-coarse:text-base"
+							className="justify-between font-normal"
 						/>
 					}
 				>

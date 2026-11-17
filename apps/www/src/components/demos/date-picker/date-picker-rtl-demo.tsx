@@ -39,7 +39,7 @@ export default function DatePickerRtlDemo() {
 				render={
 					<Button
 						variant="outline"
-						className="w-60 justify-between font-normal any-pointer-coarse:text-base"
+						className="w-60 justify-between font-normal"
 					/>
 				}
 			>

@@ -46,7 +46,7 @@ export default function DatePickerRangeDemo() {
 				render={
 					<Button
 						variant="outline"
-						className="w-full max-w-72 justify-between font-normal any-pointer-coarse:text-base"
+						className="w-full max-w-72 justify-between font-normal"
 					/>
 				}
 			>

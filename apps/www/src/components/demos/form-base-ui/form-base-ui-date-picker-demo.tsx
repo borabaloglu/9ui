@@ -86,7 +86,7 @@ export default function FormBaseUiDatePickerDemo() {
 										}
 										aria-invalid={invalid || undefined}
 										variant="outline"
-										className="justify-between font-normal any-pointer-coarse:text-base"
+										className="justify-between font-normal"
 									/>
 								}
 							>
