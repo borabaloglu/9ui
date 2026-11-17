@@ -45,6 +45,12 @@ Give every input a `<label>` or `aria-label`. A placeholder isn't a label.
 
 ## Examples
 
+### Size
+
+Set `size` to `sm`, `default` or `lg`. Each size matches the height of the same Button size.
+
+<ComponentPreview name="input-size-demo" />
+
 ### Disabled
 
 Set `disabled` to prevent interaction.
@@ -84,3 +90,33 @@ To show the input right to left, set `dir="rtl"` on `html` and wrap your app in 
 ## Form Integration
 
 See the form guides for [Base UI Form](/docs/forms/base-ui#input), [React Hook Form](/docs/forms/react-hook-form#input) and [TanStack Form](/docs/forms/tanstack-form#input).
+
+## API Reference
+
+What 9ui adds to Base UI Input. For the rest of the API, see the [Base UI Input reference](https://base-ui.com/react/components/input#api-reference).
+
+### Input
+
+<ApiTable
+	rows={[
+		{
+			name: "size",
+			type: '"sm" | "default" | "lg" | number',
+			default: '"default"',
+			description: <>The height, padding and text size of the input. A number sets the native <code>size</code> attribute and keeps the default style.</>,
+		},
+	]}
+/>
+
+### Data attributes
+
+<ApiTable
+	label="Attribute"
+	rows={[
+		{
+			name: "data-size",
+			type: '"sm" | "default" | "lg"',
+			description: <>The style size of the input. Set to <code>"default"</code> when <code>size</code> is a number.</>,
+		},
+	]}
+/>

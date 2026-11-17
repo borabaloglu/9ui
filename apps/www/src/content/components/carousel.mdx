@@ -96,3 +96,118 @@ To build your own controls, get the carousel API with `setApi`.
 To show the carousel right to left, set `dir="rtl"` on `html` and wrap your app in `DirectionProvider`. See [RTL](/docs/getting-started/rtl).
 
 <ComponentPreview name="carousel-rtl-demo" direction="rtl" />
+
+## API Reference
+
+What 9ui adds to Embla Carousel. For the rest of the API, see the [Embla Carousel docs](https://www.embla-carousel.com/docs).
+
+### Carousel
+
+<ApiTable
+	rows={[
+		{
+			name: "orientation",
+			type: '"horizontal" | "vertical"',
+			default: '"horizontal"',
+			description: "The scroll direction. Sets the Embla axis.",
+		},
+		{
+			name: "opts",
+			type: "EmblaOptionsType",
+			description: "Options for Embla, such as loop or align.",
+		},
+		{
+			name: "opts.direction",
+			type: '"ltr" | "rtl"',
+			description: <>The text direction. Follows <code>DirectionProvider</code> when not set.</>,
+		},
+		{
+			name: "plugins",
+			type: "EmblaPluginType[]",
+			description: "Embla plugins, such as autoplay.",
+		},
+		{
+			name: "setApi",
+			type: "(api: CarouselApi) => void",
+			description: "Receives the Embla API once the carousel is ready.",
+		},
+	]}
+/>
+
+### CarouselPrevious
+
+<ApiTable
+	rows={[
+		{
+			name: "variant",
+			shortType: "union",
+			type: '"default" | "secondary" | "ghost" | "outline" | "link" | "destructive" | "destructive-outline"',
+			default: '"outline"',
+			baseDefault: '"default"',
+			description: <>The <code>Button</code> variant.</>,
+		},
+		{
+			name: "size",
+			shortType: "union",
+			type: '"xs" | "sm" | "default" | "lg" | "xl" | "icon-xs" | "icon-sm" | "icon" | "icon-lg" | "icon-xl"',
+			default: '"icon-sm"',
+			baseDefault: '"default"',
+			description: <>The <code>Button</code> size.</>,
+		},
+	]}
+/>
+
+### CarouselNext
+
+<ApiTable
+	rows={[
+		{
+			name: "variant",
+			shortType: "union",
+			type: '"default" | "secondary" | "ghost" | "outline" | "link" | "destructive" | "destructive-outline"',
+			default: '"outline"',
+			baseDefault: '"default"',
+			description: <>The <code>Button</code> variant.</>,
+		},
+		{
+			name: "size",
+			shortType: "union",
+			type: '"xs" | "sm" | "default" | "lg" | "xl" | "icon-xs" | "icon-sm" | "icon" | "icon-lg" | "icon-xl"',
+			default: '"icon-sm"',
+			baseDefault: '"default"',
+			description: <>The <code>Button</code> size.</>,
+		},
+	]}
+/>
+
+### Exports
+
+<ApiTable
+	label="Export"
+	rows={[
+		{
+			name: "useCarousel()",
+			shortType: "object",
+			type: "{ api, carouselRef, opts, orientation, scrollPrev, scrollNext, canScrollPrev, canScrollNext }",
+			description: <>Reads the carousel from inside <code>Carousel</code>. Use it to build your own controls.</>,
+		},
+		{
+			name: "CarouselApi",
+			type: "EmblaCarouselType | undefined",
+			description: <>The type of the API passed to <code>setApi</code>.</>,
+		},
+	]}
+/>
+
+### Data attributes
+
+<ApiTable
+	label="Attribute"
+	rows={[
+		{
+			name: "data-orientation",
+			type: '"horizontal" | "vertical"',
+			description: "Set on the carousel, its content, each item and the buttons. The current orientation.",
+		},
+	]}
+/>

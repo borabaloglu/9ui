@@ -17,7 +17,7 @@ export default function PopoverArrowDemo() {
 				<TruckIcon />
 				Shipping
 			</PopoverTrigger>
-			<PopoverPopup arrow>
+			<PopoverPopup showArrow>
 				<PopoverHeader>
 					<PopoverTitle>Shipping & delivery</PopoverTitle>
 					<PopoverDescription>

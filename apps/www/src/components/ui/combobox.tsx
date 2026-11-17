@@ -4,8 +4,8 @@ import { CheckIcon, XIcon } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const Combobox = BaseCombobox.Root;
-const useFilter = BaseCombobox.useFilter;
-const useFilteredItems = BaseCombobox.useFilteredItems;
+const useComboboxFilter = BaseCombobox.useFilter;
+const useComboboxFilteredItems = BaseCombobox.useFilteredItems;
 const createComboboxItems = BaseCombobox.createItems;
 
 function ComboboxLabel({
@@ -56,6 +56,7 @@ function ComboboxPopup({
 	sideOffset = 4,
 	anchor,
 	dir,
+	portalProps,
 	...props
 }: Omit<BaseCombobox.Popup.Props, "className"> &
 	Pick<
@@ -63,9 +64,10 @@ function ComboboxPopup({
 		"align" | "alignOffset" | "side" | "sideOffset" | "anchor"
 	> & {
 		className?: string;
+		portalProps?: BaseCombobox.Portal.Props;
 	}) {
 	return (
-		<BaseCombobox.Portal data-slot="combobox-portal">
+		<BaseCombobox.Portal data-slot="combobox-portal" {...portalProps}>
 			<BaseCombobox.Positioner
 				data-slot="combobox-positioner"
 				className="z-50"
@@ -226,20 +228,30 @@ function ComboboxRow({
 	);
 }
 
+const comboboxChipsSizes = {
+	sm: "min-h-7 rounded-[min(var(--radius-md),0.75rem)] py-0.5 text-[0.8rem] before:rounded-[calc(min(var(--radius-md),0.75rem)-1px)] has-data-[slot=combobox-chip]:px-0.5 any-pointer-coarse:min-h-8",
+	default:
+		"min-h-8 rounded-lg py-1 text-sm before:rounded-[calc(var(--radius-lg)-1px)] has-data-[slot=combobox-chip]:px-1 any-pointer-coarse:min-h-9",
+	lg: "min-h-9 rounded-lg px-3 py-1.5 text-sm before:rounded-[calc(var(--radius-lg)-1px)] has-data-[slot=combobox-chip]:px-1.5 any-pointer-coarse:min-h-10",
+};
+
 function ComboboxChips({
 	className,
 	children,
+	size = "default",
 	...props
 }: Omit<BaseCombobox.InputGroup.Props, "className"> & {
 	className?: string;
+	size?: keyof typeof comboboxChipsSizes;
 }) {
 	return (
 		<BaseCombobox.InputGroup
 			data-slot="combobox-chips"
+			data-size={size}
 			className={cn(
-				"group/combobox-chips border-border bg-input relative flex min-h-8 w-full min-w-0 cursor-text rounded-lg border px-2.5 py-1 text-sm shadow-xs transition-[border-color,box-shadow] duration-150 ease-out not-dark:bg-clip-padding any-pointer-coarse:min-h-9",
-				"before:pointer-events-none before:absolute before:inset-0 before:rounded-[calc(var(--radius-lg)-1px)] before:shadow-[0_1px_--theme(--color-black/6%)] dark:before:shadow-[0_-1px_--theme(--color-white/8%)]",
-				"has-data-[slot=combobox-chip]:px-1",
+				"group/combobox-chips border-border bg-input relative flex w-full min-w-0 cursor-text border px-2.5 shadow-xs transition-[border-color,box-shadow] duration-150 ease-out not-dark:bg-clip-padding any-pointer-coarse:text-base",
+				comboboxChipsSizes[size],
+				"before:pointer-events-none before:absolute before:inset-0 before:shadow-[0_1px_--theme(--color-black/6%)] dark:before:shadow-[0_-1px_--theme(--color-white/8%)]",
 				"focus-within:border-ring focus-within:ring-ring/50 focus-within:ring-3 focus-within:before:shadow-none",
 				"has-aria-invalid:border-destructive/60 has-aria-invalid:ring-destructive/30 dark:has-aria-invalid:ring-destructive/40 has-aria-invalid:shadow-none has-aria-invalid:before:shadow-none",
 				"data-disabled:cursor-not-allowed data-disabled:opacity-50 data-disabled:shadow-none data-disabled:before:shadow-none",
@@ -335,6 +347,6 @@ export {
 	ComboboxTrigger,
 	ComboboxValue,
 	createComboboxItems,
-	useFilter,
-	useFilteredItems,
+	useComboboxFilter,
+	useComboboxFilteredItems,
 };

@@ -33,7 +33,7 @@ export default function DrawerSwipeAreaDemo() {
 						Open library
 					</DrawerTrigger>
 				</div>
-				<DrawerPopup container={container} className="max-w-64">
+				<DrawerPopup portalProps={{ container }} className="max-w-64">
 					<DrawerHeader>
 						<DrawerTitle>Library</DrawerTitle>
 						<DrawerDescription>

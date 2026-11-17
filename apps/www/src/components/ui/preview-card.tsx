@@ -62,13 +62,14 @@ function PreviewCardArrow({
 function PreviewCardPopup({
 	className,
 	children,
-	arrow = false,
+	showArrow = false,
 	align = "center",
 	alignOffset = 0,
 	side = "bottom",
-	sideOffset = arrow ? 10 : 4,
+	sideOffset = showArrow ? 10 : 4,
 	anchor,
 	dir,
+	portalProps,
 	...props
 }: Omit<BasePreviewCard.Popup.Props, "className"> &
 	Pick<
@@ -76,10 +77,11 @@ function PreviewCardPopup({
 		"align" | "alignOffset" | "side" | "sideOffset" | "anchor"
 	> & {
 		className?: string;
-		arrow?: boolean;
+		portalProps?: BasePreviewCard.Portal.Props;
+		showArrow?: boolean;
 	}) {
 	return (
-		<BasePreviewCard.Portal data-slot="preview-card-portal">
+		<BasePreviewCard.Portal data-slot="preview-card-portal" {...portalProps}>
 			<BasePreviewCard.Positioner
 				data-slot="preview-card-positioner"
 				className="ease-out-quint z-50 h-(--positioner-height) w-(--positioner-width) max-w-(--available-width) motion-safe:has-data-transitioning:transition-[top,left,right,bottom,transform] motion-safe:has-data-transitioning:duration-150"
@@ -94,13 +96,13 @@ function PreviewCardPopup({
 					data-slot="preview-card-popup"
 					className={cn(
 						"bg-popover text-popover-foreground ease-out-quint dark:edge-highlight-(--preview-card-radius) relative flex h-(--popup-height,auto) max-h-(--available-height) w-72 max-w-(--available-width) origin-(--transform-origin) flex-col gap-1 overflow-y-auto overscroll-contain rounded-(--preview-card-radius) border p-(--preview-card-padding) text-sm shadow-md transition-[width,height,scale,opacity] duration-150 [--preview-card-padding:--spacing(4)] [--preview-card-radius:var(--radius-lg)] not-dark:shadow-[0_1px_--theme(--color-black/6%),var(--shadow-md)] has-data-[slot=preview-card-panel]:overflow-visible has-data-[slot=preview-card-viewport]:overflow-visible data-ending-style:scale-98 data-ending-style:opacity-0 data-ending-style:duration-100 data-instant:transition-none data-starting-style:scale-98 data-starting-style:opacity-0 motion-reduce:transition-opacity motion-reduce:data-ending-style:scale-100 motion-reduce:data-starting-style:scale-100 dark:[--preview-card-edge:color-mix(in_oklab,var(--border),white_8%)]",
-						arrow && "overflow-visible",
+						showArrow && "overflow-visible",
 						className,
 					)}
 					{...props}
 				>
 					{children}
-					{arrow && <PreviewCardArrow />}
+					{showArrow && <PreviewCardArrow />}
 				</BasePreviewCard.Popup>
 			</BasePreviewCard.Positioner>
 		</BasePreviewCard.Portal>

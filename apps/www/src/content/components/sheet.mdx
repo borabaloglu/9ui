@@ -87,6 +87,8 @@ Set `variant="inset"` on `SheetPopup` to float the sheet inside the viewport wit
 
 Set `showCloseButton={false}` on `SheetPopup` to remove the close button from the corner. The sheet still closes on Escape and on an outside press.
 
+<ComponentPreview name="sheet-no-close-button-demo" />
+
 ### Bare Footer
 
 Set `variant="bare"` on `SheetFooter` to drop its border and background.
@@ -98,3 +100,75 @@ Set `variant="bare"` on `SheetFooter` to drop its border and background.
 To show the sheet right to left, set `dir="rtl"` on `html` and wrap your app in `DirectionProvider`. See [RTL](/docs/getting-started/rtl). `side` is the screen edge in both directions, so to open the sheet from the start, set `side="right"`.
 
 <ComponentPreview name="sheet-rtl-demo" direction="rtl" />
+
+## API Reference
+
+What 9ui adds to Base UI Dialog. For the rest of the API, see the [Base UI Dialog reference](https://base-ui.com/react/components/dialog#api-reference).
+
+### SheetPopup
+
+Bundles the portal, backdrop, viewport and popup.
+
+<ApiTable
+	rows={[
+		{
+			name: "side",
+			shortType: "union",
+			type: '"top" | "right" | "bottom" | "left"',
+			default: '"right"',
+			description: "The screen edge the sheet slides in from. Stays physical in right-to-left layouts.",
+		},
+		{
+			name: "variant",
+			type: '"default" | "inset"',
+			default: '"default"',
+			description: <>The sheet style. <code>inset</code> floats it inside the viewport with rounded corners on larger screens.</>,
+		},
+		{
+			name: "showCloseButton",
+			type: "boolean",
+			default: "true",
+			description: "Shows a close button in the top corner.",
+		},
+		{
+			name: "portalProps",
+			type: "Dialog.Portal.Props",
+			description: <>Props for the portal, such as <code>container</code>.</>,
+		},
+	]}
+/>
+
+### SheetPanel
+
+Holds the body and scrolls it while the header and footer stay in place.
+
+### SheetFooter
+
+<ApiTable
+	rows={[
+		{
+			name: "variant",
+			type: '"default" | "bare"',
+			default: '"default"',
+			description: <>The footer style. <code>bare</code> drops the border and background.</>,
+		},
+	]}
+/>
+
+### Data attributes
+
+<ApiTable
+	label="Attribute"
+	rows={[
+		{
+			name: "data-side",
+			type: '"top" | "right" | "bottom" | "left"',
+			description: <>Set on <code>SheetPopup</code>. The current <code>side</code>.</>,
+		},
+		{
+			name: "data-variant",
+			type: '"default" | "inset" | "bare"',
+			description: <>Set on <code>SheetPopup</code> and <code>SheetFooter</code>. The current <code>variant</code>.</>,
+		},
+	]}
+/>

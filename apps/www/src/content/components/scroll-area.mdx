@@ -61,8 +61,35 @@ Set `scrollFade` to fade the content at the edges that have more to scroll.
 
 Set `scrollbarGutter` to keep the content clear of the scrollbar.
 
+<ComponentPreview name="scroll-area-gutter-demo" />
+
 ### RTL
 
 To show the scroll area right to left, set `dir="rtl"` on `html` and wrap your app in `DirectionProvider`. See [RTL](/docs/getting-started/rtl).
 
 <ComponentPreview name="scroll-area-rtl-demo" direction="rtl" />
+
+## API Reference
+
+What 9ui adds to Base UI Scroll Area. For the rest of the API, see the [Base UI Scroll Area reference](https://base-ui.com/react/components/scroll-area#api-reference).
+
+### ScrollArea
+
+Renders the viewport, both scrollbars and the corner for you.
+
+<ApiTable
+	rows={[
+		{
+			name: "scrollFade",
+			type: "boolean",
+			default: "false",
+			description: "Fades the content at the edges that have more to scroll.",
+		},
+		{
+			name: "scrollbarGutter",
+			type: "boolean",
+			default: "false",
+			description: "Keeps the content clear of the scrollbar on the axes that overflow.",
+		},
+	]}
+/>

@@ -101,3 +101,41 @@ To show text next to a control, add `ButtonGroupText`.
 To show the button group right to left, set `dir="rtl"` on `html` and wrap your app in `DirectionProvider`. See [RTL](/docs/getting-started/rtl).
 
 <ComponentPreview name="button-group-rtl-demo" direction="rtl" />
+
+## API Reference
+
+Button Group is built by 9ui, so this is its full API.
+
+### ButtonGroup
+
+<ApiTable
+	rows={[
+		{
+			name: "orientation",
+			type: '"horizontal" | "vertical"',
+			default: '"horizontal"',
+			description: "Lays the items out in a row or a column.",
+		},
+	]}
+/>
+
+### ButtonGroupText
+
+A text or icon segment that matches the buttons. To render it as another element, such as a label, set `render`.
+
+### ButtonGroupSeparator
+
+A line between items. It follows the orientation of the group, so it takes no `orientation` prop.
+
+### Data attributes
+
+<ApiTable
+	label="Attribute"
+	rows={[
+		{
+			name: "data-orientation",
+			type: '"horizontal" | "vertical"',
+			description: <>Set on <code>ButtonGroup</code>. The current <code>orientation</code>.</>,
+		},
+	]}
+/>

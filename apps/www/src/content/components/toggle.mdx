@@ -74,3 +74,57 @@ Set `disabled` to prevent interaction.
 To show the toggle right to left, set `dir="rtl"` on `html` and wrap your app in `DirectionProvider`. See [RTL](/docs/getting-started/rtl).
 
 <ComponentPreview name="toggle-rtl-demo" direction="rtl" />
+
+## API Reference
+
+What 9ui adds to Base UI Toggle. For the rest of the API, see the [Base UI Toggle reference](https://base-ui.com/react/components/toggle#api-reference).
+
+### Toggle
+
+<ApiTable
+	rows={[
+		{
+			name: "variant",
+			type: '"default" | "outline"',
+			default: '"default"',
+			description: "The visual style of the toggle.",
+		},
+		{
+			name: "size",
+			type: '"sm" | "default" | "lg"',
+			default: '"default"',
+			description: "The height, padding and text size of the toggle.",
+		},
+	]}
+/>
+
+### toggleVariants
+
+<ApiTable
+	label="Export"
+	rows={[
+		{
+			name: "toggleVariants()",
+			type: "(props?: { variant?, size? }) => string",
+			description: "Returns the toggle classes. Use it to style another element like a toggle.",
+		},
+	]}
+/>
+
+### Data attributes
+
+<ApiTable
+	label="Attribute"
+	rows={[
+		{
+			name: "data-variant",
+			type: '"default" | "outline"',
+			description: "Set on the toggle. Use it to style each variant.",
+		},
+		{
+			name: "data-size",
+			type: '"sm" | "default" | "lg"',
+			description: "Set on the toggle. Use it to style each size.",
+		},
+	]}
+/>

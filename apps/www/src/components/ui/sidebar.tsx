@@ -487,7 +487,7 @@ const sidebarMenuButtonVariants = cva(
 
 function SidebarMenuButton({
 	render,
-	isActive = false,
+	active = false,
 	variant = "default",
 	size = "default",
 	tooltip,
@@ -495,7 +495,7 @@ function SidebarMenuButton({
 	...props
 }: useRender.ComponentProps<"button"> &
 	VariantProps<typeof sidebarMenuButtonVariants> & {
-		isActive?: boolean;
+		active?: boolean;
 		tooltip?: string | React.ComponentProps<typeof TooltipPopup>;
 	}) {
 	const { isMobile, state } = useSidebar();
@@ -509,8 +509,8 @@ function SidebarMenuButton({
 				"data-slot": "sidebar-menu-button",
 				"data-sidebar": "menu-button",
 				"data-size": size,
-				"data-active": isActive ? "" : undefined,
-				"aria-current": isActive ? "page" : undefined,
+				"data-active": active ? "" : undefined,
+				"aria-current": active ? "page" : undefined,
 				className: cn(sidebarMenuButtonVariants({ variant, size }), className),
 			} as React.ComponentProps<"button">,
 			props,
@@ -643,12 +643,12 @@ function SidebarMenuSubItem({
 function SidebarMenuSubButton({
 	render,
 	size = "default",
-	isActive = false,
+	active = false,
 	className,
 	...props
 }: useRender.ComponentProps<"a"> & {
 	size?: "sm" | "default";
-	isActive?: boolean;
+	active?: boolean;
 }) {
 	return useRender({
 		defaultTagName: "a",
@@ -658,8 +658,8 @@ function SidebarMenuSubButton({
 				"data-slot": "sidebar-menu-sub-button",
 				"data-sidebar": "menu-sub-button",
 				"data-size": size,
-				"data-active": isActive ? "" : undefined,
-				"aria-current": isActive ? "page" : undefined,
+				"data-active": active ? "" : undefined,
+				"aria-current": active ? "page" : undefined,
 				className: cn(
 					"hover:bg-accent/50 hover:text-accent-foreground focus-visible:ring-ring/50 active:bg-foreground/10 dark:active:bg-accent data-active:bg-accent data-active:text-accent-foreground data-active:active:bg-foreground/10 dark:data-active:active:bg-foreground/10 flex h-7 min-w-0 cursor-pointer items-center gap-2 overflow-hidden rounded-[min(var(--radius-md),0.75rem)] px-2 text-sm outline-none group-data-[collapsible=icon]/sidebar:hidden focus-visible:ring-3 aria-disabled:pointer-events-none aria-disabled:opacity-50 data-active:font-medium data-[size=sm]:text-xs any-pointer-coarse:h-8 any-pointer-coarse:text-base [&>span]:truncate [&>svg]:pointer-events-none [&>svg]:shrink-0 [&>svg:not([class*='size-'])]:size-4",
 					className,

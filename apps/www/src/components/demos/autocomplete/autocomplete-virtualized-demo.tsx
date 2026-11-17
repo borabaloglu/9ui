@@ -10,7 +10,7 @@ import {
 	AutocompleteItem,
 	AutocompleteList,
 	AutocompletePopup,
-	useFilteredItems,
+	useAutocompleteFilteredItems,
 } from "@/components/ui/autocomplete";
 import { Field, FieldLabel } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
@@ -69,7 +69,7 @@ function VirtualizedList({
 }: {
 	virtualizerRef: React.RefObject<Virtualizer | null>;
 }) {
-	const filteredItems = useFilteredItems<string>();
+	const filteredItems = useAutocompleteFilteredItems<string>();
 	const scrollElementRef = React.useRef<HTMLDivElement | null>(null);
 
 	const virtualizer = useVirtualizer({

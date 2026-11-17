@@ -112,3 +112,56 @@ To add a tooltip, render the item from `TooltipTrigger`.
 To show the toggle group right to left, set `dir="rtl"` on `html` and wrap your app in `DirectionProvider`. See [RTL](/docs/getting-started/rtl).
 
 <ComponentPreview name="toggle-group-rtl-demo" direction="rtl" />
+
+## API Reference
+
+What 9ui adds to Base UI Toggle Group. For the rest of the API, see the [Base UI Toggle Group reference](https://base-ui.com/react/components/toggle-group#api-reference).
+
+### ToggleGroup
+
+Passes `variant` and `size` to every item.
+
+<ApiTable
+	rows={[
+		{
+			name: "variant",
+			type: '"default" | "outline"',
+			default: '"default"',
+			description: "The visual style of the items.",
+		},
+		{
+			name: "size",
+			type: '"sm" | "default" | "lg"',
+			default: '"default"',
+			description: "The height, padding and text size of the items.",
+		},
+		{
+			name: "spacing",
+			type: "number",
+			default: "0.5",
+			description: <>The gap between items in spacing units. Defaults to <code>0</code> for the outline variant. Set <code>0</code> to join the items.</>,
+		},
+	]}
+/>
+
+### ToggleGroupSeparator
+
+A divider between items. Turns to match the group orientation.
+
+### Data attributes
+
+<ApiTable
+	label="Attribute"
+	rows={[
+		{
+			name: "data-variant",
+			type: '"default" | "outline"',
+			description: "Set on the group and each item. Use it to style each variant.",
+		},
+		{
+			name: "data-size",
+			type: '"sm" | "default" | "lg"',
+			description: "Set on the group and each item. Use it to style each size.",
+		},
+	]}
+/>

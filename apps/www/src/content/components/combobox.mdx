@@ -132,6 +132,12 @@ Set `multiple` to select more than one item. Use `ComboboxChips`, `ComboboxChip`
 
 To hide the remove button of a chip, set `showRemove={false}` on `ComboboxChip`.
 
+### Size
+
+Set `size` to `sm`, `default` or `lg` on `ComboboxChips`. For a single-value combobox, set `size` on the `Input` or `InputGroup`.
+
+<ComponentPreview name="combobox-size-demo" />
+
 ### Auto Highlight
 
 Set `autoHighlight` to highlight the first match while typing.
@@ -167,3 +173,123 @@ To show the combobox right to left, set `dir="rtl"` on `html` and wrap your app 
 ## Form Integration
 
 See the form guides for [Base UI Form](/docs/forms/base-ui#combobox), [React Hook Form](/docs/forms/react-hook-form#combobox) and [TanStack Form](/docs/forms/tanstack-form#combobox).
+
+## API Reference
+
+What 9ui adds to Base UI Combobox. For the rest of the API, see the [Base UI Combobox reference](https://base-ui.com/react/components/combobox#api-reference).
+
+### ComboboxChips
+
+Bundles the input group and the chips list.
+
+<ApiTable
+	rows={[
+		{
+			name: "size",
+			type: '"sm" | "default" | "lg"',
+			default: '"default"',
+			description: "The height, padding and text size of the field.",
+		},
+	]}
+/>
+
+### ComboboxChip
+
+<ApiTable
+	rows={[
+		{
+			name: "showRemove",
+			type: "boolean",
+			default: "true",
+			description: "Shows a button that removes the chip.",
+		},
+	]}
+/>
+
+### ComboboxPopup
+
+Bundles the portal, positioner and popup.
+
+<ApiTable
+	rows={[
+		{
+			name: "side",
+			shortType: "Side",
+			type: '"top" | "bottom" | "left" | "right" | "inline-end" | "inline-start"',
+			default: '"bottom"',
+			description: "The side of the input the popup opens on.",
+		},
+		{
+			name: "align",
+			type: '"start" | "center" | "end"',
+			default: '"start"',
+			baseDefault: '"center"',
+			description: "How the popup lines up with the input on that side.",
+		},
+		{
+			name: "sideOffset",
+			type: "number | OffsetFunction",
+			default: "4",
+			baseDefault: "0",
+			description: "The gap between the input and the popup.",
+		},
+		{
+			name: "alignOffset",
+			type: "number | OffsetFunction",
+			default: "0",
+			description: "The shift along the alignment axis.",
+		},
+		{
+			name: "anchor",
+			shortType: "Element | RefObject",
+			type: "Element | VirtualElement | RefObject<Element | null> | (() => Element | VirtualElement | null) | null",
+			description: "The element to position the popup against, in place of the input.",
+		},
+		{
+			name: "portalProps",
+			type: "Combobox.Portal.Props",
+			description: <>Props for the portal, such as <code>container</code>.</>,
+		},
+	]}
+/>
+
+### Exports
+
+The component file also exports these.
+
+<ApiTable
+	label="Export"
+	rows={[
+		{
+			name: "useComboboxFilter()",
+			shortType: "Filter",
+			type: "(options?: UseComboboxFilterOptions) => Filter",
+			description: <>Returns locale-aware <code>contains</code>, <code>startsWith</code> and <code>endsWith</code> matchers for the <code>filter</code> prop.</>,
+		},
+		{
+			name: "useComboboxFilteredItems()",
+			shortType: "T[]",
+			type: "<T>() => T[]",
+			description: "Returns the items left after filtering. Use it inside the combobox.",
+		},
+		{
+			name: "createComboboxItems()",
+			shortType: "ComboboxItemCollection",
+			type: "(data, { getValue, getLabel }) => ComboboxItemCollection",
+			description: <>Creates an <code>items</code> collection that stores IDs as the value instead of item objects.</>,
+		},
+	]}
+/>
+
+### Data attributes
+
+<ApiTable
+	label="Attribute"
+	rows={[
+		{
+			name: "data-size",
+			type: '"sm" | "default" | "lg"',
+			description: <>Set on <code>ComboboxChips</code>. The current <code>size</code>.</>,
+		},
+	]}
+/>

@@ -127,7 +127,7 @@ To render a menu button as a link, set `render` on `SidebarMenuButton`.
 </SidebarMenuButton>
 ```
 
-To mark the current page, set `isActive` on `SidebarMenuButton`.
+To mark the current page, set `active` on `SidebarMenuButton`.
 
 ### Collapsing
 
@@ -242,4 +242,296 @@ To show the sidebar right to left, set `dir="rtl"` on `html` and wrap your app i
 	name="sidebar-rtl-demo"
 	direction="rtl"
 	previewClassName="h-140 items-stretch overflow-hidden p-0 contain-layout **:data-[slot=sidebar-wrapper]:min-h-0"
+/>
+
+## API Reference
+
+Sidebar is built by 9ui, so this is its full API. Each part also takes the props of the element it renders.
+
+### SidebarProvider
+
+Holds the open state and renders the layout wrapper, a `div`.
+
+<ApiTable
+	rows={[
+		{
+			name: "defaultOpen",
+			type: "boolean",
+			default: "true",
+			description: "Whether the sidebar starts open. Use it when you do not control the state.",
+		},
+		{
+			name: "open",
+			type: "boolean",
+			description: "Whether the sidebar is open on desktop. Use it with onOpenChange to control the state.",
+		},
+		{
+			name: "onOpenChange",
+			type: "(open: boolean) => void",
+			description: "Called when the sidebar opens or closes on desktop.",
+		},
+	]}
+/>
+
+### Sidebar
+
+Renders a sheet on mobile.
+
+<ApiTable
+	rows={[
+		{
+			name: "side",
+			type: '"left" | "right"',
+			default: '"left"',
+			description: "The screen edge the sidebar sits on. Stays physical in right-to-left layouts.",
+		},
+		{
+			name: "variant",
+			type: '"sidebar" | "floating" | "inset"',
+			default: '"sidebar"',
+			description: "Attached to the edge, detached as a panel, or with the page content shown as a raised panel.",
+		},
+		{
+			name: "collapsible",
+			type: '"offcanvas" | "icon" | "none"',
+			default: '"offcanvas"',
+			description: "Slides out of view, shrinks to a strip of icons, or never collapses.",
+		},
+	]}
+/>
+
+### SidebarTrigger
+
+A ghost icon `Button` that toggles the sidebar. Takes Button props and shows a panel icon when it has no children.
+
+### SidebarRail
+
+A thin `button` along the sidebar edge that toggles the sidebar.
+
+### SidebarInset
+
+The page content next to the sidebar, a `main`.
+
+### SidebarHeader
+
+A `div` at the top of the sidebar.
+
+### SidebarFooter
+
+A `div` at the bottom of the sidebar.
+
+### SidebarSeparator
+
+A `Separator` inset to the sidebar padding.
+
+### SidebarContent
+
+The scrolling area between the header and the footer, a `div`.
+
+### SidebarGroup
+
+A `div` that holds a label, an action and a menu.
+
+### SidebarGroupLabel
+
+A `div` that fades out when the sidebar collapses to icons. To change the element, set `render`.
+
+### SidebarGroupAction
+
+A `button` at the end of the group label. To change the element, set `render`.
+
+### SidebarGroupContent
+
+A `div` that holds the group's content.
+
+### SidebarMenu
+
+A `ul` of menu items.
+
+### SidebarMenuItem
+
+An `li` that holds a menu button, an action, a badge and a submenu.
+
+### SidebarMenuButton
+
+A `button`. To render it as a link, set `render`.
+
+<ApiTable
+	rows={[
+		{
+			name: "active",
+			type: "boolean",
+			default: "false",
+			description: <>Marks the current page and sets <code>aria-current="page"</code>.</>,
+		},
+		{
+			name: "variant",
+			type: '"default" | "outline"',
+			default: '"default"',
+			description: "The visual style of the button.",
+		},
+		{
+			name: "size",
+			type: '"sm" | "default" | "lg"',
+			default: '"default"',
+			description: "The height and text size of the button.",
+		},
+		{
+			name: "tooltip",
+			shortType: "string | object",
+			type: "string | React.ComponentProps<typeof TooltipPopup>",
+			description: <>A tooltip shown while the sidebar is collapsed to icons on desktop. Pass a string or <code>TooltipPopup</code> props.</>,
+		},
+	]}
+/>
+
+### SidebarMenuAction
+
+A `button` at the end of a menu item. To change the element, set `render`.
+
+<ApiTable
+	rows={[
+		{
+			name: "showOnHover",
+			type: "boolean",
+			default: "false",
+			description: "Shows the action only while the menu item is hovered or focused. Always visible on touch screens.",
+		},
+	]}
+/>
+
+### SidebarMenuBadge
+
+A `div` at the end of a menu item, for a count.
+
+### SidebarMenuSkeleton
+
+A placeholder menu button with a random width, a `div`.
+
+<ApiTable
+	rows={[
+		{
+			name: "showIcon",
+			type: "boolean",
+			default: "false",
+			description: "Shows a placeholder icon before the text.",
+		},
+	]}
+/>
+
+### SidebarMenuSub
+
+A `ul` of submenu items, hidden when the sidebar collapses to icons.
+
+### SidebarMenuSubItem
+
+An `li` that holds a submenu button.
+
+### SidebarMenuSubButton
+
+An `a`. To change the element, set `render`.
+
+<ApiTable
+	rows={[
+		{
+			name: "active",
+			type: "boolean",
+			default: "false",
+			description: <>Marks the current page and sets <code>aria-current="page"</code>.</>,
+		},
+		{
+			name: "size",
+			type: '"sm" | "default"',
+			default: '"default"',
+			description: "The text size of the button.",
+		},
+	]}
+/>
+
+### useSidebar
+
+Returns these values. Call it inside `SidebarProvider`.
+
+<ApiTable
+	label="Value"
+	rows={[
+		{
+			name: "state",
+			type: '"expanded" | "collapsed"',
+			description: "The desktop state.",
+		},
+		{
+			name: "open",
+			type: "boolean",
+			description: "Whether the sidebar is open on desktop.",
+		},
+		{
+			name: "setOpen",
+			type: "(open: boolean | ((open: boolean) => boolean)) => void",
+			description: "Opens or closes the sidebar on desktop and saves the state in a cookie.",
+		},
+		{
+			name: "openMobile",
+			type: "boolean",
+			description: "Whether the sheet is open on mobile.",
+		},
+		{
+			name: "setOpenMobile",
+			type: "React.Dispatch<React.SetStateAction<boolean>>",
+			description: "Opens or closes the sheet on mobile.",
+		},
+		{
+			name: "isMobile",
+			type: "boolean",
+			description: "Whether the viewport is mobile.",
+		},
+		{
+			name: "toggleSidebar",
+			type: "() => void",
+			description: "Toggles the sheet on mobile and the sidebar on desktop.",
+		},
+	]}
+/>
+
+### Data attributes
+
+<ApiTable
+	label="Attribute"
+	rows={[
+		{
+			name: "data-state",
+			type: '"expanded" | "collapsed"',
+			description: <>Set on <code>Sidebar</code> on desktop.</>,
+		},
+		{
+			name: "data-collapsible",
+			type: '"offcanvas" | "icon"',
+			description: <>Set on <code>Sidebar</code> while it is collapsed. The current <code>collapsible</code>.</>,
+		},
+		{
+			name: "data-variant",
+			type: '"sidebar" | "floating" | "inset"',
+			description: <>Set on <code>Sidebar</code>. The current <code>variant</code>.</>,
+		},
+		{
+			name: "data-side",
+			type: '"left" | "right"',
+			description: <>Set on <code>Sidebar</code> on desktop. The current <code>side</code>.</>,
+		},
+		{
+			name: "data-mobile",
+			type: "boolean",
+			description: <>Present on <code>Sidebar</code> when it renders as a sheet.</>,
+		},
+		{
+			name: "data-active",
+			type: "boolean",
+			description: <>Present on <code>SidebarMenuButton</code> and <code>SidebarMenuSubButton</code> when <code>active</code> is set.</>,
+		},
+		{
+			name: "data-size",
+			type: '"sm" | "default" | "lg"',
+			description: <>Set on <code>SidebarMenuButton</code> and <code>SidebarMenuSubButton</code>. The current <code>size</code>.</>,
+		},
+	]}
 />

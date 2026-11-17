@@ -1,4 +1,3 @@
-import type * as React from "react";
 import { Separator as BaseSeparator } from "@base-ui/react/separator";
 
 import { cn } from "@/lib/utils";
@@ -7,7 +6,9 @@ function Separator({
 	className,
 	orientation = "horizontal",
 	...props
-}: React.ComponentProps<typeof BaseSeparator>) {
+}: Omit<BaseSeparator.Props, "className"> & {
+	className?: string;
+}) {
 	return (
 		<BaseSeparator
 			data-slot="separator"

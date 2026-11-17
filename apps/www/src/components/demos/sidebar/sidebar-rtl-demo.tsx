@@ -175,7 +175,7 @@ export default function SidebarRtlDemo() {
 						<SidebarMenu>
 							<SidebarMenuItem>
 								<SidebarMenuButton
-									isActive
+									active
 									tooltip={{ children: t.dashboard, dir }}
 								>
 									<LayoutDashboardIcon />

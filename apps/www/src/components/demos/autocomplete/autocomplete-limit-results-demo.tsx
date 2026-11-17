@@ -10,7 +10,7 @@ import {
 	AutocompleteList,
 	AutocompletePopup,
 	AutocompleteStatus,
-	useFilter,
+	useAutocompleteFilter,
 } from "@/components/ui/autocomplete";
 import { Field, FieldLabel } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
@@ -20,7 +20,7 @@ const limit = 8;
 export default function AutocompleteLimitResultsDemo() {
 	const [value, setValue] = React.useState("");
 
-	const { contains } = useFilter({ sensitivity: "base" });
+	const { contains } = useAutocompleteFilter({ sensitivity: "base" });
 
 	const totalMatches = React.useMemo(() => {
 		const trimmed = value.trim();

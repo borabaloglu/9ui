@@ -1,15 +1,15 @@
 "use client";
 
-import { Toast } from "@base-ui/react/toast";
-
 import { Button } from "@/components/ui/button";
 import { ToastProvider } from "@/components/ui/toast";
 
-const toastManager = Toast.createToastManager();
+import { createToastManager } from "@/hooks/use-toast";
+
+const toastManager = createToastManager();
 
 export default function ToastCloseButtonDemo() {
 	return (
-		<ToastProvider closeButton toastManager={toastManager}>
+		<ToastProvider showCloseButton toastManager={toastManager}>
 			<Button
 				variant="outline"
 				onClick={() =>

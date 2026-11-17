@@ -3,8 +3,8 @@ import { Autocomplete as BaseAutocomplete } from "@base-ui/react/autocomplete";
 import { cn } from "@/lib/utils";
 
 const Autocomplete = BaseAutocomplete.Root;
-const useFilter = BaseAutocomplete.useFilter;
-const useFilteredItems = BaseAutocomplete.useFilteredItems;
+const useAutocompleteFilter = BaseAutocomplete.useFilter;
+const useAutocompleteFilteredItems = BaseAutocomplete.useFilteredItems;
 
 function AutocompleteInputGroup({
 	...props
@@ -43,6 +43,7 @@ function AutocompletePopup({
 	sideOffset = 4,
 	anchor,
 	dir,
+	portalProps,
 	...props
 }: Omit<BaseAutocomplete.Popup.Props, "className"> &
 	Pick<
@@ -50,9 +51,10 @@ function AutocompletePopup({
 		"align" | "alignOffset" | "side" | "sideOffset" | "anchor"
 	> & {
 		className?: string;
+		portalProps?: BaseAutocomplete.Portal.Props;
 	}) {
 	return (
-		<BaseAutocomplete.Portal data-slot="autocomplete-portal">
+		<BaseAutocomplete.Portal data-slot="autocomplete-portal" {...portalProps}>
 			<BaseAutocomplete.Positioner
 				data-slot="autocomplete-positioner"
 				className="z-50"
@@ -223,6 +225,6 @@ export {
 	AutocompleteStatus,
 	AutocompleteTrigger,
 	AutocompleteValue,
-	useFilter,
-	useFilteredItems,
+	useAutocompleteFilter,
+	useAutocompleteFilteredItems,
 };

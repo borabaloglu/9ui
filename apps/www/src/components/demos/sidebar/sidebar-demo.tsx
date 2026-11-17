@@ -85,7 +85,7 @@ export default function SidebarDemo() {
 						<SidebarGroupLabel>Workspace</SidebarGroupLabel>
 						<SidebarMenu>
 							<SidebarMenuItem>
-								<SidebarMenuButton isActive tooltip="Dashboard">
+								<SidebarMenuButton active tooltip="Dashboard">
 									<LayoutDashboardIcon />
 									<span>Dashboard</span>
 								</SidebarMenuButton>

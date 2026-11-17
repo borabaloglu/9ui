@@ -58,6 +58,12 @@ import { PhoneInput } from "@/components/ui/phone-input"
 
 ## Examples
 
+### Size
+
+Set `size` to `sm`, `default` or `lg`.
+
+<ComponentPreview name="phone-input-size-demo" />
+
 ### Default Country
 
 Set `defaultCountry` to select a country before the user types.
@@ -129,3 +135,44 @@ To set the direction on one phone input, set `dir` on `PhoneInput`. The country 
 ## Form Integration
 
 See the form guides for [Base UI Form](/docs/forms/base-ui#phone-input), [React Hook Form](/docs/forms/react-hook-form#phone-input) and [TanStack Form](/docs/forms/tanstack-form#phone-input).
+
+## API Reference
+
+What 9ui adds to React Phone Number Input. For the rest of the API, see the [React Phone Number Input docs](https://catamphetamine.gitlab.io/react-phone-number-input/).
+
+### PhoneInput
+
+<ApiTable
+	rows={[
+		{
+			name: "size",
+			type: '"sm" | "default" | "lg"',
+			default: '"default"',
+			description: "The height and text size of the input.",
+		},
+		{
+			name: "searchPlaceholder",
+			type: "string",
+			default: '"Search countries"',
+			description: "The placeholder and accessible name of the country search field.",
+		},
+		{
+			name: "emptyMessage",
+			type: "string",
+			default: '"No countries found."',
+			description: "The text shown when no country matches the search.",
+		},
+		{
+			name: "onChange",
+			type: "(value: Value) => void",
+			description: "Called with the number in E.164 format, or an empty string when the input is cleared.",
+		},
+		{
+			name: "smartCaret",
+			type: "boolean",
+			default: "false",
+			baseDefault: "true",
+			description: "Moves the caret past formatting characters while typing.",
+		},
+	]}
+/>

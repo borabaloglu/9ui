@@ -52,11 +52,11 @@ Set `length` to the number of slots and render one `OTPFieldInput` for each. Giv
 
 ## Examples
 
-### Sizes
+### Size
 
-Set `size="lg"` for larger slots.
+Set `size` to `sm`, `default` or `lg` on `OTPField`.
 
-<ComponentPreview name="otp-field-lg-demo" />
+<ComponentPreview name="otp-field-size-demo" />
 
 ### Separator
 
@@ -115,3 +115,33 @@ To show the OTP field right to left, set `dir="rtl"` on `html` and wrap your app
 ## Form Integration
 
 See the form guides for [Base UI Form](/docs/forms/base-ui#otp-field), [React Hook Form](/docs/forms/react-hook-form#otp-field) and [TanStack Form](/docs/forms/tanstack-form#otp-field).
+
+## API Reference
+
+What 9ui adds to Base UI OTP Field. For the rest of the API, see the [Base UI OTP Field reference](https://base-ui.com/react/components/otp-field#api-reference).
+
+### OTPField
+
+<ApiTable
+	rows={[
+		{
+			name: "size",
+			type: '"sm" | "default" | "lg"',
+			default: '"default"',
+			description: "The size and text size of the slots and the gap between them.",
+		},
+	]}
+/>
+
+### Data attributes
+
+<ApiTable
+	label="Attribute"
+	rows={[
+		{
+			name: "data-size",
+			type: '"sm" | "default" | "lg"',
+			description: <>Set on <code>OTPField</code>. Use it to style the slots per size.</>,
+		},
+	]}
+/>

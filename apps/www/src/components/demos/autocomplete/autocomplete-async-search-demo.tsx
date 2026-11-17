@@ -9,7 +9,7 @@ import {
 	AutocompleteList,
 	AutocompletePopup,
 	AutocompleteStatus,
-	useFilter,
+	useAutocompleteFilter,
 } from "@/components/ui/autocomplete";
 import { Field, FieldLabel } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
@@ -77,7 +77,7 @@ export default function AutocompleteAsyncSearchDemo() {
 function useMovieSearch(query: string) {
 	const [isLoading, setIsLoading] = React.useState(false);
 	const [results, setResults] = React.useState<Movie[]>([]);
-	const { contains } = useFilter({ sensitivity: "base" });
+	const { contains } = useAutocompleteFilter({ sensitivity: "base" });
 	const containsRef = React.useRef(contains);
 	containsRef.current = contains;
 

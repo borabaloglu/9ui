@@ -1,7 +1,5 @@
 "use client";
 
-import { Toast } from "@base-ui/react/toast";
-
 import {
 	type Translations,
 	useTranslation,
@@ -9,7 +7,9 @@ import {
 import { Button } from "@/components/ui/button";
 import { ToastProvider } from "@/components/ui/toast";
 
-const toastManager = Toast.createToastManager();
+import { createToastManager } from "@/hooks/use-toast";
+
+const toastManager = createToastManager();
 
 const translations = {
 	en: {
@@ -40,7 +40,7 @@ export default function ToastRtlDemo() {
 
 	return (
 		<ToastProvider
-			closeButton
+			showCloseButton
 			toastManager={toastManager}
 			portalProps={{ dir }}
 		>

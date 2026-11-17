@@ -8,7 +8,7 @@ function Switch({
 	...props
 }: Omit<BaseSwitch.Root.Props, "className"> & {
 	className?: string;
-	size?: "default" | "sm";
+	size?: "sm" | "default";
 }) {
 	return (
 		<BaseSwitch.Root

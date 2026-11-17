@@ -52,7 +52,7 @@ export default function ChartBarHorizontalDemo() {
 						/>
 						<ChartTooltip
 							cursor={false}
-							content={<ChartTooltipContent hideLabel />}
+							content={<ChartTooltipContent showLabel={false} />}
 						/>
 						<Bar dataKey="views" fill="var(--color-views)" radius={4}>
 							<LabelList

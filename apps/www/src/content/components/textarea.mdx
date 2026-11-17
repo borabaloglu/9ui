@@ -63,7 +63,7 @@ Set a `max-h-*` class to stop growing and scroll instead.
 
 ### Field
 
-Place it inside [`Field`](/components/field) to link the label, description and error. No `FieldControl` needed.
+Place it inside [`Field`](/docs/components/field) to link the label, description and error. No `FieldControl` needed.
 
 <ComponentPreview name="textarea-field-demo" />
 
@@ -82,3 +82,20 @@ To show the textarea right to left, set `dir="rtl"` on `html` and wrap your app 
 ## Form Integration
 
 See the form guides for [Base UI Form](/docs/forms/base-ui#textarea), [React Hook Form](/docs/forms/react-hook-form#textarea) and [TanStack Form](/docs/forms/tanstack-form#textarea).
+
+## API Reference
+
+Textarea is built by 9ui, so this is its full API. It accepts every native `textarea` prop and works inside [Field](/docs/components/field) like a Base UI control.
+
+### Textarea
+
+<ApiTable
+	rows={[
+		{
+			name: "onValueChange",
+			shortType: "function",
+			type: "(value: string, eventDetails: Field.Control.ChangeEventDetails) => void",
+			description: "Called when the value changes.",
+		},
+	]}
+/>

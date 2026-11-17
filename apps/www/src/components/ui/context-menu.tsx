@@ -31,6 +31,7 @@ function ContextMenuPopup({
 	sideOffset,
 	anchor,
 	dir,
+	portalProps,
 	...props
 }: Omit<BaseContextMenu.Popup.Props, "className"> &
 	Pick<
@@ -38,9 +39,10 @@ function ContextMenuPopup({
 		"align" | "alignOffset" | "side" | "sideOffset" | "anchor"
 	> & {
 		className?: string;
+		portalProps?: BaseContextMenu.Portal.Props;
 	}) {
 	return (
-		<BaseContextMenu.Portal data-slot="context-menu-portal">
+		<BaseContextMenu.Portal data-slot="context-menu-portal" {...portalProps}>
 			<BaseContextMenu.Positioner
 				data-slot="context-menu-positioner"
 				className="z-50"

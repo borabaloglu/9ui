@@ -102,11 +102,11 @@ function ToastContent({
 
 function ToastViewport({
 	position,
-	closeButton,
+	showCloseButton,
 	portalProps,
 }: {
 	position: ToastPosition;
-	closeButton: boolean;
+	showCloseButton: boolean;
 	portalProps?: BaseToast.Portal.Props;
 }) {
 	const { toasts } = BaseToast.useToastManager();
@@ -154,7 +154,7 @@ function ToastViewport({
 							toast={toast}
 							className="transition-opacity duration-250 ease-out data-behind:opacity-0 data-behind:not-data-expanded:pointer-events-none data-expanded:opacity-100"
 						/>
-						{closeButton && (
+						{showCloseButton && (
 							<BaseToast.Close
 								data-slot="toast-close"
 								aria-label="Close toast"
@@ -211,12 +211,12 @@ function AnchoredToastViewport({
 function ToastProvider({
 	children,
 	position = "bottom-right",
-	closeButton = false,
+	showCloseButton = false,
 	portalProps,
 	...props
 }: BaseToast.Provider.Props & {
 	position?: ToastPosition;
-	closeButton?: boolean;
+	showCloseButton?: boolean;
 	portalProps?: BaseToast.Portal.Props;
 }) {
 	return (
@@ -224,7 +224,7 @@ function ToastProvider({
 			{children}
 			<ToastViewport
 				position={position}
-				closeButton={closeButton}
+				showCloseButton={showCloseButton}
 				portalProps={portalProps}
 			/>
 		</BaseToast.Provider>

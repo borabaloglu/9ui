@@ -42,15 +42,17 @@ function SheetPopup({
 	side = "right",
 	variant = "default",
 	showCloseButton = true,
+	portalProps,
 	...props
 }: Omit<BaseSheet.Popup.Props, "className"> & {
 	className?: string;
+	portalProps?: BaseSheet.Portal.Props;
 	side?: "top" | "right" | "bottom" | "left";
 	variant?: "default" | "inset";
 	showCloseButton?: boolean;
 }) {
 	return (
-		<BaseSheet.Portal data-slot="sheet-portal">
+		<BaseSheet.Portal data-slot="sheet-portal" {...portalProps}>
 			<SheetBackdrop />
 			<BaseSheet.Viewport
 				data-slot="sheet-viewport"

@@ -27,7 +27,7 @@ import { cn } from "@/lib/utils";
 
 type PhoneInputProps = Omit<
 	React.ComponentProps<"input">,
-	"onChange" | "value" | "ref"
+	"onChange" | "value" | "ref" | "size"
 > &
 	Omit<
 		BasePhoneInput.Props<typeof BasePhoneInput.default>,
@@ -39,6 +39,8 @@ type PhoneInputProps = Omit<
 		| "countrySelectProps"
 	> & {
 		onChange?: (value: BasePhoneInput.Value) => void;
+		ref?: React.Ref<HTMLInputElement>;
+		size?: "sm" | "default" | "lg";
 		searchPlaceholder?: string;
 		emptyMessage?: string;
 	};
@@ -47,6 +49,8 @@ function PhoneInput({
 	className,
 	dir,
 	onChange,
+	ref,
+	size = "default",
 	value,
 	searchPlaceholder = "Search countries",
 	emptyMessage = "No countries found.",
@@ -61,10 +65,11 @@ function PhoneInput({
 				className,
 			)}
 			containerComponent={InputGroup}
-			containerComponentProps={{ ref: anchor, dir }}
+			containerComponentProps={{ ref: anchor, dir, size }}
 			countrySelectComponent={PhoneInputCountrySelect}
 			countrySelectProps={{ anchor, dir, searchPlaceholder, emptyMessage }}
 			inputComponent={InputGroupInput}
+			ref={ref as unknown as React.Ref<never>}
 			smartCaret={false}
 			value={value || undefined}
 			onChange={(value) => onChange?.(value || ("" as BasePhoneInput.Value))}

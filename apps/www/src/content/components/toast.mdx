@@ -60,7 +60,12 @@ export default function RootLayout({ children }) {
 ```tsx title="hooks/use-toast.tsx"
 "use client";
 
-import { Toast } from "@base-ui/react/toast";
+import {
+	Toast,
+	type ToastManagerAddOptions,
+	type ToastManagerUpdateOptions,
+	type ToastObject,
+} from "@base-ui/react/toast";
 
 import type { ButtonProps } from "@/components/ui/button";
 
@@ -70,19 +75,31 @@ type WithActionProps<Options> = Omit<Options, "actionProps"> & {
 	actionProps?: Omit<ButtonProps, "size">;
 };
 
+type AddOptions<Data extends object> = WithActionProps<
+	ToastManagerAddOptions<Data>
+>;
+
+type UpdateOptions<Data extends object> = WithActionProps<
+	ToastManagerUpdateOptions<Data>
+>;
+
 type ToastManager = Omit<BaseToastManager, "add" | "update"> & {
-	add: (
-		options: WithActionProps<Parameters<BaseToastManager["add"]>[0]>,
-	) => string;
-	update: (
+	add: <Data extends object>(options: AddOptions<Data>) => string;
+	update: <Data extends object>(
 		toastId: string,
-		options: WithActionProps<Parameters<BaseToastManager["update"]>[1]>,
+		options:
+			| UpdateOptions<Data>
+			| ((prevToast: ToastObject<Data>) => UpdateOptions<Data>),
 	) => void;
 };
 
-export const toastManager = Toast.createToastManager() as ToastManager;
+export function createToastManager() {
+	return Toast.createToastManager() as ToastManager;
+}
 
-export const anchoredToastManager = Toast.createToastManager() as ToastManager;
+export const toastManager = createToastManager();
+
+export const anchoredToastManager = createToastManager();
 
 export function useToast() {
 	return Toast.useToastManager() as Omit<
@@ -160,7 +177,7 @@ To show a status icon, set `type` to `success`, `error`, `warning`, `info` or `l
 
 ### Close Button
 
-To show a close button, set `closeButton` on `ToastProvider`.
+To show a close button, set `showCloseButton` on `ToastProvider`.
 
 <ComponentPreview name="toast-close-button-demo" />
 
@@ -181,3 +198,133 @@ To attach a toast to an element, wrap it in `AnchoredToastProvider` and set `pos
 To show the toast right to left, set `dir="rtl"` on `html` and wrap your app in `DirectionProvider`. See [RTL](/docs/getting-started/rtl). `position` is the screen corner in both directions, so to show toasts at the bottom start, set `position="bottom-right"`.
 
 <ComponentPreview name="toast-rtl-demo" direction="rtl" />
+
+## API Reference
+
+What 9ui adds to Base UI Toast. For the rest of the API, see the [Base UI Toast reference](https://base-ui.com/react/components/toast#api-reference).
+
+### ToastProvider
+
+Wraps `Toast.Provider` and renders the portal, viewport and toasts for you.
+
+<ApiTable
+	rows={[
+		{
+			name: "position",
+			shortType: "ToastPosition",
+			type: '"top-left" | "top-center" | "top-right" | "bottom-left" | "bottom-center" | "bottom-right"',
+			default: '"bottom-right"',
+			description: "The screen corner the toasts stack from. Stays physical in right-to-left layouts. Toasts swipe away toward the nearest edge.",
+		},
+		{
+			name: "showCloseButton",
+			type: "boolean",
+			default: "false",
+			description: "Shows a close button on each toast.",
+		},
+		{
+			name: "portalProps",
+			type: "Toast.Portal.Props",
+			description: <>Props for the portal, such as <code>container</code>.</>,
+		},
+		{
+			name: "toastManager",
+			type: "ToastManager",
+			default: "toastManager",
+			baseDefault: "undefined",
+			description: <>Uses the shared manager from <code>use-toast</code>, so <code>toastManager.add()</code> works outside React.</>,
+		},
+	]}
+/>
+
+### AnchoredToastProvider
+
+Wraps `Toast.Provider` for toasts attached to an element.
+
+<ApiTable
+	rows={[
+		{
+			name: "portalProps",
+			type: "Toast.Portal.Props",
+			description: <>Props for the portal, such as <code>container</code>.</>,
+		},
+		{
+			name: "toastManager",
+			type: "ToastManager",
+			default: "anchoredToastManager",
+			baseDefault: "undefined",
+			description: "Uses the shared anchored manager from use-toast.",
+		},
+		{
+			name: "positionerProps.sideOffset",
+			type: "number",
+			default: "4",
+			baseDefault: "0",
+			description: "The gap between the toast and its anchor.",
+		},
+	]}
+/>
+
+### Toast options
+
+Options for `toast.add()`, `toast.update()` and `toast.promise()` that 9ui renders differently.
+
+<ApiTable
+	label="Option"
+	rows={[
+		{
+			name: "type",
+			shortType: "string",
+			type: '"success" | "error" | "warning" | "info" | "loading" | string',
+			description: "The five named types show a matching icon. Any other value shows no icon.",
+		},
+		{
+			name: "actionProps",
+			type: 'Omit<ButtonProps, "size">',
+			description: <>Renders an extra-small <code>Button</code>. Accepts Button props such as <code>variant</code>.</>,
+		},
+	]}
+/>
+
+### use-toast
+
+The hook file exports these.
+
+<ApiTable
+	label="Export"
+	rows={[
+		{
+			name: "useToast()",
+			type: "ToastManager",
+			description: "Returns the manager of the nearest provider, with typed actionProps.",
+		},
+		{
+			name: "toastManager",
+			type: "ToastManager",
+			description: <>The manager behind <code>ToastProvider</code>. Use it outside React.</>,
+		},
+		{
+			name: "anchoredToastManager",
+			type: "ToastManager",
+			description: <>The manager behind <code>AnchoredToastProvider</code>.</>,
+		},
+		{
+			name: "createToastManager()",
+			type: "() => ToastManager",
+			description: <>Creates another typed manager. Pass it to <code>toastManager</code> on a provider.</>,
+		},
+	]}
+/>
+
+### Data attributes
+
+<ApiTable
+	label="Attribute"
+	rows={[
+		{
+			name: "data-position",
+			type: "ToastPosition",
+			description: "Set on the viewport and on each toast. Use it to style toasts per corner.",
+		},
+	]}
+/>

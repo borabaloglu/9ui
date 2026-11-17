@@ -99,3 +99,48 @@ Set `className` on `MeterIndicator` to change the fill color.
 To show the meter right to left, set `dir="rtl"` on `html` and wrap your app in `DirectionProvider`. See [RTL](/docs/getting-started/rtl).
 
 <ComponentPreview name="meter-rtl-demo" direction="rtl" />
+
+## API Reference
+
+What 9ui adds to Base UI Meter. For the rest of the API, see the [Base UI Meter reference](https://base-ui.com/react/components/meter#api-reference).
+
+### Meter
+
+Set `low` or `high` to color the fill by level. They work like the native `meter` element.
+
+<ApiTable
+	rows={[
+		{
+			name: "low",
+			type: "number",
+			default: "min",
+			description: "Values below this are in the low range.",
+		},
+		{
+			name: "high",
+			type: "number",
+			default: "max",
+			description: "Values above this are in the high range.",
+		},
+		{
+			name: "optimum",
+			type: "number",
+			default: "(min + max) / 2",
+			description: "The best value. The fill turns green, yellow or red by how far the value is from its range.",
+		},
+	]}
+/>
+
+### Data attributes
+
+<ApiTable
+	label="Attribute"
+	rows={[
+		{
+			name: "data-level",
+			type: '"optimum" | "suboptimum" | "critical"',
+			shortType: "union",
+			description: <>Set on the meter when <code>low</code> or <code>high</code> is set. Use it to style the fill per level.</>,
+		},
+	]}
+/>

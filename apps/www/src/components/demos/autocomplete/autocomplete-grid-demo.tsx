@@ -8,7 +8,7 @@ import {
 	AutocompleteList,
 	AutocompletePopup,
 	AutocompleteRow,
-	useFilteredItems,
+	useAutocompleteFilteredItems,
 } from "@/components/ui/autocomplete";
 import { Field, FieldLabel } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
@@ -35,7 +35,7 @@ export default function AutocompleteGridDemo() {
 }
 
 function ColorGrid() {
-	const filteredColors = useFilteredItems<Color>();
+	const filteredColors = useAutocompleteFilteredItems<Color>();
 
 	return chunk(filteredColors, COLUMNS).map((row) => (
 		<AutocompleteRow key={row[0].name} className="grid-cols-6">

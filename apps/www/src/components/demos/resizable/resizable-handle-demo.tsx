@@ -12,7 +12,7 @@ export default function ResizableHandleDemo() {
 					<span className="text-sm font-medium">Sidebar</span>
 				</div>
 			</ResizablePanel>
-			<ResizableHandle withHandle />
+			<ResizableHandle showHandle />
 			<ResizablePanel defaultSize="75%">
 				<div className="flex h-full items-center justify-center p-6">
 					<span className="text-sm font-medium">Content</span>

@@ -98,3 +98,33 @@ To show the field right to left, set `dir="rtl"` on `html` and wrap your app in 
 ## Form Integration
 
 See the form guides for [Base UI Form](/docs/forms/base-ui), [React Hook Form](/docs/forms/react-hook-form) and [TanStack Form](/docs/forms/tanstack-form).
+
+## API Reference
+
+What 9ui adds to Base UI Field. For the rest of the API, see the [Base UI Field reference](https://base-ui.com/react/components/field#api-reference).
+
+### Field
+
+<ApiTable
+	rows={[
+		{
+			name: "orientation",
+			type: '"vertical" | "horizontal"',
+			default: '"vertical"',
+			description: "Stacks the label and control, or places them side by side.",
+		},
+	]}
+/>
+
+### Data attributes
+
+<ApiTable
+	label="Attribute"
+	rows={[
+		{
+			name: "data-orientation",
+			type: '"vertical" | "horizontal"',
+			description: <>Set on <code>Field</code>. Use it to style the field per orientation.</>,
+		},
+	]}
+/>

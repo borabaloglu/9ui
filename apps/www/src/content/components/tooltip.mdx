@@ -67,7 +67,7 @@ Set `side` on `TooltipPopup` to choose where the tooltip opens.
 
 ### With Arrow
 
-Set `arrow` on `TooltipPopup` to point at the trigger. The tooltip moves away to make room for it.
+Set `showArrow` on `TooltipPopup` to point at the trigger. The tooltip moves away to make room for it.
 
 <ComponentPreview name="tooltip-with-arrow-demo" />
 
@@ -88,3 +88,73 @@ Tooltips inside a `TooltipProvider` open after 300ms. Without one they open afte
 To show the tooltip right to left, set `dir="rtl"` on `html` and wrap your app in `DirectionProvider`. See [RTL](/docs/getting-started/rtl).
 
 <ComponentPreview name="tooltip-rtl-demo" direction="rtl" />
+
+## API Reference
+
+What 9ui adds to Base UI Tooltip. For the rest of the API, see the [Base UI Tooltip reference](https://base-ui.com/react/components/tooltip#api-reference).
+
+### TooltipProvider
+
+<ApiTable
+	rows={[
+		{
+			name: "delay",
+			type: "number",
+			default: "300",
+			baseDefault: "600",
+			description: "How long the tooltips inside wait before opening, in milliseconds.",
+		},
+	]}
+/>
+
+### TooltipPopup
+
+Bundles the portal, positioner and popup, and takes the positioner props.
+
+<ApiTable
+	rows={[
+		{
+			name: "showArrow",
+			type: "boolean",
+			default: "false",
+			description: "Shows an arrow that points at the trigger.",
+		},
+		{
+			name: "side",
+			shortType: "Side",
+			type: '"top" | "bottom" | "left" | "right" | "inline-end" | "inline-start"',
+			default: '"top"',
+			description: "The side of the trigger the tooltip opens on.",
+		},
+		{
+			name: "align",
+			type: '"start" | "center" | "end"',
+			default: '"center"',
+			description: "How the tooltip aligns to the trigger on that side.",
+		},
+		{
+			name: "sideOffset",
+			type: "number | OffsetFunction",
+			default: "4",
+			baseDefault: "0",
+			description: <>The gap between the tooltip and the trigger. Defaults to <code>10</code> when <code>showArrow</code> is set.</>,
+		},
+		{
+			name: "alignOffset",
+			type: "number | OffsetFunction",
+			default: "0",
+			description: "The shift of the tooltip along the trigger.",
+		},
+		{
+			name: "anchor",
+			shortType: "Element",
+			type: "Element | VirtualElement | React.RefObject<Element | null> | (() => Element | VirtualElement | null) | null",
+			description: "The element the tooltip is positioned against. Defaults to the trigger.",
+		},
+		{
+			name: "portalProps",
+			type: "Tooltip.Portal.Props",
+			description: <>Props for the portal, such as <code>container</code>.</>,
+		},
+	]}
+/>

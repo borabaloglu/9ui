@@ -150,3 +150,169 @@ Groups, shortcuts, checkboxes, radio items, submenus and a destructive action in
 To show the context menu right to left, set `dir="rtl"` on `html` and wrap your app in `DirectionProvider`. See [RTL](/docs/getting-started/rtl).
 
 <ComponentPreview name="context-menu-rtl-demo" direction="rtl" />
+
+## API Reference
+
+What 9ui adds to Base UI Context Menu. For the rest of the API, see the [Base UI Context Menu reference](https://base-ui.com/react/components/context-menu#api-reference).
+
+### ContextMenuPopup
+
+Bundles the portal, positioner and popup.
+
+<ApiTable
+	rows={[
+		{
+			name: "side",
+			shortType: "Side",
+			type: '"top" | "bottom" | "left" | "right" | "inline-end" | "inline-start"',
+			default: '"bottom"',
+			description: "The side of the pointer the menu opens on.",
+		},
+		{
+			name: "align",
+			type: '"start" | "center" | "end"',
+			default: '"start"',
+			description: "How the menu lines up with the pointer on that side.",
+		},
+		{
+			name: "sideOffset",
+			type: "number | OffsetFunction",
+			description: "The gap between the pointer and the menu.",
+		},
+		{
+			name: "alignOffset",
+			type: "number | OffsetFunction",
+			description: "The shift along the alignment axis.",
+		},
+		{
+			name: "anchor",
+			shortType: "Element | RefObject",
+			type: "Element | VirtualElement | RefObject<Element | null> | (() => Element | VirtualElement | null) | null",
+			description: "The element to position the menu against, in place of the pointer.",
+		},
+		{
+			name: "portalProps",
+			type: "ContextMenu.Portal.Props",
+			description: <>Props for the portal, such as <code>container</code>.</>,
+		},
+	]}
+/>
+
+### ContextMenuGroupLabel
+
+<ApiTable
+	rows={[
+		{
+			name: "inset",
+			type: "boolean",
+			description: "Adds start padding to line up with checkbox and radio items.",
+		},
+	]}
+/>
+
+### ContextMenuItem
+
+<ApiTable
+	rows={[
+		{
+			name: "inset",
+			type: "boolean",
+			description: "Adds start padding to line up with checkbox and radio items.",
+		},
+		{
+			name: "variant",
+			type: '"default" | "destructive"',
+			default: '"default"',
+			description: "The color of the item. Use destructive for actions that delete or remove.",
+		},
+	]}
+/>
+
+### ContextMenuShortcut
+
+Shows a keyboard shortcut at the end of an item.
+
+### ContextMenuLinkItem
+
+<ApiTable
+	rows={[
+		{
+			name: "inset",
+			type: "boolean",
+			description: "Adds start padding to line up with checkbox and radio items.",
+		},
+	]}
+/>
+
+### ContextMenuSubTrigger
+
+Shows a chevron at the end.
+
+<ApiTable
+	rows={[
+		{
+			name: "inset",
+			type: "boolean",
+			description: "Adds start padding to line up with checkbox and radio items.",
+		},
+	]}
+/>
+
+### ContextMenuSubPopup
+
+Bundles the portal, positioner and popup for a submenu.
+
+<ApiTable
+	rows={[
+		{
+			name: "side",
+			shortType: "Side",
+			type: '"top" | "bottom" | "left" | "right" | "inline-end" | "inline-start"',
+			default: '"inline-end"',
+			description: "The side of the parent item the menu opens on.",
+		},
+		{
+			name: "align",
+			type: '"start" | "center" | "end"',
+			default: '"start"',
+			description: "How the menu lines up with the parent item on that side.",
+		},
+		{
+			name: "sideOffset",
+			type: "number | OffsetFunction",
+			default: "0",
+			description: "The gap between the parent item and the menu.",
+		},
+		{
+			name: "alignOffset",
+			type: "number | OffsetFunction",
+			default: "-5",
+			baseDefault: "0",
+			description: "The shift along the alignment axis.",
+		},
+		{
+			name: "anchor",
+			shortType: "Element | RefObject",
+			type: "Element | VirtualElement | RefObject<Element | null> | (() => Element | VirtualElement | null) | null",
+			description: "The element to position the menu against, in place of the parent item.",
+		},
+	]}
+/>
+
+### Data attributes
+
+<ApiTable
+	label="Attribute"
+	rows={[
+		{
+			name: "data-variant",
+			type: '"default" | "destructive"',
+			description: <>Set on <code>ContextMenuItem</code>. The current <code>variant</code>.</>,
+		},
+		{
+			name: "data-inset",
+			type: "boolean",
+			description: <>Present on <code>ContextMenuGroupLabel</code>, <code>ContextMenuItem</code>, <code>ContextMenuLinkItem</code> and <code>ContextMenuSubTrigger</code> when <code>inset</code> is set.</>,
+		},
+	]}
+/>

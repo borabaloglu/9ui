@@ -3,6 +3,7 @@ import Link from "next/link";
 import { AlertTriangleIcon } from "lucide-react";
 import type { MDXComponents as MDXProvidedComponents } from "mdx/types";
 
+import { ApiTable } from "@/components/api-table";
 import { CodeBlock } from "@/components/code-block";
 import { CommandBlock } from "@/components/command-block";
 import { ComponentAnatomy } from "@/components/component-anatomy";
@@ -259,6 +260,7 @@ const components: MDXComponents = {
 	Alert,
 	AlertTitle,
 	AlertDescription,
+	ApiTable,
 	ComponentPreview,
 	ComponentLinks,
 	ComponentSource,

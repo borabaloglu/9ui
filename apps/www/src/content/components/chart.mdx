@@ -190,16 +190,6 @@ To color your own elements, use the variable in a class.
 
 `ChartTooltip` is the Recharts tooltip. `ChartTooltipContent` renders its content.
 
-| Prop | Type | Description |
-| --- | --- | --- |
-| `indicator` | `dot`, `line` or `dashed` | The marker next to each row. |
-| `hideLabel` | `boolean` | Hides the label. |
-| `hideIndicator` | `boolean` | Hides the marker. |
-| `nameKey` | `string` | The config or data key to read row names from. |
-| `labelKey` | `string` | The config or data key to read the label from. |
-| `formatter` | `function` | Renders each row. |
-| `labelFormatter` | `function` | Renders the label. |
-
 ### Indicator
 
 Set `indicator` on `ChartTooltipContent` to `dot`, `line` or `dashed`.
@@ -215,11 +205,6 @@ Set `formatter` on `ChartTooltipContent` to render each row yourself. Set `label
 ## Legend
 
 `ChartLegend` is the Recharts legend. `ChartLegendContent` renders its content. Items keep the order of the series.
-
-| Prop | Type | Description |
-| --- | --- | --- |
-| `nameKey` | `string` | The config or data key to read item names from. |
-| `hideIcon` | `boolean` | Shows the color marker in place of the config icon. |
 
 Set `icon` in the config to show an icon next to each label. Set `verticalAlign` on `ChartLegend` to `top` to move the legend above the chart.
 
@@ -291,3 +276,162 @@ To show the chart right to left, set `dir="rtl"` on `html` and wrap your app in 
 Bars in a group keep their left to right order. This comes from Recharts.
 
 <ComponentPreview name="chart-rtl-demo" direction="rtl" />
+
+## API Reference
+
+What 9ui adds to Recharts. For the rest of the API, see the [Recharts API reference](https://recharts.github.io/en-US/api).
+
+### ChartContainer
+
+Wraps the chart in a Recharts `ResponsiveContainer` and sets a `--color-<key>` variable for each series.
+
+<ApiTable
+	rows={[
+		{
+			name: "config",
+			type: "ChartConfig",
+			description: "The label, icon and color of each series. Required.",
+		},
+		{
+			name: "id",
+			type: "string",
+			description: "Scopes the color variables to this chart. Generated when not set.",
+		},
+		{
+			name: "initialDimension",
+			type: "{ width: number; height: number }",
+			default: "{ width: 320, height: 200 }",
+			baseDefault: "{ width: -1, height: -1 }",
+			description: "The size used before the container is measured.",
+		},
+	]}
+/>
+
+### ChartTooltip
+
+<ApiTable
+	rows={[
+		{
+			name: "animationDuration",
+			type: "number",
+			default: "150",
+			baseDefault: "400",
+			description: "How long the tooltip takes to move, in milliseconds.",
+		},
+		{
+			name: "animationEasing",
+			type: "EasingInput",
+			default: '"ease-out"',
+			baseDefault: '"ease"',
+			description: "The easing of the tooltip movement.",
+		},
+	]}
+/>
+
+### ChartTooltipContent
+
+Renders the tooltip from the config. Pass it to `content` on `ChartTooltip`.
+
+<ApiTable
+	rows={[
+		{
+			name: "indicator",
+			type: '"line" | "dot" | "dashed"',
+			default: '"dot"',
+			description: "The marker next to each row.",
+		},
+		{
+			name: "showLabel",
+			type: "boolean",
+			default: "true",
+			description: "Shows the label.",
+		},
+		{
+			name: "showIndicator",
+			type: "boolean",
+			default: "true",
+			description: "Shows the marker next to each row.",
+		},
+		{
+			name: "nameKey",
+			type: "string",
+			description: "The config or data key to read row names from.",
+		},
+		{
+			name: "labelKey",
+			type: "string",
+			description: "The config or data key to read the label from.",
+		},
+		{
+			name: "color",
+			type: "string",
+			description: "The marker color for every row. Uses the series color when not set.",
+		},
+		{
+			name: "formatter",
+			shortType: "function",
+			type: "(value, name, item, index, payload) => ReactNode",
+			description: "Renders each row in place of the marker, name and value.",
+		},
+		{
+			name: "labelFormatter",
+			shortType: "function",
+			type: "(label, payload) => ReactNode",
+			description: "Renders the label.",
+		},
+	]}
+/>
+
+### ChartLegend
+
+<ApiTable
+	rows={[
+		{
+			name: "itemSorter",
+			shortType: "LegendItemSorter | null",
+			type: '"value" | "dataKey" | ((item) => number | string) | null',
+			default: "null",
+			baseDefault: '"value"',
+			description: "The order of the items. Keeps the order of the series when not set.",
+		},
+	]}
+/>
+
+### ChartLegendContent
+
+Renders the legend from the config. Pass it to `content` on `ChartLegend`.
+
+<ApiTable
+	rows={[
+		{
+			name: "showIcon",
+			type: "boolean",
+			default: "true",
+			description: "Shows the config icon. When off, the color marker shows instead.",
+		},
+		{
+			name: "nameKey",
+			type: "string",
+			description: "The config or data key to read item names from.",
+		},
+	]}
+/>
+
+### Exports
+
+<ApiTable
+	label="Export"
+	rows={[
+		{
+			name: "ChartConfig",
+			shortType: "object",
+			type: "Record<string, { label?: ReactNode; icon?: ComponentType } & ({ color?: string } | { theme: { light: string; dark: string } })>",
+			description: <>The type of <code>config</code>. Set <code>color</code>, or <code>theme</code> for separate light and dark colors.</>,
+		},
+		{
+			name: "ChartStyle",
+			type: "({ id, config }) => JSX.Element | null",
+			description: <>Writes the color variables for a chart id. <code>ChartContainer</code> renders it for you.</>,
+		},
+	]}
+/>

@@ -75,6 +75,7 @@ export default function FormReactHookFormPhoneInputDemo() {
 									value={field.value}
 									onChange={field.onChange}
 									onBlur={field.onBlur}
+									ref={field.ref}
 								/>
 								<FieldDescription>
 									We only call about your orders.

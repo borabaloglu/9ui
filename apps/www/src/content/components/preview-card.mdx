@@ -69,7 +69,7 @@ Set `side` on `PreviewCardPopup` to change where the preview card opens. It also
 
 ### Arrow
 
-Set `arrow` on `PreviewCardPopup` to point at the trigger.
+Set `showArrow` on `PreviewCardPopup` to point at the trigger.
 
 Wrap the content in `PreviewCardPanel` to scroll it when the preview card has an arrow.
 
@@ -88,3 +88,90 @@ Wrap the content in `PreviewCardViewport` to animate the preview card between tr
 To show the preview card right to left, set `dir="rtl"` on `html` and wrap your app in `DirectionProvider`. See [RTL](/docs/getting-started/rtl).
 
 <ComponentPreview name="preview-card-rtl-demo" direction="rtl" />
+
+## API Reference
+
+What 9ui adds to Base UI Preview Card. For the rest of the API, see the [Base UI Preview Card reference](https://base-ui.com/react/components/preview-card#api-reference).
+
+### PreviewCardTrigger
+
+<ApiTable
+	rows={[
+		{
+			name: "delay",
+			type: "number",
+			default: "300",
+			baseDefault: "600",
+			description: "How long to wait before opening the preview card, in milliseconds.",
+		},
+	]}
+/>
+
+### PreviewCardPopup
+
+Bundles the portal, positioner and popup, and takes the positioner props.
+
+<ApiTable
+	rows={[
+		{
+			name: "showArrow",
+			type: "boolean",
+			default: "false",
+			description: "Shows an arrow that points at the trigger.",
+		},
+		{
+			name: "side",
+			shortType: "Side",
+			type: '"top" | "bottom" | "left" | "right" | "inline-end" | "inline-start"',
+			default: '"bottom"',
+			description: "The side of the trigger the preview card opens on.",
+		},
+		{
+			name: "align",
+			type: '"start" | "center" | "end"',
+			default: '"center"',
+			description: "How the preview card aligns to the trigger on that side.",
+		},
+		{
+			name: "sideOffset",
+			type: "number | OffsetFunction",
+			default: "4",
+			baseDefault: "0",
+			description: <>The gap between the preview card and the trigger. Defaults to <code>10</code> when <code>showArrow</code> is set.</>,
+		},
+		{
+			name: "alignOffset",
+			type: "number | OffsetFunction",
+			default: "0",
+			description: "The shift of the preview card along the trigger.",
+		},
+		{
+			name: "anchor",
+			shortType: "Element",
+			type: "Element | VirtualElement | React.RefObject<Element | null> | (() => Element | VirtualElement | null) | null",
+			description: "The element the preview card is positioned against. Defaults to the trigger.",
+		},
+		{
+			name: "portalProps",
+			type: "PreviewCard.Portal.Props",
+			description: <>Props for the portal, such as <code>container</code>.</>,
+		},
+	]}
+/>
+
+### PreviewCardPanel
+
+Scrolls the content when the preview card has an arrow.
+
+### Exports
+
+<ApiTable
+	label="Export"
+	rows={[
+		{
+			name: "createPreviewCardHandle()",
+			type: "() => PreviewCard.Handle<Payload>",
+			description: <>Creates a handle that connects <code>PreviewCard</code> to triggers outside it.</>,
+		},
+	]}
+/>

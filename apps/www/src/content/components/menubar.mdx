@@ -115,3 +115,173 @@ To stack the triggers, set `orientation="vertical"` on `Menubar`.
 To show the menubar right to left, set `dir="rtl"` on `html` and wrap your app in `DirectionProvider`. See [RTL](/docs/getting-started/rtl).
 
 <ComponentPreview name="menubar-rtl-demo" direction="rtl" />
+
+## API Reference
+
+What 9ui adds to Base UI Menubar. For the rest of the API, see the [Base UI Menubar reference](https://base-ui.com/react/components/menubar#api-reference).
+
+### MenubarPopup
+
+Bundles the portal, positioner and popup.
+
+<ApiTable
+	rows={[
+		{
+			name: "side",
+			shortType: "Side",
+			type: '"top" | "bottom" | "left" | "right" | "inline-end" | "inline-start"',
+			default: '"bottom"',
+			description: "The side of the trigger the menu opens on. In a vertical menubar it defaults to inline-end.",
+		},
+		{
+			name: "align",
+			type: '"start" | "center" | "end"',
+			default: '"start"',
+			description: "How the menu lines up with the trigger on that side.",
+		},
+		{
+			name: "sideOffset",
+			type: "number | OffsetFunction",
+			default: "9",
+			baseDefault: "0",
+			description: "The gap between the trigger and the menu.",
+		},
+		{
+			name: "alignOffset",
+			type: "number | OffsetFunction",
+			default: "-5",
+			baseDefault: "0",
+			description: "The shift along the alignment axis.",
+		},
+		{
+			name: "anchor",
+			shortType: "Element | RefObject",
+			type: "Element | VirtualElement | RefObject<Element | null> | (() => Element | VirtualElement | null) | null",
+			description: "The element to position the menu against, in place of the trigger.",
+		},
+		{
+			name: "portalProps",
+			type: "Menu.Portal.Props",
+			description: <>Props for the portal, such as <code>container</code>.</>,
+		},
+	]}
+/>
+
+### MenubarGroupLabel
+
+<ApiTable
+	rows={[
+		{
+			name: "inset",
+			type: "boolean",
+			description: "Adds start padding to line up with checkbox and radio items.",
+		},
+	]}
+/>
+
+### MenubarItem
+
+<ApiTable
+	rows={[
+		{
+			name: "inset",
+			type: "boolean",
+			description: "Adds start padding to line up with checkbox and radio items.",
+		},
+		{
+			name: "variant",
+			type: '"default" | "destructive"',
+			default: '"default"',
+			description: "The color of the item. Use destructive for actions that delete or remove.",
+		},
+	]}
+/>
+
+### MenubarShortcut
+
+Shows a keyboard shortcut at the end of an item.
+
+### MenubarLinkItem
+
+<ApiTable
+	rows={[
+		{
+			name: "inset",
+			type: "boolean",
+			description: "Adds start padding to line up with checkbox and radio items.",
+		},
+	]}
+/>
+
+### MenubarSubTrigger
+
+Shows a chevron at the end.
+
+<ApiTable
+	rows={[
+		{
+			name: "inset",
+			type: "boolean",
+			description: "Adds start padding to line up with checkbox and radio items.",
+		},
+	]}
+/>
+
+### MenubarSubPopup
+
+Bundles the portal, positioner and popup for a submenu.
+
+<ApiTable
+	rows={[
+		{
+			name: "side",
+			shortType: "Side",
+			type: '"top" | "bottom" | "left" | "right" | "inline-end" | "inline-start"',
+			default: '"inline-end"',
+			description: "The side of the parent item the menu opens on.",
+		},
+		{
+			name: "align",
+			type: '"start" | "center" | "end"',
+			default: '"start"',
+			description: "How the menu lines up with the parent item on that side.",
+		},
+		{
+			name: "sideOffset",
+			type: "number | OffsetFunction",
+			default: "0",
+			description: "The gap between the parent item and the menu.",
+		},
+		{
+			name: "alignOffset",
+			type: "number | OffsetFunction",
+			default: "-5",
+			baseDefault: "0",
+			description: "The shift along the alignment axis.",
+		},
+		{
+			name: "anchor",
+			shortType: "Element | RefObject",
+			type: "Element | VirtualElement | RefObject<Element | null> | (() => Element | VirtualElement | null) | null",
+			description: "The element to position the menu against, in place of the parent item.",
+		},
+	]}
+/>
+
+### Data attributes
+
+<ApiTable
+	label="Attribute"
+	rows={[
+		{
+			name: "data-variant",
+			type: '"default" | "destructive"',
+			description: <>Set on <code>MenubarItem</code>. The current <code>variant</code>.</>,
+		},
+		{
+			name: "data-inset",
+			type: "boolean",
+			description: <>Present on <code>MenubarGroupLabel</code>, <code>MenubarItem</code>, <code>MenubarLinkItem</code> and <code>MenubarSubTrigger</code> when <code>inset</code> is set.</>,
+		},
+	]}
+/>

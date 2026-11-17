@@ -84,7 +84,7 @@ export default function PopoverRtlDemo() {
 							<PopoverTrigger render={<Button variant="outline" />}>
 								{t[label]}
 							</PopoverTrigger>
-							<PopoverPopup dir={dir} arrow side={side} className="w-48">
+							<PopoverPopup dir={dir} showArrow side={side} className="w-48">
 								<PopoverHeader>
 									<PopoverTitle>{t.title}</PopoverTitle>
 									<PopoverDescription>{t.description}</PopoverDescription>

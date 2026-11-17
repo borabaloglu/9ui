@@ -71,7 +71,7 @@ export default function TooltipRtlDemo() {
 								<TooltipTrigger render={<Button variant="outline" />}>
 									{t[label]}
 								</TooltipTrigger>
-								<TooltipPopup dir={dir} side={side} arrow>
+								<TooltipPopup dir={dir} side={side} showArrow>
 									{t.hint}
 								</TooltipPopup>
 							</Tooltip>

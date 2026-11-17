@@ -53,6 +53,7 @@ function MenubarPopup({
 	sideOffset = 9,
 	anchor,
 	dir,
+	portalProps,
 	...props
 }: Omit<BaseMenu.Popup.Props, "className"> &
 	Pick<
@@ -60,9 +61,10 @@ function MenubarPopup({
 		"align" | "alignOffset" | "side" | "sideOffset" | "anchor"
 	> & {
 		className?: string;
+		portalProps?: BaseMenu.Portal.Props;
 	}) {
 	return (
-		<BaseMenu.Portal data-slot="menubar-portal">
+		<BaseMenu.Portal data-slot="menubar-portal" {...portalProps}>
 			<BaseMenu.Positioner
 				data-slot="menubar-positioner"
 				className="z-50"

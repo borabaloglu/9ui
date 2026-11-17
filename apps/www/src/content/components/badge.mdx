@@ -120,3 +120,61 @@ Set `render` to a `<button>` to make the badge clickable.
 To show the badge right to left, set `dir="rtl"` on `html` and wrap your app in `DirectionProvider`. See [RTL](/docs/getting-started/rtl).
 
 <ComponentPreview name="badge-rtl-demo" direction="rtl" />
+
+## API Reference
+
+Badge is built by 9ui, so this is its full API.
+
+### Badge
+
+To render it as a link or a button, set `render`.
+
+<ApiTable
+	rows={[
+		{
+			name: "variant",
+			shortType: "union",
+			type: '"default" | "outline" | "secondary" | "success" | "warning" | "info" | "danger"',
+			default: '"default"',
+			description: "The visual style of the badge.",
+		},
+		{
+			name: "size",
+			shortType: "union",
+			type: '"sm" | "default" | "lg" | "icon-sm" | "icon" | "icon-lg"',
+			default: '"default"',
+			description: "The height, padding and text size of the badge. The icon sizes make a square badge.",
+		},
+	]}
+/>
+
+### Data attributes
+
+<ApiTable
+	label="Attribute"
+	rows={[
+		{
+			name: "data-variant",
+			type: "string",
+			description: <>The current <code>variant</code>.</>,
+		},
+		{
+			name: "data-size",
+			type: "string",
+			description: <>The current <code>size</code>.</>,
+		},
+	]}
+/>
+
+### Exports
+
+<ApiTable
+	label="Export"
+	rows={[
+		{
+			name: "badgeVariants",
+			type: "(options?: { variant?: string; size?: string; className?: string }) => string",
+			description: "Returns the badge classes. Use it to style other elements as badges.",
+		},
+	]}
+/>

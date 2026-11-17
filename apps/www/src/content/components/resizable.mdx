@@ -70,7 +70,7 @@ Set `orientation` to `vertical` to stack the panels.
 
 ### Handle
 
-Set `withHandle` on `ResizableHandle` to show a grip.
+Set `showHandle` on `ResizableHandle` to show a grip.
 
 <ComponentPreview name="resizable-handle-demo" />
 
@@ -81,3 +81,19 @@ To show the resizable right to left, set `dir="rtl"` on `html` and wrap your app
 In right to left, the handle's `aria-valuenow` and `aria-controls` describe the panel after the handle. This comes from react-resizable-panels.
 
 <ComponentPreview name="resizable-rtl-demo" direction="rtl" />
+
+## API Reference
+
+What 9ui adds to react-resizable-panels. For the rest of the API, see the [react-resizable-panels docs](https://react-resizable-panels.vercel.app/).
+
+### ResizableHandle
+
+<ApiTable
+	rows={[
+		{
+			name: "showHandle",
+			type: "boolean",
+			description: "Shows a grip on the handle.",
+		},
+	]}
+/>

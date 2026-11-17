@@ -126,3 +126,85 @@ To add content to a day, wrap `CalendarDayButton` and pass it as `DayButton` to 
 To show the calendar right to left, set `dir="rtl"` on `html` and wrap your app in `DirectionProvider`. See [RTL](/docs/getting-started/rtl).
 
 <ComponentPreview name="calendar-rtl-demo" direction="rtl" />
+
+## API Reference
+
+What 9ui adds to React DayPicker. For the rest of the API, see the [React DayPicker docs](https://daypicker.dev/).
+
+### Calendar
+
+<ApiTable
+	rows={[
+		{
+			name: "buttonVariant",
+			shortType: "union",
+			type: '"default" | "secondary" | "ghost" | "outline" | "link" | "destructive" | "destructive-outline"',
+			default: '"ghost"',
+			description: <>The <code>Button</code> variant of the previous and next month buttons.</>,
+		},
+		{
+			name: "showOutsideDays",
+			type: "boolean",
+			default: "true",
+			baseDefault: "false",
+			description: "Shows the days of the previous and next months.",
+		},
+		{
+			name: "dir",
+			type: "string",
+			description: <>The text direction. Follows <code>DirectionProvider</code> when not set.</>,
+		},
+		{
+			name: "formatters.formatMonthDropdown",
+			type: "(month: Date) => string",
+			description: "Shows short month names in the month dropdown.",
+		},
+	]}
+/>
+
+### CalendarDayButton
+
+The day button 9ui renders. To add content to a day, wrap it and pass it as `DayButton` to `components`.
+
+### Data attributes
+
+<ApiTable
+	label="Attribute"
+	rows={[
+		{
+			name: "data-day",
+			type: "string",
+			description: <>Set on <code>CalendarDayButton</code>. The ISO date of the day.</>,
+		},
+		{
+			name: "data-selected-primary",
+			type: "boolean",
+			description: "Present on a selected day that is not in the middle of a range.",
+		},
+		{
+			name: "data-range-start",
+			type: "boolean",
+			description: "Present on the first day of a range.",
+		},
+		{
+			name: "data-range-middle",
+			type: "boolean",
+			description: "Present on the days between the start and end of a range.",
+		},
+		{
+			name: "data-range-end",
+			type: "boolean",
+			description: "Present on the last day of a range.",
+		},
+		{
+			name: "data-outside",
+			type: "boolean",
+			description: "Present on days from the previous or next month.",
+		},
+		{
+			name: "data-today",
+			type: "boolean",
+			description: "Present on today.",
+		},
+	]}
+/>
