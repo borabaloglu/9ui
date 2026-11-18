@@ -11,6 +11,7 @@ import { ComponentInstallation } from "@/components/component-installation";
 import { ComponentLinks } from "@/components/component-links";
 import { ComponentPreview } from "@/components/component-preview";
 import { ComponentSource } from "@/components/component-source";
+import { ComponentsIndex } from "@/components/components-index";
 import { Icons } from "@/components/icons";
 import { InstallationTabs } from "@/components/installation-tabs";
 import { ThemeToggle } from "@/components/theme-toggle";
@@ -282,6 +283,7 @@ const components: MDXComponents = {
 	ApiTable,
 	ComponentPreview,
 	ComponentLinks,
+	ComponentsIndex,
 	ComponentSource,
 	Tabs,
 	TabsList,

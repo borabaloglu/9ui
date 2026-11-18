@@ -95,6 +95,7 @@ const DocPage = async ({ params }: DocPageProps) => {
 	const sidebarNav = getSidebarNav();
 	const navigation = getNavigationForPage(sidebarNav, page.url);
 	const breadcrumb = getBreadcrumb(page.url);
+	const isSectionIndex = page.slugs.length === 1;
 
 	return (
 		<>
@@ -149,7 +150,9 @@ const DocPage = async ({ params }: DocPageProps) => {
 					{description && (
 						<p className="text-muted-foreground mb-2 text-lg">{description}</p>
 					)}
-					<PageActions links={getLeadingComponentLinks(page.path)} />
+					{!isSectionIndex && (
+						<PageActions links={getLeadingComponentLinks(page.path)} />
+					)}
 
 					<div className="flex-1 [&>:first-child]:mt-0 [&>[data-slot=component-links]:first-child]:hidden [&>[data-slot=component-links]:first-child+*]:mt-0">
 						<MDX components={getMDXComponents()} />

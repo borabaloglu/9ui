@@ -27,11 +27,6 @@ const nextConfig = {
 				permanent: true,
 			},
 			{
-				source: "/docs/components",
-				destination: "/docs/components/accordion",
-				permanent: true,
-			},
-			{
 				source: "/docs/components/breadcrumbs",
 				destination: "/docs/components/breadcrumb",
 				permanent: true,
