@@ -1,0 +1,5 @@
+schema_version: "1.1"
+name: update-button-variant
+tags: [update-component, trigger]
+context:
+  scaffold_script: fixture.sh

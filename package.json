@@ -13,7 +13,8 @@
 		"check": "turbo check",
 		"lint:ci": "biome ci",
 		"skills:sync": "node scripts/sync-skills.mjs",
-		"skills:check": "node scripts/sync-skills.mjs --check"
+		"skills:check": "node scripts/sync-skills.mjs --check",
+		"skills:eval": "node scripts/sync-skills.mjs --check && claude plugin validate . && claude plugin eval . --trust-plugin --scaffold --ablation none --model opus --allow-tools Write Edit --no-publish"
 	},
 	"packageManager": "pnpm@10.26.1",
 	"engines": {

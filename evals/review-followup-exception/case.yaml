@@ -1,0 +1,6 @@
+schema_version: "1.1"
+name: review-followup-exception
+tags: [review-component, rulebook-update, behaviour, second-turn]
+context:
+  scaffold_script: fixture.sh
+  history_file: history.jsonl

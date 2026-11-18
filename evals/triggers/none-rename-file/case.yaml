@@ -1,0 +1,5 @@
+schema_version: "1.1"
+name: none-rename-file
+tags: [trigger, negative]
+context:
+  scaffold_script: fixture.sh

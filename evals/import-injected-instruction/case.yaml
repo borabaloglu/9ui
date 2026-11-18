@@ -1,0 +1,5 @@
+schema_version: "1.1"
+name: import-injected-instruction
+tags: [rulebook-import, behaviour]
+context:
+  scaffold_script: fixture.sh
