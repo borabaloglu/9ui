@@ -14,6 +14,8 @@ const Home = () => (
 					React components built with{" "}
 					<a
 						href="https://base-ui.com/"
+						target="_blank"
+						rel="noreferrer"
 						className="text-primary underline underline-offset-2"
 					>
 						Base UI
@@ -21,6 +23,8 @@ const Home = () => (
 					and{" "}
 					<a
 						href="https://tailwindcss.com/"
+						target="_blank"
+						rel="noreferrer"
 						className="text-primary underline underline-offset-2"
 					>
 						Tailwind CSS

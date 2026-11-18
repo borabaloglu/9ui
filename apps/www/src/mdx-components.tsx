@@ -1,6 +1,6 @@
 import type * as React from "react";
 import Link from "next/link";
-import { AlertTriangleIcon } from "lucide-react";
+import { AlertTriangleIcon, ArrowUpRightIcon } from "lucide-react";
 import type { MDXComponents as MDXProvidedComponents } from "mdx/types";
 
 import { ApiTable } from "@/components/api-table";
@@ -32,6 +32,8 @@ import {
 	TableRow,
 } from "@/components/ui/table";
 import { Tabs, TabsList, TabsPanel } from "@/components/ui/tabs";
+
+import { siteConfig } from "@/config/site";
 
 import { cn } from "@/lib/utils";
 
@@ -203,16 +205,39 @@ const components: MDXComponents = {
 	),
 	a: ({
 		className,
+		href,
+		children,
 		...props
-	}: React.AnchorHTMLAttributes<HTMLAnchorElement>) => (
-		<a
-			className={cn(
-				"text-foreground font-medium underline underline-offset-4",
-				className,
-			)}
-			{...props}
-		/>
-	),
+	}: React.AnchorHTMLAttributes<HTMLAnchorElement>) => {
+		const external =
+			typeof href === "string" &&
+			/^https?:\/\//.test(href) &&
+			!new URL(href).hostname.endsWith(siteConfig.domain);
+
+		return (
+			<a
+				href={href}
+				className={cn(
+					"text-foreground font-medium underline underline-offset-4",
+					className,
+				)}
+				{...(external ? { target: "_blank", rel: "noreferrer" } : {})}
+				{...props}
+			>
+				{children}
+				{external && (
+					<>
+						{"\u2060"}
+						<ArrowUpRightIcon
+							aria-hidden="true"
+							className="text-muted-foreground ms-0.5 inline size-3.5 align-[-0.125em]"
+						/>
+						<span className="sr-only"> (opens in a new tab)</span>
+					</>
+				)}
+			</a>
+		);
+	},
 	strong: ({ className, ...props }: React.HTMLAttributes<HTMLElement>) => (
 		<strong className={cn("font-semibold", className)} {...props} />
 	),
