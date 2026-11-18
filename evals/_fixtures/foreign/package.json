@@ -1,0 +1,10 @@
+{
+	"name": "ledger-app",
+	"private": true,
+	"dependencies": {
+		"@radix-ui/react-dialog": "^1.1.0",
+		"clsx": "^2.1.0",
+		"react": "^18.3.0",
+		"tailwindcss": "^3.4.0"
+	}
+}

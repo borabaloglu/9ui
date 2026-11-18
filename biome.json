@@ -6,6 +6,14 @@
 		"useIgnoreFile": true,
 		"defaultBranch": "main"
 	},
+	"files": {
+		"includes": [
+			"**",
+			"!skills/**/*.md",
+			"!evals/**/*.md",
+			"!.rulebook/**/*.md"
+		]
+	},
 	"formatter": {
 		"enabled": true,
 		"indentStyle": "tab",

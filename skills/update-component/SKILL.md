@@ -42,6 +42,8 @@ Read `rulebook-format.md` and `checks.md` before starting. Read `standards.md` b
 
 ## When the change departs from the rulebook
 
+These steps add to the report in step 7; they do not replace it. Write the full report first, with all five sections, then ask the question in step 2 below it.
+
 1. Say which rule or standard, in one sentence, and what the component will now look like next to its siblings.
 2. Ask one question: is this an **exception** for this component, or a **rule change** for every component of that role?
 3. For an exception: record it on the rule's Exceptions line with the reason.
