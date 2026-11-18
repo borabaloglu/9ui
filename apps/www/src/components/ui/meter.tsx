@@ -1,3 +1,4 @@
+import type * as React from "react";
 import { Meter as BaseMeter } from "@base-ui/react/meter";
 
 import { cn } from "@/lib/utils";
@@ -29,8 +30,14 @@ function getMeterLevel({
 	return "critical";
 }
 
+function getMeterFraction(value: number, min: number, max: number) {
+	if (!Number.isFinite(value) || max === min) return 0;
+	return Math.min(Math.max((value - min) / (max - min), 0), 1);
+}
+
 function Meter({
 	className,
+	style,
 	value,
 	min = 0,
 	max = 100,
@@ -48,6 +55,9 @@ function Meter({
 		low === undefined && high === undefined
 			? undefined
 			: getMeterLevel({ value, min, max, low, high, optimum });
+	const fraction = {
+		"--meter-fraction": getMeterFraction(value, min, max),
+	} as React.CSSProperties;
 
 	return (
 		<BaseMeter.Root
@@ -60,6 +70,11 @@ function Meter({
 				"grid w-full grid-cols-[1fr_auto] gap-x-3 gap-y-2",
 				className,
 			)}
+			style={
+				typeof style === "function"
+					? (state) => ({ ...fraction, ...style(state) })
+					: { ...fraction, ...style }
+			}
 			{...props}
 		/>
 	);
@@ -134,4 +149,63 @@ function MeterIndicator({
 	);
 }
 
-export { Meter, MeterIndicator, MeterLabel, MeterTrack, MeterValue };
+function MeterCircularTrack({
+	className,
+	size = 20,
+	strokeWidth = 4,
+	children,
+	...props
+}: Omit<React.ComponentProps<"svg">, "strokeWidth"> & {
+	size?: number;
+	strokeWidth?: number;
+}) {
+	const stroke = (100 * strokeWidth) / (size - strokeWidth);
+	const box = 100 + stroke;
+
+	return (
+		<svg
+			data-slot="meter-circular-track"
+			aria-hidden="true"
+			width={size}
+			height={size}
+			viewBox={`${-box / 2} ${-box / 2} ${box} ${box}`}
+			fill="none"
+			strokeWidth={stroke}
+			className={cn("text-muted shrink-0 -rotate-90", className)}
+			{...props}
+		>
+			<circle
+				data-slot="meter-circular-track-ring"
+				r={50}
+				className="stroke-current"
+			/>
+			{children}
+		</svg>
+	);
+}
+
+function MeterCircularIndicator({
+	className,
+	...props
+}: React.ComponentProps<"circle">) {
+	return (
+		<BaseMeter.Indicator
+			data-slot="meter-circular-indicator"
+			className={cn(
+				"stroke-primary in-data-[level=optimum]:stroke-success in-data-[level=suboptimum]:stroke-warning in-data-[level=critical]:stroke-destructive transition-[stroke-dashoffset,stroke] duration-300 ease-out [stroke-dasharray:1] [stroke-dashoffset:calc(1_-_var(--meter-fraction))] motion-reduce:transition-[stroke]",
+				className,
+			)}
+			render={<circle r={50} pathLength={1} strokeLinecap="round" {...props} />}
+		/>
+	);
+}
+
+export {
+	Meter,
+	MeterCircularIndicator,
+	MeterCircularTrack,
+	MeterIndicator,
+	MeterLabel,
+	MeterTrack,
+	MeterValue,
+};

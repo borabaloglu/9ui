@@ -49,6 +49,8 @@ npx shadcn@latest add @9ui/progress
 ```tsx title="Imports"
 import {
 	Progress,
+	ProgressCircularIndicator,
+	ProgressCircularTrack,
 	ProgressIndicator,
 	ProgressLabel,
 	ProgressTrack,
@@ -88,6 +90,12 @@ Set `value={null}` when the amount of progress is unknown.
 
 <ComponentPreview name="progress-indeterminate-demo" />
 
+### Circular
+
+To show a ring instead of a bar, use `ProgressCircularTrack` and `ProgressCircularIndicator`. Set `size` and `strokeWidth` on `ProgressCircularTrack` to change its dimensions.
+
+<ComponentPreview name="progress-circular-demo" showReload={true} />
+
 ### RTL
 
 To show the progress right to left, set `dir="rtl"` on `html` and wrap your app in `DirectionProvider`. See [RTL](/docs/getting-started/rtl).
@@ -96,4 +104,23 @@ To show the progress right to left, set `dir="rtl"` on `html` and wrap your app 
 
 ## API Reference
 
-9ui adds no props to Base UI Progress. For its API, see the [Base UI Progress reference](https://base-ui.com/react/components/progress#api-reference).
+What 9ui adds to Base UI Progress. For the rest of the API, see the [Base UI Progress reference](https://base-ui.com/react/components/progress#api-reference).
+
+### ProgressCircularTrack
+
+<ApiTable
+	rows={[
+		{
+			name: "size",
+			type: "number",
+			default: "20",
+			description: "The diameter of the ring in pixels.",
+		},
+		{
+			name: "strokeWidth",
+			type: "number",
+			default: "3",
+			description: "The thickness of the ring in pixels.",
+		},
+	]}
+/>
