@@ -41,7 +41,7 @@ Read `rulebook-format.md` and `checks.md` before starting. Read `standards.md` b
 
 ## When the user wants something the rulebook does not allow
 
-Do it. Then:
+Do it. These steps add to the report in step 8; they do not replace it. Write the full report first, with all five sections, then, below it:
 
 - Say plainly which rule or standard it departs from, and what it will look like next to its siblings.
 - Ask whether this is an exception for this component or a change to the rule. A rule change affects every component of that role; offer to list them.
