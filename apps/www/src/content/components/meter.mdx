@@ -37,6 +37,8 @@ npx shadcn@latest add @9ui/meter
 ```tsx title="Imports"
 import {
 	Meter,
+	MeterCircularIndicator,
+	MeterCircularTrack,
 	MeterIndicator,
 	MeterLabel,
 	MeterTrack,
@@ -94,6 +96,12 @@ Set `className` on `MeterIndicator` to change the fill color.
 
 <ComponentPreview name="meter-color-demo" />
 
+### Circular
+
+To show a ring instead of a bar, use `MeterCircularTrack` and `MeterCircularIndicator`. Set `size` and `strokeWidth` on `MeterCircularTrack` to change its dimensions.
+
+<ComponentPreview name="meter-circular-demo" />
+
 ### RTL
 
 To show the meter right to left, set `dir="rtl"` on `html` and wrap your app in `DirectionProvider`. See [RTL](/docs/getting-started/rtl).
@@ -127,6 +135,25 @@ Set `low` or `high` to color the fill by level. They work like the native `meter
 			type: "number",
 			default: "(min + max) / 2",
 			description: "The best value. The fill turns green, yellow or red by how far the value is from its range.",
+		},
+	]}
+/>
+
+### MeterCircularTrack
+
+<ApiTable
+	rows={[
+		{
+			name: "size",
+			type: "number",
+			default: "40",
+			description: "The diameter of the ring in pixels.",
+		},
+		{
+			name: "strokeWidth",
+			type: "number",
+			default: "6",
+			description: "The thickness of the ring in pixels.",
 		},
 	]}
 />

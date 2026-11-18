@@ -8,6 +8,8 @@ import {
 } from "@/components/language-selector";
 import {
 	Progress,
+	ProgressCircularIndicator,
+	ProgressCircularTrack,
 	ProgressIndicator,
 	ProgressLabel,
 	ProgressTrack,
@@ -18,14 +20,17 @@ const translations = {
 	en: {
 		exporting: "Exporting data",
 		preparing: "Preparing export",
+		uploading: "Uploading files",
 	},
 	ar: {
 		exporting: "جارٍ تصدير البيانات",
 		preparing: "جارٍ تجهيز التصدير",
+		uploading: "جارٍ رفع الملفات",
 	},
 	he: {
 		exporting: "מייצא נתונים",
 		preparing: "מכין ייצוא",
+		uploading: "מעלה קבצים",
 	},
 } satisfies Translations<Record<string, string>>;
 
@@ -54,6 +59,13 @@ export default function ProgressRtlDemo() {
 				<ProgressTrack>
 					<ProgressIndicator />
 				</ProgressTrack>
+			</Progress>
+			<Progress className="flex items-center" value={value}>
+				<ProgressCircularTrack>
+					<ProgressCircularIndicator />
+				</ProgressCircularTrack>
+				<ProgressLabel>{t.uploading}</ProgressLabel>
+				<ProgressValue />
 			</Progress>
 		</div>
 	);
