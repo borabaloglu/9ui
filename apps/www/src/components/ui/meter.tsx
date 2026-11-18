@@ -174,7 +174,11 @@ function MeterCircularTrack({
 			className={cn("text-muted shrink-0 -rotate-90", className)}
 			{...props}
 		>
-			<circle r={50} className="stroke-current" />
+			<circle
+				data-slot="meter-circular-track-ring"
+				r={50}
+				className="stroke-current"
+			/>
 			{children}
 		</svg>
 	);

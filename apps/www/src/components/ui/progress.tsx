@@ -103,7 +103,11 @@ function ProgressCircularTrack({
 			className={cn("text-muted shrink-0 -rotate-90", className)}
 			{...props}
 		>
-			<circle r={50} className="stroke-current" />
+			<circle
+				data-slot="progress-circular-track-ring"
+				r={50}
+				className="stroke-current"
+			/>
 			{children}
 		</svg>
 	);
@@ -117,7 +121,7 @@ function ProgressCircularIndicator({
 		<BaseProgress.Indicator
 			data-slot="progress-circular-indicator"
 			className={cn(
-				"stroke-primary origin-center transition-[stroke-dashoffset] duration-300 ease-out [stroke-dasharray:1] [stroke-dashoffset:calc(1_-_var(--progress-fraction))] [transform-box:fill-box] data-indeterminate:[stroke-dashoffset:0.75] motion-safe:data-indeterminate:animate-spin motion-reduce:transition-none motion-reduce:data-indeterminate:animate-pulse motion-reduce:data-indeterminate:[stroke-dashoffset:0]",
+				"stroke-primary origin-center transition-[stroke-dashoffset] duration-300 ease-out [stroke-dasharray:1] [stroke-dashoffset:calc(1_-_var(--progress-fraction))] [transform-box:fill-box] data-indeterminate:[stroke-dashoffset:0.75] motion-safe:data-indeterminate:animate-[spin_800ms_linear_infinite] motion-reduce:transition-none motion-reduce:data-indeterminate:animate-pulse motion-reduce:data-indeterminate:[stroke-dashoffset:0]",
 				className,
 			)}
 			render={<circle r={50} pathLength={1} strokeLinecap="round" {...props} />}
