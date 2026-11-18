@@ -80,8 +80,8 @@ function ProgressIndicator({
 
 function ProgressCircularTrack({
 	className,
-	size = 40,
-	strokeWidth = 4,
+	size = 20,
+	strokeWidth = 3,
 	children,
 	...props
 }: Omit<React.ComponentProps<"svg">, "strokeWidth"> & {
@@ -117,7 +117,7 @@ function ProgressCircularIndicator({
 		<BaseProgress.Indicator
 			data-slot="progress-circular-indicator"
 			className={cn(
-				"stroke-primary origin-center transition-[stroke-dashoffset] duration-300 ease-out [stroke-dasharray:1] [stroke-dashoffset:calc(1_-_var(--progress-fraction))] data-indeterminate:[stroke-dashoffset:0.75] motion-safe:data-indeterminate:animate-spin motion-reduce:transition-none motion-reduce:data-indeterminate:animate-pulse motion-reduce:data-indeterminate:[stroke-dashoffset:0]",
+				"stroke-primary origin-center transition-[stroke-dashoffset] duration-300 ease-out [stroke-dasharray:1] [stroke-dashoffset:calc(1_-_var(--progress-fraction))] [transform-box:fill-box] data-indeterminate:[stroke-dashoffset:0.75] motion-safe:data-indeterminate:animate-spin motion-reduce:transition-none motion-reduce:data-indeterminate:animate-pulse motion-reduce:data-indeterminate:[stroke-dashoffset:0]",
 				className,
 			)}
 			render={<circle r={50} pathLength={1} strokeLinecap="round" {...props} />}

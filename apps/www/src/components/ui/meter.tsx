@@ -151,8 +151,8 @@ function MeterIndicator({
 
 function MeterCircularTrack({
 	className,
-	size = 40,
-	strokeWidth = 6,
+	size = 20,
+	strokeWidth = 4,
 	children,
 	...props
 }: Omit<React.ComponentProps<"svg">, "strokeWidth"> & {

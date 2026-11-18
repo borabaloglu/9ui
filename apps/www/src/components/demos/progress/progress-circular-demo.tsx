@@ -30,7 +30,7 @@ export default function ProgressCircularDemo() {
 				<ProgressValue />
 			</Progress>
 			<Progress className="flex w-auto items-center" value={null}>
-				<ProgressCircularTrack size={16} strokeWidth={2}>
+				<ProgressCircularTrack>
 					<ProgressCircularIndicator />
 				</ProgressCircularTrack>
 				<ProgressLabel>Preparing export</ProgressLabel>
