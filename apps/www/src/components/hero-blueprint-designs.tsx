@@ -12,6 +12,7 @@ import {
 	ProgressIndicator,
 	ProgressTrack,
 } from "@/components/ui/progress";
+import { Separator } from "@/components/ui/separator";
 import { Switch } from "@/components/ui/switch";
 import { Textarea } from "@/components/ui/textarea";
 
@@ -99,9 +100,9 @@ function AuthDesign() {
 				</Piece>
 				<Piece index={6} shape="rule">
 					<div className="flex flex-row items-center gap-x-2">
-						<span className="bg-border h-px w-full" />
+						<Separator className="w-auto flex-1" />
 						<span className="text-muted-foreground text-xs">OR</span>
-						<span className="bg-border h-px w-full" />
+						<Separator className="w-auto flex-1" />
 					</div>
 				</Piece>
 				<Piece index={7}>

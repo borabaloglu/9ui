@@ -21,7 +21,16 @@ import {
 	AccordionTrigger,
 } from "@/components/ui/accordion";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
+import { Card } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
+import {
+	Table,
+	TableBody,
+	TableCell,
+	TableHead,
+	TableHeader,
+	TableRow,
+} from "@/components/ui/table";
 import { Tabs, TabsList, TabsPanel } from "@/components/ui/tabs";
 
 import { cn } from "@/lib/utils";
@@ -111,44 +120,27 @@ const components: MDXComponents = {
 			{...props}
 		/>
 	),
-	table: ({
-		className,
-		...props
-	}: React.TableHTMLAttributes<HTMLTableElement>) => (
-		<div className="my-6 w-full overflow-hidden rounded-lg border">
-			<table className={cn("w-full", className)} {...props} />
-		</div>
+	table: ({ className, ...props }: React.ComponentProps<typeof Table>) => (
+		<Table
+			containerClassName="my-6 overflow-hidden rounded-lg border"
+			className={className}
+			{...props}
+		/>
 	),
 	thead: ({
 		className,
 		...props
-	}: React.HTMLAttributes<HTMLTableSectionElement>) => (
-		<thead className={cn("bg-muted/40 border-b", className)} {...props} />
+	}: React.ComponentProps<typeof TableHeader>) => (
+		<TableHeader className={cn("bg-muted/40", className)} {...props} />
 	),
-	tbody: ({
-		className,
-		...props
-	}: React.HTMLAttributes<HTMLTableSectionElement>) => (
-		<tbody className={cn("divide-muted divide-y", className)} {...props} />
+	tbody: TableBody,
+	tr: TableRow,
+	th: ({ className, ...props }: React.ComponentProps<typeof TableHead>) => (
+		<TableHead className={cn("text-foreground", className)} {...props} />
 	),
-	tr: ({ className, ...props }: React.HTMLAttributes<HTMLTableRowElement>) => (
-		<tr className={cn("", className)} {...props} />
-	),
-	th: ({
-		className,
-		...props
-	}: React.ThHTMLAttributes<HTMLTableHeaderCellElement>) => (
-		<th
-			className={cn("p-4 text-left text-sm font-semibold", className)}
-			{...props}
-		/>
-	),
-	td: ({
-		className,
-		...props
-	}: React.TdHTMLAttributes<HTMLTableDataCellElement>) => (
-		<td
-			className={cn("text-muted-foreground p-4 text-sm", className)}
+	td: ({ className, ...props }: React.ComponentProps<typeof TableCell>) => (
+		<TableCell
+			className={cn("text-muted-foreground whitespace-normal", className)}
 			{...props}
 		/>
 	),
@@ -244,13 +236,15 @@ const components: MDXComponents = {
 		/>
 	),
 	LinkCard: ({ className, ...props }: React.ComponentProps<typeof Link>) => (
-		<Link
-			className={cn(
-				"bg-card text-card-foreground hover:bg-card/80 flex w-full flex-col items-center justify-center gap-3 rounded-lg border p-10 font-medium shadow transition-colors md:p-10",
-				className,
-			)}
-			{...props}
-		/>
+		<Card className="hover:bg-card/80 w-full py-0 font-medium transition-colors">
+			<Link
+				className={cn(
+					"focus-visible:ring-ring/50 flex flex-col items-center justify-center gap-3 rounded-[inherit] p-10 outline-none focus-visible:ring-3",
+					className,
+				)}
+				{...props}
+			/>
+		</Card>
 	),
 	Accordion,
 	AccordionTrigger,

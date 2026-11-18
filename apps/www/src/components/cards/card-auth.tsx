@@ -12,6 +12,7 @@ import {
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { Separator } from "@/components/ui/separator";
 
 export function AuthCard() {
 	return (
@@ -31,9 +32,9 @@ export function AuthCard() {
 				<Button className="w-full">Get Started</Button>
 
 				<div className="flex items-center gap-x-2">
-					<span className="bg-border h-px w-full" />
+					<Separator className="w-auto flex-1" />
 					<span className="text-muted-foreground text-xs">OR</span>
-					<span className="bg-border h-px w-full" />
+					<Separator className="w-auto flex-1" />
 				</div>
 
 				<Button variant="outline" className="w-full">

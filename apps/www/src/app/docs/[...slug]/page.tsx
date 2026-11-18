@@ -4,7 +4,6 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ChevronLeftIcon, ChevronRightIcon, SlashIcon } from "lucide-react";
 
-import { DocsSidebarToggle } from "@/components/docs-shell";
 import { GitHubLink } from "@/components/github-link";
 import { MobileToc } from "@/components/mobile-toc";
 import { PageActions } from "@/components/page-actions";
@@ -18,6 +17,8 @@ import {
 	BreadcrumbPage,
 	BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
+import { Card, CardDescription, CardTitle } from "@/components/ui/card";
+import { SidebarTrigger } from "@/components/ui/sidebar";
 
 import { siteConfig } from "@/config/site";
 
@@ -97,8 +98,8 @@ const DocPage = async ({ params }: DocPageProps) => {
 
 	return (
 		<>
-			<header className="before:from-background pointer-events-none absolute inset-x-0 top-0 z-10 hidden h-10.5 items-center gap-1.5 px-1.75 *:pointer-events-auto before:absolute before:inset-x-0 before:top-0 before:-z-10 before:h-16 before:bg-linear-to-b before:from-65% before:to-transparent md:flex">
-				<DocsSidebarToggle />
+			<header className="before:from-background pointer-events-none absolute inset-x-0 top-0 z-10 hidden h-10.5 items-center gap-1.5 px-1.25 *:pointer-events-auto before:absolute before:inset-x-0 before:top-0 before:-z-10 before:h-16 before:bg-linear-to-b before:from-65% before:to-transparent md:flex">
+				<SidebarTrigger size="icon" />
 				{breadcrumb.length > 0 && (
 					<Breadcrumb className="min-w-0 -translate-y-px overflow-hidden">
 						<BreadcrumbList className="flex-nowrap">
@@ -133,7 +134,7 @@ const DocPage = async ({ params }: DocPageProps) => {
 						</BreadcrumbList>
 					</Breadcrumb>
 				)}
-				<div className="bg-background ms-auto flex items-center gap-0.5 rounded-lg">
+				<div className="bg-background ms-auto flex items-center gap-1 rounded-lg">
 					<GitHubLink />
 					<ThemeToggle />
 				</div>
@@ -157,30 +158,36 @@ const DocPage = async ({ params }: DocPageProps) => {
 					{(navigation.prev || navigation.next) && (
 						<nav className="mt-8 grid gap-3 border-t pt-6 sm:grid-cols-2">
 							{navigation.prev && (
-								<Link
-									href={navigation.prev.href}
-									className="hover:bg-accent/40 focus-visible:ring-ring/50 flex flex-col gap-1 rounded-2xl border p-4 text-sm transition-colors outline-none focus-visible:ring-3"
-									prefetch
-								>
-									<span className="text-muted-foreground inline-flex items-center gap-1.5">
-										<ChevronLeftIcon className="size-4" />
-										Previous Page
-									</span>
-									<span className="font-medium">{navigation.prev.title}</span>
-								</Link>
+								<Card className="hover:bg-accent/40 py-0 transition-colors">
+									<Link
+										href={navigation.prev.href}
+										className="focus-visible:ring-ring/50 flex flex-col gap-1 rounded-[inherit] p-4 outline-none focus-visible:ring-3"
+									>
+										<CardDescription className="inline-flex items-center gap-1.5">
+											<ChevronLeftIcon className="size-4" />
+											Previous Page
+										</CardDescription>
+										<CardTitle className="text-sm">
+											{navigation.prev.title}
+										</CardTitle>
+									</Link>
+								</Card>
 							)}
 							{navigation.next && (
-								<Link
-									href={navigation.next.href}
-									className="hover:bg-accent/40 focus-visible:ring-ring/50 flex flex-col items-end gap-1 rounded-2xl border p-4 text-end text-sm transition-colors outline-none focus-visible:ring-3 sm:col-start-2"
-									prefetch
-								>
-									<span className="text-muted-foreground inline-flex items-center gap-1.5">
-										Next Page
-										<ChevronRightIcon className="size-4" />
-									</span>
-									<span className="font-medium">{navigation.next.title}</span>
-								</Link>
+								<Card className="hover:bg-accent/40 py-0 transition-colors sm:col-start-2">
+									<Link
+										href={navigation.next.href}
+										className="focus-visible:ring-ring/50 flex flex-col items-end gap-1 rounded-[inherit] p-4 text-end outline-none focus-visible:ring-3"
+									>
+										<CardDescription className="inline-flex items-center gap-1.5">
+											Next Page
+											<ChevronRightIcon className="size-4" />
+										</CardDescription>
+										<CardTitle className="text-sm">
+											{navigation.next.title}
+										</CardTitle>
+									</Link>
+								</Card>
 							)}
 						</nav>
 					)}

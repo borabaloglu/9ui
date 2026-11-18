@@ -10,6 +10,11 @@ import {
 	CollapsiblePanel,
 	CollapsibleTrigger,
 } from "@/components/ui/collapsible";
+import {
+	Progress,
+	ProgressCircularIndicator,
+	ProgressCircularTrack,
+} from "@/components/ui/progress";
 
 import { getIdFromUrl, useActiveHeadings, useTocThumb } from "@/hooks/use-toc";
 
@@ -19,8 +24,6 @@ const MOBILE_TOC_SLOT_ID = "docs-mobile-toc";
 
 const DEPTH_STEP = 16;
 const ACTIVATION_OFFSET = 200;
-const RADIUS = 6;
-const CIRCUMFERENCE = 2 * Math.PI * RADIUS;
 
 const getIndent = (depth: number) =>
 	10 + Math.min(Math.max(depth - 2, 0), 4) * DEPTH_STEP;
@@ -103,37 +106,28 @@ export const MobileToc = ({ items }: MobileTocProps) => {
 			ref={rootRef}
 			open={open}
 			onOpenChange={setOpen}
-			className="bg-card absolute inset-x-0 top-0 z-20 text-sm"
+			className="bg-card absolute inset-x-0 top-0 text-sm"
 		>
-			<CollapsibleTrigger className="text-muted-foreground focus-visible:ring-ring/50 flex h-10 w-full items-center gap-2.5 ps-5.5 pe-4.5 outline-none focus-visible:ring-3 focus-visible:ring-inset">
-				<svg
+			<CollapsibleTrigger className="text-muted-foreground flex h-10 w-full items-center gap-2.5 ps-5.5 pe-4.5 focus-visible:ring-inset">
+				<Progress
 					aria-hidden="true"
-					viewBox="0 0 16 16"
-					className={cn(
-						"size-4 shrink-0 -rotate-90 transition-colors",
-						open && "text-foreground",
-					)}
+					value={progress * 100}
+					render={<span />}
+					className="flex w-auto shrink-0"
 				>
-					<circle
-						cx="8"
-						cy="8"
-						r={RADIUS}
-						fill="none"
-						strokeWidth="2"
-						className="stroke-foreground/15"
-					/>
-					<circle
-						cx="8"
-						cy="8"
-						r={RADIUS}
-						fill="none"
-						strokeWidth="2"
-						strokeLinecap="round"
-						strokeDasharray={CIRCUMFERENCE}
-						strokeDashoffset={CIRCUMFERENCE * (1 - progress)}
-						className="stroke-current transition-[stroke-dashoffset] duration-200 ease-out motion-reduce:transition-none"
-					/>
-				</svg>
+					<ProgressCircularTrack
+						size={16}
+						strokeWidth={2}
+						className="text-foreground/15"
+					>
+						<ProgressCircularIndicator
+							className={cn(
+								"stroke-muted-foreground transition-[stroke,stroke-dashoffset] duration-200",
+								open && "stroke-foreground",
+							)}
+						/>
+					</ProgressCircularTrack>
+				</Progress>
 				<span
 					className={cn(
 						"min-w-0 flex-1 truncate text-start transition-colors",
@@ -184,7 +178,7 @@ export const MobileToc = ({ items }: MobileTocProps) => {
 				</nav>
 				<div
 					aria-hidden
-					className="bg-background mx-2 h-4 rounded-t-2xl border border-b-0"
+					className="bg-background mx-2 h-4 rounded-t-xl border border-b-0"
 				/>
 			</CollapsiblePanel>
 		</Collapsible>,
