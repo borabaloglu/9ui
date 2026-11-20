@@ -1,100 +1,59 @@
 "use client";
 
 import * as React from "react";
-import { PanelLeftIcon } from "lucide-react";
+import { usePathname } from "next/navigation";
 
-import { Button } from "@/components/ui/button";
-
-import { cn } from "@/lib/utils";
+import { Sidebar, SidebarProvider, useSidebar } from "@/components/ui/sidebar";
 
 const STORAGE_KEY = "docs-sidebar-collapsed";
 
-interface DocsShellContextValue {
-	collapsed: boolean;
-	toggle: () => void;
-}
-
-const DocsShellContext = React.createContext<DocsShellContextValue>({
-	collapsed: false,
-	toggle: () => {},
-});
-
-export const DocsShell = ({
-	className,
-	children,
-}: {
-	className?: string;
-	children: React.ReactNode;
-}) => {
-	const [collapsed, setCollapsed] = React.useState(false);
+export const DocsShell = ({ children }: { children: React.ReactNode }) => {
+	const [open, setOpen] = React.useState(true);
 
 	React.useEffect(() => {
 		try {
-			setCollapsed(localStorage.getItem(STORAGE_KEY) === "true");
+			setOpen(localStorage.getItem(STORAGE_KEY) !== "true");
 		} catch {}
 	}, []);
 
-	const toggle = React.useCallback(() => {
-		setCollapsed((current) => {
-			const next = !current;
-
-			try {
-				localStorage.setItem(STORAGE_KEY, String(next));
-			} catch {}
-
-			return next;
-		});
+	const onOpenChange = React.useCallback((next: boolean) => {
+		setOpen(next);
+		try {
+			localStorage.setItem(STORAGE_KEY, String(!next));
+		} catch {}
 	}, []);
 
-	const value = React.useMemo(
-		() => ({ collapsed, toggle }),
-		[collapsed, toggle],
-	);
-
 	return (
-		<DocsShellContext.Provider value={value}>
-			<div
-				data-sidebar-collapsed={collapsed}
-				className={cn(
-					"group/docs motion-reduce:transition-none md:grid md:grid-cols-[268px_minmax(0,1fr)] md:transition-[grid-template-columns] md:duration-300 md:ease-[cubic-bezier(0.22,1,0.36,1)] md:data-[sidebar-collapsed=true]:grid-cols-[0px_minmax(0,1fr)]",
-					className,
-				)}
-			>
-				{children}
-			</div>
-		</DocsShellContext.Provider>
+		<SidebarProvider
+			open={open}
+			onOpenChange={onOpenChange}
+			style={{ "--sidebar-width": "268px" } as React.CSSProperties}
+			className="bg-card h-dvh flex-col overflow-clip md:flex-row"
+		>
+			{children}
+		</SidebarProvider>
 	);
 };
 
 export const DocsSidebar = ({ children }: { children: React.ReactNode }) => {
-	const { collapsed } = React.useContext(DocsShellContext);
+	const { isMobile, setOpenMobile } = useSidebar();
+	const pathname = usePathname();
+	const lastPathname = React.useRef(pathname);
+
+	React.useEffect(() => {
+		if (lastPathname.current !== pathname) {
+			lastPathname.current = pathname;
+			setOpenMobile(false);
+		}
+	}, [pathname, setOpenMobile]);
 
 	return (
-		<aside
-			inert={collapsed}
-			className="hidden min-h-0 overflow-clip text-sm md:flex"
+		<Sidebar
+			variant="inset"
+			side={isMobile ? "right" : "left"}
+			className="p-0 max-md:w-[85%]"
 		>
-			<div className="flex min-h-0 w-[268px] shrink-0 flex-col transition-[opacity,translate] duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] group-data-[sidebar-collapsed=true]/docs:-translate-x-4 group-data-[sidebar-collapsed=true]/docs:opacity-0 motion-reduce:transition-none">
-				{children}
-			</div>
-		</aside>
-	);
-};
-
-export const DocsSidebarToggle = ({ className }: { className?: string }) => {
-	const { collapsed, toggle } = React.useContext(DocsShellContext);
-
-	return (
-		<Button
-			variant="ghost"
-			size="icon-sm"
-			className={cn("text-muted-foreground", className)}
-			onClick={toggle}
-		>
-			<PanelLeftIcon className="size-4" />
-			<span className="sr-only">
-				{collapsed ? "Expand sidebar" : "Collapse sidebar"}
-			</span>
-		</Button>
+			{children}
+		</Sidebar>
 	);
 };

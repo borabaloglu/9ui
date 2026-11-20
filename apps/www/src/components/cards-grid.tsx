@@ -1,44 +1,51 @@
-import { AuthCard } from "@/components/cards/card-auth";
-import { CalendarCard } from "@/components/cards/card-calendar";
-import { ChatCard } from "@/components/cards/card-chat";
-import { FeedbackCard } from "@/components/cards/card-feedback";
-import { ManageMembersCard } from "@/components/cards/card-manage-members";
-import { OTPCard } from "@/components/cards/card-otp";
-import { PrivacySettingsCard } from "@/components/cards/card-privacy-settings";
-import { TableCard } from "@/components/cards/card-table";
-import { VisitorsChartCard } from "@/components/cards/card-visitors-chart";
+import { ApiKeysCard } from "@/components/cards/api-keys";
+import { AssistantCard } from "@/components/cards/assistant";
+import { BookingCard } from "@/components/cards/booking";
+import { CartCard } from "@/components/cards/cart";
+import { CreateAccountCard } from "@/components/cards/create-account";
+import { DangerZoneCard } from "@/components/cards/danger-zone";
+import { DeploymentsCard } from "@/components/cards/deployments";
+import { FeedbackCard } from "@/components/cards/feedback";
+import { FocusTimerCard } from "@/components/cards/focus-timer";
+import { NotificationsCard } from "@/components/cards/notifications";
+import { PlanCard } from "@/components/cards/plan";
+import { ProfileCard } from "@/components/cards/profile";
+import { ShortcutsCard } from "@/components/cards/shortcuts";
+import { SpendingLimitCard } from "@/components/cards/spending-limit";
+import { StatusCard } from "@/components/cards/status";
+import { TasksCard } from "@/components/cards/tasks";
+import { TeamMembersCard } from "@/components/cards/team-members";
+import { TokenUsageCard } from "@/components/cards/token-usage";
+import { TransactionsCard } from "@/components/cards/transactions";
+import { TwoStepCard } from "@/components/cards/two-step";
+import { UsageCard } from "@/components/cards/usage";
+import { VerifyEmailCard } from "@/components/cards/verify-email";
 
 export const CardsGrid = () => {
 	return (
-		<div className="flex flex-col gap-4">
-			<div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
-				<VisitorsChartCard />
-				<ManageMembersCard />
-			</div>
-			<div className="grid grid-cols-1 gap-4 md:grid-cols-[260px_auto] lg:grid-cols-[260px_1fr_1fr]">
-				<CalendarCard />
-				<FeedbackCard />
-				<div className="md:col-span-2 lg:col-span-1">
-					<OTPCard />
-				</div>
-			</div>
-			<div className="grid grid-cols-1 gap-4 lg:grid-cols-[380px_auto]">
-				<div className="order-2 grid grid-cols-1 gap-4 md:grid-cols-2 lg:order-1 lg:grid-cols-1">
-					<AuthCard />
-					<div className="min-h-[400px] lg:hidden">
-						<ChatCard />
-					</div>
-				</div>
-				<div className="order-1 overflow-hidden lg:order-2">
-					<TableCard />
-				</div>
-			</div>
-			<div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
-				<div className="hidden lg:block">
-					<ChatCard />
-				</div>
-				<PrivacySettingsCard />
-			</div>
+		<div className="-mb-12 columns-1 gap-4 [mask-image:linear-gradient(to_bottom,black_calc(100%-24rem),rgb(0_0_0/0.9)_calc(100%-20rem),rgb(0_0_0/0.65)_calc(100%-15rem),rgb(0_0_0/0.35)_calc(100%-10rem),rgb(0_0_0/0.12)_calc(100%-6rem),transparent_calc(100%-3rem))] *:mb-4 *:break-inside-avoid md:columns-2 xl:columns-3 min-[90rem]:columns-4">
+			<CreateAccountCard />
+			<TasksCard />
+			<CartCard />
+			<TransactionsCard />
+			<StatusCard />
+			<TokenUsageCard />
+			<TeamMembersCard />
+			<ApiKeysCard />
+			<FocusTimerCard />
+			<BookingCard />
+			<DeploymentsCard />
+			<AssistantCard />
+			<UsageCard />
+			<FeedbackCard />
+			<DangerZoneCard />
+			<PlanCard />
+			<ProfileCard />
+			<VerifyEmailCard />
+			<TwoStepCard />
+			<NotificationsCard />
+			<ShortcutsCard />
+			<SpendingLimitCard />
 		</div>
 	);
 };

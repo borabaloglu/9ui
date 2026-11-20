@@ -6,14 +6,14 @@ import { Button } from "@/components/ui/button";
 export const GitHubLink = () => (
 	<Button
 		variant="ghost"
-		size="icon-sm"
+		size="icon"
 		render={
 			<Link
 				href="https://github.com/borabaloglu/9ui"
 				target="_blank"
 				rel="noreferrer"
 			>
-				<Icons.gitHub className="size-4" />
+				<Icons.gitHub />
 				<span className="sr-only">GitHub</span>
 			</Link>
 		}

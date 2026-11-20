@@ -5,6 +5,11 @@ import { ChevronDownIcon } from "lucide-react";
 
 import { CodeBar } from "@/components/code-bar";
 import { Button } from "@/components/ui/button";
+import {
+	Collapsible,
+	CollapsiblePanel,
+	CollapsibleTrigger,
+} from "@/components/ui/collapsible";
 
 import { cn } from "@/lib/utils";
 
@@ -22,23 +27,27 @@ export const PreviewCode = ({
 	children,
 }: PreviewCodeProps) => {
 	const [open, setOpen] = React.useState(false);
-	const contentId = React.useId();
 
 	return (
-		<div className="border-t bg-(--code-surface)">
+		<Collapsible
+			open={open}
+			onOpenChange={setOpen}
+			className="border-t bg-(--code-surface)"
+		>
 			<CodeBar
 				label={label}
 				content={content}
 				type="demo"
 				className={cn(!open && "border-b-transparent")}
 			>
-				<Button
-					variant="ghost"
-					size="sm"
-					aria-expanded={open}
-					aria-controls={contentId}
-					onClick={() => setOpen(!open)}
-					className="text-muted-foreground hover:text-foreground"
+				<CollapsibleTrigger
+					render={
+						<Button
+							variant="ghost"
+							size="sm"
+							className="text-muted-foreground hover:text-foreground"
+						/>
+					}
 				>
 					{open ? "Hide code" : "Show code"}
 					<ChevronDownIcon
@@ -48,13 +57,13 @@ export const PreviewCode = ({
 							open && "rotate-180",
 						)}
 					/>
-				</Button>
+				</CollapsibleTrigger>
 			</CodeBar>
 
-			<div id={contentId} hidden={!open} className="[&_pre]:!max-h-[400px]">
+			<CollapsiblePanel className="[&_pre]:!max-h-[400px]">
 				{note}
 				{children}
-			</div>
-		</div>
+			</CollapsiblePanel>
+		</Collapsible>
 	);
 };

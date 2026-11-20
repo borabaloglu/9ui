@@ -246,7 +246,7 @@
 }
 
 @utility container {
-	@apply mx-auto w-full max-w-7xl px-4 xl:px-6;
+	@apply w-full max-w-full px-4 xl:px-6;
 }
 
 @utility step {

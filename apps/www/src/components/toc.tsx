@@ -43,7 +43,7 @@ export const TableOfContents = ({ items }: TableOfContentsProps) => {
 							ref={setLinkRef(item.url)}
 							href={item.url}
 							className={cn(
-								"hover:text-accent-foreground relative py-1 pe-2 text-[0.8125rem]/5 wrap-anywhere transition-colors",
+								"hover:text-accent-foreground relative py-1 pe-2 text-sm wrap-anywhere transition-colors",
 								activeIds.includes(getIdFromUrl(item.url))
 									? "text-foreground"
 									: "text-muted-foreground",

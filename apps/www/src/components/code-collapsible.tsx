@@ -3,6 +3,8 @@
 import * as React from "react";
 import { ChevronDownIcon } from "lucide-react";
 
+import { Button } from "@/components/ui/button";
+
 import { cn } from "@/lib/utils";
 
 interface CodeCollapsibleProps {
@@ -33,14 +35,15 @@ export const CodeCollapsible = ({
 				)}
 			</div>
 
-			<button
-				type="button"
+			<Button
+				variant="ghost"
+				size="xl"
 				aria-expanded={expanded}
 				aria-controls={contentId}
 				onClick={() => setExpanded(!expanded)}
 				className={cn(
-					"text-muted-foreground hover:text-foreground focus-visible:ring-ring/50 flex h-10 w-full cursor-pointer items-center justify-center gap-1.5 text-[0.8125rem] font-medium transition-colors outline-none focus-visible:ring-3 focus-visible:ring-inset",
-					expanded && "border-t",
+					"text-muted-foreground hover:text-foreground w-full rounded-none text-[0.8125rem] before:rounded-none focus-visible:ring-inset",
+					expanded && "border-t-border",
 				)}
 			>
 				{expanded ? "Collapse" : "Expand"}
@@ -50,7 +53,7 @@ export const CodeCollapsible = ({
 						expanded && "rotate-180",
 					)}
 				/>
-			</button>
+			</Button>
 		</>
 	);
 };

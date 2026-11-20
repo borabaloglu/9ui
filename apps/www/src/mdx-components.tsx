@@ -1,6 +1,6 @@
 import type * as React from "react";
 import Link from "next/link";
-import { AlertTriangleIcon } from "lucide-react";
+import { AlertTriangleIcon, ArrowUpRightIcon } from "lucide-react";
 import type { MDXComponents as MDXProvidedComponents } from "mdx/types";
 
 import { ApiTable } from "@/components/api-table";
@@ -11,6 +11,7 @@ import { ComponentInstallation } from "@/components/component-installation";
 import { ComponentLinks } from "@/components/component-links";
 import { ComponentPreview } from "@/components/component-preview";
 import { ComponentSource } from "@/components/component-source";
+import { ComponentsIndex } from "@/components/components-index";
 import { Icons } from "@/components/icons";
 import { InstallationTabs } from "@/components/installation-tabs";
 import { ThemeToggle } from "@/components/theme-toggle";
@@ -21,8 +22,19 @@ import {
 	AccordionTrigger,
 } from "@/components/ui/accordion";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
+import { Card } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
+import {
+	Table,
+	TableBody,
+	TableCell,
+	TableHead,
+	TableHeader,
+	TableRow,
+} from "@/components/ui/table";
 import { Tabs, TabsList, TabsPanel } from "@/components/ui/tabs";
+
+import { siteConfig } from "@/config/site";
 
 import { cn } from "@/lib/utils";
 
@@ -111,44 +123,27 @@ const components: MDXComponents = {
 			{...props}
 		/>
 	),
-	table: ({
-		className,
-		...props
-	}: React.TableHTMLAttributes<HTMLTableElement>) => (
-		<div className="my-6 w-full overflow-hidden rounded-lg border">
-			<table className={cn("w-full", className)} {...props} />
-		</div>
+	table: ({ className, ...props }: React.ComponentProps<typeof Table>) => (
+		<Table
+			containerClassName="my-6 overflow-hidden rounded-lg border"
+			className={className}
+			{...props}
+		/>
 	),
 	thead: ({
 		className,
 		...props
-	}: React.HTMLAttributes<HTMLTableSectionElement>) => (
-		<thead className={cn("bg-muted/40 border-b", className)} {...props} />
+	}: React.ComponentProps<typeof TableHeader>) => (
+		<TableHeader className={cn("bg-muted/40", className)} {...props} />
 	),
-	tbody: ({
-		className,
-		...props
-	}: React.HTMLAttributes<HTMLTableSectionElement>) => (
-		<tbody className={cn("divide-muted divide-y", className)} {...props} />
+	tbody: TableBody,
+	tr: TableRow,
+	th: ({ className, ...props }: React.ComponentProps<typeof TableHead>) => (
+		<TableHead className={cn("text-foreground", className)} {...props} />
 	),
-	tr: ({ className, ...props }: React.HTMLAttributes<HTMLTableRowElement>) => (
-		<tr className={cn("", className)} {...props} />
-	),
-	th: ({
-		className,
-		...props
-	}: React.ThHTMLAttributes<HTMLTableHeaderCellElement>) => (
-		<th
-			className={cn("p-4 text-left text-sm font-semibold", className)}
-			{...props}
-		/>
-	),
-	td: ({
-		className,
-		...props
-	}: React.TdHTMLAttributes<HTMLTableDataCellElement>) => (
-		<td
-			className={cn("text-muted-foreground p-4 text-sm", className)}
+	td: ({ className, ...props }: React.ComponentProps<typeof TableCell>) => (
+		<TableCell
+			className={cn("text-muted-foreground whitespace-normal", className)}
 			{...props}
 		/>
 	),
@@ -211,16 +206,39 @@ const components: MDXComponents = {
 	),
 	a: ({
 		className,
+		href,
+		children,
 		...props
-	}: React.AnchorHTMLAttributes<HTMLAnchorElement>) => (
-		<a
-			className={cn(
-				"text-foreground font-medium underline underline-offset-4",
-				className,
-			)}
-			{...props}
-		/>
-	),
+	}: React.AnchorHTMLAttributes<HTMLAnchorElement>) => {
+		const external =
+			typeof href === "string" &&
+			/^https?:\/\//.test(href) &&
+			!new URL(href).hostname.endsWith(siteConfig.domain);
+
+		return (
+			<a
+				href={href}
+				className={cn(
+					"text-foreground font-medium underline underline-offset-4",
+					className,
+				)}
+				{...(external ? { target: "_blank", rel: "noreferrer" } : {})}
+				{...props}
+			>
+				{children}
+				{external && (
+					<>
+						{"\u2060"}
+						<ArrowUpRightIcon
+							aria-hidden="true"
+							className="text-muted-foreground ms-0.5 inline size-3.5 align-[-0.125em]"
+						/>
+						<span className="sr-only"> (opens in a new tab)</span>
+					</>
+				)}
+			</a>
+		);
+	},
 	strong: ({ className, ...props }: React.HTMLAttributes<HTMLElement>) => (
 		<strong className={cn("font-semibold", className)} {...props} />
 	),
@@ -244,13 +262,15 @@ const components: MDXComponents = {
 		/>
 	),
 	LinkCard: ({ className, ...props }: React.ComponentProps<typeof Link>) => (
-		<Link
-			className={cn(
-				"bg-card text-card-foreground hover:bg-card/80 flex w-full flex-col items-center justify-center gap-3 rounded-lg border p-10 font-medium shadow transition-colors md:p-10",
-				className,
-			)}
-			{...props}
-		/>
+		<Card className="hover:bg-card/80 w-full py-0 font-medium transition-colors">
+			<Link
+				className={cn(
+					"focus-visible:ring-ring/50 flex flex-col items-center justify-center gap-3 rounded-[inherit] p-10 outline-none focus-visible:ring-3",
+					className,
+				)}
+				{...props}
+			/>
+		</Card>
 	),
 	Accordion,
 	AccordionTrigger,
@@ -263,6 +283,7 @@ const components: MDXComponents = {
 	ApiTable,
 	ComponentPreview,
 	ComponentLinks,
+	ComponentsIndex,
 	ComponentSource,
 	Tabs,
 	TabsList,

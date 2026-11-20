@@ -1,10 +1,11 @@
 "use client";
 
 import * as React from "react";
-import { LoaderCircleIcon, RefreshCwIcon } from "lucide-react";
+import { RefreshCwIcon } from "lucide-react";
 
 import { disableAutofillWithin } from "@/components/disable-autofill";
 import { Button } from "@/components/ui/button";
+import { Spinner } from "@/components/ui/spinner";
 
 // Load whole modules instead of using `{ import: "default" }`: in production
 // builds Turbopack resolves that option to `undefined`, breaking every demo.
@@ -76,13 +77,7 @@ export const DemoRenderer = ({
 				</Button>
 			)}
 			<div ref={scopeRef} className="contents" data-autofill-scope="">
-				<React.Suspense
-					fallback={
-						<div className="flex animate-spin items-center justify-center">
-							<LoaderCircleIcon size={16} />
-						</div>
-					}
-				>
+				<React.Suspense fallback={<Spinner />}>
 					<Component key={key} />
 					<DemoHydrated onHydrated={handleHydrated} />
 				</React.Suspense>
