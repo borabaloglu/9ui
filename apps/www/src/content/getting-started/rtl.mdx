@@ -103,13 +103,13 @@ createRoot(document.getElementById("root")!).render(
 )
 ```
 
-## How it works
+## How It Works
 
 - Components use logical classes like `ps-2` and `ms-auto`, so spacing, icons and indicators follow `dir`.
-- `DirectionProvider` drives behaviour: arrow keys, slider values, carousel scrolling, calendar navigation, and popups with `side="inline-start"` or `side="inline-end"`.
+- `DirectionProvider` drives behavior: arrow keys, slider values, carousel scrolling, calendar navigation and popups with `side="inline-start"` or `side="inline-end"`.
 - Props that name a screen edge stay physical. `side="right"` is the right edge in both directions. See [Physical props](#physical-props).
 
-## Right-to-left in part of a page
+## Right-to-Left in Part of a Page
 
 To show only part of a page right to left, set `dir="rtl"` on a parent element and wrap it in `DirectionProvider`.
 
@@ -130,7 +130,7 @@ Popups, dialogs, sheets and toasts render at the end of `body`, outside that par
 
 The same goes for `DialogPopup`, `SheetPopup`, `SelectPopup`, `PopoverPopup`, `TooltipPopup` and every other popup part. For toasts, set `portalProps={{ dir: "rtl" }}` on `ToastProvider`. For Phone Input, set `dir="rtl"` on `PhoneInput`.
 
-## Physical props
+## Physical Props
 
 These props name a screen edge or corner, so they mean the same place in both directions.
 
@@ -159,15 +159,15 @@ export function NavSheet() {
 }
 ```
 
-To open a popup to the side of its trigger in reading order, set `side` to `inline-start` or `inline-end`.
+To open a popup to the side of its trigger in reading order, set `side="inline-start"` or `side="inline-end"`.
 
 ```tsx {1}
 <TooltipPopup side="inline-end">Settings</TooltipPopup>
 ```
 
-## Writing RTL-ready code
+## Writing RTL-Ready Code
 
-### Spacing and position
+### Spacing and Position
 
 To add space or position on one side, use logical classes. They give the same result as the physical ones in left to right, and flip in right to left.
 
@@ -214,9 +214,9 @@ To flip an icon whose lines would end up upside down when rotated, like text ali
 <TextAlignStartIcon className="rtl:-scale-x-100" />
 ```
 
-Do not flip icons that look the same in every language: checkmarks, spinners, clocks, play and pause, search, and logos.
+Don't flip icons that look the same in every language: checkmarks, spinners, clocks, play and pause, search and logos.
 
-### Transforms and animations
+### Transforms and Animations
 
 Logical classes don't cover `translate-x-*`. To move something along the inline axis, add the opposite value under `rtl:`.
 
@@ -224,7 +224,7 @@ Logical classes don't cover `translate-x-*`. To move something along the inline 
 <div className="translate-x-full transition-transform rtl:-translate-x-full data-open:translate-x-0" />
 ```
 
-### Text that stays left to right
+### Text That Stays Left to Right
 
 Phone numbers, URLs, emails, versions and keyboard shortcuts read left to right in every language. To keep their order, wrap them in `bdi` or in an inner element with `dir="ltr"`.
 
@@ -249,7 +249,7 @@ To show digits the way a language writes them, format numbers with `Intl.NumberF
 new Intl.NumberFormat("ar-u-nu-arab").format(12)
 ```
 
-## Third-party components
+## Third-Party Components
 
 ### Chart
 
@@ -290,7 +290,7 @@ Emoji Picker is built on [frimousse](https://frimousse.liveblocks.io). Translate
 Known limits:
 
 - The emoji data has no Arabic or Hebrew translations, so emoji and category names stay in English.
-- Arrow keys are not mirrored. Left moves to the previous emoji and Right to the next, in both directions.
+- Arrow keys aren't mirrored. Left moves to the previous emoji and Right to the next, in both directions.
 
 ### Resizable
 

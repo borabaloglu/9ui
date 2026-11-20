@@ -6,7 +6,7 @@ label: New
 
 9ui components live in your codebase, so you will restyle them, change them and add your own. The 9ui skills teach your AI agent to do that the way the library was built: every component follows one rulebook, and every change is checked against it.
 
-The rulebook is yours. The skills never block a change. They ask, adapt, and always tell you when a change is inconsistent with other components, breaks with real content, or goes against a motion or accessibility standard.
+The rulebook is yours. The skills never block a change. They ask, adapt and always tell you when a change is inconsistent with other components, breaks with real content or goes against a motion or accessibility standard.
 
 ## Installation
 
@@ -24,7 +24,7 @@ npx skills add borabaloglu/9ui
 npx skills add emilkowalski/skills --skill emil-design-eng animate review-animations break-ui apple-design
 ```
 
-The 9ui skills call these for design judgement, motion and worst-case testing. Without them the checks still run, with less depth.
+The 9ui skills call these for design judgment, motion and worst-case testing. Without them the checks still run, with less depth.
 
 <Step>Add a rulebook.</Step>
 
@@ -92,7 +92,7 @@ npx shadcn@latest add @9ui/rulebook
 
 ### /rulebook-update
 
-Changes a rule, adds one, or records why one component is different. It lists the components the change affects.
+Changes a rule, adds one or records why one component is different. It lists the components the change affects.
 
 ```text title="Prompt"
 /rulebook-update popups should open in 200ms
@@ -102,14 +102,14 @@ To let one component differ, ask for an exception. It's recorded on the rule wit
 
 You can also edit the files by hand. The skills follow the new value from then on and report the components that still use the old one.
 
-## The rulebook
+## The Rulebook
 
 The rulebook is a folder of Markdown files in `.rulebook/` at your project root. Commit it with your code.
 
 | File | Covers |
 |---|---|
 | `README.md` | Index and the list of roles |
-| `surfaces.md` | Radius, fields, popups, modals, cards, colour |
+| `surfaces.md` | Radius, fields, popups, modals, cards, color |
 | `states.md` | Focus, hover, pressed, disabled, invalid, read-only |
 | `sizing.md` | Heights, type, touch sizes, icons |
 | `motion.md` | Curves, durations, enter and exit, reduced motion |
@@ -137,7 +137,7 @@ Tailwind reads the rulebook like any other file in your project. To keep class n
 @source not "../.rulebook";
 ```
 
-## What is always reported
+## What Is Always Reported
 
 Some checks don't depend on your rulebook. Every report covers them, even after you choose to go ahead.
 

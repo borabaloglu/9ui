@@ -2,14 +2,12 @@
 	"title": "Getting Started",
 	"pages": [
 		"introduction",
-		"roadmap",
 		"installation",
 		"theming",
 		"dark-mode",
 		"rtl",
 		"changelog",
 		"llms",
-		"skills",
-		"figma"
+		"skills"
 	]
 }

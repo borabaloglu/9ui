@@ -10,4 +10,4 @@ Visit [9ui.dev/docs](https://9ui.dev/docs) for documentation and examples.
 
 ## License
 
-Licensed under the [MIT license](./LICENSE).
+Licensed under the [MIT license](./LICENSE.md).

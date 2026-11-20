@@ -35,6 +35,11 @@ const nextConfig = {
 				permanent: true,
 			},
 			{
+				source: "/docs/getting-started/roadmap",
+				destination: "/docs/getting-started/introduction#whats-planned",
+				permanent: true,
+			},
+			{
 				source: "/docs/getting-started",
 				destination: "/docs/getting-started/introduction",
 				permanent: true,
