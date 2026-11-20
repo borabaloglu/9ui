@@ -2,6 +2,7 @@
 title: React Hook Form
 description: Build forms with React Hook Form and Zod.
 ---
+
 <ComponentLinks
 	links={[
 		{
@@ -64,7 +65,7 @@ Wrap each `Field` in a `Controller` and pass the field state to it.
 
 ## Form
 
-### Create a schema
+### Create a Schema
 
 Define the form values with Zod, or any validation library that has a resolver.
 
@@ -82,7 +83,7 @@ const schema = z.object({
 type FormValues = z.infer<typeof schema>
 ```
 
-### Set up the form
+### Set Up the Form
 
 Pass the schema to `useForm` with `zodResolver`.
 
@@ -111,7 +112,7 @@ export default function ExampleForm() {
 }
 ```
 
-### Build the form
+### Build the Form
 
 Add a `Controller` with a `Field` for each value. The demo at the top of this page has the full code.
 
@@ -136,7 +137,7 @@ const {
 
 ## Validation
 
-### Validation modes
+### Validation Modes
 
 To choose when validation runs, set `mode` on `useForm`.
 
@@ -149,9 +150,9 @@ const form = useForm<FormValues>({
 
 | Mode          | Description                                           |
 | ------------- | ----------------------------------------------------- |
-| `"onSubmit"`  | Validates on submit. This is the default.             |
-| `"onChange"`  | Validates on every change.                            |
+| `"onSubmit"`  | Validates on submit, then on every change. This is the default. |
 | `"onBlur"`    | Validates when a field loses focus.                   |
+| `"onChange"`  | Validates on every change.                            |
 | `"onTouched"` | Validates on the first blur, then on every change.    |
 | `"all"`       | Validates on blur and on change.                      |
 
@@ -175,7 +176,7 @@ To show an error, set `invalid` on `Field` and render `FieldError` with `match`.
 />
 ```
 
-## Server-side Errors
+## Server-Side Errors
 
 To show an error returned by the server, call `setError`. Submit the form to see one.
 
@@ -560,10 +561,10 @@ Pass `field.value` to `selected` and `field.onChange` to `onSelect` on `Calendar
 	control={control}
 	render={({ field, fieldState }) => (
 		<Field name={field.name} invalid={fieldState.invalid}>
-			<FieldLabel>Start date</FieldLabel>
+			<FieldLabel htmlFor={id}>Start date</FieldLabel>
 			<Popover open={open} onOpenChange={setOpen}>
 				<PopoverTrigger
-					render={<Button variant="outline" aria-describedby={errorId} aria-invalid={fieldState.invalid || undefined} onBlur={field.onBlur} />}
+					render={<Button id={id} variant="outline" aria-describedby={errorId} aria-invalid={fieldState.invalid || undefined} onBlur={field.onBlur} />}
 				>
 					{field.value ? format(field.value, "MMM d, yyyy") : "Select a date"}
 				</PopoverTrigger>

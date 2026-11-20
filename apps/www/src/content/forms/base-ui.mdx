@@ -2,6 +2,7 @@
 title: Base UI Form
 description: Build forms with the Form component and native validation.
 ---
+
 <ComponentLinks
 	links={[
 		{
@@ -63,7 +64,7 @@ Put each control in a `Field` with a `name`, and add a `FieldError` for each mes
 
 ## Form
 
-### Submit values as an object
+### Submit Values as an Object
 
 To get the field values as an object, use `onFormSubmit`.
 
@@ -75,7 +76,7 @@ To get the field values as an object, use `onFormSubmit`.
 />
 ```
 
-### Submit with the native event
+### Submit with the Native Event
 
 To read the submit event or `FormData`, use `onSubmit`.
 
@@ -90,7 +91,7 @@ To read the submit event or `FormData`, use `onSubmit`.
 
 ## Submitting
 
-### Pending state
+### Pending State
 
 To show progress while the form submits, set `loading` on the submit button.
 
@@ -110,7 +111,7 @@ const [loading, setLoading] = useState(false)
 </Form>
 ```
 
-### Server actions
+### Server Actions
 
 To submit to a server action, call it in `onFormSubmit` inside a transition and pass the errors it returns to `errors`.
 
@@ -162,7 +163,7 @@ export async function createUser(values: { username: string }) {
 
 ## Validation
 
-### Client-side validation
+### Client-Side Validation
 
 Set native constraints on the control and add a `FieldError` with `match` for each message.
 
@@ -177,7 +178,7 @@ Set native constraints on the control and add a `FieldError` with `match` for ea
 </Field>
 ```
 
-### Validation modes
+### Validation Modes
 
 To choose when validation runs, set `validationMode` on `Form` or `Field`.
 
@@ -187,20 +188,20 @@ To choose when validation runs, set `validationMode` on `Form` or `Field`.
 
 | Mode         | Description                                                           |
 | ------------ | --------------------------------------------------------------------- |
-| `"onSubmit"` | Validates on submit, then again on change. This is the default.       |
+| `"onSubmit"` | Validates on submit, then on every change. This is the default.       |
 | `"onBlur"`   | Validates when a field loses focus.                                   |
 | `"onChange"` | Validates on every change.                                            |
 
-### Custom validation
+### Custom Validation
 
-To run your own check, set `validate` on `Field`. It can be async. Use `FieldError` with `match="customError"` to show the message it returns.
+To run your own check, set `validate` on `Field`. Use `FieldError` with `match="customError"` to show the message it returns.
 
 <ComponentPreview name="form-base-ui-custom-validation-demo" />
 
 ```tsx {3-9,12}
 <Field
 	name="username"
-	validate={async (value) => {
+	validate={(value) => {
 		const username = String(value ?? "").trim()
 		if (username === "admin") {
 			return "Username cannot be 'admin'."
@@ -213,11 +214,12 @@ To run your own check, set `validate` on `Field`. It can be async. Use `FieldErr
 </Field>
 ```
 
-To delay validation while typing, set `validationDebounceTime`.
+To delay validation while typing, set `validationMode="onChange"` and `validationDebounceTime`.
 
-```tsx {3}
+```tsx {3-4}
 <Field
 	name="username"
+	validationMode="onChange"
 	validationDebounceTime={300}
 	validate={checkUsername}
 >
@@ -226,7 +228,7 @@ To delay validation while typing, set `validationDebounceTime`.
 </Field>
 ```
 
-## Server-side Errors
+## Server-Side Errors
 
 To show errors returned by the server, pass them to `errors` on `Form` and add a `FieldError` without `match`. Submit the form to see one.
 
@@ -308,6 +310,15 @@ Set the constraints on `Input`.
 	<FieldLabel>Username</FieldLabel>
 	<Input required minLength={3} maxLength={20} pattern="^[a-zA-Z0-9_]+$" />
 	<FieldError match="valueMissing">Username is required.</FieldError>
+	<FieldError match="tooShort">
+		Username must be at least 3 characters.
+	</FieldError>
+	<FieldError match="tooLong">
+		Username must be at most 20 characters.
+	</FieldError>
+	<FieldError match="patternMismatch">
+		Username can only contain letters, numbers and underscores.
+	</FieldError>
 </Field>
 ```
 
@@ -322,6 +333,8 @@ Set the constraints on `Textarea`.
 	<FieldLabel>Bio</FieldLabel>
 	<Textarea required minLength={20} maxLength={280} />
 	<FieldError match="valueMissing">Bio is required.</FieldError>
+	<FieldError match="tooShort">Bio must be at least 20 characters.</FieldError>
+	<FieldError match="tooLong">Bio must be at most 280 characters.</FieldError>
 </Field>
 ```
 
@@ -556,7 +569,7 @@ Set `required` on `OTPField`. An incomplete code matches `patternMismatch`.
 
 ### Date Picker
 
-Keep the date in state, check it on submit and set `invalid` on `Field`. Give `FieldError` an `id` and pass it to `aria-describedby` on the trigger so the error is announced.
+Keep the date in state, check it on submit and set `invalid` on `Field` and `aria-invalid` on the trigger. Give `FieldError` an `id` and pass it to `aria-describedby` on the trigger so the error is announced.
 
 <ComponentPreview name="form-base-ui-date-picker-demo" />
 
@@ -573,10 +586,10 @@ const [invalid, setInvalid] = useState(false)
 	}}
 >
 	<Field name="startDate" invalid={invalid}>
-		<FieldLabel>Start date</FieldLabel>
+		<FieldLabel htmlFor={id}>Start date</FieldLabel>
 		<Popover open={open} onOpenChange={setOpen}>
 			<PopoverTrigger
-				render={<Button variant="outline" aria-describedby={errorId} aria-invalid={invalid || undefined} />}
+				render={<Button id={id} variant="outline" aria-describedby={errorId} aria-invalid={invalid || undefined} />}
 			>
 				{date ? format(date, "MMM d, yyyy") : "Select a date"}
 			</PopoverTrigger>
@@ -603,7 +616,7 @@ To group related fields, wrap them in `Fieldset` with a `FieldsetLegend`.
 
 <ComponentPreview name="form-base-ui-fieldset-demo" />
 
-```tsx {1,2,13}
+```tsx {1,2,16}
 <Fieldset>
 	<FieldsetLegend>Billing Details</FieldsetLegend>
 	<Field name="company">
@@ -615,6 +628,9 @@ To group related fields, wrap them in `Fieldset` with a `FieldsetLegend`.
 		<FieldLabel>Tax ID</FieldLabel>
 		<Input required pattern="^\d{2}-\d{7}$" />
 		<FieldError match="valueMissing">Tax ID is required.</FieldError>
+		<FieldError match="patternMismatch">
+			Tax ID must match XX-XXXXXXX format.
+		</FieldError>
 	</Field>
 </Fieldset>
 ```
