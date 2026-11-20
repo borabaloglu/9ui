@@ -2,6 +2,7 @@
 title: Slider
 description: A control for selecting a value within a range.
 ---
+
 <ComponentLinks
 	links={[
 		{
@@ -44,8 +45,6 @@ import { Slider, SliderLabel, SliderValue } from "@/components/ui/slider"
 </Slider>
 ```
 
-Give every slider a name: add a `SliderLabel`, or set `aria-label` on `Slider` when there is no visible label. On a range slider, set `thumbLabels` to name each thumb.
-
 ## Examples
 
 ### Range
@@ -58,11 +57,11 @@ Pass an array to `defaultValue` or `value` to get one thumb per value.
 
 Add `SliderLabel` to name the slider and `SliderValue` to show the current value.
 
-<ComponentPreview name="slider-label-value-demo" />
+<ComponentPreview name="slider-label-and-value-demo" />
 
-### Steps
+### Step
 
-Set `step` to snap the value to an increment, and `largeStep` for Page Up, Page Down and Shift with the arrow keys.
+Set `step` on `Slider` to snap the value to an increment, and `largeStep` for Page Up, Page Down and Shift with the arrow keys.
 
 <ComponentPreview name="slider-step-demo" />
 
@@ -74,7 +73,7 @@ Render marks as children and position each one as a percentage of the range. Ins
 
 ### Format
 
-Set `format` to show the value as a currency, percentage or unit. It takes the same options as `Intl.NumberFormat`.
+Set `format` on `Slider` to show the value as a currency, percentage or unit. It takes the same options as `Intl.NumberFormat`.
 
 <ComponentPreview name="slider-format-demo" />
 
@@ -86,7 +85,7 @@ Wrap the slider in [Field](/docs/components/field) to add a description.
 
 ### Disabled
 
-Set `disabled` to prevent interaction. The label and value dim with the slider.
+Set `disabled` on `Slider` to prevent interaction. The label and value dim with the slider.
 
 <ComponentPreview name="slider-disabled-demo" />
 
@@ -98,19 +97,61 @@ Set `invalid` on `Field` to show the error state, and clear it once the value is
 
 ### Vertical
 
-Set `orientation="vertical"` for a vertical slider.
+Set `orientation="vertical"` on `Slider` for a vertical slider.
 
 <ComponentPreview name="slider-vertical-demo" />
 
 ### RTL
 
-To show the slider right to left, set `dir="rtl"` on `html` and wrap your app in `DirectionProvider`. See [RTL](/docs/getting-started/rtl).
+To enable RTL support, see the [RTL guide](/docs/getting-started/rtl).
 
 <ComponentPreview name="slider-rtl-demo" direction="rtl" />
 
+## Tips
+
+<Tips>
+
+<Tip title="Label the slider">
+
+To label a slider, add a `SliderLabel`.
+
+```tsx {2}
+<Slider defaultValue={50}>
+	<SliderLabel>Opacity</SliderLabel>
+	<SliderValue />
+</Slider>
+```
+
+</Tip>
+
+<Tip title="Name a slider with no visible label">
+
+Set `aria-label` on `Slider` when there is no visible label.
+
+```tsx {1}
+<Slider defaultValue={50} aria-label="Volume" />
+```
+
+</Tip>
+
+<Tip title="Name each thumb of a range slider">
+
+On a range slider, set `thumbLabels` on `Slider` to name each thumb.
+
+```tsx {3}
+<Slider
+	defaultValue={[20, 80]}
+	thumbLabels={["Minimum price", "Maximum price"]}
+/>
+```
+
+</Tip>
+
+</Tips>
+
 ## API Reference
 
-What 9ui adds to Base UI Slider. For the rest of the API, see the [Base UI Slider reference](https://base-ui.com/react/components/slider#api-reference).
+What 9ui adds to Base UI Slider. See the [Base UI](https://base-ui.com/react/components/slider#api-reference) documentation for the rest.
 
 ### Slider
 

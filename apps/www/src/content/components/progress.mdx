@@ -1,7 +1,8 @@
 ---
 title: Progress
-description: Displays a progress bar with an optional label.
+description: A bar that shows the progress of a task.
 ---
+
 <ComponentLinks
 	links={[
 		{
@@ -28,7 +29,7 @@ npx shadcn@latest add @9ui/progress
 
 <ComponentSource name="progress" />
 
-<Step>Add the keyframes to your CSS.</Step>
+<Step>Add the animation to your CSS file.</Step>
 
 ```css title="globals.css"
 @keyframes progress-indeterminate {
@@ -68,8 +69,6 @@ import {
 </Progress>
 ```
 
-Give every progress bar a name: add a `ProgressLabel`, or set `aria-label` on `Progress` when there is no visible label.
-
 ## Examples
 
 ### Without Label
@@ -78,33 +77,53 @@ Leave out `ProgressLabel` and `ProgressValue` to show only the bar.
 
 <ComponentPreview name="progress-without-label-demo" showReload={true} />
 
-### Formatted Value
+### Custom Value
 
-Pass a function to `ProgressValue` to show the value in your own format.
+To write the value text yourself, pass a function to `ProgressValue`. Set `getAriaValueText` so screen readers hear the same text.
 
-<ComponentPreview name="progress-formatted-value-demo" showReload={true} />
+<ComponentPreview name="progress-custom-value-demo" showReload={true} />
 
 ### Indeterminate
 
-Set `value={null}` when the amount of progress is unknown.
+Set `value={null}` on `Progress` when the amount of progress is unknown.
 
 <ComponentPreview name="progress-indeterminate-demo" />
 
 ### Circular
 
-To show a ring instead of a bar, use `ProgressCircularTrack` and `ProgressCircularIndicator`. Set `size` and `strokeWidth` on `ProgressCircularTrack` to change its dimensions.
+To show a ring instead of a bar, use `ProgressCircularTrack` and `ProgressCircularIndicator`, and set `className="flex items-center"` on `Progress`.
 
 <ComponentPreview name="progress-circular-demo" showReload={true} />
 
 ### RTL
 
-To show the progress right to left, set `dir="rtl"` on `html` and wrap your app in `DirectionProvider`. See [RTL](/docs/getting-started/rtl).
+To enable RTL support, see the [RTL guide](/docs/getting-started/rtl).
 
 <ComponentPreview name="progress-rtl-demo" direction="rtl" />
 
+## Tips
+
+<Tips>
+
+<Tip title="Name the progress bar">
+
+Give every progress bar a name: add a `ProgressLabel`, or set `aria-label` on `Progress` when there is no visible label.
+
+```tsx {1}
+<Progress aria-label="Exporting data" value={40}>
+	<ProgressTrack>
+		<ProgressIndicator />
+	</ProgressTrack>
+</Progress>
+```
+
+</Tip>
+
+</Tips>
+
 ## API Reference
 
-What 9ui adds to Base UI Progress. For the rest of the API, see the [Base UI Progress reference](https://base-ui.com/react/components/progress#api-reference).
+What 9ui adds to Base UI Progress. See the [Base UI](https://base-ui.com/react/components/progress#api-reference) documentation for the rest.
 
 ### ProgressCircularTrack
 

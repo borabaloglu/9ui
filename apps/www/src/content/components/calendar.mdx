@@ -1,7 +1,8 @@
 ---
 title: Calendar
-description: Provides a visual interface for date selection.
+description: A calendar for picking dates.
 ---
+
 <ComponentLinks
 	links={[
 		{
@@ -24,11 +25,13 @@ npx shadcn@latest add @9ui/calendar
 
 <Steps>
 
-<Step>Install dependencies</Step>
+<Step>Install the dependencies.</Step>
 
 ```bash title="Terminal"
 npm install react-day-picker
 ```
+
+<Step>Add the [Button](/docs/components/button) component.</Step>
 
 <Step>Copy and paste the following code into your project.</Step>
 
@@ -40,7 +43,7 @@ npm install react-day-picker
 ## Usage
 
 ```tsx title="Imports"
-import { Calendar } from "@/components/ui/calendar"
+import { Calendar, CalendarDayButton } from "@/components/ui/calendar"
 ```
 
 ```tsx title="Anatomy"
@@ -51,35 +54,27 @@ import { Calendar } from "@/components/ui/calendar"
 
 ### Single Date
 
-To select one date, set `mode="single"`.
+To select one date, set `mode="single"` on `Calendar`.
 
-<ComponentPreview name="calendar-single-demo" />
-
----
+<ComponentPreview name="calendar-single-date-demo" />
 
 ### Multiple Dates
 
-To select several dates, set `mode="multiple"`.
+To select several dates, set `mode="multiple"` on `Calendar`.
 
-<ComponentPreview name="calendar-multiple-demo" />
-
----
+<ComponentPreview name="calendar-multiple-dates-demo" />
 
 ### Date Range
 
-To select a range, set `mode="range"`. To show two months, set `numberOfMonths={2}`.
+To select a range, set `mode="range"` on `Calendar`. To show two months, set `numberOfMonths={2}`.
 
-<ComponentPreview name="calendar-range-demo" />
-
----
+<ComponentPreview name="calendar-date-range-demo" />
 
 ### Month and Year Selector
 
-To pick the month and year from dropdowns, set `captionLayout="dropdown"`.
+To pick the month and year from dropdowns, set `captionLayout="dropdown"` on `Calendar`.
 
 <ComponentPreview name="calendar-month-and-year-selector-demo" />
-
----
 
 ### Custom Month and Year Selector
 
@@ -87,15 +82,11 @@ To replace the dropdowns, pass your own `Dropdown` to `components`. This example
 
 <ComponentPreview name="calendar-custom-month-and-year-selector-demo" />
 
----
-
 ### Week Numbers
 
-To show week numbers, set `showWeekNumber`.
+To show week numbers, set `showWeekNumber` on `Calendar`.
 
 <ComponentPreview name="calendar-week-numbers-demo" />
-
----
 
 ### Disabled
 
@@ -103,15 +94,11 @@ To disable dates, pass them to `disabled`.
 
 <ComponentPreview name="calendar-disabled-demo" />
 
----
-
 ### Presets
 
 To jump to a date from outside the calendar, control `selected` and `month`.
 
 <ComponentPreview name="calendar-presets-demo" />
-
----
 
 ### Custom Cell
 
@@ -119,17 +106,37 @@ To add content to a day, wrap `CalendarDayButton` and pass it as `DayButton` to 
 
 <ComponentPreview name="calendar-custom-cell-demo" />
 
----
-
 ### RTL
 
-To show the calendar right to left, set `dir="rtl"` on `html` and wrap your app in `DirectionProvider`. See [RTL](/docs/getting-started/rtl).
+To enable RTL support, see the [RTL guide](/docs/getting-started/rtl).
 
 <ComponentPreview name="calendar-rtl-demo" direction="rtl" />
 
+## Tips
+
+<Tips>
+
+<Tip title="Control the selection">
+
+To control the selection, set `selected` and `onSelect`.
+
+```tsx {5-6}
+const [date, setDate] = useState<Date | undefined>(undefined)
+
+<Calendar
+	mode="single"
+	selected={date}
+	onSelect={setDate}
+/>
+```
+
+</Tip>
+
+</Tips>
+
 ## API Reference
 
-What 9ui adds to React DayPicker. For the rest of the API, see the [React DayPicker docs](https://daypicker.dev/).
+What 9ui adds to React DayPicker. See the [React DayPicker](https://daypicker.dev/) documentation for the rest.
 
 ### Calendar
 
@@ -166,7 +173,7 @@ What 9ui adds to React DayPicker. For the rest of the API, see the [React DayPic
 
 The day button 9ui renders. To add content to a day, wrap it and pass it as `DayButton` to `components`.
 
-### Data attributes
+### Data Attributes
 
 <ApiTable
 	label="Attribute"
@@ -179,7 +186,7 @@ The day button 9ui renders. To add content to a day, wrap it and pass it as `Day
 		{
 			name: "data-selected-primary",
 			type: "boolean",
-			description: "Present on a selected day that is not in the middle of a range.",
+			description: "Present on a selected day that isn't in the middle of a range.",
 		},
 		{
 			name: "data-range-start",

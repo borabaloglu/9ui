@@ -3,6 +3,7 @@ title: Data Table
 description: A table with sorting, filtering, pagination and row selection, built with TanStack Table.
 label: New
 ---
+
 <ComponentLinks
 	links={[
 		{
@@ -18,7 +19,7 @@ label: New
 
 Every data table is different. Each one has its own columns, sorting and filtering rules and data source.
 
-So instead of a single component, this page is a guide. It shows how to build your own data table with the [`Table`](/docs/components/table) component and [`TanStack Table`](https://tanstack.com/table).
+So instead of a single component, this page is a guide. It shows how to build your own data table with the [Table](/docs/components/table) component and [TanStack Table](https://tanstack.com/table).
 
 ## Installation
 
@@ -26,9 +27,9 @@ The data table is a composition of the `Table` component and TanStack Table. Thi
 
 <Steps>
 
-<Step>Follow installation instructions for the [`Table`](/docs/components/table) component.</Step>
+<Step>Follow installation instructions for the [Table](/docs/components/table) component.</Step>
 
-<Step>Add the components your table uses. The demo on this page uses [`Badge`](/docs/components/badge), [`Button`](/docs/components/button), [`Checkbox`](/docs/components/checkbox), [`Input Group`](/docs/components/input-group), [`Menu`](/docs/components/menu) and [`Select`](/docs/components/select).</Step>
+<Step>Add the components your table uses. The demo on this page uses [Badge](/docs/components/badge), [Button](/docs/components/button), [Checkbox](/docs/components/checkbox), [Input Group](/docs/components/input-group), [Menu](/docs/components/menu) and [Select](/docs/components/select).</Step>
 
 <Step>Install the dependencies.</Step>
 
@@ -95,15 +96,6 @@ payments
 └── data-table.tsx
 ```
 
-```tsx title="Data"
-type Payment = {
-	id: string
-	amount: number
-	status: "pending" | "processing" | "success" | "failed"
-	email: string
-}
-```
-
 ### Features
 
 To turn on a behavior, add its feature to `tableFeatures`. Sorting, filtering and pagination also need their row model.
@@ -151,6 +143,13 @@ import { createColumnHelper } from "@tanstack/react-table"
 
 import type { DataTableFeatures } from "./features"
 
+export type Payment = {
+	id: string
+	amount: number
+	status: "pending" | "processing" | "success" | "failed"
+	email: string
+}
+
 const columnHelper = createColumnHelper<DataTableFeatures, Payment>()
 
 export const columns = columnHelper.columns([
@@ -170,6 +169,8 @@ export const columns = columnHelper.columns([
 	}),
 ])
 ```
+
+<ComponentPreview name="data-table-basic-demo" />
 
 ### Reusable Component
 
@@ -244,8 +245,6 @@ export function DataTable<TData extends RowData>({
 ```tsx title="Usage"
 <DataTable columns={columns} data={payments} />
 ```
-
-<ComponentPreview name="data-table-basic-demo" />
 
 ### Row Actions
 
@@ -337,7 +336,7 @@ To filter a column, call `column.setFilterValue` from an input.
 
 ### Column Visibility
 
-To show or hide a column, call `column.toggleVisibility`. To keep a column always visible, set `enableHiding` to `false`.
+To show or hide a column, call `column.toggleVisibility`. To keep a column always visible, set `enableHiding: false`.
 
 To render only the visible columns, use `row.getVisibleCells` instead of `row.getAllCells`.
 
@@ -464,7 +463,7 @@ const table = useTable({
 
 ## RTL
 
-To show the data table right to left, set `dir="rtl"` on `html` and wrap your app in `DirectionProvider`. See [RTL](/docs/getting-started/rtl).
+To enable RTL support, see the [RTL guide](/docs/getting-started/rtl).
 
 <ComponentPreview name="data-table-rtl-demo" direction="rtl" />
 

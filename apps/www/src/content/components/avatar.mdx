@@ -1,6 +1,6 @@
 ---
 title: Avatar
-description: Displays an avatar with a fallback.
+description: An image of a user with a fallback.
 ---
 
 <ComponentLinks
@@ -56,15 +56,13 @@ import {
 </AvatarGroup>
 ```
 
-To use `next/image`, set `keepMounted` on `AvatarImage` and pass the image to `render`.
-
 ## Examples
 
-### Sizes
+### Size
 
-Set `size` on `Avatar` to `sm` or `lg` to change its size.
+Set `size="sm"` or `size="lg"` on `Avatar` to change its size.
 
-<ComponentPreview name="avatar-sizes-demo" />
+<ComponentPreview name="avatar-size-demo" />
 
 ### Shapes
 
@@ -80,7 +78,7 @@ Set `shape="square"` on `Avatar` for rounded corners instead of a circle.
 
 ### Loading
 
-The fallback shows while the image loads, then the image fades in. To wait before showing the fallback, set `delay` on `AvatarFallback`.
+To wait before showing the fallback while the image loads, set `delay` on `AvatarFallback`.
 
 <ComponentPreview name="avatar-loading-demo" showReload={true} />
 
@@ -104,13 +102,37 @@ To show how many avatars are hidden, add `AvatarGroupOverflow` at the end of the
 
 ### RTL
 
-To show the avatar right to left, set `dir="rtl"` on `html` and wrap your app in `DirectionProvider`. See [RTL](/docs/getting-started/rtl).
+To enable RTL support, see the [RTL guide](/docs/getting-started/rtl).
 
 <ComponentPreview name="avatar-rtl-demo" direction="rtl" />
 
+## Tips
+
+<Tips>
+
+<Tip title="Use next/image">
+
+To use `next/image`, set `keepMounted` on `AvatarImage` and pass the image to `render`.
+
+```tsx {5-6}
+import Image from "next/image"
+
+<Avatar>
+	<AvatarImage
+		keepMounted
+		render={<Image src="/avatars/maya.jpg" alt="Maya Chen" width={32} height={32} />}
+	/>
+	<AvatarFallback>MC</AvatarFallback>
+</Avatar>
+```
+
+</Tip>
+
+</Tips>
+
 ## API Reference
 
-What 9ui adds to Base UI Avatar. For the rest of the API, see the [Base UI Avatar reference](https://base-ui.com/react/components/avatar#api-reference).
+What 9ui adds to Base UI Avatar. See the [Base UI](https://base-ui.com/react/components/avatar#api-reference) documentation for the rest.
 
 ### Avatar
 
@@ -143,7 +165,7 @@ Overlaps its avatars with a cutout around each one.
 
 A count of the hidden avatars, sized to match the avatars in the group.
 
-### Data attributes
+### Data Attributes
 
 <ApiTable
 	label="Attribute"

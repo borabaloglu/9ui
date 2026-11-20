@@ -3,6 +3,7 @@ title: Button Group
 description: A set of related buttons and controls joined into one unit.
 label: New
 ---
+
 <ComponentPreview name="button-group-demo" />
 
 ## Installation
@@ -15,6 +16,8 @@ npx shadcn@latest add @9ui/button-group
 </div>
 
 <Steps>
+
+<Step>Add the [Separator](/docs/components/separator) component.</Step>
 
 <Step>Copy and paste the following code into your project.</Step>
 
@@ -42,15 +45,13 @@ import {
 </ButtonGroup>
 ```
 
-Give the group an `aria-label` when its purpose isn't clear from the buttons alone.
-
 For buttons that stay pressed, use [Toggle Group](/docs/components/toggle-group) instead.
 
 ## Examples
 
 ### Vertical
 
-Set `orientation="vertical"` to stack the buttons.
+Set `orientation="vertical"` on `ButtonGroup` to stack the buttons.
 
 <ComponentPreview name="button-group-vertical-demo" />
 
@@ -98,9 +99,29 @@ To show text next to a control, add `ButtonGroupText`.
 
 ### RTL
 
-To show the button group right to left, set `dir="rtl"` on `html` and wrap your app in `DirectionProvider`. See [RTL](/docs/getting-started/rtl).
+To enable RTL support, see the [RTL guide](/docs/getting-started/rtl).
 
 <ComponentPreview name="button-group-rtl-demo" direction="rtl" />
+
+## Tips
+
+<Tips>
+
+<Tip title="Label the group">
+
+Give the group an `aria-label` when its purpose isn't clear from the buttons alone.
+
+```tsx {1}
+<ButtonGroup aria-label="Text alignment">
+	<Button variant="outline">Left</Button>
+	<Button variant="outline">Center</Button>
+	<Button variant="outline">Right</Button>
+</ButtonGroup>
+```
+
+</Tip>
+
+</Tips>
 
 ## API Reference
 
@@ -127,7 +148,7 @@ A text or icon segment that matches the buttons. To render it as another element
 
 A line between items. It follows the orientation of the group, so it takes no `orientation` prop.
 
-### Data attributes
+### Data Attributes
 
 <ApiTable
 	label="Attribute"

@@ -2,11 +2,12 @@
 title: Vaul
 description: A drawer with drag gestures and snap points, built on vaul-base.
 ---
+
 <ComponentLinks
 	links={[
 		{
 			label: "Docs",
-			href: "https://vaul.emilkowal.ski/getting-started",
+			href: "https://vaul-base.vercel.app",
 		},
 	]}
 />
@@ -29,9 +30,9 @@ npx shadcn@latest add @9ui/vaul
 </div>
 
 <Steps>
-<Step>Install the following dependencies:</Step>
+<Step>Install the dependencies.</Step>
 
-```bash
+```bash title="Terminal"
 npm install vaul-base
 ```
 
@@ -51,7 +52,10 @@ import {
 	VaulContent,
 	VaulDescription,
 	VaulFooter,
+	VaulHandle,
 	VaulHeader,
+	VaulNested,
+	VaulOverlay,
 	VaulPanel,
 	VaulTitle,
 	VaulTrigger,
@@ -74,13 +78,7 @@ import {
 </Vaul>
 ```
 
-Put the body in `VaulPanel`. It scrolls when the content is taller than the drawer, while the header and footer stay in place.
-
 On top and bottom drawers the header, panel and footer keep their content in a centered column, so it stays readable on wide screens.
-
-The drawer pads its edges by `env(safe-area-inset-top)` and `env(safe-area-inset-bottom)`, so content clears the status bar and home indicator when the page uses `viewport-fit=cover`.
-
-To change the corner radius, set `className="[--vaul-radius:var(--radius-xl)]"` on `VaulContent`.
 
 ## Examples
 
@@ -92,7 +90,7 @@ Set `direction` on `Vaul` to choose the edge the drawer slides in from.
 
 ### Inset
 
-Set `variant="inset"` on `VaulContent` to float the drawer inside the viewport with rounded corners on every side. Inset drawers are not meant to be combined with snap points.
+Set `variant="inset"` on `VaulContent` to float the drawer inside the viewport with rounded corners on every side. Inset drawers aren't meant to be combined with snap points.
 
 <ComponentPreview name="vaul-inset-demo" />
 
@@ -104,7 +102,7 @@ Set `variant="inset"` on `VaulContent` to float the drawer inside the viewport w
 
 ### Snap Points
 
-Pass `snapPoints` to let the drawer rest at fixed heights. Use pixel strings or a fraction of the screen height, and control the current one with `activeSnapPoint` and `setActiveSnapPoint`. The overlay stays half visible at the lower snap points and fades in fully at the last one.
+Set `snapPoints` on `Vaul` to let the drawer rest at fixed heights. Use pixel strings or a fraction of the screen height, and control the current one with `activeSnapPoint` and `setActiveSnapPoint`. The overlay stays half visible at the lower snap points and fades in fully at the last one.
 
 <ComponentPreview name="vaul-snap-points-demo" />
 
@@ -118,7 +116,7 @@ Use `VaulNested` as the root of a drawer opened from inside another. The parent 
 
 Set `variant="bare"` on `VaulFooter` to drop its border and background.
 
-<ComponentPreview name="vaul-footer-bare-demo" />
+<ComponentPreview name="vaul-bare-footer-demo" />
 
 ### Handle
 
@@ -138,13 +136,90 @@ The example below runs in a sandbox: the drawer is rendered into the frame with 
 
 ### RTL
 
-To show the drawer right to left, set `dir="rtl"` on `html` and wrap your app in `DirectionProvider`. See [RTL](/docs/getting-started/rtl).
+To enable RTL support, see the [RTL guide](/docs/getting-started/rtl).
 
 <ComponentPreview name="vaul-rtl-demo" direction="rtl" />
 
+## Tips
+
+<Tips>
+
+<Tip title="Label icon-only triggers">
+
+Give icon-only triggers an `aria-label`.
+
+```tsx {2}
+<VaulTrigger
+	render={<Button variant="outline" size="icon" aria-label="Settings" />}
+>
+	<SettingsIcon />
+</VaulTrigger>
+```
+
+</Tip>
+
+<Tip title="Use your own button as the trigger">
+
+Set `render` on `VaulTrigger` to use your own button.
+
+```tsx {1}
+<VaulTrigger render={<Button variant="outline" />}>
+	Send feedback
+</VaulTrigger>
+```
+
+</Tip>
+
+<Tip title="Scroll the body">
+
+Put the body in `VaulPanel`. It scrolls when the content is taller than the drawer, while the header and footer stay in place.
+
+```tsx {5-7}
+<VaulContent>
+	<VaulHeader>
+		<VaulTitle>Terms of service</VaulTitle>
+	</VaulHeader>
+	<VaulPanel>
+		<p>By using this service you agree to these terms.</p>
+	</VaulPanel>
+	<VaulFooter>
+		<VaulClose render={<Button />}>Accept</VaulClose>
+	</VaulFooter>
+</VaulContent>
+```
+
+</Tip>
+
+<Tip title="Clear the status bar and home indicator">
+
+To keep content clear of the status bar and home indicator, set `viewport-fit=cover` in the viewport meta tag of the page.
+
+```tsx {3}
+<meta
+	name="viewport"
+	content="width=device-width, initial-scale=1, viewport-fit=cover"
+/>
+```
+
+</Tip>
+
+<Tip title="Change the corner radius">
+
+To change the corner radius, set `className="[--vaul-radius:var(--radius-xl)]"` on `VaulContent`.
+
+```tsx {1}
+<VaulContent className="[--vaul-radius:var(--radius-xl)]">
+	<VaulTitle>Send feedback</VaulTitle>
+</VaulContent>
+```
+
+</Tip>
+
+</Tips>
+
 ## API Reference
 
-What 9ui adds to vaul-base. For the rest of the API, see the [vaul-base docs](https://vaul-base.vercel.app).
+What 9ui adds to vaul-base. See the [vaul-base](https://vaul-base.vercel.app) documentation for the rest.
 
 ### VaulNested
 
@@ -194,7 +269,7 @@ Holds the body and scrolls it while the header and footer stay in place.
 	]}
 />
 
-### Data attributes
+### Data Attributes
 
 <ApiTable
 	label="Attribute"

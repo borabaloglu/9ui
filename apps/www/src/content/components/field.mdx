@@ -3,6 +3,7 @@ title: Field
 description: A wrapper that gives a form control its label, description and error message.
 label: New
 ---
+
 <ComponentLinks
 	links={[
 		{
@@ -55,8 +56,6 @@ import {
 </Field>
 ```
 
-The label, description and error are linked to the control for you. Don't set `id`, `htmlFor` or `aria-describedby` by hand.
-
 ## Examples
 
 ### Description
@@ -73,7 +72,7 @@ Set `invalid` on `Field` and `match` on `FieldError` to show an error from your 
 
 ### Validation
 
-Set `validate` to run your own check. `validationMode` sets when it runs and `validationDebounceTime` delays it while typing.
+Set `validate` on `Field` to run your own check. `validationMode` sets when it runs and `validationDebounceTime` delays it while typing.
 
 <ComponentPreview name="field-validation-demo" />
 
@@ -85,13 +84,13 @@ Set `disabled` on `Field` to disable the control and dim the label.
 
 ### Horizontal
 
-Set `orientation` to `horizontal` to place the label beside a switch or checkbox.
+Set `orientation="horizontal"` on `Field` to place the label beside a switch or checkbox.
 
 <ComponentPreview name="field-horizontal-demo" />
 
 ### RTL
 
-To show the field right to left, set `dir="rtl"` on `html` and wrap your app in `DirectionProvider`. See [RTL](/docs/getting-started/rtl).
+To enable RTL support, see the [RTL guide](/docs/getting-started/rtl).
 
 <ComponentPreview name="field-rtl-demo" direction="rtl" />
 
@@ -99,9 +98,87 @@ To show the field right to left, set `dir="rtl"` on `html` and wrap your app in 
 
 See the form guides for [Base UI Form](/docs/forms/base-ui), [React Hook Form](/docs/forms/react-hook-form) and [TanStack Form](/docs/forms/tanstack-form).
 
+## Tips
+
+<Tips>
+
+<Tip title="Link the label, description and error">
+
+Place the label, description and error inside `Field` to link them to the control. Don't set `id`, `htmlFor` or `aria-describedby` by hand.
+
+```tsx {2,4-5}
+<Field name="username">
+	<FieldLabel>Username</FieldLabel>
+	<Input required />
+	<FieldDescription>Your public display name.</FieldDescription>
+	<FieldError match="valueMissing">Enter a username.</FieldError>
+</Field>
+```
+
+</Tip>
+
+<Tip title="Label each option in a group">
+
+Use `FieldItem` for each option in a checkbox or radio group.
+
+```tsx {3,9}
+<Field name="channels">
+	<CheckboxGroup defaultValue={["email"]}>
+		<FieldItem>
+			<FieldLabel>
+				<Checkbox value="email" />
+				Email
+			</FieldLabel>
+		</FieldItem>
+		<FieldItem>
+			<FieldLabel>
+				<Checkbox value="sms" />
+				Text messages
+			</FieldLabel>
+		</FieldItem>
+	</CheckboxGroup>
+</Field>
+```
+
+</Tip>
+
+<Tip title="Render your own input">
+
+Use `FieldControl` to render your own input.
+
+```tsx {3-6}
+<Field name="email">
+	<FieldLabel>Email</FieldLabel>
+	<FieldControl
+		type="email"
+		className="h-9 rounded-md border px-3 text-sm"
+	/>
+</Field>
+```
+
+</Tip>
+
+<Tip title="Read the validity state">
+
+Use `FieldValidity` to read the validity state.
+
+```tsx {4-6}
+<Field name="email">
+	<FieldLabel>Email</FieldLabel>
+	<Input type="email" required />
+	<FieldValidity>
+		{(state) => state.validity.valueMissing && <p>Enter your email.</p>}
+	</FieldValidity>
+</Field>
+```
+
+</Tip>
+
+</Tips>
+
 ## API Reference
 
-What 9ui adds to Base UI Field. For the rest of the API, see the [Base UI Field reference](https://base-ui.com/react/components/field#api-reference).
+What 9ui adds to Base UI Field. See the [Base UI](https://base-ui.com/react/components/field#api-reference) documentation for the rest.
 
 ### Field
 
@@ -116,7 +193,7 @@ What 9ui adds to Base UI Field. For the rest of the API, see the [Base UI Field 
 	]}
 />
 
-### Data attributes
+### Data Attributes
 
 <ApiTable
 	label="Attribute"

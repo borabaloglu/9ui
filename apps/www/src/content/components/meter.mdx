@@ -1,6 +1,6 @@
 ---
 title: Meter
-description: Used to represent a value within a fixed scale.
+description: A bar that shows a value within a fixed range.
 ---
 
 <ComponentLinks
@@ -56,8 +56,6 @@ import {
 </Meter>
 ```
 
-Give every meter a name: add a `MeterLabel`, or set `aria-label` on `Meter` when there is no visible label.
-
 ## Examples
 
 ### Without Label
@@ -68,7 +66,7 @@ Leave out `MeterLabel` and `MeterValue` to show only the bar.
 
 ### Format
 
-Set `format` to show the value as a unit, currency or percentage. It takes the same options as `Intl.NumberFormat`.
+Set `format` on `Meter` to show the value as a unit, currency or percentage. It takes the same options as `Intl.NumberFormat`.
 
 <ComponentPreview name="meter-format-demo" />
 
@@ -80,13 +78,13 @@ To write the value text yourself, pass a function to `MeterValue`. Set `getAriaV
 
 ### Range
 
-Set `min` and `max` to change the scale.
+Set `min` and `max` on `Meter` to change the scale.
 
 <ComponentPreview name="meter-range-demo" />
 
 ### Thresholds
 
-To color the fill by how good the value is, set `low`, `high` and `optimum`. They work like the native `meter` element.
+To color the fill by how good the value is, set `low`, `high` and `optimum` on `Meter`. They work like the native `meter` element.
 
 <ComponentPreview name="meter-thresholds-demo" />
 
@@ -98,19 +96,39 @@ Set `className` on `MeterIndicator` to change the fill color.
 
 ### Circular
 
-To show a ring instead of a bar, use `MeterCircularTrack` and `MeterCircularIndicator`. Set `size` and `strokeWidth` on `MeterCircularTrack` to change its dimensions.
+To show a ring instead of a bar, use `MeterCircularTrack` and `MeterCircularIndicator`, and set `className="flex items-center"` on `Meter`. Set `size` and `strokeWidth` on `MeterCircularTrack` to change its dimensions.
 
 <ComponentPreview name="meter-circular-demo" />
 
 ### RTL
 
-To show the meter right to left, set `dir="rtl"` on `html` and wrap your app in `DirectionProvider`. See [RTL](/docs/getting-started/rtl).
+To enable RTL support, see the [RTL guide](/docs/getting-started/rtl).
 
 <ComponentPreview name="meter-rtl-demo" direction="rtl" />
 
+## Tips
+
+<Tips>
+
+<Tip title="Name the meter">
+
+Give every meter a name: add a `MeterLabel`, or set `aria-label` on `Meter` when there is no visible label.
+
+```tsx {1}
+<Meter aria-label="Battery level" value={60}>
+	<MeterTrack>
+		<MeterIndicator />
+	</MeterTrack>
+</Meter>
+```
+
+</Tip>
+
+</Tips>
+
 ## API Reference
 
-What 9ui adds to Base UI Meter. For the rest of the API, see the [Base UI Meter reference](https://base-ui.com/react/components/meter#api-reference).
+What 9ui adds to Base UI Meter. See the [Base UI](https://base-ui.com/react/components/meter#api-reference) documentation for the rest.
 
 ### Meter
 
@@ -158,7 +176,7 @@ Set `low` or `high` to color the fill by level. They work like the native `meter
 	]}
 />
 
-### Data attributes
+### Data Attributes
 
 <ApiTable
 	label="Attribute"

@@ -52,15 +52,11 @@ import {
 </Accordion>
 ```
 
-To open a panel by default, set `defaultValue` on `Accordion` to the `value` of its `AccordionItem`.
-
-To let the browser's find in page open closed panels, set `hiddenUntilFound` on `Accordion`.
-
 ## Examples
 
 ### Multiple
 
-Set `multiple` to keep more than one panel open at the same time.
+Set `multiple` on `Accordion` to keep more than one panel open at the same time.
 
 <ComponentPreview name="accordion-multiple-demo" previewClassName="min-h-110 items-start" />
 
@@ -72,10 +68,50 @@ Set `disabled` on an `AccordionItem` to prevent it from opening.
 
 ### RTL
 
-To show the accordion right to left, set `dir="rtl"` on `html` and wrap your app in `DirectionProvider`. See [RTL](/docs/getting-started/rtl).
+To enable RTL support, see the [RTL guide](/docs/getting-started/rtl).
 
 <ComponentPreview name="accordion-rtl-demo" direction="rtl" previewClassName="min-h-75 items-start" />
 
+## Tips
+
+<Tips>
+
+<Tip title="Open a panel by default">
+
+To open a panel by default, set `defaultValue` on `Accordion` to the `value` of its `AccordionItem`.
+
+```tsx {1}
+<Accordion defaultValue={["shipping"]}>
+	<AccordionItem value="shipping">
+		<AccordionTrigger>Shipping</AccordionTrigger>
+		<AccordionPanel>Orders ship within two days.</AccordionPanel>
+	</AccordionItem>
+</Accordion>
+```
+
+</Tip>
+
+<Tip title="Let find in page open closed panels">
+
+To let the browser's find in page open closed panels, set `hiddenUntilFound` on `Accordion`.
+
+```tsx {1}
+<Accordion hiddenUntilFound>
+	<AccordionItem>
+		<AccordionTrigger>Shipping</AccordionTrigger>
+		<AccordionPanel>Orders ship within two days.</AccordionPanel>
+	</AccordionItem>
+</Accordion>
+```
+
+</Tip>
+
+</Tips>
+
 ## API Reference
 
-9ui adds no props to Base UI Accordion. For its API, see the [Base UI Accordion reference](https://base-ui.com/react/components/accordion#api-reference).
+See the [Base UI](https://base-ui.com/react/components/accordion#api-reference) documentation for more information.
+
+### AccordionTrigger
+
+Bundles the header and trigger, and adds a chevron.

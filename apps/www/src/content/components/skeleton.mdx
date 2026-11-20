@@ -47,8 +47,6 @@ import { Skeleton } from "@/components/ui/skeleton"
 <Skeleton />
 ```
 
-Set the size and shape with `className`. To tell screen readers the content is loading, set `aria-busy` on the container.
-
 ## Examples
 
 ### Loading
@@ -59,25 +57,62 @@ To soften the swap, fade the content in when it replaces the skeleton.
 
 ### Avatar
 
+Use `rounded-full` for an avatar.
+
 <ComponentPreview name="skeleton-avatar-demo" />
 
 ### Text
+
+Stack skeletons of different widths for lines of text.
 
 <ComponentPreview name="skeleton-text-demo" />
 
 ### Form
 
+Match the height of each field.
+
 <ComponentPreview name="skeleton-form-demo" />
 
 ### Table
+
+Put a skeleton in each cell.
 
 <ComponentPreview name="skeleton-table-demo" />
 
 ### RTL
 
-To show the skeleton right to left, set `dir="rtl"` on `html` and wrap your app in `DirectionProvider`. See [RTL](/docs/getting-started/rtl).
+To enable RTL support, see the [RTL guide](/docs/getting-started/rtl).
 
 <ComponentPreview name="skeleton-rtl-demo" direction="rtl" />
+
+## Tips
+
+<Tips>
+
+<Tip title="Tell screen readers the content is loading">
+
+To tell screen readers the content is loading, set `aria-busy="true"` on the container.
+
+```tsx {1}
+<div className="flex flex-col gap-1.5" aria-busy="true">
+	<Skeleton className="h-4 w-32" />
+	<Skeleton className="h-3 w-24" />
+</div>
+```
+
+</Tip>
+
+<Tip title="Set the size and shape">
+
+Set `className` on `Skeleton` to change its size and shape.
+
+```tsx {1}
+<Skeleton className="size-10 rounded-full" />
+```
+
+</Tip>
+
+</Tips>
 
 ## API Reference
 

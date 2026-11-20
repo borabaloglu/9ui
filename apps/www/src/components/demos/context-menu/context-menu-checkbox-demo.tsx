@@ -5,6 +5,7 @@ import { useState } from "react";
 import {
 	ContextMenu,
 	ContextMenuCheckboxItem,
+	ContextMenuItem,
 	ContextMenuPopup,
 	ContextMenuSeparator,
 	ContextMenuTrigger,
@@ -46,6 +47,8 @@ export default function ContextMenuCheckboxDemo() {
 				</ContextMenuCheckboxItem>
 				<ContextMenuSeparator />
 				<ContextMenuCheckboxItem disabled>Minimap</ContextMenuCheckboxItem>
+				<ContextMenuSeparator />
+				<ContextMenuItem inset>Reset View</ContextMenuItem>
 			</ContextMenuPopup>
 		</ContextMenu>
 	);

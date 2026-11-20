@@ -1,0 +1,14 @@
+import { PlusIcon } from "lucide-react";
+
+import { Badge } from "@/components/ui/badge";
+
+export default function BadgeDefaultSizeDemo() {
+	return (
+		<div className="flex items-center gap-2">
+			<Badge>Default</Badge>
+			<Badge size="icon" aria-label="Add">
+				<PlusIcon />
+			</Badge>
+		</div>
+	);
+}

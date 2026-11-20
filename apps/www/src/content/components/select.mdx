@@ -2,6 +2,7 @@
 title: Select
 description: A control for choosing one or more options from a list.
 ---
+
 <ComponentLinks
 	links={[
 		{
@@ -64,13 +65,13 @@ import {
 </Select>
 ```
 
-Pass `items` to `Select` so `SelectValue` shows the label of the selected value instead of the raw value. Give every select a name: add a `SelectLabel`, use [Field](/docs/components/field) with a `FieldLabel`, or set `aria-label` on `SelectTrigger`. For long lists that need filtering, use [Combobox](/docs/components/combobox).
+For long lists that need filtering, use [Combobox](/docs/components/combobox).
 
 ## Examples
 
 ### Size
 
-Set `size` to `sm`, `default` or `lg` on `SelectTrigger`.
+Set `size="sm"`, `size="default"` or `size="lg"` on `SelectTrigger`.
 
 <ComponentPreview name="select-size-demo" />
 
@@ -82,7 +83,7 @@ Set `placeholder` on `SelectValue` to show a hint while nothing is selected. To 
 
 ### Align Item with Trigger
 
-The popup opens over the trigger, with the selected item on top of the value. On touch devices and when there is not enough room, it opens below the trigger instead. Set `alignItemWithTrigger={false}` on `SelectPopup` to always open it beside the trigger.
+The popup opens over the trigger so the selected item lines up with the value. Set `alignItemWithTrigger={false}` on `SelectPopup` to open it below the trigger.
 
 <ComponentPreview name="select-align-item-with-trigger-demo" />
 
@@ -110,7 +111,7 @@ A list taller than the available space scrolls, with arrows at the top and botto
 
 <ComponentPreview name="select-scrollable-demo" />
 
-### Multiple Selection
+### Multiple
 
 Set `multiple` on `Select` to allow more than one option. Pass a function to `SelectValue` to format the selected values.
 
@@ -120,17 +121,17 @@ Set `multiple` on `Select` to allow more than one option. Pass a function to `Se
 
 Stack a label and a description inside `SelectItem`. With `items` set, the trigger shows only the label.
 
-<ComponentPreview name="select-item-description-demo" />
+<ComponentPreview name="select-item-with-description-demo" />
 
-### With Icon
+### Icons
 
 Place an icon inside `SelectItem`. Pass a function to `SelectValue` to show the icon in the trigger.
 
-<ComponentPreview name="select-icon-demo" />
+<ComponentPreview name="select-icons-demo" />
 
 ### RTL
 
-To show the select right to left, set `dir="rtl"` on `html` and wrap your app in `DirectionProvider`. See [RTL](/docs/getting-started/rtl).
+To enable RTL support, see the [RTL guide](/docs/getting-started/rtl).
 
 <ComponentPreview name="select-rtl-demo" direction="rtl" />
 
@@ -138,9 +139,49 @@ To show the select right to left, set `dir="rtl"` on `html` and wrap your app in
 
 See the form guides for [Base UI Form](/docs/forms/base-ui#select), [React Hook Form](/docs/forms/react-hook-form#select) and [TanStack Form](/docs/forms/tanstack-form#select).
 
+## Tips
+
+<Tips>
+
+<Tip title="Name the select">
+
+Give every select a name: add a `SelectLabel`, use [Field](/docs/components/field) with a `FieldLabel` or set `aria-label` on `SelectTrigger`.
+
+```tsx {2}
+<Select items={items}>
+	<SelectLabel>Fruit</SelectLabel>
+	<SelectTrigger>
+		<SelectValue />
+	</SelectTrigger>
+</Select>
+```
+
+</Tip>
+
+<Tip title="Show the label of the selected value">
+
+To show the label of the selected value instead of the raw value, pass `items` to `Select`.
+
+```tsx {6}
+const items = [
+	{ label: "Apple", value: "apple" },
+	{ label: "Banana", value: "banana" },
+]
+
+<Select items={items}>
+	<SelectTrigger aria-label="Fruit">
+		<SelectValue />
+	</SelectTrigger>
+</Select>
+```
+
+</Tip>
+
+</Tips>
+
 ## API Reference
 
-What 9ui adds to Base UI Select. For the rest of the API, see the [Base UI Select reference](https://base-ui.com/react/components/select#api-reference).
+What 9ui adds to Base UI Select. See the [Base UI](https://base-ui.com/react/components/select#api-reference) documentation for the rest.
 
 ### SelectTrigger
 
@@ -208,7 +249,7 @@ Bundles the portal, positioner, popup, list and scroll arrows.
 	]}
 />
 
-### Data attributes
+### Data Attributes
 
 <ApiTable
 	label="Attribute"

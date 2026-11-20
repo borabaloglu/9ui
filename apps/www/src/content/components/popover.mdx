@@ -2,11 +2,12 @@
 title: Popover
 description: A popup for displaying content.
 ---
+
 <ComponentLinks
 	links={[
 		{
 			label: "API Reference",
-			href: "https://base-ui.com/react/components/popover",
+			href: "https://base-ui.com/react/components/popover#api-reference",
 		},
 	]}
 />
@@ -61,16 +62,6 @@ import {
 </Popover>
 ```
 
-Set `render` on `PopoverTrigger` to use your own button. Give icon-only triggers an `aria-label`.
-
-`PopoverPopup` takes `side`, `align`, `sideOffset` and `alignOffset` to change where the popover opens.
-
-Set `openOnHover` on `PopoverTrigger` to open the popover on hover as well as on click.
-
-Set `modal` on `Popover` to block the rest of the page while the popover is open. Add a `PopoverClose` inside it so focus stays in the popover.
-
-To change the corner radius, set `className="[--popover-radius:var(--radius-xl)]"` on `PopoverPopup`.
-
 ## Examples
 
 ### Close Button
@@ -91,19 +82,104 @@ Create a handle with `createPopoverHandle` and pass it to `Popover` and to any `
 
 Wrap the content in `PopoverViewport` to animate the popover between triggers.
 
-To give each trigger a different width, set `className="w-(--popup-width,auto)"` on `PopoverPopup`.
+To size the popover to each trigger's content, set `className="w-(--popup-width,auto)"` on `PopoverPopup`.
 
 <ComponentPreview name="popover-detached-triggers-demo" />
 
 ### RTL
 
-To show the popover right to left, set `dir="rtl"` on `html` and wrap your app in `DirectionProvider`. See [RTL](/docs/getting-started/rtl).
+To enable RTL support, see the [RTL guide](/docs/getting-started/rtl).
 
 <ComponentPreview name="popover-rtl-demo" direction="rtl" />
 
+## Tips
+
+<Tips>
+
+<Tip title="Label icon-only triggers">
+
+Give icon-only triggers an `aria-label`.
+
+```tsx {2}
+<PopoverTrigger
+	render={<Button size="icon" aria-label="Notifications" />}
+>
+	<BellIcon />
+</PopoverTrigger>
+```
+
+</Tip>
+
+<Tip title="Use your own button as the trigger">
+
+Set `render` on `PopoverTrigger` to use your own button.
+
+```tsx {1}
+<PopoverTrigger render={<Button variant="outline" />}>
+	Open
+</PopoverTrigger>
+```
+
+</Tip>
+
+<Tip title="Change where the popover opens">
+
+`PopoverPopup` takes `side`, `align`, `sideOffset` and `alignOffset` to change where the popover opens.
+
+```tsx {1}
+<PopoverPopup side="top" align="start" sideOffset={8}>
+	<PopoverTitle>Notifications</PopoverTitle>
+</PopoverPopup>
+```
+
+</Tip>
+
+<Tip title="Open on hover">
+
+Set `openOnHover` on `PopoverTrigger` to open the popover on hover as well as on click.
+
+```tsx {1}
+<PopoverTrigger openOnHover render={<Button variant="outline" />}>
+	Open
+</PopoverTrigger>
+```
+
+</Tip>
+
+<Tip title="Block the page while open">
+
+Set `modal` on `Popover` to block the rest of the page while the popover is open. Add a `PopoverClose` inside it so focus stays in the popover.
+
+```tsx {1,6}
+<Popover modal>
+	<PopoverTrigger render={<Button variant="outline" />}>Open</PopoverTrigger>
+	<PopoverPopup>
+		<PopoverTitle>Notifications</PopoverTitle>
+		<PopoverDescription>You have no new notifications.</PopoverDescription>
+		<PopoverClose render={<Button variant="outline" />}>Close</PopoverClose>
+	</PopoverPopup>
+</Popover>
+```
+
+</Tip>
+
+<Tip title="Change the corner radius">
+
+To change the corner radius, set `className="[--popover-radius:var(--radius-xl)]"` on `PopoverPopup`.
+
+```tsx {1}
+<PopoverPopup className="[--popover-radius:var(--radius-xl)]">
+	<PopoverTitle>Notifications</PopoverTitle>
+</PopoverPopup>
+```
+
+</Tip>
+
+</Tips>
+
 ## API Reference
 
-What 9ui adds to Base UI Popover. For the rest of the API, see the [Base UI Popover reference](https://base-ui.com/react/components/popover#api-reference).
+What 9ui adds to Base UI Popover. See the [Base UI](https://base-ui.com/react/components/popover#api-reference) documentation for the rest.
 
 ### PopoverPopup
 

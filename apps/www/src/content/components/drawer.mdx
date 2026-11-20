@@ -2,11 +2,12 @@
 title: Drawer
 description: A panel that slides in from the edge of the screen and can be swiped away.
 ---
+
 <ComponentLinks
 	links={[
 		{
 			label: "API Reference",
-			href: "https://base-ui.com/react/components/drawer",
+			href: "https://base-ui.com/react/components/drawer#api-reference",
 		},
 	]}
 />
@@ -33,13 +34,19 @@ npx shadcn@latest add @9ui/drawer
 
 ```tsx title="Imports"
 import {
+	createDrawerHandle,
 	Drawer,
+	DrawerBackdrop,
 	DrawerClose,
 	DrawerDescription,
 	DrawerFooter,
 	DrawerHeader,
+	DrawerIndent,
+	DrawerIndentBackground,
 	DrawerPanel,
 	DrawerPopup,
+	DrawerProvider,
+	DrawerSwipeArea,
 	DrawerTitle,
 	DrawerTrigger,
 } from "@/components/ui/drawer"
@@ -61,15 +68,9 @@ import {
 </Drawer>
 ```
 
-Put the body in `DrawerPanel`. It scrolls when the content is taller than the drawer, while the header and footer stay in place. With a mouse, text inside the panel can be selected, and the drawer is dragged by its header, footer or handle.
-
 On top and bottom drawers the header, panel and footer keep their content in a centered column, so it stays readable on wide screens.
 
-The drawer pads its edges by `env(safe-area-inset-top)` and `env(safe-area-inset-bottom)`, so content clears the status bar and home indicator when the page uses `viewport-fit=cover`.
-
-If you do not need swipe gestures or snap points, use [Sheet](/docs/components/sheet).
-
-To change the corner radius, set `className="[--drawer-radius:var(--radius-xl)]"` on `DrawerPopup`.
+If you don't need swipe gestures or snap points, use [Sheet](/docs/components/sheet).
 
 ## Examples
 
@@ -81,7 +82,7 @@ Set `swipeDirection` on `Drawer` to choose the direction that dismisses the draw
 
 ### Inset
 
-Set `variant="inset"` on `DrawerPopup` to float the drawer inside the viewport with rounded corners on every side. Inset drawers are not meant to be combined with snap points.
+Set `variant="inset"` on `DrawerPopup` to float the drawer inside the viewport with rounded corners on every side. Inset drawers aren't meant to be combined with snap points.
 
 <ComponentPreview name="drawer-inset-demo" />
 
@@ -93,7 +94,7 @@ Set `variant="inset"` on `DrawerPopup` to float the drawer inside the viewport w
 
 ### Snap Points
 
-Pass `snapPoints` to let a bottom drawer rest at fixed heights. Use pixel or rem strings, or a fraction of the viewport height, and control the current one with `snapPoint` and `onSnapPointChange`. The backdrop stays half visible at the lower snap points and fades in fully as the drawer expands.
+Set `snapPoints` on `Drawer` to let a bottom drawer rest at fixed heights. Use pixel or rem strings, or a fraction of the viewport height, and control the current one with `snapPoint` and `onSnapPointChange`. The backdrop stays half visible at the lower snap points and fades in fully as the drawer expands.
 
 <ComponentPreview name="drawer-snap-points-demo" />
 
@@ -107,11 +108,11 @@ Render a `Drawer` inside another to stack them. The parent scales down behind th
 
 Set `variant="bare"` on `DrawerFooter` to drop its border and background.
 
-<ComponentPreview name="drawer-footer-bare-demo" />
+<ComponentPreview name="drawer-bare-footer-demo" />
 
-### Non-modal
+### Non-Modal
 
-Set `modal={false}` on `Drawer` to leave the page behind usable: there is no backdrop, focus is not trapped and the page still scrolls. Add `disablePointerDismissal` to keep the drawer open when something outside is pressed.
+Set `modal={false}` on `Drawer` to leave the page behind usable: there is no backdrop, focus isn't trapped and the page still scrolls. Add `disablePointerDismissal` to keep the drawer open when something outside is pressed.
 
 <ComponentPreview name="drawer-non-modal-demo" />
 
@@ -121,7 +122,7 @@ Place `DrawerSwipeArea` inside `Drawer` to open the drawer by swiping in from it
 
 The example below runs in a sandbox: the drawer is rendered into the frame with `portalProps.container`, and the strip is tinted so you can see it. In your app the strip sits on the edge of the screen.
 
-<ComponentPreview name="drawer-swipe-area-demo" />
+<ComponentPreview name="drawer-swipe-to-open-demo" />
 
 ### Detached Triggers
 
@@ -152,13 +153,90 @@ The example below runs in a sandbox: the drawer is rendered into the frame with 
 
 ### RTL
 
-To show the drawer right to left, set `dir="rtl"` on `html` and wrap your app in `DirectionProvider`. See [RTL](/docs/getting-started/rtl). `swipeDirection` is the screen edge in both directions, so to open the drawer from the start, set `swipeDirection="right"`.
+To enable RTL support, see the [RTL guide](/docs/getting-started/rtl).
 
 <ComponentPreview name="drawer-rtl-demo" direction="rtl" />
 
+## Tips
+
+<Tips>
+
+<Tip title="Label icon-only triggers">
+
+Give icon-only triggers an `aria-label`.
+
+```tsx {2}
+<DrawerTrigger
+	render={<Button variant="outline" size="icon" aria-label="Settings" />}
+>
+	<SettingsIcon />
+</DrawerTrigger>
+```
+
+</Tip>
+
+<Tip title="Use your own button as the trigger">
+
+Set `render` on `DrawerTrigger` to use your own button.
+
+```tsx {1}
+<DrawerTrigger render={<Button variant="outline" />}>
+	Send feedback
+</DrawerTrigger>
+```
+
+</Tip>
+
+<Tip title="Scroll the body">
+
+Put the body in `DrawerPanel`. It scrolls when the content is taller than the drawer, while the header and footer stay in place. With a mouse, text inside the panel can be selected, and the drawer is dragged by its header, footer or handle.
+
+```tsx {5-7}
+<DrawerPopup>
+	<DrawerHeader>
+		<DrawerTitle>Terms of service</DrawerTitle>
+	</DrawerHeader>
+	<DrawerPanel>
+		<p>By using this service you agree to these terms.</p>
+	</DrawerPanel>
+	<DrawerFooter>
+		<DrawerClose render={<Button />}>Accept</DrawerClose>
+	</DrawerFooter>
+</DrawerPopup>
+```
+
+</Tip>
+
+<Tip title="Clear the status bar and home indicator">
+
+To keep content clear of the status bar and home indicator, set `viewport-fit=cover` in the viewport meta tag of the page.
+
+```tsx {3}
+<meta
+	name="viewport"
+	content="width=device-width, initial-scale=1, viewport-fit=cover"
+/>
+```
+
+</Tip>
+
+<Tip title="Change the corner radius">
+
+To change the corner radius, set `className="[--drawer-radius:var(--radius-xl)]"` on `DrawerPopup`.
+
+```tsx {1}
+<DrawerPopup className="[--drawer-radius:var(--radius-xl)]">
+	<DrawerTitle>Send feedback</DrawerTitle>
+</DrawerPopup>
+```
+
+</Tip>
+
+</Tips>
+
 ## API Reference
 
-What 9ui adds to Base UI Drawer. For the rest of the API, see the [Base UI Drawer reference](https://base-ui.com/react/components/drawer#api-reference).
+What 9ui adds to Base UI Drawer. See the [Base UI](https://base-ui.com/react/components/drawer#api-reference) documentation for the rest.
 
 ### DrawerPopup
 
@@ -216,7 +294,7 @@ Renders Base UI `Drawer.Content`. Holds the body and scrolls it while the header
 	]}
 />
 
-### Data attributes
+### Data Attributes
 
 <ApiTable
 	label="Attribute"

@@ -15,7 +15,7 @@ export default function AvatarLoadingDemo() {
 	return (
 		<Avatar size="lg">
 			<AvatarImage src={src} alt="Maya Chen" />
-			<AvatarFallback>MC</AvatarFallback>
+			<AvatarFallback delay={300}>MC</AvatarFallback>
 		</Avatar>
 	);
 }

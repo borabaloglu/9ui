@@ -6,7 +6,7 @@ description: A group of panels that can be resized by dragging the handle betwee
 <ComponentLinks
 	links={[
 		{
-			label: "API Reference",
+			label: "Docs",
 			href: "https://react-resizable-panels.vercel.app/",
 		},
 	]}
@@ -25,9 +25,9 @@ npx shadcn@latest add @9ui/resizable
 
 <Steps>
 
-<Step>Install the following dependencies:</Step>
+<Step>Install the dependencies.</Step>
 
-```bash
+```bash title="Terminal"
 npm install react-resizable-panels
 ```
 
@@ -56,15 +56,11 @@ import {
 </ResizablePanelGroup>
 ```
 
-To set the starting size of a panel, set `defaultSize` on `ResizablePanel`.
-
-To limit how far a panel can be resized, set `minSize` and `maxSize` on `ResizablePanel`.
-
 ## Examples
 
 ### Vertical
 
-Set `orientation` to `vertical` to stack the panels.
+Set `orientation="vertical"` on `ResizablePanelGroup` to stack the panels.
 
 <ComponentPreview name="resizable-vertical-demo" />
 
@@ -76,15 +72,47 @@ Set `showHandle` on `ResizableHandle` to show a grip.
 
 ### RTL
 
-To show the resizable right to left, set `dir="rtl"` on `html` and wrap your app in `DirectionProvider`. See [RTL](/docs/getting-started/rtl).
-
-In right to left, the handle's `aria-valuenow` and `aria-controls` describe the panel after the handle. This comes from react-resizable-panels.
+To enable RTL support, see the [RTL guide](/docs/getting-started/rtl).
 
 <ComponentPreview name="resizable-rtl-demo" direction="rtl" />
 
+## Tips
+
+<Tips>
+
+<Tip title="Set the starting size of a panel">
+
+To set the starting size of a panel, set `defaultSize` on `ResizablePanel`.
+
+```tsx {2,4}
+<ResizablePanelGroup>
+	<ResizablePanel defaultSize="30%">Sidebar</ResizablePanel>
+	<ResizableHandle />
+	<ResizablePanel defaultSize="70%">Content</ResizablePanel>
+</ResizablePanelGroup>
+```
+
+</Tip>
+
+<Tip title="Limit how far a panel resizes">
+
+To limit how far a panel can be resized, set `minSize` and `maxSize` on `ResizablePanel`.
+
+```tsx {2}
+<ResizablePanelGroup>
+	<ResizablePanel minSize="20%" maxSize="40%">Sidebar</ResizablePanel>
+	<ResizableHandle />
+	<ResizablePanel>Content</ResizablePanel>
+</ResizablePanelGroup>
+```
+
+</Tip>
+
+</Tips>
+
 ## API Reference
 
-What 9ui adds to react-resizable-panels. For the rest of the API, see the [react-resizable-panels docs](https://react-resizable-panels.vercel.app/).
+What 9ui adds to react-resizable-panels. See the [react-resizable-panels](https://react-resizable-panels.vercel.app/) documentation for the rest.
 
 ### ResizableHandle
 

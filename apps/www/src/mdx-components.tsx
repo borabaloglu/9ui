@@ -15,6 +15,7 @@ import { ComponentsIndex } from "@/components/components-index";
 import { Icons } from "@/components/icons";
 import { InstallationTabs } from "@/components/installation-tabs";
 import { ThemeToggle } from "@/components/theme-toggle";
+import { Tip, Tips } from "@/components/tips";
 import {
 	Accordion,
 	AccordionItem,
@@ -281,6 +282,8 @@ const components: MDXComponents = {
 	AlertTitle,
 	AlertDescription,
 	ApiTable,
+	Tip,
+	Tips,
 	ComponentPreview,
 	ComponentLinks,
 	ComponentsIndex,

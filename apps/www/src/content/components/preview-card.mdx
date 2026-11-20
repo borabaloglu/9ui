@@ -2,11 +2,12 @@
 title: Preview Card
 description: A popup that previews a link when it is hovered.
 ---
+
 <ComponentLinks
 	links={[
 		{
 			label: "API Reference",
-			href: "https://base-ui.com/react/components/preview-card",
+			href: "https://base-ui.com/react/components/preview-card#api-reference",
 		},
 	]}
 />
@@ -51,13 +52,7 @@ import {
 </PreviewCard>
 ```
 
-`PreviewCardTrigger` is a link. Set `href` on it.
-
-Set `delay` and `closeDelay` on `PreviewCardTrigger` to change how fast the preview card opens and closes.
-
-The preview card does not open on touch or for screen readers. Keep everything it shows available on the linked page.
-
-To change the corner radius, set `className="[--preview-card-radius:var(--radius-xl)]"` on `PreviewCardPopup`.
+The preview card doesn't open on touch or for screen readers. Keep everything it shows available on the linked page.
 
 ## Examples
 
@@ -83,13 +78,59 @@ Wrap the content in `PreviewCardViewport` to animate the preview card between tr
 
 ### RTL
 
-To show the preview card right to left, set `dir="rtl"` on `html` and wrap your app in `DirectionProvider`. See [RTL](/docs/getting-started/rtl).
+To enable RTL support, see the [RTL guide](/docs/getting-started/rtl).
 
 <ComponentPreview name="preview-card-rtl-demo" direction="rtl" />
 
+## Tips
+
+<Tips>
+
+<Tip title="Set where the trigger links to">
+
+`PreviewCardTrigger` is a link. Set `href` on it.
+
+```tsx {1}
+<PreviewCardTrigger href="https://www.9ui.dev">
+	9ui
+</PreviewCardTrigger>
+```
+
+</Tip>
+
+<Tip title="Change the open and close delay">
+
+Set `delay` and `closeDelay` on `PreviewCardTrigger` to change how fast the preview card opens and closes.
+
+```tsx {3-4}
+<PreviewCardTrigger
+	href="https://www.9ui.dev"
+	delay={200}
+	closeDelay={100}
+>
+	9ui
+</PreviewCardTrigger>
+```
+
+</Tip>
+
+<Tip title="Change the corner radius">
+
+To change the corner radius, set `className="[--preview-card-radius:var(--radius-xl)]"` on `PreviewCardPopup`.
+
+```tsx {1}
+<PreviewCardPopup className="[--preview-card-radius:var(--radius-xl)]">
+	<span className="font-medium">9ui.dev</span>
+</PreviewCardPopup>
+```
+
+</Tip>
+
+</Tips>
+
 ## API Reference
 
-What 9ui adds to Base UI Preview Card. For the rest of the API, see the [Base UI Preview Card reference](https://base-ui.com/react/components/preview-card#api-reference).
+What 9ui adds to Base UI Preview Card. See the [Base UI](https://base-ui.com/react/components/preview-card#api-reference) documentation for the rest.
 
 ### PreviewCardTrigger
 

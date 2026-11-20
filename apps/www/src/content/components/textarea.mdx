@@ -33,8 +33,6 @@ import { Textarea } from "@/components/ui/textarea"
 <Textarea />
 ```
 
-Give every textarea a `<label>` or `aria-label`. A placeholder isn't a label.
-
 ## Examples
 
 ### Disabled
@@ -43,9 +41,9 @@ Set `disabled` to prevent interaction.
 
 <ComponentPreview name="textarea-disabled-demo" />
 
-### Read-only
+### Read-Only
 
-Set `readOnly` to show a value that cannot be changed. The field drops its fill and shadow. In a theme with a transparent `--input`, it looks the same as an editable field.
+Set `readOnly` to show a value that can't be changed.
 
 <ComponentPreview name="textarea-read-only-demo" />
 
@@ -55,7 +53,7 @@ Set `aria-invalid` to show the error state.
 
 <ComponentPreview name="textarea-invalid-demo" />
 
-### Max height
+### Max Height
 
 Set a `max-h-*` class to stop growing and scroll instead.
 
@@ -63,25 +61,52 @@ Set a `max-h-*` class to stop growing and scroll instead.
 
 ### Field
 
-Place it inside [`Field`](/docs/components/field) to link the label, description and error. No `FieldControl` needed.
+Place it inside [Field](/docs/components/field) to link the label, description and error. No `FieldControl` needed.
 
 <ComponentPreview name="textarea-field-demo" />
 
 ### Input Group
 
-Use [`Input Group`](/docs/components/input-group) to add a header, footer, or buttons.
+Use [Input Group](/docs/components/input-group) to add a header, footer or buttons.
 
-<ComponentPreview name="textarea-with-group-demo" />
+<ComponentPreview name="textarea-input-group-demo" />
 
 ### RTL
 
-To show the textarea right to left, set `dir="rtl"` on `html` and wrap your app in `DirectionProvider`. See [RTL](/docs/getting-started/rtl).
+To enable RTL support, see the [RTL guide](/docs/getting-started/rtl).
 
 <ComponentPreview name="textarea-rtl-demo" direction="rtl" />
 
 ## Form Integration
 
 See the form guides for [Base UI Form](/docs/forms/base-ui#textarea), [React Hook Form](/docs/forms/react-hook-form#textarea) and [TanStack Form](/docs/forms/tanstack-form#textarea).
+
+## Tips
+
+<Tips>
+
+<Tip title="Label the textarea">
+
+Give every textarea a `<label>`. A placeholder isn't a label.
+
+```tsx {1}
+<Label htmlFor="message">Message</Label>
+<Textarea id="message" placeholder="Write your message" />
+```
+
+</Tip>
+
+<Tip title="Name a textarea with no visible label">
+
+Set `aria-label` on `Textarea` when there is no visible label.
+
+```tsx {1}
+<Textarea aria-label="Message" placeholder="Message" />
+```
+
+</Tip>
+
+</Tips>
 
 ## API Reference
 

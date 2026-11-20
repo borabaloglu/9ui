@@ -2,6 +2,7 @@
 title: Toggle Group
 description: A group of toggles for selecting single or multiple options.
 ---
+
 <ComponentLinks
 	links={[
 		{
@@ -23,6 +24,8 @@ npx shadcn@latest add @9ui/toggle-group
 </div>
 
 <Steps>
+
+<Step>Add the [Separator](/docs/components/separator) and [Toggle](/docs/components/toggle) components.</Step>
 
 <Step>Copy and paste the following code into your project.</Step>
 
@@ -49,8 +52,6 @@ import {
 </ToggleGroup>
 ```
 
-Give the group an `aria-label`, and each icon-only item its own.
-
 ## Examples
 
 ### Outline
@@ -61,15 +62,15 @@ Set `variant="outline"` on `ToggleGroup` for bordered items that are joined toge
 
 ### Multiple
 
-Set `multiple` to allow more than one pressed item.
+Set `multiple` on `ToggleGroup` to allow more than one pressed item.
 
 <ComponentPreview name="toggle-group-multiple-demo" />
 
-### Sizes
+### Size
 
-Set `size` on `ToggleGroup` to `sm` or `lg` to change the size of every item.
+Set `size="sm"` or `size="lg"` on `ToggleGroup` to change the size of every item.
 
-<ComponentPreview name="toggle-group-sizes-demo" />
+<ComponentPreview name="toggle-group-size-demo" />
 
 ### Spacing
 
@@ -85,7 +86,7 @@ To divide the items, add `ToggleGroupSeparator` between them.
 
 ### Vertical
 
-Set `orientation="vertical"` to stack the items.
+Set `orientation="vertical"` on `ToggleGroup` to stack the items.
 
 <ComponentPreview name="toggle-group-vertical-demo" />
 
@@ -109,13 +110,62 @@ To add a tooltip, render the item from `TooltipTrigger`.
 
 ### RTL
 
-To show the toggle group right to left, set `dir="rtl"` on `html` and wrap your app in `DirectionProvider`. See [RTL](/docs/getting-started/rtl).
+To enable RTL support, see the [RTL guide](/docs/getting-started/rtl).
 
 <ComponentPreview name="toggle-group-rtl-demo" direction="rtl" />
 
+## Tips
+
+<Tips>
+
+<Tip title="Name the group">
+
+Give the group an `aria-label`.
+
+```tsx {1}
+<ToggleGroup aria-label="Text alignment">
+	<ToggleGroupItem value="start">Start</ToggleGroupItem>
+	<ToggleGroupItem value="end">End</ToggleGroupItem>
+</ToggleGroup>
+```
+
+</Tip>
+
+<Tip title="Label icon-only items">
+
+Give each icon-only `ToggleGroupItem` its own `aria-label`.
+
+```tsx {2,5}
+<ToggleGroup aria-label="Text alignment">
+	<ToggleGroupItem value="start" aria-label="Align start">
+		<TextAlignStartIcon />
+	</ToggleGroupItem>
+	<ToggleGroupItem value="end" aria-label="Align end">
+		<TextAlignEndIcon />
+	</ToggleGroupItem>
+</ToggleGroup>
+```
+
+</Tip>
+
+<Tip title="Give each item a value">
+
+Give each `ToggleGroupItem` a `value`.
+
+```tsx {2-3}
+<ToggleGroup defaultValue={["start"]} aria-label="Text alignment">
+	<ToggleGroupItem value="start">Start</ToggleGroupItem>
+	<ToggleGroupItem value="end">End</ToggleGroupItem>
+</ToggleGroup>
+```
+
+</Tip>
+
+</Tips>
+
 ## API Reference
 
-What 9ui adds to Base UI Toggle Group. For the rest of the API, see the [Base UI Toggle Group reference](https://base-ui.com/react/components/toggle-group#api-reference).
+What 9ui adds to Base UI Toggle Group. See the [Base UI](https://base-ui.com/react/components/toggle-group#api-reference) documentation for the rest.
 
 ### ToggleGroup
 
@@ -148,7 +198,7 @@ Passes `variant` and `size` to every item.
 
 A divider between items. Turns to match the group orientation.
 
-### Data attributes
+### Data Attributes
 
 <ApiTable
 	label="Attribute"

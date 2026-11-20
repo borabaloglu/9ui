@@ -1,6 +1,6 @@
 ---
 title: Alert
-description: Used to highlight important messages.
+description: A message that highlights important information.
 ---
 
 <ComponentPreview name="alert-demo" />
@@ -42,45 +42,41 @@ import {
 </Alert>
 ```
 
-To show an icon, put it first inside `Alert`.
-
-For a message that isn't urgent, set `role="status"` on `Alert`.
-
 ## Examples
 
 ### Success
 
-Set `variant` to `success` to confirm that something worked.
+Set `variant="success"` on `Alert` to confirm that something worked.
 
 <ComponentPreview name="alert-success-demo" />
 
 ### Info
 
-Set `variant` to `info` for a neutral notice.
+Set `variant="info"` on `Alert` for a neutral notice.
 
 <ComponentPreview name="alert-info-demo" />
 
 ### Warning
 
-Set `variant` to `warning` for something that needs attention.
+Set `variant="warning"` on `Alert` for something that needs attention.
 
 <ComponentPreview name="alert-warning-demo" />
 
 ### Danger
 
-Set `variant` to `danger` for an error or a failed action.
+Set `variant="danger"` on `Alert` for an error or a failed action.
 
 <ComponentPreview name="alert-danger-demo" />
 
-### With Action
+### Action
 
 To add a button, put it in `AlertAction`.
 
-<ComponentPreview name="alert-with-action-demo" />
+<ComponentPreview name="alert-action-demo" />
 
 ### Dismissible
 
-To let people close the alert, put a close button in `AlertAction`.
+To let people close the alert, put a close button in `AlertAction`. Give it an `aria-label` when it only has an icon.
 
 <ComponentPreview name="alert-dismissible-demo" />
 
@@ -94,9 +90,42 @@ To make the title a heading, set `render` on `AlertTitle`.
 
 ### RTL
 
-To show the alert right to left, set `dir="rtl"` on `html` and wrap your app in `DirectionProvider`. See [RTL](/docs/getting-started/rtl).
+To enable RTL support, see the [RTL guide](/docs/getting-started/rtl).
 
 <ComponentPreview name="alert-rtl-demo" direction="rtl" />
+
+## Tips
+
+<Tips>
+
+<Tip title="Announce a message that isn't urgent">
+
+For a message that isn't urgent, set `role="status"` on `Alert`.
+
+```tsx {1}
+<Alert role="status">
+	<AlertTitle>Changes saved</AlertTitle>
+	<AlertDescription>Your profile is up to date.</AlertDescription>
+</Alert>
+```
+
+</Tip>
+
+<Tip title="Show an icon">
+
+To show an icon, put it first inside `Alert`.
+
+```tsx {2}
+<Alert>
+	<InfoIcon />
+	<AlertTitle>View-only access</AlertTitle>
+	<AlertDescription>Ask an owner for permission to make edits.</AlertDescription>
+</Alert>
+```
+
+</Tip>
+
+</Tips>
 
 ## API Reference
 
@@ -124,7 +153,7 @@ To render it as a heading, set `render`.
 
 Holds buttons. Sits beside the text on wide screens and below it on small ones.
 
-### Data attributes
+### Data Attributes
 
 <ApiTable
 	label="Attribute"

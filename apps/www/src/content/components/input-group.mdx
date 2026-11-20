@@ -1,6 +1,6 @@
 ---
 title: Input Group
-description: Wraps an input or textarea with addons such as icons, text, buttons, and keyboard shortcuts.
+description: A wrapper that adds icons, text, buttons and shortcuts to an input or textarea.
 label: New
 ---
 
@@ -16,6 +16,8 @@ npx shadcn@latest add @9ui/input-group
 </div>
 
 <Steps>
+
+<Step>Add the [Button](/docs/components/button), [Input](/docs/components/input) and [Textarea](/docs/components/textarea) components.</Step>
 
 <Step>Copy and paste the following code into your project.</Step>
 
@@ -49,39 +51,47 @@ import {
 </InputGroup>
 ```
 
-Give the control a `<label>` or `aria-label`, and give icon-only buttons an accessible name.
-
 ## Examples
 
 ### Size
 
-Set `size` to `sm`, `default` or `lg` on `InputGroup`. The input and buttons inside follow it.
+Set `size="sm"`, `size="default"` or `size="lg"` on `InputGroup`. The input and buttons inside follow it.
 
 <ComponentPreview name="input-group-size-demo" />
 
 ### Align
 
-Set `align` on `InputGroupAddon` to place it at `inline-start`, `inline-end`, `block-start`, or `block-end`.
+Set `align` on `InputGroupAddon` to place it at `inline-start`, `inline-end`, `block-start` or `block-end`.
 
 <ComponentPreview name="input-group-align-demo" />
 
 ### Icon
 
+Wrap an icon in `InputGroupText` inside an addon.
+
 <ComponentPreview name="input-group-icon-demo" />
 
 ### Text
+
+Use `InputGroupText` for a prefix or suffix.
 
 <ComponentPreview name="input-group-text-demo" />
 
 ### Button
 
+Use `InputGroupButton` for actions. Give icon-only buttons an `aria-label`.
+
 <ComponentPreview name="input-group-button-demo" />
 
 ### Keyboard Shortcut
 
-<ComponentPreview name="input-group-kbd-demo" />
+Place a `Kbd` in an addon to show a shortcut.
+
+<ComponentPreview name="input-group-keyboard-shortcut-demo" />
 
 ### Menu
+
+Render `InputGroupButton` from `MenuTrigger` to open a menu.
 
 <ComponentPreview name="input-group-menu-demo" />
 
@@ -93,6 +103,8 @@ Render addons conditionally, such as a spinner while searching.
 
 ### Badge
 
+Place a `Badge` in an addon to show a status.
+
 <ComponentPreview name="input-group-badge-demo" />
 
 ### Disabled
@@ -101,9 +113,9 @@ Set `disabled` on the control to dim the whole group. Buttons in the group stay 
 
 <ComponentPreview name="input-group-disabled-demo" />
 
-### Read-only
+### Read-Only
 
-Set `readOnly` on the control to show a value that cannot be changed. The group drops its fill and shadow. In a theme with a transparent `--input`, it looks the same as an editable field.
+Set `readOnly` on the control to show a value that can't be changed.
 
 <ComponentPreview name="input-group-read-only-demo" />
 
@@ -115,19 +127,59 @@ Set `aria-invalid` on the control to show the error state on the group.
 
 ### Textarea
 
+Use `InputGroupTextarea` with `block-start` or `block-end` addons.
+
 <ComponentPreview name="input-group-textarea-demo" />
 
 ### Field
 
-Place it inside [`Field`](/docs/components/field) to link the label, description and error to the control.
+Place it inside [Field](/docs/components/field) to link the label, description and error to the control.
 
 <ComponentPreview name="input-group-field-demo" />
 
 ### RTL
 
-To show the input group right to left, set `dir="rtl"` on `html` and wrap your app in `DirectionProvider`. See [RTL](/docs/getting-started/rtl).
+To enable RTL support, see the [RTL guide](/docs/getting-started/rtl).
 
 <ComponentPreview name="input-group-rtl-demo" direction="rtl" />
+
+## Tips
+
+<Tips>
+
+<Tip title="Label the control">
+
+Give the control a `<label>` or `aria-label`.
+
+```tsx {2}
+<InputGroup>
+	<InputGroupInput aria-label="Email address" type="email" />
+	<InputGroupAddon align="inline-end">
+		<InputGroupButton variant="secondary">Subscribe</InputGroupButton>
+	</InputGroupAddon>
+</InputGroup>
+```
+
+</Tip>
+
+<Tip title="Label icon-only buttons">
+
+Give icon-only buttons an `aria-label`.
+
+```tsx {4}
+<InputGroup>
+	<InputGroupInput aria-label="Password" type="password" />
+	<InputGroupAddon align="inline-end">
+		<InputGroupButton size="icon-xs" aria-label="Show password">
+			<EyeIcon />
+		</InputGroupButton>
+	</InputGroupAddon>
+</InputGroup>
+```
+
+</Tip>
+
+</Tips>
 
 ## API Reference
 
@@ -189,7 +241,7 @@ Accepts the props of [Button](/docs/components/button#api-reference).
 			shortType: "union",
 			type: '"xs" | "sm" | "icon-xs" | "icon-sm"',
 			default: '"xs"',
-			description: <>The size of the button. <code>xs</code> and <code>icon-xs</code> follow the <code>size</code> of the group.</>,
+			description: <>The size of the button. Its height follows the <code>size</code> of the group.</>,
 		},
 		{
 			name: "variant",
@@ -210,7 +262,7 @@ Accepts the props of [Button](/docs/components/button#api-reference).
 
 Accepts the props of [Textarea](/docs/components/textarea#api-reference).
 
-### Data attributes
+### Data Attributes
 
 <ApiTable
 	label="Attribute"

@@ -2,6 +2,7 @@
 title: Checkbox
 description: A box that turns an option on or off.
 ---
+
 <ComponentLinks
 	links={[
 		{
@@ -41,8 +42,6 @@ import { Checkbox } from "@/components/ui/checkbox"
 <Checkbox />
 ```
 
-Give every checkbox a visible label. Place it inside [Label](/docs/components/label), or use [Field](/docs/components/field) when it also needs a description or an error message.
-
 ## Examples
 
 ### Indeterminate
@@ -77,7 +76,7 @@ Wrap the checkbox and its text in `FieldLabel` to make the whole card clickable.
 
 ### RTL
 
-To show the checkbox right to left, set `dir="rtl"` on `html` and wrap your app in `DirectionProvider`. See [RTL](/docs/getting-started/rtl).
+To enable RTL support, see the [RTL guide](/docs/getting-started/rtl).
 
 <ComponentPreview name="checkbox-rtl-demo" direction="rtl" />
 
@@ -85,6 +84,41 @@ To show the checkbox right to left, set `dir="rtl"` on `html` and wrap your app 
 
 See the form guides for [Base UI Form](/docs/forms/base-ui#checkbox), [React Hook Form](/docs/forms/react-hook-form#checkbox) and [TanStack Form](/docs/forms/tanstack-form#checkbox).
 
+## Tips
+
+<Tips>
+
+<Tip title="Label the checkbox">
+
+Give every checkbox a visible label. Place it inside [Label](/docs/components/label).
+
+```tsx {1,4}
+<Label>
+	<Checkbox />
+	Accept terms and conditions
+</Label>
+```
+
+</Tip>
+
+<Tip title="Add a description or an error message">
+
+Use [Field](/docs/components/field) when the checkbox also needs a description or an error message.
+
+```tsx {1,6}
+<Field name="updates">
+	<FieldLabel>
+		<Checkbox />
+		Product updates
+	</FieldLabel>
+	<FieldDescription>Get an email when a new component ships.</FieldDescription>
+</Field>
+```
+
+</Tip>
+
+</Tips>
+
 ## API Reference
 
-9ui adds no props to Base UI Checkbox. For its API, see the [Base UI Checkbox reference](https://base-ui.com/react/components/checkbox#api-reference).
+See the [Base UI](https://base-ui.com/react/components/checkbox#api-reference) documentation for more information.

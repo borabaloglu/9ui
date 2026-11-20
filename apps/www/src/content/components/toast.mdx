@@ -7,7 +7,7 @@ description: A short message that appears on top of the page.
 	links={[
 		{
 			label: "API Reference",
-			href: "https://base-ui.com/react/components/toast",
+			href: "https://base-ui.com/react/components/toast#api-reference",
 		},
 	]}
 />
@@ -50,6 +50,8 @@ export default function RootLayout({ children }) {
 </div>
 
 <Steps>
+
+<Step>Add the [Button](/docs/components/button) and [Spinner](/docs/components/spinner) components.</Step>
 
 <Step>Copy and paste the following code into your project.</Step>
 
@@ -135,6 +137,11 @@ export default function RootLayout({ children }) {
 ## Usage
 
 ```tsx title="Imports"
+import {
+	AnchoredToastProvider,
+	type ToastPosition,
+	ToastProvider,
+} from "@/components/ui/toast"
 import { useToast } from "@/hooks/use-toast"
 ```
 
@@ -171,7 +178,7 @@ To add a button, set `actionProps`. To change its style, set `variant` in `actio
 
 ### Status
 
-To show a status icon, set `type` to `success`, `error`, `warning`, `info` or `loading`.
+To show a status icon, set `type: "success"`, `"error"`, `"warning"`, `"info"` or `"loading"`.
 
 <ComponentPreview name="toast-status-demo" />
 
@@ -195,13 +202,13 @@ To attach a toast to an element, wrap it in `AnchoredToastProvider` and set `pos
 
 ### RTL
 
-To show the toast right to left, set `dir="rtl"` on `html` and wrap your app in `DirectionProvider`. See [RTL](/docs/getting-started/rtl). `position` is the screen corner in both directions, so to show toasts at the bottom start, set `position="bottom-right"`.
+To enable RTL support, see the [RTL guide](/docs/getting-started/rtl).
 
 <ComponentPreview name="toast-rtl-demo" direction="rtl" />
 
 ## API Reference
 
-What 9ui adds to Base UI Toast. For the rest of the API, see the [Base UI Toast reference](https://base-ui.com/react/components/toast#api-reference).
+What 9ui adds to Base UI Toast. See the [Base UI](https://base-ui.com/react/components/toast#api-reference) documentation for the rest.
 
 ### ToastProvider
 
@@ -255,17 +262,10 @@ Wraps `Toast.Provider` for toasts attached to an element.
 			baseDefault: "undefined",
 			description: "Uses the shared anchored manager from use-toast.",
 		},
-		{
-			name: "positionerProps.sideOffset",
-			type: "number",
-			default: "4",
-			baseDefault: "0",
-			description: "The gap between the toast and its anchor.",
-		},
 	]}
 />
 
-### Toast options
+### Toast Options
 
 Options for `toast.add()`, `toast.update()` and `toast.promise()` that 9ui renders differently.
 
@@ -282,6 +282,13 @@ Options for `toast.add()`, `toast.update()` and `toast.promise()` that 9ui rende
 			name: "actionProps",
 			type: 'Omit<ButtonProps, "size">',
 			description: <>Renders an extra-small <code>Button</code>. Accepts Button props such as <code>variant</code>.</>,
+		},
+		{
+			name: "positionerProps.sideOffset",
+			type: "number",
+			default: "4",
+			baseDefault: "0",
+			description: "The gap between the toast and its anchor.",
 		},
 	]}
 />
@@ -316,7 +323,7 @@ The hook file exports these.
 	]}
 />
 
-### Data attributes
+### Data Attributes
 
 <ApiTable
 	label="Attribute"

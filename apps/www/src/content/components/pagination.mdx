@@ -16,6 +16,8 @@ npx shadcn@latest add @9ui/pagination
 
 <Steps>
 
+<Step>Add the [Button](/docs/components/button) component.</Step>
+
 <Step>Copy and paste the following code into your project.</Step>
 
 <ComponentSource name="pagination" />
@@ -56,8 +58,6 @@ import {
 </Pagination>
 ```
 
-Set `active` on the `PaginationLink` of the current page.
-
 ## Examples
 
 ### Simple
@@ -84,17 +84,40 @@ To disable `PaginationPrevious` or `PaginationNext`, set `aria-disabled` and lea
 
 <ComponentPreview name="pagination-disabled-demo" />
 
-### Next.js Link
+### Link Component
 
-To use a framework link, pass it to the `render` prop.
+To use your router's link, set `render` on `PaginationLink`, `PaginationPrevious` and `PaginationNext`.
 
-<ComponentPreview name="pagination-next-link-demo" />
+<ComponentPreview name="pagination-link-component-demo" />
 
 ### RTL
 
-To show the pagination right to left, set `dir="rtl"` on `html` and wrap your app in `DirectionProvider`. See [RTL](/docs/getting-started/rtl).
+To enable RTL support, see the [RTL guide](/docs/getting-started/rtl).
 
 <ComponentPreview name="pagination-rtl-demo" direction="rtl" />
+
+## Tips
+
+<Tips>
+
+<Tip title="Mark the current page">
+
+Set `active` on the `PaginationLink` of the current page.
+
+```tsx {5}
+<PaginationItem>
+	<PaginationLink href="/posts?page=1">1</PaginationLink>
+</PaginationItem>
+<PaginationItem>
+	<PaginationLink href="/posts?page=2" active>
+		2
+	</PaginationLink>
+</PaginationItem>
+```
+
+</Tip>
+
+</Tips>
 
 ## API Reference
 
@@ -180,7 +203,7 @@ Takes the props of `PaginationLink`.
 	]}
 />
 
-### Data attributes
+### Data Attributes
 
 <ApiTable
 	label="Attribute"

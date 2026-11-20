@@ -1,7 +1,8 @@
 ---
 title: Toolbar
-description: Displays a toolbar for user interaction.
+description: A container that groups buttons, links and inputs.
 ---
+
 <ComponentLinks
 	links={[
 		{
@@ -56,8 +57,6 @@ import {
 	<ToolbarInput />
 </Toolbar>
 ```
-
-`ToolbarButton` and `ToolbarInput` have no styles of their own. Use the `render` prop to compose them with other components.
 
 ## Examples
 
@@ -117,10 +116,56 @@ To let a long toolbar scroll, add `overflow-x-auto before:hidden` to `Toolbar`.
 
 ### RTL
 
-To show the toolbar right to left, set `dir="rtl"` on `html` and wrap your app in `DirectionProvider`. See [RTL](/docs/getting-started/rtl).
+To enable RTL support, see the [RTL guide](/docs/getting-started/rtl).
 
 <ComponentPreview name="toolbar-rtl-demo" direction="rtl" />
 
+## Tips
+
+<Tips>
+
+<Tip title="Label the toolbar">
+
+Give the toolbar an `aria-label`.
+
+```tsx {1}
+<Toolbar aria-label="File actions">
+	<ToolbarButton render={<Button variant="ghost" />}>Share</ToolbarButton>
+</Toolbar>
+```
+
+</Tip>
+
+<Tip title="Label icon-only buttons">
+
+Give each icon-only button its own `aria-label`.
+
+```tsx {3}
+<ToolbarButton
+	render={<Button variant="ghost" size="icon" />}
+	aria-label="Download"
+>
+	<DownloadIcon />
+</ToolbarButton>
+```
+
+</Tip>
+
+<Tip title="Compose with other components">
+
+Set `render` on `ToolbarButton` and `ToolbarInput` to compose them with other components.
+
+```tsx {2-3}
+<Toolbar aria-label="Table tools">
+	<ToolbarButton render={<Button variant="ghost" />}>Filter</ToolbarButton>
+	<ToolbarInput render={<Input placeholder="Search" aria-label="Search" />} />
+</Toolbar>
+```
+
+</Tip>
+
+</Tips>
+
 ## API Reference
 
-9ui adds no props to Base UI Toolbar. For its API, see the [Base UI Toolbar reference](https://base-ui.com/react/components/toolbar#api-reference).
+See the [Base UI](https://base-ui.com/react/components/toolbar#api-reference) documentation for more information.

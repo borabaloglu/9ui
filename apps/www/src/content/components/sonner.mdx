@@ -6,7 +6,7 @@ description: A short message that appears on top of the page, built on Sonner.
 <ComponentLinks
 	links={[
 		{
-			label: "API Reference",
+			label: "Docs",
 			href: "https://sonner.emilkowal.ski/toast",
 		},
 	]}
@@ -16,7 +16,7 @@ description: A short message that appears on top of the page, built on Sonner.
 
 ## About
 
-[`Sonner`](https://sonner.emilkowal.ski) is created and maintained by [@emilkowalski\_](https://x.com/emilkowalski_).
+[Sonner](https://sonner.emilkowal.ski) is created and maintained by [@emilkowalski\_](https://x.com/emilkowalski_).
 
 ## Installation
 
@@ -54,11 +54,13 @@ export default function RootLayout({ children }) {
 
 <Steps>
 
-<Step>Install the following dependencies.</Step>
+<Step>Install the dependencies.</Step>
 
 ```bash title="Terminal"
 npm install sonner
 ```
+
+<Step>Add the [Button](/docs/components/button) and [Spinner](/docs/components/spinner) components.</Step>
 
 <Step>Copy and paste the following code into your project.</Step>
 
@@ -137,13 +139,13 @@ To tint the whole toast with its status color, set `richColors`.
 
 ### RTL
 
-To show the sonner right to left, set `dir="rtl"` on `html` and wrap your app in `DirectionProvider`. See [RTL](/docs/getting-started/rtl).
+To enable RTL support, see the [RTL guide](/docs/getting-started/rtl).
 
 <ComponentPreview name="sonner-rtl-demo" direction="rtl" />
 
 ## API Reference
 
-What 9ui adds to Sonner. For the rest of the API, see the [Sonner docs](https://sonner.emilkowal.ski/toast).
+What 9ui adds to Sonner. See the [Sonner](https://sonner.emilkowal.ski/toast) documentation for the rest.
 
 ### Toaster
 

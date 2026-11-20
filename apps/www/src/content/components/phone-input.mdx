@@ -16,7 +16,7 @@ description: A phone number input with a country picker and automatic formatting
 
 ## About
 
-This component was inspired by the [`Phone Input`](https://shadcn-phone-input.vercel.app/) component created by [@omeralpi\_](https://x.com/omeralpi_).
+This component was inspired by the [Phone Input](https://shadcn-phone-input.vercel.app/) component created by [@omeralpi\_](https://x.com/omeralpi_).
 
 ## Installation
 
@@ -54,13 +54,11 @@ import { PhoneInput } from "@/components/ui/phone-input"
 <PhoneInput />
 ```
 
-`value` and `onChange` use the E.164 format, for example `+905321234567`. Give every phone input a name: use [Field](/docs/components/field) with a `FieldLabel`, or set `aria-label`.
-
 ## Examples
 
 ### Size
 
-Set `size` to `sm`, `default` or `lg`.
+Set `size="sm"`, `size="default"` or `size="lg"`.
 
 <ComponentPreview name="phone-input-size-demo" />
 
@@ -86,13 +84,13 @@ Set `labels` to translate the country names. To translate the search field and t
 
 Set `international` to always show the number with its calling code.
 
-<ComponentPreview name="phone-input-international-demo" />
+<ComponentPreview name="phone-input-international-format-demo" />
 
 ### National Format
 
 Set `international={false}` to show the number without its calling code.
 
-<ComponentPreview name="phone-input-national-demo" />
+<ComponentPreview name="phone-input-national-format-demo" />
 
 ### Initial Value Format
 
@@ -108,7 +106,7 @@ Use `formatPhoneNumber` and `formatPhoneNumberIntl` to display a stored value.
 
 ### Disabled
 
-Set `disabled` on `PhoneInput` to prevent interaction. `disabled` on `Field` does not reach the country button.
+Set `disabled` on `PhoneInput` to prevent interaction. `disabled` on `Field` doesn't reach the country button.
 
 <ComponentPreview name="phone-input-disabled-demo" />
 
@@ -126,9 +124,7 @@ Use `isValidPhoneNumber` to check the value when the form is submitted.
 
 ### RTL
 
-To show the phone input right to left, set `dir="rtl"` on `html` and wrap your app in `DirectionProvider`. See [RTL](/docs/getting-started/rtl).
-
-To set the direction on one phone input, set `dir` on `PhoneInput`. The country popup uses it too.
+To enable RTL support, see the [RTL guide](/docs/getting-started/rtl).
 
 <ComponentPreview name="phone-input-rtl-demo" direction="rtl" />
 
@@ -136,9 +132,58 @@ To set the direction on one phone input, set `dir` on `PhoneInput`. The country 
 
 See the form guides for [Base UI Form](/docs/forms/base-ui#phone-input), [React Hook Form](/docs/forms/react-hook-form#phone-input) and [TanStack Form](/docs/forms/tanstack-form#phone-input).
 
+## Tips
+
+<Tips>
+
+<Tip title="Label the phone input">
+
+To label a phone input, use [Field](/docs/components/field) with a `FieldLabel`.
+
+```tsx {1-2}
+<Field name="phoneNumber">
+	<FieldLabel>Phone number</FieldLabel>
+	<PhoneInput value={phoneNumber} onChange={setPhoneNumber} />
+</Field>
+```
+
+</Tip>
+
+<Tip title="Name a phone input with no visible label">
+
+Set `aria-label` on `PhoneInput` when there is no visible label.
+
+```tsx {2}
+<PhoneInput
+	aria-label="Phone number"
+	value={phoneNumber}
+	onChange={setPhoneNumber}
+/>
+```
+
+</Tip>
+
+<Tip title="Read and set the value">
+
+`value` and `onChange` use the E.164 format, for example `+905321234567`.
+
+```tsx {1,5-6}
+const [phoneNumber, setPhoneNumber] = useState("+905321234567")
+
+<PhoneInput
+	aria-label="Phone number"
+	value={phoneNumber}
+	onChange={setPhoneNumber}
+/>
+```
+
+</Tip>
+
+</Tips>
+
 ## API Reference
 
-What 9ui adds to React Phone Number Input. For the rest of the API, see the [React Phone Number Input docs](https://catamphetamine.gitlab.io/react-phone-number-input/).
+What 9ui adds to React Phone Number Input. See the [React Phone Number Input](https://catamphetamine.gitlab.io/react-phone-number-input/) documentation for the rest.
 
 ### PhoneInput
 

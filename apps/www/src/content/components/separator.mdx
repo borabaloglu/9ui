@@ -1,12 +1,13 @@
 ---
 title: Separator
-description: Displays a divider to organize content visually or contextually.
+description: A line that divides content.
 ---
+
 <ComponentLinks
 	links={[
 		{
-			label: "Docs",
-			href: "https://base-ui.com/react/components/separator",
+			label: "API Reference",
+			href: "https://base-ui.com/react/components/separator#api-reference",
 		},
 	]}
 />
@@ -41,13 +42,11 @@ import { Separator } from "@/components/ui/separator"
 <Separator />
 ```
 
-Screen readers announce the separator. Set `aria-hidden` when it is only decorative.
-
 ## Examples
 
 ### Vertical
 
-Set `orientation` to `vertical` to divide items in a row. The separator stretches to the height of a flex row. Set an `h-*` class for a fixed height.
+Set `orientation="vertical"` to divide items in a row. The separator stretches to the height of a flex row. Set an `h-*` class for a fixed height.
 
 <ComponentPreview name="separator-vertical-demo" />
 
@@ -59,10 +58,30 @@ Use horizontal separators between rows in a list.
 
 ### RTL
 
-To show the separator right to left, set `dir="rtl"` on `html` and wrap your app in `DirectionProvider`. See [RTL](/docs/getting-started/rtl).
+To enable RTL support, see the [RTL guide](/docs/getting-started/rtl).
 
 <ComponentPreview name="separator-rtl-demo" direction="rtl" />
 
+## Tips
+
+<Tips>
+
+<Tip title="Hide a decorative separator from screen readers">
+
+Set `aria-hidden` on `Separator` when it is only decorative.
+
+```tsx {3}
+<div className="flex gap-3 text-sm">
+	<span>Account</span>
+	<Separator orientation="vertical" aria-hidden />
+	<span>Billing</span>
+</div>
+```
+
+</Tip>
+
+</Tips>
+
 ## API Reference
 
-9ui adds no props to Base UI Separator. For its API, see the [Base UI Separator reference](https://base-ui.com/react/components/separator#api-reference).
+See the [Base UI](https://base-ui.com/react/components/separator#api-reference) documentation for more information.

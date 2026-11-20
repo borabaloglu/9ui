@@ -2,6 +2,7 @@
 title: Input
 description: A single-line text field for forms.
 ---
+
 <ComponentLinks
 	links={[
 		{
@@ -41,13 +42,11 @@ import { Input } from "@/components/ui/input"
 <Input />
 ```
 
-Give every input a `<label>` or `aria-label`. A placeholder isn't a label.
-
 ## Examples
 
 ### Size
 
-Set `size` to `sm`, `default` or `lg`. Each size matches the height of the same Button size.
+Set `size="sm"`, `size="default"` or `size="lg"`. Each size matches the height of the same Button size.
 
 <ComponentPreview name="input-size-demo" />
 
@@ -57,9 +56,9 @@ Set `disabled` to prevent interaction.
 
 <ComponentPreview name="input-disabled-demo" />
 
-### Read-only
+### Read-Only
 
-Set `readOnly` to show a value that cannot be changed. The field drops its fill and shadow. In a theme with a transparent `--input`, it looks the same as an editable field.
+Set `readOnly` to show a value that can't be changed.
 
 <ComponentPreview name="input-read-only-demo" />
 
@@ -77,13 +76,13 @@ Set `type="file"` to accept files.
 
 ### Input Group
 
-Use [`Input Group`](/docs/components/input-group) to add icons, text, or buttons.
+Use [Input Group](/docs/components/input-group) to add icons, text or buttons.
 
-<ComponentPreview name="input-with-group-demo" />
+<ComponentPreview name="input-input-group-demo" />
 
 ### RTL
 
-To show the input right to left, set `dir="rtl"` on `html` and wrap your app in `DirectionProvider`. See [RTL](/docs/getting-started/rtl).
+To enable RTL support, see the [RTL guide](/docs/getting-started/rtl).
 
 <ComponentPreview name="input-rtl-demo" direction="rtl" />
 
@@ -91,9 +90,38 @@ To show the input right to left, set `dir="rtl"` on `html` and wrap your app in 
 
 See the form guides for [Base UI Form](/docs/forms/base-ui#input), [React Hook Form](/docs/forms/react-hook-form#input) and [TanStack Form](/docs/forms/tanstack-form#input).
 
+## Tips
+
+<Tips>
+
+<Tip title="Label the input">
+
+Give every input a visible label with [Field](/docs/components/field) or [Label](/docs/components/label). A placeholder isn't a label.
+
+```tsx {2}
+<Field name="email">
+	<FieldLabel>Email</FieldLabel>
+	<Input type="email" placeholder="you@example.com" />
+</Field>
+```
+
+</Tip>
+
+<Tip title="Name an input with no visible label">
+
+Set `aria-label` on `Input` when there is no visible label.
+
+```tsx {1}
+<Input aria-label="Search" type="search" placeholder="Search" />
+```
+
+</Tip>
+
+</Tips>
+
 ## API Reference
 
-What 9ui adds to Base UI Input. For the rest of the API, see the [Base UI Input reference](https://base-ui.com/react/components/input#api-reference).
+What 9ui adds to Base UI Input. See the [Base UI](https://base-ui.com/react/components/input#api-reference) documentation for the rest.
 
 ### Input
 
@@ -108,7 +136,7 @@ What 9ui adds to Base UI Input. For the rest of the API, see the [Base UI Input 
 	]}
 />
 
-### Data attributes
+### Data Attributes
 
 <ApiTable
 	label="Attribute"
@@ -116,7 +144,7 @@ What 9ui adds to Base UI Input. For the rest of the API, see the [Base UI Input 
 		{
 			name: "data-size",
 			type: '"sm" | "default" | "lg"',
-			description: <>The style size of the input. Set to <code>"default"</code> when <code>size</code> is a number.</>,
+			description: <>Set on <code>Input</code>. The current <code>size</code>, or <code>"default"</code> when <code>size</code> is a number.</>,
 		},
 	]}
 />

@@ -6,7 +6,7 @@ description: A searchable grid for picking an emoji.
 <ComponentLinks
 	links={[
 		{
-			label: "API Reference",
+			label: "Docs",
 			href: "https://frimousse.liveblocks.io/#api-reference",
 		},
 	]}
@@ -29,7 +29,7 @@ npx shadcn@latest add @9ui/emoji-picker
 
 <Steps>
 
-<Step>Install dependencies</Step>
+<Step>Install the dependencies.</Step>
 
 ```bash title="Terminal"
 npm install frimousse
@@ -75,8 +75,6 @@ import {
 </EmojiPicker>
 ```
 
-To get the picked emoji, set `onEmojiSelect` on `EmojiPicker`.
-
 ## Examples
 
 ### Popover
@@ -85,15 +83,11 @@ To show the picker in a popover, set `className="w-auto p-0"` on `PopoverPopup`.
 
 <ComponentPreview name="emoji-picker-popover-demo" />
 
----
-
 ### Skin Tone
 
 To let people change the skin tone, add `EmojiPickerSkinToneSelector` to `EmojiPickerFooter`.
 
 <ComponentPreview name="emoji-picker-skin-tone-demo" />
-
----
 
 ### Input
 
@@ -101,27 +95,42 @@ To add emojis to a text input, use an `InputGroup` and pass its ref to `anchor` 
 
 <ComponentPreview name="emoji-picker-input-demo" />
 
----
-
 ### Locale
 
 To translate the emoji names and categories, set `locale` on `EmojiPicker`.
 
 <ComponentPreview name="emoji-picker-locale-demo" />
 
----
-
 ### RTL
 
-To show the emoji picker right to left, set `dir="rtl"` on `html` and wrap your app in `DirectionProvider`. See [RTL](/docs/getting-started/rtl).
-
-Emoji and category names stay in English in Arabic and Hebrew, and arrow keys are not mirrored. Both come from frimousse.
+To enable RTL support, see the [RTL guide](/docs/getting-started/rtl).
 
 <ComponentPreview name="emoji-picker-rtl-demo" direction="rtl" />
 
+## Tips
+
+<Tips>
+
+<Tip title="Get the picked emoji">
+
+To get the picked emoji, set `onEmojiSelect` on `EmojiPicker`.
+
+```tsx {1}
+<EmojiPicker onEmojiSelect={({ emoji }) => setReaction(emoji)}>
+	<EmojiPickerSearch />
+	<EmojiPickerContent>
+		<EmojiPickerList />
+	</EmojiPickerContent>
+</EmojiPicker>
+```
+
+</Tip>
+
+</Tips>
+
 ## API Reference
 
-What 9ui adds to Frimousse. For the rest of the API, see the [Frimousse docs](https://frimousse.liveblocks.io/#api-reference).
+What 9ui adds to Frimousse. See the [Frimousse](https://frimousse.liveblocks.io/#api-reference) documentation for the rest.
 
 ### EmojiPickerSearch
 

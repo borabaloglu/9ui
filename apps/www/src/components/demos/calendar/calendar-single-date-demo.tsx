@@ -1,0 +1,18 @@
+"use client";
+
+import { useState } from "react";
+
+import { Calendar } from "@/components/ui/calendar";
+
+export default function CalendarSingleDateDemo() {
+	const [selectedDate, setSelectedDate] = useState<Date | undefined>(undefined);
+
+	return (
+		<Calendar
+			mode="single"
+			selected={selectedDate}
+			onSelect={setSelectedDate}
+			className="rounded-xl border"
+		/>
+	);
+}

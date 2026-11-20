@@ -1,7 +1,8 @@
 ---
 title: Tabs
-description: Used to organize content into tabbed navigation.
+description: A set of panels shown one at a time.
 ---
+
 <ComponentLinks
 	links={[
 		{
@@ -28,7 +29,7 @@ npx shadcn@latest add @9ui/tabs
 
 <ComponentSource name="tabs" />
 
-<Step>Add the animations to your CSS file.</Step>
+<Step>Add the animation to your CSS file.</Step>
 
 ```css title="globals.css"
 @keyframes tabs-fade-start {
@@ -78,11 +79,11 @@ Set `variant="line"` on `TabsList` for an underline instead of a filled tab.
 
 <ComponentPreview name="tabs-line-demo" />
 
-### Sizes
+### Size
 
-Set `size` on `TabsList` to `sm` or `lg` to change the size of every tab.
+Set `size="sm"` or `size="lg"` on `TabsList` to change the size of every tab.
 
-<ComponentPreview name="tabs-sizes-demo" />
+<ComponentPreview name="tabs-size-demo" />
 
 ### Vertical
 
@@ -96,11 +97,11 @@ Set `orientation="vertical"` on `Tabs` and `variant="line"` on `TabsList` to com
 
 <ComponentPreview name="tabs-vertical-line-demo" />
 
-### With Icon
+### Icons
 
 To add an icon, place it inside `TabsTab` before the label.
 
-<ComponentPreview name="tabs-with-icon-demo" />
+<ComponentPreview name="tabs-icons-demo" />
 
 ### Disabled
 
@@ -110,15 +111,17 @@ Set `disabled` on a `TabsTab` to disable it.
 
 ### RTL
 
-To show the tabs right to left, set `dir="rtl"` on `html` and wrap your app in `DirectionProvider`. See [RTL](/docs/getting-started/rtl).
+To enable RTL support, see the [RTL guide](/docs/getting-started/rtl).
 
 <ComponentPreview name="tabs-rtl-demo" direction="rtl" />
 
 ## API Reference
 
-What 9ui adds to Base UI Tabs. For the rest of the API, see the [Base UI Tabs reference](https://base-ui.com/react/components/tabs#api-reference).
+What 9ui adds to Base UI Tabs. See the [Base UI](https://base-ui.com/react/components/tabs#api-reference) documentation for the rest.
 
 ### TabsList
+
+Bundles the indicator.
 
 <ApiTable
 	rows={[
@@ -137,7 +140,7 @@ What 9ui adds to Base UI Tabs. For the rest of the API, see the [Base UI Tabs re
 	]}
 />
 
-### Data attributes
+### Data Attributes
 
 <ApiTable
 	label="Attribute"
