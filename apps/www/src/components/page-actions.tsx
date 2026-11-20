@@ -21,21 +21,9 @@ import type { ComponentLink } from "@/lib/component-links";
 const getOpenInUrl = (targetUrl: string, currentUrl: string) => {
 	const markdownUrl = `${currentUrl}.md`;
 
-	const prompt = `I need help with 9ui documentation.
+	const prompt = `I'm looking at this 9ui documentation: ${markdownUrl}
 
-**Main URL:** ${currentUrl}
-
-**Markdown Source:** ${markdownUrl}
-
-If you can access the main URL, please help me understand the documentation there. If you cannot access it, try the markdown source URL instead.
-
-Please be ready to:
-- Explain concepts and usage patterns
-- Provide code examples and implementation details
-- Help debug issues and troubleshoot problems
-- Suggest best practices and alternatives
-
-Focus on practical, actionable guidance based on the 9ui documentation.`;
+Help me understand how to use it. Be ready to explain concepts, give examples or help debug based on it.`;
 
 	return `${targetUrl}?q=${encodeURIComponent(prompt)}`;
 };

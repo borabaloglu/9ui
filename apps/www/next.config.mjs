@@ -9,8 +9,21 @@ const nextConfig = {
 			"./src/components/ui/**/*",
 		],
 	},
+	rewrites() {
+		return [
+			{
+				source: "/docs/:path*.md",
+				destination: "/llms.mdx/:path*",
+			},
+		];
+	},
 	redirects() {
 		return [
+			{
+				source: "/llms-full.txt",
+				destination: "/llms.txt",
+				permanent: true,
+			},
 			{
 				source: "/docs",
 				destination: "/docs/getting-started/introduction",

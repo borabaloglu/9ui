@@ -12,17 +12,13 @@
 - `apps/www/src/components`: Reusable UI components (buttons, badges, marketing sections, etc.). Prefer reusing these before adding new primitives.
 - `apps/www/src/config`: Site-level config such as `site` metadata and navigation.
 - `apps/www/src/content`: MDX-based docs and component docs; rendered via `mdx-components.tsx` and registry helpers.
-- `apps/www/src/__registry__`: Generated files (`contents.tsx`, `demos.tsx`) that map component metadata and demo implementations.
 - `apps/www/public/r/*.json`: Generated JSON registry describing components for external consumption and LLM tooling.
 
 ## Generated Artifacts & Scripts
 
-- Do not manually edit files in `apps/www/src/__registry__`, `apps/www/public/r/*.json`, or `apps/www/src/app/globals.css`; they are generated.
+- Do not manually edit `apps/www/public/r/*.json` or `apps/www/src/app/globals.css`; they are generated.
 - Use the following scripts (run from `apps/www` unless otherwise noted):
-  - `pnpm generate:contents`: Regenerates `src/__registry__/contents.tsx` from `src/content`.
-  - `pnpm generate:demos`: Regenerates `src/__registry__/demos.tsx` from component demo sources.
   - `pnpm generate:globals-css`: Regenerates global Tailwind styles.
-  - `pnpm generate:llms`: Regenerates `public/r/*.json` and other LLM-facing registry artifacts.
   - `pnpm build:registry`: Runs the registry build script; safe to run after changing registry/config files.
 - At the monorepo root, use `pnpm build`, `pnpm dev`, `pnpm dev:www`, and `pnpm lint` instead of calling `next` directly.
 
@@ -57,4 +53,4 @@
 
 - For UI or docs changes: work inside `apps/www`, update components in `src/components` and docs in `src/content`, then run the generation scripts.
 - For build or tooling changes: modify root configs (`turbo.json`, `biome.json`) and verify with root `pnpm` scripts.
-- Avoid hand-editing any file clearly marked as generated or under `__registry__` or `public/r`.
+- Avoid hand-editing any file clearly marked as generated or under `public/r`.

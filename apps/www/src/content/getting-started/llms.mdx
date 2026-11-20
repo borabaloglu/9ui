@@ -1,42 +1,24 @@
 ---
 title: LLMs
-description: AI-friendly documentation for 9ui
+description: Markdown versions of the docs for AI assistants and agents.
 ---
 
-This page provides AI-friendly documentation formats that can be used by large language models (LLMs) to better understand and work with 11ui components.
+Every docs page is also available as Markdown, so an AI assistant can read it.
 
-## Available Formats
+## Index
 
-We provide two different formats of documentation optimized for AI consumption:
+[llms.txt](/llms.txt) lists every page with a one-line description and a link to its Markdown version. Give this file to an assistant that can open links.
 
-### llms.txt
+## One page
 
-A concise index format with links to individual component documentation. This format is ideal for:
+To get a page as Markdown, add `.md` to its URL.
 
-- Quick reference and component discovery
-- Integration with AI tools that need structured navigation
-- Systems that work better with linked content
+```txt
+https://www.9ui.dev/docs/components/popover.md
+```
 
-[See llms.txt](/llms.txt)
+Each page also has a **Copy Markdown** button and an **Open** menu at the top.
 
-### llms-full.txt
+## MCP
 
-A comprehensive format containing the complete documentation for all components in a single file. This format is ideal for:
-
-- AI models that need full context in a single document
-- Local processing and analysis
-- Systems that work better with embedded content
-
-[See llms-full.txt](/llms-full.txt)
-
-## Usage
-
-These files are automatically generated from the same MDX source files used for the website documentation, ensuring consistency and accuracy.
-
-The documentation includes:
-
-- Component descriptions and use cases
-- Installation instructions
-- Code examples and demos
-
-Both formats are updated automatically when the documentation is built, so they always reflect the latest component information.
+To let an assistant browse and install components, set up the shadcn MCP server. See [Installation](/docs/getting-started/installation).

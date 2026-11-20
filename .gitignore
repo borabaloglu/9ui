@@ -58,11 +58,6 @@ CLAUDE.md
 .claude/
 .opencode/
 
-# Generated LLM files
-apps/*/public/llms.txt
-apps/*/public/llms-full.txt
-apps/*/public/docs/
-
 evals/results/
 evals/**/*.jsonl
 !evals/**/history.jsonl
