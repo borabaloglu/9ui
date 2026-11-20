@@ -65,6 +65,10 @@
 		-webkit-tap-highlight-color: transparent;
 	}
 
+	.dark {
+		color-scheme: dark;
+	}
+
 	body {
 		@apply bg-background text-foreground overscroll-none;
 	}

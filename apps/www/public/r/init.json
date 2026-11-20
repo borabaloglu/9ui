@@ -129,6 +129,9 @@
 				"-moz-osx-font-smoothing": "grayscale",
 				"-webkit-tap-highlight-color": "transparent"
 			},
+			".dark": {
+				"color-scheme": "dark"
+			},
 			"body": {
 				"background-color": "var(--background)",
 				"color": "var(--foreground)",
