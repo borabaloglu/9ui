@@ -1,6 +1,6 @@
 export const Footer = () => (
-	<footer className="border-t">
-		<div className="container mx-auto py-4">
+	<footer className="relative">
+		<div className="container py-4">
 			<div className="text-muted-foreground text-center text-sm">
 				made with ❤️ by{" "}
 				<a
