@@ -20,6 +20,11 @@ const nextConfig = {
 	redirects() {
 		return [
 			{
+				source: "/docs/getting-started/dark-mode/remix",
+				destination: "/docs/getting-started/dark-mode/react-router",
+				permanent: true,
+			},
+			{
 				source: "/llms-full.txt",
 				destination: "/llms.txt",
 				permanent: true,

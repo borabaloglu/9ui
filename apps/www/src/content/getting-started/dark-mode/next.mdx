@@ -1,6 +1,6 @@
 ---
 title: Next.js
-description: Setting up dark mode in your Next.js project.
+description: Add dark mode to a Next.js app.
 ---
 
 <ComponentLinks
@@ -20,9 +20,9 @@ description: Setting up dark mode in your Next.js project.
 npm install next-themes
 ```
 
-<Step>Create `ThemeProvider`.</Step>
+<Step>Create a theme provider.</Step>
 
-```tsx title="providers/theme-provider.tsx"
+```tsx title="components/theme-provider.tsx"
 "use client"
 
 import { ThemeProvider as NextThemesProvider } from "next-themes"
@@ -37,8 +37,12 @@ export function ThemeProvider({
 
 <Step>Wrap your root layout with the provider.</Step>
 
-```tsx {1,12-19} title="app/layout.tsx"
-import { ThemeProvider } from "@/providers/theme-provider"
+Add `suppressHydrationWarning` to the `html` tag.
+
+```tsx {1,11,13-15} title="app/layout.tsx"
+import { ThemeProvider } from "@/components/theme-provider"
+
+import "./globals.css"
 
 export default function RootLayout({
 	children,
@@ -47,14 +51,8 @@ export default function RootLayout({
 }) {
 	return (
 		<html lang="en" suppressHydrationWarning>
-			<head />
 			<body>
-				<ThemeProvider
-					attribute="class"
-					defaultTheme="system"
-					enableSystem
-					disableTransitionOnChange
-				>
+				<ThemeProvider attribute="class" disableTransitionOnChange>
 					{children}
 				</ThemeProvider>
 			</body>
@@ -63,8 +61,45 @@ export default function RootLayout({
 }
 ```
 
-<Step>Add theme toggle component.</Step>
+<Step>Add a theme toggle.</Step>
 
-<ComponentPreview className="mt-4" name="theme-toggle" />
+```tsx title="components/theme-toggle.tsx"
+"use client"
+
+import { MoonIcon, SunIcon } from "lucide-react"
+import { useTheme } from "next-themes"
+
+import { Button } from "@/components/ui/button"
+
+export function ThemeToggle() {
+	const { resolvedTheme, setTheme } = useTheme()
+
+	return (
+		<Button
+			variant="ghost"
+			size="icon"
+			aria-label="Toggle theme"
+			onClick={() => setTheme(resolvedTheme === "dark" ? "light" : "dark")}
+		>
+			<MoonIcon className="dark:hidden" />
+			<SunIcon className="hidden dark:block" />
+		</Button>
+	)
+}
+```
+
+<Step>Use the theme toggle in your app.</Step>
+
+```tsx {1,6} title="app/page.tsx"
+import { ThemeToggle } from "@/components/theme-toggle"
+
+export default function Page() {
+	return (
+		<main>
+			<ThemeToggle />
+		</main>
+	)
+}
+```
 
 </Steps>
