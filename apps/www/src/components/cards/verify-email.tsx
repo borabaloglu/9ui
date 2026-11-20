@@ -5,7 +5,6 @@ import {
 	Card,
 	CardContent,
 	CardDescription,
-	CardFooter,
 	CardHeader,
 	CardTitle,
 } from "@/components/ui/card";
@@ -15,23 +14,17 @@ import {
 	OTPFieldSeparator,
 } from "@/components/ui/otp-field";
 
-export function OTPCard() {
+export function VerifyEmailCard() {
 	return (
-		<Card className="size-full">
+		<Card>
 			<CardHeader>
-				<CardTitle>Verify Your Email</CardTitle>
+				<CardTitle>Verify your email</CardTitle>
 				<CardDescription>
-					We sent a verification code to your email. Please enter the code
-					below.
+					Enter the 6-digit code we sent to bora@9ui.dev.
 				</CardDescription>
 			</CardHeader>
-			<CardContent>
-				<OTPField
-					length={6}
-					size="lg"
-					aria-label="Verification code"
-					className="mx-auto w-fit"
-				>
+			<CardContent className="flex flex-col gap-4">
+				<OTPField length={6} aria-label="Verification code" className="mx-auto">
 					<OTPFieldInput />
 					<OTPFieldInput aria-label="Character 2 of 6" />
 					<OTPFieldInput aria-label="Character 3 of 6" />
@@ -40,13 +33,17 @@ export function OTPCard() {
 					<OTPFieldInput aria-label="Character 5 of 6" />
 					<OTPFieldInput aria-label="Character 6 of 6" />
 				</OTPField>
+				<Button>Verify email</Button>
+				<p className="text-muted-foreground -mt-2 text-center text-xs">
+					Didn&apos;t get a code?{" "}
+					<button
+						type="button"
+						className="text-foreground focus-visible:ring-ring/50 cursor-pointer rounded-sm underline underline-offset-2 outline-none focus-visible:ring-3"
+					>
+						Resend
+					</button>
+				</p>
 			</CardContent>
-			<CardFooter className="flex-col gap-2">
-				<Button className="w-full">Verify Email</Button>
-				<Button variant="link" className="w-full">
-					Resend Code
-				</Button>
-			</CardFooter>
 		</Card>
 	);
 }
