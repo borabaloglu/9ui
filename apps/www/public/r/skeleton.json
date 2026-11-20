@@ -1,6 +1,8 @@
 {
 	"$schema": "https://ui.shadcn.com/schema/registry-item.json",
 	"name": "skeleton",
+	"title": "Skeleton",
+	"description": "A placeholder that shows while content loads.",
 	"dependencies": [],
 	"registryDependencies": [],
 	"files": [
@@ -23,5 +25,6 @@
 			}
 		}
 	},
+	"docs": "Docs: https://www.9ui.dev/docs/components/skeleton",
 	"type": "registry:ui"
 }

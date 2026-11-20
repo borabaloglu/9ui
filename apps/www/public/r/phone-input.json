@@ -1,6 +1,8 @@
 {
 	"$schema": "https://ui.shadcn.com/schema/registry-item.json",
 	"name": "phone-input",
+	"title": "Phone Input",
+	"description": "A phone number input with a country picker and automatic formatting.",
 	"dependencies": [
 		"@base-ui/react",
 		"lucide-react",
@@ -15,5 +17,6 @@
 			"target": ""
 		}
 	],
+	"docs": "Docs: https://www.9ui.dev/docs/components/phone-input",
 	"type": "registry:ui"
 }

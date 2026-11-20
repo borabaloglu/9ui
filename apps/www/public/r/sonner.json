@@ -1,6 +1,8 @@
 {
 	"$schema": "https://ui.shadcn.com/schema/registry-item.json",
 	"name": "sonner",
+	"title": "Sonner",
+	"description": "A short message that appears on top of the page, built on Sonner.",
 	"dependencies": ["lucide-react", "sonner"],
 	"registryDependencies": ["@9ui/button", "@9ui/spinner"],
 	"files": [
@@ -19,5 +21,6 @@
 			"box-shadow": "0 0 0 3px color-mix(in oklab, var(--ring) 50%, transparent), var(--tw-shadow, 0 0 #0000)"
 		}
 	},
+	"docs": "Docs: https://www.9ui.dev/docs/components/sonner",
 	"type": "registry:ui"
 }

@@ -1,6 +1,8 @@
 {
 	"$schema": "https://ui.shadcn.com/schema/registry-item.json",
 	"name": "vaul",
+	"title": "Vaul",
+	"description": "A drawer with drag gestures and snap points, built on vaul-base.",
 	"dependencies": ["vaul-base"],
 	"registryDependencies": [],
 	"files": [
@@ -11,5 +13,6 @@
 			"target": ""
 		}
 	],
+	"docs": "Docs: https://www.9ui.dev/docs/components/vaul",
 	"type": "registry:ui"
 }

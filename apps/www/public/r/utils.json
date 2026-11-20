@@ -1,6 +1,8 @@
 {
 	"$schema": "https://ui.shadcn.com/schema/registry-item.json",
 	"name": "utils",
+	"title": "Utils",
+	"description": "The cn helper that merges class names.",
 	"dependencies": ["clsx", "tailwind-merge"],
 	"files": [
 		{

@@ -1,6 +1,8 @@
 {
 	"$schema": "https://ui.shadcn.com/schema/registry-item.json",
 	"name": "command",
+	"title": "Command",
+	"description": "A searchable list of commands and actions.",
 	"dependencies": [],
 	"registryDependencies": [
 		"@9ui/autocomplete",
@@ -15,5 +17,6 @@
 			"target": ""
 		}
 	],
+	"docs": "Docs: https://www.9ui.dev/docs/components/command",
 	"type": "registry:ui"
 }

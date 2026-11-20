@@ -6,7 +6,7 @@
 		"dev": "next dev -p 4444",
 		"postinstall": "fumadocs-mdx",
 		"build": "pnpm prebuild && next build",
-		"build:registry": "npx tsx --tsconfig ./tsconfig.scripts.json ./scripts/build-registry.ts && biome format --write public/r/*.json",
+		"build:registry": "npx tsx --tsconfig ./tsconfig.scripts.json ./scripts/build-registry.ts && biome format --write registry.json public/r/*.json",
 		"start": "next start",
 		"lint": "biome lint",
 		"check": "biome check",

@@ -1,6 +1,8 @@
 {
 	"$schema": "https://ui.shadcn.com/schema/registry-item.json",
 	"name": "toggle",
+	"title": "Toggle",
+	"description": "A button that switches between on and off.",
 	"dependencies": ["@base-ui/react", "class-variance-authority"],
 	"registryDependencies": [],
 	"files": [
@@ -11,5 +13,6 @@
 			"target": ""
 		}
 	],
+	"docs": "Docs: https://www.9ui.dev/docs/components/toggle",
 	"type": "registry:ui"
 }

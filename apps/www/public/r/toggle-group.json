@@ -1,6 +1,8 @@
 {
 	"$schema": "https://ui.shadcn.com/schema/registry-item.json",
 	"name": "toggle-group",
+	"title": "Toggle Group",
+	"description": "A group of toggles for selecting single or multiple options.",
 	"dependencies": ["@base-ui/react", "class-variance-authority"],
 	"registryDependencies": ["@9ui/separator", "@9ui/toggle"],
 	"files": [
@@ -11,5 +13,6 @@
 			"target": ""
 		}
 	],
+	"docs": "Docs: https://www.9ui.dev/docs/components/toggle-group",
 	"type": "registry:ui"
 }

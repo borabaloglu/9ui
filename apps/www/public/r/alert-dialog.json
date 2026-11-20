@@ -1,6 +1,8 @@
 {
 	"$schema": "https://ui.shadcn.com/schema/registry-item.json",
 	"name": "alert-dialog",
+	"title": "Alert Dialog",
+	"description": "A modal dialog for critical messages or confirmation actions.",
 	"dependencies": ["@base-ui/react"],
 	"registryDependencies": [],
 	"files": [
@@ -11,5 +13,6 @@
 			"target": ""
 		}
 	],
+	"docs": "Docs: https://www.9ui.dev/docs/components/alert-dialog",
 	"type": "registry:ui"
 }

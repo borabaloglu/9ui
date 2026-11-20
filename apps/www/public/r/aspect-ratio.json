@@ -1,6 +1,8 @@
 {
 	"$schema": "https://ui.shadcn.com/schema/registry-item.json",
 	"name": "aspect-ratio",
+	"title": "Aspect Ratio",
+	"description": "A container that keeps its content at a set width-to-height ratio.",
 	"dependencies": [],
 	"registryDependencies": [],
 	"files": [
@@ -11,5 +13,6 @@
 			"target": ""
 		}
 	],
+	"docs": "Docs: https://www.9ui.dev/docs/components/aspect-ratio",
 	"type": "registry:ui"
 }

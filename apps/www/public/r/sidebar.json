@@ -1,6 +1,8 @@
 {
 	"$schema": "https://ui.shadcn.com/schema/registry-item.json",
 	"name": "sidebar",
+	"title": "Sidebar",
+	"description": "A composable sidebar that collapses on desktop and opens as a sheet on mobile.",
 	"dependencies": [
 		"@base-ui/react",
 		"class-variance-authority",
@@ -26,5 +28,6 @@
 			"type": "registry:hook"
 		}
 	],
+	"docs": "Docs: https://www.9ui.dev/docs/components/sidebar",
 	"type": "registry:ui"
 }
