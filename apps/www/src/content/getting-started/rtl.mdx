@@ -1,6 +1,6 @@
 ---
 title: RTL
-description: Using 9ui in right-to-left languages like Arabic and Hebrew.
+description: Right-to-left support for languages like Arabic and Hebrew.
 label: New
 ---
 
@@ -58,9 +58,9 @@ Pick a font that covers your script. Noto pairs well with Inter and Geist. For H
 import { Noto_Sans_Arabic } from "next/font/google"
 import { DirectionProvider } from "@base-ui/react/direction-provider"
 
-const fontSans = Noto_Sans_Arabic({
+const fontArabic = Noto_Sans_Arabic({
 	subsets: ["arabic"],
-	variable: "--font-sans",
+	variable: "--font-arabic",
 })
 
 export default function RootLayout({
@@ -69,7 +69,7 @@ export default function RootLayout({
 	children: React.ReactNode
 }) {
 	return (
-		<html lang="ar" dir="rtl" className={fontSans.variable}>
+		<html lang="ar" dir="rtl" className={fontArabic.variable}>
 			<body>
 				<DirectionProvider direction="rtl">{children}</DirectionProvider>
 			</body>
@@ -78,9 +78,19 @@ export default function RootLayout({
 }
 ```
 
+Then add the font to `--font-sans` in your CSS file.
+
+```css {2} title="app/globals.css"
+@theme inline {
+	--font-sans: "Inter", var(--font-arabic), ui-sans-serif, system-ui, sans-serif;
+}
+```
+
 </Steps>
 
-Not using Next.js? Set the same attributes in `index.html` and wrap your root in `DirectionProvider`.
+### Other Frameworks
+
+Outside Next.js, set the same attributes in `index.html` and wrap your root in `DirectionProvider`.
 
 ```html {2} title="index.html"
 <!doctype html>
@@ -101,6 +111,39 @@ createRoot(document.getElementById("root")!).render(
 		<App />
 	</DirectionProvider>,
 )
+```
+
+### The shadcn `rtl` Option
+
+Keep `rtl` in `components.json` set to false. 9ui components already support both directions, and the option rewrites classes in Sheet and Sidebar that are meant to stay physical.
+
+## Multiple Languages
+
+To support both directions in one app, set `dir`, `lang` and `direction` from the current locale.
+
+```tsx {3,13,16,18} title="app/[locale]/layout.tsx"
+import { DirectionProvider } from "@base-ui/react/direction-provider"
+
+const rtlLocales = ["ar", "he", "fa", "ur"]
+
+export default async function LocaleLayout({
+	children,
+	params,
+}: {
+	children: React.ReactNode
+	params: Promise<{ locale: string }>
+}) {
+	const { locale } = await params
+	const direction = rtlLocales.includes(locale) ? "rtl" : "ltr"
+
+	return (
+		<html lang={locale} dir={direction}>
+			<body>
+				<DirectionProvider direction={direction}>{children}</DirectionProvider>
+			</body>
+		</html>
+	)
+}
 ```
 
 ## How It Works
@@ -128,7 +171,9 @@ Popups, dialogs, sheets and toasts render at the end of `body`, outside that par
 </DirectionProvider>
 ```
 
-The same goes for `DialogPopup`, `SheetPopup`, `SelectPopup`, `PopoverPopup`, `TooltipPopup` and every other popup part. For toasts, set `portalProps={{ dir: "rtl" }}` on `ToastProvider`. For Phone Input, set `dir="rtl"` on `PhoneInput`.
+- Popups: set `dir="rtl"` on the popup part, such as `DialogPopup`, `SheetPopup`, `SelectPopup`, `PopoverPopup` and `TooltipPopup`.
+- Toasts: set `portalProps={{ dir: "rtl" }}` on `ToastProvider`.
+- Phone Input: set `dir="rtl"` on `PhoneInput`.
 
 ## Physical Props
 
