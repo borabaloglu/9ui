@@ -74,8 +74,6 @@ import {
 </Drawer>
 ```
 
-On top and bottom drawers the header, panel and footer keep their content in a centered column, so it stays readable on wide screens.
-
 If you don't need swipe gestures or snap points, use [Sheet](/docs/components/sheet).
 
 ## Examples
@@ -100,7 +98,7 @@ Put long content in `DrawerPanel`. To cap the height, set a `max-h-*` class on `
 
 ### Snap Points
 
-Set `snapPoints` on `Drawer` to let a bottom drawer rest at fixed heights. Use pixel or rem strings, or a fraction of the viewport height, and control the current one with `snapPoint` and `onSnapPointChange`. The backdrop stays half visible at the lower snap points and fades in fully as the drawer expands.
+Set `snapPoints` on `Drawer` to let a bottom drawer rest at fixed heights. Use pixel or rem strings, or a fraction of the viewport height, and control the current one with `snapPoint` and `onSnapPointChange`.
 
 <ComponentPreview name="drawer-snap-points-demo" />
 
@@ -118,7 +116,7 @@ Set `variant="bare"` on `DrawerFooter` to drop its border and background.
 
 ### Non-Modal
 
-Set `modal={false}` on `Drawer` to leave the page behind usable: there is no backdrop, focus isn't trapped and the page still scrolls. Add `disablePointerDismissal` to keep the drawer open when something outside is pressed.
+Set `modal={false}` on `Drawer` to keep the page behind usable. Add `disablePointerDismissal` to keep the drawer open when something outside is pressed.
 
 <ComponentPreview name="drawer-non-modal-demo" />
 
@@ -191,7 +189,7 @@ Set `render` on `DrawerTrigger` to use your own button.
 
 <Tip title="Scroll the body">
 
-Put the body in `DrawerPanel`. It scrolls when the content is taller than the drawer, while the header and footer stay in place. With a mouse, text inside the panel can be selected, and the drawer is dragged by its header, footer or handle.
+Put the body in `DrawerPanel`. It scrolls when the content is taller than the drawer, while the header and footer stay in place.
 
 ```tsx {5-7}
 <DrawerPopup>

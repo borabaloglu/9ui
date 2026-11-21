@@ -82,8 +82,6 @@ Place an icon in `AlertDialogMedia` at the top of `AlertDialogHeader` to signal 
 
 On small screens the alert dialog sits at the bottom edge. Set `showAtBottomOnMobile={false}` on `AlertDialogPopup` to keep it centered.
 
-The bottom padding grows by `env(safe-area-inset-bottom)`, so actions clear the home indicator when the page uses `viewport-fit=cover`.
-
 <ComponentPreview name="alert-dialog-mobile-position-demo" />
 
 ### Bare Footer
@@ -142,6 +140,19 @@ To change the corner radius, set `className="[--alert-dialog-radius:var(--radius
 <AlertDialogPopup className="[--alert-dialog-radius:var(--radius-2xl)]">
 	<AlertDialogTitle>Delete project?</AlertDialogTitle>
 </AlertDialogPopup>
+```
+
+</Tip>
+
+<Tip title="Clear the status bar and home indicator">
+
+To keep content clear of the status bar and home indicator, set `viewport-fit=cover` in the viewport meta tag of the page.
+
+```tsx {3}
+<meta
+	name="viewport"
+	content="width=device-width, initial-scale=1, viewport-fit=cover"
+/>
 ```
 
 </Tip>

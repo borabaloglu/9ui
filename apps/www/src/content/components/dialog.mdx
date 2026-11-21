@@ -89,8 +89,6 @@ Render any control through `DialogClose` to close the dialog.
 
 On small screens the dialog sits at the bottom edge. Set `showAtBottomOnMobile={false}` on `DialogPopup` to keep it centered.
 
-The bottom padding grows by `env(safe-area-inset-bottom)`, so actions clear the home indicator when the page uses `viewport-fit=cover`.
-
 <ComponentPreview name="dialog-mobile-position-demo" />
 
 ### Bare Footer
@@ -155,6 +153,19 @@ To change the corner radius, set `className="[--dialog-radius:var(--radius-2xl)]
 <DialogPopup className="[--dialog-radius:var(--radius-2xl)]">
 	<DialogTitle>Edit profile</DialogTitle>
 </DialogPopup>
+```
+
+</Tip>
+
+<Tip title="Clear the status bar and home indicator">
+
+To keep content clear of the status bar and home indicator, set `viewport-fit=cover` in the viewport meta tag of the page.
+
+```tsx {3}
+<meta
+	name="viewport"
+	content="width=device-width, initial-scale=1, viewport-fit=cover"
+/>
 ```
 
 </Tip>
