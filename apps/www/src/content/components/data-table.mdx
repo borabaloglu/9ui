@@ -324,14 +324,16 @@ To sort and hide a column from one menu, put a `Menu` in the header.
 To filter a column, call `column.setFilterValue` from an input.
 
 ```tsx title="data-table.tsx"
-<Input
-	aria-label="Filter emails"
-	placeholder="Filter emails..."
-	value={(table.getColumn("email")?.getFilterValue() as string) ?? ""}
-	onChange={(event) =>
-		table.getColumn("email")?.setFilterValue(event.target.value)
-	}
-/>
+<InputGroup>
+	<InputGroupInput
+		aria-label="Filter emails"
+		placeholder="Filter emails..."
+		value={(table.getColumn("email")?.getFilterValue() as string) ?? ""}
+		onChange={(event) =>
+			table.getColumn("email")?.setFilterValue(event.target.value)
+		}
+	/>
+</InputGroup>
 ```
 
 ### Column Visibility

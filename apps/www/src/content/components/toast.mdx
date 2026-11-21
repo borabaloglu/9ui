@@ -172,7 +172,7 @@ To follow an async task, pass the promise to `toast.promise`.
 
 ### Action
 
-To add a button, set `actionProps`. To change its style, set `variant` in `actionProps`.
+To add a button, set `actionProps`.
 
 <ComponentPreview name="toast-action-demo" />
 
@@ -302,7 +302,7 @@ The hook file exports these.
 	rows={[
 		{
 			name: "useToast()",
-			type: "ToastManager",
+			type: "() => ToastManager",
 			description: "Returns the manager of the nearest provider, with typed actionProps.",
 		},
 		{

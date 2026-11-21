@@ -261,11 +261,11 @@ Pass `field.value` to `value` and `field.onChange` to `onValueChange`. Use `null
 
 ### Phone Input
 
-Pass `field.value`, `field.onChange` and `field.onBlur` to `PhoneInput`, and check the number with `isValidPhoneNumber` in the schema.
+Pass `field.value`, `field.onChange`, `field.onBlur` and `field.ref` to `PhoneInput`, and check the number with `isValidPhoneNumber` in the schema.
 
 <ComponentPreview name="form-react-hook-form-phone-input-demo" />
 
-```tsx {8-10}
+```tsx {8-11}
 <Controller
 	name="phoneNumber"
 	control={control}
@@ -276,6 +276,7 @@ Pass `field.value`, `field.onChange` and `field.onBlur` to `PhoneInput`, and che
 				value={field.value}
 				onChange={field.onChange}
 				onBlur={field.onBlur}
+				ref={field.ref}
 			/>
 			{fieldState.invalid && (
 				<FieldError match>{fieldState.error?.message}</FieldError>
@@ -440,7 +441,7 @@ Pass `field.value` to `value` and `field.onChange` to `onValueChange` on `RadioG
 
 <ComponentPreview name="form-react-hook-form-radio-group-demo" />
 
-```tsx {7-9}
+```tsx {8-9}
 <Controller
 	name="experience"
 	control={control}
@@ -531,7 +532,7 @@ Pass `field.value` to `value` and `field.onChange` to `onValueChange`.
 
 ### Date Picker
 
-Pass `field.value` to `selected` and `field.onChange` to `onSelect` on `Calendar`, and set `aria-invalid` on the trigger. Use `null` as the empty value in `defaultValues`. Give `FieldError` an `id` and pass it to `aria-describedby` on the trigger so the error is announced.
+Pass `field.value` to `selected` and `field.onChange` to `onSelect` on `Calendar`, and set `aria-invalid` and `ref={field.ref}` on the trigger. Use `null` as the empty value in `defaultValues`. Give `FieldError` an `id` and pass it to `aria-describedby` on the trigger so the error is announced.
 
 <ComponentPreview name="form-react-hook-form-date-picker-demo" />
 
@@ -544,7 +545,7 @@ Pass `field.value` to `selected` and `field.onChange` to `onSelect` on `Calendar
 			<FieldLabel htmlFor={id}>Start date</FieldLabel>
 			<Popover open={open} onOpenChange={setOpen}>
 				<PopoverTrigger
-					render={<Button id={id} variant="outline" aria-describedby={errorId} aria-invalid={fieldState.invalid || undefined} onBlur={field.onBlur} />}
+					render={<Button id={id} variant="outline" aria-describedby={errorId} aria-invalid={fieldState.invalid || undefined} ref={field.ref} onBlur={field.onBlur} />}
 				>
 					{field.value ? format(field.value, "MMM d, yyyy") : "Select a date"}
 				</PopoverTrigger>
