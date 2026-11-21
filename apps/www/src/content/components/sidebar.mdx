@@ -156,7 +156,11 @@ The sidebar saves its state in a `sidebar_state` cookie. To restore it on the se
 ```tsx title="app/layout.tsx"
 import { cookies } from "next/headers"
 
-export default async function Layout({ children }) {
+export default async function Layout({
+	children,
+}: {
+	children: React.ReactNode
+}) {
 	const cookieStore = await cookies()
 	const defaultOpen = cookieStore.get("sidebar_state")?.value !== "false"
 

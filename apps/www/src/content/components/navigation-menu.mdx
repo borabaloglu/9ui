@@ -85,13 +85,13 @@ Set `orientation="vertical"` on `NavigationMenu` to stack the items. Set `side` 
 
 ### Nested
 
-To open a second menu from a panel, put another `NavigationMenu` inside `NavigationMenuContent`. Set `variant="link"` on its `NavigationMenuTrigger` to make it look like the links around it.
+To open a second menu from a panel, put another `NavigationMenu` inside `NavigationMenuContent`. Set `side="inline-end"` on its `NavigationMenuPopup` to open it to the side, and `variant="link"` on its `NavigationMenuTrigger` to make it look like the links around it.
 
 <ComponentPreview name="navigation-menu-nested-demo" />
 
 ### Nested Inline
 
-To switch panels inside the same menu, leave out the nested `NavigationMenuPopup` and render `NavigationMenuViewport` where the panels should appear. Set `defaultValue` on the nested `NavigationMenu` to pick the first panel.
+To switch panels inside the same menu, leave out the nested `NavigationMenuPopup` and render `NavigationMenuViewport` where the panels should appear. Set `defaultValue` on the nested `NavigationMenu` to pick the first panel, and `showIcon={false}` on its triggers to hide the chevron.
 
 To remove the padding around a panel, set `className="[--navigation-menu-padding:0px]"` on `NavigationMenuContent`.
 

@@ -272,7 +272,7 @@ npm install zod
 
 <Step>Parse the values and set the errors.</Step>
 
-```tsx {4-7,10,13-17,19,23}
+```tsx {4-7,10,13-17,19,23} title="form.tsx"
 import type { Form as FormPrimitive } from "@base-ui/react/form"
 import { z } from "zod"
 
@@ -367,11 +367,13 @@ Set `required` on `NumberField`.
 
 ### Phone Input
 
-Keep the number in state, check it on submit and set `invalid` on `Field`.
+Keep the number in state, check it on submit with `isValidPhoneNumber` from `react-phone-number-input` and set `invalid` on `Field`.
 
 <ComponentPreview name="form-base-ui-phone-input-demo" />
 
-```tsx {6-9,12,21}
+```tsx {8-11,14,23}
+import { isValidPhoneNumber } from "react-phone-number-input"
+
 const [phoneNumber, setPhoneNumber] = useState("")
 const [invalid, setInvalid] = useState(false)
 
@@ -480,7 +482,9 @@ Set `validate` on `Field` to require a selection, and wrap each checkbox in `Fie
 
 <ComponentPreview name="form-base-ui-checkbox-group-demo" />
 
-```tsx {3-5,22}
+```tsx {5-7,24}
+const labelId = useId()
+
 <Field
 	name="channels"
 	validate={(value) =>
@@ -580,7 +584,10 @@ Keep the date in state, check it on submit and set `invalid` on `Field` and `ari
 
 <ComponentPreview name="form-base-ui-date-picker-demo" />
 
-```tsx {6-9,12,32}
+```tsx {9-12,15,35}
+const id = useId()
+const errorId = useId()
+const [open, setOpen] = useState(false)
 const [date, setDate] = useState<Date | null>(null)
 const [invalid, setInvalid] = useState(false)
 
@@ -623,21 +630,16 @@ To group related fields, wrap them in `Fieldset` with a `FieldsetLegend`.
 
 <ComponentPreview name="form-base-ui-fieldset-demo" />
 
-```tsx {1,2,16}
+```tsx {1-5,11}
 <Fieldset>
 	<FieldsetLegend>Billing Details</FieldsetLegend>
+	<FieldsetDescription>
+		This information will be used in your invoice.
+	</FieldsetDescription>
 	<Field name="company">
-		<FieldLabel>Company</FieldLabel>
+		<FieldLabel>Company Name</FieldLabel>
 		<Input required />
 		<FieldError match="valueMissing">Company name is required.</FieldError>
-	</Field>
-	<Field name="taxId">
-		<FieldLabel>Tax ID</FieldLabel>
-		<Input required pattern="^\d{2}-\d{7}$" />
-		<FieldError match="valueMissing">Tax ID is required.</FieldError>
-		<FieldError match="patternMismatch">
-			Tax ID must match XX-XXXXXXX format.
-		</FieldError>
 	</Field>
 </Fieldset>
 ```

@@ -99,6 +99,7 @@ export default function FormTanstackFormRadioGroupDemo() {
 							return (
 								<Field name={field.name} invalid={isInvalid}>
 									<RadioGroup
+										aria-label="Experience level"
 										className="w-full items-stretch any-pointer-coarse:gap-3"
 										value={field.state.value}
 										onValueChange={(value) => field.handleChange(value)}

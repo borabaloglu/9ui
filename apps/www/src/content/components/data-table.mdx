@@ -257,7 +257,7 @@ columnHelper.display({
 	cell: ({ row }) => (
 		<Menu>
 			<MenuTrigger
-				render={<Button variant="ghost" size="icon-sm" aria-label="Actions" />}
+				render={<Button variant="ghost" size="icon-sm" aria-label={`Actions for ${row.original.email}`} />}
 			>
 				<EllipsisIcon />
 			</MenuTrigger>
@@ -381,7 +381,7 @@ columnHelper.display({
 		<Checkbox
 			checked={row.getIsSelected()}
 			onCheckedChange={(checked) => row.toggleSelected(checked)}
-			aria-label="Select row"
+			aria-label={`Select ${row.original.email}`}
 		/>
 	),
 	enableSorting: false,

@@ -89,7 +89,7 @@ Pass the schema to `useForm` with `zodResolver`.
 
 ```tsx {7-13,20} title="form.tsx"
 import { zodResolver } from "@hookform/resolvers/zod"
-import { useForm } from "react-hook-form"
+import { Controller, useForm } from "react-hook-form"
 
 // ...
 
@@ -142,7 +142,7 @@ const {
 To choose when validation runs, set `mode` on `useForm`.
 
 ```tsx {3}
-const form = useForm<FormValues>({
+const { control, handleSubmit } = useForm<FormValues>({
 	resolver: zodResolver(schema),
 	mode: "onChange",
 })
@@ -261,7 +261,7 @@ Pass `field.value` to `value` and `field.onChange` to `onValueChange`. Use `null
 
 ### Phone Input
 
-Pass `field.value`, `field.onChange`, `field.onBlur` and `field.ref` to `PhoneInput`, and check the number with `isValidPhoneNumber` in the schema.
+Pass `field.value`, `field.onChange`, `field.onBlur` and `field.ref` to `PhoneInput`, and check the number with `isValidPhoneNumber` from `react-phone-number-input` in the schema.
 
 <ComponentPreview name="form-react-hook-form-phone-input-demo" />
 
@@ -402,7 +402,9 @@ Pass `field.value` to `value` and `field.onChange` to `onValueChange` on `Checkb
 
 <ComponentPreview name="form-react-hook-form-checkbox-group-demo" />
 
-```tsx {8-9}
+```tsx {10-11}
+const labelId = useId()
+
 <Controller
 	name="channels"
 	control={control}
@@ -536,7 +538,11 @@ Pass `field.value` to `selected` and `field.onChange` to `onSelect` on `Calendar
 
 <ComponentPreview name="form-react-hook-form-date-picker-demo" />
 
-```tsx {9,16-18}
+```tsx {13,20-22}
+const id = useId()
+const errorId = useId()
+const [open, setOpen] = useState(false)
+
 <Controller
 	name="startDate"
 	control={control}
@@ -602,7 +608,9 @@ To let people add and remove fields, use `useFieldArray`. Render a `Controller` 
 
 <ComponentPreview name="form-react-hook-form-array-demo" />
 
-```tsx {1-4,7-10,21,36}
+```tsx {3-6,9-12,23,38}
+import { useFieldArray } from "react-hook-form"
+
 const { fields, append, remove } = useFieldArray({
 	control,
 	name: "emails",

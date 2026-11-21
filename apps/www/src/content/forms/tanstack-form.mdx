@@ -127,7 +127,9 @@ Then add a `form.Field` with a `Field` for each value. The demo at the top of th
 
 To show progress while the form submits, read `isSubmitting` from the form store and pass it to `loading` on the submit button.
 
-```tsx {1,9}
+```tsx {3,11}
+import { useStore } from "@tanstack/react-form"
+
 const isSubmitting = useStore(form.store, (state) => state.isSubmitting)
 
 <form
@@ -304,7 +306,7 @@ Pass `field.state.value` to `value` and `field.handleChange` to `onValueChange`.
 
 ### Phone Input
 
-Pass `field.state.value`, `field.handleChange` and `field.handleBlur` to `PhoneInput`, and check the number with `isValidPhoneNumber` in the schema.
+Pass `field.state.value`, `field.handleChange` and `field.handleBlur` to `PhoneInput`, and check the number with `isValidPhoneNumber` from `react-phone-number-input` in the schema.
 
 <ComponentPreview name="form-tanstack-form-phone-input-demo" />
 
@@ -348,7 +350,7 @@ Pass `field.state.value` to `value` and `field.handleChange` to `onValueChange`.
 
 ### Combobox
 
-Pass `field.state.value` to `value` and `field.handleChange` to `onValueChange`. With `multiple`, the value is an array, so use `[] as string[]` in `defaultValues`.
+Pass `field.state.value` to `value`, `field.handleChange` to `onValueChange` and `field.handleBlur` to `onBlur`. With `multiple`, the value is an array, so use `[] as string[]` in `defaultValues`.
 
 <ComponentPreview name="form-tanstack-form-combobox-demo" />
 
@@ -415,7 +417,9 @@ Pass `field.state.value` to `value` and `field.handleChange` to `onValueChange` 
 
 <ComponentPreview name="form-tanstack-form-checkbox-group-demo" />
 
-```tsx {4-5}
+```tsx {6-7}
+const labelId = useId()
+
 <Field name={field.name} invalid={isInvalid}>
 	<CheckboxGroup
 		aria-labelledby={labelId}
@@ -442,7 +446,7 @@ Pass `field.state.value` to `value` and `field.handleChange` to `onValueChange` 
 
 ### Radio Group
 
-Pass `field.state.value` to `value` and `field.handleChange` to `onValueChange` on `RadioGroup`. Wrap each radio in `FieldItem` with its own `FieldLabel`.
+Pass `field.state.value` to `value`, `field.handleChange` to `onValueChange` and `field.handleBlur` to `onBlur` on `RadioGroup`. Wrap each radio in `FieldItem` with its own `FieldLabel`.
 
 <ComponentPreview name="form-tanstack-form-radio-group-demo" />
 
@@ -473,7 +477,7 @@ Pass `field.state.value` to `value` and `field.handleChange` to `onValueChange` 
 
 ### Switch
 
-Pass `field.state.value` to `checked` and `field.handleChange` to `onCheckedChange`.
+Pass `field.state.value` to `checked`, `field.handleChange` to `onCheckedChange` and `field.handleBlur` to `onBlur`.
 
 <ComponentPreview name="form-tanstack-form-switch-demo" />
 
@@ -493,7 +497,7 @@ Pass `field.state.value` to `checked` and `field.handleChange` to `onCheckedChan
 
 ### OTP Field
 
-Pass `field.state.value` to `value` and `field.handleChange` to `onValueChange`.
+Pass `field.state.value` to `value`, `field.handleChange` to `onValueChange` and `field.handleBlur` to `onBlur`.
 
 <ComponentPreview name="form-tanstack-form-otp-field-demo" />
 
@@ -523,7 +527,11 @@ Pass `field.state.value` to `selected` and `field.handleChange` to `onSelect` on
 
 <ComponentPreview name="form-tanstack-form-date-picker-demo" />
 
-```tsx {5,12-14}
+```tsx {9,16-18}
+const id = useId()
+const errorId = useId()
+const [open, setOpen] = useState(false)
+
 <Field name={field.name} invalid={isInvalid}>
 	<FieldLabel htmlFor={id}>Start date</FieldLabel>
 	<Popover open={open} onOpenChange={setOpen}>

@@ -86,6 +86,7 @@ export default function FormReactHookFormRadioGroupDemo() {
 						render={({ field, fieldState }) => (
 							<Field name={field.name} invalid={fieldState.invalid}>
 								<RadioGroup
+									aria-label="Experience level"
 									className="w-full items-stretch any-pointer-coarse:gap-3"
 									value={field.value}
 									onValueChange={field.onChange}
