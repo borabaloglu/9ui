@@ -142,11 +142,23 @@ Set `disabled` on `Field` or `Combobox` to disable the combobox.
 
 <ComponentPreview name="combobox-disabled-demo" />
 
+### Async Search
+
+Set `filter={null}` on `Combobox` and pass the fetched results as `items`. Keep the selected item in `items`, and use `ComboboxStatus` to announce loading and result counts.
+
+<ComponentPreview name="combobox-async-search-demo" />
+
 ### Popup
 
 Put `ComboboxInput` inside `ComboboxPopup` and open it with `ComboboxTrigger` to build a searchable select.
 
 <ComponentPreview name="combobox-popup-demo" />
+
+### Grid
+
+Set `grid` on `Combobox` and wrap each line of items in `ComboboxRow` to lay items out in a grid. Use `useComboboxFilteredItems` to split the filtered items into rows.
+
+<ComponentPreview name="combobox-grid-demo" />
 
 ### RTL
 
@@ -164,12 +176,14 @@ See the form guides for [Base UI Form](/docs/forms/base-ui#combobox), [React Hoo
 
 <Tip title="Name the combobox">
 
-Give every combobox a name: add a `ComboboxLabel`, use [Field](/docs/components/field) with a `FieldLabel` or set `aria-label` on `ComboboxInput`.
+Give every combobox a name. When the input is the control, use [Field](/docs/components/field) with a `FieldLabel` or set `aria-label` on `ComboboxInput`. When `ComboboxTrigger` is the control, add a `ComboboxLabel`.
 
 ```tsx {2}
 <Combobox items={fruits}>
 	<ComboboxLabel>Fruit</ComboboxLabel>
-	<ComboboxInput render={<Input />} />
+	<ComboboxTrigger render={<Button variant="outline" />}>
+		<ComboboxValue />
+	</ComboboxTrigger>
 </Combobox>
 ```
 
