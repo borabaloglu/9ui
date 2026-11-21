@@ -44,16 +44,15 @@ export function PageActions({ links = [] }: PageActionsProps) {
 
 	const copyMarkdownContent = async () => {
 		try {
-			const markdownUrl = getMarkdownUrl();
-			const response = await fetch(markdownUrl);
-			if (response.ok) {
-				const markdownContent = await response.text();
-				await navigator.clipboard.writeText(markdownContent);
-			} else {
-				await navigator.clipboard.writeText(currentUrl);
+			const response = await fetch(getMarkdownUrl());
+
+			if (!response.ok) {
+				return;
 			}
+
+			await navigator.clipboard.writeText(await response.text());
 		} catch {
-			await navigator.clipboard.writeText(currentUrl);
+			return;
 		}
 
 		setCopied(true);
