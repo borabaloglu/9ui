@@ -221,7 +221,7 @@ Wraps `Toast.Provider` and renders the portal, viewport and toasts for you.
 			shortType: "ToastPosition",
 			type: '"top-left" | "top-center" | "top-right" | "bottom-left" | "bottom-center" | "bottom-right"',
 			default: '"bottom-right"',
-			description: "The screen corner the toasts stack from. Stays physical in right-to-left layouts. Toasts swipe away toward the nearest edge.",
+			description: "Where on the screen the toasts stack. Does not flip in right-to-left layouts.",
 		},
 		{
 			name: "showCloseButton",
@@ -328,7 +328,7 @@ The hook file exports these.
 		{
 			name: "data-position",
 			type: "ToastPosition",
-			description: "Set on the viewport and on each toast. Use it to style toasts per corner.",
+			description: "Set on the viewport and on each toast. Use it to style toasts per position.",
 		},
 	]}
 />
