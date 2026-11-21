@@ -56,11 +56,11 @@ const alignments = [
 	{ value: "right", label: "Align right", icon: AlignRightIcon },
 ];
 
-export default function ToolbarComplexDemo() {
+export default function ToolbarScrollableDemo() {
 	return (
 		<TooltipProvider>
 			<Toolbar
-				className="max-w-full overflow-x-auto before:hidden"
+				className="max-w-80 overflow-x-auto before:hidden"
 				aria-label="Editor"
 			>
 				<ToolbarGroup aria-label="History">
