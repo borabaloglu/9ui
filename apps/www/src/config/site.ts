@@ -6,7 +6,7 @@ export const siteConfig = {
 	description:
 		"Beautiful, customizable components built with Base UI and Tailwind CSS.",
 	links: {
-		twitter: "https://twitter.com/borabaloglu",
+		twitter: "https://x.com/borabalogluu",
 		github: "https://github.com/borabaloglu/9ui",
 	},
 };
