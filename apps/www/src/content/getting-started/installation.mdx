@@ -5,11 +5,35 @@ description: Set up 9ui in your project.
 
 9ui needs React 19 and Tailwind CSS 4.2 or later.
 
+## Quick Start
+
+Copy this prompt into your agent. It works in a new project and in one that already uses shadcn/ui.
+
+<Prompt name="setup" />
+
+Then ask your agent to add your first components.
+
+<Prompt name="first-component" />
+
+## Step by Step
+
+To set up 9ui yourself, use the shadcn CLI or add the files by hand.
+
 <InstallationTabs>
 
 <div>
 
 <Steps>
+
+<Step>Create a project.</Step>
+
+If you already have a project with Tailwind CSS and the `@/*` import alias, skip this step.
+
+```bash title="Terminal"
+npx create-next-app@latest
+```
+
+For another framework, create the project with its own tool, then add [Tailwind CSS](https://tailwindcss.com/docs/installation/framework-guides) and the `@/*` import alias.
 
 <Step>Initialize 9ui in your project.</Step>
 
@@ -17,24 +41,23 @@ description: Set up 9ui in your project.
 npx shadcn@latest init https://9ui.dev/r/init.json
 ```
 
-If your framework doesn't support `shadcn init`, follow the [shadcn installation guide](https://ui.shadcn.com/docs/installation).
+This installs the dependencies, adds the `cn` helper, writes the theme to your global CSS file and creates `components.json`.
 
-<Step>Add 9ui registry to your `components.json`.</Step>
+<Step>Add the 9ui registry to your `components.json`.</Step>
+
+Replace the empty `registries` entry that `init` created.
 
 ```json title="components.json"
-{
-	// existing configuration
-	"registries": {
-		"@9ui": "https://9ui.dev/r/{name}.json"
-	}
+"registries": {
+	"@9ui": "https://9ui.dev/r/{name}.json"
 }
 ```
 
 <Step>Add the root wrapper to your layout.</Step>
 
-Wrap your app in an element with the `root` class, so popups render above your content.
+Wrap your app in an element with the `root` class, so popups render above your content. Outside Next.js, use the file that renders the root of your app.
 
-```tsx {2} title="layout.tsx"
+```tsx {2} title="app/layout.tsx"
 <body>
 	<div className="root">{children}</div>
 </body>
@@ -44,14 +67,6 @@ Wrap your app in an element with the `root` class, so popups render above your c
 
 ```bash title="Terminal"
 npx shadcn@latest add @9ui/button
-```
-
-<Step>Set up the shadcn MCP server (optional).</Step>
-
-To let your AI assistant browse and install 9ui components, set up the MCP server.
-
-```bash title="Terminal"
-npx shadcn@latest mcp init
 ```
 
 </Steps>
@@ -255,8 +270,6 @@ export function cn(...inputs: ClassValue[]) {
 }
 ```
 
-To match the docs, load Inter and Geist Mono, or change `--font-sans` and `--font-mono`.
-
 <Step>Set up import aliases.</Step>
 
 ```json title="tsconfig.json"
@@ -272,17 +285,21 @@ To match the docs, load Inter and Geist Mono, or change `--font-sans` and `--fon
 
 <Step>Add the root wrapper to your layout.</Step>
 
-Wrap your app in an element with the `root` class, so popups render above your content.
+Wrap your app in an element with the `root` class, so popups render above your content. Outside Next.js, use the file that renders the root of your app.
 
-```tsx {2} title="layout.tsx"
+```tsx {2} title="app/layout.tsx"
 <body>
 	<div className="root">{children}</div>
 </body>
 ```
 
+<Step>Add a component.</Step>
+
+Open a component page, such as [Button](/docs/components/button), and copy the code from the Manual tab under Installation.
+
 <Step>Configure components.json (optional).</Step>
 
-To add components with the shadcn CLI, create a `components.json`. Set `rsc` to false outside Next.js.
+To add components with the shadcn CLI instead, create a `components.json`. Set `rsc` to false outside Next.js.
 
 ```json title="components.json"
 {
@@ -310,8 +327,6 @@ To add components with the shadcn CLI, create a `components.json`. Set `rsc` to 
 }
 ```
 
-<Step>Add a component.</Step>
-
 ```bash title="Terminal"
 npx shadcn@latest add @9ui/button
 ```
@@ -322,6 +337,25 @@ npx shadcn@latest add @9ui/button
 
 </InstallationTabs>
 
+## Fonts
+
+The theme uses Inter and Geist Mono. Load them in your app, or change `--font-sans` and `--font-mono`. See [Theming](/docs/getting-started/theming#fonts).
+
 ## Icon Libraries
 
 Components use [lucide-react](https://lucide.dev). To use another library, replace the icon imports.
+
+## MCP Server
+
+To let your AI assistant browse and install 9ui components, set up the shadcn MCP server.
+
+```bash title="Terminal"
+npx shadcn@latest mcp init
+```
+
+## Next Steps
+
+- [Theming](/docs/getting-started/theming): change colors, radius and fonts.
+- [Dark Mode](/docs/getting-started/dark-mode): add a theme toggle.
+- [RTL](/docs/getting-started/rtl): set up right-to-left layouts.
+- [Skills](/docs/getting-started/skills): teach your AI assistant how 9ui works.

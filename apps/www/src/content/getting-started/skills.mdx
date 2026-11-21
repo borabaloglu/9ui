@@ -50,25 +50,19 @@ In Claude Code, each skill is a slash command. In other agents, ask for it by na
 
 Builds a component that matches the rest of your library, then checks it.
 
-```text title="Prompt"
-/new-component a segmented control built on Base UI Toggle Group
-```
+<Prompt text="/new-component a segmented control built on Base UI Toggle Group" />
 
 ### /update-component
 
 Changes a component and tells you what the change means for its siblings.
 
-```text title="Prompt"
-/update-component add an lg size to Select
-```
+<Prompt text="/update-component add an lg size to Select" />
 
 ### /review-component
 
 Reviews a component, your current changes or the whole library. It changes no code.
 
-```text title="Prompt"
-/review-component dialog
-```
+<Prompt text="/review-component dialog" />
 
 To review your uncommitted changes, pass `diff`. To review every component, pass `all`.
 
@@ -80,9 +74,7 @@ Writes a rulebook from your own components. Where your components disagree, it a
 
 Downloads a rulebook into your project. With no argument, it imports 9ui's.
 
-```text title="Prompt"
-/rulebook-import https://example.com/r/rulebook.json
-```
+<Prompt text="/rulebook-import https://example.com/r/rulebook.json" />
 
 You can also install 9ui's rulebook with the shadcn CLI.
 
@@ -94,9 +86,7 @@ npx shadcn@latest add @9ui/rulebook
 
 Changes a rule, adds one or records why one component is different. It lists the components the change affects.
 
-```text title="Prompt"
-/rulebook-update popups should open in 200ms
-```
+<Prompt text="/rulebook-update popups should open in 200ms" />
 
 To let one component differ, ask for an exception. It's recorded on the rule with a reason and isn't reported again.
 

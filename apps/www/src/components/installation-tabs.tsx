@@ -13,10 +13,10 @@ export const InstallationTabs = ({ children }: InstallationTabsProps) => {
 		<Tabs className="mt-4 w-full" defaultValue="quick">
 			<TabsList variant="line">
 				<TabsTab className="px-3" value="quick">
-					Quick Setup
+					CLI
 				</TabsTab>
 				<TabsTab className="px-3" value="manual">
-					Manual Setup
+					Manual
 				</TabsTab>
 			</TabsList>
 			<TabsPanel value="quick">{quick}</TabsPanel>

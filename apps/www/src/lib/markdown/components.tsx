@@ -4,6 +4,7 @@ import { asMarkdown, md } from "fumadocs-core/server";
 import { siteConfig } from "@/config/site";
 
 import { getComponentSource, getDemo } from "@/lib/demos";
+import { getPrompt, type PromptName } from "@/lib/prompts";
 
 interface ApiTableRow {
 	name: string;
@@ -135,14 +136,20 @@ function InstallationTabs({ children }: { children: React.ReactNode }) {
 	const [quick, manual] = splitTabs(children).elements;
 
 	return md`
-		## Quick Setup
+		### CLI
 
 		${quick}
 
-		## Manual Setup
+		### Manual
 
 		${manual}
 	`;
+}
+
+function Prompt({ name, text }: { name?: PromptName; text?: string }) {
+	asMarkdown();
+
+	return fence("text", getPrompt({ name, text }));
 }
 
 async function stepText(children: React.ReactNode) {
@@ -272,6 +279,7 @@ export const markdownComponents = {
 	Icons,
 	InstallationTabs,
 	LinkCard,
+	Prompt,
 	Step,
 	Steps,
 	Tabs: Fragment,
