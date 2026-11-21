@@ -434,7 +434,7 @@
 			"name": "form",
 			"type": "registry:ui",
 			"title": "Form",
-			"description": "Build forms with the Form component and native validation.",
+			"description": "Forms with the Form component and native validation.",
 			"docs": "Docs: https://www.9ui.dev/docs/forms/base-ui",
 			"dependencies": ["@base-ui/react"],
 			"registryDependencies": [],
