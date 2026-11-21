@@ -1,6 +1,6 @@
 ---
 title: React Hook Form
-description: Build forms with React Hook Form and Zod.
+description: Forms with React Hook Form and Zod.
 ---
 
 <ComponentLinks
@@ -112,11 +112,11 @@ export default function ExampleForm() {
 }
 ```
 
-### Build the Form
-
-Add a `Controller` with a `Field` for each value. The demo at the top of this page has the full code.
+Then add a `Controller` with a `Field` for each value. The demo at the top of this page has the full code.
 
 ## Submitting
+
+When a submit fails validation, React Hook Form moves focus to the first invalid field whose control receives `field.ref`.
 
 To show progress while the form submits, pass `formState.isSubmitting` to `loading` on the submit button.
 
@@ -141,40 +141,20 @@ const {
 
 To choose when validation runs, set `mode` on `useForm`.
 
-```tsx {3} title="form.tsx"
+```tsx {3}
 const form = useForm<FormValues>({
 	resolver: zodResolver(schema),
 	mode: "onChange",
 })
 ```
 
-| Mode          | Description                                           |
-| ------------- | ----------------------------------------------------- |
-| `"onSubmit"`  | Validates on submit, then on every change. This is the default. |
-| `"onBlur"`    | Validates when a field loses focus.                   |
-| `"onChange"`  | Validates on every change.                            |
-| `"onTouched"` | Validates on the first blur, then on every change.    |
-| `"all"`       | Validates on blur and on change.                      |
-
-## Displaying Errors
-
-To show an error, set `invalid` on `Field` and render `FieldError` with `match`.
-
-```tsx {5,8-10} title="form.tsx"
-<Controller
-	name="email"
-	control={control}
-	render={({ field, fieldState }) => (
-		<Field name={field.name} invalid={fieldState.invalid}>
-			<FieldLabel>Email</FieldLabel>
-			<Input {...field} type="email" />
-			{fieldState.invalid && (
-				<FieldError match>{fieldState.error?.message}</FieldError>
-			)}
-		</Field>
-	)}
-/>
-```
+| Mode | Description |
+| --- | --- |
+| `"onSubmit"` | Validates on submit, then on every change. This is the default. |
+| `"onBlur"` | Validates when a field loses focus. |
+| `"onChange"` | Validates on every change. |
+| `"onTouched"` | Validates on the first blur, then on every change. |
+| `"all"` | Validates on blur and on change. |
 
 ## Server-Side Errors
 
@@ -182,7 +162,7 @@ To show an error returned by the server, call `setError`. Submit the form to see
 
 <ComponentPreview name="form-react-hook-form-server-errors-demo" />
 
-```tsx {1,11-14} title="form.tsx"
+```tsx {1,11-14}
 const { control, handleSubmit, setError } = useForm<FormValues>({
 	resolver: zodResolver(schema),
 	defaultValues: {
@@ -593,7 +573,7 @@ To group related fields, wrap their controllers in `Fieldset` with a `FieldsetLe
 
 <ComponentPreview name="form-react-hook-form-fieldset-demo" />
 
-```tsx {1-5,19} title="form.tsx"
+```tsx {1-5,19}
 <Fieldset>
 	<FieldsetLegend>Billing Details</FieldsetLegend>
 	<FieldsetDescription>

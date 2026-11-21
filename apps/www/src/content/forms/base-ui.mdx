@@ -1,6 +1,6 @@
 ---
 title: Base UI Form
-description: Build forms with the Form component and native validation.
+description: Forms with the Form component and native validation.
 ---
 
 <ComponentLinks
@@ -91,74 +91,29 @@ To read the submit event or `FormData`, use `onSubmit`.
 
 ## Submitting
 
+When a submit fails validation, `Form` moves focus to the first invalid field.
+
 ### Pending State
 
 To show progress while the form submits, set `loading` on the submit button.
 
-```tsx {1,5-7,10}
+```tsx {1,5-10,13}
 const [loading, setLoading] = useState(false)
 
 <Form
 	onFormSubmit={async (values) => {
 		setLoading(true)
-		await submit(values)
-		setLoading(false)
+		try {
+			await submit(values)
+		} finally {
+			setLoading(false)
+		}
 	}}
 >
 	<Button type="submit" loading={loading}>
 		Send
 	</Button>
 </Form>
-```
-
-### Server Actions
-
-To submit to a server action, call it in `onFormSubmit` inside a transition and pass the errors it returns to `errors`.
-
-```tsx {8-9,14-19} title="form.tsx"
-"use client"
-
-import { useState, useTransition } from "react"
-
-import { createUser } from "./actions"
-
-export default function ExampleForm() {
-	const [errors, setErrors] = useState({})
-	const [pending, startTransition] = useTransition()
-
-	return (
-		<Form
-			errors={errors}
-			onFormSubmit={(values) => {
-				startTransition(async () => {
-					const result = await createUser(values)
-					setErrors(result.errors)
-				})
-			}}
-		>
-			<Field name="username">
-				<FieldLabel>Username</FieldLabel>
-				<Input required />
-				<FieldError />
-			</Field>
-			<Button type="submit" loading={pending}>
-				Save
-			</Button>
-		</Form>
-	)
-}
-```
-
-```ts title="actions.ts"
-"use server"
-
-export async function createUser(values: { username: string }) {
-	if (values.username === "admin") {
-		return { errors: { username: "'admin' is reserved for system use" } }
-	}
-
-	return { errors: {} }
-}
 ```
 
 ## Validation
@@ -186,11 +141,11 @@ To choose when validation runs, set `validationMode` on `Form` or `Field`.
 <Form validationMode="onBlur">{/* ... */}</Form>
 ```
 
-| Mode         | Description                                                           |
-| ------------ | --------------------------------------------------------------------- |
-| `"onSubmit"` | Validates on submit, then on every change. This is the default.       |
-| `"onBlur"`   | Validates when a field loses focus.                                   |
-| `"onChange"` | Validates on every change.                                            |
+| Mode | Description |
+| --- | --- |
+| `"onSubmit"` | Validates on submit, then on every change. This is the default. |
+| `"onBlur"` | Validates when a field loses focus. |
+| `"onChange"` | Validates on every change. |
 
 ### Custom Validation
 
@@ -251,6 +206,56 @@ const [errors, setErrors] = useState({})
 </Form>
 ```
 
+### Server Actions
+
+To submit to a server action, call it in `onFormSubmit` inside a transition and pass the errors it returns to `errors`.
+
+```tsx {8-9,14-19} title="form.tsx"
+"use client"
+
+import { useState, useTransition } from "react"
+
+import { createUser } from "./actions"
+
+export default function ExampleForm() {
+	const [errors, setErrors] = useState({})
+	const [pending, startTransition] = useTransition()
+
+	return (
+		<Form
+			errors={errors}
+			onFormSubmit={(values) => {
+				startTransition(async () => {
+					const result = await createUser(values)
+					setErrors(result.errors)
+				})
+			}}
+		>
+			<Field name="username">
+				<FieldLabel>Username</FieldLabel>
+				<Input required />
+				<FieldError />
+			</Field>
+			<Button type="submit" loading={pending}>
+				Save
+			</Button>
+		</Form>
+	)
+}
+```
+
+```ts title="actions.ts"
+"use server"
+
+export async function createUser(values: { username: string }) {
+	if (values.username === "admin") {
+		return { errors: { username: "'admin' is reserved for system use" } }
+	}
+
+	return { errors: {} }
+}
+```
+
 ## Using with Zod
 
 To validate with a schema, parse the values in `onFormSubmit` and pass the field errors to `errors`.
@@ -267,7 +272,7 @@ npm install zod
 
 <Step>Parse the values and set the errors.</Step>
 
-```tsx {4-7,10,13-17,21}
+```tsx {4-7,10,13-17,19,23}
 import type { Form as FormPrimitive } from "@base-ui/react/form"
 import { z } from "zod"
 
@@ -285,6 +290,8 @@ export default function ExampleForm() {
 			setErrors(z.flattenError(result.error).fieldErrors)
 			return
 		}
+
+		setErrors({})
 	}
 
 	return (
