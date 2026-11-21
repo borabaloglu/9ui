@@ -297,7 +297,6 @@ What 9ui adds to Recharts. See the [Recharts](https://recharts.github.io/en-US/a
 Wraps the chart in a Recharts `ResponsiveContainer` and sets a `--color-<key>` variable for each series.
 
 <ApiTable
-	baseLabel="Recharts"
 	rows={[
 		{
 			name: "config",
@@ -313,7 +312,6 @@ Wraps the chart in a Recharts `ResponsiveContainer` and sets a `--color-<key>` v
 			name: "initialDimension",
 			type: "{ width: number; height: number }",
 			default: "{ width: 320, height: 200 }",
-			baseDefault: "{ width: -1, height: -1 }",
 			description: "The size used before the container is measured.",
 		},
 	]}
@@ -322,20 +320,17 @@ Wraps the chart in a Recharts `ResponsiveContainer` and sets a `--color-<key>` v
 ### ChartTooltip
 
 <ApiTable
-	baseLabel="Recharts"
 	rows={[
 		{
 			name: "animationDuration",
 			type: "number",
 			default: "150",
-			baseDefault: "400",
 			description: "How long the tooltip takes to move, in milliseconds.",
 		},
 		{
 			name: "animationEasing",
 			type: "EasingInput",
 			default: '"ease-out"',
-			baseDefault: '"ease"',
 			description: "The easing of the tooltip movement.",
 		},
 	]}
@@ -398,14 +393,12 @@ Renders the tooltip from the config. Pass it to `content` on `ChartTooltip`.
 ### ChartLegend
 
 <ApiTable
-	baseLabel="Recharts"
 	rows={[
 		{
 			name: "itemSorter",
 			shortType: "LegendItemSorter | null",
 			type: '"value" | "dataKey" | ((item) => number | string) | null',
 			default: "null",
-			baseDefault: '"value"',
 			description: "The order of the items. Keeps the order of the series when not set.",
 		},
 	]}

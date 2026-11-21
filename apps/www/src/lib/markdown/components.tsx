@@ -12,7 +12,6 @@ interface ApiTableRow {
 	type: string;
 	shortType?: string;
 	default?: string;
-	baseDefault?: string;
 	description: React.ReactNode;
 }
 
@@ -32,21 +31,17 @@ function codeCell(value?: string) {
 
 async function ApiTable({
 	label = "Prop",
-	baseLabel = "Base UI",
 	rows,
 }: {
 	label?: string;
-	baseLabel?: string;
 	rows: ApiTableRow[];
 }) {
 	asMarkdown();
 
 	const hasDefault = rows.some((row) => row.default);
-	const hasBase = rows.some((row) => row.baseDefault);
 	const head = [label, "Type"];
 
 	if (hasDefault) head.push("Default");
-	if (hasBase) head.push(`${baseLabel} default`);
 	head.push("Description");
 
 	const lines = [
@@ -58,7 +53,6 @@ async function ApiTable({
 		const cells = [codeCell(row.name), codeCell(row.type)];
 
 		if (hasDefault) cells.push(codeCell(row.default));
-		if (hasBase) cells.push(codeCell(row.baseDefault));
 		cells.push(cell(await md`${row.description}`));
 		lines.push(`| ${cells.join(" | ")} |`);
 	}

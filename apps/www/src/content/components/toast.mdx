@@ -238,7 +238,6 @@ Wraps `Toast.Provider` and renders the portal, viewport and toasts for you.
 			name: "toastManager",
 			type: "ToastManager",
 			default: "toastManager",
-			baseDefault: "undefined",
 			description: <>Uses the shared manager from <code>use-toast</code>, so <code>toastManager.add()</code> works outside React.</>,
 		},
 	]}
@@ -259,7 +258,6 @@ Wraps `Toast.Provider` for toasts attached to an element.
 			name: "toastManager",
 			type: "ToastManager",
 			default: "anchoredToastManager",
-			baseDefault: "undefined",
 			description: "Uses the shared anchored manager from use-toast.",
 		},
 	]}
@@ -287,7 +285,6 @@ Options for `toast.add()`, `toast.update()` and `toast.promise()` that 9ui rende
 			name: "positionerProps.sideOffset",
 			type: "number",
 			default: "4",
-			baseDefault: "0",
 			description: "The gap between the toast and its anchor.",
 		},
 	]}

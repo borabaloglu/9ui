@@ -14,13 +14,11 @@ interface ApiTableRow {
 	type: string;
 	shortType?: string;
 	default?: string;
-	baseDefault?: string;
 	description: React.ReactNode;
 }
 
 interface ApiTableProps {
 	label?: string;
-	baseLabel?: string;
 	rows: ApiTableRow[];
 	className?: string;
 }
@@ -81,13 +79,8 @@ function ApiEmpty() {
 	return <span className="text-muted-foreground/60">—</span>;
 }
 
-function ApiTable({
-	label = "Prop",
-	baseLabel = "Base UI",
-	rows,
-	className,
-}: ApiTableProps) {
-	const hasDefaults = rows.some((row) => row.default || row.baseDefault);
+function ApiTable({ label = "Prop", rows, className }: ApiTableProps) {
+	const hasDefaults = rows.some((row) => row.default);
 	const columns = hasDefaults
 		? "grid-cols-[minmax(0,1fr)_minmax(0,1fr)_1rem] sm:grid-cols-[minmax(0,1fr)_minmax(0,1fr)_minmax(0,0.8fr)_1rem]"
 		: "grid-cols-[minmax(0,1fr)_minmax(0,1fr)_1rem]";
@@ -154,14 +147,6 @@ function ApiTable({
 											) : (
 												<ApiEmpty />
 											)}
-										</dd>
-									</>
-								)}
-								{row.baseDefault && (
-									<>
-										<dt>{baseLabel}</dt>
-										<dd>
-											<ApiCode>{row.baseDefault}</ApiCode>
 										</dd>
 									</>
 								)}
