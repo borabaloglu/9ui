@@ -8,7 +8,7 @@ import { Field, FieldError, FieldLabel } from "@/components/ui/field";
 import { Form } from "@/components/ui/form";
 import { PhoneInput } from "@/components/ui/phone-input";
 
-export default function PhoneInputFormDemo() {
+export default function PhoneInputValidationDemo() {
 	const [phoneNumber, setPhoneNumber] = useState("");
 	const [invalid, setInvalid] = useState(false);
 

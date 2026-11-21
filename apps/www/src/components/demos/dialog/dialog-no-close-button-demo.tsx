@@ -10,7 +10,7 @@ import {
 	DialogTrigger,
 } from "@/components/ui/dialog";
 
-export default function DialogCloseButtonDemo() {
+export default function DialogNoCloseButtonDemo() {
 	return (
 		<Dialog>
 			<DialogTrigger render={<Button variant="outline" />}>

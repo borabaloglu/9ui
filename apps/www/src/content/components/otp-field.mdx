@@ -57,6 +57,12 @@ To change the size, set `size` on `OTPField`.
 
 <ComponentPreview name="otp-field-size-demo" />
 
+### Length
+
+Set `length` on `OTPField` to change the number of slots.
+
+<ComponentPreview name="otp-field-length-demo" />
+
 ### Separator
 
 Place `OTPFieldSeparator` between slots to split the code into smaller chunks.
@@ -68,12 +74,6 @@ Place `OTPFieldSeparator` between slots to split the code into smaller chunks.
 Use `Field` to add a label and a description.
 
 <ComponentPreview name="otp-field-field-demo" />
-
-### Invalid
-
-Set `invalid` on `Field` to show the error state.
-
-<ComponentPreview name="otp-field-invalid-demo" />
 
 ### Disabled
 
@@ -87,11 +87,11 @@ Set `readOnly` on `OTPField` to show a code that can't be changed.
 
 <ComponentPreview name="otp-field-read-only-demo" />
 
-### Length
+### Invalid
 
-Set `length` on `OTPField` to change the number of slots.
+Set `invalid` on `Field` to show the error state.
 
-<ComponentPreview name="otp-field-length-demo" />
+<ComponentPreview name="otp-field-invalid-demo" />
 
 ### Alphanumeric
 
@@ -143,21 +143,6 @@ To announce the position of each slot, set `aria-label` on `OTPFieldInput`.
 	{Array.from({ length: 6 }, (_, index) => (
 		<OTPFieldInput key={index} aria-label={`Character ${index + 1} of 6`} />
 	))}
-</OTPField>
-```
-
-</Tip>
-
-<Tip title="Set the number of slots">
-
-Set `length` on `OTPField` to the number of slots and render one `OTPFieldInput` for each.
-
-```tsx {1}
-<OTPField length={4}>
-	<OTPFieldInput aria-label="Character 1 of 4" />
-	<OTPFieldInput aria-label="Character 2 of 4" />
-	<OTPFieldInput aria-label="Character 3 of 4" />
-	<OTPFieldInput aria-label="Character 4 of 4" />
 </OTPField>
 ```
 

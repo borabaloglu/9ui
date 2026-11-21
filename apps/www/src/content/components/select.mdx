@@ -101,7 +101,7 @@ Set `disabled` on `Field` to disable the select and dim its label. Outside a `Fi
 
 ### Invalid
 
-Set `invalid` on `Field` to show the error state, and clear it once an option is selected. Outside a `Field`, set `aria-invalid` on `SelectTrigger`.
+Set `invalid` on `Field` to show the invalid state. Outside a `Field`, set `aria-invalid` on `SelectTrigger`.
 
 <ComponentPreview name="select-invalid-demo" showReload={true} />
 
@@ -173,6 +173,18 @@ const items = [
 		<SelectValue />
 	</SelectTrigger>
 </Select>
+```
+
+</Tip>
+
+<Tip title="Change where the popup opens">
+
+With `alignItemWithTrigger={false}`, `SelectPopup` takes `side`, `align`, `sideOffset` and `alignOffset` to change where the popup opens.
+
+```tsx {1}
+<SelectPopup alignItemWithTrigger={false} side="top" align="start">
+	<SelectItem value="apple">Apple</SelectItem>
+</SelectPopup>
 ```
 
 </Tip>

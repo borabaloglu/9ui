@@ -164,23 +164,17 @@ toastManager.add({ title: "Event added to calendar" })
 
 ## Examples
 
-### Promise
+### Status
 
-To follow an async task, pass the promise to `toast.promise`.
+To show a status icon, set `type: "success"`, `"error"`, `"warning"`, `"info"` or `"loading"`.
 
-<ComponentPreview name="toast-promise-demo" />
+<ComponentPreview name="toast-status-demo" />
 
 ### Action
 
 To add a button, set `actionProps`.
 
 <ComponentPreview name="toast-action-demo" />
-
-### Status
-
-To show a status icon, set `type: "success"`, `"error"`, `"warning"`, `"info"` or `"loading"`.
-
-<ComponentPreview name="toast-status-demo" />
 
 ### Close Button
 
@@ -193,6 +187,12 @@ To show a close button, set `showCloseButton` on `ToastProvider`.
 To move the toasts, set `position` on `ToastProvider`.
 
 <ComponentPreview name="toast-position-demo" />
+
+### Promise
+
+To follow an async task, pass the promise to `toast.promise`.
+
+<ComponentPreview name="toast-promise-demo" />
 
 ### Anchored
 

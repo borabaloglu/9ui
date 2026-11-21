@@ -58,7 +58,7 @@ Tooltips don't open on touch devices. Use a [Popover](/docs/components/popover) 
 
 ### Side
 
-Set `side` on `TooltipPopup` to choose where the tooltip opens.
+Set `side` on `TooltipPopup` to choose where the tooltip opens. It also takes `align`, `sideOffset` and `alignOffset`.
 
 <ComponentPreview name="tooltip-side-demo" />
 
@@ -115,18 +115,6 @@ Set `render` on `TooltipTrigger` to use your own button.
 <TooltipTrigger render={<Button variant="outline" />}>
 	Share
 </TooltipTrigger>
-```
-
-</Tip>
-
-<Tip title="Change where the tooltip opens">
-
-`TooltipPopup` takes `side`, `align`, `sideOffset` and `alignOffset` to change where the tooltip opens.
-
-```tsx {1}
-<TooltipPopup side="bottom" align="start" sideOffset={8}>
-	Copy link
-</TooltipPopup>
 ```
 
 </Tip>

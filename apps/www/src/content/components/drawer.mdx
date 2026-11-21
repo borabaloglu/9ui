@@ -27,7 +27,13 @@ npx shadcn@latest add @9ui/drawer
 ```
 </div>
 
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
 <ComponentSource name="drawer" />
+
+</Steps>
 </ComponentInstallation>
 
 ## Usage
@@ -130,10 +136,6 @@ Create a handle with `createDrawerHandle` and pass it to `Drawer` and to any `Dr
 
 <ComponentPreview name="drawer-detached-triggers-demo" />
 
-### Handle
-
-The handle shows on top and bottom drawers. Set `showHandle={false}` on `DrawerPopup` to remove it.
-
 ### Scale Background
 
 Wrap your app in `DrawerProvider` and put `DrawerIndentBackground` and `DrawerIndent` at the top of the tree to scale the page down while a drawer is open. Every `Drawer` inside the provider triggers it, and the page follows the drawer as it is swiped away.
@@ -227,6 +229,18 @@ To change the corner radius, set `className="[--drawer-radius:var(--radius-xl)]"
 ```tsx {1}
 <DrawerPopup className="[--drawer-radius:var(--radius-xl)]">
 	<DrawerTitle>Send feedback</DrawerTitle>
+</DrawerPopup>
+```
+
+</Tip>
+
+<Tip title="Hide the handle">
+
+The handle shows on top and bottom drawers. To remove it, set `showHandle={false}` on `DrawerPopup`.
+
+```tsx {1}
+<DrawerPopup showHandle={false}>
+	<DrawerPanel>Content</DrawerPanel>
 </DrawerPopup>
 ```
 

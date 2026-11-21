@@ -80,14 +80,6 @@ To let people close the alert, put a close button in `AlertAction`. Give it an `
 
 <ComponentPreview name="alert-dismissible-demo" />
 
-### Heading
-
-To make the title a heading, set `render` on `AlertTitle`.
-
-```tsx
-<AlertTitle render={<h3 />}>View-only access</AlertTitle>
-```
-
 ### RTL
 
 To enable RTL support, see the [RTL guide](/docs/getting-started/rtl).
@@ -121,6 +113,16 @@ To show an icon, put it first inside `Alert`.
 	<AlertTitle>View-only access</AlertTitle>
 	<AlertDescription>Ask an owner for permission to make edits.</AlertDescription>
 </Alert>
+```
+
+</Tip>
+
+<Tip title="Make the title a heading">
+
+To make the title a heading, set `render` on `AlertTitle`.
+
+```tsx {1}
+<AlertTitle render={<h3 />}>View-only access</AlertTitle>
 ```
 
 </Tip>

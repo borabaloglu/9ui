@@ -15,7 +15,7 @@ import {
 
 const filters = ["In stock", "On sale", "Free shipping", "New arrivals"];
 
-export default function SheetCloseButtonDemo() {
+export default function SheetNoCloseButtonDemo() {
 	return (
 		<Sheet>
 			<SheetTrigger render={<Button variant="outline" />}>Filters</SheetTrigger>

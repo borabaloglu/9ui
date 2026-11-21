@@ -118,10 +118,6 @@ Set `variant="bare"` on `VaulFooter` to drop its border and background.
 
 <ComponentPreview name="vaul-bare-footer-demo" />
 
-### Handle
-
-The handle shows on top and bottom drawers. Set `showHandle={false}` on `VaulContent` to remove it, or render `VaulHandle` yourself to place it elsewhere. Set `handleOnly` on `Vaul` to make the handle the only area that drags.
-
 ### Scale Background
 
 Set `shouldScaleBackground` on `Vaul` to scale the page down while the drawer is open. Add `data-vaul-drawer-wrapper` to the element that wraps your app.
@@ -210,6 +206,19 @@ To change the corner radius, set `className="[--vaul-radius:var(--radius-xl)]"` 
 ```tsx {1}
 <VaulContent className="[--vaul-radius:var(--radius-xl)]">
 	<VaulTitle>Send feedback</VaulTitle>
+</VaulContent>
+```
+
+</Tip>
+
+<Tip title="Hide or move the handle">
+
+The handle shows on top and bottom drawers. To remove it, set `showHandle={false}` on `VaulContent`, and render `VaulHandle` yourself to place it elsewhere. To make the handle the only area that drags, set `handleOnly` on `Vaul`.
+
+```tsx {1,2}
+<VaulContent showHandle={false}>
+	<VaulHandle />
+	<VaulPanel>Content</VaulPanel>
 </VaulContent>
 ```
 

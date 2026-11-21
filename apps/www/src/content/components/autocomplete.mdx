@@ -86,18 +86,6 @@ To remember the selected item, use [Combobox](/docs/components/combobox).
 
 ## Examples
 
-### Groups
-
-Use `AutocompleteGroup`, `AutocompleteGroupLabel` and `AutocompleteSeparator` to split items into labeled sections.
-
-<ComponentPreview name="autocomplete-groups-demo" />
-
-### Async Search
-
-Set `filter={null}` on `Autocomplete` and pass the fetched results as `items`. Use `AutocompleteStatus` to announce loading and result counts.
-
-<ComponentPreview name="autocomplete-async-search-demo" />
-
 ### Input Group
 
 Set `render={<InputGroup />}` on `AutocompleteInputGroup` to add icons, text or buttons around the input.
@@ -110,11 +98,11 @@ Set `render={<AutocompleteClear />}` on `InputGroupButton` to add a clear button
 
 <ComponentPreview name="autocomplete-clear-demo" />
 
-### Inline
+### Groups
 
-Set `mode="both"` on `Autocomplete` to fill the input with the highlighted item.
+Use `AutocompleteGroup`, `AutocompleteGroupLabel` and `AutocompleteSeparator` to split items into labeled sections.
 
-<ComponentPreview name="autocomplete-inline-demo" />
+<ComponentPreview name="autocomplete-groups-demo" />
 
 ### Auto Highlight
 
@@ -122,11 +110,23 @@ Set `autoHighlight` on `Autocomplete` to highlight the first match while typing.
 
 <ComponentPreview name="autocomplete-auto-highlight-demo" />
 
+### Inline
+
+Set `mode="both"` on `Autocomplete` to fill the input with the highlighted item.
+
+<ComponentPreview name="autocomplete-inline-demo" />
+
 ### Limit Results
 
 Set `limit` on `Autocomplete` to cap the number of items shown. Use `AutocompleteStatus` to say how many more there are.
 
 <ComponentPreview name="autocomplete-limit-results-demo" />
+
+### Async Search
+
+Set `filter={null}` on `Autocomplete` and pass the fetched results as `items`. Use `AutocompleteStatus` to announce loading and result counts.
+
+<ComponentPreview name="autocomplete-async-search-demo" />
 
 ### Fuzzy Matcher
 
