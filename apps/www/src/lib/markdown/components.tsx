@@ -5,6 +5,7 @@ import { siteConfig } from "@/config/site";
 
 import { getComponentSource, getDemo } from "@/lib/demos";
 import { getPrompt, type PromptName } from "@/lib/prompts";
+import { getSidebarNav, source } from "@/lib/source";
 
 interface ApiTableRow {
 	name: string;
@@ -146,6 +147,25 @@ function InstallationTabs({ children }: { children: React.ReactNode }) {
 	`;
 }
 
+function ComponentsIndex() {
+	asMarkdown();
+
+	const group = getSidebarNav().find((group) => group.title === "Components");
+	const pages = source.getPages();
+	const lines = (group?.items ?? [])
+		.filter((item) => !item.disabled)
+		.map((item) => {
+			const page = pages.find((page) => page.url === item.href);
+			const description = page?.data.description
+				? `: ${page.data.description}`
+				: "";
+
+			return `- [${item.title}](${item.href})${description}`;
+		});
+
+	return `\n${lines.join("\n")}\n\n`;
+}
+
 function Prompt({ name, text }: { name?: PromptName; text?: string }) {
 	asMarkdown();
 
@@ -276,6 +296,7 @@ export const markdownComponents = {
 	ComponentLinks,
 	ComponentPreview,
 	ComponentSource,
+	ComponentsIndex,
 	Icons,
 	InstallationTabs,
 	LinkCard,
