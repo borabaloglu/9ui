@@ -20,6 +20,7 @@ interface ApiTableRow {
 
 interface ApiTableProps {
 	label?: string;
+	baseLabel?: string;
 	rows: ApiTableRow[];
 	className?: string;
 }
@@ -80,7 +81,12 @@ function ApiEmpty() {
 	return <span className="text-muted-foreground/60">—</span>;
 }
 
-function ApiTable({ label = "Prop", rows, className }: ApiTableProps) {
+function ApiTable({
+	label = "Prop",
+	baseLabel = "Base UI",
+	rows,
+	className,
+}: ApiTableProps) {
 	const hasDefaults = rows.some((row) => row.default || row.baseDefault);
 	const columns = hasDefaults
 		? "grid-cols-[minmax(0,1fr)_minmax(0,1fr)_1rem] sm:grid-cols-[minmax(0,1fr)_minmax(0,1fr)_minmax(0,0.8fr)_1rem]"
@@ -153,7 +159,7 @@ function ApiTable({ label = "Prop", rows, className }: ApiTableProps) {
 								)}
 								{row.baseDefault && (
 									<>
-										<dt>Base UI</dt>
+										<dt>{baseLabel}</dt>
 										<dd>
 											<ApiCode>{row.baseDefault}</ApiCode>
 										</dd>

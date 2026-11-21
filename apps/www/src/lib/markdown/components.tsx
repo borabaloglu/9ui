@@ -32,9 +32,11 @@ function codeCell(value?: string) {
 
 async function ApiTable({
 	label = "Prop",
+	baseLabel = "Base UI",
 	rows,
 }: {
 	label?: string;
+	baseLabel?: string;
 	rows: ApiTableRow[];
 }) {
 	asMarkdown();
@@ -44,7 +46,7 @@ async function ApiTable({
 	const head = [label, "Type"];
 
 	if (hasDefault) head.push("Default");
-	if (hasBase) head.push("Base UI default");
+	if (hasBase) head.push(`${baseLabel} default`);
 	head.push("Description");
 
 	const lines = [
