@@ -107,7 +107,7 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => (
 			>
 				<ToastProvider>
 					<TooltipProvider>
-						<div className="root flex flex-1 flex-col">{children}</div>
+						<div className="flex min-h-dvh flex-col">{children}</div>
 					</TooltipProvider>
 				</ToastProvider>
 				<SiteToaster />

@@ -53,16 +53,6 @@ Replace the empty `registries` entry that `init` created.
 }
 ```
 
-<Step>Add the root wrapper to your layout.</Step>
-
-Wrap your app in an element with the `root` class, so popups render above your content. Outside Next.js, use the file that renders the root of your app.
-
-```tsx {2} title="app/layout.tsx"
-<body>
-	<div className="root">{children}</div>
-</body>
-```
-
 <Step>Add a component.</Step>
 
 ```bash title="Terminal"
@@ -226,10 +216,6 @@ export function cn(...inputs: ClassValue[]) {
 		color: var(--foreground);
 		overscroll-behavior: none;
 	}
-	.root {
-		isolation: isolate;
-		min-height: 100vh;
-	}
 	::-webkit-scrollbar {
 		width: 4px;
 	}
@@ -281,16 +267,6 @@ export function cn(...inputs: ClassValue[]) {
 		}
 	}
 }
-```
-
-<Step>Add the root wrapper to your layout.</Step>
-
-Wrap your app in an element with the `root` class, so popups render above your content. Outside Next.js, use the file that renders the root of your app.
-
-```tsx {2} title="app/layout.tsx"
-<body>
-	<div className="root">{children}</div>
-</body>
 ```
 
 <Step>Add a component.</Step>

@@ -5,9 +5,8 @@ const setup = `Set up 9ui in this project. It needs React 19 and Tailwind CSS 4.
    When it asks to overwrite lib/utils.ts, answer no.
    If components.json doesn't exist, run: npx shadcn@latest init https://9ui.dev/r/init.json
 2. In components.json, add "@9ui": "https://9ui.dev/r/{name}.json" to "registries". Keep every entry that is already there.
-3. In the file that renders the root of the app, wrap the app in <div className="root">, directly inside <body>. If <body> has layout classes such as flex or grid, move them to the new div. Skip this step if the wrapper is already there.
-4. Add a "9ui" section to AGENTS.md, creating the file if needed and staying outside any generated block: before using or changing a 9ui component, read https://www.9ui.dev/llms.txt and the component's page linked from it.
-5. Ask me whether to install the 9ui skills. If yes, follow https://www.9ui.dev/docs/getting-started/skills.md`;
+3. Add a "9ui" section to AGENTS.md, creating the file if needed and staying outside any generated block: before using or changing a 9ui component, read https://www.9ui.dev/llms.txt and the component's page linked from it.
+4. Ask me whether to install the 9ui skills. If yes, follow https://www.9ui.dev/docs/getting-started/skills.md`;
 
 const firstComponent =
 	"Add the 9ui Alert Dialog and Button with: npx shadcn@latest add @9ui/alert-dialog @9ui/button. If a file already exists, ask me before overwriting it. Then build a delete confirmation with them and show it on the home page.";

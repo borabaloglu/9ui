@@ -127,10 +127,6 @@
 		color: var(--foreground);
 		overscroll-behavior: none;
 	}
-	.root {
-		isolation: isolate;
-		min-height: 100vh;
-	}
 	::-webkit-scrollbar {
 		width: 4px;
 	}

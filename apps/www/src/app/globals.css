@@ -72,10 +72,6 @@
 	body {
 		@apply bg-background text-foreground overscroll-none;
 	}
-
-	.root {
-		@apply bg-background isolate min-h-dvh;
-	}
 }
 
 :root {
