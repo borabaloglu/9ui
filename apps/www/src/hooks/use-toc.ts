@@ -22,10 +22,7 @@ function getScrollParent(element: HTMLElement | undefined) {
 	return document.scrollingElement ?? document.documentElement;
 }
 
-export function useActiveHeadings(
-	items: TOCItemType[],
-	activationOffset: number,
-) {
+export function useActiveHeadings(items: TOCItemType[]) {
 	const [activeIds, setActiveIds] = React.useState<string[]>([]);
 
 	React.useEffect(() => {
@@ -42,20 +39,30 @@ export function useActiveHeadings(
 			frame = 0;
 
 			const limit = window.innerHeight * 0.75;
+			const scrollerTop =
+				scroller === document.scrollingElement
+					? 0
+					: scroller.getBoundingClientRect().top;
 			const tops = headings.map(({ id, element }) => ({
 				id,
 				top: element.getBoundingClientRect().top,
+				bottom: element.getBoundingClientRect().bottom,
+				line:
+					scrollerTop +
+					(Number.parseFloat(getComputedStyle(element).scrollMarginTop) || 0),
 			}));
 			const visible = tops.filter(
-				({ top }) => top >= activationOffset - 24 && top <= limit,
+				({ top, line }) => top >= line - 1 && top <= limit,
 			);
-			const last = tops.filter(({ top }) => top < activationOffset).at(-1);
+			const last = tops.filter(({ top, line }) => top < line - 1).at(-1);
 			const active =
 				visible.length > 0
 					? visible.map(({ id }) => id)
 					: last
 						? [last.id]
-						: [];
+						: tops[0] && tops[0].bottom <= window.innerHeight
+							? [tops[0].id]
+							: [];
 			const atEnd =
 				scroller.scrollTop > 0 &&
 				scroller.scrollHeight - scroller.clientHeight - scroller.scrollTop < 2;
@@ -90,7 +97,7 @@ export function useActiveHeadings(
 			document.removeEventListener("scroll", schedule, { capture: true });
 			window.removeEventListener("resize", schedule);
 		};
-	}, [items, activationOffset]);
+	}, [items]);
 
 	return activeIds;
 }

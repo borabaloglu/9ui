@@ -12,13 +12,12 @@ interface TableOfContentsProps {
 }
 
 const DEPTH_STEP = 16;
-const ACTIVATION_OFFSET = 96;
 
 const getIndent = (depth: number) =>
 	10 + Math.min(Math.max(depth - 2, 0), 4) * DEPTH_STEP;
 
 export const TableOfContents = ({ items }: TableOfContentsProps) => {
-	const activeIds = useActiveHeadings(items, ACTIVATION_OFFSET);
+	const activeIds = useActiveHeadings(items);
 	const { thumb, setLinkRef } = useTocThumb(items, activeIds);
 
 	return (
