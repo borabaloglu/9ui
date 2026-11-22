@@ -77,7 +77,7 @@ function PaginationLink({
 					size && paginationLinkIconSizes[size],
 					"tabular-nums aria-disabled:pointer-events-none aria-disabled:opacity-50",
 					active &&
-						"[&:active]:bg-input dark:[&:active]:bg-input [&:active]:hover:bg-accent dark:[&:active]:hover:bg-accent/50 active:before:shadow-[0_1px_--theme(--color-black/6%)] dark:active:before:shadow-[0_-1px_--theme(--color-white/8%)] [&:is(:active,[data-disabled])]:shadow-xs motion-safe:[&:not([data-variant=link]):not([aria-haspopup=menu]):not([aria-haspopup=listbox]):not([role=combobox])]:active:scale-100",
+						"[&:active]:bg-input dark:[&:active]:bg-input [&:active]:hover:bg-accent dark:[&:active]:hover:bg-accent/50 [--button-press-scale:1] active:before:shadow-[0_1px_--theme(--color-black/6%)] dark:active:before:shadow-[0_-1px_--theme(--color-white/8%)] [&:is(:active,[data-disabled])]:shadow-xs",
 					className,
 				),
 			},

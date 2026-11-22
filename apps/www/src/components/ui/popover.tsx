@@ -10,9 +10,18 @@ function Popover<Payload>({ ...props }: BasePopover.Root.Props<Payload>) {
 }
 
 function PopoverTrigger<Payload>({
+	className,
 	...props
-}: BasePopover.Trigger.Props<Payload>) {
-	return <BasePopover.Trigger data-slot="popover-trigger" {...props} />;
+}: Omit<BasePopover.Trigger.Props<Payload>, "className"> & {
+	className?: string;
+}) {
+	return (
+		<BasePopover.Trigger
+			data-slot="popover-trigger"
+			className={cn("[--button-press-scale:1]", className)}
+			{...props}
+		/>
+	);
 }
 
 function PopoverClose({ ...props }: BasePopover.Close.Props) {

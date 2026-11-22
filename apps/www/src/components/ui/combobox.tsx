@@ -36,8 +36,19 @@ function ComboboxInput({ ...props }: BaseCombobox.Input.Props) {
 	return <BaseCombobox.Input data-slot="combobox-input" {...props} />;
 }
 
-function ComboboxTrigger({ ...props }: BaseCombobox.Trigger.Props) {
-	return <BaseCombobox.Trigger data-slot="combobox-trigger" {...props} />;
+function ComboboxTrigger({
+	className,
+	...props
+}: Omit<BaseCombobox.Trigger.Props, "className"> & {
+	className?: string;
+}) {
+	return (
+		<BaseCombobox.Trigger
+			data-slot="combobox-trigger"
+			className={cn("[--button-press-scale:1]", className)}
+			{...props}
+		/>
+	);
 }
 
 function ComboboxClear({ ...props }: BaseCombobox.Clear.Props) {
