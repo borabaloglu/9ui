@@ -12,7 +12,7 @@ const badgeVariants = cva(
 				default:
 					"bg-primary text-primary-foreground [button&,a&]:hover:bg-primary/80 [button&,a&]:active:bg-primary/75",
 				outline:
-					"border-border bg-input text-foreground [button&,a&]:hover:bg-accent [button&,a&]:hover:text-accent-foreground dark:[button&,a&]:hover:bg-accent/50 [button&,a&]:active:bg-foreground/15 dark:[button&,a&]:active:bg-accent",
+					"border-border bg-input text-foreground [button&,a&]:hover:bg-accent [button&,a&]:hover:text-accent-foreground dark:[button&,a&]:hover:bg-accent/50 [button&,a&]:active:bg-foreground/10 dark:[button&,a&]:active:bg-accent/70",
 				secondary:
 					"bg-secondary text-secondary-foreground [button&,a&]:hover:bg-secondary/80 [button&,a&]:active:bg-secondary/60",
 				success:
