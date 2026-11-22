@@ -46,6 +46,7 @@ export function useActiveHeadings(items: TOCItemType[]) {
 			const tops = headings.map(({ id, element }) => ({
 				id,
 				top: element.getBoundingClientRect().top,
+				bottom: element.getBoundingClientRect().bottom,
 				line:
 					scrollerTop +
 					(Number.parseFloat(getComputedStyle(element).scrollMarginTop) || 0),
@@ -59,7 +60,9 @@ export function useActiveHeadings(items: TOCItemType[]) {
 					? visible.map(({ id }) => id)
 					: last
 						? [last.id]
-						: [];
+						: tops[0] && tops[0].bottom <= window.innerHeight
+							? [tops[0].id]
+							: [];
 			const atEnd =
 				scroller.scrollTop > 0 &&
 				scroller.scrollHeight - scroller.clientHeight - scroller.scrollTop < 2;
