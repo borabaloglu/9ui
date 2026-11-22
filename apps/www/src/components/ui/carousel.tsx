@@ -90,7 +90,8 @@ function Carousel({
 		(event: React.KeyboardEvent<HTMLDivElement>) => {
 			const target = event.target as HTMLElement;
 			if (
-				event.defaultPrevented ||
+				(event.defaultPrevented &&
+					target.getAttribute("aria-disabled") !== "true") ||
 				event.altKey ||
 				event.ctrlKey ||
 				event.metaKey ||
