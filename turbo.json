@@ -26,6 +26,12 @@
 		"format": {
 			"cache": false
 		},
-		"check": {}
+		"check": {},
+		"type-check": {
+			"dependsOn": ["^type-check"]
+		},
+		"clean": {
+			"cache": false
+		}
 	}
 }

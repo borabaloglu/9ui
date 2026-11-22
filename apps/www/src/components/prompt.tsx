@@ -3,19 +3,17 @@ import { MessageSquareTextIcon } from "lucide-react";
 import { CodeBar, CodeFrame } from "@/components/code-bar";
 
 import { getPrompt, type PromptName } from "@/lib/prompts";
-import { cn } from "@/lib/utils";
 
 interface PromptProps {
 	name?: PromptName;
 	text?: string;
-	className?: string;
 }
 
-export function Prompt({ name, text, className }: PromptProps) {
+export function Prompt({ name, text }: PromptProps) {
 	const content = getPrompt({ name, text });
 
 	return (
-		<CodeFrame data-slot="prompt" className={cn(className)}>
+		<CodeFrame data-slot="prompt">
 			<CodeBar
 				type="other"
 				content={content}

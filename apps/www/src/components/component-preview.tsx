@@ -1,4 +1,3 @@
-import type * as React from "react";
 import Link from "next/link";
 
 import { DemoRenderer } from "@/components/demo-renderer";
@@ -9,10 +8,9 @@ import { getDemo } from "@/lib/demos";
 import { highlightCode } from "@/lib/highlight-code";
 import { cn } from "@/lib/utils";
 
-interface ComponentPreviewProps extends React.HTMLAttributes<HTMLDivElement> {
+interface ComponentPreviewProps {
 	name: string;
 	showReload?: boolean;
-	className?: string;
 	previewClassName?: string;
 	direction?: "ltr" | "rtl";
 }
@@ -20,7 +18,6 @@ interface ComponentPreviewProps extends React.HTMLAttributes<HTMLDivElement> {
 export const ComponentPreview = ({
 	name,
 	showReload = false,
-	className,
 	previewClassName,
 	direction = "ltr",
 }: ComponentPreviewProps) => {
@@ -35,7 +32,7 @@ export const ComponentPreview = ({
 	}
 
 	return (
-		<div className={cn("mt-4 overflow-hidden rounded-xl border", className)}>
+		<div className="mt-4 overflow-hidden rounded-xl border">
 			{direction === "rtl" ? (
 				<RtlPreview previewClassName={previewClassName}>
 					<DemoRenderer path={demo.path} showReload={showReload} />

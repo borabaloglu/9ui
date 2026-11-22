@@ -85,7 +85,6 @@ export function rehypeCommandProperties() {
 				preElement.properties.__bunCommand__ = node.__bunCommand__;
 				preElement.properties.__title__ = node.__title__;
 				preElement.properties.__lang__ = node.__lang__;
-				preElement.properties.__unwrapCode__ = node.__unwrapCode__;
 			}
 		});
 	};
