@@ -1,8 +1,8 @@
 const setup = `Set up 9ui in this project. It needs React 19 and Tailwind CSS 4.2 or later. If either is missing, stop and ask me.
 
-1. Install the 9ui theme. It replaces the colors, fonts and radius in the global CSS file, so if that file has custom theme values, tell me first and wait for my OK.
+1. Install the 9ui theme. It replaces the colors, fonts and radius in the global CSS file, so if the project already has its own theme, for example from shadcn/ui, tell me first and wait for my OK.
    If components.json exists, run: npx shadcn@latest add https://9ui.dev/r/init.json --yes
-   When it asks to overwrite lib/utils.ts, answer no.
+   It asks whether to overwrite lib/utils.ts even with --yes: answer no, piping the answer in if you cannot type it. Then check that the global CSS file changed.
    If components.json doesn't exist, run: npx shadcn@latest init https://9ui.dev/r/init.json
 2. In components.json, add "@9ui": "https://9ui.dev/r/{name}.json" to "registries". Keep every entry that is already there.
 3. Add a "9ui" section to AGENTS.md, creating the file if needed and staying outside any generated block: before using or changing a 9ui component, read https://www.9ui.dev/llms.txt and the component's page linked from it.
