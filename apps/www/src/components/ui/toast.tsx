@@ -39,6 +39,9 @@ const TOAST_ICONS: Partial<Record<string, React.ComponentType>> = {
 	loading: Spinner,
 };
 
+const richColorsClassName =
+	"data-[type=error]:[--toast-bg:color-mix(in_oklab,var(--destructive)_5%,var(--popover))] data-[type=error]:[--toast-border:color-mix(in_oklab,var(--destructive)_20%,transparent)] data-[type=info]:[--toast-bg:color-mix(in_oklab,var(--info)_5%,var(--popover))] data-[type=info]:[--toast-border:color-mix(in_oklab,var(--info)_20%,transparent)] data-[type=success]:[--toast-bg:color-mix(in_oklab,var(--success)_5%,var(--popover))] data-[type=success]:[--toast-border:color-mix(in_oklab,var(--success)_20%,transparent)] data-[type=warning]:[--toast-bg:color-mix(in_oklab,var(--warning)_5%,var(--popover))] data-[type=warning]:[--toast-border:color-mix(in_oklab,var(--warning)_20%,transparent)]";
+
 function getSwipeDirection(position: ToastPosition): ToastSwipeDirection[] {
 	const vertical = position.startsWith("top") ? "up" : "down";
 
@@ -103,10 +106,12 @@ function ToastContent({
 function ToastViewport({
 	position,
 	showCloseButton,
+	richColors,
 	portalProps,
 }: {
 	position: ToastPosition;
 	showCloseButton: boolean;
+	richColors: boolean;
 	portalProps?: BaseToast.Portal.Props;
 }) {
 	const { toasts } = BaseToast.useToastManager();
@@ -127,7 +132,8 @@ function ToastViewport({
 						data-slot="toast"
 						data-position={position}
 						className={cn(
-							"data-expanded:bg-popover dark:data-expanded:bg-popover text-popover-foreground dark:edge-highlight-lg focus-visible:border-ring focus-visible:ring-ring/50 absolute z-[calc(9999-var(--toast-index))] h-(--toast-calc-height) w-full rounded-lg border bg-[color-mix(in_srgb,var(--popover),black_calc(1%*var(--toast-index,0)))] text-sm shadow-lg outline-none select-none [--surface-accent:var(--accent-elevated)] [--surface-muted:var(--muted-elevated)] [--surface-secondary:var(--secondary-elevated)] not-dark:shadow-[0_1px_--theme(--color-black/6%),var(--shadow-lg)] focus-visible:ring-3 dark:bg-[color-mix(in_srgb,var(--popover),black_calc(6%*var(--toast-index,0)))]",
+							"text-popover-foreground dark:edge-highlight-lg focus-visible:border-ring focus-visible:ring-ring/50 absolute z-[calc(9999-var(--toast-index))] h-(--toast-calc-height) w-full rounded-lg border border-(--toast-border) bg-[color-mix(in_srgb,var(--toast-bg),black_calc(1%*var(--toast-index,0)))] text-sm shadow-lg outline-none select-none [--surface-accent:var(--accent-elevated)] [--surface-muted:var(--muted-elevated)] [--surface-secondary:var(--secondary-elevated)] [--toast-bg:var(--popover)] [--toast-border:var(--border)] not-dark:shadow-[0_1px_--theme(--color-black/6%),var(--shadow-lg)] focus-visible:ring-3 data-expanded:bg-(--toast-bg) dark:bg-[color-mix(in_srgb,var(--toast-bg),black_calc(6%*var(--toast-index,0)))] dark:data-expanded:bg-(--toast-bg)",
+							richColors && richColorsClassName,
 							"[--toast-calc-height:var(--toast-frontmost-height,var(--toast-height))] [--toast-gap:--spacing(3)] [--toast-peek:--spacing(3)] [--toast-scale:calc(max(0,1-(var(--toast-index)*0.05)))] [--toast-shrink:calc(1-var(--toast-scale))]",
 							"[transition:transform_0.4s_--theme(--ease-out-quint),opacity_0.4s_--theme(--ease-out-quint),height_0.15s_--theme(--ease-out-quint),background-color_0.4s_--theme(--ease-out-quint)] motion-reduce:[transition:opacity_0.4s_--theme(--ease-out-quint),height_0.15s_--theme(--ease-out-quint),background-color_0.4s_--theme(--ease-out-quint)]",
 							"data-[position*=center]:left-0 data-[position*=left]:left-0 data-[position*=right]:right-0",
@@ -158,7 +164,7 @@ function ToastViewport({
 							<BaseToast.Close
 								data-slot="toast-close"
 								aria-label="Close toast"
-								className="bg-popover text-muted-foreground hover:text-foreground focus-visible:border-ring focus-visible:ring-ring/50 absolute -start-2 -top-2 z-1 flex size-5 cursor-pointer items-center justify-center rounded-full border opacity-[calc(1-min(var(--toast-index),1))] transition-[color,opacity,scale] duration-150 ease-out outline-none focus-visible:ring-3 in-data-expanded:opacity-100 motion-safe:active:scale-95 any-pointer-coarse:after:absolute any-pointer-coarse:after:-inset-3 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-3 [[data-behind]:not([data-expanded])~&]:pointer-events-none"
+								className="text-muted-foreground hover:text-foreground focus-visible:border-ring focus-visible:ring-ring/50 absolute -start-2 -top-2 z-1 flex size-5 cursor-pointer items-center justify-center rounded-full border border-(--toast-border) bg-(--toast-bg) opacity-[calc(1-min(var(--toast-index),1))] transition-[color,opacity,scale] duration-150 ease-out outline-none focus-visible:ring-3 in-data-expanded:opacity-100 motion-safe:active:scale-95 any-pointer-coarse:after:absolute any-pointer-coarse:after:-inset-3 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-3 [[data-behind]:not([data-expanded])~&]:pointer-events-none"
 							>
 								<XIcon />
 							</BaseToast.Close>
@@ -171,8 +177,10 @@ function ToastViewport({
 }
 
 function AnchoredToastViewport({
+	richColors,
 	portalProps,
 }: {
+	richColors: boolean;
 	portalProps?: BaseToast.Portal.Props;
 }) {
 	const { toasts } = BaseToast.useToastManager();
@@ -196,7 +204,10 @@ function AnchoredToastViewport({
 							<BaseToast.Root
 								toast={toast}
 								data-slot="toast"
-								className="bg-popover text-popover-foreground ease-out-quint dark:edge-highlight-lg focus-visible:border-ring focus-visible:ring-ring/50 relative origin-(--transform-origin) rounded-lg border text-sm shadow-lg transition-[scale,opacity] duration-150 outline-none not-dark:shadow-[0_1px_--theme(--color-black/6%),var(--shadow-lg)] focus-visible:ring-3 data-ending-style:scale-98 data-ending-style:opacity-0 data-ending-style:duration-100 data-limited:opacity-0 data-starting-style:scale-98 data-starting-style:opacity-0 motion-reduce:transition-opacity motion-reduce:data-ending-style:scale-100 motion-reduce:data-starting-style:scale-100"
+								className={cn(
+									"text-popover-foreground ease-out-quint dark:edge-highlight-lg focus-visible:border-ring focus-visible:ring-ring/50 relative origin-(--transform-origin) rounded-lg border border-(--toast-border) bg-(--toast-bg) text-sm shadow-lg transition-[scale,opacity] duration-150 outline-none [--toast-bg:var(--popover)] [--toast-border:var(--border)] not-dark:shadow-[0_1px_--theme(--color-black/6%),var(--shadow-lg)] focus-visible:ring-3 data-ending-style:scale-98 data-ending-style:opacity-0 data-ending-style:duration-100 data-limited:opacity-0 data-starting-style:scale-98 data-starting-style:opacity-0 motion-reduce:transition-opacity motion-reduce:data-ending-style:scale-100 motion-reduce:data-starting-style:scale-100",
+									richColors && richColorsClassName,
+								)}
 							>
 								<ToastContent toast={toast} />
 							</BaseToast.Root>
@@ -212,11 +223,13 @@ function ToastProvider({
 	children,
 	position = "bottom-right",
 	showCloseButton = false,
+	richColors = false,
 	portalProps,
 	...props
 }: BaseToast.Provider.Props & {
 	position?: ToastPosition;
 	showCloseButton?: boolean;
+	richColors?: boolean;
 	portalProps?: BaseToast.Portal.Props;
 }) {
 	return (
@@ -225,6 +238,7 @@ function ToastProvider({
 			<ToastViewport
 				position={position}
 				showCloseButton={showCloseButton}
+				richColors={richColors}
 				portalProps={portalProps}
 			/>
 		</BaseToast.Provider>
@@ -233,15 +247,20 @@ function ToastProvider({
 
 function AnchoredToastProvider({
 	children,
+	richColors = false,
 	portalProps,
 	...props
 }: BaseToast.Provider.Props & {
+	richColors?: boolean;
 	portalProps?: BaseToast.Portal.Props;
 }) {
 	return (
 		<BaseToast.Provider toastManager={anchoredToastManager} {...props}>
 			{children}
-			<AnchoredToastViewport portalProps={portalProps} />
+			<AnchoredToastViewport
+				richColors={richColors}
+				portalProps={portalProps}
+			/>
 		</BaseToast.Provider>
 	);
 }
