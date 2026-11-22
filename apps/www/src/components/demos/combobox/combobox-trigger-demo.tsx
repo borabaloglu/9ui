@@ -12,7 +12,6 @@ import {
 	ComboboxPopup,
 	ComboboxTrigger,
 } from "@/components/ui/combobox";
-import { Field, FieldLabel } from "@/components/ui/field";
 import {
 	InputGroup,
 	InputGroupAddon,
@@ -22,39 +21,37 @@ import {
 
 export default function ComboboxTriggerDemo() {
 	return (
-		<Field className="max-w-sm">
-			<FieldLabel>Fruit</FieldLabel>
-			<Combobox items={fruits}>
-				<ComboboxInputGroup render={<InputGroup />}>
-					<InputGroupInput
-						placeholder="e.g. Apple"
-						render={<ComboboxInput />}
-					/>
-					<InputGroupAddon align="inline-end">
-						<InputGroupButton
-							size="icon-xs"
-							variant="ghost"
-							render={<ComboboxTrigger />}
-							aria-label="Show fruits"
-							className="aria-expanded:bg-transparent dark:aria-expanded:bg-transparent"
-						>
-							<ChevronDownIcon />
-						</InputGroupButton>
-					</InputGroupAddon>
-				</ComboboxInputGroup>
+		<Combobox items={fruits}>
+			<ComboboxInputGroup render={<InputGroup className="w-full max-w-sm" />}>
+				<InputGroupInput
+					aria-label="Fruit"
+					placeholder="e.g. Apple"
+					render={<ComboboxInput />}
+				/>
+				<InputGroupAddon align="inline-end">
+					<InputGroupButton
+						size="icon-xs"
+						variant="ghost"
+						render={<ComboboxTrigger />}
+						aria-label="Show fruits"
+						className="aria-expanded:bg-transparent dark:aria-expanded:bg-transparent"
+					>
+						<ChevronDownIcon />
+					</InputGroupButton>
+				</InputGroupAddon>
+			</ComboboxInputGroup>
 
-				<ComboboxPopup>
-					<ComboboxEmpty>No fruits found.</ComboboxEmpty>
-					<ComboboxList>
-						{(fruit: Fruit) => (
-							<ComboboxItem key={fruit.value} value={fruit}>
-								{fruit.label}
-							</ComboboxItem>
-						)}
-					</ComboboxList>
-				</ComboboxPopup>
-			</Combobox>
-		</Field>
+			<ComboboxPopup>
+				<ComboboxEmpty>No fruits found.</ComboboxEmpty>
+				<ComboboxList>
+					{(fruit: Fruit) => (
+						<ComboboxItem key={fruit.value} value={fruit}>
+							{fruit.label}
+						</ComboboxItem>
+					)}
+				</ComboboxList>
+			</ComboboxPopup>
+		</Combobox>
 	);
 }
 

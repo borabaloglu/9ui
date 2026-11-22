@@ -77,12 +77,6 @@ Set `format` on `Slider` to show the value as a currency, percentage or unit. It
 
 <ComponentPreview name="slider-format-demo" />
 
-### Field
-
-Wrap the slider in [Field](/docs/components/field) to add a description.
-
-<ComponentPreview name="slider-field-demo" />
-
 ### Disabled
 
 Set `disabled` on `Slider` to prevent interaction. The label and value dim with the slider.
@@ -94,6 +88,12 @@ Set `disabled` on `Slider` to prevent interaction. The label and value dim with 
 Set `invalid` on `Field` to show the error state, and clear it once the value is valid.
 
 <ComponentPreview name="slider-invalid-demo" showReload={true} />
+
+### Field
+
+Place it inside [Field](/docs/components/field) to add a description.
+
+<ComponentPreview name="slider-field-demo" />
 
 ### Vertical
 
@@ -110,29 +110,6 @@ To enable RTL support, see the [RTL guide](/docs/getting-started/rtl).
 ## Tips
 
 <Tips>
-
-<Tip title="Label the slider">
-
-To label a slider, add a `SliderLabel`.
-
-```tsx {2}
-<Slider defaultValue={50}>
-	<SliderLabel>Opacity</SliderLabel>
-	<SliderValue />
-</Slider>
-```
-
-</Tip>
-
-<Tip title="Name a slider with no visible label">
-
-Set `aria-label` on `Slider` when there is no visible label.
-
-```tsx {1}
-<Slider defaultValue={50} aria-label="Volume" />
-```
-
-</Tip>
 
 <Tip title="Name each thumb of a range slider">
 

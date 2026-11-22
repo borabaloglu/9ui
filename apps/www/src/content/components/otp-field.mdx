@@ -69,12 +69,6 @@ Place `OTPFieldSeparator` between slots to split the code into smaller chunks.
 
 <ComponentPreview name="otp-field-separator-demo" />
 
-### Field
-
-Use `Field` to add a label and a description.
-
-<ComponentPreview name="otp-field-field-demo" />
-
 ### Disabled
 
 Set `disabled` on `OTPField` to prevent interaction.
@@ -92,6 +86,12 @@ Set `readOnly` on `OTPField` to show a code that can't be changed.
 Set `invalid` on `Field` to show the error state.
 
 <ComponentPreview name="otp-field-invalid-demo" />
+
+### Field
+
+Place it inside [Field](/docs/components/field) to add a label and a description.
+
+<ComponentPreview name="otp-field-field-demo" />
 
 ### Alphanumeric
 
@@ -118,21 +118,6 @@ See the form guides for [Base UI Form](/docs/forms/base-ui#otp-field), [React Ho
 ## Tips
 
 <Tips>
-
-<Tip title="Label the field">
-
-Give every field a visible label: set `id` on `OTPField` and point a [Label](/docs/components/label) at it with `htmlFor`, or use [Field](/docs/components/field).
-
-```tsx {1-2}
-<Label htmlFor="code">Verification code</Label>
-<OTPField id="code" length={6}>
-	{Array.from({ length: 6 }, (_, index) => (
-		<OTPFieldInput key={index} aria-label={`Character ${index + 1} of 6`} />
-	))}
-</OTPField>
-```
-
-</Tip>
 
 <Tip title="Announce the position of each slot">
 

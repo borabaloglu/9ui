@@ -76,21 +76,6 @@ To enable RTL support, see the [RTL guide](/docs/getting-started/rtl).
 
 <Tips>
 
-<Tip title="Open a panel by default">
-
-To open a panel by default, set `defaultValue` on `Accordion` to the `value` of its `AccordionItem`.
-
-```tsx {1}
-<Accordion defaultValue={["shipping"]}>
-	<AccordionItem value="shipping">
-		<AccordionTrigger>Shipping</AccordionTrigger>
-		<AccordionPanel>Orders ship within two days.</AccordionPanel>
-	</AccordionItem>
-</Accordion>
-```
-
-</Tip>
-
 <Tip title="Let find in page open closed panels">
 
 To let the browser's find in page open closed panels, set `hiddenUntilFound` on `Accordion`.

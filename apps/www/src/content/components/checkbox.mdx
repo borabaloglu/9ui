@@ -50,12 +50,6 @@ Set `indeterminate` to show a mixed state, such as a "select all" box when only 
 
 <ComponentPreview name="checkbox-indeterminate-demo" />
 
-### Description
-
-Use `Field` with `FieldDescription` to add help text under the label.
-
-<ComponentPreview name="checkbox-description-demo" />
-
 ### Disabled
 
 Set `disabled` to prevent interaction. A `Label` around the checkbox dims with it.
@@ -67,6 +61,12 @@ Set `disabled` to prevent interaction. A `Label` around the checkbox dims with i
 Set `invalid` on `Field` to show the error state, and clear it once the box is checked. Outside a `Field`, set `aria-invalid` on the checkbox.
 
 <ComponentPreview name="checkbox-invalid-demo" />
+
+### Field
+
+Place it inside [Field](/docs/components/field) to add a label and a description.
+
+<ComponentPreview name="checkbox-field-demo" />
 
 ### Choice Card
 
@@ -83,41 +83,6 @@ To enable RTL support, see the [RTL guide](/docs/getting-started/rtl).
 ## Form Integration
 
 See the form guides for [Base UI Form](/docs/forms/base-ui#checkbox), [React Hook Form](/docs/forms/react-hook-form#checkbox) and [TanStack Form](/docs/forms/tanstack-form#checkbox).
-
-## Tips
-
-<Tips>
-
-<Tip title="Label the checkbox">
-
-Give every checkbox a visible label. Place it inside [Label](/docs/components/label).
-
-```tsx {1,4}
-<Label>
-	<Checkbox />
-	Accept terms and conditions
-</Label>
-```
-
-</Tip>
-
-<Tip title="Add a description or an error message">
-
-Use [Field](/docs/components/field) when the checkbox also needs a description or an error message.
-
-```tsx {1,6}
-<Field name="updates">
-	<FieldLabel>
-		<Checkbox />
-		Product updates
-	</FieldLabel>
-	<FieldDescription>Get an email when a new component ships.</FieldDescription>
-</Field>
-```
-
-</Tip>
-
-</Tips>
 
 ## API Reference
 

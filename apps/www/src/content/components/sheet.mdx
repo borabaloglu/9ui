@@ -103,52 +103,6 @@ To enable RTL support, see the [RTL guide](/docs/getting-started/rtl).
 
 <Tips>
 
-<Tip title="Label icon-only triggers">
-
-Give icon-only triggers an `aria-label`.
-
-```tsx {2}
-<SheetTrigger
-	render={<Button variant="outline" size="icon" aria-label="Settings" />}
->
-	<SettingsIcon />
-</SheetTrigger>
-```
-
-</Tip>
-
-<Tip title="Use your own button as the trigger">
-
-Set `render` on `SheetTrigger` to use your own button.
-
-```tsx {1}
-<SheetTrigger render={<Button variant="outline" />}>
-	Edit profile
-</SheetTrigger>
-```
-
-</Tip>
-
-<Tip title="Scroll the body">
-
-Put the body in `SheetPanel`. It scrolls when the content is taller than the sheet, while the header and footer stay in place.
-
-```tsx {5-7}
-<SheetPopup>
-	<SheetHeader>
-		<SheetTitle>Terms of service</SheetTitle>
-	</SheetHeader>
-	<SheetPanel>
-		<p>By using this service you agree to these terms.</p>
-	</SheetPanel>
-	<SheetFooter>
-		<SheetClose render={<Button />}>Accept</SheetClose>
-	</SheetFooter>
-</SheetPopup>
-```
-
-</Tip>
-
 <Tip title="Clear the status bar and home indicator">
 
 To keep content clear of the status bar and home indicator, set `viewport-fit=cover` in the viewport meta tag of the page.

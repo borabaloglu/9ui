@@ -47,12 +47,6 @@ import { Radio, RadioGroup, RadioGroupLabel } from "@/components/ui/radio-group"
 
 ## Examples
 
-### Description
-
-Inside `Field`, wrap each option in `FieldItem` to give it its own `FieldLabel` and `FieldDescription`.
-
-<ComponentPreview name="radio-group-description-demo" />
-
 ### Disabled
 
 Set `disabled` on `RadioGroup` to prevent interaction with every radio in it.
@@ -71,6 +65,12 @@ Set `invalid` on `Field` to show the error state, and clear it once an option is
 
 <ComponentPreview name="radio-group-invalid-demo" showReload={true} />
 
+### Field
+
+Inside [Field](/docs/components/field), wrap each option in `FieldItem` to give it its own `FieldLabel` and `FieldDescription`.
+
+<ComponentPreview name="radio-group-field-demo" />
+
 ### Choice Card
 
 Wrap the radio and its text in `FieldLabel` to make the whole card clickable. Style the selected card with `has-data-checked`.
@@ -86,82 +86,6 @@ To enable RTL support, see the [RTL guide](/docs/getting-started/rtl).
 ## Form Integration
 
 See the form guides for [Base UI Form](/docs/forms/base-ui#radio-group), [React Hook Form](/docs/forms/react-hook-form#radio-group) and [TanStack Form](/docs/forms/tanstack-form#radio-group).
-
-## Tips
-
-<Tips>
-
-<Tip title="Label each radio">
-
-Give each `Radio` a visible label. Place it inside [Label](/docs/components/label).
-
-```tsx {2,5}
-<RadioGroup defaultValue="standard">
-	<Label>
-		<Radio value="standard" />
-		Standard
-	</Label>
-</RadioGroup>
-```
-
-</Tip>
-
-<Tip title="Name the group">
-
-To name the group, set an `id` on `RadioGroupLabel` and pass it to `aria-labelledby` on `RadioGroup`.
-
-```tsx {1-2}
-<RadioGroup aria-labelledby="plan-label">
-	<RadioGroupLabel id="plan-label">Plan</RadioGroupLabel>
-	<Label>
-		<Radio value="standard" />
-		Standard
-	</Label>
-</RadioGroup>
-```
-
-</Tip>
-
-<Tip title="Give each radio a value">
-
-Give each `Radio` a `value`.
-
-```tsx {3,7}
-<RadioGroup defaultValue="standard">
-	<Label>
-		<Radio value="basic" />
-		Basic
-	</Label>
-	<Label>
-		<Radio value="standard" />
-		Standard
-	</Label>
-</RadioGroup>
-```
-
-</Tip>
-
-<Tip title="Add a description or an error message">
-
-Use [Field](/docs/components/field) when a radio also needs a description or an error message.
-
-```tsx {1,3,8}
-<Field name="plan">
-	<RadioGroup defaultValue="standard">
-		<FieldItem>
-			<FieldLabel>
-				<Radio value="standard" />
-				Standard
-			</FieldLabel>
-			<FieldDescription>Great for growing teams.</FieldDescription>
-		</FieldItem>
-	</RadioGroup>
-</Field>
-```
-
-</Tip>
-
-</Tips>
 
 ## API Reference
 

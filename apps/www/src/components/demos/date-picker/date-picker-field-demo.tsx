@@ -9,7 +9,7 @@ import { Calendar } from "@/components/ui/calendar";
 import { Field, FieldLabel } from "@/components/ui/field";
 import { Popover, PopoverPopup, PopoverTrigger } from "@/components/ui/popover";
 
-export default function DatePickerLabelDemo() {
+export default function DatePickerFieldDemo() {
 	const id = useId();
 	const labelId = useId();
 	const [open, setOpen] = useState(false);

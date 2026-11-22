@@ -96,32 +96,6 @@ To enable RTL support, see the [RTL guide](/docs/getting-started/rtl).
 
 <Tips>
 
-<Tip title="Label icon-only triggers">
-
-Give icon-only triggers an `aria-label`.
-
-```tsx {2}
-<PopoverTrigger
-	render={<Button size="icon" aria-label="Notifications" />}
->
-	<BellIcon />
-</PopoverTrigger>
-```
-
-</Tip>
-
-<Tip title="Use your own button as the trigger">
-
-Set `render` on `PopoverTrigger` to use your own button.
-
-```tsx {1}
-<PopoverTrigger render={<Button variant="outline" />}>
-	Open
-</PopoverTrigger>
-```
-
-</Tip>
-
 <Tip title="Change where the popover opens">
 
 `PopoverPopup` takes `side`, `align`, `sideOffset` and `alignOffset` to change where the popover opens.

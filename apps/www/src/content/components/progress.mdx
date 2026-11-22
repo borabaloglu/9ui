@@ -101,26 +101,6 @@ To enable RTL support, see the [RTL guide](/docs/getting-started/rtl).
 
 <ComponentPreview name="progress-rtl-demo" direction="rtl" />
 
-## Tips
-
-<Tips>
-
-<Tip title="Name the progress bar">
-
-Give every progress bar a name: add a `ProgressLabel`, or set `aria-label` on `Progress` when there is no visible label.
-
-```tsx {1}
-<Progress aria-label="Exporting data" value={40}>
-	<ProgressTrack>
-		<ProgressIndicator />
-	</ProgressTrack>
-</Progress>
-```
-
-</Tip>
-
-</Tips>
-
 ## API Reference
 
 What 9ui adds to Base UI Progress. See the [Base UI](https://base-ui.com/react/components/progress#api-reference) documentation for the rest.

@@ -12,7 +12,6 @@ import {
 	AutocompletePopup,
 	AutocompleteValue,
 } from "@/components/ui/autocomplete";
-import { Field, FieldLabel } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
 
 export default function AutocompleteFuzzyMatcherDemo() {
@@ -30,42 +29,40 @@ export default function AutocompleteFuzzyMatcherDemo() {
 	}, [query]);
 
 	return (
-		<Field className="max-w-sm">
-			<FieldLabel>Search docs</FieldLabel>
-			<Autocomplete
-				items={items}
-				value={query}
-				onValueChange={setQuery}
-				filter={null}
-				itemToStringValue={(item) => (item as DevDoc).title}
-			>
-				<AutocompleteInput
-					placeholder="e.g. react hooks, api"
-					render={<Input />}
-				/>
-				<AutocompletePopup className="w-(--anchor-width)">
-					<AutocompleteEmpty>
-						No docs found for &quot;
-						<AutocompleteValue />
-						&quot;
-					</AutocompleteEmpty>
-					<AutocompleteList>
-						{(doc: DevDoc) => (
-							<AutocompleteItem key={doc.id} value={doc}>
-								<div className="flex w-full flex-col gap-1">
-									<div className="text-sm font-medium">
-										{highlightText(doc.title, query)}
-									</div>
-									<div className="text-muted-foreground text-xs leading-relaxed">
-										{highlightText(doc.description, query)}
-									</div>
+		<Autocomplete
+			items={items}
+			value={query}
+			onValueChange={setQuery}
+			filter={null}
+			itemToStringValue={(item) => (item as DevDoc).title}
+		>
+			<AutocompleteInput
+				aria-label="Search docs"
+				placeholder="e.g. react hooks, api"
+				render={<Input className="max-w-sm" />}
+			/>
+			<AutocompletePopup className="w-(--anchor-width)">
+				<AutocompleteEmpty>
+					No docs found for &quot;
+					<AutocompleteValue />
+					&quot;
+				</AutocompleteEmpty>
+				<AutocompleteList>
+					{(doc: DevDoc) => (
+						<AutocompleteItem key={doc.id} value={doc}>
+							<div className="flex w-full flex-col gap-1">
+								<div className="text-sm font-medium">
+									{highlightText(doc.title, query)}
 								</div>
-							</AutocompleteItem>
-						)}
-					</AutocompleteList>
-				</AutocompletePopup>
-			</Autocomplete>
-		</Field>
+								<div className="text-muted-foreground text-xs leading-relaxed">
+									{highlightText(doc.description, query)}
+								</div>
+							</div>
+						</AutocompleteItem>
+					)}
+				</AutocompleteList>
+			</AutocompletePopup>
+		</Autocomplete>
 	);
 }
 

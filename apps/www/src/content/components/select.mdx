@@ -95,7 +95,7 @@ Use `SelectGroup`, `SelectGroupLabel` and `SelectSeparator` to split options int
 
 ### Disabled
 
-Set `disabled` on `Field` to disable the select and dim its label. Outside a `Field`, set `disabled` on `Select`.
+To disable the select, set `disabled` on `Select`. Inside a [Field](/docs/components/field), set `disabled` on `Field` to dim the label too.
 
 <ComponentPreview name="select-disabled-demo" />
 
@@ -104,6 +104,12 @@ Set `disabled` on `Field` to disable the select and dim its label. Outside a `Fi
 Set `invalid` on `Field` to show the invalid state. Outside a `Field`, set `aria-invalid` on `SelectTrigger`.
 
 <ComponentPreview name="select-invalid-demo" showReload={true} />
+
+### Field
+
+Place it inside [Field](/docs/components/field) to add a label and a description.
+
+<ComponentPreview name="select-field-demo" />
 
 ### Scrollable
 

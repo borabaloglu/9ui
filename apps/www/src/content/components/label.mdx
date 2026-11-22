@@ -61,36 +61,6 @@ To enable RTL support, see the [RTL guide](/docs/getting-started/rtl).
 
 <ComponentPreview name="label-rtl-demo" direction="rtl" />
 
-## Tips
-
-<Tips>
-
-<Tip title="Link a label to its control">
-
-To link a label to its control, set `htmlFor` on `Label` to the `id` of the control.
-
-```tsx {1-2}
-<Label htmlFor="email">Email</Label>
-<Input id="email" type="email" />
-```
-
-</Tip>
-
-<Tip title="Wrap the control in the label">
-
-To link the two without an `id`, place the control inside `Label`.
-
-```tsx {1,4}
-<Label>
-	<Checkbox />
-	Accept terms and conditions
-</Label>
-```
-
-</Tip>
-
-</Tips>
-
 ## API Reference
 
 Label is built by 9ui, so this is its full API. It accepts every native `label` prop and adds none of its own.

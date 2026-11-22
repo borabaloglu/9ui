@@ -62,6 +62,12 @@ Set `invalid` on `Field` to show the error state, and clear it once the switch i
 
 <ComponentPreview name="switch-invalid-demo" />
 
+### Field
+
+Place it inside [Field](/docs/components/field) to add a label and a description.
+
+<ComponentPreview name="switch-field-demo" />
+
 ### Choice Card
 
 Wrap the switch and its text in `FieldLabel` to make the whole card clickable. Style the checked card with `data-filled`.
@@ -81,35 +87,6 @@ See the form guides for [Base UI Form](/docs/forms/base-ui#switch), [React Hook 
 ## Tips
 
 <Tips>
-
-<Tip title="Label the switch">
-
-Give every switch a visible label. Place it inside [Label](/docs/components/label).
-
-```tsx {1,4}
-<Label>
-	<Switch />
-	Enable notifications
-</Label>
-```
-
-</Tip>
-
-<Tip title="Add a description or an error message">
-
-Use [Field](/docs/components/field) when the switch also needs a description or an error message.
-
-```tsx {1,6}
-<Field name="notifications">
-	<FieldLabel>
-		<Switch />
-		Enable notifications
-	</FieldLabel>
-	<FieldDescription>Get notified about schedule changes.</FieldDescription>
-</Field>
-```
-
-</Tip>
 
 <Tip title="Use a sibling label">
 

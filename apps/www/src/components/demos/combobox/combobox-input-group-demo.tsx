@@ -11,7 +11,6 @@ import {
 	ComboboxList,
 	ComboboxPopup,
 } from "@/components/ui/combobox";
-import { Field, FieldLabel } from "@/components/ui/field";
 import {
 	InputGroup,
 	InputGroupAddon,
@@ -21,33 +20,31 @@ import {
 
 export default function ComboboxInputGroupDemo() {
 	return (
-		<Field className="max-w-sm">
-			<FieldLabel>Fruit</FieldLabel>
-			<Combobox items={fruits}>
-				<ComboboxInputGroup render={<InputGroup />}>
-					<InputGroupAddon align="inline-start">
-						<InputGroupText>
-							<SearchIcon />
-						</InputGroupText>
-					</InputGroupAddon>
-					<InputGroupInput
-						placeholder="e.g. Apple"
-						render={<ComboboxInput />}
-					/>
-				</ComboboxInputGroup>
+		<Combobox items={fruits}>
+			<ComboboxInputGroup render={<InputGroup className="w-full max-w-sm" />}>
+				<InputGroupAddon align="inline-start">
+					<InputGroupText>
+						<SearchIcon />
+					</InputGroupText>
+				</InputGroupAddon>
+				<InputGroupInput
+					aria-label="Fruit"
+					placeholder="e.g. Apple"
+					render={<ComboboxInput />}
+				/>
+			</ComboboxInputGroup>
 
-				<ComboboxPopup>
-					<ComboboxEmpty>No fruits found.</ComboboxEmpty>
-					<ComboboxList>
-						{(fruit: Fruit) => (
-							<ComboboxItem key={fruit.value} value={fruit}>
-								{fruit.label}
-							</ComboboxItem>
-						)}
-					</ComboboxList>
-				</ComboboxPopup>
-			</Combobox>
-		</Field>
+			<ComboboxPopup>
+				<ComboboxEmpty>No fruits found.</ComboboxEmpty>
+				<ComboboxList>
+					{(fruit: Fruit) => (
+						<ComboboxItem key={fruit.value} value={fruit}>
+							{fruit.label}
+						</ComboboxItem>
+					)}
+				</ComboboxList>
+			</ComboboxPopup>
+		</Combobox>
 	);
 }
 

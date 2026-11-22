@@ -114,55 +114,6 @@ To enable RTL support, see the [RTL guide](/docs/getting-started/rtl).
 
 <ComponentPreview name="toggle-group-rtl-demo" direction="rtl" />
 
-## Tips
-
-<Tips>
-
-<Tip title="Name the group">
-
-Give the group an `aria-label`.
-
-```tsx {1}
-<ToggleGroup aria-label="Text alignment">
-	<ToggleGroupItem value="start">Start</ToggleGroupItem>
-	<ToggleGroupItem value="end">End</ToggleGroupItem>
-</ToggleGroup>
-```
-
-</Tip>
-
-<Tip title="Label icon-only items">
-
-Give each icon-only `ToggleGroupItem` its own `aria-label`.
-
-```tsx {2,5}
-<ToggleGroup aria-label="Text alignment">
-	<ToggleGroupItem value="start" aria-label="Align start">
-		<TextAlignStartIcon />
-	</ToggleGroupItem>
-	<ToggleGroupItem value="end" aria-label="Align end">
-		<TextAlignEndIcon />
-	</ToggleGroupItem>
-</ToggleGroup>
-```
-
-</Tip>
-
-<Tip title="Give each item a value">
-
-Give each `ToggleGroupItem` a `value`.
-
-```tsx {2-3}
-<ToggleGroup defaultValue={["start"]} aria-label="Text alignment">
-	<ToggleGroupItem value="start">Start</ToggleGroupItem>
-	<ToggleGroupItem value="end">End</ToggleGroupItem>
-</ToggleGroup>
-```
-
-</Tip>
-
-</Tips>
-
 ## API Reference
 
 What 9ui adds to Base UI Toggle Group. See the [Base UI](https://base-ui.com/react/components/toggle-group#api-reference) documentation for the rest.

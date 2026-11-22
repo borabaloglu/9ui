@@ -142,6 +142,12 @@ Set `invalid` on `Field` to show the invalid state. Outside a `Field`, set `aria
 
 <ComponentPreview name="combobox-invalid-demo" showReload={true} />
 
+### Field
+
+Place it inside [Field](/docs/components/field) to add a label and a description.
+
+<ComponentPreview name="combobox-field-demo" />
+
 ### Async Search
 
 Set `filter={null}` on `Combobox` and pass the fetched results as `items`. Keep the selected item in `items`, and use `ComboboxStatus` to announce loading and result counts.
@@ -185,16 +191,6 @@ Give every combobox a name. When the input is the control, use [Field](/docs/com
 		<ComboboxValue />
 	</ComboboxTrigger>
 </Combobox>
-```
-
-</Tip>
-
-<Tip title="Style the input as an Input">
-
-Set `render={<Input />}` on `ComboboxInput` to style it as an [Input](/docs/components/input).
-
-```tsx {1}
-<ComboboxInput placeholder="e.g. Apple" render={<Input />} />
 ```
 
 </Tip>

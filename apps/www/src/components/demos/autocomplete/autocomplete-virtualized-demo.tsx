@@ -12,7 +12,6 @@ import {
 	AutocompletePopup,
 	useAutocompleteFilteredItems,
 } from "@/components/ui/autocomplete";
-import { Field, FieldLabel } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
 
 type Virtualizer = ReturnType<typeof useVirtualizer<HTMLDivElement, Element>>;
@@ -25,42 +24,43 @@ export default function AutocompleteVirtualizedDemo() {
 	const virtualizerRef = React.useRef<Virtualizer | null>(null);
 
 	return (
-		<Field className="max-w-sm">
-			<FieldLabel>Search 10,000 items</FieldLabel>
-			<Autocomplete
-				virtualized
-				items={items}
-				openOnInputClick
-				onItemHighlighted={(item, { reason, index }) => {
-					const virtualizer = virtualizerRef.current;
+		<Autocomplete
+			virtualized
+			items={items}
+			openOnInputClick
+			onItemHighlighted={(item, { reason, index }) => {
+				const virtualizer = virtualizerRef.current;
 
-					if (!item || !virtualizer) {
-						return;
-					}
+				if (!item || !virtualizer) {
+					return;
+				}
 
-					const isStart = index === 0;
-					const isEnd = index === virtualizer.options.count - 1;
-					const shouldScroll =
-						reason === "none" || (reason === "keyboard" && (isStart || isEnd));
+				const isStart = index === 0;
+				const isEnd = index === virtualizer.options.count - 1;
+				const shouldScroll =
+					reason === "none" || (reason === "keyboard" && (isStart || isEnd));
 
-					if (shouldScroll) {
-						queueMicrotask(() => {
-							virtualizer.scrollToIndex(index, {
-								align: isEnd ? "start" : "end",
-							});
+				if (shouldScroll) {
+					queueMicrotask(() => {
+						virtualizer.scrollToIndex(index, {
+							align: isEnd ? "start" : "end",
 						});
-					}
-				}}
-			>
-				<AutocompleteInput placeholder="e.g. Item 00042" render={<Input />} />
-				<AutocompletePopup>
-					<AutocompleteEmpty>No items found.</AutocompleteEmpty>
-					<AutocompleteList className="not-empty:p-0">
-						<VirtualizedList virtualizerRef={virtualizerRef} />
-					</AutocompleteList>
-				</AutocompletePopup>
-			</Autocomplete>
-		</Field>
+					});
+				}
+			}}
+		>
+			<AutocompleteInput
+				aria-label="Search 10,000 items"
+				placeholder="e.g. Item 00042"
+				render={<Input className="max-w-sm" />}
+			/>
+			<AutocompletePopup>
+				<AutocompleteEmpty>No items found.</AutocompleteEmpty>
+				<AutocompleteList className="not-empty:p-0">
+					<VirtualizedList virtualizerRef={virtualizerRef} />
+				</AutocompleteList>
+			</AutocompletePopup>
+		</Autocomplete>
 	);
 }
 

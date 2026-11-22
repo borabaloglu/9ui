@@ -68,6 +68,12 @@ Set `aria-invalid` to show the error state.
 
 <ComponentPreview name="input-invalid-demo" />
 
+### Field
+
+Place it inside [Field](/docs/components/field) to link the label, description and error.
+
+<ComponentPreview name="input-field-demo" />
+
 ### File
 
 Set `type="file"` to accept files.
@@ -89,35 +95,6 @@ To enable RTL support, see the [RTL guide](/docs/getting-started/rtl).
 ## Form Integration
 
 See the form guides for [Base UI Form](/docs/forms/base-ui#input), [React Hook Form](/docs/forms/react-hook-form#input) and [TanStack Form](/docs/forms/tanstack-form#input).
-
-## Tips
-
-<Tips>
-
-<Tip title="Label the input">
-
-Give every input a visible label with [Field](/docs/components/field) or [Label](/docs/components/label). A placeholder isn't a label.
-
-```tsx {2}
-<Field name="email">
-	<FieldLabel>Email</FieldLabel>
-	<Input type="email" placeholder="you@example.com" />
-</Field>
-```
-
-</Tip>
-
-<Tip title="Name an input with no visible label">
-
-Set `aria-label` on `Input` when there is no visible label.
-
-```tsx {1}
-<Input aria-label="Search" type="search" placeholder="Search" />
-```
-
-</Tip>
-
-</Tips>
 
 ## API Reference
 

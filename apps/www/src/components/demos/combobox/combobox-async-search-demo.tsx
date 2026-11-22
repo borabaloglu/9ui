@@ -11,7 +11,6 @@ import {
 	ComboboxStatus,
 	useComboboxFilter,
 } from "@/components/ui/combobox";
-import { Field, FieldLabel } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
 import { Spinner } from "@/components/ui/spinner";
 
@@ -45,39 +44,37 @@ export default function ComboboxAsyncSearchDemo() {
 	);
 
 	return (
-		<Field className="max-w-sm">
-			<FieldLabel>Movie</FieldLabel>
-			<Combobox
-				items={items}
-				value={selectedMovie}
-				onValueChange={setSelectedMovie}
-				onInputValueChange={setSearchValue}
-				itemToStringLabel={(movie: Movie) => movie.title}
-				isItemEqualToValue={(item: Movie, value: Movie) => item.id === value.id}
-				filter={null}
-			>
-				<ComboboxInput
-					placeholder="e.g. The Shawshank Redemption or 1994"
-					render={<Input />}
-				/>
+		<Combobox
+			items={items}
+			value={selectedMovie}
+			onValueChange={setSelectedMovie}
+			onInputValueChange={setSearchValue}
+			itemToStringLabel={(movie: Movie) => movie.title}
+			isItemEqualToValue={(item: Movie, value: Movie) => item.id === value.id}
+			filter={null}
+		>
+			<ComboboxInput
+				aria-label="Movie"
+				placeholder="e.g. The Shawshank Redemption or 1994"
+				render={<Input className="max-w-sm" />}
+			/>
 
-				{searchValue !== "" && (
-					<ComboboxPopup aria-busy={isLoading ? true : undefined}>
-						<ComboboxStatus>{status}</ComboboxStatus>
-						<ComboboxList>
-							{(movie: Movie) => (
-								<ComboboxItem key={movie.id} value={movie}>
-									<div className="truncate font-medium">{movie.title}</div>
-									<div className="text-muted-foreground ms-auto text-xs">
-										{movie.year}
-									</div>
-								</ComboboxItem>
-							)}
-						</ComboboxList>
-					</ComboboxPopup>
-				)}
-			</Combobox>
-		</Field>
+			{searchValue !== "" && (
+				<ComboboxPopup aria-busy={isLoading ? true : undefined}>
+					<ComboboxStatus>{status}</ComboboxStatus>
+					<ComboboxList>
+						{(movie: Movie) => (
+							<ComboboxItem key={movie.id} value={movie}>
+								<div className="truncate font-medium">{movie.title}</div>
+								<div className="text-muted-foreground ms-auto text-xs">
+									{movie.year}
+								</div>
+							</ComboboxItem>
+						)}
+					</ComboboxList>
+				</ComboboxPopup>
+			)}
+		</Combobox>
 	);
 }
 

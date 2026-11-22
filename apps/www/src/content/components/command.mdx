@@ -95,21 +95,6 @@ To enable RTL support, see the [RTL guide](/docs/getting-started/rtl).
 
 <Tips>
 
-<Tip title="Label the input">
-
-Give `CommandInput` an `aria-label`.
-
-```tsx {3}
-<InputGroup>
-	<InputGroupInput
-		aria-label="Search commands"
-		render={<CommandInput />}
-	/>
-</InputGroup>
-```
-
-</Tip>
-
 <Tip title="Use Autocomplete props">
 
 `Command` takes the same props as [Autocomplete](/docs/components/autocomplete), like `items` and `filter`.
@@ -128,22 +113,6 @@ Give `CommandInput` an `aria-label`.
 
 </Tip>
 
-<Tip title="Style the input as an Input Group">
-
-To style `CommandInput` as an [Input Group](/docs/components/input-group), set it as the `render` of `InputGroupInput`.
-
-```tsx {5}
-<InputGroup>
-	<InputGroupInput
-		placeholder="Type a command or search…"
-		aria-label="Search commands"
-		render={<CommandInput />}
-	/>
-</InputGroup>
-```
-
-</Tip>
-
 <Tip title="Keep items clear of the scrollbar">
 
 To keep items clear of the scrollbar, set `scrollbarGutter` on `CommandList`.
@@ -152,18 +121,6 @@ To keep items clear of the scrollbar, set `scrollbarGutter` on `CommandList`.
 <CommandList scrollbarGutter>
 	<CommandItem value="settings">Settings</CommandItem>
 </CommandList>
-```
-
-</Tip>
-
-<Tip title="Run a command">
-
-To run a command, set `onClick` on `CommandItem`.
-
-```tsx {1}
-<CommandItem value="new-document" onClick={() => createDocument()}>
-	New document
-</CommandItem>
 ```
 
 </Tip>

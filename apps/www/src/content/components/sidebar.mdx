@@ -243,21 +243,6 @@ To enable RTL support, see the [RTL guide](/docs/getting-started/rtl).
 
 <Tips>
 
-<Tip title="Set up the layout">
-
-Wrap your layout in `SidebarProvider` and put the page content in `SidebarInset`.
-
-```tsx {1,5}
-<SidebarProvider>
-	<Sidebar>
-		<SidebarContent />
-	</Sidebar>
-	<SidebarInset>{children}</SidebarInset>
-</SidebarProvider>
-```
-
-</Tip>
-
 <Tip title="Render a menu button as a link">
 
 To render a menu button as a link, set `render` on `SidebarMenuButton`.

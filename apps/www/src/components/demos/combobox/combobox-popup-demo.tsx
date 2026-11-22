@@ -8,49 +8,47 @@ import {
 	ComboboxEmpty,
 	ComboboxInput,
 	ComboboxItem,
+	ComboboxLabel,
 	ComboboxList,
 	ComboboxPopup,
 	ComboboxTrigger,
 	ComboboxValue,
 } from "@/components/ui/combobox";
-import { Field, FieldLabel } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
 
 export default function ComboboxPopupDemo() {
 	return (
-		<Field className="max-w-sm">
-			<FieldLabel>Country</FieldLabel>
-			<Combobox items={countries}>
-				<ComboboxTrigger
-					render={
-						<Button
-							variant="outline"
-							className="data-placeholder:text-muted-foreground w-full justify-between font-normal"
-						/>
-					}
-				>
-					<ComboboxValue placeholder="Select a country" />
-					<ChevronsUpDownIcon className="text-muted-foreground" />
-				</ComboboxTrigger>
-				<ComboboxPopup aria-label="Select a country">
-					<div className="p-1 pb-0">
-						<ComboboxInput
-							placeholder="e.g. United Kingdom"
-							aria-label="Search countries"
-							render={<Input className="rounded-md shadow-none" />}
-						/>
-					</div>
-					<ComboboxEmpty>No countries found.</ComboboxEmpty>
-					<ComboboxList>
-						{(country: Country) => (
-							<ComboboxItem key={country.code} value={country}>
-								{country.label}
-							</ComboboxItem>
-						)}
-					</ComboboxList>
-				</ComboboxPopup>
-			</Combobox>
-		</Field>
+		<Combobox items={countries}>
+			<ComboboxLabel className="sr-only">Country</ComboboxLabel>
+			<ComboboxTrigger
+				render={
+					<Button
+						variant="outline"
+						className="data-placeholder:text-muted-foreground w-full max-w-sm justify-between font-normal"
+					/>
+				}
+			>
+				<ComboboxValue placeholder="Select a country" />
+				<ChevronsUpDownIcon className="text-muted-foreground" />
+			</ComboboxTrigger>
+			<ComboboxPopup aria-label="Select a country">
+				<div className="p-1 pb-0">
+					<ComboboxInput
+						placeholder="e.g. United Kingdom"
+						aria-label="Search countries"
+						render={<Input className="rounded-md shadow-none" />}
+					/>
+				</div>
+				<ComboboxEmpty>No countries found.</ComboboxEmpty>
+				<ComboboxList>
+					{(country: Country) => (
+						<ComboboxItem key={country.code} value={country}>
+							{country.label}
+						</ComboboxItem>
+					)}
+				</ComboboxList>
+			</ComboboxPopup>
+		</Combobox>
 	);
 }
 

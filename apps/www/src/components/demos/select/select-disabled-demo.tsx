@@ -1,4 +1,3 @@
-import { Field, FieldLabel } from "@/components/ui/field";
 import {
 	Select,
 	SelectItem,
@@ -21,20 +20,17 @@ const items = [
 
 export default function SelectDisabledDemo() {
 	return (
-		<Field name="fruit" disabled className="w-44">
-			<FieldLabel>Fruit</FieldLabel>
-			<Select items={items}>
-				<SelectTrigger className="w-full">
-					<SelectValue />
-				</SelectTrigger>
-				<SelectPopup>
-					{items.map(({ label, value }) => (
-						<SelectItem key={value} value={value}>
-							{label}
-						</SelectItem>
-					))}
-				</SelectPopup>
-			</Select>
-		</Field>
+		<Select items={items} disabled>
+			<SelectTrigger aria-label="Fruit" className="w-44">
+				<SelectValue />
+			</SelectTrigger>
+			<SelectPopup>
+				{items.map(({ label, value }) => (
+					<SelectItem key={value} value={value}>
+						{label}
+					</SelectItem>
+				))}
+			</SelectPopup>
+		</Select>
 	);
 }
