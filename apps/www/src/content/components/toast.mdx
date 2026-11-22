@@ -194,6 +194,12 @@ To follow an async task, pass the promise to `toast.promise`.
 
 <ComponentPreview name="toast-promise-demo" />
 
+### Rich Colors
+
+To tint the whole toast with its status color, set `richColors` on `ToastProvider` or `AnchoredToastProvider`.
+
+<ComponentPreview name="toast-rich-colors-demo" />
+
 ### Anchored
 
 To attach a toast to an element, wrap the element in `AnchoredToastProvider` and set `positionerProps.anchor` on the toast.
@@ -230,6 +236,12 @@ Wraps `Toast.Provider` and renders the portal, viewport and toasts for you.
 			description: "Shows a close button on each toast.",
 		},
 		{
+			name: "richColors",
+			type: "boolean",
+			default: "false",
+			description: "Tints the success, error, warning and info toasts with their status color.",
+		},
+		{
 			name: "portalProps",
 			type: "Toast.Portal.Props",
 			description: <>Props for the portal, such as <code>container</code>.</>,
@@ -249,6 +261,12 @@ Wraps `Toast.Provider` for toasts attached to an element.
 
 <ApiTable
 	rows={[
+		{
+			name: "richColors",
+			type: "boolean",
+			default: "false",
+			description: "Tints the success, error, warning and info toasts with their status color.",
+		},
 		{
 			name: "portalProps",
 			type: "Toast.Portal.Props",
