@@ -25,7 +25,7 @@ interface RtlPreviewProps {
 }
 
 export const RtlPreview = ({ previewClassName, children }: RtlPreviewProps) => (
-	<LanguageProvider defaultLanguage="ar">
+	<LanguageProvider>
 		<div className="flex h-12 items-center justify-between gap-2 border-b px-3">
 			<LanguageSelector className="w-28" />
 			<Popover>

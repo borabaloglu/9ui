@@ -29,7 +29,7 @@ export const languages = [
 	dir: Direction;
 }>;
 
-export function getDirection(language: Language): Direction {
+function getDirection(language: Language): Direction {
 	return language === "en" ? "ltr" : "rtl";
 }
 
@@ -38,14 +38,8 @@ const LanguageContext = React.createContext<{
 	setLanguage: (language: Language) => void;
 } | null>(null);
 
-export function LanguageProvider({
-	defaultLanguage = "ar",
-	children,
-}: {
-	defaultLanguage?: Language;
-	children: React.ReactNode;
-}) {
-	const [language, setLanguage] = React.useState<Language>(defaultLanguage);
+export function LanguageProvider({ children }: { children: React.ReactNode }) {
+	const [language, setLanguage] = React.useState<Language>("ar");
 	const value = React.useMemo(() => ({ language, setLanguage }), [language]);
 
 	return (

@@ -7,10 +7,7 @@ import {
 	AccordionTrigger,
 } from "@/components/ui/accordion";
 
-import { cn } from "@/lib/utils";
-
 interface TipsProps {
-	className?: string;
 	children: React.ReactNode;
 }
 
@@ -19,12 +16,9 @@ interface TipProps {
 	children: React.ReactNode;
 }
 
-function Tips({ className, children }: TipsProps) {
+function Tips({ children }: TipsProps) {
 	return (
-		<div
-			data-slot="tips"
-			className={cn("mt-4 overflow-hidden rounded-xl border", className)}
-		>
+		<div data-slot="tips" className="mt-4 overflow-hidden rounded-xl border">
 			<Accordion multiple hiddenUntilFound>
 				{children}
 			</Accordion>

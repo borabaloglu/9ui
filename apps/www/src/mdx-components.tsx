@@ -1,12 +1,11 @@
 import type * as React from "react";
 import Link from "next/link";
-import { AlertTriangleIcon, ArrowUpRightIcon } from "lucide-react";
+import { ArrowUpRightIcon } from "lucide-react";
 import type { MDXComponents as MDXProvidedComponents } from "mdx/types";
 
 import { ApiTable } from "@/components/api-table";
 import { CodeBlock } from "@/components/code-block";
 import { CommandBlock } from "@/components/command-block";
-import { ComponentAnatomy } from "@/components/component-anatomy";
 import { ComponentInstallation } from "@/components/component-installation";
 import { ComponentLinks } from "@/components/component-links";
 import { ComponentPreview } from "@/components/component-preview";
@@ -15,15 +14,7 @@ import { ComponentsIndex } from "@/components/components-index";
 import { Icons } from "@/components/icons";
 import { InstallationTabs } from "@/components/installation-tabs";
 import { Prompt } from "@/components/prompt";
-import { ThemeToggle } from "@/components/theme-toggle";
 import { Tip, Tips } from "@/components/tips";
-import {
-	Accordion,
-	AccordionItem,
-	AccordionPanel,
-	AccordionTrigger,
-} from "@/components/ui/accordion";
-import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { Card } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 import {
@@ -34,7 +25,6 @@ import {
 	TableHeader,
 	TableRow,
 } from "@/components/ui/table";
-import { Tabs, TabsList, TabsPanel } from "@/components/ui/tabs";
 
 import { siteConfig } from "@/config/site";
 
@@ -157,7 +147,6 @@ const components: MDXComponents = {
 		__bunCommand__,
 		__title__,
 		__lang__,
-		__unwrapCode__,
 		...props
 	}: React.HTMLAttributes<HTMLPreElement> & {
 		__rawString__?: string;
@@ -167,7 +156,6 @@ const components: MDXComponents = {
 		__bunCommand__?: string;
 		__title__?: string;
 		__lang__?: string;
-		__unwrapCode__?: string;
 	}) => {
 		const isCommand =
 			!!__npmCommand__ &&
@@ -184,12 +172,6 @@ const components: MDXComponents = {
 					bunCommand={__bunCommand__}
 				/>
 			);
-		}
-
-		const shouldUnwrap = __unwrapCode__ === "true";
-
-		if (shouldUnwrap) {
-			return <pre {...props} />;
 		}
 
 		const hasTitle = !!__title__;
@@ -274,14 +256,6 @@ const components: MDXComponents = {
 			/>
 		</Card>
 	),
-	Accordion,
-	AccordionTrigger,
-	AccordionItem,
-	AccordionPanel,
-	AlertTriangleIcon,
-	Alert,
-	AlertTitle,
-	AlertDescription,
 	ApiTable,
 	Tip,
 	Tips,
@@ -289,15 +263,10 @@ const components: MDXComponents = {
 	ComponentLinks,
 	ComponentsIndex,
 	ComponentSource,
-	Tabs,
-	TabsList,
-	TabsPanel,
 	ComponentInstallation,
 	InstallationTabs,
 	Prompt,
-	ComponentAnatomy,
 	Icons,
-	ThemeToggle,
 };
 
 export function getMDXComponents(): MDXProvidedComponents {

@@ -29,10 +29,10 @@ Help me understand how to use it. Be ready to explain concepts, give examples or
 };
 
 interface PageActionsProps {
-	links?: ComponentLink[];
+	links: ComponentLink[];
 }
 
-export function PageActions({ links = [] }: PageActionsProps) {
+export function PageActions({ links }: PageActionsProps) {
 	const pathname = usePathname();
 	const currentUrl = `${siteConfig.url}${pathname}`;
 	const [copied, setCopied] = React.useState(false);

@@ -251,43 +251,10 @@ function Hidden() {
 	return null;
 }
 
-function Fragment({ children }: { children: React.ReactNode }) {
-	asMarkdown();
-
-	return children;
-}
-
-async function AccordionTrigger({ children }: { children: React.ReactNode }) {
-	asMarkdown();
-
-	return `\n### ${(await md`${children}`).trim()}\n\n`;
-}
-
-async function AlertTitle({ children }: { children: React.ReactNode }) {
-	asMarkdown();
-
-	return `**${(await md`${children}`).trim()}**\n\n`;
-}
-
-function Alert({ children }: { children: React.ReactNode }) {
-	asMarkdown();
-
-	return md.linePrefix("> ")`${children}`;
-}
-
 const Icons = new Proxy({}, { get: () => Hidden });
 
 export const markdownComponents = {
-	Accordion: Fragment,
-	AccordionItem: Fragment,
-	AccordionPanel: Fragment,
-	AccordionTrigger,
-	Alert,
-	AlertDescription: Fragment,
-	AlertTitle,
-	AlertTriangleIcon: Hidden,
 	ApiTable,
-	ComponentAnatomy: Fragment,
 	ComponentInstallation,
 	ComponentLinks,
 	ComponentPreview,
@@ -299,10 +266,6 @@ export const markdownComponents = {
 	Prompt,
 	Step,
 	Steps,
-	Tabs: Fragment,
-	TabsList: Hidden,
-	TabsPanel: Fragment,
-	ThemeToggle: Hidden,
 	Tip,
 	Tips,
 };
