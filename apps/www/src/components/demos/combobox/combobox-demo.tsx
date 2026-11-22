@@ -8,27 +8,27 @@ import {
 	ComboboxList,
 	ComboboxPopup,
 } from "@/components/ui/combobox";
-import { Field, FieldLabel } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
 
 export default function ComboboxDemo() {
 	return (
-		<Field className="max-w-sm">
-			<FieldLabel>Fruit</FieldLabel>
-			<Combobox items={fruits}>
-				<ComboboxInput placeholder="e.g. Apple" render={<Input />} />
-				<ComboboxPopup>
-					<ComboboxEmpty>No fruits found.</ComboboxEmpty>
-					<ComboboxList>
-						{(fruit: Fruit) => (
-							<ComboboxItem key={fruit.value} value={fruit}>
-								{fruit.label}
-							</ComboboxItem>
-						)}
-					</ComboboxList>
-				</ComboboxPopup>
-			</Combobox>
-		</Field>
+		<Combobox items={fruits}>
+			<ComboboxInput
+				aria-label="Fruit"
+				placeholder="e.g. Apple"
+				render={<Input className="max-w-sm" />}
+			/>
+			<ComboboxPopup>
+				<ComboboxEmpty>No fruits found.</ComboboxEmpty>
+				<ComboboxList>
+					{(fruit: Fruit) => (
+						<ComboboxItem key={fruit.value} value={fruit}>
+							{fruit.label}
+						</ComboboxItem>
+					)}
+				</ComboboxList>
+			</ComboboxPopup>
+		</Combobox>
 	);
 }
 

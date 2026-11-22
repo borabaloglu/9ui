@@ -159,32 +159,6 @@ To enable RTL support, see the [RTL guide](/docs/getting-started/rtl).
 
 <Tips>
 
-<Tip title="Label icon-only triggers">
-
-Give icon-only triggers an `aria-label`.
-
-```tsx {2}
-<MenuTrigger
-	render={<Button variant="outline" size="icon" aria-label="Post actions" />}
->
-	<EllipsisIcon />
-</MenuTrigger>
-```
-
-</Tip>
-
-<Tip title="Use your own button as the trigger">
-
-Set `render` on `MenuTrigger` to use your own button.
-
-```tsx {1}
-<MenuTrigger render={<Button variant="outline" />}>
-	Open Menu
-</MenuTrigger>
-```
-
-</Tip>
-
 <Tip title="Change where the menu opens">
 
 `MenuPopup` takes `side`, `align`, `sideOffset` and `alignOffset` to change where the menu opens.

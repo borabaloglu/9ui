@@ -120,52 +120,6 @@ To enable RTL support, see the [RTL guide](/docs/getting-started/rtl).
 
 <ComponentPreview name="toolbar-rtl-demo" direction="rtl" />
 
-## Tips
-
-<Tips>
-
-<Tip title="Label the toolbar">
-
-Give the toolbar an `aria-label`.
-
-```tsx {1}
-<Toolbar aria-label="File actions">
-	<ToolbarButton render={<Button variant="ghost" />}>Share</ToolbarButton>
-</Toolbar>
-```
-
-</Tip>
-
-<Tip title="Label icon-only buttons">
-
-Give each icon-only button its own `aria-label`.
-
-```tsx {3}
-<ToolbarButton
-	render={<Button variant="ghost" size="icon" />}
-	aria-label="Download"
->
-	<DownloadIcon />
-</ToolbarButton>
-```
-
-</Tip>
-
-<Tip title="Compose with other components">
-
-Set `render` on `ToolbarButton` and `ToolbarInput` to compose them with other components.
-
-```tsx {2-3}
-<Toolbar aria-label="Table tools">
-	<ToolbarButton render={<Button variant="ghost" />}>Filter</ToolbarButton>
-	<ToolbarInput render={<Input placeholder="Search" aria-label="Search" />} />
-</Toolbar>
-```
-
-</Tip>
-
-</Tips>
-
 ## API Reference
 
 See the [Base UI](https://base-ui.com/react/components/toolbar#api-reference) documentation for more information.

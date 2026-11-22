@@ -1,7 +1,7 @@
 import { Checkbox } from "@/components/ui/checkbox";
 import { Field, FieldDescription, FieldLabel } from "@/components/ui/field";
 
-export default function CheckboxDescriptionDemo() {
+export default function CheckboxFieldDemo() {
 	return (
 		<Field
 			name="updates"

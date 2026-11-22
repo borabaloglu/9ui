@@ -11,7 +11,6 @@ import {
 	AutocompleteList,
 	AutocompletePopup,
 } from "@/components/ui/autocomplete";
-import { Field, FieldLabel } from "@/components/ui/field";
 import {
 	InputGroup,
 	InputGroupAddon,
@@ -21,33 +20,33 @@ import {
 
 export default function AutocompleteInputGroupDemo() {
 	return (
-		<Field className="max-w-sm">
-			<FieldLabel>Fruit</FieldLabel>
-			<Autocomplete items={fruits}>
-				<AutocompleteInputGroup render={<InputGroup />}>
-					<InputGroupAddon align="inline-start">
-						<InputGroupText>
-							<SearchIcon />
-						</InputGroupText>
-					</InputGroupAddon>
-					<InputGroupInput
-						placeholder="e.g. Apple"
-						render={<AutocompleteInput />}
-					/>
-				</AutocompleteInputGroup>
+		<Autocomplete items={fruits}>
+			<AutocompleteInputGroup
+				render={<InputGroup className="w-full max-w-sm" />}
+			>
+				<InputGroupAddon align="inline-start">
+					<InputGroupText>
+						<SearchIcon />
+					</InputGroupText>
+				</InputGroupAddon>
+				<InputGroupInput
+					aria-label="Fruit"
+					placeholder="e.g. Apple"
+					render={<AutocompleteInput />}
+				/>
+			</AutocompleteInputGroup>
 
-				<AutocompletePopup>
-					<AutocompleteEmpty>No fruits found.</AutocompleteEmpty>
-					<AutocompleteList>
-						{(fruit: Fruit) => (
-							<AutocompleteItem key={fruit.value} value={fruit}>
-								{fruit.label}
-							</AutocompleteItem>
-						)}
-					</AutocompleteList>
-				</AutocompletePopup>
-			</Autocomplete>
-		</Field>
+			<AutocompletePopup>
+				<AutocompleteEmpty>No fruits found.</AutocompleteEmpty>
+				<AutocompleteList>
+					{(fruit: Fruit) => (
+						<AutocompleteItem key={fruit.value} value={fruit}>
+							{fruit.label}
+						</AutocompleteItem>
+					)}
+				</AutocompleteList>
+			</AutocompletePopup>
+		</Autocomplete>
 	);
 }
 

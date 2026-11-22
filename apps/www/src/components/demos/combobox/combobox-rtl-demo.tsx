@@ -17,7 +17,6 @@ import {
 	ComboboxPopup,
 	ComboboxValue,
 } from "@/components/ui/combobox";
-import { Field, FieldLabel } from "@/components/ui/field";
 
 const translations = {
 	en: {
@@ -59,40 +58,38 @@ export default function ComboboxRtlDemo() {
 	const { dir, t } = useTranslation(translations);
 
 	return (
-		<Field className="max-w-sm">
-			<FieldLabel>{t.frameworks}</FieldLabel>
-			<Combobox items={frameworks} multiple>
-				<ComboboxChips>
-					<ComboboxValue>
-						{(value: Framework[]) => (
-							<React.Fragment>
-								{value.map((framework) => (
-									<ComboboxChip
-										key={framework.value}
-										aria-label={framework.label}
-									>
-										{framework.label}
-									</ComboboxChip>
-								))}
-								<ComboboxChipsInput
-									placeholder={value.length > 0 ? "" : t.placeholder}
-								/>
-							</React.Fragment>
-						)}
-					</ComboboxValue>
-				</ComboboxChips>
+		<Combobox items={frameworks} multiple>
+			<ComboboxChips className="max-w-sm">
+				<ComboboxValue>
+					{(value: Framework[]) => (
+						<React.Fragment>
+							{value.map((framework) => (
+								<ComboboxChip
+									key={framework.value}
+									aria-label={framework.label}
+								>
+									{framework.label}
+								</ComboboxChip>
+							))}
+							<ComboboxChipsInput
+								aria-label={t.frameworks}
+								placeholder={value.length > 0 ? "" : t.placeholder}
+							/>
+						</React.Fragment>
+					)}
+				</ComboboxValue>
+			</ComboboxChips>
 
-				<ComboboxPopup dir={dir}>
-					<ComboboxEmpty>{t.empty}</ComboboxEmpty>
-					<ComboboxList>
-						{(framework: Framework) => (
-							<ComboboxItem key={framework.value} value={framework}>
-								{framework.label}
-							</ComboboxItem>
-						)}
-					</ComboboxList>
-				</ComboboxPopup>
-			</Combobox>
-		</Field>
+			<ComboboxPopup dir={dir}>
+				<ComboboxEmpty>{t.empty}</ComboboxEmpty>
+				<ComboboxList>
+					{(framework: Framework) => (
+						<ComboboxItem key={framework.value} value={framework}>
+							{framework.label}
+						</ComboboxItem>
+					)}
+				</ComboboxList>
+			</ComboboxPopup>
+		</Combobox>
 	);
 }

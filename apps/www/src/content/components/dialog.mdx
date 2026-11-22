@@ -119,32 +119,6 @@ To enable RTL support, see the [RTL guide](/docs/getting-started/rtl).
 
 <Tips>
 
-<Tip title="Label icon-only triggers">
-
-Give icon-only triggers an `aria-label`.
-
-```tsx {2}
-<DialogTrigger
-	render={<Button variant="outline" size="icon" aria-label="Settings" />}
->
-	<SettingsIcon />
-</DialogTrigger>
-```
-
-</Tip>
-
-<Tip title="Use your own button as the trigger">
-
-Set `render` on `DialogTrigger` to use your own button.
-
-```tsx {1}
-<DialogTrigger render={<Button variant="outline" />}>
-	Edit profile
-</DialogTrigger>
-```
-
-</Tip>
-
 <Tip title="Change the corner radius">
 
 To change the corner radius, set `className="[--dialog-radius:var(--radius-2xl)]"` on `DialogPopup`.

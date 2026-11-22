@@ -15,42 +15,39 @@ import {
 	AutocompleteSeparator,
 	AutocompleteValue,
 } from "@/components/ui/autocomplete";
-import { Field, FieldLabel } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
 
 export default function AutocompleteGroupsDemo() {
 	return (
-		<Field className="max-w-sm">
-			<FieldLabel>Technology</FieldLabel>
-			<Autocomplete items={groups}>
-				<AutocompleteInput
-					placeholder="e.g. React, Vue, Angular"
-					render={<Input />}
-				/>
-				<AutocompletePopup className="w-(--anchor-width)">
-					<AutocompleteEmpty>
-						No technologies found for “<AutocompleteValue />”
-					</AutocompleteEmpty>
-					<AutocompleteList>
-						{({ id: groupId, value: groupLabel, items }, index) => (
-							<React.Fragment key={groupId}>
-								{index > 0 && <AutocompleteSeparator />}
-								<AutocompleteGroup items={items}>
-									<AutocompleteGroupLabel>{groupLabel}</AutocompleteGroupLabel>
-									<AutocompleteCollection>
-										{({ id, value }) => (
-											<AutocompleteItem key={id} value={value}>
-												{value}
-											</AutocompleteItem>
-										)}
-									</AutocompleteCollection>
-								</AutocompleteGroup>
-							</React.Fragment>
-						)}
-					</AutocompleteList>
-				</AutocompletePopup>
-			</Autocomplete>
-		</Field>
+		<Autocomplete items={groups}>
+			<AutocompleteInput
+				aria-label="Technology"
+				placeholder="e.g. React, Vue, Angular"
+				render={<Input className="max-w-sm" />}
+			/>
+			<AutocompletePopup className="w-(--anchor-width)">
+				<AutocompleteEmpty>
+					No technologies found for “<AutocompleteValue />”
+				</AutocompleteEmpty>
+				<AutocompleteList>
+					{({ id: groupId, value: groupLabel, items }, index) => (
+						<React.Fragment key={groupId}>
+							{index > 0 && <AutocompleteSeparator />}
+							<AutocompleteGroup items={items}>
+								<AutocompleteGroupLabel>{groupLabel}</AutocompleteGroupLabel>
+								<AutocompleteCollection>
+									{({ id, value }) => (
+										<AutocompleteItem key={id} value={value}>
+											{value}
+										</AutocompleteItem>
+									)}
+								</AutocompleteCollection>
+							</AutocompleteGroup>
+						</React.Fragment>
+					)}
+				</AutocompleteList>
+			</AutocompletePopup>
+		</Autocomplete>
 	);
 }
 

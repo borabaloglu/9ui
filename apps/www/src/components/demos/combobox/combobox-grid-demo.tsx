@@ -10,27 +10,27 @@ import {
 	ComboboxRow,
 	useComboboxFilteredItems,
 } from "@/components/ui/combobox";
-import { Field, FieldLabel } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
 
 export default function ComboboxGridDemo() {
 	return (
-		<Field className="max-w-sm">
-			<FieldLabel>Color</FieldLabel>
-			<Combobox
-				items={colors}
-				grid
-				itemToStringLabel={(color: Color) => color.name}
-			>
-				<ComboboxInput placeholder="e.g. Teal" render={<Input />} />
-				<ComboboxPopup className="w-(--anchor-width)">
-					<ComboboxEmpty>No colors found.</ComboboxEmpty>
-					<ComboboxList>
-						<ColorGrid />
-					</ComboboxList>
-				</ComboboxPopup>
-			</Combobox>
-		</Field>
+		<Combobox
+			items={colors}
+			grid
+			itemToStringLabel={(color: Color) => color.name}
+		>
+			<ComboboxInput
+				aria-label="Color"
+				placeholder="e.g. Teal"
+				render={<Input className="max-w-sm" />}
+			/>
+			<ComboboxPopup className="w-(--anchor-width)">
+				<ComboboxEmpty>No colors found.</ComboboxEmpty>
+				<ComboboxList>
+					<ColorGrid />
+				</ComboboxList>
+			</ComboboxPopup>
+		</Combobox>
 	);
 }
 

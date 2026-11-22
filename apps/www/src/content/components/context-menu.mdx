@@ -154,29 +154,6 @@ To enable RTL support, see the [RTL guide](/docs/getting-started/rtl).
 
 <ComponentPreview name="context-menu-rtl-demo" direction="rtl" />
 
-## Tips
-
-<Tips>
-
-<Tip title="Choose the area that opens the menu">
-
-Wrap the area that should open the menu in `ContextMenuTrigger`.
-
-```tsx {2-4}
-<ContextMenu>
-	<ContextMenuTrigger className="rounded-xl border border-dashed p-8">
-		Right click here
-	</ContextMenuTrigger>
-	<ContextMenuPopup>
-		<ContextMenuItem>Open File</ContextMenuItem>
-	</ContextMenuPopup>
-</ContextMenu>
-```
-
-</Tip>
-
-</Tips>
-
 ## API Reference
 
 What 9ui adds to Base UI Context Menu. See the [Base UI](https://base-ui.com/react/components/context-menu#api-reference) documentation for the rest.

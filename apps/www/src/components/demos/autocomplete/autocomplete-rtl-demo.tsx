@@ -21,7 +21,6 @@ import {
 	AutocompletePopup,
 	AutocompleteSeparator,
 } from "@/components/ui/autocomplete";
-import { Field, FieldLabel } from "@/components/ui/field";
 import {
 	InputGroup,
 	InputGroupAddon,
@@ -152,51 +151,51 @@ export default function AutocompleteRtlDemo() {
 	);
 
 	return (
-		<Field className="max-w-sm">
-			<FieldLabel>{t.search}</FieldLabel>
-			<Autocomplete key={language} items={groups}>
-				<AutocompleteInputGroup render={<InputGroup />}>
-					<InputGroupAddon align="inline-start">
-						<InputGroupText>
-							<SearchIcon />
-						</InputGroupText>
-					</InputGroupAddon>
-					<InputGroupInput
-						placeholder={t.searchPlaceholder}
-						render={<AutocompleteInput />}
-					/>
-					<InputGroupAddon align="inline-end">
-						<InputGroupButton
-							size="icon-xs"
-							variant="ghost"
-							render={<AutocompleteClear />}
-							aria-label={t.clear}
-						>
-							<XIcon />
-						</InputGroupButton>
-					</InputGroupAddon>
-				</AutocompleteInputGroup>
-				<AutocompletePopup dir={dir}>
-					<AutocompleteEmpty>{t.empty}</AutocompleteEmpty>
-					<AutocompleteList>
-						{(group: Group, index: number) => (
-							<React.Fragment key={group.value}>
-								{index > 0 && <AutocompleteSeparator />}
-								<AutocompleteGroup items={group.items}>
-									<AutocompleteGroupLabel>{group.label}</AutocompleteGroupLabel>
-									<AutocompleteCollection>
-										{(item: Item) => (
-											<AutocompleteItem key={item.value} value={item}>
-												{item.label}
-											</AutocompleteItem>
-										)}
-									</AutocompleteCollection>
-								</AutocompleteGroup>
-							</React.Fragment>
-						)}
-					</AutocompleteList>
-				</AutocompletePopup>
-			</Autocomplete>
-		</Field>
+		<Autocomplete key={language} items={groups}>
+			<AutocompleteInputGroup
+				render={<InputGroup className="w-full max-w-sm" />}
+			>
+				<InputGroupAddon align="inline-start">
+					<InputGroupText>
+						<SearchIcon />
+					</InputGroupText>
+				</InputGroupAddon>
+				<InputGroupInput
+					aria-label={t.search}
+					placeholder={t.searchPlaceholder}
+					render={<AutocompleteInput />}
+				/>
+				<InputGroupAddon align="inline-end">
+					<InputGroupButton
+						size="icon-xs"
+						variant="ghost"
+						render={<AutocompleteClear />}
+						aria-label={t.clear}
+					>
+						<XIcon />
+					</InputGroupButton>
+				</InputGroupAddon>
+			</AutocompleteInputGroup>
+			<AutocompletePopup dir={dir}>
+				<AutocompleteEmpty>{t.empty}</AutocompleteEmpty>
+				<AutocompleteList>
+					{(group: Group, index: number) => (
+						<React.Fragment key={group.value}>
+							{index > 0 && <AutocompleteSeparator />}
+							<AutocompleteGroup items={group.items}>
+								<AutocompleteGroupLabel>{group.label}</AutocompleteGroupLabel>
+								<AutocompleteCollection>
+									{(item: Item) => (
+										<AutocompleteItem key={item.value} value={item}>
+											{item.label}
+										</AutocompleteItem>
+									)}
+								</AutocompleteCollection>
+							</AutocompleteGroup>
+						</React.Fragment>
+					)}
+				</AutocompleteList>
+			</AutocompletePopup>
+		</Autocomplete>
 	);
 }

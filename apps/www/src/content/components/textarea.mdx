@@ -53,17 +53,17 @@ Set `aria-invalid` to show the error state.
 
 <ComponentPreview name="textarea-invalid-demo" />
 
-### Max Height
-
-Set a `max-h-*` class to stop growing and scroll instead.
-
-<ComponentPreview name="textarea-max-height-demo" />
-
 ### Field
 
 Place it inside [Field](/docs/components/field) to link the label, description and error.
 
 <ComponentPreview name="textarea-field-demo" />
+
+### Max Height
+
+Set a `max-h-*` class to stop growing and scroll instead.
+
+<ComponentPreview name="textarea-max-height-demo" />
 
 ### Input Group
 
@@ -80,33 +80,6 @@ To enable RTL support, see the [RTL guide](/docs/getting-started/rtl).
 ## Form Integration
 
 See the form guides for [Base UI Form](/docs/forms/base-ui#textarea), [React Hook Form](/docs/forms/react-hook-form#textarea) and [TanStack Form](/docs/forms/tanstack-form#textarea).
-
-## Tips
-
-<Tips>
-
-<Tip title="Label the textarea">
-
-Give every textarea a `<label>`. A placeholder isn't a label.
-
-```tsx {1}
-<Label htmlFor="message">Message</Label>
-<Textarea id="message" placeholder="Write your message" />
-```
-
-</Tip>
-
-<Tip title="Name a textarea with no visible label">
-
-Set `aria-label` on `Textarea` when there is no visible label.
-
-```tsx {1}
-<Textarea aria-label="Message" placeholder="Message" />
-```
-
-</Tip>
-
-</Tips>
 
 ## API Reference
 

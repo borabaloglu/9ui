@@ -112,28 +112,6 @@ To enable RTL support, see the [RTL guide](/docs/getting-started/rtl).
 
 <ComponentPreview name="calendar-rtl-demo" direction="rtl" />
 
-## Tips
-
-<Tips>
-
-<Tip title="Control the selection">
-
-To control the selection, set `selected` and `onSelect`.
-
-```tsx {5-6}
-const [date, setDate] = useState<Date | undefined>(undefined)
-
-<Calendar
-	mode="single"
-	selected={date}
-	onSelect={setDate}
-/>
-```
-
-</Tip>
-
-</Tips>
-
 ## API Reference
 
 What 9ui adds to React DayPicker. See the [React DayPicker](https://daypicker.dev/) documentation for the rest.

@@ -106,26 +106,6 @@ To enable RTL support, see the [RTL guide](/docs/getting-started/rtl).
 
 <ComponentPreview name="meter-rtl-demo" direction="rtl" />
 
-## Tips
-
-<Tips>
-
-<Tip title="Name the meter">
-
-Give every meter a name: add a `MeterLabel`, or set `aria-label` on `Meter` when there is no visible label.
-
-```tsx {1}
-<Meter aria-label="Battery level" value={60}>
-	<MeterTrack>
-		<MeterIndicator />
-	</MeterTrack>
-</Meter>
-```
-
-</Tip>
-
-</Tips>
-
 ## API Reference
 
 What 9ui adds to Base UI Meter. See the [Base UI](https://base-ui.com/react/components/meter#api-reference) documentation for the rest.

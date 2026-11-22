@@ -161,52 +161,6 @@ To enable RTL support, see the [RTL guide](/docs/getting-started/rtl).
 
 <Tips>
 
-<Tip title="Label icon-only triggers">
-
-Give icon-only triggers an `aria-label`.
-
-```tsx {2}
-<DrawerTrigger
-	render={<Button variant="outline" size="icon" aria-label="Settings" />}
->
-	<SettingsIcon />
-</DrawerTrigger>
-```
-
-</Tip>
-
-<Tip title="Use your own button as the trigger">
-
-Set `render` on `DrawerTrigger` to use your own button.
-
-```tsx {1}
-<DrawerTrigger render={<Button variant="outline" />}>
-	Send feedback
-</DrawerTrigger>
-```
-
-</Tip>
-
-<Tip title="Scroll the body">
-
-Put the body in `DrawerPanel`. It scrolls when the content is taller than the drawer, while the header and footer stay in place.
-
-```tsx {5-7}
-<DrawerPopup>
-	<DrawerHeader>
-		<DrawerTitle>Terms of service</DrawerTitle>
-	</DrawerHeader>
-	<DrawerPanel>
-		<p>By using this service you agree to these terms.</p>
-	</DrawerPanel>
-	<DrawerFooter>
-		<DrawerClose render={<Button />}>Accept</DrawerClose>
-	</DrawerFooter>
-</DrawerPopup>
-```
-
-</Tip>
-
 <Tip title="Clear the status bar and home indicator">
 
 To keep content clear of the status bar and home indicator, set `viewport-fit=cover` in the viewport meta tag of the page.

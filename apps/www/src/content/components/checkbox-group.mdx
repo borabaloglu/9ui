@@ -87,47 +87,6 @@ To enable RTL support, see the [RTL guide](/docs/getting-started/rtl).
 
 See the form guides for [Base UI Form](/docs/forms/base-ui#checkbox-group), [React Hook Form](/docs/forms/react-hook-form#checkbox-group) and [TanStack Form](/docs/forms/tanstack-form#checkbox-group).
 
-## Tips
-
-<Tips>
-
-<Tip title="Name the group">
-
-To name the group, set an `id` on `CheckboxGroupLabel` and pass it to `aria-labelledby` on `CheckboxGroup`.
-
-```tsx {1-2}
-<CheckboxGroup aria-labelledby="notify-label">
-	<CheckboxGroupLabel id="notify-label">Notify me by</CheckboxGroupLabel>
-	<Label>
-		<Checkbox value="email" />
-		Email
-	</Label>
-</CheckboxGroup>
-```
-
-</Tip>
-
-<Tip title="Give each checkbox a value">
-
-Give each [Checkbox](/docs/components/checkbox) a `value`. The group's value is the list of checked values.
-
-```tsx {1,3,7}
-<CheckboxGroup defaultValue={["email"]}>
-	<Label>
-		<Checkbox value="email" />
-		Email
-	</Label>
-	<Label>
-		<Checkbox value="sms" />
-		Text messages
-	</Label>
-</CheckboxGroup>
-```
-
-</Tip>
-
-</Tips>
-
 ## API Reference
 
 What 9ui adds to Base UI Checkbox Group. See the [Base UI](https://base-ui.com/react/components/checkbox-group#api-reference) documentation for the rest.

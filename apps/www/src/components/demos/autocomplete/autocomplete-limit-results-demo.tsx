@@ -12,7 +12,6 @@ import {
 	AutocompleteStatus,
 	useAutocompleteFilter,
 } from "@/components/ui/autocomplete";
-import { Field, FieldLabel } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
 
 const limit = 8;
@@ -33,30 +32,31 @@ export default function AutocompleteLimitResultsDemo() {
 	const moreCount = Math.max(0, totalMatches - limit);
 
 	return (
-		<Field className="max-w-sm">
-			<FieldLabel>Fruit</FieldLabel>
-			<Autocomplete
-				items={fruits}
-				value={value}
-				onValueChange={setValue}
-				limit={limit}
-			>
-				<AutocompleteInput placeholder="e.g. Apple" render={<Input />} />
-				<AutocompletePopup>
-					<AutocompleteEmpty>No fruits found.</AutocompleteEmpty>
-					<AutocompleteList>
-						{(fruit: Fruit) => (
-							<AutocompleteItem key={fruit.value} value={fruit}>
-								{fruit.label}
-							</AutocompleteItem>
-						)}
-					</AutocompleteList>
-					{moreCount > 0 && (
-						<AutocompleteStatus>+{moreCount} more fruits</AutocompleteStatus>
+		<Autocomplete
+			items={fruits}
+			value={value}
+			onValueChange={setValue}
+			limit={limit}
+		>
+			<AutocompleteInput
+				aria-label="Fruit"
+				placeholder="e.g. Apple"
+				render={<Input className="max-w-sm" />}
+			/>
+			<AutocompletePopup>
+				<AutocompleteEmpty>No fruits found.</AutocompleteEmpty>
+				<AutocompleteList>
+					{(fruit: Fruit) => (
+						<AutocompleteItem key={fruit.value} value={fruit}>
+							{fruit.label}
+						</AutocompleteItem>
 					)}
-				</AutocompletePopup>
-			</Autocomplete>
-		</Field>
+				</AutocompleteList>
+				{moreCount > 0 && (
+					<AutocompleteStatus>+{moreCount} more fruits</AutocompleteStatus>
+				)}
+			</AutocompletePopup>
+		</Autocomplete>
 	);
 }
 

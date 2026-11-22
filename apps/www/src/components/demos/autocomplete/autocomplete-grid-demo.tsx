@@ -10,27 +10,23 @@ import {
 	AutocompleteRow,
 	useAutocompleteFilteredItems,
 } from "@/components/ui/autocomplete";
-import { Field, FieldLabel } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
 
 export default function AutocompleteGridDemo() {
 	return (
-		<Field className="max-w-sm">
-			<FieldLabel>Color</FieldLabel>
-			<Autocomplete
-				items={colors}
-				grid
-				itemToStringValue={(color) => color.name}
-			>
-				<AutocompleteInput placeholder="e.g. Teal" render={<Input />} />
-				<AutocompletePopup className="w-(--anchor-width)">
-					<AutocompleteEmpty>No colors found.</AutocompleteEmpty>
-					<AutocompleteList>
-						<ColorGrid />
-					</AutocompleteList>
-				</AutocompletePopup>
-			</Autocomplete>
-		</Field>
+		<Autocomplete items={colors} grid itemToStringValue={(color) => color.name}>
+			<AutocompleteInput
+				aria-label="Color"
+				placeholder="e.g. Teal"
+				render={<Input className="max-w-sm" />}
+			/>
+			<AutocompletePopup className="w-(--anchor-width)">
+				<AutocompleteEmpty>No colors found.</AutocompleteEmpty>
+				<AutocompleteList>
+					<ColorGrid />
+				</AutocompleteList>
+			</AutocompletePopup>
+		</Autocomplete>
 	);
 }
 

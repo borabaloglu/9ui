@@ -8,27 +8,27 @@ import {
 	AutocompleteList,
 	AutocompletePopup,
 } from "@/components/ui/autocomplete";
-import { Field, FieldLabel } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
 
 export default function AutocompleteDemo() {
 	return (
-		<Field className="max-w-sm">
-			<FieldLabel>Fruit</FieldLabel>
-			<Autocomplete items={fruits}>
-				<AutocompleteInput placeholder="e.g. Apple" render={<Input />} />
-				<AutocompletePopup>
-					<AutocompleteEmpty>No fruits found.</AutocompleteEmpty>
-					<AutocompleteList>
-						{(fruit: Fruit) => (
-							<AutocompleteItem key={fruit.value} value={fruit}>
-								{fruit.label}
-							</AutocompleteItem>
-						)}
-					</AutocompleteList>
-				</AutocompletePopup>
-			</Autocomplete>
-		</Field>
+		<Autocomplete items={fruits}>
+			<AutocompleteInput
+				aria-label="Fruit"
+				placeholder="e.g. Apple"
+				render={<Input className="max-w-sm" />}
+			/>
+			<AutocompletePopup>
+				<AutocompleteEmpty>No fruits found.</AutocompleteEmpty>
+				<AutocompleteList>
+					{(fruit: Fruit) => (
+						<AutocompleteItem key={fruit.value} value={fruit}>
+							{fruit.label}
+						</AutocompleteItem>
+					)}
+				</AutocompleteList>
+			</AutocompletePopup>
+		</Autocomplete>
 	);
 }
 

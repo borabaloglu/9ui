@@ -110,6 +110,12 @@ Set `autoHighlight` on `Autocomplete` to highlight the first match while typing.
 
 <ComponentPreview name="autocomplete-auto-highlight-demo" />
 
+### Field
+
+Place it inside [Field](/docs/components/field) to add a label and a description.
+
+<ComponentPreview name="autocomplete-field-demo" />
+
 ### Inline
 
 Set `mode="both"` on `Autocomplete` to fill the input with the highlighted item.
@@ -155,28 +161,6 @@ To enable RTL support, see the [RTL guide](/docs/getting-started/rtl).
 ## Tips
 
 <Tips>
-
-<Tip title="Name the autocomplete">
-
-Give every autocomplete a name: use [Field](/docs/components/field) with a `FieldLabel` or set `aria-label` on `AutocompleteInput`.
-
-```tsx {2}
-<Autocomplete items={fruits}>
-	<AutocompleteInput aria-label="Fruit" render={<Input />} />
-</Autocomplete>
-```
-
-</Tip>
-
-<Tip title="Style the input as an Input">
-
-Set `render={<Input />}` on `AutocompleteInput` to style it as an [Input](/docs/components/input).
-
-```tsx {1}
-<AutocompleteInput placeholder="e.g. Apple" render={<Input />} />
-```
-
-</Tip>
 
 <Tip title="Change where the popup opens">
 

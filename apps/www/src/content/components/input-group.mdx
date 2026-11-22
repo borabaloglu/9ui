@@ -125,61 +125,23 @@ Set `aria-invalid` on the control to show the error state on the group.
 
 <ComponentPreview name="input-group-invalid-demo" />
 
+### Field
+
+Place it inside [Field](/docs/components/field) to link the label, description and error.
+
+<ComponentPreview name="input-group-field-demo" />
+
 ### Textarea
 
 Use `InputGroupTextarea` with `block-start` or `block-end` addons.
 
 <ComponentPreview name="input-group-textarea-demo" />
 
-### Field
-
-Place it inside [Field](/docs/components/field) to link the label, description and error to the control.
-
-<ComponentPreview name="input-group-field-demo" />
-
 ### RTL
 
 To enable RTL support, see the [RTL guide](/docs/getting-started/rtl).
 
 <ComponentPreview name="input-group-rtl-demo" direction="rtl" />
-
-## Tips
-
-<Tips>
-
-<Tip title="Label the control">
-
-Give the control a `<label>` or `aria-label`.
-
-```tsx {2}
-<InputGroup>
-	<InputGroupInput aria-label="Email address" type="email" />
-	<InputGroupAddon align="inline-end">
-		<InputGroupButton variant="secondary">Subscribe</InputGroupButton>
-	</InputGroupAddon>
-</InputGroup>
-```
-
-</Tip>
-
-<Tip title="Label icon-only buttons">
-
-Give icon-only buttons an `aria-label`.
-
-```tsx {4}
-<InputGroup>
-	<InputGroupInput aria-label="Password" type="password" />
-	<InputGroupAddon align="inline-end">
-		<InputGroupButton size="icon-xs" aria-label="Show password">
-			<EyeIcon />
-		</InputGroupButton>
-	</InputGroupAddon>
-</InputGroup>
-```
-
-</Tip>
-
-</Tips>
 
 ## API Reference
 

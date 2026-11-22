@@ -107,27 +107,6 @@ To enable RTL support, see the [RTL guide](/docs/getting-started/rtl).
 
 <ComponentPreview name="emoji-picker-rtl-demo" direction="rtl" />
 
-## Tips
-
-<Tips>
-
-<Tip title="Get the picked emoji">
-
-To get the picked emoji, set `onEmojiSelect` on `EmojiPicker`.
-
-```tsx {1}
-<EmojiPicker onEmojiSelect={({ emoji }) => setReaction(emoji)}>
-	<EmojiPickerSearch />
-	<EmojiPickerContent>
-		<EmojiPickerList />
-	</EmojiPickerContent>
-</EmojiPicker>
-```
-
-</Tip>
-
-</Tips>
-
 ## API Reference
 
 What 9ui adds to Frimousse. See the [Frimousse](https://frimousse.liveblocks.io/#api-reference) documentation for the rest.

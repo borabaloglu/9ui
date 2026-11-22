@@ -15,39 +15,39 @@ import {
 	ComboboxSeparator,
 	ComboboxValue,
 } from "@/components/ui/combobox";
-import { Field, FieldLabel } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
 
 export default function ComboboxGroupsDemo() {
 	return (
-		<Field className="max-w-sm">
-			<FieldLabel>Technology</FieldLabel>
-			<Combobox items={groups}>
-				<ComboboxInput placeholder="e.g. React" render={<Input />} />
-				<ComboboxPopup>
-					<ComboboxEmpty>
-						No technologies found for “<ComboboxValue />”
-					</ComboboxEmpty>
-					<ComboboxList>
-						{(group: Group, index: number) => (
-							<React.Fragment key={group.value}>
-								{index > 0 && <ComboboxSeparator />}
-								<ComboboxGroup items={group.items}>
-									<ComboboxGroupLabel>{group.value}</ComboboxGroupLabel>
-									<ComboboxCollection>
-										{(item: Technology) => (
-											<ComboboxItem key={item.value} value={item}>
-												{item.label}
-											</ComboboxItem>
-										)}
-									</ComboboxCollection>
-								</ComboboxGroup>
-							</React.Fragment>
-						)}
-					</ComboboxList>
-				</ComboboxPopup>
-			</Combobox>
-		</Field>
+		<Combobox items={groups}>
+			<ComboboxInput
+				aria-label="Technology"
+				placeholder="e.g. React"
+				render={<Input className="max-w-sm" />}
+			/>
+			<ComboboxPopup>
+				<ComboboxEmpty>
+					No technologies found for “<ComboboxValue />”
+				</ComboboxEmpty>
+				<ComboboxList>
+					{(group: Group, index: number) => (
+						<React.Fragment key={group.value}>
+							{index > 0 && <ComboboxSeparator />}
+							<ComboboxGroup items={group.items}>
+								<ComboboxGroupLabel>{group.value}</ComboboxGroupLabel>
+								<ComboboxCollection>
+									{(item: Technology) => (
+										<ComboboxItem key={item.value} value={item}>
+											{item.label}
+										</ComboboxItem>
+									)}
+								</ComboboxCollection>
+							</ComboboxGroup>
+						</React.Fragment>
+					)}
+				</ComboboxList>
+			</ComboboxPopup>
+		</Combobox>
 	);
 }
 

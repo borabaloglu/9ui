@@ -12,7 +12,6 @@ import {
 	AutocompleteList,
 	AutocompletePopup,
 } from "@/components/ui/autocomplete";
-import { Field, FieldLabel } from "@/components/ui/field";
 import {
 	InputGroup,
 	InputGroupAddon,
@@ -22,38 +21,38 @@ import {
 
 export default function AutocompleteClearDemo() {
 	return (
-		<Field className="max-w-sm">
-			<FieldLabel>Fruit</FieldLabel>
-			<Autocomplete items={fruits}>
-				<AutocompleteInputGroup render={<InputGroup />}>
-					<InputGroupInput
-						placeholder="e.g. Apple"
-						render={<AutocompleteInput />}
-					/>
-					<InputGroupAddon align="inline-end">
-						<InputGroupButton
-							size="icon-xs"
-							variant="ghost"
-							render={<AutocompleteClear />}
-							aria-label="Clear"
-						>
-							<XIcon />
-						</InputGroupButton>
-					</InputGroupAddon>
-				</AutocompleteInputGroup>
+		<Autocomplete items={fruits}>
+			<AutocompleteInputGroup
+				render={<InputGroup className="w-full max-w-sm" />}
+			>
+				<InputGroupInput
+					aria-label="Fruit"
+					placeholder="e.g. Apple"
+					render={<AutocompleteInput />}
+				/>
+				<InputGroupAddon align="inline-end">
+					<InputGroupButton
+						size="icon-xs"
+						variant="ghost"
+						render={<AutocompleteClear />}
+						aria-label="Clear"
+					>
+						<XIcon />
+					</InputGroupButton>
+				</InputGroupAddon>
+			</AutocompleteInputGroup>
 
-				<AutocompletePopup>
-					<AutocompleteEmpty>No fruits found.</AutocompleteEmpty>
-					<AutocompleteList>
-						{(fruit: Fruit) => (
-							<AutocompleteItem key={fruit.value} value={fruit}>
-								{fruit.label}
-							</AutocompleteItem>
-						)}
-					</AutocompleteList>
-				</AutocompletePopup>
-			</Autocomplete>
-		</Field>
+			<AutocompletePopup>
+				<AutocompleteEmpty>No fruits found.</AutocompleteEmpty>
+				<AutocompleteList>
+					{(fruit: Fruit) => (
+						<AutocompleteItem key={fruit.value} value={fruit}>
+							{fruit.label}
+						</AutocompleteItem>
+					)}
+				</AutocompleteList>
+			</AutocompletePopup>
+		</Autocomplete>
 	);
 }
 

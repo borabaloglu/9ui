@@ -30,7 +30,7 @@ const plans = [
 	},
 ];
 
-export default function RadioGroupDescriptionDemo() {
+export default function RadioGroupFieldDemo() {
 	const id = useId();
 
 	return (

@@ -11,7 +11,6 @@ import {
 	AutocompleteStatus,
 	useAutocompleteFilter,
 } from "@/components/ui/autocomplete";
-import { Field, FieldLabel } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
 import { Spinner } from "@/components/ui/spinner";
 
@@ -33,44 +32,42 @@ export default function AutocompleteAsyncSearchDemo() {
 	);
 
 	return (
-		<Field className="max-w-sm">
-			<FieldLabel>Movie</FieldLabel>
-			<Autocomplete
-				items={results}
-				value={searchValue}
-				onValueChange={setSearchValue}
-				itemToStringValue={(itemValue: unknown) => (itemValue as Movie).title}
-				filter={null}
-			>
-				<AutocompleteInput
-					placeholder="e.g. The Shawshank Redemption or 1994"
-					render={<Input />}
-				/>
+		<Autocomplete
+			items={results}
+			value={searchValue}
+			onValueChange={setSearchValue}
+			itemToStringValue={(itemValue: unknown) => (itemValue as Movie).title}
+			filter={null}
+		>
+			<AutocompleteInput
+				aria-label="Movie"
+				placeholder="e.g. The Shawshank Redemption or 1994"
+				render={<Input className="max-w-sm" />}
+			/>
 
-				{searchValue !== "" && (
-					<AutocompletePopup
-						aria-busy={isLoading ? true : undefined}
-						className="w-(--anchor-width)"
-					>
-						<AutocompleteStatus>{status}</AutocompleteStatus>
-						<AutocompleteList>
-							{(movie: Movie) => (
-								<AutocompleteItem
-									className="justify-between"
-									key={movie.id}
-									value={movie}
-								>
-									<div className="truncate font-medium">{movie.title}</div>
-									<div className="text-muted-foreground text-xs">
-										{movie.year}
-									</div>
-								</AutocompleteItem>
-							)}
-						</AutocompleteList>
-					</AutocompletePopup>
-				)}
-			</Autocomplete>
-		</Field>
+			{searchValue !== "" && (
+				<AutocompletePopup
+					aria-busy={isLoading ? true : undefined}
+					className="w-(--anchor-width)"
+				>
+					<AutocompleteStatus>{status}</AutocompleteStatus>
+					<AutocompleteList>
+						{(movie: Movie) => (
+							<AutocompleteItem
+								className="justify-between"
+								key={movie.id}
+								value={movie}
+							>
+								<div className="truncate font-medium">{movie.title}</div>
+								<div className="text-muted-foreground text-xs">
+									{movie.year}
+								</div>
+							</AutocompleteItem>
+						)}
+					</AutocompleteList>
+				</AutocompletePopup>
+			)}
+		</Autocomplete>
 	);
 }
 
