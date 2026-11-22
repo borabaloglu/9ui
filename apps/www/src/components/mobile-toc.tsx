@@ -23,7 +23,6 @@ import { cn } from "@/lib/utils";
 const MOBILE_TOC_SLOT_ID = "docs-mobile-toc";
 
 const DEPTH_STEP = 16;
-const ACTIVATION_OFFSET = 200;
 
 const getIndent = (depth: number) =>
 	10 + Math.min(Math.max(depth - 2, 0), 4) * DEPTH_STEP;
@@ -37,7 +36,7 @@ export const MobileToc = ({ items }: MobileTocProps) => {
 	const [open, setOpen] = React.useState(false);
 	const rootRef = React.useRef<HTMLDivElement>(null);
 	const navRef = React.useRef<HTMLElement>(null);
-	const activeIds = useActiveHeadings(items, ACTIVATION_OFFSET);
+	const activeIds = useActiveHeadings(items);
 
 	React.useEffect(() => {
 		setSlot(document.getElementById(MOBILE_TOC_SLOT_ID));
