@@ -34,7 +34,7 @@ import {
 	InputGroupInput,
 	InputGroupText,
 } from "@/components/ui/input-group";
-import { Kbd } from "@/components/ui/kbd";
+import { Kbd, KbdGroup } from "@/components/ui/kbd";
 
 const translations = {
 	en: {
@@ -173,7 +173,10 @@ export default function CommandRtlDemo() {
 			<CommandFooter className="justify-between">
 				<span className="flex items-center gap-2">
 					{t.navigate}
-					<Kbd>↑↓</Kbd>
+					<KbdGroup>
+						<Kbd>↑</Kbd>
+						<Kbd>↓</Kbd>
+					</KbdGroup>
 				</span>
 				<span className="flex items-center gap-2">
 					{t.select}

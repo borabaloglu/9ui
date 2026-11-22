@@ -22,7 +22,7 @@ import {
 	CommandItem,
 	CommandList,
 } from "@/components/ui/command";
-import { Kbd } from "@/components/ui/kbd";
+import { Kbd, KbdGroup } from "@/components/ui/kbd";
 
 import { navConfig } from "@/config/nav";
 
@@ -110,10 +110,10 @@ export function SearchDialog({ sidebarNav, variant }: SearchDialogProps) {
 				>
 					<SearchIcon />
 					<span className="flex-1 text-start">Search</span>
-					<span className="flex gap-x-1">
+					<KbdGroup>
 						<Kbd>⌘</Kbd>
 						<Kbd>K</Kbd>
-					</span>
+					</KbdGroup>
 				</Button>
 			)}
 			{variant === "icon" && (

@@ -36,7 +36,7 @@ import {
 	InputGroupInput,
 	InputGroupText,
 } from "@/components/ui/input-group";
-import { Kbd } from "@/components/ui/kbd";
+import { Kbd, KbdGroup } from "@/components/ui/kbd";
 
 export default function CommandDialogDemo() {
 	const [open, setOpen] = React.useState(false);
@@ -56,7 +56,10 @@ export default function CommandDialogDemo() {
 		<>
 			<Button variant="outline" onClick={() => setOpen(true)}>
 				Open command palette
-				<Kbd>⌘J</Kbd>
+				<KbdGroup>
+					<Kbd>⌘</Kbd>
+					<Kbd>J</Kbd>
+				</KbdGroup>
 			</Button>
 			<CommandDialog open={open} onOpenChange={setOpen}>
 				<Command items={groups}>
@@ -103,7 +106,10 @@ export default function CommandDialogDemo() {
 					<CommandFooter className="gap-4">
 						<span className="flex items-center gap-2">
 							Navigate
-							<Kbd>↑↓</Kbd>
+							<KbdGroup>
+								<Kbd>↑</Kbd>
+								<Kbd>↓</Kbd>
+							</KbdGroup>
 						</span>
 						<span className="flex items-center gap-2">
 							Select
