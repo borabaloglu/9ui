@@ -2,6 +2,7 @@
 title: Radio Group
 description: A set of radio buttons for picking one option from a list.
 ---
+
 <ComponentLinks
 	links={[
 		{
@@ -44,19 +45,17 @@ import { Radio, RadioGroup, RadioGroupLabel } from "@/components/ui/radio-group"
 </RadioGroup>
 ```
 
-Give each `Radio` a `value` and a visible label. Place it inside [Label](/docs/components/label), or use [Field](/docs/components/field) when it also needs a description or an error message. Name the group by giving `RadioGroupLabel` an `id` and passing it to `aria-labelledby`.
-
 ## Examples
 
 ### Description
 
-Wrap each option in `FieldItem` to give it a `FieldLabel` and a `FieldDescription` of its own.
+Inside `Field`, wrap each option in `FieldItem` to give it its own `FieldLabel` and `FieldDescription`.
 
 <ComponentPreview name="radio-group-description-demo" />
 
 ### Disabled
 
-Set `disabled` on the group to prevent interaction with every radio in it.
+Set `disabled` on `RadioGroup` to prevent interaction with every radio in it.
 
 <ComponentPreview name="radio-group-disabled-demo" />
 
@@ -80,7 +79,7 @@ Wrap the radio and its text in `FieldLabel` to make the whole card clickable. St
 
 ### RTL
 
-To show the radio group right to left, set `dir="rtl"` on `html` and wrap your app in `DirectionProvider`. See [RTL](/docs/getting-started/rtl).
+To enable RTL support, see the [RTL guide](/docs/getting-started/rtl).
 
 <ComponentPreview name="radio-group-rtl-demo" direction="rtl" />
 
@@ -88,9 +87,85 @@ To show the radio group right to left, set `dir="rtl"` on `html` and wrap your a
 
 See the form guides for [Base UI Form](/docs/forms/base-ui#radio-group), [React Hook Form](/docs/forms/react-hook-form#radio-group) and [TanStack Form](/docs/forms/tanstack-form#radio-group).
 
+## Tips
+
+<Tips>
+
+<Tip title="Label each radio">
+
+Give each `Radio` a visible label. Place it inside [Label](/docs/components/label).
+
+```tsx {2,5}
+<RadioGroup defaultValue="standard">
+	<Label>
+		<Radio value="standard" />
+		Standard
+	</Label>
+</RadioGroup>
+```
+
+</Tip>
+
+<Tip title="Name the group">
+
+To name the group, set an `id` on `RadioGroupLabel` and pass it to `aria-labelledby` on `RadioGroup`.
+
+```tsx {1-2}
+<RadioGroup aria-labelledby="plan-label">
+	<RadioGroupLabel id="plan-label">Plan</RadioGroupLabel>
+	<Label>
+		<Radio value="standard" />
+		Standard
+	</Label>
+</RadioGroup>
+```
+
+</Tip>
+
+<Tip title="Give each radio a value">
+
+Give each `Radio` a `value`.
+
+```tsx {3,7}
+<RadioGroup defaultValue="standard">
+	<Label>
+		<Radio value="basic" />
+		Basic
+	</Label>
+	<Label>
+		<Radio value="standard" />
+		Standard
+	</Label>
+</RadioGroup>
+```
+
+</Tip>
+
+<Tip title="Add a description or an error message">
+
+Use [Field](/docs/components/field) when a radio also needs a description or an error message.
+
+```tsx {1,3,8}
+<Field name="plan">
+	<RadioGroup defaultValue="standard">
+		<FieldItem>
+			<FieldLabel>
+				<Radio value="standard" />
+				Standard
+			</FieldLabel>
+			<FieldDescription>Great for growing teams.</FieldDescription>
+		</FieldItem>
+	</RadioGroup>
+</Field>
+```
+
+</Tip>
+
+</Tips>
+
 ## API Reference
 
-What 9ui adds to Base UI Radio Group. For the rest of the API, see the [Base UI Radio Group reference](https://base-ui.com/react/components/radio-group#api-reference).
+What 9ui adds to Base UI Radio Group. See the [Base UI](https://base-ui.com/react/components/radio-group#api-reference) documentation for the rest.
 
 ### RadioGroupLabel
 

@@ -2,6 +2,7 @@
 title: Alert Dialog
 description: A modal dialog for critical messages or confirmation actions.
 ---
+
 <ComponentLinks
 	links={[
 		{
@@ -36,10 +37,12 @@ npx shadcn@latest add @9ui/alert-dialog
 ```tsx title="Imports"
 import {
 	AlertDialog,
+	AlertDialogBackdrop,
 	AlertDialogClose,
 	AlertDialogDescription,
 	AlertDialogFooter,
 	AlertDialogHeader,
+	AlertDialogMedia,
 	AlertDialogPopup,
 	AlertDialogTitle,
 	AlertDialogTrigger,
@@ -61,15 +64,13 @@ import {
 </AlertDialog>
 ```
 
-To change the corner radius, set `className="[--alert-dialog-radius:var(--radius-2xl)]"` on `AlertDialogPopup`.
-
 ## Examples
 
-### Sizes
+### Size
 
-Set `size="sm"` on `AlertDialogPopup` for a narrower dialog with tighter padding, a centered header and equal-width footer buttons.
+Set `size="sm"` on `AlertDialogPopup` for a narrower alert dialog with tighter padding, a centered header and equal-width footer buttons.
 
-<ComponentPreview name="alert-dialog-sm-demo" />
+<ComponentPreview name="alert-dialog-size-demo" />
 
 ### Icon
 
@@ -81,15 +82,13 @@ Place an icon in `AlertDialogMedia` at the top of `AlertDialogHeader` to signal 
 
 On small screens the alert dialog sits at the bottom edge. Set `showAtBottomOnMobile={false}` on `AlertDialogPopup` to keep it centered.
 
-The bottom padding grows by `env(safe-area-inset-bottom)`, so actions clear the home indicator when the page uses `viewport-fit=cover`.
-
-<ComponentPreview name="alert-dialog-mobile-bottom-off-demo" />
+<ComponentPreview name="alert-dialog-mobile-position-demo" />
 
 ### Bare Footer
 
 Set `variant="bare"` on `AlertDialogFooter` to drop its border and background.
 
-<ComponentPreview name="alert-dialog-footer-bare-demo" />
+<ComponentPreview name="alert-dialog-bare-footer-demo" />
 
 ### Close Confirmation
 
@@ -99,13 +98,70 @@ Open an alert dialog from a dialog to confirm before unsaved changes are discard
 
 ### RTL
 
-To show the alert dialog right to left, set `dir="rtl"` on `html` and wrap your app in `DirectionProvider`. See [RTL](/docs/getting-started/rtl).
+To enable RTL support, see the [RTL guide](/docs/getting-started/rtl).
 
 <ComponentPreview name="alert-dialog-rtl-demo" direction="rtl" />
 
+## Tips
+
+<Tips>
+
+<Tip title="Label icon-only triggers">
+
+Give icon-only triggers an `aria-label`.
+
+```tsx {2}
+<AlertDialogTrigger
+	render={<Button variant="outline" size="icon" aria-label="Delete project" />}
+>
+	<TrashIcon />
+</AlertDialogTrigger>
+```
+
+</Tip>
+
+<Tip title="Use your own button as the trigger">
+
+Set `render` on `AlertDialogTrigger` to use your own button.
+
+```tsx {1}
+<AlertDialogTrigger render={<Button variant="outline" />}>
+	Delete project
+</AlertDialogTrigger>
+```
+
+</Tip>
+
+<Tip title="Change the corner radius">
+
+To change the corner radius, set `className="[--alert-dialog-radius:var(--radius-2xl)]"` on `AlertDialogPopup`.
+
+```tsx {1}
+<AlertDialogPopup className="[--alert-dialog-radius:var(--radius-2xl)]">
+	<AlertDialogTitle>Delete project?</AlertDialogTitle>
+</AlertDialogPopup>
+```
+
+</Tip>
+
+<Tip title="Clear the status bar and home indicator">
+
+To keep content clear of the status bar and home indicator, set `viewport-fit=cover` in the viewport meta tag of the page.
+
+```tsx {3}
+<meta
+	name="viewport"
+	content="width=device-width, initial-scale=1, viewport-fit=cover"
+/>
+```
+
+</Tip>
+
+</Tips>
+
 ## API Reference
 
-What 9ui adds to Base UI Alert Dialog. For the rest of the API, see the [Base UI Alert Dialog reference](https://base-ui.com/react/components/alert-dialog#api-reference).
+What 9ui adds to Base UI Alert Dialog. See the [Base UI](https://base-ui.com/react/components/alert-dialog#api-reference) documentation for the rest.
 
 ### AlertDialogPopup
 
@@ -117,13 +173,13 @@ Bundles the portal, backdrop, viewport and popup.
 			name: "size",
 			type: '"sm" | "default"',
 			default: '"default"',
-			description: "The width and padding of the dialog. The small size also centers the header and splits the footer buttons evenly.",
+			description: "The width and padding of the alert dialog. The small size also centers the header and splits the footer buttons evenly.",
 		},
 		{
 			name: "showAtBottomOnMobile",
 			type: "boolean",
 			default: "true",
-			description: "Docks the dialog to the bottom edge on small screens.",
+			description: "Docks the alert dialog to the bottom edge on small screens.",
 		},
 		{
 			name: "portalProps",
@@ -150,7 +206,7 @@ Holds an icon at the top of `AlertDialogHeader`.
 	]}
 />
 
-### Data attributes
+### Data Attributes
 
 <ApiTable
 	label="Attribute"

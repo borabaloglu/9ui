@@ -1,6 +1,6 @@
 ---
 title: RTL
-description: Using 9ui in right-to-left languages like Arabic and Hebrew.
+description: Right-to-left support for languages like Arabic and Hebrew.
 label: New
 ---
 
@@ -58,9 +58,9 @@ Pick a font that covers your script. Noto pairs well with Inter and Geist. For H
 import { Noto_Sans_Arabic } from "next/font/google"
 import { DirectionProvider } from "@base-ui/react/direction-provider"
 
-const fontSans = Noto_Sans_Arabic({
+const fontArabic = Noto_Sans_Arabic({
 	subsets: ["arabic"],
-	variable: "--font-sans",
+	variable: "--font-arabic",
 })
 
 export default function RootLayout({
@@ -69,7 +69,7 @@ export default function RootLayout({
 	children: React.ReactNode
 }) {
 	return (
-		<html lang="ar" dir="rtl" className={fontSans.variable}>
+		<html lang="ar" dir="rtl" className={fontArabic.variable}>
 			<body>
 				<DirectionProvider direction="rtl">{children}</DirectionProvider>
 			</body>
@@ -78,9 +78,19 @@ export default function RootLayout({
 }
 ```
 
+Then add the font to `--font-sans` in your CSS file.
+
+```css {2} title="app/globals.css"
+@theme inline {
+	--font-sans: "Inter", var(--font-arabic), ui-sans-serif, system-ui, sans-serif;
+}
+```
+
 </Steps>
 
-Not using Next.js? Set the same attributes in `index.html` and wrap your root in `DirectionProvider`.
+### Other Frameworks
+
+Outside Next.js, set the same attributes in `index.html` and wrap your root in `DirectionProvider`.
 
 ```html {2} title="index.html"
 <!doctype html>
@@ -103,13 +113,46 @@ createRoot(document.getElementById("root")!).render(
 )
 ```
 
-## How it works
+### The shadcn `rtl` Option
+
+Keep `rtl` in `components.json` set to false. 9ui components already support both directions, and the option rewrites classes in Sheet and Sidebar that are meant to stay physical.
+
+## Multiple Languages
+
+To support both directions in one app, set `dir`, `lang` and `direction` from the current locale.
+
+```tsx {3,13,16,18} title="app/[locale]/layout.tsx"
+import { DirectionProvider } from "@base-ui/react/direction-provider"
+
+const rtlLocales = ["ar", "he", "fa", "ur"]
+
+export default async function LocaleLayout({
+	children,
+	params,
+}: {
+	children: React.ReactNode
+	params: Promise<{ locale: string }>
+}) {
+	const { locale } = await params
+	const direction = rtlLocales.includes(locale) ? "rtl" : "ltr"
+
+	return (
+		<html lang={locale} dir={direction}>
+			<body>
+				<DirectionProvider direction={direction}>{children}</DirectionProvider>
+			</body>
+		</html>
+	)
+}
+```
+
+## How It Works
 
 - Components use logical classes like `ps-2` and `ms-auto`, so spacing, icons and indicators follow `dir`.
-- `DirectionProvider` drives behaviour: arrow keys, slider values, carousel scrolling, calendar navigation, and popups with `side="inline-start"` or `side="inline-end"`.
+- `DirectionProvider` drives behavior: arrow keys, slider values, carousel scrolling, calendar navigation and popups with `side="inline-start"` or `side="inline-end"`.
 - Props that name a screen edge stay physical. `side="right"` is the right edge in both directions. See [Physical props](#physical-props).
 
-## Right-to-left in part of a page
+## Right-to-Left in Part of a Page
 
 To show only part of a page right to left, set `dir="rtl"` on a parent element and wrap it in `DirectionProvider`.
 
@@ -128,9 +171,11 @@ Popups, dialogs, sheets and toasts render at the end of `body`, outside that par
 </DirectionProvider>
 ```
 
-The same goes for `DialogPopup`, `SheetPopup`, `SelectPopup`, `PopoverPopup`, `TooltipPopup` and every other popup part. For toasts, set `portalProps={{ dir: "rtl" }}` on `ToastProvider`. For Phone Input, set `dir="rtl"` on `PhoneInput`.
+- Popups: set `dir="rtl"` on the popup part, such as `DialogPopup`, `SheetPopup`, `SelectPopup`, `PopoverPopup` and `TooltipPopup`.
+- Toasts: set `portalProps={{ dir: "rtl" }}` on `ToastProvider`.
+- Phone Input: set `dir="rtl"` on `PhoneInput`.
 
-## Physical props
+## Physical Props
 
 These props name a screen edge or corner, so they mean the same place in both directions.
 
@@ -159,15 +204,15 @@ export function NavSheet() {
 }
 ```
 
-To open a popup to the side of its trigger in reading order, set `side` to `inline-start` or `inline-end`.
+To open a popup to the side of its trigger in reading order, set `side="inline-start"` or `side="inline-end"`.
 
 ```tsx {1}
 <TooltipPopup side="inline-end">Settings</TooltipPopup>
 ```
 
-## Writing RTL-ready code
+## Writing RTL-Ready Code
 
-### Spacing and position
+### Spacing and Position
 
 To add space or position on one side, use logical classes. They give the same result as the physical ones in left to right, and flip in right to left.
 
@@ -214,9 +259,9 @@ To flip an icon whose lines would end up upside down when rotated, like text ali
 <TextAlignStartIcon className="rtl:-scale-x-100" />
 ```
 
-Do not flip icons that look the same in every language: checkmarks, spinners, clocks, play and pause, search, and logos.
+Don't flip icons that look the same in every language: checkmarks, spinners, clocks, play and pause, search and logos.
 
-### Transforms and animations
+### Transforms and Animations
 
 Logical classes don't cover `translate-x-*`. To move something along the inline axis, add the opposite value under `rtl:`.
 
@@ -224,7 +269,7 @@ Logical classes don't cover `translate-x-*`. To move something along the inline 
 <div className="translate-x-full transition-transform rtl:-translate-x-full data-open:translate-x-0" />
 ```
 
-### Text that stays left to right
+### Text That Stays Left to Right
 
 Phone numbers, URLs, emails, versions and keyboard shortcuts read left to right in every language. To keep their order, wrap them in `bdi` or in an inner element with `dir="ltr"`.
 
@@ -249,7 +294,7 @@ To show digits the way a language writes them, format numbers with `Intl.NumberF
 new Intl.NumberFormat("ar-u-nu-arab").format(12)
 ```
 
-## Third-party components
+## Third-Party Components
 
 ### Chart
 
@@ -290,7 +335,7 @@ Emoji Picker is built on [frimousse](https://frimousse.liveblocks.io). Translate
 Known limits:
 
 - The emoji data has no Arabic or Hebrew translations, so emoji and category names stay in English.
-- Arrow keys are not mirrored. Left moves to the previous emoji and Right to the next, in both directions.
+- Arrow keys aren't mirrored. Left moves to the previous emoji and Right to the next, in both directions.
 
 ### Resizable
 

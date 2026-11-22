@@ -4,7 +4,7 @@ export const Footer = () => (
 			<div className="text-muted-foreground text-center text-sm">
 				made with ❤️ by{" "}
 				<a
-					href="https://twitter.com/borabalogluu"
+					href="https://x.com/borabalogluu"
 					target="_blank"
 					rel="noreferrer"
 					className="text-foreground font-medium underline underline-offset-4"

@@ -3,6 +3,7 @@ import { MailIcon } from "lucide-react";
 import {
 	InputGroup,
 	InputGroupAddon,
+	InputGroupButton,
 	InputGroupInput,
 	InputGroupText,
 } from "@/components/ui/input-group";
@@ -21,6 +22,11 @@ export default function InputGroupDisabledDemo() {
 				type="email"
 				disabled
 			/>
+			<InputGroupAddon align="inline-end">
+				<InputGroupButton variant="secondary" disabled>
+					Subscribe
+				</InputGroupButton>
+			</InputGroupAddon>
 		</InputGroup>
 	);
 }

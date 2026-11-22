@@ -35,8 +35,6 @@ import { Kbd, KbdGroup } from "@/components/ui/kbd"
 </KbdGroup>
 ```
 
-Screen readers read the text inside `Kbd`. Add visually hidden text when the key is an icon.
-
 ## Examples
 
 ### Group
@@ -47,13 +45,13 @@ Wrap the keys of one shortcut in `KbdGroup`.
 
 ### Icon
 
-Pass an icon as the key. It is sized to fit.
+To show an icon as the key, put it inside `Kbd`.
 
 <ComponentPreview name="kbd-icon-demo" />
 
 ### Within Button
 
-Place a `Kbd` inside a `Button` to show the shortcut that triggers it.
+Place a `KbdGroup` inside a `Button` to show the shortcut that triggers it.
 
 <ComponentPreview name="kbd-within-button-demo" />
 
@@ -71,9 +69,28 @@ Place a `KbdGroup` inside a `TooltipPopup` to show the shortcut next to the labe
 
 ### RTL
 
-To show the kbd right to left, set `dir="rtl"` on `html` and wrap your app in `DirectionProvider`. See [RTL](/docs/getting-started/rtl).
+To enable RTL support, see the [RTL guide](/docs/getting-started/rtl).
 
 <ComponentPreview name="kbd-rtl-demo" direction="rtl" />
+
+## Tips
+
+<Tips>
+
+<Tip title="Label icon keys">
+
+Add visually hidden text inside `Kbd` when the key is an icon.
+
+```tsx {3}
+<Kbd>
+	<CornerDownLeftIcon />
+	<span className="sr-only">Enter</span>
+</Kbd>
+```
+
+</Tip>
+
+</Tips>
 
 ## API Reference
 

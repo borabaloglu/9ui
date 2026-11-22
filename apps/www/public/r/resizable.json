@@ -1,6 +1,8 @@
 {
 	"$schema": "https://ui.shadcn.com/schema/registry-item.json",
 	"name": "resizable",
+	"title": "Resizable",
+	"description": "A group of panels that can be resized by dragging the handle between them.",
 	"dependencies": ["react-resizable-panels"],
 	"registryDependencies": [],
 	"files": [
@@ -11,5 +13,6 @@
 			"target": ""
 		}
 	],
+	"docs": "Docs: https://www.9ui.dev/docs/components/resizable",
 	"type": "registry:ui"
 }

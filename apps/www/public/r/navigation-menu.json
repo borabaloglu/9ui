@@ -1,6 +1,8 @@
 {
 	"$schema": "https://ui.shadcn.com/schema/registry-item.json",
 	"name": "navigation-menu",
+	"title": "Navigation Menu",
+	"description": "A set of links and menus for moving around a site.",
 	"dependencies": ["@base-ui/react", "lucide-react"],
 	"registryDependencies": ["@9ui/scroll-area"],
 	"files": [
@@ -11,5 +13,6 @@
 			"target": ""
 		}
 	],
+	"docs": "Docs: https://www.9ui.dev/docs/components/navigation-menu",
 	"type": "registry:ui"
 }

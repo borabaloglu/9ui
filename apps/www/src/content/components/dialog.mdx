@@ -2,6 +2,7 @@
 title: Dialog
 description: A modal window for displaying content.
 ---
+
 <ComponentLinks
 	links={[
 		{
@@ -24,6 +25,8 @@ npx shadcn@latest add @9ui/dialog
 
 <Steps>
 
+<Step>Add the [Button](/docs/components/button) component.</Step>
+
 <Step>Copy and paste the following code into your project.</Step>
 
 <ComponentSource name="dialog" />
@@ -36,6 +39,7 @@ npx shadcn@latest add @9ui/dialog
 ```tsx title="Imports"
 import {
 	Dialog,
+	DialogBackdrop,
 	DialogClose,
 	DialogDescription,
 	DialogFooter,
@@ -61,17 +65,15 @@ import {
 </Dialog>
 ```
 
-To change the corner radius, set `className="[--dialog-radius:var(--radius-2xl)]"` on `DialogPopup`.
-
 ## Examples
 
-### Sizes
+### Size
 
 Set `size="sm"` on `DialogPopup` for a narrower dialog with tighter padding and equal-width footer buttons.
 
-<ComponentPreview name="dialog-sm-demo" />
+<ComponentPreview name="dialog-size-demo" />
 
-### Close Button
+### No Close Button
 
 Set `showCloseButton={false}` on `DialogPopup` to remove the close button from the corner. The dialog still closes on Escape and on an outside press.
 
@@ -81,25 +83,23 @@ Set `showCloseButton={false}` on `DialogPopup` to remove the close button from t
 
 Render any control through `DialogClose` to close the dialog.
 
-<ComponentPreview name="dialog-custom-close-button-demo" />
+<ComponentPreview name="dialog-custom-close-demo" />
 
 ### Mobile Position
 
 On small screens the dialog sits at the bottom edge. Set `showAtBottomOnMobile={false}` on `DialogPopup` to keep it centered.
 
-The bottom padding grows by `env(safe-area-inset-bottom)`, so actions clear the home indicator when the page uses `viewport-fit=cover`.
-
-<ComponentPreview name="dialog-mobile-bottom-off-demo" />
+<ComponentPreview name="dialog-mobile-position-demo" />
 
 ### Bare Footer
 
 Set `variant="bare"` on `DialogFooter` to drop its border and background.
 
-<ComponentPreview name="dialog-footer-bare-demo" />
+<ComponentPreview name="dialog-bare-footer-demo" />
 
 ### Scrollable Content
 
-Give the content a `max-height` and `overflow-y-auto` to scroll it while the header and footer stay in place.
+Give the content a `max-h-*` class and `overflow-y-auto` to scroll it while the header and footer stay in place.
 
 <ComponentPreview name="dialog-scrollable-content-demo" />
 
@@ -111,13 +111,70 @@ Open a dialog from inside another. The parent scales down behind the nested one.
 
 ### RTL
 
-To show the dialog right to left, set `dir="rtl"` on `html` and wrap your app in `DirectionProvider`. See [RTL](/docs/getting-started/rtl).
+To enable RTL support, see the [RTL guide](/docs/getting-started/rtl).
 
 <ComponentPreview name="dialog-rtl-demo" direction="rtl" />
 
+## Tips
+
+<Tips>
+
+<Tip title="Label icon-only triggers">
+
+Give icon-only triggers an `aria-label`.
+
+```tsx {2}
+<DialogTrigger
+	render={<Button variant="outline" size="icon" aria-label="Settings" />}
+>
+	<SettingsIcon />
+</DialogTrigger>
+```
+
+</Tip>
+
+<Tip title="Use your own button as the trigger">
+
+Set `render` on `DialogTrigger` to use your own button.
+
+```tsx {1}
+<DialogTrigger render={<Button variant="outline" />}>
+	Edit profile
+</DialogTrigger>
+```
+
+</Tip>
+
+<Tip title="Change the corner radius">
+
+To change the corner radius, set `className="[--dialog-radius:var(--radius-2xl)]"` on `DialogPopup`.
+
+```tsx {1}
+<DialogPopup className="[--dialog-radius:var(--radius-2xl)]">
+	<DialogTitle>Edit profile</DialogTitle>
+</DialogPopup>
+```
+
+</Tip>
+
+<Tip title="Clear the status bar and home indicator">
+
+To keep content clear of the status bar and home indicator, set `viewport-fit=cover` in the viewport meta tag of the page.
+
+```tsx {3}
+<meta
+	name="viewport"
+	content="width=device-width, initial-scale=1, viewport-fit=cover"
+/>
+```
+
+</Tip>
+
+</Tips>
+
 ## API Reference
 
-What 9ui adds to Base UI Dialog. For the rest of the API, see the [Base UI Dialog reference](https://base-ui.com/react/components/dialog#api-reference).
+What 9ui adds to Base UI Dialog. See the [Base UI](https://base-ui.com/react/components/dialog#api-reference) documentation for the rest.
 
 ### DialogPopup
 
@@ -164,7 +221,7 @@ Bundles the portal, backdrop, viewport and popup.
 	]}
 />
 
-### Data attributes
+### Data Attributes
 
 <ApiTable
 	label="Attribute"

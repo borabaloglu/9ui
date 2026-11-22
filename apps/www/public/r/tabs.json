@@ -1,6 +1,8 @@
 {
 	"$schema": "https://ui.shadcn.com/schema/registry-item.json",
 	"name": "tabs",
+	"title": "Tabs",
+	"description": "A set of panels shown one at a time.",
 	"dependencies": ["@base-ui/react"],
 	"registryDependencies": [],
 	"files": [
@@ -29,5 +31,6 @@
 			}
 		}
 	},
+	"docs": "Docs: https://www.9ui.dev/docs/components/tabs",
 	"type": "registry:ui"
 }

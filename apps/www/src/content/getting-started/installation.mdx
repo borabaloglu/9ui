@@ -1,7 +1,23 @@
 ---
 title: Installation
-description: Get started with 9ui by installing dependencies and setting up your project.
+description: Set up 9ui in your project.
 ---
+
+9ui needs React 19 and Tailwind CSS 4.2 or later.
+
+## Quick Start
+
+Copy this prompt into your agent. It works in a new project and in one that already uses shadcn/ui.
+
+<Prompt name="setup" />
+
+Then ask your agent to add your first components.
+
+<Prompt name="first-component" />
+
+## Step by Step
+
+To set up 9ui yourself, use the shadcn CLI or add the files by hand.
 
 <InstallationTabs>
 
@@ -9,46 +25,39 @@ description: Get started with 9ui by installing dependencies and setting up your
 
 <Steps>
 
-<Step>Create a new project</Step>
+<Step>Create a project.</Step>
+
+If you already have a project with Tailwind CSS and the `@/*` import alias, skip this step.
+
+```bash title="Terminal"
+npx create-next-app@latest
+```
+
+For another framework, create the project with its own tool, then add [Tailwind CSS](https://tailwindcss.com/docs/installation/framework-guides) and the `@/*` import alias.
+
+<Step>Initialize 9ui in your project.</Step>
 
 ```bash title="Terminal"
 npx shadcn@latest init https://9ui.dev/r/init.json
 ```
 
-or you can follow the [shadcn installation guide](https://ui.shadcn.com/docs/installation) if your framework doesn't support `shadcn init`.
+This installs the dependencies, adds the `cn` helper, writes the theme to your global CSS file and creates `components.json`.
 
-<Step>Add 9ui registry to your `components.json`</Step>
+<Step>Add the 9ui registry to your `components.json`.</Step>
+
+Replace the empty `registries` entry that `init` created.
 
 ```json title="components.json"
-{
-	// existing configuration
-	"registries": {
-		"@9ui": "https://9ui.dev/r/{name}.json"
-	}
+"registries": {
+	"@9ui": "https://9ui.dev/r/{name}.json"
 }
 ```
 
-<Step>Initialize MCP</Step>
-
-This step adds the necessary configuration to allow you to use the components directly in your code with AI assistance. The AI will have full context of the entire 9ui registry.
+<Step>Add a component.</Step>
 
 ```bash title="Terminal"
-npx shadcn@latest mcp init
+npx shadcn@latest add @9ui/button
 ```
-
-<Step>Add the root wrapper to your layout</Step>
-
-Add the `root` class to your app layout to ensure proper styling isolation and theme application.
-
-```tsx {2} title="layout.tsx"
-<body>
-	<div className="root">{children}</div>
-</body>
-```
-
-<Step>Start using 9ui components</Step>
-
-Your project is now ready! You can start installing and using 9ui components in your application.
 
 </Steps>
 
@@ -58,17 +67,13 @@ Your project is now ready! You can start installing and using 9ui components in 
 
 <Steps>
 
-<Step>Install required dependencies</Step>
-
-Install the core dependencies needed for 9ui components to function properly.
+<Step>Install the dependencies.</Step>
 
 ```bash title="Terminal"
 npm install tw-animate-css @base-ui/react tailwind-merge clsx lucide-react class-variance-authority
 ```
 
-<Step>Set up utility functions</Step>
-
-Create a utilities file that provides essential helper functions for component styling and class management.
+<Step>Set up utility functions.</Step>
 
 ```ts title="src/lib/utils.ts"
 import { clsx, type ClassValue } from "clsx"
@@ -79,11 +84,9 @@ export function cn(...inputs: ClassValue[]) {
 }
 ```
 
-<Step>Configure your global styles</Step>
+<Step>Configure your global styles.</Step>
 
-Add the 9ui theme configuration and styling to your global CSS file. This includes color variables, custom properties, and base styles.
-
-```css title="globals.css"
+```css title="src/app/globals.css"
 @import "tailwindcss";
 @import "tw-animate-css";
 
@@ -118,7 +121,6 @@ Add the 9ui theme configuration and styling to your global CSS file. This includ
 	--color-accent: var(--surface-accent, var(--accent));
 	--color-accent-foreground: var(--accent-foreground);
 	--color-destructive: var(--destructive);
-	--color-destructive-foreground: var(--destructive-foreground);
 	--color-warning: var(--warning);
 	--color-info: var(--info);
 	--color-success: var(--success);
@@ -148,7 +150,6 @@ Add the 9ui theme configuration and styling to your global CSS file. This includ
 	--accent: oklch(92.2% 0 0);
 	--accent-foreground: oklch(14.5% 0 0);
 	--destructive: oklch(50.5% 0.213 27.518);
-	--destructive-foreground: oklch(98.5% 0 0);
 	--border: oklch(87% 0 0);
 	--input: oklch(100% 0 0);
 	--ring: oklch(65.8% 0 0);
@@ -179,7 +180,6 @@ Add the 9ui theme configuration and styling to your global CSS file. This includ
 	--accent: oklch(37.1% 0 0);
 	--accent-foreground: oklch(98.5% 0 0);
 	--destructive: oklch(70.4% 0.191 22.216);
-	--destructive-foreground: oklch(98.5% 0 0);
 	--border: oklch(100% 0 0 / 10%);
 	--input: oklch(100% 0 0 / 5%);
 	--secondary-elevated: oklch(31.9% 0 0);
@@ -208,14 +208,13 @@ Add the 9ui theme configuration and styling to your global CSS file. This includ
 		-moz-osx-font-smoothing: grayscale;
 		-webkit-tap-highlight-color: transparent;
 	}
+	.dark {
+		color-scheme: dark;
+	}
 	body {
 		background-color: var(--background);
 		color: var(--foreground);
 		overscroll-behavior: none;
-	}
-	.root {
-		isolation: isolate;
-		min-height: 100vh;
 	}
 	::-webkit-scrollbar {
 		width: 4px;
@@ -257,44 +256,35 @@ Add the 9ui theme configuration and styling to your global CSS file. This includ
 }
 ```
 
-<Step>Set up import aliases</Step>
-
-Configure TypeScript path mapping to enable clean `@/*` imports throughout your project.
+<Step>Set up import aliases.</Step>
 
 ```json title="tsconfig.json"
 {
 	"compilerOptions": {
 		"baseUrl": ".",
 		"paths": {
-			"@/*": ["./*"]
+			"@/*": ["./src/*"]
 		}
 	}
 }
 ```
 
-<Step>Add the root wrapper to your layout</Step>
+<Step>Add a component.</Step>
 
-Wrap your application content with the `root` class to ensure proper styling isolation and theme application.
+Open a component page, such as [Button](/docs/components/button), and copy the code from the Manual tab under Installation.
 
-```tsx {2} title="layout.tsx"
-<body>
-	<div className="root">{children}</div>
-</body>
-```
+<Step>Configure components.json (optional).</Step>
 
-<Step>Configure components.json (optional)</Step>
-
-Optionally create a `components.json` file to enable shadcn CLI component installation with the correct paths and settings.
+To add components with the shadcn CLI instead, create a `components.json`. Set `rsc` to false outside Next.js.
 
 ```json title="components.json"
 {
 	"$schema": "https://ui.shadcn.com/schema.json",
 	"style": "new-york",
-	"rsc": false,
+	"rsc": true,
 	"tsx": true,
 	"tailwind": {
-		"config": "",
-		"css": "src/styles/globals.css",
+		"css": "src/app/globals.css",
 		"baseColor": "neutral",
 		"cssVariables": true,
 		"prefix": ""
@@ -313,9 +303,9 @@ Optionally create a `components.json` file to enable shadcn CLI component instal
 }
 ```
 
-<Step>Start using 9ui components</Step>
-
-Your project is now fully configured! You can start installing and using 9ui components in your application.
+```bash title="Terminal"
+npx shadcn@latest add @9ui/button
+```
 
 </Steps>
 
@@ -323,15 +313,25 @@ Your project is now fully configured! You can start installing and using 9ui com
 
 </InstallationTabs>
 
+## Fonts
+
+The theme uses Inter and Geist Mono. Load them in your app, or change `--font-sans` and `--font-mono`. See [Theming](/docs/getting-started/theming#fonts).
+
 ## Icon Libraries
 
-9ui components use [`lucide-react`](https://lucide.dev/) as the default icon library, which provides a comprehensive set of beautiful, consistent icons.
+Components use [lucide-react](https://lucide.dev). To use another library, replace the icon imports.
 
-### Alternative Icon Libraries
+## MCP Server
 
-For additional icon options, consider these popular alternatives:
+To let your AI assistant browse and install 9ui components, set up the shadcn MCP server.
 
-- **[Monicon](https://monicon-docs.vercel.app/)** - Access over 200,000 icons from various popular libraries in a unified interface
-- **[lucide-animated](https://lucide-animated.com/)** - A curated collection of animated icons for enhanced user interactions
+```bash title="Terminal"
+npx shadcn@latest mcp init
+```
 
-These libraries can be used alongside or instead of lucide-react depending on your project's specific needs.
+## Next Steps
+
+- [Theming](/docs/getting-started/theming): change colors, radius and fonts.
+- [Dark Mode](/docs/getting-started/dark-mode): add a theme toggle.
+- [RTL](/docs/getting-started/rtl): set up right-to-left layouts.
+- [Skills](/docs/getting-started/skills): teach your AI assistant how 9ui works.

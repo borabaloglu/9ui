@@ -1,7 +1,8 @@
 ---
 title: Scroll Area
-description: A component for creating scrollable regions.
+description: A scrollable region with custom scrollbars.
 ---
+
 <ComponentLinks
 	links={[
 		{
@@ -41,13 +42,11 @@ import { ScrollArea } from "@/components/ui/scroll-area"
 <ScrollArea />
 ```
 
-Give `ScrollArea` a height or a max height. Scrollbars appear on hover and while scrolling, only on the axes that overflow.
-
 ## Examples
 
 ### Horizontal
 
-Content wider than the scroll area scrolls sideways.
+To scroll sideways, make the content wider than `ScrollArea`.
 
 <ComponentPreview name="scroll-area-horizontal-demo" />
 
@@ -61,17 +60,38 @@ Set `scrollFade` to fade the content at the edges that have more to scroll.
 
 Set `scrollbarGutter` to keep the content clear of the scrollbar.
 
-<ComponentPreview name="scroll-area-gutter-demo" />
+<ComponentPreview name="scroll-area-scrollbar-gutter-demo" />
 
 ### RTL
 
-To show the scroll area right to left, set `dir="rtl"` on `html` and wrap your app in `DirectionProvider`. See [RTL](/docs/getting-started/rtl).
+To enable RTL support, see the [RTL guide](/docs/getting-started/rtl).
 
 <ComponentPreview name="scroll-area-rtl-demo" direction="rtl" />
 
+## Tips
+
+<Tips>
+
+<Tip title="Set the height">
+
+Give `ScrollArea` a height or a max height.
+
+```tsx {1}
+<ScrollArea className="h-80 w-40 rounded-lg border">
+	<div className="p-3 text-sm">
+		<p>v1.0.0</p>
+		<p>v2.0.0</p>
+	</div>
+</ScrollArea>
+```
+
+</Tip>
+
+</Tips>
+
 ## API Reference
 
-What 9ui adds to Base UI Scroll Area. For the rest of the API, see the [Base UI Scroll Area reference](https://base-ui.com/react/components/scroll-area#api-reference).
+What 9ui adds to Base UI Scroll Area. See the [Base UI](https://base-ui.com/react/components/scroll-area#api-reference) documentation for the rest.
 
 ### ScrollArea
 

@@ -49,23 +49,17 @@ import {
 </Card>
 ```
 
-`CardTitle` renders a `div`. Pass `render` to make it a heading that fits your page outline.
-
-```tsx
-<CardTitle render={<h2 />}>Create project</CardTitle>
-```
-
 ## Examples
 
-### Sizes
+### Size
 
-Set `size="sm"` for a compact card with tighter padding and a smaller title.
+Set `size="sm"` on `Card` for a compact card with tighter padding and a smaller title.
 
 <ComponentPreview name="card-size-demo" />
 
 ### Action
 
-Place a `CardAction` in the header to pin a control to its top-right corner.
+To add a control at the end of the header, put it in `CardAction`.
 
 <ComponentPreview name="card-action-demo" />
 
@@ -77,15 +71,36 @@ Add `border-b` to `CardHeader` to separate it from the content.
 
 ### Image
 
-Place an image as the first child and it sits flush with the top of the card.
+To add a cover image, put it first inside `Card`.
 
 <ComponentPreview name="card-image-demo" />
 
 ### RTL
 
-To show the card right to left, set `dir="rtl"` on `html` and wrap your app in `DirectionProvider`. See [RTL](/docs/getting-started/rtl).
+To enable RTL support, see the [RTL guide](/docs/getting-started/rtl).
 
 <ComponentPreview name="card-rtl-demo" direction="rtl" />
+
+## Tips
+
+<Tips>
+
+<Tip title="Make the title a heading">
+
+To make the title a heading, set `render` on `CardTitle`.
+
+```tsx {3}
+<Card>
+	<CardHeader>
+		<CardTitle render={<h2 />}>Create project</CardTitle>
+		<CardDescription>Deploy your new project in one click.</CardDescription>
+	</CardHeader>
+</Card>
+```
+
+</Tip>
+
+</Tips>
 
 ## API Reference
 
@@ -112,7 +127,7 @@ To render it as a heading, set `render`.
 
 Sits at the end of `CardHeader`, next to the title and description.
 
-### Data attributes
+### Data Attributes
 
 <ApiTable
 	label="Attribute"

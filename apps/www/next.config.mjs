@@ -9,11 +9,34 @@ const nextConfig = {
 			"./src/components/ui/**/*",
 		],
 	},
+	rewrites() {
+		return [
+			{
+				source: "/docs/:path*.md",
+				destination: "/llms.mdx/:path*",
+			},
+		];
+	},
 	redirects() {
 		return [
 			{
+				source: "/docs/getting-started/dark-mode/remix",
+				destination: "/docs/getting-started/dark-mode/react-router",
+				permanent: true,
+			},
+			{
+				source: "/llms-full.txt",
+				destination: "/llms.txt",
+				permanent: true,
+			},
+			{
 				source: "/docs",
 				destination: "/docs/getting-started/introduction",
+				permanent: true,
+			},
+			{
+				source: "/docs/getting-started/roadmap",
+				destination: "/docs/getting-started/introduction#whats-planned",
 				permanent: true,
 			},
 			{

@@ -34,8 +34,6 @@ import { Spinner } from "@/components/ui/spinner"
 <Spinner />
 ```
 
-Screen readers announce the spinner as "Loading". Set `aria-hidden` when it sits next to loading text.
-
 ## Examples
 
 ### Size
@@ -52,9 +50,28 @@ Set a `text-*` class to change the color.
 
 ### RTL
 
-To show the spinner right to left, set `dir="rtl"` on `html` and wrap your app in `DirectionProvider`. See [RTL](/docs/getting-started/rtl).
+To enable RTL support, see the [RTL guide](/docs/getting-started/rtl).
 
 <ComponentPreview name="spinner-rtl-demo" direction="rtl" />
+
+## Tips
+
+<Tips>
+
+<Tip title="Hide the spinner next to loading text">
+
+Set `aria-hidden` on `Spinner` when it sits next to loading text.
+
+```tsx {2}
+<div className="flex items-center gap-2 text-sm">
+	<Spinner aria-hidden />
+	Loading
+</div>
+```
+
+</Tip>
+
+</Tips>
 
 ## API Reference
 

@@ -58,7 +58,7 @@ export default function FormBaseUiCustomValidationDemo() {
 				>
 					<Field
 						name="username"
-						validate={async (value) => {
+						validate={(value) => {
 							const username = String(value ?? "").trim();
 							if (username === "admin") {
 								return "Username cannot be 'admin'.";

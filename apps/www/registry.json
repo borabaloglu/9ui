@@ -6,6 +6,8 @@
 		{
 			"name": "utils",
 			"type": "registry:lib",
+			"title": "Utils",
+			"description": "The cn helper that merges class names.",
 			"dependencies": ["clsx", "tailwind-merge"],
 			"files": [
 				{
@@ -17,6 +19,9 @@
 		{
 			"name": "accordion",
 			"type": "registry:ui",
+			"title": "Accordion",
+			"description": "A collapsible section to show or hide content.",
+			"docs": "Docs: https://www.9ui.dev/docs/components/accordion",
 			"dependencies": ["@base-ui/react", "lucide-react"],
 			"registryDependencies": [],
 			"files": [
@@ -30,6 +35,9 @@
 		{
 			"name": "alert-dialog",
 			"type": "registry:ui",
+			"title": "Alert Dialog",
+			"description": "A modal dialog for critical messages or confirmation actions.",
+			"docs": "Docs: https://www.9ui.dev/docs/components/alert-dialog",
 			"dependencies": ["@base-ui/react"],
 			"registryDependencies": [],
 			"files": [
@@ -43,6 +51,9 @@
 		{
 			"name": "alert",
 			"type": "registry:ui",
+			"title": "Alert",
+			"description": "A message that highlights important information.",
+			"docs": "Docs: https://www.9ui.dev/docs/components/alert",
 			"dependencies": ["@base-ui/react", "class-variance-authority"],
 			"registryDependencies": [],
 			"files": [
@@ -56,6 +67,9 @@
 		{
 			"name": "aspect-ratio",
 			"type": "registry:ui",
+			"title": "Aspect Ratio",
+			"description": "A container that keeps its content at a set width-to-height ratio.",
+			"docs": "Docs: https://www.9ui.dev/docs/components/aspect-ratio",
 			"dependencies": [],
 			"registryDependencies": [],
 			"files": [
@@ -69,6 +83,9 @@
 		{
 			"name": "autocomplete",
 			"type": "registry:ui",
+			"title": "Autocomplete",
+			"description": "An input that suggests options as the user types.",
+			"docs": "Docs: https://www.9ui.dev/docs/components/autocomplete",
 			"dependencies": ["@base-ui/react"],
 			"registryDependencies": [],
 			"files": [
@@ -82,6 +99,9 @@
 		{
 			"name": "avatar",
 			"type": "registry:ui",
+			"title": "Avatar",
+			"description": "An image of a user with a fallback.",
+			"docs": "Docs: https://www.9ui.dev/docs/components/avatar",
 			"dependencies": ["@base-ui/react", "class-variance-authority"],
 			"registryDependencies": [],
 			"files": [
@@ -95,6 +115,9 @@
 		{
 			"name": "badge",
 			"type": "registry:ui",
+			"title": "Badge",
+			"description": "A small label for a status, count or category.",
+			"docs": "Docs: https://www.9ui.dev/docs/components/badge",
 			"dependencies": ["@base-ui/react", "class-variance-authority"],
 			"registryDependencies": [],
 			"files": [
@@ -108,6 +131,9 @@
 		{
 			"name": "button",
 			"type": "registry:ui",
+			"title": "Button",
+			"description": "A control that triggers an action or submits a form.",
+			"docs": "Docs: https://www.9ui.dev/docs/components/button",
 			"dependencies": ["@base-ui/react", "class-variance-authority"],
 			"registryDependencies": ["@9ui/spinner"],
 			"files": [
@@ -121,6 +147,9 @@
 		{
 			"name": "button-group",
 			"type": "registry:ui",
+			"title": "Button Group",
+			"description": "A set of related buttons and controls joined into one unit.",
+			"docs": "Docs: https://www.9ui.dev/docs/components/button-group",
 			"dependencies": ["@base-ui/react"],
 			"registryDependencies": ["@9ui/separator"],
 			"files": [
@@ -134,6 +163,9 @@
 		{
 			"name": "breadcrumb",
 			"type": "registry:ui",
+			"title": "Breadcrumb",
+			"description": "A trail of links that shows where the current page sits in the site.",
+			"docs": "Docs: https://www.9ui.dev/docs/components/breadcrumb",
 			"dependencies": ["@base-ui/react", "lucide-react"],
 			"registryDependencies": [],
 			"files": [
@@ -147,6 +179,9 @@
 		{
 			"name": "calendar",
 			"type": "registry:ui",
+			"title": "Calendar",
+			"description": "A calendar for picking dates.",
+			"docs": "Docs: https://www.9ui.dev/docs/components/calendar",
 			"dependencies": ["@base-ui/react", "lucide-react", "react-day-picker@^9"],
 			"registryDependencies": ["@9ui/button"],
 			"files": [
@@ -160,6 +195,9 @@
 		{
 			"name": "card",
 			"type": "registry:ui",
+			"title": "Card",
+			"description": "A container that groups related content and actions.",
+			"docs": "Docs: https://www.9ui.dev/docs/components/card",
 			"dependencies": ["@base-ui/react"],
 			"registryDependencies": [],
 			"files": [
@@ -173,6 +211,9 @@
 		{
 			"name": "carousel",
 			"type": "registry:ui",
+			"title": "Carousel",
+			"description": "A row of slides to scroll through.",
+			"docs": "Docs: https://www.9ui.dev/docs/components/carousel",
 			"dependencies": [
 				"@base-ui/react",
 				"lucide-react",
@@ -190,6 +231,9 @@
 		{
 			"name": "chart",
 			"type": "registry:ui",
+			"title": "Chart",
+			"description": "A container, tooltip and legend for charts built with Recharts.",
+			"docs": "Docs: https://www.9ui.dev/docs/components/chart",
 			"dependencies": ["recharts"],
 			"registryDependencies": [],
 			"files": [
@@ -203,6 +247,9 @@
 		{
 			"name": "checkbox",
 			"type": "registry:ui",
+			"title": "Checkbox",
+			"description": "A box that turns an option on or off.",
+			"docs": "Docs: https://www.9ui.dev/docs/components/checkbox",
 			"dependencies": ["@base-ui/react", "lucide-react"],
 			"registryDependencies": [],
 			"files": [
@@ -216,6 +263,9 @@
 		{
 			"name": "checkbox-group",
 			"type": "registry:ui",
+			"title": "Checkbox Group",
+			"description": "A set of checkboxes that share one value.",
+			"docs": "Docs: https://www.9ui.dev/docs/components/checkbox-group",
 			"dependencies": ["@base-ui/react"],
 			"registryDependencies": ["@9ui/checkbox"],
 			"files": [
@@ -229,6 +279,9 @@
 		{
 			"name": "collapsible",
 			"type": "registry:ui",
+			"title": "Collapsible",
+			"description": "A panel that a button shows or hides.",
+			"docs": "Docs: https://www.9ui.dev/docs/components/collapsible",
 			"dependencies": ["@base-ui/react"],
 			"registryDependencies": [],
 			"files": [
@@ -242,6 +295,9 @@
 		{
 			"name": "command",
 			"type": "registry:ui",
+			"title": "Command",
+			"description": "A searchable list of commands and actions.",
+			"docs": "Docs: https://www.9ui.dev/docs/components/command",
 			"dependencies": [],
 			"registryDependencies": [
 				"@9ui/autocomplete",
@@ -259,6 +315,9 @@
 		{
 			"name": "combobox",
 			"type": "registry:ui",
+			"title": "Combobox",
+			"description": "An input that filters a list of options and remembers the selected one.",
+			"docs": "Docs: https://www.9ui.dev/docs/components/combobox",
 			"dependencies": ["@base-ui/react", "lucide-react"],
 			"registryDependencies": [],
 			"files": [
@@ -272,6 +331,9 @@
 		{
 			"name": "context-menu",
 			"type": "registry:ui",
+			"title": "Context Menu",
+			"description": "A menu that opens at the pointer on right click or long press.",
+			"docs": "Docs: https://www.9ui.dev/docs/components/context-menu",
 			"dependencies": ["@base-ui/react", "lucide-react"],
 			"registryDependencies": [],
 			"files": [
@@ -285,6 +347,9 @@
 		{
 			"name": "dialog",
 			"type": "registry:ui",
+			"title": "Dialog",
+			"description": "A modal window for displaying content.",
+			"docs": "Docs: https://www.9ui.dev/docs/components/dialog",
 			"dependencies": ["@base-ui/react", "lucide-react"],
 			"registryDependencies": ["@9ui/button"],
 			"files": [
@@ -298,6 +363,9 @@
 		{
 			"name": "drawer",
 			"type": "registry:ui",
+			"title": "Drawer",
+			"description": "A panel that slides in from the edge of the screen and can be swiped away.",
+			"docs": "Docs: https://www.9ui.dev/docs/components/drawer",
 			"dependencies": ["@base-ui/react"],
 			"registryDependencies": [],
 			"files": [
@@ -317,6 +385,9 @@
 		{
 			"name": "emoji-picker",
 			"type": "registry:ui",
+			"title": "Emoji Picker",
+			"description": "A searchable grid for picking an emoji.",
+			"docs": "Docs: https://www.9ui.dev/docs/components/emoji-picker",
 			"dependencies": ["lucide-react", "frimousse"],
 			"registryDependencies": ["@9ui/input-group", "@9ui/spinner"],
 			"files": [
@@ -330,6 +401,9 @@
 		{
 			"name": "field",
 			"type": "registry:ui",
+			"title": "Field",
+			"description": "A wrapper that gives a form control its label, description and error message.",
+			"docs": "Docs: https://www.9ui.dev/docs/components/field",
 			"dependencies": ["@base-ui/react", "class-variance-authority"],
 			"registryDependencies": [],
 			"files": [
@@ -343,6 +417,9 @@
 		{
 			"name": "fieldset",
 			"type": "registry:ui",
+			"title": "Fieldset",
+			"description": "A group of related fields with a shared legend.",
+			"docs": "Docs: https://www.9ui.dev/docs/components/fieldset",
 			"dependencies": ["@base-ui/react"],
 			"registryDependencies": [],
 			"files": [
@@ -356,6 +433,9 @@
 		{
 			"name": "form",
 			"type": "registry:ui",
+			"title": "Form",
+			"description": "Forms with the Form component and native validation.",
+			"docs": "Docs: https://www.9ui.dev/docs/forms/base-ui",
 			"dependencies": ["@base-ui/react"],
 			"registryDependencies": [],
 			"files": [
@@ -369,6 +449,9 @@
 		{
 			"name": "input",
 			"type": "registry:ui",
+			"title": "Input",
+			"description": "A single-line text field for forms.",
+			"docs": "Docs: https://www.9ui.dev/docs/components/input",
 			"dependencies": ["@base-ui/react"],
 			"registryDependencies": [],
 			"files": [
@@ -382,6 +465,9 @@
 		{
 			"name": "input-group",
 			"type": "registry:ui",
+			"title": "Input Group",
+			"description": "A wrapper that adds icons, text, buttons and shortcuts to an input or textarea.",
+			"docs": "Docs: https://www.9ui.dev/docs/components/input-group",
 			"dependencies": ["class-variance-authority"],
 			"registryDependencies": ["@9ui/button", "@9ui/input", "@9ui/textarea"],
 			"files": [
@@ -395,6 +481,9 @@
 		{
 			"name": "kbd",
 			"type": "registry:ui",
+			"title": "Kbd",
+			"description": "A key or key combination shown as a keyboard shortcut.",
+			"docs": "Docs: https://www.9ui.dev/docs/components/kbd",
 			"dependencies": [],
 			"registryDependencies": [],
 			"files": [
@@ -408,6 +497,9 @@
 		{
 			"name": "label",
 			"type": "registry:ui",
+			"title": "Label",
+			"description": "Text that names a form control.",
+			"docs": "Docs: https://www.9ui.dev/docs/components/label",
 			"dependencies": [],
 			"registryDependencies": [],
 			"files": [
@@ -421,6 +513,9 @@
 		{
 			"name": "menu",
 			"type": "registry:ui",
+			"title": "Menu",
+			"description": "A list of actions or options that opens from a button.",
+			"docs": "Docs: https://www.9ui.dev/docs/components/menu",
 			"dependencies": ["@base-ui/react", "lucide-react"],
 			"registryDependencies": [],
 			"files": [
@@ -434,6 +529,9 @@
 		{
 			"name": "menubar",
 			"type": "registry:ui",
+			"title": "Menubar",
+			"description": "A bar of menus, like the one at the top of a desktop app.",
+			"docs": "Docs: https://www.9ui.dev/docs/components/menubar",
 			"dependencies": ["@base-ui/react", "lucide-react"],
 			"registryDependencies": [],
 			"files": [
@@ -447,6 +545,9 @@
 		{
 			"name": "meter",
 			"type": "registry:ui",
+			"title": "Meter",
+			"description": "A bar that shows a value within a fixed range.",
+			"docs": "Docs: https://www.9ui.dev/docs/components/meter",
 			"dependencies": ["@base-ui/react"],
 			"registryDependencies": [],
 			"files": [
@@ -460,6 +561,9 @@
 		{
 			"name": "navigation-menu",
 			"type": "registry:ui",
+			"title": "Navigation Menu",
+			"description": "A set of links and menus for moving around a site.",
+			"docs": "Docs: https://www.9ui.dev/docs/components/navigation-menu",
 			"dependencies": ["@base-ui/react", "lucide-react"],
 			"registryDependencies": ["@9ui/scroll-area"],
 			"files": [
@@ -473,6 +577,9 @@
 		{
 			"name": "number-field",
 			"type": "registry:ui",
+			"title": "Number Field",
+			"description": "A numeric input with increment, decrement and scrub controls.",
+			"docs": "Docs: https://www.9ui.dev/docs/components/number-field",
 			"dependencies": ["@base-ui/react", "lucide-react"],
 			"registryDependencies": [],
 			"files": [
@@ -486,6 +593,9 @@
 		{
 			"name": "otp-field",
 			"type": "registry:ui",
+			"title": "OTP Field",
+			"description": "A one-time code input split into single-character slots.",
+			"docs": "Docs: https://www.9ui.dev/docs/components/otp-field",
 			"dependencies": ["@base-ui/react"],
 			"registryDependencies": [],
 			"files": [
@@ -499,6 +609,9 @@
 		{
 			"name": "pagination",
 			"type": "registry:ui",
+			"title": "Pagination",
+			"description": "A control for navigating between pages of content.",
+			"docs": "Docs: https://www.9ui.dev/docs/components/pagination",
 			"dependencies": ["@base-ui/react", "lucide-react"],
 			"registryDependencies": ["@9ui/button"],
 			"files": [
@@ -512,6 +625,9 @@
 		{
 			"name": "phone-input",
 			"type": "registry:ui",
+			"title": "Phone Input",
+			"description": "A phone number input with a country picker and automatic formatting.",
+			"docs": "Docs: https://www.9ui.dev/docs/components/phone-input",
 			"dependencies": [
 				"@base-ui/react",
 				"lucide-react",
@@ -533,6 +649,9 @@
 		{
 			"name": "popover",
 			"type": "registry:ui",
+			"title": "Popover",
+			"description": "A popup for displaying content.",
+			"docs": "Docs: https://www.9ui.dev/docs/components/popover",
 			"dependencies": ["@base-ui/react"],
 			"registryDependencies": [],
 			"files": [
@@ -546,6 +665,9 @@
 		{
 			"name": "preview-card",
 			"type": "registry:ui",
+			"title": "Preview Card",
+			"description": "A popup that previews a link when it is hovered.",
+			"docs": "Docs: https://www.9ui.dev/docs/components/preview-card",
 			"dependencies": ["@base-ui/react"],
 			"registryDependencies": [],
 			"files": [
@@ -559,6 +681,9 @@
 		{
 			"name": "progress",
 			"type": "registry:ui",
+			"title": "Progress",
+			"description": "A bar that shows the progress of a task.",
+			"docs": "Docs: https://www.9ui.dev/docs/components/progress",
 			"dependencies": ["@base-ui/react"],
 			"registryDependencies": [],
 			"files": [
@@ -582,6 +707,9 @@
 		{
 			"name": "radio-group",
 			"type": "registry:ui",
+			"title": "Radio Group",
+			"description": "A set of radio buttons for picking one option from a list.",
+			"docs": "Docs: https://www.9ui.dev/docs/components/radio-group",
 			"dependencies": ["@base-ui/react"],
 			"registryDependencies": [],
 			"files": [
@@ -595,6 +723,9 @@
 		{
 			"name": "resizable",
 			"type": "registry:ui",
+			"title": "Resizable",
+			"description": "A group of panels that can be resized by dragging the handle between them.",
+			"docs": "Docs: https://www.9ui.dev/docs/components/resizable",
 			"dependencies": ["react-resizable-panels"],
 			"registryDependencies": [],
 			"files": [
@@ -608,6 +739,9 @@
 		{
 			"name": "scroll-area",
 			"type": "registry:ui",
+			"title": "Scroll Area",
+			"description": "A scrollable region with custom scrollbars.",
+			"docs": "Docs: https://www.9ui.dev/docs/components/scroll-area",
 			"dependencies": ["@base-ui/react"],
 			"registryDependencies": [],
 			"files": [
@@ -621,6 +755,9 @@
 		{
 			"name": "select",
 			"type": "registry:ui",
+			"title": "Select",
+			"description": "A control for choosing one or more options from a list.",
+			"docs": "Docs: https://www.9ui.dev/docs/components/select",
 			"dependencies": ["@base-ui/react", "lucide-react"],
 			"registryDependencies": [],
 			"files": [
@@ -634,6 +771,9 @@
 		{
 			"name": "separator",
 			"type": "registry:ui",
+			"title": "Separator",
+			"description": "A line that divides content.",
+			"docs": "Docs: https://www.9ui.dev/docs/components/separator",
 			"dependencies": ["@base-ui/react"],
 			"registryDependencies": [],
 			"files": [
@@ -647,6 +787,9 @@
 		{
 			"name": "sheet",
 			"type": "registry:ui",
+			"title": "Sheet",
+			"description": "A sliding panel for displaying content.",
+			"docs": "Docs: https://www.9ui.dev/docs/components/sheet",
 			"dependencies": ["@base-ui/react", "lucide-react"],
 			"registryDependencies": ["@9ui/button"],
 			"files": [
@@ -660,6 +803,9 @@
 		{
 			"name": "sidebar",
 			"type": "registry:ui",
+			"title": "Sidebar",
+			"description": "A composable sidebar that collapses on desktop and opens as a sheet on mobile.",
+			"docs": "Docs: https://www.9ui.dev/docs/components/sidebar",
 			"dependencies": [
 				"@base-ui/react",
 				"class-variance-authority",
@@ -687,6 +833,9 @@
 		{
 			"name": "skeleton",
 			"type": "registry:ui",
+			"title": "Skeleton",
+			"description": "A placeholder that shows while content loads.",
+			"docs": "Docs: https://www.9ui.dev/docs/components/skeleton",
 			"dependencies": [],
 			"registryDependencies": [],
 			"files": [
@@ -712,6 +861,9 @@
 		{
 			"name": "slider",
 			"type": "registry:ui",
+			"title": "Slider",
+			"description": "A control for selecting a value within a range.",
+			"docs": "Docs: https://www.9ui.dev/docs/components/slider",
 			"dependencies": ["@base-ui/react"],
 			"registryDependencies": [],
 			"files": [
@@ -725,6 +877,9 @@
 		{
 			"name": "sonner",
 			"type": "registry:ui",
+			"title": "Sonner",
+			"description": "A short message that appears on top of the page, built on Sonner.",
+			"docs": "Docs: https://www.9ui.dev/docs/components/sonner",
 			"dependencies": ["lucide-react", "sonner"],
 			"registryDependencies": ["@9ui/button", "@9ui/spinner"],
 			"css": {
@@ -746,6 +901,9 @@
 		{
 			"name": "spinner",
 			"type": "registry:ui",
+			"title": "Spinner",
+			"description": "A spinning indicator for loading states.",
+			"docs": "Docs: https://www.9ui.dev/docs/components/spinner",
 			"dependencies": ["lucide-react"],
 			"registryDependencies": [],
 			"files": [
@@ -759,6 +917,9 @@
 		{
 			"name": "switch",
 			"type": "registry:ui",
+			"title": "Switch",
+			"description": "A toggle control for switching between two states.",
+			"docs": "Docs: https://www.9ui.dev/docs/components/switch",
 			"dependencies": ["@base-ui/react"],
 			"registryDependencies": [],
 			"files": [
@@ -772,6 +933,9 @@
 		{
 			"name": "table",
 			"type": "registry:ui",
+			"title": "Table",
+			"description": "A table for rows and columns of data.",
+			"docs": "Docs: https://www.9ui.dev/docs/components/table",
 			"dependencies": [],
 			"registryDependencies": ["@9ui/scroll-area"],
 			"files": [
@@ -785,6 +949,9 @@
 		{
 			"name": "tabs",
 			"type": "registry:ui",
+			"title": "Tabs",
+			"description": "A set of panels shown one at a time.",
+			"docs": "Docs: https://www.9ui.dev/docs/components/tabs",
 			"dependencies": ["@base-ui/react"],
 			"registryDependencies": [],
 			"files": [
@@ -816,6 +983,9 @@
 		{
 			"name": "textarea",
 			"type": "registry:ui",
+			"title": "Textarea",
+			"description": "A multi-line text field that grows with its content.",
+			"docs": "Docs: https://www.9ui.dev/docs/components/textarea",
 			"dependencies": ["@base-ui/react"],
 			"registryDependencies": [],
 			"files": [
@@ -829,6 +999,9 @@
 		{
 			"name": "toast",
 			"type": "registry:ui",
+			"title": "Toast",
+			"description": "A short message that appears on top of the page.",
+			"docs": "Docs: https://www.9ui.dev/docs/components/toast",
 			"dependencies": ["@base-ui/react", "lucide-react"],
 			"registryDependencies": ["@9ui/button", "@9ui/spinner"],
 			"files": [
@@ -846,6 +1019,9 @@
 		{
 			"name": "toggle-group",
 			"type": "registry:ui",
+			"title": "Toggle Group",
+			"description": "A group of toggles for selecting single or multiple options.",
+			"docs": "Docs: https://www.9ui.dev/docs/components/toggle-group",
 			"dependencies": ["@base-ui/react", "class-variance-authority"],
 			"registryDependencies": ["@9ui/separator", "@9ui/toggle"],
 			"files": [
@@ -859,6 +1035,9 @@
 		{
 			"name": "toggle",
 			"type": "registry:ui",
+			"title": "Toggle",
+			"description": "A button that switches between on and off.",
+			"docs": "Docs: https://www.9ui.dev/docs/components/toggle",
 			"dependencies": ["@base-ui/react", "class-variance-authority"],
 			"registryDependencies": [],
 			"files": [
@@ -872,6 +1051,9 @@
 		{
 			"name": "toolbar",
 			"type": "registry:ui",
+			"title": "Toolbar",
+			"description": "A container that groups buttons, links and inputs.",
+			"docs": "Docs: https://www.9ui.dev/docs/components/toolbar",
 			"dependencies": ["@base-ui/react"],
 			"registryDependencies": [],
 			"files": [
@@ -885,6 +1067,9 @@
 		{
 			"name": "tooltip",
 			"type": "registry:ui",
+			"title": "Tooltip",
+			"description": "A short label that appears when an element is hovered or focused.",
+			"docs": "Docs: https://www.9ui.dev/docs/components/tooltip",
 			"dependencies": ["@base-ui/react"],
 			"registryDependencies": [],
 			"files": [
@@ -898,6 +1083,9 @@
 		{
 			"name": "vaul",
 			"type": "registry:ui",
+			"title": "Vaul",
+			"description": "A drawer with drag gestures and snap points, built on vaul-base.",
+			"docs": "Docs: https://www.9ui.dev/docs/components/vaul",
 			"dependencies": ["vaul-base"],
 			"registryDependencies": [],
 			"files": [

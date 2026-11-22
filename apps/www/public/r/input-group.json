@@ -1,6 +1,8 @@
 {
 	"$schema": "https://ui.shadcn.com/schema/registry-item.json",
 	"name": "input-group",
+	"title": "Input Group",
+	"description": "A wrapper that adds icons, text, buttons and shortcuts to an input or textarea.",
 	"dependencies": ["class-variance-authority"],
 	"registryDependencies": ["@9ui/button", "@9ui/input", "@9ui/textarea"],
 	"files": [
@@ -11,5 +13,6 @@
 			"target": ""
 		}
 	],
+	"docs": "Docs: https://www.9ui.dev/docs/components/input-group",
 	"type": "registry:ui"
 }

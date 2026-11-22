@@ -3,11 +3,12 @@ title: Menu
 description: A list of actions or options that opens from a button.
 label: New
 ---
+
 <ComponentLinks
 	links={[
 		{
 			label: "API Reference",
-			href: "https://base-ui.com/react/components/menu",
+			href: "https://base-ui.com/react/components/menu#api-reference",
 		},
 	]}
 />
@@ -80,17 +81,13 @@ import {
 </Menu>
 ```
 
-Set `render` on `MenuTrigger` to use your own button. Give icon-only triggers an `aria-label`.
-
-`MenuPopup` takes `side`, `align`, `sideOffset` and `alignOffset` to change where the menu opens.
-
 ## Examples
 
-### Group
+### Groups
 
 Wrap related items in `MenuGroup` and name them with `MenuGroupLabel`.
 
-<ComponentPreview name="menu-group-demo" />
+<ComponentPreview name="menu-groups-demo" />
 
 ### Shortcut
 
@@ -98,7 +95,7 @@ Add `MenuShortcut` inside an item to show its keyboard shortcut. It is a hint on
 
 <ComponentPreview name="menu-shortcut-demo" />
 
-### With Icons
+### Icons
 
 Place an icon before the item text.
 
@@ -106,27 +103,31 @@ Place an icon before the item text.
 
 ### Checkbox
 
-Use `MenuCheckboxItem` for options that turn on and off. The menu stays open when one is toggled.
+Use `MenuCheckboxItem` for options that turn on and off. The menu stays open when one is toggled. Set `inset` on plain items to line them up with checkbox items.
 
 <ComponentPreview name="menu-checkbox-demo" />
 
 ### Checkbox with Icons
 
-<ComponentPreview name="menu-checkbox-icon-demo" />
+Place an icon before the text of a `MenuCheckboxItem`.
+
+<ComponentPreview name="menu-checkbox-with-icons-demo" />
 
 ### Radio Group
 
 Use `MenuRadioGroup` and `MenuRadioItem` to pick one option from a set.
 
-<ComponentPreview name="menu-radio-demo" />
+<ComponentPreview name="menu-radio-group-demo" />
 
 ### Radio Group with Icons
 
-<ComponentPreview name="menu-radio-icon-demo" />
+Place an icon before the text of a `MenuRadioItem`.
+
+<ComponentPreview name="menu-radio-group-with-icons-demo" />
 
 ### Destructive
 
-Set `variant` to `destructive` for an action that deletes or can't be undone.
+Set `variant="destructive"` on `MenuItem` for an action that deletes or can't be undone.
 
 <ComponentPreview name="menu-destructive-demo" />
 
@@ -150,13 +151,57 @@ Groups, shortcuts, checkboxes, a submenu and a destructive action in one menu.
 
 ### RTL
 
-To show the menu right to left, set `dir="rtl"` on `html` and wrap your app in `DirectionProvider`. See [RTL](/docs/getting-started/rtl).
+To enable RTL support, see the [RTL guide](/docs/getting-started/rtl).
 
 <ComponentPreview name="menu-rtl-demo" direction="rtl" />
 
+## Tips
+
+<Tips>
+
+<Tip title="Label icon-only triggers">
+
+Give icon-only triggers an `aria-label`.
+
+```tsx {2}
+<MenuTrigger
+	render={<Button variant="outline" size="icon" aria-label="Post actions" />}
+>
+	<EllipsisIcon />
+</MenuTrigger>
+```
+
+</Tip>
+
+<Tip title="Use your own button as the trigger">
+
+Set `render` on `MenuTrigger` to use your own button.
+
+```tsx {1}
+<MenuTrigger render={<Button variant="outline" />}>
+	Open Menu
+</MenuTrigger>
+```
+
+</Tip>
+
+<Tip title="Change where the menu opens">
+
+`MenuPopup` takes `side`, `align`, `sideOffset` and `alignOffset` to change where the menu opens.
+
+```tsx {1}
+<MenuPopup side="top" align="end" sideOffset={8}>
+	<MenuItem>New File</MenuItem>
+</MenuPopup>
+```
+
+</Tip>
+
+</Tips>
+
 ## API Reference
 
-What 9ui adds to Base UI Menu. For the rest of the API, see the [Base UI Menu reference](https://base-ui.com/react/components/menu#api-reference).
+What 9ui adds to Base UI Menu. See the [Base UI](https://base-ui.com/react/components/menu#api-reference) documentation for the rest.
 
 ### MenuPopup
 
@@ -175,14 +220,12 @@ Bundles the portal, positioner and popup.
 			name: "align",
 			type: '"start" | "center" | "end"',
 			default: '"start"',
-			baseDefault: '"center"',
 			description: "How the menu lines up with the trigger on that side.",
 		},
 		{
 			name: "sideOffset",
 			type: "number | OffsetFunction",
 			default: "4",
-			baseDefault: "0",
 			description: "The gap between the trigger and the menu.",
 		},
 		{
@@ -294,7 +337,6 @@ Bundles the portal, positioner and popup for a submenu.
 			name: "alignOffset",
 			type: "number | OffsetFunction",
 			default: "-5",
-			baseDefault: "0",
 			description: "The shift along the alignment axis.",
 		},
 		{
@@ -303,10 +345,15 @@ Bundles the portal, positioner and popup for a submenu.
 			type: "Element | VirtualElement | RefObject<Element | null> | (() => Element | VirtualElement | null) | null",
 			description: "The element to position the menu against, in place of the parent item.",
 		},
+		{
+			name: "portalProps",
+			type: "Menu.Portal.Props",
+			description: <>Props for the portal, such as <code>container</code>.</>,
+		},
 	]}
 />
 
-### Data attributes
+### Data Attributes
 
 <ApiTable
 	label="Attribute"

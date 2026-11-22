@@ -1,6 +1,8 @@
 {
 	"$schema": "https://ui.shadcn.com/schema/registry-item.json",
 	"name": "button",
+	"title": "Button",
+	"description": "A control that triggers an action or submits a form.",
 	"dependencies": ["@base-ui/react", "class-variance-authority"],
 	"registryDependencies": ["@9ui/spinner"],
 	"files": [
@@ -11,5 +13,6 @@
 			"target": ""
 		}
 	],
+	"docs": "Docs: https://www.9ui.dev/docs/components/button",
 	"type": "registry:ui"
 }

@@ -56,6 +56,9 @@ import {
 	ComboboxStatus,
 	ComboboxTrigger,
 	ComboboxValue,
+	createComboboxItems,
+	useComboboxFilter,
+	useComboboxFilteredItems,
 } from "@/components/ui/combobox"
 ```
 
@@ -67,14 +70,7 @@ import {
 		<ComboboxTrigger />
 		<ComboboxClear />
 	</ComboboxInputGroup>
-	<ComboboxChips>
-		<ComboboxValue>
-			<ComboboxChip />
-			<ComboboxChipsInput />
-		</ComboboxValue>
-	</ComboboxChips>
 	<ComboboxPopup>
-		<ComboboxStatus />
 		<ComboboxEmpty />
 		<ComboboxList>
 			<ComboboxGroup>
@@ -82,19 +78,11 @@ import {
 				<ComboboxCollection />
 			</ComboboxGroup>
 			<ComboboxSeparator />
-			<ComboboxRow>
-				<ComboboxItem />
-			</ComboboxRow>
+			<ComboboxItem />
 		</ComboboxList>
 	</ComboboxPopup>
 </Combobox>
 ```
-
-Set `render={<Input />}` on `ComboboxInput` to style it as an [Input](/docs/components/input). Give every combobox a name: use [Field](/docs/components/field) with a `FieldLabel`, or set `aria-label` on `ComboboxInput`.
-
-`ComboboxPopup` takes `side`, `align`, `sideOffset` and `alignOffset` to change where the popup opens.
-
-To store IDs instead of item objects, pass `createComboboxItems(data, { getValue, getLabel })` as `items`.
 
 To let users type any text, use [Autocomplete](/docs/components/autocomplete). To pick from a short list without filtering, use [Select](/docs/components/select).
 
@@ -126,29 +114,21 @@ Use `ComboboxGroup`, `ComboboxGroupLabel` and `ComboboxSeparator` to split items
 
 ### Multiple
 
-Set `multiple` to select more than one item. Use `ComboboxChips`, `ComboboxChip` and `ComboboxChipsInput` to show the selected items inside the input.
+Set `multiple` on `Combobox` to select more than one item. Use `ComboboxChips`, `ComboboxChip` and `ComboboxChipsInput` to show the selected items inside the input. To hide the remove button of a chip, set `showRemove={false}` on `ComboboxChip`.
 
 <ComponentPreview name="combobox-multiple-demo" />
 
-To hide the remove button of a chip, set `showRemove={false}` on `ComboboxChip`.
-
 ### Size
 
-Set `size` to `sm`, `default` or `lg` on `ComboboxChips`. For a single-value combobox, set `size` on the `Input` or `InputGroup`.
+To change the size, set `size` on `ComboboxChips`. For a single-value combobox, set `size` on the `Input` or `InputGroup`.
 
 <ComponentPreview name="combobox-size-demo" />
 
 ### Auto Highlight
 
-Set `autoHighlight` to highlight the first match while typing.
+Set `autoHighlight` on `Combobox` to highlight the first match while typing.
 
-<ComponentPreview name="combobox-autohighlight-demo" />
-
-### Invalid
-
-Set `invalid` on `Field` to show the invalid state. Outside a `Field`, set `aria-invalid` on `ComboboxInput`.
-
-<ComponentPreview name="combobox-invalid-demo" showReload={true} />
+<ComponentPreview name="combobox-auto-highlight-demo" />
 
 ### Disabled
 
@@ -156,17 +136,33 @@ Set `disabled` on `Field` or `Combobox` to disable the combobox.
 
 <ComponentPreview name="combobox-disabled-demo" />
 
+### Invalid
+
+Set `invalid` on `Field` to show the invalid state. Outside a `Field`, set `aria-invalid` on `ComboboxInput`.
+
+<ComponentPreview name="combobox-invalid-demo" showReload={true} />
+
+### Async Search
+
+Set `filter={null}` on `Combobox` and pass the fetched results as `items`. Keep the selected item in `items`, and use `ComboboxStatus` to announce loading and result counts.
+
+<ComponentPreview name="combobox-async-search-demo" />
+
 ### Popup
 
 Put `ComboboxInput` inside `ComboboxPopup` and open it with `ComboboxTrigger` to build a searchable select.
 
 <ComponentPreview name="combobox-popup-demo" />
 
-Outside a `Field`, use `ComboboxLabel` to name the trigger.
+### Grid
+
+Set `grid` on `Combobox` and wrap each row of items in `ComboboxRow` to lay items out in a grid. Use `useComboboxFilteredItems` to split the filtered items into rows.
+
+<ComponentPreview name="combobox-grid-demo" />
 
 ### RTL
 
-To show the combobox right to left, set `dir="rtl"` on `html` and wrap your app in `DirectionProvider`. See [RTL](/docs/getting-started/rtl).
+To enable RTL support, see the [RTL guide](/docs/getting-started/rtl).
 
 <ComponentPreview name="combobox-rtl-demo" direction="rtl" />
 
@@ -174,9 +170,69 @@ To show the combobox right to left, set `dir="rtl"` on `html` and wrap your app 
 
 See the form guides for [Base UI Form](/docs/forms/base-ui#combobox), [React Hook Form](/docs/forms/react-hook-form#combobox) and [TanStack Form](/docs/forms/tanstack-form#combobox).
 
+## Tips
+
+<Tips>
+
+<Tip title="Name the combobox">
+
+Give every combobox a name. When the input is the control, use [Field](/docs/components/field) with a `FieldLabel` or set `aria-label` on `ComboboxInput`. When `ComboboxTrigger` is the control, add a `ComboboxLabel`.
+
+```tsx {2}
+<Combobox items={fruits}>
+	<ComboboxLabel>Fruit</ComboboxLabel>
+	<ComboboxTrigger render={<Button variant="outline" />}>
+		<ComboboxValue />
+	</ComboboxTrigger>
+</Combobox>
+```
+
+</Tip>
+
+<Tip title="Style the input as an Input">
+
+Set `render={<Input />}` on `ComboboxInput` to style it as an [Input](/docs/components/input).
+
+```tsx {1}
+<ComboboxInput placeholder="e.g. Apple" render={<Input />} />
+```
+
+</Tip>
+
+<Tip title="Change where the popup opens">
+
+`ComboboxPopup` takes `side`, `align`, `sideOffset` and `alignOffset` to change where the popup opens.
+
+```tsx {1}
+<ComboboxPopup side="top" align="end" sideOffset={8}>
+	<ComboboxEmpty>No fruits found.</ComboboxEmpty>
+</ComboboxPopup>
+```
+
+</Tip>
+
+<Tip title="Store IDs instead of item objects">
+
+To store IDs instead of item objects, pass `createComboboxItems(data, { getValue, getLabel })` as `items`.
+
+```tsx {1-4,6}
+const items = createComboboxItems(users, {
+	getValue: (user) => user.id,
+	getLabel: (user) => user.name,
+})
+
+<Combobox items={items}>
+	<ComboboxInput render={<Input />} />
+</Combobox>
+```
+
+</Tip>
+
+</Tips>
+
 ## API Reference
 
-What 9ui adds to Base UI Combobox. For the rest of the API, see the [Base UI Combobox reference](https://base-ui.com/react/components/combobox#api-reference).
+What 9ui adds to Base UI Combobox. See the [Base UI](https://base-ui.com/react/components/combobox#api-reference) documentation for the rest.
 
 ### ComboboxChips
 
@@ -223,14 +279,12 @@ Bundles the portal, positioner and popup.
 			name: "align",
 			type: '"start" | "center" | "end"',
 			default: '"start"',
-			baseDefault: '"center"',
 			description: "How the popup lines up with the input on that side.",
 		},
 		{
 			name: "sideOffset",
 			type: "number | OffsetFunction",
 			default: "4",
-			baseDefault: "0",
 			description: "The gap between the input and the popup.",
 		},
 		{
@@ -263,7 +317,7 @@ The component file also exports these.
 		{
 			name: "useComboboxFilter()",
 			shortType: "Filter",
-			type: "(options?: UseComboboxFilterOptions) => Filter",
+			type: "(options?: ComboboxFilterOptions) => Filter",
 			description: <>Returns locale-aware <code>contains</code>, <code>startsWith</code> and <code>endsWith</code> matchers for the <code>filter</code> prop.</>,
 		},
 		{
@@ -281,7 +335,7 @@ The component file also exports these.
 	]}
 />
 
-### Data attributes
+### Data Attributes
 
 <ApiTable
 	label="Attribute"

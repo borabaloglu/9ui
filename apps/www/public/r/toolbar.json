@@ -1,6 +1,8 @@
 {
 	"$schema": "https://ui.shadcn.com/schema/registry-item.json",
 	"name": "toolbar",
+	"title": "Toolbar",
+	"description": "A container that groups buttons, links and inputs.",
 	"dependencies": ["@base-ui/react"],
 	"registryDependencies": [],
 	"files": [
@@ -11,5 +13,6 @@
 			"target": ""
 		}
 	],
+	"docs": "Docs: https://www.9ui.dev/docs/components/toolbar",
 	"type": "registry:ui"
 }

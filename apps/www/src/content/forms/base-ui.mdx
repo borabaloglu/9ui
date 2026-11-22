@@ -1,7 +1,8 @@
 ---
 title: Base UI Form
-description: Build forms with the Form component and native validation.
+description: Forms with the Form component and native validation.
 ---
+
 <ComponentLinks
 	links={[
 		{
@@ -63,7 +64,7 @@ Put each control in a `Field` with a `name`, and add a `FieldError` for each mes
 
 ## Form
 
-### Submit values as an object
+### Submit Values as an Object
 
 To get the field values as an object, use `onFormSubmit`.
 
@@ -75,7 +76,7 @@ To get the field values as an object, use `onFormSubmit`.
 />
 ```
 
-### Submit with the native event
+### Submit with the Native Event
 
 To read the submit event or `FormData`, use `onSubmit`.
 
@@ -90,18 +91,23 @@ To read the submit event or `FormData`, use `onSubmit`.
 
 ## Submitting
 
-### Pending state
+When a submit fails validation, `Form` moves focus to the first invalid field.
+
+### Pending State
 
 To show progress while the form submits, set `loading` on the submit button.
 
-```tsx {1,5-7,10}
+```tsx {1,5-10,13}
 const [loading, setLoading] = useState(false)
 
 <Form
 	onFormSubmit={async (values) => {
 		setLoading(true)
-		await submit(values)
-		setLoading(false)
+		try {
+			await submit(values)
+		} finally {
+			setLoading(false)
+		}
 	}}
 >
 	<Button type="submit" loading={loading}>
@@ -110,11 +116,101 @@ const [loading, setLoading] = useState(false)
 </Form>
 ```
 
-### Server actions
+## Validation
+
+### Client-Side Validation
+
+Set native constraints on the control and add a `FieldError` with `match` for each message.
+
+```tsx {2-7}
+<Field name="username">
+	<Input required minLength={3} pattern="^[a-zA-Z0-9_]+$" />
+	<FieldError match="valueMissing">Username is required.</FieldError>
+	<FieldError match="tooShort">At least 3 characters.</FieldError>
+	<FieldError match="patternMismatch">
+		Use letters, numbers or underscores.
+	</FieldError>
+</Field>
+```
+
+### Validation Modes
+
+To choose when validation runs, set `validationMode` on `Form` or `Field`.
+
+```tsx {1}
+<Form validationMode="onBlur">{/* ... */}</Form>
+```
+
+| Mode | Description |
+| --- | --- |
+| `"onSubmit"` | Validates on submit, then on every change. This is the default. |
+| `"onBlur"` | Validates when a field loses focus. |
+| `"onChange"` | Validates on every change. |
+
+### Custom Validation
+
+To run your own check, set `validate` on `Field`. Use `FieldError` with `match="customError"` to show the message it returns.
+
+<ComponentPreview name="form-base-ui-custom-validation-demo" />
+
+```tsx {3-9,12}
+<Field
+	name="username"
+	validate={(value) => {
+		const username = String(value ?? "").trim()
+		if (username === "admin") {
+			return "Username cannot be 'admin'."
+		}
+		return null
+	}}
+>
+	<Input />
+	<FieldError match="customError" />
+</Field>
+```
+
+To delay validation while typing, set `validationMode="onChange"` and `validationDebounceTime`.
+
+```tsx {3-4}
+<Field
+	name="username"
+	validationMode="onChange"
+	validationDebounceTime={300}
+	validate={checkUsername}
+>
+	<Input />
+	<FieldError match="customError" />
+</Field>
+```
+
+## Server-Side Errors
+
+To show errors returned by the server, pass them to `errors` on `Form` and add a `FieldError` without `match`. Submit the form to see one.
+
+<ComponentPreview name="form-base-ui-server-errors-demo" />
+
+```tsx {1,4-8,12}
+const [errors, setErrors] = useState({})
+
+<Form
+	errors={errors}
+	onFormSubmit={async (values) => {
+		const response = await submit(values)
+		setErrors(response.errors ?? {})
+	}}
+>
+	<Field name="username">
+		<Input />
+		<FieldError />
+	</Field>
+</Form>
+```
+
+### Server Actions
 
 To submit to a server action, call it in `onFormSubmit` inside a transition and pass the errors it returns to `errors`.
 
-```tsx {8-9,14-19} title="form.tsx"
+```tsx {8-9,13-19} title="form.tsx"
 "use client"
 
 import { useState, useTransition } from "react"
@@ -160,95 +256,6 @@ export async function createUser(values: { username: string }) {
 }
 ```
 
-## Validation
-
-### Client-side validation
-
-Set native constraints on the control and add a `FieldError` with `match` for each message.
-
-```tsx {2-7}
-<Field name="username">
-	<Input required minLength={3} pattern="^[a-zA-Z0-9_]+$" />
-	<FieldError match="valueMissing">Username is required.</FieldError>
-	<FieldError match="tooShort">At least 3 characters.</FieldError>
-	<FieldError match="patternMismatch">
-		Use letters, numbers or underscores.
-	</FieldError>
-</Field>
-```
-
-### Validation modes
-
-To choose when validation runs, set `validationMode` on `Form` or `Field`.
-
-```tsx {1}
-<Form validationMode="onBlur">{/* ... */}</Form>
-```
-
-| Mode         | Description                                                           |
-| ------------ | --------------------------------------------------------------------- |
-| `"onSubmit"` | Validates on submit, then again on change. This is the default.       |
-| `"onBlur"`   | Validates when a field loses focus.                                   |
-| `"onChange"` | Validates on every change.                                            |
-
-### Custom validation
-
-To run your own check, set `validate` on `Field`. It can be async. Use `FieldError` with `match="customError"` to show the message it returns.
-
-<ComponentPreview name="form-base-ui-custom-validation-demo" />
-
-```tsx {3-9,12}
-<Field
-	name="username"
-	validate={async (value) => {
-		const username = String(value ?? "").trim()
-		if (username === "admin") {
-			return "Username cannot be 'admin'."
-		}
-		return null
-	}}
->
-	<Input />
-	<FieldError match="customError" />
-</Field>
-```
-
-To delay validation while typing, set `validationDebounceTime`.
-
-```tsx {3}
-<Field
-	name="username"
-	validationDebounceTime={300}
-	validate={checkUsername}
->
-	<Input />
-	<FieldError match="customError" />
-</Field>
-```
-
-## Server-side Errors
-
-To show errors returned by the server, pass them to `errors` on `Form` and add a `FieldError` without `match`. Submit the form to see one.
-
-<ComponentPreview name="form-base-ui-server-errors-demo" />
-
-```tsx {1,4-8,12}
-const [errors, setErrors] = useState({})
-
-<Form
-	errors={errors}
-	onFormSubmit={async (values) => {
-		const response = await submit(values)
-		setErrors(response.errors ?? {})
-	}}
->
-	<Field name="username">
-		<Input />
-		<FieldError />
-	</Field>
-</Form>
-```
-
 ## Using with Zod
 
 To validate with a schema, parse the values in `onFormSubmit` and pass the field errors to `errors`.
@@ -265,7 +272,7 @@ npm install zod
 
 <Step>Parse the values and set the errors.</Step>
 
-```tsx {4-7,10,13-17,21}
+```tsx {4-7,10,13-17,19,23} title="form.tsx"
 import type { Form as FormPrimitive } from "@base-ui/react/form"
 import { z } from "zod"
 
@@ -283,6 +290,8 @@ export default function ExampleForm() {
 			setErrors(z.flattenError(result.error).fieldErrors)
 			return
 		}
+
+		setErrors({})
 	}
 
 	return (
@@ -308,6 +317,15 @@ Set the constraints on `Input`.
 	<FieldLabel>Username</FieldLabel>
 	<Input required minLength={3} maxLength={20} pattern="^[a-zA-Z0-9_]+$" />
 	<FieldError match="valueMissing">Username is required.</FieldError>
+	<FieldError match="tooShort">
+		Username must be at least 3 characters.
+	</FieldError>
+	<FieldError match="tooLong">
+		Username must be at most 20 characters.
+	</FieldError>
+	<FieldError match="patternMismatch">
+		Username can only contain letters, numbers and underscores.
+	</FieldError>
 </Field>
 ```
 
@@ -322,6 +340,8 @@ Set the constraints on `Textarea`.
 	<FieldLabel>Bio</FieldLabel>
 	<Textarea required minLength={20} maxLength={280} />
 	<FieldError match="valueMissing">Bio is required.</FieldError>
+	<FieldError match="tooShort">Bio must be at least 20 characters.</FieldError>
+	<FieldError match="tooLong">Bio must be at most 280 characters.</FieldError>
 </Field>
 ```
 
@@ -347,11 +367,13 @@ Set `required` on `NumberField`.
 
 ### Phone Input
 
-Keep the number in state, check it on submit and set `invalid` on `Field`.
+Keep the number in state, check it on submit with `isValidPhoneNumber` from `react-phone-number-input` and set `invalid` on `Field`.
 
 <ComponentPreview name="form-base-ui-phone-input-demo" />
 
-```tsx {6-9,12,21}
+```tsx {8-11,14,23}
+import { isValidPhoneNumber } from "react-phone-number-input"
+
 const [phoneNumber, setPhoneNumber] = useState("")
 const [invalid, setInvalid] = useState(false)
 
@@ -460,7 +482,9 @@ Set `validate` on `Field` to require a selection, and wrap each checkbox in `Fie
 
 <ComponentPreview name="form-base-ui-checkbox-group-demo" />
 
-```tsx {3-5,22}
+```tsx {5-7,24}
+const labelId = useId()
+
 <Field
 	name="channels"
 	validate={(value) =>
@@ -556,11 +580,14 @@ Set `required` on `OTPField`. An incomplete code matches `patternMismatch`.
 
 ### Date Picker
 
-Keep the date in state, check it on submit and set `invalid` on `Field`. Give `FieldError` an `id` and pass it to `aria-describedby` on the trigger so the error is announced.
+Keep the date in state, check it on submit and set `invalid` on `Field` and `aria-invalid` on the trigger. Give `FieldError` an `id` and pass it to `aria-describedby` on the trigger so the error is announced.
 
 <ComponentPreview name="form-base-ui-date-picker-demo" />
 
-```tsx {6-9,12,32}
+```tsx {9-12,15,35}
+const id = useId()
+const errorId = useId()
+const [open, setOpen] = useState(false)
 const [date, setDate] = useState<Date | null>(null)
 const [invalid, setInvalid] = useState(false)
 
@@ -573,10 +600,10 @@ const [invalid, setInvalid] = useState(false)
 	}}
 >
 	<Field name="startDate" invalid={invalid}>
-		<FieldLabel>Start date</FieldLabel>
+		<FieldLabel htmlFor={id}>Start date</FieldLabel>
 		<Popover open={open} onOpenChange={setOpen}>
 			<PopoverTrigger
-				render={<Button variant="outline" aria-describedby={errorId} aria-invalid={invalid || undefined} />}
+				render={<Button id={id} variant="outline" aria-describedby={errorId} aria-invalid={invalid || undefined} />}
 			>
 				{date ? format(date, "MMM d, yyyy") : "Select a date"}
 			</PopoverTrigger>
@@ -603,18 +630,16 @@ To group related fields, wrap them in `Fieldset` with a `FieldsetLegend`.
 
 <ComponentPreview name="form-base-ui-fieldset-demo" />
 
-```tsx {1,2,13}
+```tsx {1-5,11}
 <Fieldset>
 	<FieldsetLegend>Billing Details</FieldsetLegend>
+	<FieldsetDescription>
+		This information will be used in your invoice.
+	</FieldsetDescription>
 	<Field name="company">
-		<FieldLabel>Company</FieldLabel>
+		<FieldLabel>Company Name</FieldLabel>
 		<Input required />
 		<FieldError match="valueMissing">Company name is required.</FieldError>
-	</Field>
-	<Field name="taxId">
-		<FieldLabel>Tax ID</FieldLabel>
-		<Input required pattern="^\d{2}-\d{7}$" />
-		<FieldError match="valueMissing">Tax ID is required.</FieldError>
 	</Field>
 </Fieldset>
 ```

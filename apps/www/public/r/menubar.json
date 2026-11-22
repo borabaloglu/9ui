@@ -1,6 +1,8 @@
 {
 	"$schema": "https://ui.shadcn.com/schema/registry-item.json",
 	"name": "menubar",
+	"title": "Menubar",
+	"description": "A bar of menus, like the one at the top of a desktop app.",
 	"dependencies": ["@base-ui/react", "lucide-react"],
 	"registryDependencies": [],
 	"files": [
@@ -11,5 +13,6 @@
 			"target": ""
 		}
 	],
+	"docs": "Docs: https://www.9ui.dev/docs/components/menubar",
 	"type": "registry:ui"
 }

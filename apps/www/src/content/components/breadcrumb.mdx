@@ -65,7 +65,7 @@ To change the separator, pass an icon or text to `BreadcrumbSeparator` as childr
 
 ### Collapsed
 
-To shorten a long path, put the middle pages in a `Menu` and use `BreadcrumbEllipsis` as its trigger.
+To shorten a long path, put the middle pages in a [Menu](/docs/components/menu) and put `BreadcrumbEllipsis` inside its trigger. Give the trigger an `aria-label`.
 
 <ComponentPreview name="breadcrumb-collapsed-demo" />
 
@@ -79,17 +79,17 @@ To keep a long page name on one line, set a `max-w-*` class and `truncate` on `B
 
 To use your router's link, set `render` on `BreadcrumbLink`.
 
-<ComponentPreview name="breadcrumb-link-demo" />
+<ComponentPreview name="breadcrumb-link-component-demo" />
 
 ### RTL
 
-To show the breadcrumb right to left, set `dir="rtl"` on `html` and wrap your app in `DirectionProvider`. See [RTL](/docs/getting-started/rtl).
+To enable RTL support, see the [RTL guide](/docs/getting-started/rtl).
 
 <ComponentPreview name="breadcrumb-rtl-demo" direction="rtl" />
 
 ## API Reference
 
-Breadcrumb is built by 9ui, so this is its full API. Each part takes the props of its HTML element and adds none of its own.
+Breadcrumb is built by 9ui, so this is its full API. Each part takes the props of its HTML element.
 
 ### BreadcrumbLink
 
@@ -97,7 +97,7 @@ To use your router's link, set `render`.
 
 ### BreadcrumbPage
 
-The current page. It is not a link and is marked with `aria-current="page"`.
+The current page. It isn't a link and is marked with `aria-current="page"`.
 
 ### BreadcrumbSeparator
 

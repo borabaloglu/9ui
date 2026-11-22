@@ -54,38 +54,28 @@ import {
 ```
 
 ```tsx title="Anatomy"
-<CommandDialog>
-	<Command>
-		<CommandInput />
-		<CommandEmpty />
-		<CommandList>
-			<CommandGroup>
-				<CommandGroupLabel />
-				<CommandCollection />
-			</CommandGroup>
-			<CommandSeparator />
-			<CommandItem>
-				<CommandShortcut />
-			</CommandItem>
-		</CommandList>
-		<CommandFooter />
-	</Command>
-</CommandDialog>
+<Command>
+	<CommandInput />
+	<CommandEmpty />
+	<CommandList>
+		<CommandGroup>
+			<CommandGroupLabel />
+			<CommandCollection />
+		</CommandGroup>
+		<CommandSeparator />
+		<CommandItem>
+			<CommandShortcut />
+		</CommandItem>
+	</CommandList>
+	<CommandFooter />
+</Command>
 ```
-
-`Command` is an [Autocomplete](/docs/components/autocomplete) whose list is always open, so it takes the same props, like `items` and `filter`.
-
-`CommandInput` has no styles. Set it as the `render` of `InputGroupInput` to style it as an [Input Group](/docs/components/input-group), and give it an `aria-label`.
-
-To keep items clear of the scrollbar, set `scrollbarGutter` on `CommandList`.
-
-To run a command, set `onClick` on `CommandItem`. It also runs when the item is chosen with the keyboard.
 
 ## Examples
 
 ### Dialog
 
-Wrap `Command` in `CommandDialog` to open it in a dialog. Set `title` and `description` to name the dialog for screen readers.
+Wrap `Command` in `CommandDialog` to open it in a dialog. Control it with `open` and `onOpenChange`. Set `title` and `description` on `CommandDialog` to name the dialog for screen readers.
 
 <ComponentPreview name="command-dialog-demo" />
 
@@ -97,13 +87,92 @@ Pass your own classes to `CommandInput` and wrap `CommandList` to change the lay
 
 ### RTL
 
-To show the command menu right to left, set `dir="rtl"` on `html` and wrap your app in `DirectionProvider`. See [RTL](/docs/getting-started/rtl).
+To enable RTL support, see the [RTL guide](/docs/getting-started/rtl).
 
 <ComponentPreview name="command-rtl-demo" direction="rtl" />
 
+## Tips
+
+<Tips>
+
+<Tip title="Label the input">
+
+Give `CommandInput` an `aria-label`.
+
+```tsx {3}
+<InputGroup>
+	<InputGroupInput
+		aria-label="Search commands"
+		render={<CommandInput />}
+	/>
+</InputGroup>
+```
+
+</Tip>
+
+<Tip title="Use Autocomplete props">
+
+`Command` takes the same props as [Autocomplete](/docs/components/autocomplete), like `items` and `filter`.
+
+```tsx {1}
+<Command items={pages} filter={null}>
+	<CommandList>
+		{(page: Page) => (
+			<CommandItem key={page.value} value={page}>
+				{page.label}
+			</CommandItem>
+		)}
+	</CommandList>
+</Command>
+```
+
+</Tip>
+
+<Tip title="Style the input as an Input Group">
+
+To style `CommandInput` as an [Input Group](/docs/components/input-group), set it as the `render` of `InputGroupInput`.
+
+```tsx {5}
+<InputGroup>
+	<InputGroupInput
+		placeholder="Type a command or search…"
+		aria-label="Search commands"
+		render={<CommandInput />}
+	/>
+</InputGroup>
+```
+
+</Tip>
+
+<Tip title="Keep items clear of the scrollbar">
+
+To keep items clear of the scrollbar, set `scrollbarGutter` on `CommandList`.
+
+```tsx {1}
+<CommandList scrollbarGutter>
+	<CommandItem value="settings">Settings</CommandItem>
+</CommandList>
+```
+
+</Tip>
+
+<Tip title="Run a command">
+
+To run a command, set `onClick` on `CommandItem`.
+
+```tsx {1}
+<CommandItem value="new-document" onClick={() => createDocument()}>
+	New document
+</CommandItem>
+```
+
+</Tip>
+
+</Tips>
+
 ## API Reference
 
-What 9ui adds to Base UI Autocomplete. For the rest of the API, see the [Base UI Autocomplete reference](https://base-ui.com/react/components/autocomplete#api-reference).
+What 9ui adds to Base UI Autocomplete. See the [Base UI](https://base-ui.com/react/components/autocomplete#api-reference) documentation for the rest.
 
 ### Command
 
@@ -121,28 +190,24 @@ Wraps `Autocomplete` with a list that is always shown.
 			name: "inline",
 			type: "boolean",
 			default: "true",
-			baseDefault: "false",
 			description: "Renders the list in place instead of in a popup.",
 		},
 		{
 			name: "autoHighlight",
 			type: 'boolean | "always"',
 			default: '"always"',
-			baseDefault: "false",
 			description: "Always highlights the first matching item.",
 		},
 		{
 			name: "keepHighlight",
 			type: "boolean",
 			default: "true",
-			baseDefault: "false",
 			description: "Keeps the highlight when the pointer leaves the list.",
 		},
 		{
 			name: "loopFocus",
 			type: "boolean",
 			default: "false",
-			baseDefault: "true",
 			description: "Stops at the first and last item instead of looping through the input.",
 		},
 	]}

@@ -1,6 +1,8 @@
 {
 	"$schema": "https://ui.shadcn.com/schema/registry-item.json",
 	"name": "collapsible",
+	"title": "Collapsible",
+	"description": "A panel that a button shows or hides.",
 	"dependencies": ["@base-ui/react"],
 	"registryDependencies": [],
 	"files": [
@@ -11,5 +13,6 @@
 			"target": ""
 		}
 	],
+	"docs": "Docs: https://www.9ui.dev/docs/components/collapsible",
 	"type": "registry:ui"
 }

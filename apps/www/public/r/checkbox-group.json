@@ -1,6 +1,8 @@
 {
 	"$schema": "https://ui.shadcn.com/schema/registry-item.json",
 	"name": "checkbox-group",
+	"title": "Checkbox Group",
+	"description": "A set of checkboxes that share one value.",
 	"dependencies": ["@base-ui/react"],
 	"registryDependencies": ["@9ui/checkbox"],
 	"files": [
@@ -11,5 +13,6 @@
 			"target": ""
 		}
 	],
+	"docs": "Docs: https://www.9ui.dev/docs/components/checkbox-group",
 	"type": "registry:ui"
 }

@@ -9,7 +9,19 @@ description: A calendar in a popover for picking a date.
 
 The date picker component is a composition of the `Calendar` and `Popover` components.
 
-Follow installation instructions for the [`Calendar`](/docs/components/calendar) and [`Popover`](/docs/components/popover) components.
+<Steps>
+
+<Step>Follow the installation instructions for the [Calendar](/docs/components/calendar) and [Popover](/docs/components/popover) components.</Step>
+
+<Step>Add the components your picker uses. The demos on this page use [Button](/docs/components/button), [Field](/docs/components/field) and [Input Group](/docs/components/input-group).</Step>
+
+<Step>Install the dependencies.</Step>
+
+```bash title="Terminal"
+npm install date-fns
+```
+
+</Steps>
 
 ## Usage
 
@@ -39,15 +51,11 @@ To select a range, set `mode="range"` on `Calendar`.
 
 <ComponentPreview name="date-picker-range-demo" />
 
----
-
 ### Label
 
 To label the picker, wrap it in `Field` and point `FieldLabel` at the trigger with `htmlFor`.
 
-<ComponentPreview name="date-picker-field-demo" />
-
----
+<ComponentPreview name="date-picker-label-demo" />
 
 ### Date of Birth
 
@@ -55,23 +63,17 @@ To jump between months and years, set `captionLayout="dropdown"` on `Calendar`.
 
 <ComponentPreview name="date-picker-date-of-birth-demo" />
 
----
-
 ### Input
 
 To let people type the date, use an `InputGroup` and pass its ref to `anchor` on `PopoverPopup`.
 
 <ComponentPreview name="date-picker-input-demo" />
 
----
-
 ### Time Input
 
 To pick a time too, add an input with `type="time"`.
 
-<ComponentPreview name="date-picker-with-time-demo" />
-
----
+<ComponentPreview name="date-picker-time-input-demo" />
 
 ### Natural Language
 
@@ -79,11 +81,9 @@ To accept text like "next Friday", parse the input with [`chrono-node`](https://
 
 <ComponentPreview name="date-picker-natural-language-demo" />
 
----
-
 ### RTL
 
-To show the date picker right to left, set `dir="rtl"` on `html` and wrap your app in `DirectionProvider`. See [RTL](/docs/getting-started/rtl).
+To enable RTL support, see the [RTL guide](/docs/getting-started/rtl).
 
 <ComponentPreview name="date-picker-rtl-demo" direction="rtl" />
 

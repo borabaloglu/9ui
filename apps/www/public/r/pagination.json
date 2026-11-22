@@ -1,6 +1,8 @@
 {
 	"$schema": "https://ui.shadcn.com/schema/registry-item.json",
 	"name": "pagination",
+	"title": "Pagination",
+	"description": "A control for navigating between pages of content.",
 	"dependencies": ["@base-ui/react", "lucide-react"],
 	"registryDependencies": ["@9ui/button"],
 	"files": [
@@ -11,5 +13,6 @@
 			"target": ""
 		}
 	],
+	"docs": "Docs: https://www.9ui.dev/docs/components/pagination",
 	"type": "registry:ui"
 }

@@ -1,6 +1,8 @@
 {
 	"$schema": "https://ui.shadcn.com/schema/registry-item.json",
 	"name": "emoji-picker",
+	"title": "Emoji Picker",
+	"description": "A searchable grid for picking an emoji.",
 	"dependencies": ["lucide-react", "frimousse"],
 	"registryDependencies": ["@9ui/input-group", "@9ui/spinner"],
 	"files": [
@@ -11,5 +13,6 @@
 			"target": ""
 		}
 	],
+	"docs": "Docs: https://www.9ui.dev/docs/components/emoji-picker",
 	"type": "registry:ui"
 }

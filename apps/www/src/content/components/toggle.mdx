@@ -1,7 +1,8 @@
 ---
 title: Toggle
-description: Displays a control to toggle between two states.
+description: A button that switches between on and off.
 ---
+
 <ComponentLinks
 	links={[
 		{
@@ -34,14 +35,12 @@ npx shadcn@latest add @9ui/toggle
 ## Usage
 
 ```tsx title="Imports"
-import { Toggle } from "@/components/ui/toggle"
+import { Toggle, toggleVariants } from "@/components/ui/toggle"
 ```
 
 ```tsx title="Anatomy"
 <Toggle />
 ```
-
-Give an icon-only toggle an `aria-label`.
 
 ## Examples
 
@@ -51,11 +50,11 @@ Set `variant="outline"` for a bordered toggle.
 
 <ComponentPreview name="toggle-outline-demo" />
 
-### Sizes
+### Size
 
-Set `size` to `sm` or `lg` to change the size. A toggle with only an icon is square.
+To change the size, set `size`. A toggle with only an icon is square.
 
-<ComponentPreview name="toggle-sizes-demo" />
+<ComponentPreview name="toggle-size-demo" />
 
 ### Controlled
 
@@ -71,13 +70,31 @@ Set `disabled` to prevent interaction.
 
 ### RTL
 
-To show the toggle right to left, set `dir="rtl"` on `html` and wrap your app in `DirectionProvider`. See [RTL](/docs/getting-started/rtl).
+To enable RTL support, see the [RTL guide](/docs/getting-started/rtl).
 
 <ComponentPreview name="toggle-rtl-demo" direction="rtl" />
 
+## Tips
+
+<Tips>
+
+<Tip title="Label icon-only toggles">
+
+Give an icon-only toggle an `aria-label`.
+
+```tsx {1}
+<Toggle aria-label="Bookmark">
+	<BookmarkIcon />
+</Toggle>
+```
+
+</Tip>
+
+</Tips>
+
 ## API Reference
 
-What 9ui adds to Base UI Toggle. For the rest of the API, see the [Base UI Toggle reference](https://base-ui.com/react/components/toggle#api-reference).
+What 9ui adds to Base UI Toggle. See the [Base UI](https://base-ui.com/react/components/toggle#api-reference) documentation for the rest.
 
 ### Toggle
 
@@ -98,7 +115,7 @@ What 9ui adds to Base UI Toggle. For the rest of the API, see the [Base UI Toggl
 	]}
 />
 
-### toggleVariants
+### Exports
 
 <ApiTable
 	label="Export"
@@ -111,7 +128,7 @@ What 9ui adds to Base UI Toggle. For the rest of the API, see the [Base UI Toggl
 	]}
 />
 
-### Data attributes
+### Data Attributes
 
 <ApiTable
 	label="Attribute"

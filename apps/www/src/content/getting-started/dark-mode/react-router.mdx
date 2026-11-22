@@ -1,0 +1,92 @@
+---
+title: React Router
+description: Add dark mode to a React Router app.
+---
+
+<Steps>
+
+<Step>Add the theme script to your root layout.</Step>
+
+The script sets the `dark` class on `html` before the first paint, from the saved theme or the system setting.
+
+```tsx {8-17,21,25} title="app/root.tsx"
+import {
+	Links,
+	Meta,
+	Scripts,
+	ScrollRestoration,
+} from "react-router"
+
+const themeScript = `(function () {
+	var media = window.matchMedia("(prefers-color-scheme: dark)")
+	function applyTheme() {
+		var theme = localStorage.getItem("theme")
+		var isDark = theme ? theme === "dark" : media.matches
+		document.documentElement.classList.toggle("dark", isDark)
+	}
+	applyTheme()
+	media.addEventListener("change", applyTheme)
+})()`
+
+export function Layout({ children }: { children: React.ReactNode }) {
+	return (
+		<html lang="en" suppressHydrationWarning>
+			<head>
+				<meta charSet="utf-8" />
+				<meta name="viewport" content="width=device-width, initial-scale=1" />
+				<script dangerouslySetInnerHTML={{ __html: themeScript }} />
+				<Meta />
+				<Links />
+			</head>
+			<body>
+				{children}
+				<ScrollRestoration />
+				<Scripts />
+			</body>
+		</html>
+	)
+}
+```
+
+<Step>Add a theme toggle.</Step>
+
+```tsx title="app/components/theme-toggle.tsx"
+import { MoonIcon, SunIcon } from "lucide-react"
+
+import { Button } from "~/components/ui/button"
+
+export function ThemeToggle() {
+	const toggleTheme = () => {
+		const isDark = document.documentElement.classList.toggle("dark")
+		localStorage.setItem("theme", isDark ? "dark" : "light")
+	}
+
+	return (
+		<Button
+			variant="ghost"
+			size="icon"
+			aria-label="Toggle theme"
+			onClick={toggleTheme}
+		>
+			<MoonIcon className="dark:hidden" />
+			<SunIcon className="hidden dark:block" />
+		</Button>
+	)
+}
+```
+
+<Step>Use the theme toggle in your app.</Step>
+
+```tsx {1,6} title="app/routes/home.tsx"
+import { ThemeToggle } from "~/components/theme-toggle"
+
+export default function Home() {
+	return (
+		<header>
+			<ThemeToggle />
+		</header>
+	)
+}
+```
+
+</Steps>

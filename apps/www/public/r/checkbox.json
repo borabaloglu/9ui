@@ -1,6 +1,8 @@
 {
 	"$schema": "https://ui.shadcn.com/schema/registry-item.json",
 	"name": "checkbox",
+	"title": "Checkbox",
+	"description": "A box that turns an option on or off.",
 	"dependencies": ["@base-ui/react", "lucide-react"],
 	"registryDependencies": [],
 	"files": [
@@ -11,5 +13,6 @@
 			"target": ""
 		}
 	],
+	"docs": "Docs: https://www.9ui.dev/docs/components/checkbox",
 	"type": "registry:ui"
 }

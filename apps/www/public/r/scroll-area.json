@@ -1,6 +1,8 @@
 {
 	"$schema": "https://ui.shadcn.com/schema/registry-item.json",
 	"name": "scroll-area",
+	"title": "Scroll Area",
+	"description": "A scrollable region with custom scrollbars.",
 	"dependencies": ["@base-ui/react"],
 	"registryDependencies": [],
 	"files": [
@@ -11,5 +13,6 @@
 			"target": ""
 		}
 	],
+	"docs": "Docs: https://www.9ui.dev/docs/components/scroll-area",
 	"type": "registry:ui"
 }

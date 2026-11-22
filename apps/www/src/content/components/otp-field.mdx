@@ -2,6 +2,7 @@
 title: OTP Field
 description: A one-time code input split into single-character slots.
 ---
+
 <ComponentLinks
 	links={[
 		{
@@ -48,15 +49,19 @@ import {
 </OTPField>
 ```
 
-Set `length` to the number of slots and render one `OTPFieldInput` for each. Give every field a visible label: pass an `id` and point a [Label](/docs/components/label) at it with `htmlFor`, or use [Field](/docs/components/field). The label names the first slot, so set `aria-label` on the others to announce their position.
-
 ## Examples
 
 ### Size
 
-Set `size` to `sm`, `default` or `lg` on `OTPField`.
+To change the size, set `size` on `OTPField`.
 
 <ComponentPreview name="otp-field-size-demo" />
+
+### Length
+
+Set `length` on `OTPField` to change the number of slots.
+
+<ComponentPreview name="otp-field-length-demo" />
 
 ### Separator
 
@@ -70,33 +75,27 @@ Use `Field` to add a label and a description.
 
 <ComponentPreview name="otp-field-field-demo" />
 
+### Disabled
+
+Set `disabled` on `OTPField` to prevent interaction.
+
+<ComponentPreview name="otp-field-disabled-demo" />
+
+### Read-Only
+
+Set `readOnly` on `OTPField` to show a code that can't be changed.
+
+<ComponentPreview name="otp-field-read-only-demo" />
+
 ### Invalid
 
 Set `invalid` on `Field` to show the error state.
 
 <ComponentPreview name="otp-field-invalid-demo" />
 
-### Disabled
-
-Set `disabled` to prevent interaction.
-
-<ComponentPreview name="otp-field-disabled-demo" />
-
-### Read-only
-
-Set `readOnly` to show a code that cannot be changed. The slots drop their fill and shadow. In a theme with a transparent `--input`, it looks the same as an editable field.
-
-<ComponentPreview name="otp-field-read-only-demo" />
-
-### Length
-
-Set `length` to change the number of slots.
-
-<ComponentPreview name="otp-field-length-demo" />
-
 ### Alphanumeric
 
-Set `validationType` to `alphanumeric` to accept letters and numbers.
+Set `validationType="alphanumeric"` on `OTPField` to accept letters and numbers.
 
 <ComponentPreview name="otp-field-alphanumeric-demo" />
 
@@ -108,7 +107,7 @@ Check the code once every slot is filled. Compare the value in `onValueChange`, 
 
 ### RTL
 
-To show the OTP field right to left, set `dir="rtl"` on `html` and wrap your app in `DirectionProvider`. See [RTL](/docs/getting-started/rtl).
+To enable RTL support, see the [RTL guide](/docs/getting-started/rtl).
 
 <ComponentPreview name="otp-field-rtl-demo" direction="rtl" />
 
@@ -116,9 +115,44 @@ To show the OTP field right to left, set `dir="rtl"` on `html` and wrap your app
 
 See the form guides for [Base UI Form](/docs/forms/base-ui#otp-field), [React Hook Form](/docs/forms/react-hook-form#otp-field) and [TanStack Form](/docs/forms/tanstack-form#otp-field).
 
+## Tips
+
+<Tips>
+
+<Tip title="Label the field">
+
+Give every field a visible label: set `id` on `OTPField` and point a [Label](/docs/components/label) at it with `htmlFor`, or use [Field](/docs/components/field).
+
+```tsx {1-2}
+<Label htmlFor="code">Verification code</Label>
+<OTPField id="code" length={6}>
+	{Array.from({ length: 6 }, (_, index) => (
+		<OTPFieldInput key={index} aria-label={`Character ${index + 1} of 6`} />
+	))}
+</OTPField>
+```
+
+</Tip>
+
+<Tip title="Announce the position of each slot">
+
+To announce the position of each slot, set `aria-label` on `OTPFieldInput`.
+
+```tsx {3}
+<OTPField length={6}>
+	{Array.from({ length: 6 }, (_, index) => (
+		<OTPFieldInput key={index} aria-label={`Character ${index + 1} of 6`} />
+	))}
+</OTPField>
+```
+
+</Tip>
+
+</Tips>
+
 ## API Reference
 
-What 9ui adds to Base UI OTP Field. For the rest of the API, see the [Base UI OTP Field reference](https://base-ui.com/react/components/otp-field#api-reference).
+What 9ui adds to Base UI OTP Field. See the [Base UI](https://base-ui.com/react/components/otp-field#api-reference) documentation for the rest.
 
 ### OTPField
 
@@ -133,7 +167,7 @@ What 9ui adds to Base UI OTP Field. For the rest of the API, see the [Base UI OT
 	]}
 />
 
-### Data attributes
+### Data Attributes
 
 <ApiTable
 	label="Attribute"

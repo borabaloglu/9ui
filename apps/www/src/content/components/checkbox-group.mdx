@@ -2,6 +2,7 @@
 title: Checkbox Group
 description: A set of checkboxes that share one value.
 ---
+
 <ComponentLinks
 	links={[
 		{
@@ -23,6 +24,8 @@ npx shadcn@latest add @9ui/checkbox-group
 </div>
 
 <Steps>
+
+<Step>Add the [Checkbox](/docs/components/checkbox) component.</Step>
 
 <Step>Copy and paste the following code into your project.</Step>
 
@@ -48,13 +51,11 @@ import {
 </CheckboxGroup>
 ```
 
-Give each [Checkbox](/docs/components/checkbox) a `value`. The group's value is the list of checked values. Name the group by giving `CheckboxGroupLabel` an `id` and passing it to `aria-labelledby`.
-
 ## Examples
 
 ### Disabled
 
-Set `disabled` on the group to prevent interaction with every checkbox in it.
+Set `disabled` on `CheckboxGroup` to prevent interaction with every checkbox in it.
 
 <ComponentPreview name="checkbox-group-disabled-demo" />
 
@@ -68,7 +69,7 @@ Set `disabled` on a `Checkbox` to turn off a single option.
 
 Set `parent` on a `Checkbox` to check or clear every option at once. Control the group and pass every option's value to `allValues`. The parent shows the indeterminate state when only some options are checked.
 
-<ComponentPreview name="checkbox-group-parent-demo" />
+<ComponentPreview name="checkbox-group-parent-checkbox-demo" />
 
 ### Nested
 
@@ -78,7 +79,7 @@ Place a `CheckboxGroup` inside another to build a tree, and keep the two values 
 
 ### RTL
 
-To show the checkbox group right to left, set `dir="rtl"` on `html` and wrap your app in `DirectionProvider`. See [RTL](/docs/getting-started/rtl).
+To enable RTL support, see the [RTL guide](/docs/getting-started/rtl).
 
 <ComponentPreview name="checkbox-group-rtl-demo" direction="rtl" />
 
@@ -86,9 +87,50 @@ To show the checkbox group right to left, set `dir="rtl"` on `html` and wrap you
 
 See the form guides for [Base UI Form](/docs/forms/base-ui#checkbox-group), [React Hook Form](/docs/forms/react-hook-form#checkbox-group) and [TanStack Form](/docs/forms/tanstack-form#checkbox-group).
 
+## Tips
+
+<Tips>
+
+<Tip title="Name the group">
+
+To name the group, set an `id` on `CheckboxGroupLabel` and pass it to `aria-labelledby` on `CheckboxGroup`.
+
+```tsx {1-2}
+<CheckboxGroup aria-labelledby="notify-label">
+	<CheckboxGroupLabel id="notify-label">Notify me by</CheckboxGroupLabel>
+	<Label>
+		<Checkbox value="email" />
+		Email
+	</Label>
+</CheckboxGroup>
+```
+
+</Tip>
+
+<Tip title="Give each checkbox a value">
+
+Give each [Checkbox](/docs/components/checkbox) a `value`. The group's value is the list of checked values.
+
+```tsx {1,3,7}
+<CheckboxGroup defaultValue={["email"]}>
+	<Label>
+		<Checkbox value="email" />
+		Email
+	</Label>
+	<Label>
+		<Checkbox value="sms" />
+		Text messages
+	</Label>
+</CheckboxGroup>
+```
+
+</Tip>
+
+</Tips>
+
 ## API Reference
 
-What 9ui adds to Base UI Checkbox Group. For the rest of the API, see the [Base UI Checkbox Group reference](https://base-ui.com/react/components/checkbox-group#api-reference).
+What 9ui adds to Base UI Checkbox Group. See the [Base UI](https://base-ui.com/react/components/checkbox-group#api-reference) documentation for the rest.
 
 ### CheckboxGroupLabel
 

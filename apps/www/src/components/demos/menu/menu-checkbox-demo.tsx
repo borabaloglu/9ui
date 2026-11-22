@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import {
 	Menu,
 	MenuCheckboxItem,
+	MenuItem,
 	MenuPopup,
 	MenuSeparator,
 	MenuTrigger,
@@ -39,6 +40,8 @@ export default function MenuCheckboxDemo() {
 				</MenuCheckboxItem>
 				<MenuSeparator />
 				<MenuCheckboxItem disabled>Minimap</MenuCheckboxItem>
+				<MenuSeparator />
+				<MenuItem inset>Reset View</MenuItem>
 			</MenuPopup>
 		</Menu>
 	);

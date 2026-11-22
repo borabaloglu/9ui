@@ -49,10 +49,6 @@ import {
 </Collapsible>
 ```
 
-To open the panel by default, set `defaultOpen` on `Collapsible`.
-
-To let the browser's find in page open a closed panel, set `hiddenUntilFound` on `CollapsiblePanel`.
-
 ## Examples
 
 ### Button
@@ -69,10 +65,44 @@ Nest `Collapsible` components to build a file tree.
 
 ### RTL
 
-To show the collapsible right to left, set `dir="rtl"` on `html` and wrap your app in `DirectionProvider`. See [RTL](/docs/getting-started/rtl).
+To enable RTL support, see the [RTL guide](/docs/getting-started/rtl).
 
 <ComponentPreview name="collapsible-rtl-demo" direction="rtl" previewClassName="min-h-60 items-start" />
 
+## Tips
+
+<Tips>
+
+<Tip title="Open the panel by default">
+
+To open the panel by default, set `defaultOpen` on `Collapsible`.
+
+```tsx {1}
+<Collapsible defaultOpen>
+	<CollapsibleTrigger>Order details</CollapsibleTrigger>
+	<CollapsiblePanel>Orders ship within two days.</CollapsiblePanel>
+</Collapsible>
+```
+
+</Tip>
+
+<Tip title="Let find in page open a closed panel">
+
+To let the browser's find in page open a closed panel, set `hiddenUntilFound` on `CollapsiblePanel`.
+
+```tsx {3}
+<Collapsible>
+	<CollapsibleTrigger>Order details</CollapsibleTrigger>
+	<CollapsiblePanel hiddenUntilFound>
+		Orders ship within two days.
+	</CollapsiblePanel>
+</Collapsible>
+```
+
+</Tip>
+
+</Tips>
+
 ## API Reference
 
-9ui adds no props to Base UI Collapsible. For its API, see the [Base UI Collapsible reference](https://base-ui.com/react/components/collapsible#api-reference).
+See the [Base UI](https://base-ui.com/react/components/collapsible#api-reference) documentation for more information.

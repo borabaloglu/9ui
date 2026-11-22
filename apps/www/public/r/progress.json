@@ -1,6 +1,8 @@
 {
 	"$schema": "https://ui.shadcn.com/schema/registry-item.json",
 	"name": "progress",
+	"title": "Progress",
+	"description": "A bar that shows the progress of a task.",
 	"dependencies": ["@base-ui/react"],
 	"registryDependencies": [],
 	"files": [
@@ -21,5 +23,6 @@
 			}
 		}
 	},
+	"docs": "Docs: https://www.9ui.dev/docs/components/progress",
 	"type": "registry:ui"
 }

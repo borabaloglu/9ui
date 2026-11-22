@@ -1,6 +1,8 @@
 {
 	"$schema": "https://ui.shadcn.com/schema/registry-item.json",
 	"name": "number-field",
+	"title": "Number Field",
+	"description": "A numeric input with increment, decrement and scrub controls.",
 	"dependencies": ["@base-ui/react", "lucide-react"],
 	"registryDependencies": [],
 	"files": [
@@ -11,5 +13,6 @@
 			"target": ""
 		}
 	],
+	"docs": "Docs: https://www.9ui.dev/docs/components/number-field",
 	"type": "registry:ui"
 }

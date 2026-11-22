@@ -1,6 +1,8 @@
 {
 	"$schema": "https://ui.shadcn.com/schema/registry-item.json",
 	"name": "chart",
+	"title": "Chart",
+	"description": "A container, tooltip and legend for charts built with Recharts.",
 	"dependencies": ["recharts"],
 	"registryDependencies": [],
 	"files": [
@@ -11,5 +13,6 @@
 			"target": ""
 		}
 	],
+	"docs": "Docs: https://www.9ui.dev/docs/components/chart",
 	"type": "registry:ui"
 }

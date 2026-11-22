@@ -77,6 +77,7 @@ export default function FormBaseUiRadioGroupDemo() {
 				>
 					<Field name="experience">
 						<RadioGroup
+							aria-label="Experience level"
 							className="w-full items-stretch any-pointer-coarse:gap-3"
 							required
 						>

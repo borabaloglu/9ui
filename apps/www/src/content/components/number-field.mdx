@@ -1,7 +1,8 @@
 ---
 title: Number Field
-description: A numeric input with increment, decrement, and scrub controls.
+description: A numeric input with increment, decrement and scrub controls.
 ---
+
 <ComponentLinks
 	links={[
 		{
@@ -55,25 +56,23 @@ import {
 </NumberField>
 ```
 
-Give every number field a name: wrap it in [Field](/docs/components/field) with a `FieldLabel`, or set `aria-label` on `NumberFieldInput` when there is no visible label.
-
 ## Examples
 
 ### Size
 
-Set `size` to `sm`, `default` or `lg` on `NumberField`.
+To change the size, set `size` on `NumberField`.
 
 <ComponentPreview name="number-field-size-demo" />
 
 ### Step
 
-Set `step` to change how much each press adds or removes. Hold Shift for `largeStep` and Alt for `smallStep`.
+Set `step` on `NumberField` to change how much each press adds or removes. Hold Shift for `largeStep` and Alt for `smallStep`.
 
 <ComponentPreview name="number-field-step-demo" />
 
 ### Format
 
-Set `format` to show the value as a currency, percentage or unit. It takes the same options as `Intl.NumberFormat`.
+Set `format` on `NumberField` to show the value as a currency, percentage or unit. It takes the same options as `Intl.NumberFormat`.
 
 <ComponentPreview name="number-field-format-demo" />
 
@@ -85,21 +84,21 @@ Wrap the label in `NumberFieldScrubArea` to change the value by dragging it.
 
 ### Wheel Scrub
 
-Set `allowWheelScrub` to change the value with the mouse wheel while the input is focused and hovered.
+Set `allowWheelScrub` on `NumberField` to change the value with the mouse wheel while the input is focused and hovered.
 
 <ComponentPreview name="number-field-wheel-scrub-demo" />
 
-### Read-only
-
-Set `readOnly` to show a value that cannot be changed. The field drops its fill and shadow, the steppers dim and the input stays focusable. In a theme with a transparent `--input`, it looks the same as an editable field.
-
-<ComponentPreview name="number-field-read-only-demo" />
-
 ### Disabled
 
-Set `disabled` to prevent interaction.
+Set `disabled` on `NumberField` to prevent interaction.
 
 <ComponentPreview name="number-field-disabled-demo" />
+
+### Read-Only
+
+Set `readOnly` on `NumberField` to show a value that can't be changed.
+
+<ComponentPreview name="number-field-read-only-demo" />
 
 ### Invalid
 
@@ -109,7 +108,7 @@ Set `invalid` on `Field` to show the error state, and clear it once the value is
 
 ### RTL
 
-To show the number field right to left, set `dir="rtl"` on `html` and wrap your app in `DirectionProvider`. See [RTL](/docs/getting-started/rtl).
+To enable RTL support, see the [RTL guide](/docs/getting-started/rtl).
 
 <ComponentPreview name="number-field-rtl-demo" direction="rtl" />
 
@@ -117,9 +116,50 @@ To show the number field right to left, set `dir="rtl"` on `html` and wrap your 
 
 See the form guides for [Base UI Form](/docs/forms/base-ui#number-field), [React Hook Form](/docs/forms/react-hook-form#number-field) and [TanStack Form](/docs/forms/tanstack-form#number-field).
 
+## Tips
+
+<Tips>
+
+<Tip title="Label the number field">
+
+To label a number field, wrap it in [Field](/docs/components/field) with a `FieldLabel`.
+
+```tsx {1-2}
+<Field name="quantity">
+	<FieldLabel>Quantity</FieldLabel>
+	<NumberField defaultValue={1}>
+		<NumberFieldGroup>
+			<NumberFieldDecrement />
+			<NumberFieldInput />
+			<NumberFieldIncrement />
+		</NumberFieldGroup>
+	</NumberField>
+</Field>
+```
+
+</Tip>
+
+<Tip title="Name a number field with no visible label">
+
+Set `aria-label` on `NumberFieldInput` when there is no visible label.
+
+```tsx {4}
+<NumberField defaultValue={1}>
+	<NumberFieldGroup>
+		<NumberFieldDecrement />
+		<NumberFieldInput aria-label="Quantity" />
+		<NumberFieldIncrement />
+	</NumberFieldGroup>
+</NumberField>
+```
+
+</Tip>
+
+</Tips>
+
 ## API Reference
 
-What 9ui adds to Base UI Number Field. For the rest of the API, see the [Base UI Number Field reference](https://base-ui.com/react/components/number-field#api-reference).
+What 9ui adds to Base UI Number Field. See the [Base UI](https://base-ui.com/react/components/number-field#api-reference) documentation for the rest.
 
 ### NumberField
 
@@ -134,7 +174,7 @@ What 9ui adds to Base UI Number Field. For the rest of the API, see the [Base UI
 	]}
 />
 
-### Data attributes
+### Data Attributes
 
 <ApiTable
 	label="Attribute"

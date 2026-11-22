@@ -1,0 +1,165 @@
+---
+title: TanStack Start
+description: Add dark mode to a TanStack Start app.
+---
+
+<Steps>
+
+<Step>Create a theme provider.</Step>
+
+```tsx title="src/components/theme-provider.tsx"
+import { createContext, useContext, useEffect, useState } from "react"
+import { ScriptOnce } from "@tanstack/react-router"
+
+type Theme = "dark" | "light" | "system"
+
+type ThemeProviderState = {
+	theme: Theme
+	setTheme: (theme: Theme) => void
+}
+
+const storageKey = "theme"
+
+const themeScript = `(function(){try{var t=localStorage.getItem("${storageKey}");document.documentElement.classList.toggle("dark",t==="dark"||(t!=="light"&&matchMedia("(prefers-color-scheme: dark)").matches))}catch(e){}})()`
+
+const ThemeProviderContext = createContext<ThemeProviderState | undefined>(
+	undefined
+)
+
+function applyTheme(theme: Theme) {
+	const isDark =
+		theme === "dark" ||
+		(theme === "system" &&
+			window.matchMedia("(prefers-color-scheme: dark)").matches)
+
+	document.documentElement.classList.toggle("dark", isDark)
+}
+
+export function ThemeProvider({ children }: { children: React.ReactNode }) {
+	const [theme, setThemeState] = useState<Theme>("system")
+
+	useEffect(() => {
+		const stored = localStorage.getItem(storageKey)
+
+		if (stored === "light" || stored === "dark") {
+			setThemeState(stored)
+		}
+	}, [])
+
+	useEffect(() => {
+		if (theme !== "system") return
+
+		const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)")
+		const handleChange = () => applyTheme("system")
+
+		mediaQuery.addEventListener("change", handleChange)
+		return () => mediaQuery.removeEventListener("change", handleChange)
+	}, [theme])
+
+	const setTheme = (theme: Theme) => {
+		localStorage.setItem(storageKey, theme)
+		setThemeState(theme)
+		applyTheme(theme)
+	}
+
+	return (
+		<ThemeProviderContext value={{ theme, setTheme }}>
+			<ScriptOnce>{themeScript}</ScriptOnce>
+			{children}
+		</ThemeProviderContext>
+	)
+}
+
+export function useTheme() {
+	const context = useContext(ThemeProviderContext)
+
+	if (context === undefined) {
+		throw new Error("useTheme must be used within a ThemeProvider")
+	}
+
+	return context
+}
+```
+
+<Step>Wrap your root route with the provider.</Step>
+
+Add `suppressHydrationWarning` to `html`.
+
+```tsx {3,20,25} title="src/routes/__root.tsx"
+import { HeadContent, Scripts, createRootRoute } from "@tanstack/react-router"
+
+import { ThemeProvider } from "@/components/theme-provider"
+
+import appCss from "../styles.css?url"
+
+export const Route = createRootRoute({
+	head: () => ({
+		meta: [
+			{ charSet: "utf-8" },
+			{ name: "viewport", content: "width=device-width, initial-scale=1" },
+		],
+		links: [{ rel: "stylesheet", href: appCss }],
+	}),
+	shellComponent: RootDocument,
+})
+
+function RootDocument({ children }: { children: React.ReactNode }) {
+	return (
+		<html lang="en" suppressHydrationWarning>
+			<head>
+				<HeadContent />
+			</head>
+			<body>
+				<ThemeProvider>{children}</ThemeProvider>
+				<Scripts />
+			</body>
+		</html>
+	)
+}
+```
+
+<Step>Add a theme toggle.</Step>
+
+```tsx title="src/components/theme-toggle.tsx"
+import { MoonIcon, SunIcon } from "lucide-react"
+
+import { Button } from "@/components/ui/button"
+import { useTheme } from "@/components/theme-provider"
+
+export function ThemeToggle() {
+	const { setTheme } = useTheme()
+
+	const toggleTheme = () => {
+		const isDark = document.documentElement.classList.contains("dark")
+		setTheme(isDark ? "light" : "dark")
+	}
+
+	return (
+		<Button
+			onClick={toggleTheme}
+			variant="ghost"
+			size="icon"
+			aria-label="Toggle theme"
+		>
+			<MoonIcon className="dark:hidden" />
+			<SunIcon className="hidden dark:block" />
+		</Button>
+	)
+}
+```
+
+<Step>Use the theme toggle in your app.</Step>
+
+```tsx title="src/components/header.tsx"
+import { ThemeToggle } from "@/components/theme-toggle"
+
+export function Header() {
+	return (
+		<header>
+			<ThemeToggle />
+		</header>
+	)
+}
+```
+
+</Steps>

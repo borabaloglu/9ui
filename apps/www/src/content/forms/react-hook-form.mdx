@@ -1,7 +1,8 @@
 ---
 title: React Hook Form
-description: Build forms with React Hook Form and Zod.
+description: Forms with React Hook Form and Zod.
 ---
+
 <ComponentLinks
 	links={[
 		{
@@ -64,7 +65,7 @@ Wrap each `Field` in a `Controller` and pass the field state to it.
 
 ## Form
 
-### Create a schema
+### Create a Schema
 
 Define the form values with Zod, or any validation library that has a resolver.
 
@@ -82,13 +83,13 @@ const schema = z.object({
 type FormValues = z.infer<typeof schema>
 ```
 
-### Set up the form
+### Set Up the Form
 
 Pass the schema to `useForm` with `zodResolver`.
 
 ```tsx {7-13,20} title="form.tsx"
 import { zodResolver } from "@hookform/resolvers/zod"
-import { useForm } from "react-hook-form"
+import { Controller, useForm } from "react-hook-form"
 
 // ...
 
@@ -111,11 +112,13 @@ export default function ExampleForm() {
 }
 ```
 
-### Build the form
-
-Add a `Controller` with a `Field` for each value. The demo at the top of this page has the full code.
+Then add a `Controller` with a `Field` for each value. The demo at the top of this page has the full code.
 
 ## Submitting
+
+When a submit fails validation, React Hook Form moves focus to the first invalid field whose control receives `field.ref`.
+
+### Pending State
 
 To show progress while the form submits, pass `formState.isSubmitting` to `loading` on the submit button.
 
@@ -136,52 +139,32 @@ const {
 
 ## Validation
 
-### Validation modes
+### Validation Modes
 
 To choose when validation runs, set `mode` on `useForm`.
 
-```tsx {3} title="form.tsx"
-const form = useForm<FormValues>({
+```tsx {3}
+const { control, handleSubmit } = useForm<FormValues>({
 	resolver: zodResolver(schema),
 	mode: "onChange",
 })
 ```
 
-| Mode          | Description                                           |
-| ------------- | ----------------------------------------------------- |
-| `"onSubmit"`  | Validates on submit. This is the default.             |
-| `"onChange"`  | Validates on every change.                            |
-| `"onBlur"`    | Validates when a field loses focus.                   |
-| `"onTouched"` | Validates on the first blur, then on every change.    |
-| `"all"`       | Validates on blur and on change.                      |
+| Mode | Description |
+| --- | --- |
+| `"onSubmit"` | Validates on submit, then on every change. This is the default. |
+| `"onBlur"` | Validates when a field loses focus. |
+| `"onChange"` | Validates on every change. |
+| `"onTouched"` | Validates on the first blur, then on every change. |
+| `"all"` | Validates on blur and on change. |
 
-## Displaying Errors
-
-To show an error, set `invalid` on `Field` and render `FieldError` with `match`.
-
-```tsx {5,8-10} title="form.tsx"
-<Controller
-	name="email"
-	control={control}
-	render={({ field, fieldState }) => (
-		<Field name={field.name} invalid={fieldState.invalid}>
-			<FieldLabel>Email</FieldLabel>
-			<Input {...field} type="email" />
-			{fieldState.invalid && (
-				<FieldError match>{fieldState.error?.message}</FieldError>
-			)}
-		</Field>
-	)}
-/>
-```
-
-## Server-side Errors
+## Server-Side Errors
 
 To show an error returned by the server, call `setError`. Submit the form to see one.
 
 <ComponentPreview name="form-react-hook-form-server-errors-demo" />
 
-```tsx {1,11-14} title="form.tsx"
+```tsx {1,11-14}
 const { control, handleSubmit, setError } = useForm<FormValues>({
 	resolver: zodResolver(schema),
 	defaultValues: {
@@ -280,11 +263,11 @@ Pass `field.value` to `value` and `field.onChange` to `onValueChange`. Use `null
 
 ### Phone Input
 
-Pass `field.value`, `field.onChange` and `field.onBlur` to `PhoneInput`, and check the number with `isValidPhoneNumber` in the schema.
+Pass `field.value`, `field.onChange`, `field.onBlur` and `field.ref` to `PhoneInput`, and check the number with `isValidPhoneNumber` from `react-phone-number-input` in the schema.
 
 <ComponentPreview name="form-react-hook-form-phone-input-demo" />
 
-```tsx {8-10}
+```tsx {8-11}
 <Controller
 	name="phoneNumber"
 	control={control}
@@ -295,6 +278,7 @@ Pass `field.value`, `field.onChange` and `field.onBlur` to `PhoneInput`, and che
 				value={field.value}
 				onChange={field.onChange}
 				onBlur={field.onBlur}
+				ref={field.ref}
 			/>
 			{fieldState.invalid && (
 				<FieldError match>{fieldState.error?.message}</FieldError>
@@ -420,7 +404,9 @@ Pass `field.value` to `value` and `field.onChange` to `onValueChange` on `Checkb
 
 <ComponentPreview name="form-react-hook-form-checkbox-group-demo" />
 
-```tsx {8-9}
+```tsx {10-11}
+const labelId = useId()
+
 <Controller
 	name="channels"
 	control={control}
@@ -459,7 +445,7 @@ Pass `field.value` to `value` and `field.onChange` to `onValueChange` on `RadioG
 
 <ComponentPreview name="form-react-hook-form-radio-group-demo" />
 
-```tsx {7-9}
+```tsx {8-9}
 <Controller
 	name="experience"
 	control={control}
@@ -550,20 +536,24 @@ Pass `field.value` to `value` and `field.onChange` to `onValueChange`.
 
 ### Date Picker
 
-Pass `field.value` to `selected` and `field.onChange` to `onSelect` on `Calendar`, and set `aria-invalid` on the trigger. Use `null` as the empty value in `defaultValues`. Give `FieldError` an `id` and pass it to `aria-describedby` on the trigger so the error is announced.
+Pass `field.value` to `selected` and `field.onChange` to `onSelect` on `Calendar`, and set `aria-invalid` and `ref={field.ref}` on the trigger. Use `null` as the empty value in `defaultValues`. Give `FieldError` an `id` and pass it to `aria-describedby` on the trigger so the error is announced.
 
 <ComponentPreview name="form-react-hook-form-date-picker-demo" />
 
-```tsx {9,16-18}
+```tsx {13,20-22}
+const id = useId()
+const errorId = useId()
+const [open, setOpen] = useState(false)
+
 <Controller
 	name="startDate"
 	control={control}
 	render={({ field, fieldState }) => (
 		<Field name={field.name} invalid={fieldState.invalid}>
-			<FieldLabel>Start date</FieldLabel>
+			<FieldLabel htmlFor={id}>Start date</FieldLabel>
 			<Popover open={open} onOpenChange={setOpen}>
 				<PopoverTrigger
-					render={<Button variant="outline" aria-describedby={errorId} aria-invalid={fieldState.invalid || undefined} onBlur={field.onBlur} />}
+					render={<Button id={id} variant="outline" aria-describedby={errorId} aria-invalid={fieldState.invalid || undefined} ref={field.ref} onBlur={field.onBlur} />}
 				>
 					{field.value ? format(field.value, "MMM d, yyyy") : "Select a date"}
 				</PopoverTrigger>
@@ -592,7 +582,7 @@ To group related fields, wrap their controllers in `Fieldset` with a `FieldsetLe
 
 <ComponentPreview name="form-react-hook-form-fieldset-demo" />
 
-```tsx {1-5,19} title="form.tsx"
+```tsx {1-5,19}
 <Fieldset>
 	<FieldsetLegend>Billing Details</FieldsetLegend>
 	<FieldsetDescription>
@@ -620,7 +610,9 @@ To let people add and remove fields, use `useFieldArray`. Render a `Controller` 
 
 <ComponentPreview name="form-react-hook-form-array-demo" />
 
-```tsx {1-4,7-10,21,36}
+```tsx {3-6,9-12,23,38}
+import { useFieldArray } from "react-hook-form"
+
 const { fields, append, remove } = useFieldArray({
 	control,
 	name: "emails",

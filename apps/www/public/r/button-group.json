@@ -1,6 +1,8 @@
 {
 	"$schema": "https://ui.shadcn.com/schema/registry-item.json",
 	"name": "button-group",
+	"title": "Button Group",
+	"description": "A set of related buttons and controls joined into one unit.",
 	"dependencies": ["@base-ui/react"],
 	"registryDependencies": ["@9ui/separator"],
 	"files": [
@@ -11,5 +13,6 @@
 			"target": ""
 		}
 	],
+	"docs": "Docs: https://www.9ui.dev/docs/components/button-group",
 	"type": "registry:ui"
 }

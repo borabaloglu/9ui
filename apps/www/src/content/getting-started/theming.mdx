@@ -1,152 +1,139 @@
 ---
 title: Theming
-description: Using CSS variables to customize the theme.
+description: Change colors, radius and fonts with CSS variables.
 ---
 
-## Color Tokens
+9ui is themed with CSS variables in your global CSS file. `:root` holds the light values and `.dark` holds the dark ones. To set up dark mode, see [Dark Mode](/docs/getting-started/dark-mode).
 
-The theme system is built with semantic color tokens that represent specific use cases rather than literal colors. Here are the main color tokens and their use cases:
+For the full list of default values, see [Installation](/docs/getting-started/installation).
 
-### Base Colors
+## Change a Color
 
-- `background` / `foreground`: Primary background and text colors
-- `card` / `card-foreground`: Used for card components and their content
-- `popover` / `popover-foreground`: For popover, dropdown, dialog, etc.
-
-### Interactive Elements
-
-- `primary` / `primary-foreground`: Main brand color, used for primary actions
-- `secondary` / `secondary-foreground`: Less prominent actions and elements
-- `muted` / `muted-foreground`: Subdued elements like secondary text
-- `accent` / `accent-foreground`: Highlighted or featured elements
-- `destructive` / `destructive-foreground`: Dangerous or destructive actions
-
-### Status Colors
-
-- `warning`: Warning messages and alerts
-- `info`: Informational messages
-- `success`: Success states and confirmations
-
-Each status color is a single token used for text and icons. Backgrounds and borders use the same color at low opacity, like `bg-success/10`. Error states use `destructive`.
-
-### Utility Colors
-
-- `border`: Default border color
-- `input`: Form input borders
-- `ring`: Focus ring color for interactive elements
-
-### Chart Colors
-
-- `chart-1` through `chart-5`: Predefined colors for data visualizations
-
-## Theme Color Mapping
-
-The theme system uses semantic color tokens that map to specific shade values from the [Tailwind CSS color palette](https://tailwindcss.com/docs/customizing-colors). Each shade (neutral, gray, slate, stone, zinc) follows the same mapping pattern:
-
-### Light Mode Mapping
-
-- `background`: shade-50 (lightest)
-- `foreground`: shade-950 (darkest)
-- `card`: shade-100
-- `card-foreground`: shade-950
-- `popover`: shade-100
-- `popover-foreground`: shade-950
-- `primary`: shade-950
-- `primary-foreground`: shade-50
-- `secondary`: shade-200
-- `secondary-foreground`: shade-900
-- `muted`: shade-200
-- `muted-foreground`: shade-600
-- `accent`: shade-200
-- `accent-foreground`: shade-950
-- `destructive`: red-700
-- `destructive-foreground`: shade-50
-- `border`: shade-300
-- `input`: shade-100
-- `ring`: shade-400
-- `chart-1`: blue-700
-- `chart-2`: blue-500
-- `chart-3`: blue-400
-- `chart-4`: blue-300
-- `chart-5`: blue-200
-
-### Dark Mode Mapping
-
-- `background`: shade-950 (darkest)
-- `foreground`: shade-50 (lightest)
-- `card`: shade-900
-- `card-foreground`: shade-50
-- `popover`: shade-900
-- `popover-foreground`: shade-50
-- `primary`: shade-50
-- `primary-foreground`: shade-950
-- `secondary`: shade-800
-- `secondary-foreground`: shade-100
-- `muted`: shade-800
-- `muted-foreground`: shade-400
-- `accent`: shade-700
-- `accent-foreground`: shade-50
-- `destructive`: red-500
-- `destructive-foreground`: shade-50
-- `border`: shade-700
-- `input`: shade-800
-- `ring`: shade-500
-- `chart-1`: blue-300
-- `chart-2`: blue-500
-- `chart-3`: blue-600
-- `chart-4`: blue-700
-- `chart-5`: blue-800
-
-Where `shade` represents the selected shade (e.g., if using neutral shade: neutral-50, neutral-100, etc.).
-
-The status color system is inspired by [Emil Kowalski's Sonner](https://sonner.emilkowal.ski/) toast library, providing consistent visual feedback across different states.
-
-These status colors remain consistent across all theme shades, ensuring users can always recognize the semantic meaning regardless of the selected color theme.
-
-## Why OKLCH?
-
-1. **Wider Color Gamut**: OKLCH can represent a broader range of colors
-2. **Better Color Interpolation**: Smoother transitions and animations
-3. **Perceptual Uniformity**: More natural-looking color variations
-
-You can read more about OKLCH colors in [What are OKLCH colors?](https://jakub.kr/components/oklch-colors) by [Jakub Krehel](https://x.com/jakubkrehel).
-
-## Customizing Colors
-
-### Adding and Using New Colors
-
-To add new colors to your theme:
-
-<Steps>
-
-<Step>Add the CSS variables in `globals.css`</Step>
+To change a color, set its variable in `:root` and in `.dark`.
 
 ```css title="globals.css"
 :root {
-	/* Existing colors */
-	--custom-color: oklch(62.7% 0.265 303.9);
-	--custom-color-foreground: oklch(97.7% 0.014 308.299);
+	--primary: oklch(54.6% 0.245 262.881);
+	--primary-foreground: oklch(98.5% 0 0);
 }
 
 .dark {
-	/* Existing dark mode colors */
-	--custom-color: oklch(62.7% 0.265 303.9);
-	--custom-color-foreground: oklch(97.7% 0.014 308.299);
-}
-
-@theme inline {
-	/* Existing colors */
-	--color-custom-color: var(--custom-color);
-	--color-custom-color-foreground: var(--custom-color-foreground);
+	--primary: oklch(70.7% 0.165 254.624);
+	--primary-foreground: oklch(20.5% 0 0);
 }
 ```
 
-<Step>Use the new colors in your components</Step>
+Values are in OKLCH. Any CSS color works.
 
-```jsx title="component.tsx"
-<div className="bg-custom-color text-custom-color-foreground">
-	Custom colored content
-</div>
+## Colors
+
+Colors with a `-foreground` pair use it for the text and icons on top.
+
+### Surfaces
+
+| Token | Used for |
+| --- | --- |
+| `background` / `foreground` | The page and its text |
+| `card` / `card-foreground` | Cards and other raised surfaces |
+| `popover` / `popover-foreground` | Popups, such as popovers, menus and dialogs |
+
+### Fills
+
+| Token | Used for |
+| --- | --- |
+| `primary` / `primary-foreground` | Primary actions and selected states |
+| `secondary` / `secondary-foreground` | Secondary buttons and badges |
+| `muted` / `muted-foreground` | Neutral fills, such as tracks and skeletons. `muted-foreground` is the color of secondary text |
+| `accent` / `accent-foreground` | Hovered and highlighted items |
+| `destructive` | Destructive actions and errors |
+
+### Status
+
+| Token | Used for |
+| --- | --- |
+| `warning` | Warnings |
+| `info` | Neutral notices |
+| `success` | Success states |
+
+Each status color is one token for text and icons. For a background or border, use it at low opacity, like `bg-success/10`. Errors use `destructive`.
+
+### Borders, Inputs and Focus
+
+| Token | Used for |
+| --- | --- |
+| `border` | Borders |
+| `input` | The background of form controls. If it is transparent, read-only fields look the same as editable ones |
+| `ring` | The focus ring |
+
+### Charts
+
+| Token | Used for |
+| --- | --- |
+| `chart-1` to `chart-5` | Chart series |
+
+## Dark Themes
+
+In `.dark`, also set `secondary-elevated`, `muted-elevated` and `accent-elevated`, so fills stay visible on cards and popups. Use the base color with 5 more points of lightness.
+
+```css title="globals.css" {3,5,7}
+.dark {
+	--secondary: oklch(0.269 0 0);
+	--secondary-elevated: oklch(0.319 0 0);
+	--muted: oklch(0.269 0 0);
+	--muted-elevated: oklch(0.319 0 0);
+	--accent: oklch(0.371 0 0);
+	--accent-elevated: oklch(0.421 0 0);
+}
+```
+
+## Radius
+
+To change the corner radius of every component, set `--radius`.
+
+```css title="globals.css"
+:root {
+	--radius: 0.5rem;
+}
+```
+
+## Fonts
+
+To change the fonts, set `--font-sans` and `--font-mono`.
+
+```css title="globals.css"
+@theme inline {
+	--font-sans: "Geist", ui-sans-serif, system-ui, sans-serif;
+	--font-mono: "Geist Mono", ui-monospace, monospace;
+}
+```
+
+## Add a Color
+
+<Steps>
+
+<Step>Add the variables to your CSS.</Step>
+
+```css title="globals.css"
+:root {
+	--brand: oklch(62.7% 0.265 303.9);
+	--brand-foreground: oklch(97.7% 0.014 308.299);
+}
+
+.dark {
+	--brand: oklch(71.4% 0.203 305.504);
+	--brand-foreground: oklch(20.5% 0 0);
+}
+
+@theme inline {
+	--color-brand: var(--brand);
+	--color-brand-foreground: var(--brand-foreground);
+}
+```
+
+<Step>Use the color in your components.</Step>
+
+```tsx title="component.tsx"
+<div className="bg-brand text-brand-foreground">Brand colored content</div>
 ```
 
 </Steps>

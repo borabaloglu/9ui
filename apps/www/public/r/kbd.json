@@ -1,6 +1,8 @@
 {
 	"$schema": "https://ui.shadcn.com/schema/registry-item.json",
 	"name": "kbd",
+	"title": "Kbd",
+	"description": "A key or key combination shown as a keyboard shortcut.",
 	"dependencies": [],
 	"registryDependencies": [],
 	"files": [
@@ -11,5 +13,6 @@
 			"target": ""
 		}
 	],
+	"docs": "Docs: https://www.9ui.dev/docs/components/kbd",
 	"type": "registry:ui"
 }

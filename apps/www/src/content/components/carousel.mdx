@@ -1,7 +1,8 @@
 ---
 title: Carousel
-description: A slider to display multiple items in a scrollable view.
+description: A row of slides to scroll through.
 ---
+
 <ComponentLinks
 	links={[
 		{
@@ -28,11 +29,13 @@ npx shadcn@latest add @9ui/carousel
 
 <Steps>
 
-<Step>Install dependencies</Step>
+<Step>Install the dependencies.</Step>
 
 ```bash title="Terminal"
 npm install embla-carousel-react
 ```
+
+<Step>Add the [Button](/docs/components/button) component.</Step>
 
 <Step>Copy and paste the following code into your project.</Step>
 
@@ -46,10 +49,12 @@ npm install embla-carousel-react
 ```tsx title="Imports"
 import {
 	Carousel,
+	type CarouselApi,
 	CarouselContent,
 	CarouselItem,
 	CarouselNext,
 	CarouselPrevious,
+	useCarousel,
 } from "@/components/ui/carousel"
 ```
 
@@ -63,13 +68,11 @@ import {
 </Carousel>
 ```
 
-To name the carousel for screen readers, set `aria-label`.
-
 ## Examples
 
 ### Vertical
 
-To scroll vertically, set `orientation="vertical"` and give `CarouselContent` a height.
+To scroll vertically, set `orientation="vertical"` on `Carousel` and give `CarouselContent` a height.
 
 <ComponentPreview name="carousel-vertical-demo" />
 
@@ -81,7 +84,7 @@ To show several slides at once, set a `basis-*` class on each `CarouselItem`.
 
 ### Looped
 
-To loop back to the first slide, set `opts={{ loop: true }}`.
+To loop back to the first slide, set `opts={{ loop: true }}` on `Carousel`.
 
 <ComponentPreview name="carousel-looped-demo" />
 
@@ -93,13 +96,36 @@ To build your own controls, get the carousel API with `setApi`.
 
 ### RTL
 
-To show the carousel right to left, set `dir="rtl"` on `html` and wrap your app in `DirectionProvider`. See [RTL](/docs/getting-started/rtl).
+To enable RTL support, see the [RTL guide](/docs/getting-started/rtl).
 
 <ComponentPreview name="carousel-rtl-demo" direction="rtl" />
 
+## Tips
+
+<Tips>
+
+<Tip title="Name the carousel for screen readers">
+
+To name the carousel for screen readers, set `aria-label` on `Carousel`.
+
+```tsx {1}
+<Carousel aria-label="Featured products">
+	<CarouselContent>
+		<CarouselItem>Wireless headphones</CarouselItem>
+		<CarouselItem>Mechanical keyboard</CarouselItem>
+	</CarouselContent>
+	<CarouselPrevious />
+	<CarouselNext />
+</Carousel>
+```
+
+</Tip>
+
+</Tips>
+
 ## API Reference
 
-What 9ui adds to Embla Carousel. For the rest of the API, see the [Embla Carousel docs](https://www.embla-carousel.com/docs).
+What 9ui adds to Embla Carousel. See the [Embla Carousel](https://www.embla-carousel.com/docs) documentation for the rest.
 
 ### Carousel
 
@@ -143,7 +169,6 @@ What 9ui adds to Embla Carousel. For the rest of the API, see the [Embla Carouse
 			shortType: "union",
 			type: '"default" | "secondary" | "ghost" | "outline" | "link" | "destructive" | "destructive-outline"',
 			default: '"outline"',
-			baseDefault: '"default"',
 			description: <>The <code>Button</code> variant.</>,
 		},
 		{
@@ -151,7 +176,6 @@ What 9ui adds to Embla Carousel. For the rest of the API, see the [Embla Carouse
 			shortType: "union",
 			type: '"xs" | "sm" | "default" | "lg" | "xl" | "icon-xs" | "icon-sm" | "icon" | "icon-lg" | "icon-xl"',
 			default: '"icon-sm"',
-			baseDefault: '"default"',
 			description: <>The <code>Button</code> size.</>,
 		},
 	]}
@@ -166,7 +190,6 @@ What 9ui adds to Embla Carousel. For the rest of the API, see the [Embla Carouse
 			shortType: "union",
 			type: '"default" | "secondary" | "ghost" | "outline" | "link" | "destructive" | "destructive-outline"',
 			default: '"outline"',
-			baseDefault: '"default"',
 			description: <>The <code>Button</code> variant.</>,
 		},
 		{
@@ -174,7 +197,6 @@ What 9ui adds to Embla Carousel. For the rest of the API, see the [Embla Carouse
 			shortType: "union",
 			type: '"xs" | "sm" | "default" | "lg" | "xl" | "icon-xs" | "icon-sm" | "icon" | "icon-lg" | "icon-xl"',
 			default: '"icon-sm"',
-			baseDefault: '"default"',
 			description: <>The <code>Button</code> size.</>,
 		},
 	]}
@@ -199,7 +221,7 @@ What 9ui adds to Embla Carousel. For the rest of the API, see the [Embla Carouse
 	]}
 />
 
-### Data attributes
+### Data Attributes
 
 <ApiTable
 	label="Attribute"

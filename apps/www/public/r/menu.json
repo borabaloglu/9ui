@@ -1,6 +1,8 @@
 {
 	"$schema": "https://ui.shadcn.com/schema/registry-item.json",
 	"name": "menu",
+	"title": "Menu",
+	"description": "A list of actions or options that opens from a button.",
 	"dependencies": ["@base-ui/react", "lucide-react"],
 	"registryDependencies": [],
 	"files": [
@@ -11,5 +13,6 @@
 			"target": ""
 		}
 	],
+	"docs": "Docs: https://www.9ui.dev/docs/components/menu",
 	"type": "registry:ui"
 }

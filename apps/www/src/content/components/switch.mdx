@@ -2,6 +2,7 @@
 title: Switch
 description: A toggle control for switching between two states.
 ---
+
 <ComponentLinks
 	links={[
 		{
@@ -41,15 +42,13 @@ import { Switch } from "@/components/ui/switch"
 <Switch />
 ```
 
-Give every switch a visible label. Place it inside [Label](/docs/components/label), or use [Field](/docs/components/field) when it also needs a description or an error message. For a sibling `label` with `htmlFor` outside a `Field`, render the switch as a button with `nativeButton` and `render={<button />}`.
-
 ## Examples
 
-### Sizes
+### Size
 
 Set `size="sm"` for a smaller switch.
 
-<ComponentPreview name="switch-sm-demo" />
+<ComponentPreview name="switch-size-demo" />
 
 ### Disabled
 
@@ -71,7 +70,7 @@ Wrap the switch and its text in `FieldLabel` to make the whole card clickable. S
 
 ### RTL
 
-To show the switch right to left, set `dir="rtl"` on `html` and wrap your app in `DirectionProvider`. See [RTL](/docs/getting-started/rtl).
+To enable RTL support, see the [RTL guide](/docs/getting-started/rtl).
 
 <ComponentPreview name="switch-rtl-demo" direction="rtl" />
 
@@ -79,9 +78,55 @@ To show the switch right to left, set `dir="rtl"` on `html` and wrap your app in
 
 See the form guides for [Base UI Form](/docs/forms/base-ui#switch), [React Hook Form](/docs/forms/react-hook-form#switch) and [TanStack Form](/docs/forms/tanstack-form#switch).
 
+## Tips
+
+<Tips>
+
+<Tip title="Label the switch">
+
+Give every switch a visible label. Place it inside [Label](/docs/components/label).
+
+```tsx {1,4}
+<Label>
+	<Switch />
+	Enable notifications
+</Label>
+```
+
+</Tip>
+
+<Tip title="Add a description or an error message">
+
+Use [Field](/docs/components/field) when the switch also needs a description or an error message.
+
+```tsx {1,6}
+<Field name="notifications">
+	<FieldLabel>
+		<Switch />
+		Enable notifications
+	</FieldLabel>
+	<FieldDescription>Get notified about schedule changes.</FieldDescription>
+</Field>
+```
+
+</Tip>
+
+<Tip title="Use a sibling label">
+
+To use a sibling `label` with `htmlFor` outside a `Field`, set `nativeButton` and `render={<button />}` on `Switch`.
+
+```tsx {1}
+<Switch id="notifications" nativeButton render={<button />} />
+<Label htmlFor="notifications">Enable notifications</Label>
+```
+
+</Tip>
+
+</Tips>
+
 ## API Reference
 
-What 9ui adds to Base UI Switch. For the rest of the API, see the [Base UI Switch reference](https://base-ui.com/react/components/switch#api-reference).
+What 9ui adds to Base UI Switch. See the [Base UI](https://base-ui.com/react/components/switch#api-reference) documentation for the rest.
 
 ### Switch
 
@@ -96,7 +141,7 @@ What 9ui adds to Base UI Switch. For the rest of the API, see the [Base UI Switc
 	]}
 />
 
-### Data attributes
+### Data Attributes
 
 <ApiTable
 	label="Attribute"

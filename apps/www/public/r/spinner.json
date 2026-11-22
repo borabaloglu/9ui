@@ -1,6 +1,8 @@
 {
 	"$schema": "https://ui.shadcn.com/schema/registry-item.json",
 	"name": "spinner",
+	"title": "Spinner",
+	"description": "A spinning indicator for loading states.",
 	"dependencies": ["lucide-react"],
 	"registryDependencies": [],
 	"files": [
@@ -11,5 +13,6 @@
 			"target": ""
 		}
 	],
+	"docs": "Docs: https://www.9ui.dev/docs/components/spinner",
 	"type": "registry:ui"
 }

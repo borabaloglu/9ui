@@ -1,6 +1,6 @@
 ---
 title: Autocomplete
-description: A component that suggests options as the user types.
+description: An input that suggests options as the user types.
 ---
 
 <ComponentLinks
@@ -52,6 +52,8 @@ import {
 	AutocompleteStatus,
 	AutocompleteTrigger,
 	AutocompleteValue,
+	useAutocompleteFilter,
+	useAutocompleteFilteredItems,
 } from "@/components/ui/autocomplete"
 ```
 
@@ -59,7 +61,6 @@ import {
 <Autocomplete>
 	<AutocompleteInputGroup>
 		<AutocompleteInput />
-		<AutocompleteTrigger />
 		<AutocompleteClear />
 	</AutocompleteInputGroup>
 	<AutocompletePopup>
@@ -81,25 +82,9 @@ import {
 </Autocomplete>
 ```
 
-Set `render={<Input />}` on `AutocompleteInput` to style it as an [Input](/docs/components/input). Give every autocomplete a name: use [Field](/docs/components/field) with a `FieldLabel`, or set `aria-label` on `AutocompleteInput`.
-
-`AutocompletePopup` takes `side`, `align`, `sideOffset` and `alignOffset` to change where the popup opens.
-
 To remember the selected item, use [Combobox](/docs/components/combobox).
 
 ## Examples
-
-### Groups
-
-Use `AutocompleteGroup`, `AutocompleteGroupLabel` and `AutocompleteSeparator` to split items into labeled sections.
-
-<ComponentPreview name="autocomplete-groups-demo" />
-
-### Async Search
-
-Set `filter={null}` and pass the fetched results as `items`. Use `AutocompleteStatus` to announce loading and result counts.
-
-<ComponentPreview name="autocomplete-async-search-demo" />
 
 ### Input Group
 
@@ -113,51 +98,103 @@ Set `render={<AutocompleteClear />}` on `InputGroupButton` to add a clear button
 
 <ComponentPreview name="autocomplete-clear-demo" />
 
-### Inline
+### Groups
 
-Set `mode="both"` to fill the input with the highlighted item.
+Use `AutocompleteGroup`, `AutocompleteGroupLabel` and `AutocompleteSeparator` to split items into labeled sections.
 
-<ComponentPreview name="autocomplete-inline-demo" />
+<ComponentPreview name="autocomplete-groups-demo" />
 
 ### Auto Highlight
 
-Set `autoHighlight` to highlight the first match while typing.
+Set `autoHighlight` on `Autocomplete` to highlight the first match while typing.
 
-<ComponentPreview name="autocomplete-autohighlight-demo" />
+<ComponentPreview name="autocomplete-auto-highlight-demo" />
+
+### Inline
+
+Set `mode="both"` on `Autocomplete` to fill the input with the highlighted item.
+
+<ComponentPreview name="autocomplete-inline-demo" />
 
 ### Limit Results
 
-Set `limit` to cap the number of items shown. Use `AutocompleteStatus` to say how many more there are.
+Set `limit` on `Autocomplete` to cap the number of items shown. Use `AutocompleteStatus` to say how many more there are.
 
 <ComponentPreview name="autocomplete-limit-results-demo" />
 
+### Async Search
+
+Set `filter={null}` on `Autocomplete` and pass the fetched results as `items`. Use `AutocompleteStatus` to announce loading and result counts.
+
+<ComponentPreview name="autocomplete-async-search-demo" />
+
 ### Fuzzy Matcher
 
-Set `filter={null}` and pass `items` ranked by a fuzzy matcher like `match-sorter`.
+Set `filter={null}` on `Autocomplete` and pass `items` ranked by a fuzzy matcher like `match-sorter`.
 
 <ComponentPreview name="autocomplete-fuzzy-matcher-demo" />
 
 ### Virtualized
 
-Set `virtualized` and render the items with `@tanstack/react-virtual` to handle thousands of items.
+Set `virtualized` on `Autocomplete` and render the items with `@tanstack/react-virtual` to handle thousands of items.
 
 <ComponentPreview name="autocomplete-virtualized-demo" />
 
 ### Grid
 
-Set `grid` and wrap each line of items in `AutocompleteRow` to lay items out in a grid.
+Set `grid` on `Autocomplete` and wrap each row of items in `AutocompleteRow` to lay items out in a grid.
 
 <ComponentPreview name="autocomplete-grid-demo" />
 
 ### RTL
 
-To show the autocomplete right to left, set `dir="rtl"` on `html` and wrap your app in `DirectionProvider`. See [RTL](/docs/getting-started/rtl).
+To enable RTL support, see the [RTL guide](/docs/getting-started/rtl).
 
 <ComponentPreview name="autocomplete-rtl-demo" direction="rtl" />
 
+## Tips
+
+<Tips>
+
+<Tip title="Name the autocomplete">
+
+Give every autocomplete a name: use [Field](/docs/components/field) with a `FieldLabel` or set `aria-label` on `AutocompleteInput`.
+
+```tsx {2}
+<Autocomplete items={fruits}>
+	<AutocompleteInput aria-label="Fruit" render={<Input />} />
+</Autocomplete>
+```
+
+</Tip>
+
+<Tip title="Style the input as an Input">
+
+Set `render={<Input />}` on `AutocompleteInput` to style it as an [Input](/docs/components/input).
+
+```tsx {1}
+<AutocompleteInput placeholder="e.g. Apple" render={<Input />} />
+```
+
+</Tip>
+
+<Tip title="Change where the popup opens">
+
+`AutocompletePopup` takes `side`, `align`, `sideOffset` and `alignOffset` to change where the popup opens.
+
+```tsx {1}
+<AutocompletePopup side="top" align="end" sideOffset={8}>
+	<AutocompleteEmpty>No fruits found.</AutocompleteEmpty>
+</AutocompletePopup>
+```
+
+</Tip>
+
+</Tips>
+
 ## API Reference
 
-What 9ui adds to Base UI Autocomplete. For the rest of the API, see the [Base UI Autocomplete reference](https://base-ui.com/react/components/autocomplete#api-reference).
+What 9ui adds to Base UI Autocomplete. See the [Base UI](https://base-ui.com/react/components/autocomplete#api-reference) documentation for the rest.
 
 ### AutocompletePopup
 
@@ -176,14 +213,12 @@ Bundles the portal, positioner and popup.
 			name: "align",
 			type: '"start" | "center" | "end"',
 			default: '"start"',
-			baseDefault: '"center"',
 			description: "How the popup lines up with the input on that side.",
 		},
 		{
 			name: "sideOffset",
 			type: "number | OffsetFunction",
 			default: "4",
-			baseDefault: "0",
 			description: "The gap between the input and the popup.",
 		},
 		{
@@ -216,7 +251,7 @@ The component file also exports these.
 		{
 			name: "useAutocompleteFilter()",
 			shortType: "Filter",
-			type: "(options?: UseFilterOptions) => Filter",
+			type: "(options?: AutocompleteFilterOptions) => Filter",
 			description: <>Returns locale-aware <code>contains</code>, <code>startsWith</code> and <code>endsWith</code> matchers for the <code>filter</code> prop.</>,
 		},
 		{

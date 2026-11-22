@@ -6,7 +6,7 @@ label: New
 
 9ui components live in your codebase, so you will restyle them, change them and add your own. The 9ui skills teach your AI agent to do that the way the library was built: every component follows one rulebook, and every change is checked against it.
 
-The rulebook is yours. The skills never block a change. They ask, adapt, and always tell you when a change is inconsistent with other components, breaks with real content, or goes against a motion or accessibility standard.
+A rulebook is a folder of Markdown rules for your components, kept in your project. It is yours. The skills never block a change. They ask, adapt and always tell you when a change is inconsistent with other components, breaks with real content or goes against a motion or accessibility standard.
 
 ## Installation
 
@@ -24,23 +24,13 @@ npx skills add borabaloglu/9ui
 npx skills add emilkowalski/skills --skill emil-design-eng animate review-animations break-ui apple-design
 ```
 
-The 9ui skills call these for design judgement, motion and worst-case testing. Without them the checks still run, with less depth.
+The 9ui skills call these for design judgment, motion and worst-case testing. Without them the checks still run, with less depth.
 
 <Step>Add a rulebook.</Step>
 
 To use 9ui's rulebook, run `/rulebook-import` in your agent. To write one from your own components, run `/rulebook-create`.
 
 </Steps>
-
-## Dependencies
-
-| Skill | From | Used for |
-|---|---|---|
-| `emil-design-eng` | [emilkowalski/skills](https://github.com/emilkowalski/skills) | Design decisions no rule covers |
-| `animate` | [emilkowalski/skills](https://github.com/emilkowalski/skills) | Building new motion |
-| `review-animations` | [emilkowalski/skills](https://github.com/emilkowalski/skills) | The motion check |
-| `break-ui` | [emilkowalski/skills](https://github.com/emilkowalski/skills) | The worst-case content check |
-| `apple-design` | [emilkowalski/skills](https://github.com/emilkowalski/skills) | Touch, gestures and sheets |
 
 ## Commands
 
@@ -50,25 +40,19 @@ In Claude Code, each skill is a slash command. In other agents, ask for it by na
 
 Builds a component that matches the rest of your library, then checks it.
 
-```text title="Prompt"
-/new-component a segmented control built on Base UI Toggle Group
-```
+<Prompt text="/new-component a segmented control built on Base UI Toggle Group" />
 
 ### /update-component
 
 Changes a component and tells you what the change means for its siblings.
 
-```text title="Prompt"
-/update-component add an lg size to Select
-```
+<Prompt text="/update-component add an lg size to Select" />
 
 ### /review-component
 
 Reviews a component, your current changes or the whole library. It changes no code.
 
-```text title="Prompt"
-/review-component dialog
-```
+<Prompt text="/review-component dialog" />
 
 To review your uncommitted changes, pass `diff`. To review every component, pass `all`.
 
@@ -76,13 +60,15 @@ To review your uncommitted changes, pass `diff`. To review every component, pass
 
 Writes a rulebook from your own components. Where your components disagree, it asks you to choose. Where they give no answer, it uses general standards, not 9ui's style.
 
+<Prompt text="/rulebook-create src/components/ui" />
+
+The path to your components folder is optional.
+
 ### /rulebook-import
 
 Downloads a rulebook into your project. With no argument, it imports 9ui's.
 
-```text title="Prompt"
-/rulebook-import https://example.com/r/rulebook.json
-```
+<Prompt text="/rulebook-import https://example.com/r/rulebook.json" />
 
 You can also install 9ui's rulebook with the shadcn CLI.
 
@@ -92,24 +78,22 @@ npx shadcn@latest add @9ui/rulebook
 
 ### /rulebook-update
 
-Changes a rule, adds one, or records why one component is different. It lists the components the change affects.
+Changes a rule, adds one or records why one component is different. It lists the components the change affects.
 
-```text title="Prompt"
-/rulebook-update popups should open in 200ms
-```
+<Prompt text="/rulebook-update popups should open in 200ms" />
 
 To let one component differ, ask for an exception. It's recorded on the rule with a reason and isn't reported again.
 
 You can also edit the files by hand. The skills follow the new value from then on and report the components that still use the old one.
 
-## The rulebook
+## The Rulebook
 
 The rulebook is a folder of Markdown files in `.rulebook/` at your project root. Commit it with your code.
 
 | File | Covers |
-|---|---|
+| --- | --- |
 | `README.md` | Index and the list of roles |
-| `surfaces.md` | Radius, fields, popups, modals, cards, colour |
+| `surfaces.md` | Radius, fields, popups, modals, cards, color |
 | `states.md` | Focus, hover, pressed, disabled, invalid, read-only |
 | `sizing.md` | Heights, type, touch sizes, icons |
 | `motion.md` | Curves, durations, enter and exit, reduced motion |
@@ -120,13 +104,14 @@ The rulebook is a folder of Markdown files in `.rulebook/` at your project root.
 | `registry.md` | Demos, docs and registry entries |
 | `decisions.md` | Every rule change, exception and accepted deviation |
 
-Each rule has an id, a recipe and a reason.
+Each rule has an id that never changes. A rule can also have a recipe, a reason, the standard it implements and the components that are exceptions.
 
 ```md title=".rulebook/motion.md"
-### MOT-7 A backdrop shares its panel's timing
+### MOT-2 List every transitioned property
 
-- **Recipe:** the backdrop carries the same ease class and the same in and out durations as the panel it sits behind.
-- **Standard:** `STD-M11`
+- **Recipe:** `transition-[scale,opacity]`, `transition-[background-color,border-color,box-shadow]`, or a named group such as `transition-colors`. Never `transition-all`.
+- **Why:** `all` animates properties nobody chose, including layout.
+- **Standard:** `STD-M2`
 ```
 
 ### Tailwind
@@ -137,7 +122,33 @@ Tailwind reads the rulebook like any other file in your project. To keep class n
 @source not "../.rulebook";
 ```
 
-## What is always reported
+## Reports
+
+Every report has the same five parts. For example:
+
+```md title="Report"
+## Review: select
+
+**Findings**
+- [Worst case] A long option label pushes the check icon out of the popup. `select.tsx:142` (CNT-3)
+- [Consistency] None. Compared with Combobox and Menu.
+- [Motion] None. Read the transition classes on the popup.
+- [Accessibility] None.
+
+**About the rules**
+- `SIZ-8` says triggers are 36px tall; eight of ten components use 32px.
+
+**Accepted**
+- `STD-A2` Focus ring below 3:1, accepted 2026-11-15.
+
+**Nice to have**
+- Truncate the selected value with a tooltip.
+
+**Not checked**
+- A real touch device and a screen reader.
+```
+
+### What Is Always Reported
 
 Some checks don't depend on your rulebook. Every report covers them, even after you choose to go ahead.
 
@@ -151,6 +162,16 @@ To keep a deviation, accept it. It's recorded in `decisions.md` and listed in la
 Rules that most of your components don't follow are reported once, as a question about the rule.
 
 Every report ends with what wasn't checked, such as a real touch device or a screen reader.
+
+## Dependencies
+
+| Skill | From | Used for |
+| --- | --- | --- |
+| `emil-design-eng` | [emilkowalski/skills](https://github.com/emilkowalski/skills) | Design decisions no rule covers |
+| `animate` | [emilkowalski/skills](https://github.com/emilkowalski/skills) | Building new motion |
+| `review-animations` | [emilkowalski/skills](https://github.com/emilkowalski/skills) | The motion check |
+| `break-ui` | [emilkowalski/skills](https://github.com/emilkowalski/skills) | The worst-case content check |
+| `apple-design` | [emilkowalski/skills](https://github.com/emilkowalski/skills) | Touch, gestures and sheets |
 
 ## Updating
 

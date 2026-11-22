@@ -1,6 +1,6 @@
 ---
 title: Badge
-description: Displays a badge for labeling or highlighting content.
+description: A small label for a status, count or category.
 ---
 
 <ComponentPreview name="badge-demo" />
@@ -26,100 +26,116 @@ npx shadcn@latest add @9ui/badge
 ## Usage
 
 ```tsx title="Imports"
-import { Badge } from "@/components/ui/badge"
+import { Badge, type BadgeProps, badgeVariants } from "@/components/ui/badge"
 ```
 
 ```tsx title="Anatomy"
 <Badge />
 ```
 
-A badge is a `span`. Give icon-only badges an `aria-label`.
-
 ## Examples
 
 ### Outline
 
-Set `variant` to `outline` for neutral metadata, like a version or a count.
+Set `variant="outline"` for neutral metadata, like a version or a count.
 
 <ComponentPreview name="badge-outline-demo" />
 
 ### Secondary
 
-Set `variant` to `secondary` for a label that shouldn't draw attention.
+Set `variant="secondary"` for a label that shouldn't draw attention.
 
 <ComponentPreview name="badge-secondary-demo" />
 
 ### Success
 
-Set `variant` to `success` for a positive or completed status.
+Set `variant="success"` for a positive or completed status.
 
 <ComponentPreview name="badge-success-demo" />
 
 ### Warning
 
-Set `variant` to `warning` for a status that needs attention.
+Set `variant="warning"` for a status that needs attention.
 
 <ComponentPreview name="badge-warning-demo" />
 
 ### Info
 
-Set `variant` to `info` for a neutral notice, like a new feature.
+Set `variant="info"` for a neutral notice, like a new feature.
 
 <ComponentPreview name="badge-info-demo" />
 
 ### Danger
 
-Set `variant` to `danger` for an error or a failed status.
+Set `variant="danger"` for an error or a failed status.
 
 <ComponentPreview name="badge-danger-demo" />
 
 ### Small
 
-Set `size` to `sm`, or `icon-sm` for an icon-only badge.
+Set `size="sm"`, or `size="icon-sm"` for an icon-only badge.
 
-<ComponentPreview name="badge-size-sm-demo" />
+<ComponentPreview name="badge-small-demo" />
 
 ### Default Size
 
-Leave `size` unset, or set it to `icon` for an icon-only badge.
+Leave `size` unset, or set `size="icon"` for an icon-only badge.
 
-<ComponentPreview name="badge-size-default-demo" />
+<ComponentPreview name="badge-default-size-demo" />
 
 ### Large
 
-Set `size` to `lg`, or `icon-lg` for an icon-only badge.
+Set `size="lg"`, or `size="icon-lg"` for an icon-only badge.
 
-<ComponentPreview name="badge-size-lg-demo" />
+<ComponentPreview name="badge-large-demo" />
 
 ### Icon Only
 
-Set `size` to `icon-sm`, `icon` or `icon-lg` for a round badge that holds a single icon.
+Set `size="icon"` for a round badge that holds a single icon.
 
 <ComponentPreview name="badge-icon-only-demo" />
 
-### With Icon
+### Icon
 
 Set `data-icon` to `inline-start` or `inline-end` on the icon to tighten the padding on that side.
 
-<ComponentPreview name="badge-with-icon-demo" />
+<ComponentPreview name="badge-icon-demo" />
 
 ### Link
 
-Set `render` to an `<a>` to make the badge a link. It gains hover and focus styles.
+Set `render={<a />}` to make the badge a link. It gains hover and focus styles.
 
 <ComponentPreview name="badge-link-demo" />
 
 ### Button
 
-Set `render` to a `<button>` to make the badge clickable.
+Set `render={<button />}` to make the badge clickable.
 
 <ComponentPreview name="badge-button-demo" />
 
 ### RTL
 
-To show the badge right to left, set `dir="rtl"` on `html` and wrap your app in `DirectionProvider`. See [RTL](/docs/getting-started/rtl).
+To enable RTL support, see the [RTL guide](/docs/getting-started/rtl).
 
 <ComponentPreview name="badge-rtl-demo" direction="rtl" />
+
+## Tips
+
+<Tips>
+
+<Tip title="Label icon-only badges">
+
+Give icon-only badges an `aria-label`.
+
+```tsx {1}
+<Badge size="icon" variant="success" aria-label="Approved">
+	<CheckIcon />
+</Badge>
+```
+
+</Tip>
+
+</Tips>
 
 ## API Reference
 
@@ -143,12 +159,12 @@ To render it as a link or a button, set `render`.
 			shortType: "union",
 			type: '"sm" | "default" | "lg" | "icon-sm" | "icon" | "icon-lg"',
 			default: '"default"',
-			description: "The height, padding and text size of the badge. The icon sizes make a square badge.",
+			description: "The height, padding and text size of the badge. The icon sizes make a round badge.",
 		},
 	]}
 />
 
-### Data attributes
+### Data Attributes
 
 <ApiTable
 	label="Attribute"
@@ -156,12 +172,12 @@ To render it as a link or a button, set `render`.
 		{
 			name: "data-variant",
 			type: "string",
-			description: <>The current <code>variant</code>.</>,
+			description: <>Set on <code>Badge</code>. The current <code>variant</code>.</>,
 		},
 		{
 			name: "data-size",
 			type: "string",
-			description: <>The current <code>size</code>.</>,
+			description: <>Set on <code>Badge</code>. The current <code>size</code>.</>,
 		},
 	]}
 />

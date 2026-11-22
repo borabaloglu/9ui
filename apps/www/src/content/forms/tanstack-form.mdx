@@ -1,7 +1,8 @@
 ---
 title: TanStack Form
-description: Build forms with TanStack Form and Zod.
+description: Forms with TanStack Form and Zod.
 ---
+
 <ComponentLinks
 	links={[
 		{
@@ -67,7 +68,7 @@ Render each `Field` inside a `form.Field` and pass the field state to it.
 
 ## Form
 
-### Create a schema
+### Create a Schema
 
 Define the form values with Zod, or any Standard Schema library.
 
@@ -83,9 +84,9 @@ const schema = z.object({
 })
 ```
 
-### Set up the form
+### Set Up the Form
 
-Pass the schema to `onDynamic` in `validators` and set `validationLogic` to `revalidateLogic()`. The form then validates on submit, and on every change after that.
+Pass the schema to `onDynamic` in `validators` and set `validationLogic: revalidateLogic()`. The form then validates on submit, and on every change after that.
 
 ```tsx {6-18,22-25} title="form.tsx"
 import { revalidateLogic, useForm } from "@tanstack/react-form"
@@ -120,15 +121,17 @@ export default function ExampleForm() {
 }
 ```
 
-### Build the form
-
-Add a `form.Field` with a `Field` for each value. The demo at the top of this page has the full code.
+Then add a `form.Field` with a `Field` for each value. The demo at the top of this page has the full code.
 
 ## Submitting
 
+### Pending State
+
 To show progress while the form submits, read `isSubmitting` from the form store and pass it to `loading` on the submit button.
 
-```tsx {1,9}
+```tsx {3,11}
+import { useStore } from "@tanstack/react-form"
+
 const isSubmitting = useStore(form.store, (state) => state.isSubmitting)
 
 <form
@@ -143,11 +146,11 @@ const isSubmitting = useStore(form.store, (state) => state.isSubmitting)
 </form>
 ```
 
-### Focus the first invalid field
+### Focus the First Invalid Field
 
 To move focus to the first invalid field when a submit fails, focus it in `onSubmitInvalid`.
 
-```tsx {1,5-11,15} title="form.tsx"
+```tsx {1,5-11,15}
 const formRef = useRef<HTMLFormElement>(null)
 
 const form = useForm({
@@ -174,11 +177,11 @@ const form = useForm({
 
 ## Validation
 
-### Field validators
+### Field Validators
 
 To validate a single field, set `validators` on `form.Field`.
 
-```tsx {3-5} title="form.tsx"
+```tsx {3-5}
 <form.Field
 	name="username"
 	validators={{
@@ -189,11 +192,11 @@ To validate a single field, set `validators` on `form.Field`.
 </form.Field>
 ```
 
-### Validation modes
+### Validation Modes
 
 To choose when validation runs, set `mode` and `modeAfterSubmission` on `revalidateLogic`.
 
-```tsx {2-5} title="form.tsx"
+```tsx {2-5}
 const form = useForm({
 	validationLogic: revalidateLogic({
 		mode: "blur",
@@ -205,43 +208,18 @@ const form = useForm({
 })
 ```
 
-| Option                | Values                           | Description                                              |
-| --------------------- | -------------------------------- | -------------------------------------------------------- |
-| `mode`                | `"submit"`, `"blur"`, `"change"` | When to validate before the first submit. Default `"submit"`. |
-| `modeAfterSubmission` | `"change"`, `"blur"`, `"submit"` | When to validate after the first submit. Default `"change"`.  |
+| Option | Values | Description |
+| --- | --- | --- |
+| `mode` | `"submit"`, `"blur"`, `"change"` | When to validate before the first submit. Default `"submit"`. |
+| `modeAfterSubmission` | `"change"`, `"blur"`, `"submit"` | When to validate after the first submit. Default `"change"`. |
 
-## Displaying Errors
-
-To show an error, set `invalid` on `Field` and render `FieldError` with `match`.
-
-```tsx {3-4,6,14} title="form.tsx"
-<form.Field name="email">
-	{(field) => {
-		const isInvalid = field.state.meta.isTouched && !field.state.meta.isValid
-		const errorMessage = field.state.meta.errors[0]?.message
-		return (
-			<Field name={field.name} invalid={isInvalid}>
-				<FieldLabel>Email</FieldLabel>
-				<Input
-					type="email"
-					value={field.state.value}
-					onChange={(e) => field.handleChange(e.target.value)}
-					onBlur={field.handleBlur}
-				/>
-				{isInvalid && <FieldError match>{errorMessage}</FieldError>}
-			</Field>
-		)
-	}}
-</form.Field>
-```
-
-## Server-side Errors
+## Server-Side Errors
 
 To show an error returned by the server, set it with `formApi.setFieldMeta`. Submit the form to see one.
 
 <ComponentPreview name="form-tanstack-form-server-errors-demo" />
 
-```tsx {8-17} title="form.tsx"
+```tsx {8-17}
 const form = useForm({
 	defaultValues: { username: "" },
 	validationLogic: revalidateLogic(),
@@ -305,7 +283,7 @@ Pass `field.state.value`, `field.handleChange` and `field.handleBlur` to `Textar
 
 ### Number Field
 
-Pass `field.state.value` to `value` and `field.handleChange` to `onValueChange`. Use `null` as the empty value in `defaultValues`.
+Pass `field.state.value` to `value` and `field.handleChange` to `onValueChange`. Use `null as number | null` as the empty value in `defaultValues`.
 
 <ComponentPreview name="form-tanstack-form-number-field-demo" />
 
@@ -330,7 +308,7 @@ Pass `field.state.value` to `value` and `field.handleChange` to `onValueChange`.
 
 ### Phone Input
 
-Pass `field.state.value`, `field.handleChange` and `field.handleBlur` to `PhoneInput`, and check the number with `isValidPhoneNumber` in the schema.
+Pass `field.state.value`, `field.handleChange` and `field.handleBlur` to `PhoneInput`, and check the number with `isValidPhoneNumber` from `react-phone-number-input` in the schema.
 
 <ComponentPreview name="form-tanstack-form-phone-input-demo" />
 
@@ -348,11 +326,11 @@ Pass `field.state.value`, `field.handleChange` and `field.handleBlur` to `PhoneI
 
 ### Select
 
-Pass `field.state.value` to `value` and `field.handleChange` to `onValueChange`. Set `onBlur` on `SelectTrigger`.
+Pass `field.state.value` to `value` and `field.handleChange` to `onValueChange`.
 
 <ComponentPreview name="form-tanstack-form-select-demo" />
 
-```tsx {4-5,8}
+```tsx {4-5}
 <Field name={field.name} invalid={isInvalid}>
 	<FieldLabel>Currency</FieldLabel>
 	<Select
@@ -360,7 +338,7 @@ Pass `field.state.value` to `value` and `field.handleChange` to `onValueChange`.
 		onValueChange={(value) => field.handleChange(value ?? "")}
 		items={currencies}
 	>
-		<SelectTrigger className="w-full" onBlur={field.handleBlur}>
+		<SelectTrigger className="w-full">
 			<SelectValue placeholder="Select a currency" />
 		</SelectTrigger>
 		<SelectPopup>
@@ -374,7 +352,7 @@ Pass `field.state.value` to `value` and `field.handleChange` to `onValueChange`.
 
 ### Combobox
 
-Pass `field.state.value` to `value` and `field.handleChange` to `onValueChange`. With `multiple`, the value is an array.
+Pass `field.state.value` to `value`, `field.handleChange` to `onValueChange` and `field.handleBlur` to `onBlur`. With `multiple`, the value is an array, so use `[] as string[]` in `defaultValues`.
 
 <ComponentPreview name="form-tanstack-form-combobox-demo" />
 
@@ -437,11 +415,13 @@ Pass `field.state.value` to `checked` and `field.handleChange` to `onCheckedChan
 
 ### Checkbox Group
 
-Pass `field.state.value` to `value` and `field.handleChange` to `onValueChange` on `CheckboxGroup`. Wrap each checkbox in `FieldItem` with its own `FieldLabel`. The value is an array.
+Pass `field.state.value` to `value` and `field.handleChange` to `onValueChange` on `CheckboxGroup`. Wrap each checkbox in `FieldItem` with its own `FieldLabel`. The value is an array, so use `[] as string[]` in `defaultValues`.
 
 <ComponentPreview name="form-tanstack-form-checkbox-group-demo" />
 
-```tsx {4-5}
+```tsx {6-7}
+const labelId = useId()
+
 <Field name={field.name} invalid={isInvalid}>
 	<CheckboxGroup
 		aria-labelledby={labelId}
@@ -468,7 +448,7 @@ Pass `field.state.value` to `value` and `field.handleChange` to `onValueChange` 
 
 ### Radio Group
 
-Pass `field.state.value` to `value` and `field.handleChange` to `onValueChange` on `RadioGroup`. Wrap each radio in `FieldItem` with its own `FieldLabel`.
+Pass `field.state.value` to `value`, `field.handleChange` to `onValueChange` and `field.handleBlur` to `onBlur` on `RadioGroup`. Wrap each radio in `FieldItem` with its own `FieldLabel`.
 
 <ComponentPreview name="form-tanstack-form-radio-group-demo" />
 
@@ -499,7 +479,7 @@ Pass `field.state.value` to `value` and `field.handleChange` to `onValueChange` 
 
 ### Switch
 
-Pass `field.state.value` to `checked` and `field.handleChange` to `onCheckedChange`.
+Pass `field.state.value` to `checked`, `field.handleChange` to `onCheckedChange` and `field.handleBlur` to `onBlur`.
 
 <ComponentPreview name="form-tanstack-form-switch-demo" />
 
@@ -519,7 +499,7 @@ Pass `field.state.value` to `checked` and `field.handleChange` to `onCheckedChan
 
 ### OTP Field
 
-Pass `field.state.value` to `value` and `field.handleChange` to `onValueChange`.
+Pass `field.state.value` to `value`, `field.handleChange` to `onValueChange` and `field.handleBlur` to `onBlur`.
 
 <ComponentPreview name="form-tanstack-form-otp-field-demo" />
 
@@ -545,16 +525,20 @@ Pass `field.state.value` to `value` and `field.handleChange` to `onValueChange`.
 
 ### Date Picker
 
-Pass `field.state.value` to `selected` and `field.handleChange` to `onSelect` on `Calendar`, and set `aria-invalid` on the trigger. Use `null` as the empty value in `defaultValues`. Give `FieldError` an `id` and pass it to `aria-describedby` on the trigger so the error is announced.
+Pass `field.state.value` to `selected` and `field.handleChange` to `onSelect` on `Calendar`, and set `aria-invalid` on the trigger. Use `null as Date | null` as the empty value in `defaultValues`. Give `FieldError` an `id` and pass it to `aria-describedby` on the trigger so the error is announced.
 
 <ComponentPreview name="form-tanstack-form-date-picker-demo" />
 
-```tsx {5,12-14}
+```tsx {9,16-18}
+const id = useId()
+const errorId = useId()
+const [open, setOpen] = useState(false)
+
 <Field name={field.name} invalid={isInvalid}>
-	<FieldLabel>Start date</FieldLabel>
+	<FieldLabel htmlFor={id}>Start date</FieldLabel>
 	<Popover open={open} onOpenChange={setOpen}>
 		<PopoverTrigger
-			render={<Button variant="outline" aria-describedby={errorId} aria-invalid={isInvalid || undefined} onBlur={field.handleBlur} />}
+			render={<Button id={id} variant="outline" aria-describedby={errorId} aria-invalid={isInvalid || undefined} onBlur={field.handleBlur} />}
 		>
 			{field.state.value ? format(field.state.value, "MMM d, yyyy") : "Select a date"}
 		</PopoverTrigger>
@@ -579,7 +563,7 @@ To group related fields, wrap their `form.Field` in `Fieldset` with a `FieldsetL
 
 <ComponentPreview name="form-tanstack-form-fieldset-demo" />
 
-```tsx {1-5,7} title="form.tsx"
+```tsx {1-5,7}
 <Fieldset>
 	<FieldsetLegend>Billing Details</FieldsetLegend>
 	<FieldsetDescription>
@@ -595,34 +579,38 @@ To let people add and remove fields, set `mode="array"` on `form.Field`. Render 
 
 <ComponentPreview name="form-tanstack-form-array-demo" />
 
-```tsx {1,4-5,20,33}
+```tsx {1,4-5,23,37}
 <form.Field name="emails" mode="array">
 	{(arrayField) => (
 		<>
 			{arrayField.state.value.map((_, index) => (
 				<form.Field key={index} name={`emails[${index}].address`}>
-					{(field) => (
-						<Field name={field.name} invalid={isInvalid}>
-							<div className="flex gap-2">
-								<Input
-									value={field.state.value}
-									onChange={(e) => field.handleChange(e.target.value)}
-									onBlur={field.handleBlur}
-									aria-label={`Email ${index + 1}`}
-								/>
-								<Button
-									type="button"
-									variant="ghost"
-									size="icon"
-									aria-label={`Remove email ${index + 1}`}
-									onClick={() => arrayField.removeValue(index)}
-								>
-									<XIcon />
-								</Button>
-							</div>
-							{isInvalid && <FieldError match>{errorMessage}</FieldError>}
-						</Field>
-					)}
+					{(field) => {
+						const isInvalid = field.state.meta.isTouched && !field.state.meta.isValid
+						const errorMessage = field.state.meta.errors[0]?.message
+						return (
+							<Field name={field.name} invalid={isInvalid}>
+								<div className="flex gap-2">
+									<Input
+										value={field.state.value}
+										onChange={(e) => field.handleChange(e.target.value)}
+										onBlur={field.handleBlur}
+										aria-label={`Email ${index + 1}`}
+									/>
+									<Button
+										type="button"
+										variant="ghost"
+										size="icon"
+										aria-label={`Remove email ${index + 1}`}
+										onClick={() => arrayField.removeValue(index)}
+									>
+										<XIcon />
+									</Button>
+								</div>
+								{isInvalid && <FieldError match>{errorMessage}</FieldError>}
+							</Field>
+						)
+					}}
 				</form.Field>
 			))}
 			<Button

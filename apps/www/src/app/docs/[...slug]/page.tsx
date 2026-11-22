@@ -43,6 +43,11 @@ export async function generateMetadata({
 	return {
 		title,
 		description,
+		alternates: {
+			types: {
+				"text/markdown": `${absoluteUrl("docs", page.slugs.join("/"))}.md`,
+			},
+		},
 		openGraph: {
 			title,
 			description,

@@ -14,7 +14,6 @@ interface ApiTableRow {
 	type: string;
 	shortType?: string;
 	default?: string;
-	baseDefault?: string;
 	description: React.ReactNode;
 }
 
@@ -81,7 +80,7 @@ function ApiEmpty() {
 }
 
 function ApiTable({ label = "Prop", rows, className }: ApiTableProps) {
-	const hasDefaults = rows.some((row) => row.default || row.baseDefault);
+	const hasDefaults = rows.some((row) => row.default);
 	const columns = hasDefaults
 		? "grid-cols-[minmax(0,1fr)_minmax(0,1fr)_1rem] sm:grid-cols-[minmax(0,1fr)_minmax(0,1fr)_minmax(0,0.8fr)_1rem]"
 		: "grid-cols-[minmax(0,1fr)_minmax(0,1fr)_1rem]";
@@ -148,14 +147,6 @@ function ApiTable({ label = "Prop", rows, className }: ApiTableProps) {
 											) : (
 												<ApiEmpty />
 											)}
-										</dd>
-									</>
-								)}
-								{row.baseDefault && (
-									<>
-										<dt>Base UI</dt>
-										<dd>
-											<ApiCode>{row.baseDefault}</ApiCode>
 										</dd>
 									</>
 								)}

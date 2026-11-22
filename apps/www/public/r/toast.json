@@ -1,6 +1,8 @@
 {
 	"$schema": "https://ui.shadcn.com/schema/registry-item.json",
 	"name": "toast",
+	"title": "Toast",
+	"description": "A short message that appears on top of the page.",
 	"dependencies": ["@base-ui/react", "lucide-react"],
 	"registryDependencies": ["@9ui/button", "@9ui/spinner"],
 	"files": [
@@ -16,5 +18,6 @@
 			"type": "registry:hook"
 		}
 	],
+	"docs": "Docs: https://www.9ui.dev/docs/components/toast",
 	"type": "registry:ui"
 }

@@ -12,6 +12,9 @@ import { rehypeSyntaxHighlighting } from "./src/lib/rehype/syntax-highlighting/i
 export const docs = defineDocs({
 	dir: "src/content",
 	docs: {
+		postprocess: {
+			includeProcessedMarkdown: { output: "function", headingIds: false },
+		},
 		schema: pageSchema.extend({
 			description: z.string().max(160).optional(),
 			label: z.string().optional(),

@@ -3,6 +3,7 @@ title: Fieldset
 description: A group of related fields with a shared legend.
 label: New
 ---
+
 <ComponentLinks
 	links={[
 		{
@@ -50,8 +51,6 @@ import {
 </Fieldset>
 ```
 
-The legend names the group and the description is linked to it for you. Don't set `aria-labelledby` or `aria-describedby` by hand.
-
 ## Examples
 
 ### Description
@@ -68,7 +67,7 @@ Set `disabled` on `Fieldset` to disable every [Field](/docs/components/field) in
 
 ### RTL
 
-To show the fieldset right to left, set `dir="rtl"` on `html` and wrap your app in `DirectionProvider`. See [RTL](/docs/getting-started/rtl).
+To enable RTL support, see the [RTL guide](/docs/getting-started/rtl).
 
 <ComponentPreview name="fieldset-rtl-demo" direction="rtl" />
 
@@ -76,9 +75,32 @@ To show the fieldset right to left, set `dir="rtl"` on `html` and wrap your app 
 
 See the form guides for [Base UI Form](/docs/forms/base-ui#grouping-fields), [React Hook Form](/docs/forms/react-hook-form#grouping-fields) and [TanStack Form](/docs/forms/tanstack-form#grouping-fields).
 
+## Tips
+
+<Tips>
+
+<Tip title="Name and describe the group">
+
+Add a `FieldsetLegend` to name the group and a `FieldsetDescription` to describe it. Don't set `aria-labelledby` or `aria-describedby` by hand.
+
+```tsx {2-3}
+<Fieldset>
+	<FieldsetLegend>Billing details</FieldsetLegend>
+	<FieldsetDescription>Used on your invoices.</FieldsetDescription>
+	<Field name="company">
+		<FieldLabel>Company</FieldLabel>
+		<Input />
+	</Field>
+</Fieldset>
+```
+
+</Tip>
+
+</Tips>
+
 ## API Reference
 
-What 9ui adds to Base UI Fieldset. For the rest of the API, see the [Base UI Fieldset reference](https://base-ui.com/react/components/fieldset#api-reference).
+What 9ui adds to Base UI Fieldset. See the [Base UI](https://base-ui.com/react/components/fieldset#api-reference) documentation for the rest.
 
 ### FieldsetDescription
 

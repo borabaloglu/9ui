@@ -33,8 +33,6 @@ import { Label } from "@/components/ui/label"
 <Label />
 ```
 
-Clicking a label focuses or toggles its control. Link the two with `htmlFor` and the control's `id`, or place the control inside the label.
-
 Use [Field](/docs/components/field) when the control also needs a description or an error message.
 
 ## Examples
@@ -59,9 +57,39 @@ The label turns red when the control inside it or right next to it has `aria-inv
 
 ### RTL
 
-To show the label right to left, set `dir="rtl"` on `html` and wrap your app in `DirectionProvider`. See [RTL](/docs/getting-started/rtl).
+To enable RTL support, see the [RTL guide](/docs/getting-started/rtl).
 
 <ComponentPreview name="label-rtl-demo" direction="rtl" />
+
+## Tips
+
+<Tips>
+
+<Tip title="Link a label to its control">
+
+To link a label to its control, set `htmlFor` on `Label` to the `id` of the control.
+
+```tsx {1-2}
+<Label htmlFor="email">Email</Label>
+<Input id="email" type="email" />
+```
+
+</Tip>
+
+<Tip title="Wrap the control in the label">
+
+To link the two without an `id`, place the control inside `Label`.
+
+```tsx {1,4}
+<Label>
+	<Checkbox />
+	Accept terms and conditions
+</Label>
+```
+
+</Tip>
+
+</Tips>
 
 ## API Reference
 

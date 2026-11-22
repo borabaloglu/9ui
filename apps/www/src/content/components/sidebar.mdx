@@ -20,6 +20,8 @@ npx shadcn@latest add @9ui/sidebar
 
 <Steps>
 
+<Step>Add the [Button](/docs/components/button), [Separator](/docs/components/separator), [Sheet](/docs/components/sheet), [Skeleton](/docs/components/skeleton) and [Tooltip](/docs/components/tooltip) components.</Step>
+
 <Step>Copy and paste the following code into your project.</Step>
 
 <ComponentSource name="sidebar" />
@@ -91,18 +93,20 @@ import {
 			<SidebarGroup>
 				<SidebarGroupLabel />
 				<SidebarGroupAction />
-				<SidebarMenu>
-					<SidebarMenuItem>
-						<SidebarMenuButton />
-						<SidebarMenuAction />
-						<SidebarMenuBadge />
-						<SidebarMenuSub>
-							<SidebarMenuSubItem>
-								<SidebarMenuSubButton />
-							</SidebarMenuSubItem>
-						</SidebarMenuSub>
-					</SidebarMenuItem>
-				</SidebarMenu>
+				<SidebarGroupContent>
+					<SidebarMenu>
+						<SidebarMenuItem>
+							<SidebarMenuButton />
+							<SidebarMenuAction />
+							<SidebarMenuBadge />
+							<SidebarMenuSub>
+								<SidebarMenuSubItem>
+									<SidebarMenuSubButton />
+								</SidebarMenuSubItem>
+							</SidebarMenuSub>
+						</SidebarMenuItem>
+					</SidebarMenu>
+				</SidebarGroupContent>
 			</SidebarGroup>
 		</SidebarContent>
 		<SidebarFooter />
@@ -114,20 +118,7 @@ import {
 </SidebarProvider>
 ```
 
-Wrap your layout in `SidebarProvider` and put the page content in `SidebarInset`.
-
-Press `⌘B` on Mac or `Ctrl+B` on Windows to toggle the sidebar.
-
-To render a menu button as a link, set `render` on `SidebarMenuButton`.
-
-```tsx
-<SidebarMenuButton render={<Link href="/inbox" />}>
-	<InboxIcon />
-	<span>Inbox</span>
-</SidebarMenuButton>
-```
-
-To mark the current page, set `active` on `SidebarMenuButton`.
+To toggle the sidebar, press `⌘B` or `Ctrl+B`.
 
 ### Collapsing
 
@@ -158,14 +149,18 @@ To change the width, set `--sidebar-width` and `--sidebar-width-icon` on `Sideba
 />
 ```
 
-### Remembering the state
+### Remembering the State
 
 The sidebar saves its state in a `sidebar_state` cookie. To restore it on the server, read the cookie and pass it to `defaultOpen`.
 
 ```tsx title="app/layout.tsx"
 import { cookies } from "next/headers"
 
-export default async function Layout({ children }) {
+export default async function Layout({
+	children,
+}: {
+	children: React.ReactNode
+}) {
 	const cookieStore = await cookies()
 	const defaultOpen = cookieStore.get("sidebar_state")?.value !== "false"
 
@@ -178,7 +173,7 @@ export default async function Layout({ children }) {
 }
 ```
 
-### useSidebar
+### Reading the State
 
 To read or change the sidebar from your own components, call `useSidebar` inside `SidebarProvider`.
 
@@ -221,7 +216,7 @@ Set `side="right"` on `Sidebar` to move it to the right edge.
 Use `SidebarMenuSkeleton` in place of menu buttons while the items load.
 
 <ComponentPreview
-	name="sidebar-skeleton-demo"
+	name="sidebar-loading-demo"
 	previewClassName="h-80 items-stretch overflow-hidden p-0 contain-layout **:data-[slot=sidebar-wrapper]:min-h-0"
 />
 
@@ -236,13 +231,60 @@ Set `open` and `onOpenChange` on `SidebarProvider` to control the sidebar yourse
 
 ### RTL
 
-To show the sidebar right to left, set `dir="rtl"` on `html` and wrap your app in `DirectionProvider`. See [RTL](/docs/getting-started/rtl). `side` is the screen edge in both directions, so to put the sidebar at the start, set `side="right"`.
+To enable RTL support, see the [RTL guide](/docs/getting-started/rtl).
 
 <ComponentPreview
 	name="sidebar-rtl-demo"
 	direction="rtl"
 	previewClassName="h-140 items-stretch overflow-hidden p-0 contain-layout **:data-[slot=sidebar-wrapper]:min-h-0"
 />
+
+## Tips
+
+<Tips>
+
+<Tip title="Set up the layout">
+
+Wrap your layout in `SidebarProvider` and put the page content in `SidebarInset`.
+
+```tsx {1,5}
+<SidebarProvider>
+	<Sidebar>
+		<SidebarContent />
+	</Sidebar>
+	<SidebarInset>{children}</SidebarInset>
+</SidebarProvider>
+```
+
+</Tip>
+
+<Tip title="Render a menu button as a link">
+
+To render a menu button as a link, set `render` on `SidebarMenuButton`.
+
+```tsx {1}
+<SidebarMenuButton render={<Link href="/inbox" />}>
+	<InboxIcon />
+	<span>Inbox</span>
+</SidebarMenuButton>
+```
+
+</Tip>
+
+<Tip title="Mark the current page">
+
+To mark the current page, set `active` on `SidebarMenuButton`.
+
+```tsx {1}
+<SidebarMenuButton active render={<Link href="/inbox" />}>
+	<InboxIcon />
+	<span>Inbox</span>
+</SidebarMenuButton>
+```
+
+</Tip>
+
+</Tips>
 
 ## API Reference
 
@@ -258,12 +300,12 @@ Holds the open state and renders the layout wrapper, a `div`.
 			name: "defaultOpen",
 			type: "boolean",
 			default: "true",
-			description: "Whether the sidebar starts open. Use it when you do not control the state.",
+			description: "Whether the sidebar starts open. Use it when you don't control the state.",
 		},
 		{
 			name: "open",
 			type: "boolean",
-			description: "Whether the sidebar is open on desktop. Use it with onOpenChange to control the state.",
+			description: <>Whether the sidebar is open on desktop. Use it with <code>onOpenChange</code> to control the state.</>,
 		},
 		{
 			name: "onOpenChange",
@@ -289,13 +331,13 @@ Renders a sheet on mobile.
 			name: "variant",
 			type: '"sidebar" | "floating" | "inset"',
 			default: '"sidebar"',
-			description: "Attached to the edge, detached as a panel, or with the page content shown as a raised panel.",
+			description: "Attached to the edge, detached as a panel or with the page content shown as a raised panel.",
 		},
 		{
 			name: "collapsible",
 			type: '"offcanvas" | "icon" | "none"',
 			default: '"offcanvas"',
-			description: "Slides out of view, shrinks to a strip of icons, or never collapses.",
+			description: "Slides out of view, shrinks to a strip of icons or never collapses.",
 		},
 	]}
 />
@@ -493,7 +535,7 @@ Returns these values. Call it inside `SidebarProvider`.
 	]}
 />
 
-### Data attributes
+### Data Attributes
 
 <ApiTable
 	label="Attribute"

@@ -58,12 +58,14 @@ function SidebarProvider({
 	onOpenChange,
 	className,
 	style,
+	ref,
 	...props
 }: React.ComponentProps<"div"> & {
 	defaultOpen?: boolean;
 	open?: boolean;
 	onOpenChange?: (open: boolean) => void;
 }) {
+	const wrapperRef = React.useRef<HTMLDivElement | null>(null);
 	const isMobile = useIsMobile();
 	const [openMobile, setOpenMobile] = React.useState(false);
 	const [openState, setOpenState] = React.useState(defaultOpen);
@@ -103,7 +105,9 @@ function SidebarProvider({
 				event.altKey ||
 				!(event.metaKey || event.ctrlKey) ||
 				event.key.toLowerCase() !== SIDEBAR_KEYBOARD_SHORTCUT ||
-				(event.target instanceof HTMLElement && event.target.isContentEditable)
+				(event.target instanceof HTMLElement &&
+					event.target.isContentEditable) ||
+				wrapperRef.current?.querySelector('[data-slot="sidebar-wrapper"]')
 			) {
 				return;
 			}
@@ -135,6 +139,15 @@ function SidebarProvider({
 	return (
 		<SidebarContext.Provider value={value}>
 			<div
+				ref={(node) => {
+					wrapperRef.current = node;
+
+					if (typeof ref === "function") {
+						ref(node);
+					} else if (ref) {
+						ref.current = node;
+					}
+				}}
 				data-slot="sidebar-wrapper"
 				data-instant={instant ? "" : undefined}
 				style={
@@ -144,7 +157,7 @@ function SidebarProvider({
 					} as React.CSSProperties
 				}
 				className={cn(
-					"group/sidebar-wrapper has-[[data-slot=sidebar][data-variant=inset]]:bg-card flex min-h-svh w-full [--sidebar-width-icon:3rem] any-pointer-coarse:[--sidebar-width-icon:3.25rem]",
+					"group/sidebar-wrapper has-[>[data-slot=sidebar][data-variant=inset]]:bg-card flex min-h-svh w-full [--sidebar-width-icon:3rem] any-pointer-coarse:[--sidebar-width-icon:3.25rem]",
 					className,
 				)}
 				{...props}
@@ -319,7 +332,7 @@ function SidebarInset({ className, ...props }: React.ComponentProps<"main">) {
 		<main
 			data-slot="sidebar-inset"
 			className={cn(
-				"bg-background ease-out-quint relative flex w-full min-w-0 flex-1 flex-col transition-[margin] duration-200 group-data-instant/sidebar-wrapper:transition-none motion-reduce:transition-none md:group-has-[[data-slot=sidebar][data-variant=inset]]/sidebar-wrapper:m-2 md:group-has-[[data-slot=sidebar][data-variant=inset]]/sidebar-wrapper:rounded-xl md:group-has-[[data-slot=sidebar][data-variant=inset]]/sidebar-wrapper:border md:group-has-[[data-slot=sidebar][data-variant=inset]]/sidebar-wrapper:shadow-xs md:not-dark:group-has-[[data-slot=sidebar][data-variant=inset]]/sidebar-wrapper:bg-clip-padding md:group-has-[[data-slot=sidebar][data-variant=inset][data-side=left]]/sidebar-wrapper:ml-0 md:group-has-[[data-slot=sidebar][data-variant=inset][data-side=left][data-state=collapsed]]/sidebar-wrapper:ml-2 md:group-has-[[data-slot=sidebar][data-variant=inset][data-side=right]]/sidebar-wrapper:mr-0 md:group-has-[[data-slot=sidebar][data-variant=inset][data-side=right][data-state=collapsed]]/sidebar-wrapper:mr-2 md:group-has-[[data-slot=sidebar][data-variant=inset]]/sidebar-wrapper:before:pointer-events-none md:group-has-[[data-slot=sidebar][data-variant=inset]]/sidebar-wrapper:before:absolute md:group-has-[[data-slot=sidebar][data-variant=inset]]/sidebar-wrapper:before:inset-0 md:group-has-[[data-slot=sidebar][data-variant=inset]]/sidebar-wrapper:before:rounded-[calc(var(--radius-xl)-1px)] md:group-has-[[data-slot=sidebar][data-variant=inset]]/sidebar-wrapper:before:shadow-[0_1px_--theme(--color-black/6%)] md:dark:group-has-[[data-slot=sidebar][data-variant=inset]]/sidebar-wrapper:before:shadow-[0_-1px_--theme(--color-white/8%)]",
+				"bg-background ease-out-quint relative flex w-full min-w-0 flex-1 flex-col transition-[margin] duration-200 group-data-instant/sidebar-wrapper:transition-none motion-reduce:transition-none md:[[data-slot=sidebar-wrapper]:has(>[data-slot=sidebar][data-variant=inset])>&]:m-2 md:[[data-slot=sidebar-wrapper]:has(>[data-slot=sidebar][data-variant=inset])>&]:rounded-xl md:[[data-slot=sidebar-wrapper]:has(>[data-slot=sidebar][data-variant=inset])>&]:border md:[[data-slot=sidebar-wrapper]:has(>[data-slot=sidebar][data-variant=inset])>&]:shadow-xs md:not-dark:[[data-slot=sidebar-wrapper]:has(>[data-slot=sidebar][data-variant=inset])>&]:bg-clip-padding md:[[data-slot=sidebar-wrapper]:has(>[data-slot=sidebar][data-variant=inset])>&]:before:pointer-events-none md:[[data-slot=sidebar-wrapper]:has(>[data-slot=sidebar][data-variant=inset])>&]:before:absolute md:[[data-slot=sidebar-wrapper]:has(>[data-slot=sidebar][data-variant=inset])>&]:before:inset-0 md:[[data-slot=sidebar-wrapper]:has(>[data-slot=sidebar][data-variant=inset])>&]:before:rounded-[calc(var(--radius-xl)-1px)] md:[[data-slot=sidebar-wrapper]:has(>[data-slot=sidebar][data-variant=inset])>&]:before:shadow-[0_1px_--theme(--color-black/6%)] md:dark:[[data-slot=sidebar-wrapper]:has(>[data-slot=sidebar][data-variant=inset])>&]:before:shadow-[0_-1px_--theme(--color-white/8%)] md:[[data-slot=sidebar-wrapper]:has(>[data-slot=sidebar][data-variant=inset][data-side=left])>&]:ml-0 md:[[data-slot=sidebar-wrapper]:has(>[data-slot=sidebar][data-variant=inset][data-side=left][data-state=collapsed])>&]:ml-2 md:[[data-slot=sidebar-wrapper]:has(>[data-slot=sidebar][data-variant=inset][data-side=right])>&]:mr-0 md:[[data-slot=sidebar-wrapper]:has(>[data-slot=sidebar][data-variant=inset][data-side=right][data-state=collapsed])>&]:mr-2",
 				className,
 			)}
 			{...props}

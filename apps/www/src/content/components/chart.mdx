@@ -6,7 +6,7 @@ description: A container, tooltip and legend for charts built with Recharts.
 <ComponentLinks
 	links={[
 		{
-			label: "API Reference",
+			label: "Docs",
 			href: "https://recharts.github.io/en-US/api",
 		},
 	]}
@@ -18,7 +18,7 @@ description: A container, tooltip and legend for charts built with Recharts.
 
 Chart is a thin layer over [Recharts](https://recharts.org). You build the chart with Recharts components and add `ChartContainer`, `ChartTooltip` and `ChartLegend` where you need them.
 
-Recharts is not wrapped, so every Recharts prop and component still works.
+Recharts isn't wrapped, so every Recharts prop and component still works.
 
 ## Installation
 
@@ -31,9 +31,9 @@ npx shadcn@latest add @9ui/chart
 
 <Steps>
 
-<Step>Install the following dependencies:</Step>
+<Step>Install the dependencies.</Step>
 
-```bash
+```bash title="Terminal"
 npm install recharts
 ```
 
@@ -54,6 +54,7 @@ import {
 	ChartContainer,
 	ChartLegend,
 	ChartLegendContent,
+	ChartStyle,
 	ChartTooltip,
 	ChartTooltipContent,
 } from "@/components/ui/chart"
@@ -73,7 +74,7 @@ import {
 
 This section builds a bar chart step by step.
 
-### Data and config
+### Data and Config
 
 Start with the data and a config. The data can have any shape. The config gives each series a label and a color.
 
@@ -98,11 +99,11 @@ const chartConfig = {
 
 ### Chart
 
-Wrap a Recharts chart in `ChartContainer` and pass the config. Set a height on `ChartContainer` so the chart can size itself.
+Wrap a Recharts chart in `ChartContainer` and pass the config. To change its size, set a height on `ChartContainer`.
 
 <ComponentPreview name="chart-start-demo" />
 
-### Grid and axis
+### Grid and Axis
 
 Add `CartesianGrid` and `XAxis` from Recharts.
 
@@ -142,7 +143,7 @@ const chartConfig = {
 
 The theme has five chart colors, `chart-1` through `chart-5`. They are shades of one hue, with separate values for light and dark.
 
-To use a theme color, set `color` to `var(--chart-1)`. Any CSS color works too.
+To use a theme color, set `color: "var(--chart-1)"`. Any CSS color works too.
 
 ```tsx
 const chartConfig = {
@@ -161,7 +162,7 @@ To use one color in light and another in dark, set `theme` instead of `color`.
 
 <ComponentPreview name="chart-theme-demo" />
 
-### Using colors
+### Using Colors
 
 Each key in the config becomes a `--color-<key>` variable inside the chart.
 
@@ -192,7 +193,7 @@ To color your own elements, use the variable in a class.
 
 ### Indicator
 
-Set `indicator` on `ChartTooltipContent` to `dot`, `line` or `dashed`.
+To change the indicator, set `indicator` on `ChartTooltipContent`.
 
 <ComponentPreview name="chart-tooltip-indicator-demo" />
 
@@ -206,13 +207,13 @@ Set `formatter` on `ChartTooltipContent` to render each row yourself. Set `label
 
 `ChartLegend` is the Recharts legend. `ChartLegendContent` renders its content. Items keep the order of the series.
 
-Set `icon` in the config to show an icon next to each label. Set `verticalAlign` on `ChartLegend` to `top` to move the legend above the chart.
+Set `icon` in the config to show an icon next to each label. Set `verticalAlign="top"` on `ChartLegend` to move the legend above the chart.
 
 <ComponentPreview name="chart-legend-demo" />
 
 ## Accessibility
 
-Recharts adds keyboard navigation and screen reader support to charts by default. To turn it off, set `accessibilityLayer` to `false` on the chart.
+Recharts adds keyboard navigation and screen reader support to charts by default. To turn it off, set `accessibilityLayer={false}` on the chart.
 
 Charts respect the reduced motion setting.
 
@@ -229,9 +230,13 @@ Chart uses Recharts 3. When you update charts written for Recharts 2:
 
 ### Area
 
+To draw an area chart, use `AreaChart` with `Area`.
+
 <ComponentPreview name="chart-area-demo" />
 
 ### Bar
+
+To draw a bar chart, use `BarChart` with `Bar`.
 
 <ComponentPreview name="chart-bar-demo" />
 
@@ -239,15 +244,17 @@ Chart uses Recharts 3. When you update charts written for Recharts 2:
 
 Set the same `stackId` on each `Bar`.
 
-<ComponentPreview name="chart-bar-stacked-demo" />
+<ComponentPreview name="chart-stacked-bar-demo" />
 
 ### Horizontal Bar
 
-Set `layout` to `vertical` on `BarChart`.
+Set `layout="vertical"` on `BarChart`.
 
-<ComponentPreview name="chart-bar-horizontal-demo" />
+<ComponentPreview name="chart-horizontal-bar-demo" />
 
 ### Line
+
+To draw a line chart, use `LineChart` with `Line`.
 
 <ComponentPreview name="chart-line-demo" />
 
@@ -259,27 +266,31 @@ Set `innerRadius` on `Pie` to make a donut.
 
 ### Radar
 
+To draw a radar chart, use `RadarChart` with `Radar`.
+
 <ComponentPreview name="chart-radar-demo" />
 
 ### Radial Bar
+
+To draw a radial bar chart, use `RadialBarChart` with `RadialBar`.
 
 <ComponentPreview name="chart-radial-bar-demo" />
 
 ### Scatter
 
+To draw a scatter chart, use `ScatterChart` with `Scatter`.
+
 <ComponentPreview name="chart-scatter-demo" />
 
 ### RTL
 
-To show the chart right to left, set `dir="rtl"` on `html` and wrap your app in `DirectionProvider`. Set `reversed` on `XAxis` and `orientation="right"` on `YAxis` too. See [RTL](/docs/getting-started/rtl).
-
-Bars in a group keep their left to right order. This comes from Recharts.
+To enable RTL support, see the [RTL guide](/docs/getting-started/rtl).
 
 <ComponentPreview name="chart-rtl-demo" direction="rtl" />
 
 ## API Reference
 
-What 9ui adds to Recharts. For the rest of the API, see the [Recharts API reference](https://recharts.github.io/en-US/api).
+What 9ui adds to Recharts. See the [Recharts](https://recharts.github.io/en-US/api) documentation for the rest.
 
 ### ChartContainer
 
@@ -301,7 +312,6 @@ Wraps the chart in a Recharts `ResponsiveContainer` and sets a `--color-<key>` v
 			name: "initialDimension",
 			type: "{ width: number; height: number }",
 			default: "{ width: 320, height: 200 }",
-			baseDefault: "{ width: -1, height: -1 }",
 			description: "The size used before the container is measured.",
 		},
 	]}
@@ -315,14 +325,12 @@ Wraps the chart in a Recharts `ResponsiveContainer` and sets a `--color-<key>` v
 			name: "animationDuration",
 			type: "number",
 			default: "150",
-			baseDefault: "400",
 			description: "How long the tooltip takes to move, in milliseconds.",
 		},
 		{
 			name: "animationEasing",
 			type: "EasingInput",
 			default: '"ease-out"',
-			baseDefault: '"ease"',
 			description: "The easing of the tooltip movement.",
 		},
 	]}
@@ -391,7 +399,6 @@ Renders the tooltip from the config. Pass it to `content` on `ChartTooltip`.
 			shortType: "LegendItemSorter | null",
 			type: '"value" | "dataKey" | ((item) => number | string) | null',
 			default: "null",
-			baseDefault: '"value"',
 			description: "The order of the items. Keeps the order of the series when not set.",
 		},
 	]}

@@ -1,6 +1,6 @@
 ---
 title: Table
-description: Used to organize and present information in a tabular format.
+description: A table for rows and columns of data.
 ---
 
 <ComponentPreview name="table-demo" />
@@ -15,6 +15,8 @@ npx shadcn@latest add @9ui/table
 </div>
 
 <Steps>
+
+<Step>Add the [Scroll Area](/docs/components/scroll-area) component.</Step>
 
 <Step>Copy and paste the following code into your project.</Step>
 
@@ -69,7 +71,7 @@ To render the table without a surface, leave out `variant`.
 
 ### Size
 
-To make the rows more compact, set `size="sm"`.
+To make the rows more compact, set `size="sm"` on `Table`.
 
 <ComponentPreview name="table-size-demo" />
 
@@ -95,19 +97,46 @@ To describe the table, add `TableCaption`.
 
 To add actions to a row, put a `Menu` in the last cell.
 
-<ComponentPreview name="table-actions-demo" />
+<ComponentPreview name="table-row-actions-demo" />
 
-### Selection
+### Row Selection
 
 To mark a row as selected, set `aria-selected` on `TableRow`.
 
-<ComponentPreview name="table-selection-demo" />
+<ComponentPreview name="table-row-selection-demo" />
 
 ### RTL
 
-To show the table right to left, set `dir="rtl"` on `html` and wrap your app in `DirectionProvider`. See [RTL](/docs/getting-started/rtl).
+To enable RTL support, see the [RTL guide](/docs/getting-started/rtl).
 
 <ComponentPreview name="table-rtl-demo" direction="rtl" />
+
+## Tips
+
+<Tips>
+
+<Tip title="Put the table on a card">
+
+To put the table on a card, set `variant="card"` on `Table`.
+
+```tsx {1}
+<Table variant="card">
+	<TableHeader>
+		<TableRow>
+			<TableHead>Invoice</TableHead>
+		</TableRow>
+	</TableHeader>
+	<TableBody>
+		<TableRow>
+			<TableCell>INV-001</TableCell>
+		</TableRow>
+	</TableBody>
+</Table>
+```
+
+</Tip>
+
+</Tips>
 
 ## API Reference
 
@@ -165,7 +194,7 @@ Wraps the table in a container and a scroll area.
 	]}
 />
 
-### Data attributes
+### Data Attributes
 
 <ApiTable
 	label="Attribute"

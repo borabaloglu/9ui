@@ -65,12 +65,12 @@
 		-webkit-tap-highlight-color: transparent;
 	}
 
-	body {
-		@apply bg-background text-foreground overscroll-none;
+	.dark {
+		color-scheme: dark;
 	}
 
-	.root {
-		@apply bg-background isolate min-h-dvh;
+	body {
+		@apply bg-background text-foreground overscroll-none;
 	}
 }
 
@@ -90,7 +90,6 @@
 	--accent: oklch(92.2% 0 0);
 	--accent-foreground: oklch(14.5% 0 0);
 	--destructive: oklch(50.5% 0.213 27.518);
-	--destructive-foreground: oklch(98.5% 0 0);
 	--border: oklch(87% 0 0);
 	--input: oklch(100% 0 0);
 	--ring: oklch(65.8% 0 0);
@@ -121,7 +120,6 @@
 	--accent: oklch(0.371 0 0);
 	--accent-foreground: oklch(0.985 0 0);
 	--destructive: oklch(0.704 0.191 22.216);
-	--destructive-foreground: oklch(0.985 0 0);
 	--border: oklch(1 0 0 / 10%);
 	--input: oklch(1 0 0 / 5%);
 	--secondary-elevated: oklch(0.319 0 0);
@@ -161,7 +159,6 @@
 	--color-accent: var(--surface-accent, var(--accent));
 	--color-accent-foreground: var(--accent-foreground);
 	--color-destructive: var(--destructive);
-	--color-destructive-foreground: var(--destructive-foreground);
 	--color-warning: var(--warning);
 	--color-info: var(--info);
 	--color-success: var(--success);

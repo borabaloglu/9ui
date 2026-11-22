@@ -1,6 +1,8 @@
 {
 	"$schema": "https://ui.shadcn.com/schema/registry-item.json",
 	"name": "alert",
+	"title": "Alert",
+	"description": "A message that highlights important information.",
 	"dependencies": ["@base-ui/react", "class-variance-authority"],
 	"registryDependencies": [],
 	"files": [
@@ -11,5 +13,6 @@
 			"target": ""
 		}
 	],
+	"docs": "Docs: https://www.9ui.dev/docs/components/alert",
 	"type": "registry:ui"
 }

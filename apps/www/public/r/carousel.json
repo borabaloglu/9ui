@@ -1,6 +1,8 @@
 {
 	"$schema": "https://ui.shadcn.com/schema/registry-item.json",
 	"name": "carousel",
+	"title": "Carousel",
+	"description": "A row of slides to scroll through.",
 	"dependencies": ["@base-ui/react", "lucide-react", "embla-carousel-react"],
 	"registryDependencies": ["@9ui/button"],
 	"files": [
@@ -11,5 +13,6 @@
 			"target": ""
 		}
 	],
+	"docs": "Docs: https://www.9ui.dev/docs/components/carousel",
 	"type": "registry:ui"
 }

@@ -2,11 +2,12 @@
 title: Tooltip
 description: A short label that appears when an element is hovered or focused.
 ---
+
 <ComponentLinks
 	links={[
 		{
 			label: "API Reference",
-			href: "https://base-ui.com/react/components/tooltip",
+			href: "https://base-ui.com/react/components/tooltip#api-reference",
 		},
 	]}
 />
@@ -51,25 +52,21 @@ import {
 </TooltipProvider>
 ```
 
-Set `render` on `TooltipTrigger` to use your own button. A tooltip is a visual hint only, so give icon-only triggers an `aria-label` that matches its text.
-
 Tooltips don't open on touch devices. Use a [Popover](/docs/components/popover) for content people need to read.
-
-`TooltipPopup` takes `side`, `align`, `sideOffset` and `alignOffset` to change where the tooltip opens.
 
 ## Examples
 
 ### Side
 
-Set `side` on `TooltipPopup` to choose where the tooltip opens.
+Set `side` on `TooltipPopup` to choose where the tooltip opens. It also takes `align`, `sideOffset` and `alignOffset`.
 
 <ComponentPreview name="tooltip-side-demo" />
 
-### With Arrow
+### Arrow
 
-Set `showArrow` on `TooltipPopup` to point at the trigger. The tooltip moves away to make room for it.
+Set `showArrow` on `TooltipPopup` to point at the trigger.
 
-<ComponentPreview name="tooltip-with-arrow-demo" />
+<ComponentPreview name="tooltip-arrow-demo" />
 
 ### Grouped
 
@@ -85,13 +82,48 @@ Tooltips inside a `TooltipProvider` open after 300ms. Without one they open afte
 
 ### RTL
 
-To show the tooltip right to left, set `dir="rtl"` on `html` and wrap your app in `DirectionProvider`. See [RTL](/docs/getting-started/rtl).
+To enable RTL support, see the [RTL guide](/docs/getting-started/rtl).
 
 <ComponentPreview name="tooltip-rtl-demo" direction="rtl" />
 
+## Tips
+
+<Tips>
+
+<Tip title="Label icon-only triggers">
+
+Give icon-only triggers an `aria-label` that matches the tooltip text.
+
+```tsx {3}
+<Tooltip>
+	<TooltipTrigger
+		render={<Button variant="outline" size="icon" aria-label="Copy link" />}
+	>
+		<CopyIcon />
+	</TooltipTrigger>
+	<TooltipPopup>Copy link</TooltipPopup>
+</Tooltip>
+```
+
+</Tip>
+
+<Tip title="Use your own button as the trigger">
+
+Set `render` on `TooltipTrigger` to use your own button.
+
+```tsx {1}
+<TooltipTrigger render={<Button variant="outline" />}>
+	Share
+</TooltipTrigger>
+```
+
+</Tip>
+
+</Tips>
+
 ## API Reference
 
-What 9ui adds to Base UI Tooltip. For the rest of the API, see the [Base UI Tooltip reference](https://base-ui.com/react/components/tooltip#api-reference).
+What 9ui adds to Base UI Tooltip. See the [Base UI](https://base-ui.com/react/components/tooltip#api-reference) documentation for the rest.
 
 ### TooltipProvider
 
@@ -101,7 +133,6 @@ What 9ui adds to Base UI Tooltip. For the rest of the API, see the [Base UI Tool
 			name: "delay",
 			type: "number",
 			default: "300",
-			baseDefault: "600",
 			description: "How long the tooltips inside wait before opening, in milliseconds.",
 		},
 	]}
@@ -136,7 +167,6 @@ Bundles the portal, positioner and popup, and takes the positioner props.
 			name: "sideOffset",
 			type: "number | OffsetFunction",
 			default: "4",
-			baseDefault: "0",
 			description: <>The gap between the tooltip and the trigger. Defaults to <code>10</code> when <code>showArrow</code> is set.</>,
 		},
 		{

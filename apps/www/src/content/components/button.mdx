@@ -2,6 +2,7 @@
 title: Button
 description: A control that triggers an action or submits a form.
 ---
+
 <ComponentLinks
 	links={[
 		{
@@ -24,6 +25,8 @@ npx shadcn@latest add @9ui/button
 
 <Steps>
 
+<Step>Add the [Spinner](/docs/components/spinner) component.</Step>
+
 <Step>Copy and paste the following code into your project.</Step>
 
 <ComponentSource name="button" />
@@ -34,90 +37,86 @@ npx shadcn@latest add @9ui/button
 ## Usage
 
 ```tsx title="Imports"
-import { Button } from "@/components/ui/button"
+import { Button, type ButtonProps, buttonVariants } from "@/components/ui/button"
 ```
 
 ```tsx title="Anatomy"
 <Button />
 ```
 
-Give icon-only buttons an `aria-label`. Set `type="submit"` to submit a form.
-
-A button isn't a link. For navigation, put `buttonVariants()` on an `<a>`.
-
 ## Examples
 
 ### Outline
 
-Set `variant` to `outline` for an action that sits beside a primary button.
+Set `variant="outline"` for an action that sits beside a primary button.
 
 <ComponentPreview name="button-outline-demo" />
 
 ### Secondary
 
-Set `variant` to `secondary` for a less prominent action.
+Set `variant="secondary"` for a less prominent action.
 
 <ComponentPreview name="button-secondary-demo" />
 
 ### Ghost
 
-Set `variant` to `ghost` for low-emphasis actions, like toolbar buttons.
+Set `variant="ghost"` for low-emphasis actions, like toolbar buttons.
 
 <ComponentPreview name="button-ghost-demo" />
 
 ### Destructive
 
-Set `variant` to `destructive` for actions that delete data or can't be undone.
+Set `variant="destructive"` for actions that delete data or can't be undone.
 
 <ComponentPreview name="button-destructive-demo" />
 
 ### Destructive Outline
 
-Set `variant` to `destructive-outline` for a destructive action that shouldn't dominate the screen.
+Set `variant="destructive-outline"` for a destructive action that shouldn't dominate the screen.
 
 <ComponentPreview name="button-destructive-outline-demo" />
 
 ### Link
 
-Set `variant` to `link` for an action that should read as inline text.
+Set `variant="link"` for an action that should read as inline text.
 
 <ComponentPreview name="button-link-demo" />
 
 ### Extra Small
 
-Set `size` to `xs`, or `icon-xs` for an icon-only button.
+Set `size="xs"`, or `size="icon-xs"` for an icon-only button.
 
-<ComponentPreview name="button-size-xs-demo" />
+<ComponentPreview name="button-extra-small-demo" />
 
 ### Small
 
-Set `size` to `sm`, or `icon-sm` for an icon-only button.
+Set `size="sm"`, or `size="icon-sm"` for an icon-only button.
 
-<ComponentPreview name="button-size-sm-demo" />
+<ComponentPreview name="button-small-demo" />
 
 ### Default Size
 
-Leave `size` unset, or set it to `icon` for an icon-only button.
+Leave `size` unset, or set `size="icon"` for an icon-only button.
 
-<ComponentPreview name="button-size-default-demo" />
+<ComponentPreview name="button-default-size-demo" />
 
 ### Large
 
-Set `size` to `lg`, or `icon-lg` for an icon-only button.
+Set `size="lg"`, or `size="icon-lg"` for an icon-only button.
 
-<ComponentPreview name="button-size-lg-demo" />
+<ComponentPreview name="button-large-demo" />
 
 ### Extra Large
 
-Set `size` to `xl`, or `icon-xl` for an icon-only button.
+Set `size="xl"`, or `size="icon-xl"` for an icon-only button.
 
-<ComponentPreview name="button-size-xl-demo" />
+<ComponentPreview name="button-extra-large-demo" />
 
-### With Icon
+### Icon
 
 Set `data-icon` to `inline-start` or `inline-end` on the icon to tighten the padding on that side.
 
-<ComponentPreview name="button-with-icon-demo" />
+<ComponentPreview name="button-icon-demo" />
 
 ### Disabled
 
@@ -135,17 +134,60 @@ Set `loading` to disable the button and show a spinner in place of the label. Th
 
 Set `disabled` and render a `Spinner` next to the label to keep the text visible.
 
-<ComponentPreview name="button-loading-custom-demo" />
+<ComponentPreview name="button-loading-with-text-demo" />
 
 ### RTL
 
-To show the button right to left, set `dir="rtl"` on `html` and wrap your app in `DirectionProvider`. See [RTL](/docs/getting-started/rtl).
+To enable RTL support, see the [RTL guide](/docs/getting-started/rtl).
 
 <ComponentPreview name="button-rtl-demo" direction="rtl" />
 
+## Tips
+
+<Tips>
+
+<Tip title="Label icon-only buttons">
+
+Give icon-only buttons an `aria-label`.
+
+```tsx {1}
+<Button size="icon" aria-label="Add to favorites">
+	<StarIcon />
+</Button>
+```
+
+</Tip>
+
+<Tip title="Submit a form">
+
+Set `type="submit"` to submit a form.
+
+```tsx {3}
+<form>
+	<Input name="email" type="email" />
+	<Button type="submit">Subscribe</Button>
+</form>
+```
+
+</Tip>
+
+<Tip title="Style a link as a button">
+
+A button isn't a link. For navigation, put `buttonVariants()` on an `<a>`.
+
+```tsx {1}
+<a href="/pricing" className={buttonVariants({ variant: "outline" })}>
+	View pricing
+</a>
+```
+
+</Tip>
+
+</Tips>
+
 ## API Reference
 
-What 9ui adds to Base UI Button. For the rest of the API, see the [Base UI Button reference](https://base-ui.com/react/components/button#api-reference).
+What 9ui adds to Base UI Button. See the [Base UI](https://base-ui.com/react/components/button#api-reference) documentation for the rest.
 
 ### Button
 
@@ -174,7 +216,7 @@ What 9ui adds to Base UI Button. For the rest of the API, see the [Base UI Butto
 	]}
 />
 
-### Data attributes
+### Data Attributes
 
 <ApiTable
 	label="Attribute"
@@ -182,17 +224,17 @@ What 9ui adds to Base UI Button. For the rest of the API, see the [Base UI Butto
 		{
 			name: "data-variant",
 			type: "string",
-			description: <>The current <code>variant</code>.</>,
+			description: <>Set on <code>Button</code>. The current <code>variant</code>.</>,
 		},
 		{
 			name: "data-size",
 			type: "string",
-			description: <>The current <code>size</code>.</>,
+			description: <>Set on <code>Button</code>. The current <code>size</code>.</>,
 		},
 		{
 			name: "data-loading",
 			type: "boolean",
-			description: "Present while the button is loading.",
+			description: <>Present on <code>Button</code> when <code>loading</code> is set.</>,
 		},
 	]}
 />

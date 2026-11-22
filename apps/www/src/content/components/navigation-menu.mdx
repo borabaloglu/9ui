@@ -7,12 +7,12 @@ description: A set of links and menus for moving around a site.
 	links={[
 		{
 			label: "API Reference",
-			href: "https://base-ui.com/react/components/navigation-menu",
+			href: "https://base-ui.com/react/components/navigation-menu#api-reference",
 		},
 	]}
 />
 
-<ComponentPreview name="navigation-menu-demo" previewClassName="min-h-100 items-start" />
+<ComponentPreview name="navigation-menu-demo" />
 
 ## Installation
 
@@ -24,6 +24,8 @@ npx shadcn@latest add @9ui/navigation-menu
 </div>
 
 <Steps>
+
+<Step>Add the [Scroll Area](/docs/components/scroll-area) component.</Step>
 
 <Step>Copy and paste the following code into your project.</Step>
 
@@ -61,17 +63,9 @@ import {
 </NavigationMenu>
 ```
 
-Set `render` on `NavigationMenuLink` to use the link component of your framework.
-
-Set `active` on `NavigationMenuLink` to mark the current page.
-
-Set `closeOnClick` on `NavigationMenuLink` to close the menu when the link is clicked.
-
-`NavigationMenuPopup` takes `side`, `align`, `sideOffset` and `alignOffset` to change where the menu opens.
-
 ## Examples
 
-### Links
+### Link
 
 Set `variant="trigger"` on `NavigationMenuLink` to place a link next to the triggers.
 
@@ -79,45 +73,104 @@ Set `variant="trigger"` on `NavigationMenuLink` to place a link next to the trig
 
 ### Icons
 
-Put an icon before the text of a `NavigationMenuLink`.
+Place an icon before the text of a `NavigationMenuLink`.
 
-<ComponentPreview name="navigation-menu-icon-demo" previewClassName="min-h-60 items-start" />
+<ComponentPreview name="navigation-menu-icons-demo" />
 
 ### Vertical
 
 Set `orientation="vertical"` on `NavigationMenu` to stack the items. Set `side` on `NavigationMenuPopup` to open the menu next to the list.
 
-<ComponentPreview name="navigation-menu-vertical-demo" previewClassName="min-h-60 items-start" />
+<ComponentPreview name="navigation-menu-vertical-demo" />
 
 ### Nested
 
-To open a second menu from a panel, put another `NavigationMenu` inside `NavigationMenuContent`. Set `variant="link"` on its `NavigationMenuTrigger` to make it look like the links around it.
+To open a second menu from a panel, put another `NavigationMenu` inside `NavigationMenuContent`. Set `side="inline-end"` on its `NavigationMenuPopup` to open it to the side, and `variant="link"` on its `NavigationMenuTrigger` to make it look like the links around it.
 
-<ComponentPreview name="navigation-menu-nested-demo" previewClassName="min-h-80 items-start" />
+<ComponentPreview name="navigation-menu-nested-demo" />
 
 ### Nested Inline
 
-To switch panels inside the same menu, leave out the nested `NavigationMenuPopup` and render `NavigationMenuViewport` where the panels should appear. Set `defaultValue` on the nested `NavigationMenu` to pick the first panel.
+To switch panels inside the same menu, leave out the nested `NavigationMenuPopup` and render `NavigationMenuViewport` where the panels should appear. Set `defaultValue` on the nested `NavigationMenu` to pick the first panel, and `showIcon={false}` on its triggers to hide the chevron.
 
 To remove the padding around a panel, set `className="[--navigation-menu-padding:0px]"` on `NavigationMenuContent`.
 
-<ComponentPreview name="navigation-menu-nested-inline-demo" previewClassName="min-h-100 items-start" />
+<ComponentPreview name="navigation-menu-nested-inline-demo" />
 
 ### Disabled
 
 Set `disabled` on `NavigationMenuTrigger` to turn off a menu.
 
-<ComponentPreview name="navigation-menu-disabled-demo" previewClassName="min-h-60 items-start" />
+<ComponentPreview name="navigation-menu-disabled-demo" />
 
 ### RTL
 
-To show the navigation menu right to left, set `dir="rtl"` on `html` and wrap your app in `DirectionProvider`. See [RTL](/docs/getting-started/rtl).
+To enable RTL support, see the [RTL guide](/docs/getting-started/rtl).
 
 <ComponentPreview name="navigation-menu-rtl-demo" direction="rtl" />
 
+## Tips
+
+<Tips>
+
+<Tip title="Use the link component of your framework">
+
+Set `render` on `NavigationMenuLink` to use the link component of your framework.
+
+```tsx {1}
+<NavigationMenuLink render={<Link href="/docs" />}>
+	Docs
+</NavigationMenuLink>
+```
+
+</Tip>
+
+<Tip title="Mark the current page">
+
+Set `active` on `NavigationMenuLink` to mark the current page.
+
+```tsx {1}
+<NavigationMenuLink href="/docs" active>
+	Docs
+</NavigationMenuLink>
+```
+
+</Tip>
+
+<Tip title="Close the menu when a link is clicked">
+
+Set `closeOnClick` on `NavigationMenuLink` to close the menu when the link is clicked.
+
+```tsx {1}
+<NavigationMenuLink href="/docs" closeOnClick>
+	Docs
+</NavigationMenuLink>
+```
+
+</Tip>
+
+<Tip title="Change where the menu opens">
+
+`NavigationMenuPopup` takes `side`, `align`, `sideOffset` and `alignOffset` to change where the menu opens.
+
+```tsx {7}
+<NavigationMenu>
+	<NavigationMenuList>
+		<NavigationMenuItem>
+			<NavigationMenuTrigger>Products</NavigationMenuTrigger>
+		</NavigationMenuItem>
+	</NavigationMenuList>
+	<NavigationMenuPopup side="bottom" align="center" sideOffset={12} />
+</NavigationMenu>
+```
+
+</Tip>
+
+</Tips>
+
 ## API Reference
 
-What 9ui adds to Base UI Navigation Menu. For the rest of the API, see the [Base UI Navigation Menu reference](https://base-ui.com/react/components/navigation-menu#api-reference).
+What 9ui adds to Base UI Navigation Menu. See the [Base UI](https://base-ui.com/react/components/navigation-menu#api-reference) documentation for the rest.
 
 ### NavigationMenuTrigger
 
@@ -172,14 +225,12 @@ Bundles the portal, positioner, popup and viewport.
 			name: "align",
 			type: '"start" | "center" | "end"',
 			default: '"start"',
-			baseDefault: '"center"',
 			description: "How the popup lines up with the trigger on that side.",
 		},
 		{
 			name: "sideOffset",
 			type: "number | OffsetFunction",
 			default: "8",
-			baseDefault: "0",
 			description: "The gap between the trigger and the popup.",
 		},
 		{
@@ -207,14 +258,14 @@ Bundles the portal, positioner, popup and viewport.
 	]}
 />
 
-### Data attributes
+### Data Attributes
 
 <ApiTable
 	label="Attribute"
 	rows={[
 		{
 			name: "data-variant",
-			type: "string",
+			type: '"default" | "link" | "trigger"',
 			description: <>Set on <code>NavigationMenuTrigger</code> and <code>NavigationMenuLink</code>. The current <code>variant</code>.</>,
 		},
 	]}

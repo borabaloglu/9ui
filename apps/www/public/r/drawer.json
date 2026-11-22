@@ -1,6 +1,8 @@
 {
 	"$schema": "https://ui.shadcn.com/schema/registry-item.json",
 	"name": "drawer",
+	"title": "Drawer",
+	"description": "A panel that slides in from the edge of the screen and can be swiped away.",
 	"dependencies": ["@base-ui/react"],
 	"registryDependencies": [],
 	"files": [
@@ -17,5 +19,6 @@
 			"inherits": "false"
 		}
 	},
+	"docs": "Docs: https://www.9ui.dev/docs/components/drawer",
 	"type": "registry:ui"
 }
