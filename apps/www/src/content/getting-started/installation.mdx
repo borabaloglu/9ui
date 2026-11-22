@@ -258,7 +258,7 @@ export function cn(...inputs: ClassValue[]) {
 
 <Step>Set up import aliases.</Step>
 
-```json title="tsconfig.json"
+```json {3-6} title="tsconfig.json"
 {
 	"compilerOptions": {
 		"baseUrl": ".",
@@ -277,7 +277,7 @@ Open a component page, such as [Button](/docs/components/button), and copy the c
 
 To add components with the shadcn CLI instead, create a `components.json`. Set `rsc` to false outside Next.js.
 
-```json title="components.json"
+```json {4,20-22} title="components.json"
 {
 	"$schema": "https://ui.shadcn.com/schema.json",
 	"style": "new-york",

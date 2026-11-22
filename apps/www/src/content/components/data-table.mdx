@@ -138,7 +138,7 @@ export type DataTableFeatures = typeof features
 
 To define a data column, use `columnHelper.accessor`. To format a cell or a header, set `cell` or `header`.
 
-```tsx title="columns.tsx"
+```tsx {15,18-20} title="columns.tsx"
 import { createColumnHelper } from "@tanstack/react-table"
 
 import type { DataTableFeatures } from "./features"
@@ -301,7 +301,7 @@ columnHelper.accessor("email", {
 
 To announce the sort direction to screen readers, set `aria-sort` on `TableHead`.
 
-```tsx title="data-table.tsx"
+```tsx {4-10} title="data-table.tsx"
 const sorted = header.column.getIsSorted()
 
 <TableHead
@@ -323,7 +323,7 @@ To sort and hide a column from one menu, put a `Menu` in the header.
 
 To filter a column, call `column.setFilterValue` from an input.
 
-```tsx title="data-table.tsx"
+```tsx {6-8} title="data-table.tsx"
 <InputGroup>
 	<InputGroupInput
 		aria-label="Filter emails"
@@ -342,7 +342,7 @@ To show or hide a column, call `column.toggleVisibility`. To keep a column alway
 
 To render only the visible columns, use `row.getVisibleCells` instead of `row.getAllCells`.
 
-```tsx title="data-table.tsx"
+```tsx {4,10} title="data-table.tsx"
 <MenuPopup align="end">
 	{table
 		.getAllColumns()
@@ -397,7 +397,7 @@ To highlight selected rows, set `aria-selected` on `TableRow`.
 
 To show how many rows are selected, use `table.getFilteredSelectedRowModel`.
 
-```tsx title="data-table.tsx"
+```tsx {2} title="data-table.tsx"
 <p className="text-muted-foreground text-sm">
 	{table.getFilteredSelectedRowModel().rows.length} of{" "}
 	{table.getFilteredRowModel().rows.length} row(s) selected.
@@ -408,7 +408,7 @@ To show how many rows are selected, use `table.getFilteredSelectedRowModel`.
 
 To change the page, call `table.previousPage` and `table.nextPage`.
 
-```tsx title="data-table.tsx"
+```tsx {4,12} title="data-table.tsx"
 <Button
 	variant="outline"
 	size="sm"

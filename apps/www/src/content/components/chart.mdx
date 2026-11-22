@@ -145,7 +145,7 @@ The theme has five chart colors, `chart-1` through `chart-5`. They are shades of
 
 To use a theme color, set `color: "var(--chart-1)"`. Any CSS color works too.
 
-```tsx
+```tsx {4,8}
 const chartConfig = {
 	desktop: {
 		label: "Desktop",
@@ -174,7 +174,7 @@ To color a Recharts component, set `fill` or `stroke`.
 
 To color a single data point, set `fill` in the data.
 
-```tsx
+```tsx {2-3}
 const chartData = [
 	{ browser: "chrome", visitors: 275, fill: "var(--color-chrome)" },
 	{ browser: "safari", visitors: 200, fill: "var(--color-safari)" },

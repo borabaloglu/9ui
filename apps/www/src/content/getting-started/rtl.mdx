@@ -206,7 +206,7 @@ export function NavSheet() {
 
 To open a popup to the side of its trigger in reading order, set `side="inline-start"` or `side="inline-end"`.
 
-```tsx {1}
+```tsx
 <TooltipPopup side="inline-end">Settings</TooltipPopup>
 ```
 
@@ -255,7 +255,7 @@ To flip an icon that points in a direction, add `rtl:rotate-180`. This covers ar
 
 To flip an icon whose lines would end up upside down when rotated, like text alignment icons, use `rtl:-scale-x-100` instead.
 
-```tsx {1}
+```tsx
 <TextAlignStartIcon className="rtl:-scale-x-100" />
 ```
 
@@ -265,7 +265,7 @@ Don't flip icons that look the same in every language: checkmarks, spinners, clo
 
 Logical classes don't cover `translate-x-*`. To move something along the inline axis, add the opposite value under `rtl:`.
 
-```tsx {1}
+```tsx
 <div className="translate-x-full transition-transform rtl:-translate-x-full data-open:translate-x-0" />
 ```
 
@@ -290,7 +290,7 @@ Keyboard shortcuts keep the order printed on the keys, so `⌘N` reads `⌘N` in
 
 To show digits the way a language writes them, format numbers with `Intl.NumberFormat`. Arabic often uses Arabic-Indic digits, so `12` becomes `١٢`. Hebrew uses Western digits.
 
-```tsx {1}
+```tsx
 new Intl.NumberFormat("ar-u-nu-arab").format(12)
 ```
 

@@ -138,7 +138,7 @@ To hide a part while the sidebar is collapsed to icons, set `className="group-da
 
 To change the width, set `--sidebar-width` and `--sidebar-width-icon` on `SidebarProvider`.
 
-```tsx
+```tsx {4-5}
 <SidebarProvider
 	style={
 		{
@@ -153,7 +153,7 @@ To change the width, set `--sidebar-width` and `--sidebar-width-icon` on `Sideba
 
 The sidebar saves its state in a `sidebar_state` cookie. To restore it on the server, read the cookie and pass it to `defaultOpen`.
 
-```tsx title="app/layout.tsx"
+```tsx {8-9,12} title="app/layout.tsx"
 import { cookies } from "next/headers"
 
 export default async function Layout({
