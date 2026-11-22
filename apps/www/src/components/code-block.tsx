@@ -1,4 +1,4 @@
-import * as React from "react";
+import type * as React from "react";
 
 import { CodeBar, CodeFrame } from "@/components/code-bar";
 import { CodeCollapsible } from "@/components/code-collapsible";
@@ -12,19 +12,6 @@ interface CodeBlockProps extends React.ComponentProps<"pre"> {
 	topBar?: {
 		label: string;
 	};
-}
-
-function hasHighlightedLines(children: React.ReactNode): boolean {
-	return React.Children.toArray(children).some((child) => {
-		if (!React.isValidElement<Record<string, unknown>>(child)) {
-			return false;
-		}
-
-		return (
-			child.props["data-highlighted-line"] !== undefined ||
-			hasHighlightedLines(child.props.children as React.ReactNode)
-		);
-	});
 }
 
 export const CodeBlock = ({
@@ -53,13 +40,7 @@ export const CodeBlock = ({
 					/>
 				)
 			)}
-			{isLongCode(content) ? (
-				<CodeCollapsible defaultExpanded={hasHighlightedLines(props.children)}>
-					{pre}
-				</CodeCollapsible>
-			) : (
-				pre
-			)}
+			{isLongCode(content) ? <CodeCollapsible>{pre}</CodeCollapsible> : pre}
 		</CodeFrame>
 	);
 };
