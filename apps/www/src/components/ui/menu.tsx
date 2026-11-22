@@ -8,8 +8,19 @@ function Menu<Payload>({ ...props }: BaseMenu.Root.Props<Payload>) {
 	return <BaseMenu.Root {...props} />;
 }
 
-function MenuTrigger<Payload>({ ...props }: BaseMenu.Trigger.Props<Payload>) {
-	return <BaseMenu.Trigger data-slot="menu-trigger" {...props} />;
+function MenuTrigger<Payload>({
+	className,
+	...props
+}: Omit<BaseMenu.Trigger.Props<Payload>, "className"> & {
+	className?: string;
+}) {
+	return (
+		<BaseMenu.Trigger
+			data-slot="menu-trigger"
+			className={cn("[--button-press-scale:1]", className)}
+			{...props}
+		/>
+	);
 }
 
 function MenuPopup({

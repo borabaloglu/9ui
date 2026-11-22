@@ -21,9 +21,18 @@ function AutocompleteInput({ ...props }: BaseAutocomplete.Input.Props) {
 	return <BaseAutocomplete.Input data-slot="autocomplete-input" {...props} />;
 }
 
-function AutocompleteTrigger({ ...props }: BaseAutocomplete.Trigger.Props) {
+function AutocompleteTrigger({
+	className,
+	...props
+}: Omit<BaseAutocomplete.Trigger.Props, "className"> & {
+	className?: string;
+}) {
 	return (
-		<BaseAutocomplete.Trigger data-slot="autocomplete-trigger" {...props} />
+		<BaseAutocomplete.Trigger
+			data-slot="autocomplete-trigger"
+			className={cn("[--button-press-scale:1]", className)}
+			{...props}
+		/>
 	);
 }
 
