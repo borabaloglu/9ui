@@ -137,7 +137,7 @@ Set native constraints on the control and add a `FieldError` with `match` for ea
 
 To choose when validation runs, set `validationMode` on `Form` or `Field`.
 
-```tsx {1}
+```tsx
 <Form validationMode="onBlur">{/* ... */}</Form>
 ```
 
@@ -244,7 +244,7 @@ export default function ExampleForm() {
 }
 ```
 
-```ts title="actions.ts"
+```ts {5,8} title="actions.ts"
 "use server"
 
 export async function createUser(values: { username: string }) {
