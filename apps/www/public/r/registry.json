@@ -753,6 +753,22 @@
 			]
 		},
 		{
+			"name": "segmented-control",
+			"type": "registry:ui",
+			"title": "Segmented Control",
+			"description": "A joined row of options for picking exactly one.",
+			"docs": "Docs: https://www.9ui.dev/docs/components/segmented-control",
+			"dependencies": ["@base-ui/react"],
+			"registryDependencies": [],
+			"files": [
+				{
+					"path": "src/components/ui/segmented-control.tsx",
+					"type": "registry:ui",
+					"target": ""
+				}
+			]
+		},
+		{
 			"name": "select",
 			"type": "registry:ui",
 			"title": "Select",

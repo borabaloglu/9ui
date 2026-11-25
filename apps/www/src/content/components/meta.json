@@ -46,6 +46,7 @@
 		"radio-group",
 		"resizable",
 		"scroll-area",
+		"segmented-control",
 		"select",
 		"separator",
 		"sheet",

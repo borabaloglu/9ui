@@ -1,0 +1,178 @@
+---
+title: Segmented Control
+description: A joined row of options for picking exactly one.
+label: New
+---
+
+<ComponentLinks
+	links={[
+		{
+			label: "API Reference",
+			href: "https://base-ui.com/react/components/radio-group#api-reference",
+		},
+	]}
+/>
+
+<ComponentPreview name="segmented-control-demo" />
+
+## Installation
+
+<ComponentInstallation>
+<div>
+```bash title="Terminal"
+npx shadcn@latest add @9ui/segmented-control
+```
+</div>
+
+<Steps>
+
+<Step>Copy and paste the following code into your project.</Step>
+
+<ComponentSource name="segmented-control" />
+
+</Steps>
+</ComponentInstallation>
+
+## Usage
+
+```tsx title="Imports"
+import {
+	SegmentedControl,
+	SegmentedControlItem,
+	SegmentedControlLabel,
+} from "@/components/ui/segmented-control"
+```
+
+```tsx title="Anatomy"
+<SegmentedControlLabel />
+<SegmentedControl>
+	<SegmentedControlItem />
+	<SegmentedControlItem />
+</SegmentedControl>
+```
+
+Use Segmented Control when one option is always selected, such as a view or a unit. For options that can be turned off or combined, use [Toggle Group](/docs/components/toggle-group). To switch between panels of content, use [Tabs](/docs/components/tabs).
+
+## Examples
+
+### Size
+
+To change the size of every segment, set `size` on `SegmentedControl`.
+
+<ComponentPreview name="segmented-control-size-demo" />
+
+### Icons
+
+Add an icon before the label of each `SegmentedControlItem`. For an icon-only segment, leave out the label and set `aria-label` on the `SegmentedControlItem`.
+
+<ComponentPreview name="segmented-control-icons-demo" />
+
+### Controlled
+
+To control the selection, set `value` and `onValueChange` on `SegmentedControl`.
+
+<ComponentPreview name="segmented-control-controlled-demo" />
+
+### Disabled
+
+Set `disabled` on `SegmentedControl` to disable every segment.
+
+<ComponentPreview name="segmented-control-disabled-demo" />
+
+### Disabled Item
+
+Set `disabled` on a `SegmentedControlItem` to disable only that segment.
+
+<ComponentPreview name="segmented-control-disabled-item-demo" />
+
+### Invalid
+
+Set `invalid` on `Field` to show the error state, and clear it once an option is picked. Outside a `Field`, set `aria-invalid` on each `SegmentedControlItem`.
+
+<ComponentPreview name="segmented-control-invalid-demo" showReload={true} />
+
+### Field
+
+Inside [Field](/docs/components/field), set `name` on `Field` to submit the selected value with a form. To label the control, add `SegmentedControlLabel` and set its `id` as `aria-labelledby` on `SegmentedControl`.
+
+<ComponentPreview name="segmented-control-field-demo" />
+
+### RTL
+
+To enable RTL support, see the [RTL guide](/docs/getting-started/rtl).
+
+<ComponentPreview name="segmented-control-rtl-demo" direction="rtl" />
+
+## Form Integration
+
+Segmented Control connects to a form the same way as Radio Group. See the form guides for [Base UI Form](/docs/forms/base-ui#radio-group), [React Hook Form](/docs/forms/react-hook-form#radio-group) and [TanStack Form](/docs/forms/tanstack-form#radio-group).
+
+## Tips
+
+<Tips>
+
+<Tip title="Size segments to their labels">
+
+Segments are equally wide. To make each one as wide as its label, set an `auto-cols-auto` class on `SegmentedControl`.
+
+```tsx {1}
+<SegmentedControl className="auto-cols-auto" defaultValue="all">
+	<SegmentedControlItem value="all">All</SegmentedControlItem>
+	<SegmentedControlItem value="archived">Archived</SegmentedControlItem>
+</SegmentedControl>
+```
+
+</Tip>
+
+<Tip title="Truncate long labels">
+
+Segments shrink to fit a narrow container and cut off a label that doesn't fit. To end it with an ellipsis, wrap the label in an element with a `truncate` class.
+
+```tsx {3}
+<SegmentedControl defaultValue="notifications">
+	<SegmentedControlItem value="notifications">
+		<span className="truncate">Notifications</span>
+	</SegmentedControlItem>
+	<SegmentedControlItem value="appearance">
+		<span className="truncate">Appearance</span>
+	</SegmentedControlItem>
+</SegmentedControl>
+```
+
+</Tip>
+
+</Tips>
+
+## API Reference
+
+What 9ui adds to Base UI Radio Group. See the [Base UI](https://base-ui.com/react/components/radio-group#api-reference) documentation for the rest.
+
+### SegmentedControl
+
+<ApiTable
+	rows={[
+		{
+			name: "size",
+			type: '"sm" | "default" | "lg"',
+			default: '"default"',
+			description: "The height, padding and text size of the segments.",
+		},
+	]}
+/>
+
+### SegmentedControlLabel
+
+A text label for the control. Accepts `div` props.
+
+### Data Attributes
+
+<ApiTable
+	label="Attribute"
+	rows={[
+		{
+			name: "data-size",
+			type: '"sm" | "default" | "lg"',
+			description: <>Set on <code>SegmentedControl</code>. The current <code>size</code>.</>,
+		},
+	]}
+/>
