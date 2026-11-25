@@ -5,10 +5,15 @@ import { RadioGroup as BaseRadioGroup } from "@base-ui/react/radio-group";
 import { cn } from "@/lib/utils";
 
 const segmentedControlSizes = {
-	sm: "[--segmented-control-height:--spacing(7)] [--segmented-control-radius:min(var(--radius-md),0.75rem)] any-pointer-coarse:[--segmented-control-height:--spacing(8)]",
-	default:
+	sm: cn(
+		"[--segmented-control-height:--spacing(7)] [--segmented-control-radius:min(var(--radius-md),0.75rem)] any-pointer-coarse:[--segmented-control-height:--spacing(8)]",
+	),
+	default: cn(
 		"[--segmented-control-height:--spacing(8)] [--segmented-control-radius:var(--radius-lg)] any-pointer-coarse:[--segmented-control-height:--spacing(9)]",
-	lg: "[--segmented-control-height:--spacing(9)] [--segmented-control-radius:var(--radius-lg)] any-pointer-coarse:[--segmented-control-height:--spacing(10)]",
+	),
+	lg: cn(
+		"[--segmented-control-height:--spacing(9)] [--segmented-control-radius:var(--radius-lg)] any-pointer-coarse:[--segmented-control-height:--spacing(10)]",
+	),
 };
 
 function SegmentedControl<Value>({
