@@ -48,7 +48,7 @@ function Slider<Value extends number | readonly number[]>({
 							key={index}
 							index={index}
 							aria-label={thumbLabels?.[index] ?? ariaLabel}
-							className="has-focus-visible:border-ring has-focus-visible:ring-ring/50 data-invalid:border-destructive/60 data-invalid:ring-destructive/30 dark:border-background dark:has-focus-visible:border-ring dark:data-invalid:border-destructive/60 dark:data-invalid:ring-destructive/40 ease-out-quint size-4 rounded-full border bg-white shadow-xs transition-[border-color,box-shadow,scale] duration-150 before:absolute before:inset-0 before:rounded-full before:shadow-[0_1px_--theme(--color-black/6%)] has-focus-visible:ring-3 has-focus-visible:duration-0 motion-safe:data-dragging:has-[input:focus]:scale-110 dark:before:shadow-none any-pointer-coarse:size-5"
+							className="has-focus-visible:border-ring has-focus-visible:ring-ring/50 data-invalid:border-destructive/60 data-invalid:ring-destructive/30 dark:border-background dark:has-focus-visible:border-ring dark:data-invalid:border-destructive/60 dark:data-invalid:ring-destructive/40 ease-out-quint data-dragging:border-ring data-dragging:ring-ring/50 dark:data-dragging:border-ring size-4 rounded-full border bg-white shadow-xs transition-[border-color,box-shadow] duration-150 before:absolute before:inset-0 before:rounded-full before:shadow-[0_1px_--theme(--color-black/6%)] has-focus-visible:ring-3 has-focus-visible:duration-0 data-dragging:ring-3 dark:before:shadow-none any-pointer-coarse:size-5"
 						/>
 					))}
 				</BaseSlider.Track>
